@@ -12,6 +12,9 @@ node_modules
 # production
 /build
 
+# database
+/server/database/xenoblade-2-guide-db.sqlite
+
 # misc
 .DS_Store
 .env.local
