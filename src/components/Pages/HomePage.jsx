@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import client from '../api-client';
+import client from '../../api-client';
 
 function HomePage(){
     const [progress, setProgress] = useState([])
@@ -19,7 +19,7 @@ function HomePage(){
     }
 
     return (
-        <div className="jumbotron">
+        <div>
             <h1>Xenoblade 2 Guide to 100%</h1>
             <div> This is progress: {progress}</div>
         </div>

@@ -55,7 +55,9 @@ const AffinityChart = sequelize.define('affinityChart', {
         model: 'affinityChartBranch',
         key: 'id'
     } } 
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const AffinityChartBranch = sequelize.define('affinityChartBranch', {
     BranchName: { type: Sequelize.TEXT },
@@ -79,7 +81,9 @@ const AffinityChartBranch = sequelize.define('affinityChartBranch', {
         model: 'affinityChartNode',
         key: 'id'
     } }
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const AffinityChartNode = sequelize.define('affinityChartNode', {
     Name: { type: Sequelize.TEXT },
@@ -88,7 +92,9 @@ const AffinityChartNode = sequelize.define('affinityChartNode', {
     Prerequisites: { type: Sequelize.BLOB },
     Available: { type: Sequelize.BOOLEAN },
     Unlocked: { type: Sequelize.BOOLEAN }
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const Blade = sequelize.define('blade', {
     Name: { type: Sequelize.TEXT },
@@ -130,7 +136,9 @@ const Blade = sequelize.define('blade', {
     Unlocked: { type: Sequelize.BOOLEAN },
     Available: { type: Sequelize.BOOLEAN },
     Prerequisites: { type: Sequelize.BLOB }
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const Heart2Heart = sequelize.define('heart2Heart', {
     Title: { type: Sequelize.TEXT },
@@ -139,7 +147,9 @@ const Heart2Heart = sequelize.define('heart2Heart', {
     Prerequisites: { type: Sequelize.BLOB },
     Who: { type: Sequelize.TEXT },
     Outcomes: { type: Sequelize.BLOB }
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const Item = sequelize.define('item', {
     Name: { type: Sequelize.TEXT },
@@ -153,11 +163,15 @@ const Item = sequelize.define('item', {
     Price: { type: Sequelize.INTEGER },
     FavoriteOf: { type: Sequelize.TEXT },
     Effects: { type: Sequelize.BLOB }
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const ItemType = sequelize.define('itemType', {
     ItemType: { type: Sequelize.TEXT }
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const Monster = sequelize.define('monster', {
     Name: { type: Sequelize.TEXT },
@@ -168,7 +182,9 @@ const Monster = sequelize.define('monster', {
     Area: { type: Sequelize.BLOB },
     SpawnCondition: { type: Sequelize.BLOB },
     Drops: { type: Sequelize.BLOB }
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const Quest = sequelize.define('quest', {
     Name: { type: Sequelize.TEXT },
@@ -179,13 +195,19 @@ const Quest = sequelize.define('quest', {
     Prerequisites: { type: Sequelize.BLOB },
     Objectives: { type: Sequelize.BLOB },
     Rewards: { type: Sequelize.BLOB }
-});
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const StoryProgress = sequelize.define('storyProgress', {
     OnlyShowAvailable: { type: Sequelize.BOOLEAN },
     Chapter: { type: Sequelize.INTEGER },
-    UnlockedArea: { type: Sequelize.TEXT }
-});
+    UnlockedArea: { type: Sequelize.TEXT },
+    TimeOfDay: { type: Sequelize.TEXT },
+    AreaWeather: { type: Sequelize.TEXT }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 AffinityChart.sync()
 AffinityChartBranch.sync()
