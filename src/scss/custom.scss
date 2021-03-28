@@ -1,0 +1,17 @@
+.open-navigation {
+    border-right-style: solid;
+    border-right-width: thin;
+    border-right-color: black;
+    height: 100%;
+    padding: inherit !important;
+    text-align: center;
+}
+
+html, body, #root, .container-fluid, .row{
+    height: 100% !important
+}
+
+a {
+    padding: 15px;
+    font-size: x-large
+}

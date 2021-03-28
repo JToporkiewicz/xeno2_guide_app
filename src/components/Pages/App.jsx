@@ -1,15 +1,17 @@
 import React from "react";
 import HomePage from "./HomePage";
+import DriversPage from "./DriversPage";
 import { Route } from "react-router-dom";
 import Navigation from "../Navigation";
 
 function App() {
     return(
-        <div class="container-fluid">
-            <div class="row">
+        <div className="container-fluid flex-grow-1">
+            <div className="row">
                 <Navigation />
-                <div class="col-md-10">
+                <div className="col-md-10">
                     <Route path="/" exact component={HomePage} />
+                    <Route path="/drivers" component={DriversPage} />
                 </div>
             </div>
         </div>
