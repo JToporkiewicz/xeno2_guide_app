@@ -9,7 +9,7 @@ function App() {
         <div className="container-fluid flex-grow-1">
             <div className="row">
                 <Navigation />
-                <div className="col-md-10">
+                <div className="col-md-10 background">
                     <Route path="/" exact component={HomePage} />
                     <Route path="/drivers" component={DriversPage} />
                 </div>
