@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import client from '../../api-client';
+import HeaderContainer from "../CommonComponents/HeaderContainer";
 
 function HomePage(){
     const [progress, setProgress] = useState([])
@@ -20,7 +21,7 @@ function HomePage(){
 
     return (
         <div>
-            <h1>Xenoblade 2 Guide to 100%</h1>
+            <HeaderContainer title="Xenoblade Chronicles 2" subtitle="Guide to completion"/>
             <div> This is progress: {progress}</div>
         </div>
     );
