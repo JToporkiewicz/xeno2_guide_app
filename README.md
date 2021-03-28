@@ -1,6 +1,19 @@
-# Getting Started with Create React App
+# Xenoblade Chronicles 2 Guide App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).*
+
+This project is a completion guide for some of the key elements in the game Xenoblade Chronicles 2. The application will provide guidance on finding and/or unlocking elements such as:
+
+* Blades
+* Blade skills
+* Driver skills
+* Quests
+* Heart 2 hearts
+* Named monsters
+
+The project also gives users the abilty to avoid spoilers in the game as there will be a way to hide elements which are unavailable to the user based on their progress in the story and already obtained data.
+
+Finally, the application will also allow the users to track the exact number of things unlocked and collected, all in one place to give a quick view of collection progress.
 
 ## Available Scripts
 
@@ -11,8 +24,13 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+This script also runs the server, which is also made in the project. While having server and client side of the application is not necessarily the best practice, in this instance, the server side is very simple and small.
+
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+<!---
+## Other create-react-app scripts
 
 ### `npm test`
 
@@ -68,3 +86,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-->
