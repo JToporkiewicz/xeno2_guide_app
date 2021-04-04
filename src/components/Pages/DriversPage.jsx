@@ -1,6 +1,6 @@
 import React from 'react';
 import CharacterPanelContainer from '../CommonComponents/CharacterPanelsContainer';
-import DriverPanel from '../CommonComponents/DriverPanel';
+import DriverPanel from '../DriverPageComponents/DriverPanel';
 
 function DriversPage(){
     const driversList = [

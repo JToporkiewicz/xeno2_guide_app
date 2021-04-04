@@ -1,4 +1,5 @@
 import React from 'react';
+import CollapsibleComponent from './CollapsibleComponent';
 
 function SeparateChildrenIntoRows(children){
     var contentsArray = React.Children.toArray(children);
@@ -22,14 +23,9 @@ function CharacterPanelContainer(props){
     var contents = SeparateChildrenIntoRows(props.children);
 
     return (
-        <div className="collapsible-container">
-            <h2 className="container-header">
-                {props.title}
-            </h2>
-            <div className="container-contents">
-                {contents !== [] ? contents.map(content => content) : <div/>}
-            </div>
-        </div>
+        <CollapsibleComponent header={props.title}>
+            {contents !== [] ? contents.map(content => content) : <div/>}
+        </CollapsibleComponent>
     )
 };
 
