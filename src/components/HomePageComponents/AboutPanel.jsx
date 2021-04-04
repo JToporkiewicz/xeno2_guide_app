@@ -4,7 +4,7 @@ import CollapsibleComponent from '../CommonComponents/CollapsibleComponent';
 function AboutPanel () {
     return (
         <CollapsibleComponent header="About">
-            <div className="container-contents">
+            <>
             Welcome to the Xenoblade 2 guide application! <br />
             This application is aimed at helping completionists find information about unlockable elements in the game Xenoblade Chronicles 2.<br />
             Using this application, you can also track the progress and monitor it easily.<br />
@@ -23,7 +23,7 @@ function AboutPanel () {
                 <li>interactive spots</li>
                 <li>treasure chests</li>
             </ul>
-        </div>
+        </>
         </CollapsibleComponent>
     )
 };
