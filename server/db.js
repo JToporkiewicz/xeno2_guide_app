@@ -124,7 +124,7 @@ const Item = sequelize.define('item', {
         model: ItemType,
         key: 'id'
     } },
-    Source: { type: Sequelize.BLOB },
+    Source: { type: Sequelize.TEXT },
     Location: { type: Sequelize.TEXT },
     Area: { type: Sequelize.BLOB },
     Price: { type: Sequelize.INTEGER },
@@ -205,12 +205,90 @@ const Blade = sequelize.define('blade', {
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
+const DriverSkillNode = sequelize.define('driverSkillNode', {
+    Name: { type: Sequelize.TEXT },
+    Effect: { type: Sequelize.TEXT },
+    SP: { type: Sequelize.INTEGER },
+    Unlocked: { type: Sequelize.BOOLEAN } },
+    {timestamps: false, createdAt: false, updatedAt: false}
+)
+
+const DriverSkillTree = sequelize.define('driverSkillTree', {
+    Tier1Branch1: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier1Branch2: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier1Branch3: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } },  
+    Tier1Branch4: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } },  
+    Tier1Branch5: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier2Branch1: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier2Branch2: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } },  
+    Tier2Branch3: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier2Branch4: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier2Branch5: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier3Branch1: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier3Branch2: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier3Branch3: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier3Branch4: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    Tier3Branch5: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillNode,
+        key: 'id'
+    } }, 
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+)
+
 const Driver = sequelize.define('driver', {
     ChapterUnlocked: { type: Sequelize.INTEGER },
-    DriverSkillTree: { type: Sequelize.BLOB },
-    HiddenSkillTree: { type: Sequelize.BLOB },
+    DriverSkillTree: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillTree,
+        key: 'id'
+    } },
+    HiddenSkillTree: { type: Sequelize.INTEGER, references: {
+        model: DriverSkillTree,
+        key: 'id'
+    } },
     Heart2Hearts: { type: Sequelize.BLOB },
-    Arts: { type: Sequelize.BLOB },
     FavItem1: { type: Sequelize.TEXT, references: {
         model: Item,
         key: 'id'
@@ -232,6 +310,49 @@ const Driver = sequelize.define('driver', {
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
+const DriverArtDetails = sequelize.define('driverArtDetail', {
+    SP: { type: Sequelize.INTEGER },
+    Damage: { type: Sequelize.INTEGER },
+    EffectPotency: { type: Sequelize.TEXT },
+    Recharge: { type: Sequelize.INTEGER }},
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const DriverArts = sequelize.define('driverArt', {
+    Name: { type: Sequelize.TEXT },
+    Driver: { type: Sequelize.INTEGER, references: {
+        model: Driver,
+        key: 'id'
+    } },
+    Effect: { type: Sequelize.TEXT },
+    LevelUnlocked: { type: Sequelize.INTEGER },
+    Level1: { type: Sequelize.INTEGER, references: {
+        model: DriverArtDetails,
+        key: 'id'
+    } },
+    Level2: { type: Sequelize.INTEGER, references: {
+        model: DriverArtDetails,
+        key: 'id'
+    } },
+    Level3: { type: Sequelize.INTEGER, references: {
+        model: DriverArtDetails,
+        key: 'id'
+    } },
+    Level4: { type: Sequelize.INTEGER, references: {
+        model: DriverArtDetails,
+        key: 'id'
+    } },
+    Level5: { type: Sequelize.INTEGER, references: {
+        model: DriverArtDetails,
+        key: 'id'
+    } },
+    Level5MaxAffinity: { type: Sequelize.INTEGER, references: {
+        model: DriverArtDetails,
+        key: 'id'
+    } } },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
 const StoryProgress = sequelize.define('storyProgress', {
     OnlyShowAvailable: { type: Sequelize.BOOLEAN },
     Chapter: { type: Sequelize.INTEGER },
@@ -247,6 +368,10 @@ AffinityChartBranch.sync()
 AffinityChartNode.sync()
 Blade.sync()
 Driver.sync()
+DriverArtDetails.sync()
+DriverArts.sync()
+DriverSkillNode.sync()
+DriverSkillTree.sync()
 Heart2Heart.sync()
 Item.sync()
 ItemType.sync()
@@ -260,6 +385,10 @@ module.exports = {
     AffinityChartNode,
     Blade,
     Driver,
+    DriverArtDetails,
+    DriverArts,
+    DriverSkillNode,
+    DriverSkillTree,
     Heart2Heart,
     Item,
     ItemType,

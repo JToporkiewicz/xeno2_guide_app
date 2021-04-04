@@ -9,13 +9,17 @@ const {
     AffinityChartBranch,
     AffinityChartNode,
     Blade,
+    Driver,
+    DriverArtDetails,
+    DriverArts,
+    DriverSkillNode,
+    DriverSkillTree,
     Heart2Heart,
     Item,
     ItemType,
     Monster,
     Quest,
-    StoryProgress,
-    Driver
+    StoryProgress
 } = require('./db')
 
 // Import routes
@@ -41,6 +45,10 @@ app.use('/affinityChartBranch', restRouter(AffinityChartBranch))
 app.use('/affinityChartNode', restRouter(AffinityChartNode))
 app.use('/blade', restRouter(Blade))
 app.use('/driver', restRouter(Driver))
+app.use('/driverArtDetails', restRouter(DriverArtDetails))
+app.use('/driverArt', restRouter(DriverArts))
+app.use('/driverSkillNode', restRouter(DriverSkillNode))
+app.use('/driverSkillTree', restRouter(DriverSkillTree))
 app.use('/heart2Heart', restRouter(Heart2Heart))
 app.use('/item', restRouter(Item))
 app.use('/itemType', restRouter(ItemType))
