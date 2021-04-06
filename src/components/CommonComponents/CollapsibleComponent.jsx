@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 function CollapsibleComponent (props) {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,5 +19,9 @@ function CollapsibleComponent (props) {
     </div>
     )
 };
+
+CollapsibleComponent.propTypes = {
+    header: PropTypes.string
+}
 
 export default CollapsibleComponent;

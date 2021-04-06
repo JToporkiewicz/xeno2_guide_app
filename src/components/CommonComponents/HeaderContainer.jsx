@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function HeaderContainer(props){
     return(
@@ -7,6 +8,11 @@ function HeaderContainer(props){
             <h3>{props.subtitle}</h3>
         </div>
     )
-}
+};
+
+HeaderContainer.propTypes = {
+    title: PropTypes.string,
+    subtitle: PropTypes.string
+};
 
 export default HeaderContainer;

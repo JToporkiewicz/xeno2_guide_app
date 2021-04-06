@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import CollapsibleComponent from './CollapsibleComponent';
 
 function SeparateChildrenIntoRows(children){
@@ -16,7 +17,7 @@ function SeparateChildrenIntoRows(children){
     };
     
     return (contents);
-}
+};
 
 function CharacterPanelContainer(props){
 
@@ -27,6 +28,10 @@ function CharacterPanelContainer(props){
             {contents !== [] ? contents.map(content => content) : <div/>}
         </CollapsibleComponent>
     )
+};
+
+CharacterPanelContainer.propTypes = {
+    title: PropTypes.string
 };
 
 export default CharacterPanelContainer;

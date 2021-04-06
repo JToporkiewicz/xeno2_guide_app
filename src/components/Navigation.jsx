@@ -21,7 +21,7 @@ function Navigation(){
             </div>
             <hr />
             <NavigationButton link="/" title="Home"/>
-            <NavigationButton link="/drivers" title="Drivers"/>
+            <NavigationButton link="/driversList" title="Drivers"/>
         </div>
     );
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function DriverPanel(props){
     return (
@@ -12,5 +13,9 @@ function DriverPanel(props){
         </div>
     )
 };
+
+DriverPanel.propTypes = {
+    name: PropTypes.string
+}
 
 export default DriverPanel;
