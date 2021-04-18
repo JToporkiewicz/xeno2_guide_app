@@ -1,21 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import client from '../../api-client';
 import CharacterPanelContainer from '../CommonComponents/CharacterPanelsContainer';
-import DriverPanel from '../DriverPageComponents/DriverPanel';
+import DriverPanel from '../DriverListPageComponents/DriverPanel';
 
 function DriversListPage(){
-    const driversList = [
-        <DriverPanel image={null} name="Rex" />,
-        <DriverPanel image={null} name="Nia" />,
-        <DriverPanel image={null} name="Tora" />,
-        <DriverPanel image={null} name="Vandham" />,
-        <DriverPanel image={null} name="Morag" />
-    ]
+
+    const [drivers, setDrivers] = useState([])
+
+    useEffect(() => {
+        fetchProgress();
+    }, [])
+
+    async function fetchProgress(){
+        try {
+            const response = await client.resource('driver').find();
+            setDrivers(response);
+        }
+        catch(err) {
+            console.log(`Error: ${err}`);
+        }
+    };
+
+    const driversList = [];
+    drivers.forEach((driver) =>
+        (driversList.push(
+            <DriverPanel
+                name={driver.Name}
+                id={driver.id}
+            />)
+        ));
+
     return(
-        <div>
+        <>
             <CharacterPanelContainer title="Drivers">
                 {driversList}
             </CharacterPanelContainer>
-        </div>
+        </>
     )
 }
 
