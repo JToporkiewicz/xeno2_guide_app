@@ -22,8 +22,17 @@ function AboutPanel () {
                 <li>equipment sources</li>
                 <li>interactive spots</li>
                 <li>treasure chests</li>
+                <li>non-unique blades</li>
             </ul>
-        </>
+            Information used in this application is obtained from:
+            <ul>
+                <li><a href="https://xenoblade.fandom.com/wiki/Xenoblade_Chronicles_2">
+                    Xenoblade 2 Fandom Wiki</a></li>
+                <li><a href="https://docs.google.com/spreadsheets/d/1EG0UpsgjhISr6_isiUpiWMU9qcXj6t8wWB0_LAiH1yE/edit?fbclid=IwAR3TemckeBvK0vfS1vGr3NgjnT5cx7t7CkYVpZA4FPsWaQhNDDUu1sqN86k#gid=970837341">
+                    fan created Xenoblade Chronicles 2 Info Sheet</a></li>
+                <li>personal observations and experiences playing the game</li>
+            </ul>
+            </>
         </CollapsibleComponent>
     )
 };
