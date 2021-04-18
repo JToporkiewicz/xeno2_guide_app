@@ -55,7 +55,6 @@ const AffinityChartBranch = sequelize.define('affinityChartBranch', {
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
-
 const AffinityChart = sequelize.define('affinityChart', {
     AffinityBranch: { type: Sequelize.INTEGER, references: {
         model: AffinityChartBranch,
@@ -159,7 +158,6 @@ const Quest = sequelize.define('quest', {
     },
     {timestamps: false, createdAt: false, updatedAt: false}
 );
-
 
 const Blade = sequelize.define('blade', {
     Name: { type: Sequelize.TEXT },
@@ -279,6 +277,7 @@ const DriverSkillTree = sequelize.define('driverSkillTree', {
 )
 
 const Driver = sequelize.define('driver', {
+    Name: { type: Sequelize.TEXT },
     ChapterUnlocked: { type: Sequelize.INTEGER },
     DriverSkillTree: { type: Sequelize.INTEGER, references: {
         model: DriverSkillTree,
@@ -324,7 +323,10 @@ const DriverArts = sequelize.define('driverArt', {
         model: Driver,
         key: 'id'
     } },
+    WeaponType: { type: Sequelize.TEXT },
     Effect: { type: Sequelize.TEXT },
+    Target: { type: Sequelize.TEXT },
+    Type: { type: Sequelize.TEXT },
     LevelUnlocked: { type: Sequelize.INTEGER },
     Level1: { type: Sequelize.INTEGER, references: {
         model: DriverArtDetails,
