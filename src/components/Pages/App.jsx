@@ -1,9 +1,10 @@
 import React from "react";
 import HomePage from "./HomePage";
 import DriversListPage from "./DriversListPage";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Navigation from "../Navigation";
-import DriverPage from "./DriverPage";
+import DriverDetailsPage from "./DriverDetailsPage";
+import Default from "./Default";
 
 function App() {
     return(
@@ -11,9 +12,12 @@ function App() {
             <div className="row">
                 <Navigation />
                 <div className="col-md-10 background">
-                    <Route path="/" exact component={HomePage} />
-                    <Route path="/driverslist" component={DriversListPage} />
-                    <Route path="/driver/:slug" component={DriverPage} />
+                    <Switch>
+                        <Route path="/" exact component={HomePage} />
+                        <Route path="/driverslist" component={DriversListPage} />
+                        <Route path="/driver/:slug" component={DriverDetailsPage} />
+                        <Route component={Default} />
+                    </Switch>
                 </div>
             </div>
         </div>
