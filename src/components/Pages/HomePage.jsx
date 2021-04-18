@@ -21,11 +21,11 @@ function HomePage(){
     }
 
     return (
-        <div>
+        <>
             <HeaderContainer title="Xenoblade Chronicles 2" subtitle="Guide to completion"/>
-            <div> This is progress: {progress}</div>
             <AboutPanel />
-        </div>
+            <div> This is progress: {progress}</div>
+        </>
     );
 }
 
