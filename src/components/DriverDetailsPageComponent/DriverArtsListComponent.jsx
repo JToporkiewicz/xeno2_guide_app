@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import client from '../../api-client';
 import CollapsibleComponent from '../CommonComponents/CollapsibleComponent';
-import DriverArtPanelMinimal from './DriverArtPanelMinimal';
 import {SeparateChildrenIntoRows} from '../CommonFunctions';
+import ClosedImagePanel from '../CommonComponents/ClosedImagePanel';
 
 async function getDriverArts (setArts, driverId) {
     try {
@@ -32,14 +32,14 @@ function DriverArtsListComponent (props) {
     }, [driverArts])
 
     const weaponsPanels = [];
-    uniqueWeapons.forEach((weapon) => (weaponsPanels.push(<DriverArtPanelMinimal name={weapon}/>)))
+    uniqueWeapons.forEach((weapon) => (weaponsPanels.push(<ClosedImagePanel panelType="weaponType" name={weapon}/>)))
 
     return (
         <CollapsibleComponent header={"Driver Arts"}>
             {uniqueWeapons.length > 0 ?
                 SeparateChildrenIntoRows(weaponsPanels).map(weapon => weapon)
             :
-                <>unknown</>
+                <>Unknown</>
             }
         </CollapsibleComponent>
     )

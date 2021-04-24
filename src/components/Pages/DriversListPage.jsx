@@ -1,30 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import client from '../../api-client';
 import CharacterPanelContainer from '../CommonComponents/CharacterPanelsContainer';
-import DriverPanel from '../DriverListPageComponents/DriverPanel';
+import ClosedImagePanel from '../CommonComponents/ClosedImagePanel';
+
+async function fetchProgress(setDrivers){
+    try {
+        const response = await client.resource('driver').find();
+        setDrivers(response);
+    }
+    catch(err) {
+        console.log(`Error: ${err}`);
+    }
+};
 
 function DriversListPage(){
 
     const [drivers, setDrivers] = useState([])
 
     useEffect(() => {
-        fetchProgress();
+        fetchProgress(setDrivers);
     }, [])
-
-    async function fetchProgress(){
-        try {
-            const response = await client.resource('driver').find();
-            setDrivers(response);
-        }
-        catch(err) {
-            console.log(`Error: ${err}`);
-        }
-    };
 
     const driversList = [];
     drivers.forEach((driver) =>
         (driversList.push(
-            <DriverPanel
+            <ClosedImagePanel
+                linked={true}
+                panelType="driver"
                 name={driver.Name}
                 id={driver.id}
             />)

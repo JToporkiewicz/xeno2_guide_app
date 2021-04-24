@@ -13,7 +13,7 @@ hr {
 
 .background {
     background:url('./XC2-background.jpeg');
-    background-position: center;
+    background-position-x: center;
 }
 
 .open-navigation {
@@ -59,27 +59,34 @@ hr {
     margin: 0px !important;
 }
 
-.character-image {
-    width: 16vw;
-    max-width: 250px;
-    max-height: 250px;
-    border-color: gray;
+.image-panel {
     border-style: solid;
-    border-width: 1px;
-    margin-right: auto;
-    margin-left:auto
+    border-width: medium;
+    border-color: skyblue;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.character-image {
+    height: 14vw;
+    max-width: 280px;
+    max-height: 250px;
+    margin: auto;
+    display: block;
 }
 
 .weapon-class-image {
-    width: 16vw;
-    height: 16vw;
+    height: 14vw;
     max-width: 250px;
     max-height: 250px;
-    display: inline-block;
+    display: block;
+    margin: auto;
 }
 
-.character-name {
+.image-name {
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: skyblue;
     text-align: center;
-    margin-bottom: 15px;
     display: block;
 }
