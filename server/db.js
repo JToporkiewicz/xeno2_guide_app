@@ -106,8 +106,9 @@ const Heart2Heart = sequelize.define('heart2Heart', {
     Area: { type: Sequelize.TEXT },
     Prerequisites: { type: Sequelize.BLOB },
     Who: { type: Sequelize.BLOB },
-    Outcomes: { type: Sequelize.BLOB }
-    },
+    Outcomes: { type: Sequelize.BLOB },
+    Available: { type: Sequelize.BOOLEAN },
+    Viewed: { type: Sequelize.BOOLEAN }},
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
@@ -141,8 +142,9 @@ const Monster = sequelize.define('monster', {
     Location: { type: Sequelize.TEXT },
     Area: { type: Sequelize.BLOB },
     SpawnCondition: { type: Sequelize.BLOB },
-    Drops: { type: Sequelize.BLOB }
-    },
+    Drops: { type: Sequelize.BLOB },
+    Available: { type: Sequelize.BOOLEAN },
+    Beaten: { type: Sequelize.BOOLEAN }},
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
@@ -154,8 +156,9 @@ const Quest = sequelize.define('quest', {
     Area: { type: Sequelize.TEXT },
     Prerequisites: { type: Sequelize.BLOB },
     Objectives: { type: Sequelize.BLOB },
-    Rewards: { type: Sequelize.BLOB }
-    },
+    Rewards: { type: Sequelize.BLOB },
+    Available: { type: Sequelize.BOOLEAN },
+    Completed: { type: Sequelize.BOOLEAN }},
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
