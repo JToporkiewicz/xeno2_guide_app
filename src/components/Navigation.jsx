@@ -5,7 +5,7 @@ function NavigationButton(props) {
 
     return (
         <>
-            <Link to={props.link} className="navigationButton">
+            <Link to={props.link} className="navigation-button">
                 {props.title}
             </Link>
             <hr/>

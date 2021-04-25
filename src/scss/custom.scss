@@ -2,18 +2,26 @@ html, body, #root, .container-fluid, .row{
     height: 100% !important
 }
 
-.navigationButton {
-    padding: 15px;
-    font-size: x-large
-}
-
 hr {
     border-color: skyblue !important;
+}
+
+input[type="time"]{
+    max-width: 100px;
+}
+
+select{
+    max-width: 180px;
 }
 
 .background {
     background:url('./XC2-background.jpeg');
     background-position-x: center;
+}
+
+.navigation-button {
+    padding: 15px;
+    font-size: x-large
 }
 
 .open-navigation {
@@ -89,4 +97,40 @@ hr {
     border-top-color: skyblue;
     text-align: center;
     display: block;
+}
+.settings-names {
+    margin: auto;
+}
+
+.chapter-input {
+    width: 5vw;
+}
+
+.checkbox-layout {
+    display: flex;
+}
+
+.increment-decrement-button {
+    height: 18px;
+    width: 18px;
+    margin: 1vw;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.dropdown-layout {
+    display: flex;
+    height: 40px;
+}
+
+.setting-row {
+    margin-bottom: 10px;
+}
+
+.button-color{
+    background-color: skyblue;
+    border-color: skyblue;
+    color: #0056b3;
+    margin-left: 40%;
+    margin-top: 10px;
 }
