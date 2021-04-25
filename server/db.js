@@ -362,7 +362,7 @@ const StoryProgress = sequelize.define('storyProgress', {
     OnlyShowAvailable: { type: Sequelize.BOOLEAN },
     Chapter: { type: Sequelize.INTEGER },
     NewGamePlus: { type: Sequelize.BOOLEAN },
-    TimeOfDay: { type: Sequelize.TEXT },
+    TimeOfDay: { type: Sequelize.TIME },
     AreaWeather: { type: Sequelize.TEXT }
     },
     {timestamps: false, createdAt: false, updatedAt: false}
