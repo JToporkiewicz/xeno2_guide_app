@@ -11,7 +11,7 @@ function Dropdown(props){
                 id={props.settingKey}
                 value={props.currentValue}
                 onChange={() => props.updateCurrentValue(props.settingKey)}>
-                {props.values.map((value) => <option value={value}>{value}</option>)}
+                {props.values.map((value) => <option key={value} value={value}>{value}</option>)}
             </select>
         </div>
     </div>

@@ -43,7 +43,6 @@ function SettingsForm(props){
 
     function updateDropdownValue(settingKey){
         setSettings({...settings, [settingKey]: document.getElementById(settingKey).value})
-        console.log(document.getElementById(settingKey).value)
     }
 
     function saveChanges(){
@@ -90,7 +89,7 @@ function SettingsForm(props){
                 currentValue={settings.AreaWeather}
                 updateCurrentValue={updateDropdownValue.bind(this)}
             />
-            <button type="button" class="btn button-color" onClick={() => saveChanges()}>Update App</button>
+            <button type="button" className="btn button-color" onClick={() => saveChanges()}>Update App</button>
         </CollapsibleComponent>
     )
 }
