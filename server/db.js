@@ -21,8 +21,8 @@ sequelize
 const AffinityChartNode = sequelize.define('affinityChartNode', {
     Name: { type: Sequelize.TEXT },
     SkillLevel: { type: Sequelize.INTEGER },
-    Effect: { type: Sequelize.BLOB },
-    Prerequisites: { type: Sequelize.BLOB },
+    Effect: { type: Sequelize.TEXT },
+    Prerequisites: { type: Sequelize.TEXT },
     Available: { type: Sequelize.BOOLEAN },
     Unlocked: { type: Sequelize.BOOLEAN }
     },
@@ -104,9 +104,9 @@ const Heart2Heart = sequelize.define('heart2Heart', {
     Title: { type: Sequelize.TEXT },
     Location: { type: Sequelize.TEXT },
     Area: { type: Sequelize.TEXT },
-    Prerequisites: { type: Sequelize.BLOB },
-    Who: { type: Sequelize.BLOB },
-    Outcomes: { type: Sequelize.BLOB },
+    Prerequisites: { type: Sequelize.TEXT },
+    Who: { type: Sequelize.TEXT },
+    Outcomes: { type: Sequelize.TEXT },
     Available: { type: Sequelize.BOOLEAN },
     Viewed: { type: Sequelize.BOOLEAN }},
     {timestamps: false, createdAt: false, updatedAt: false}
@@ -126,10 +126,10 @@ const Item = sequelize.define('item', {
     } },
     Source: { type: Sequelize.TEXT },
     Location: { type: Sequelize.TEXT },
-    Area: { type: Sequelize.BLOB },
+    Area: { type: Sequelize.TEXT },
     Price: { type: Sequelize.INTEGER },
     FavoriteOf: { type: Sequelize.TEXT },
-    Effects: { type: Sequelize.BLOB }
+    Effects: { type: Sequelize.TEXT }
     },
     {timestamps: false, createdAt: false, updatedAt: false}
 );
@@ -140,9 +140,9 @@ const Monster = sequelize.define('monster', {
     LowestLevel: { type: Sequelize.INTEGER },
     HighestLevel: { type: Sequelize.INTEGER },
     Location: { type: Sequelize.TEXT },
-    Area: { type: Sequelize.BLOB },
-    SpawnCondition: { type: Sequelize.BLOB },
-    Drops: { type: Sequelize.BLOB },
+    Area: { type: Sequelize.TEXT },
+    SpawnCondition: { type: Sequelize.TEXT },
+    Drops: { type: Sequelize.TEXT },
     Available: { type: Sequelize.BOOLEAN },
     Beaten: { type: Sequelize.BOOLEAN }},
     {timestamps: false, createdAt: false, updatedAt: false}
@@ -154,9 +154,9 @@ const Quest = sequelize.define('quest', {
     Client: { type: Sequelize.TEXT },
     Location: { type: Sequelize.TEXT },
     Area: { type: Sequelize.TEXT },
-    Prerequisites: { type: Sequelize.BLOB },
-    Objectives: { type: Sequelize.BLOB },
-    Rewards: { type: Sequelize.BLOB },
+    Prerequisites: { type: Sequelize.TEXT },
+    Objectives: { type: Sequelize.TEXT },
+    Rewards: { type: Sequelize.TEXT },
     Available: { type: Sequelize.BOOLEAN },
     Completed: { type: Sequelize.BOOLEAN }},
     {timestamps: false, createdAt: false, updatedAt: false}
@@ -201,7 +201,7 @@ const Blade = sequelize.define('blade', {
     } },
     Unlocked: { type: Sequelize.BOOLEAN },
     Available: { type: Sequelize.BOOLEAN },
-    Prerequisites: { type: Sequelize.BLOB }
+    Prerequisites: { type: Sequelize.TEXT }
     },
     {timestamps: false, createdAt: false, updatedAt: false}
 );
@@ -290,7 +290,7 @@ const Driver = sequelize.define('driver', {
         model: DriverSkillTree,
         key: 'id'
     } },
-    Heart2Hearts: { type: Sequelize.BLOB },
+    Heart2Hearts: { type: Sequelize.TEXT },
     FavItem1: { type: Sequelize.TEXT, references: {
         model: Item,
         key: 'id'
@@ -307,7 +307,7 @@ const Driver = sequelize.define('driver', {
         model: ItemType,
         key: 'id'
     } },
-    IdeaStats: { type: Sequelize.BLOB }
+    IdeaStats: { type: Sequelize.TEXT }
     },
     {timestamps: false, createdAt: false, updatedAt: false}
 );
