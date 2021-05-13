@@ -17,12 +17,70 @@ sequelize
         console.error('Unable to connect to the database:', err);
     });
 
+const MajorAreas = sequelize.define('majorArea', {
+    Name: { type: Sequelize.TEXT },
+    DevelopmentLevel: { type: Sequelize.INTEGER },
+    Located: { type: Sequelize.TEXT },
+    StoryProgress: { type: Sequelize.INTEGER }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const Locations = sequelize.define('location', {
+    Location: { type: Sequelize.TEXT },
+    MajorArea: { type: Sequelize.INTEGER, references: {
+        model: MajorAreas,
+        key: 'id'
+    } },
+    Type: { type: Sequelize.TEXT },
+    StoryProgress: { type: Sequelize.INTEGER }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const ItemType = sequelize.define('itemType', {
+    ItemType: { type: Sequelize.TEXT }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const Item = sequelize.define('item', {
+    Name: { type: Sequelize.TEXT },
+    ItemType: { type: Sequelize.TEXT, references: {
+        model: ItemType,
+        key: 'id'
+    } },
+    Source: { type: Sequelize.TEXT },
+    Location: { type: Sequelize.INTEGER, references: {
+        model: Locations,
+        key: 'id'
+    } },
+    Price: { type: Sequelize.INTEGER },
+    FavoriteOf: { type: Sequelize.TEXT },
+    Effects: { type: Sequelize.TEXT }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const Quest = sequelize.define('quest', {
+    Name: { type: Sequelize.TEXT },
+    Type: { type: Sequelize.TEXT },
+    Client: { type: Sequelize.TEXT },
+    Location: { type: Sequelize.INTEGER, references: {
+        model: Locations,
+        key: 'id'
+    } },
+    Objectives: { type: Sequelize.TEXT },
+    Rewards: { type: Sequelize.TEXT },
+    Available: { type: Sequelize.BOOLEAN },
+    Completed: { type: Sequelize.BOOLEAN }},
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
 
 const AffinityChartNode = sequelize.define('affinityChartNode', {
     Name: { type: Sequelize.TEXT },
     SkillLevel: { type: Sequelize.INTEGER },
     Effect: { type: Sequelize.TEXT },
-    Prerequisites: { type: Sequelize.TEXT },
     Available: { type: Sequelize.BOOLEAN },
     Unlocked: { type: Sequelize.BOOLEAN }
     },
@@ -102,63 +160,14 @@ const AffinityChart = sequelize.define('affinityChart', {
 
 const Heart2Heart = sequelize.define('heart2Heart', {
     Title: { type: Sequelize.TEXT },
-    Location: { type: Sequelize.TEXT },
-    Area: { type: Sequelize.TEXT },
-    Prerequisites: { type: Sequelize.TEXT },
+    Location: { type: Sequelize.INTEGER, references: {
+        model: Locations,
+        key: 'id'
+    } },
     Who: { type: Sequelize.TEXT },
     Outcomes: { type: Sequelize.TEXT },
     Available: { type: Sequelize.BOOLEAN },
     Viewed: { type: Sequelize.BOOLEAN }},
-    {timestamps: false, createdAt: false, updatedAt: false}
-);
-
-const ItemType = sequelize.define('itemType', {
-    ItemType: { type: Sequelize.TEXT }
-    },
-    {timestamps: false, createdAt: false, updatedAt: false}
-);
-
-const Item = sequelize.define('item', {
-    Name: { type: Sequelize.TEXT },
-    ItemType: { type: Sequelize.TEXT, references: {
-        model: ItemType,
-        key: 'id'
-    } },
-    Source: { type: Sequelize.TEXT },
-    Location: { type: Sequelize.TEXT },
-    Area: { type: Sequelize.TEXT },
-    Price: { type: Sequelize.INTEGER },
-    FavoriteOf: { type: Sequelize.TEXT },
-    Effects: { type: Sequelize.TEXT }
-    },
-    {timestamps: false, createdAt: false, updatedAt: false}
-);
-
-const Monster = sequelize.define('monster', {
-    Name: { type: Sequelize.TEXT },
-    Type: { type: Sequelize.TEXT },
-    LowestLevel: { type: Sequelize.INTEGER },
-    HighestLevel: { type: Sequelize.INTEGER },
-    Location: { type: Sequelize.TEXT },
-    Area: { type: Sequelize.TEXT },
-    SpawnCondition: { type: Sequelize.TEXT },
-    Drops: { type: Sequelize.TEXT },
-    Available: { type: Sequelize.BOOLEAN },
-    Beaten: { type: Sequelize.BOOLEAN }},
-    {timestamps: false, createdAt: false, updatedAt: false}
-);
-
-const Quest = sequelize.define('quest', {
-    Name: { type: Sequelize.TEXT },
-    Type: { type: Sequelize.TEXT },
-    Client: { type: Sequelize.TEXT },
-    Location: { type: Sequelize.TEXT },
-    Area: { type: Sequelize.TEXT },
-    Prerequisites: { type: Sequelize.TEXT },
-    Objectives: { type: Sequelize.TEXT },
-    Rewards: { type: Sequelize.TEXT },
-    Available: { type: Sequelize.BOOLEAN },
-    Completed: { type: Sequelize.BOOLEAN }},
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
@@ -200,8 +209,7 @@ const Blade = sequelize.define('blade', {
         key: 'id'
     } },
     Unlocked: { type: Sequelize.BOOLEAN },
-    Available: { type: Sequelize.BOOLEAN },
-    Prerequisites: { type: Sequelize.TEXT }
+    Available: { type: Sequelize.BOOLEAN }
     },
     {timestamps: false, createdAt: false, updatedAt: false}
 );
@@ -212,7 +220,7 @@ const DriverSkillNode = sequelize.define('driverSkillNode', {
     SP: { type: Sequelize.INTEGER },
     Unlocked: { type: Sequelize.BOOLEAN } },
     {timestamps: false, createdAt: false, updatedAt: false}
-)
+);
 
 const DriverSkillTree = sequelize.define('driverSkillTree', {
     Tier1Branch1: { type: Sequelize.INTEGER, references: {
@@ -274,10 +282,9 @@ const DriverSkillTree = sequelize.define('driverSkillTree', {
     Tier3Branch5: { type: Sequelize.INTEGER, references: {
         model: DriverSkillNode,
         key: 'id'
-    } }, 
-    },
+    } } },
     {timestamps: false, createdAt: false, updatedAt: false}
-)
+);
 
 const Driver = sequelize.define('driver', {
     Name: { type: Sequelize.TEXT },
@@ -358,12 +365,221 @@ const DriverArts = sequelize.define('driverArt', {
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
+const FieldSkills = sequelize.define('fieldSkill', {
+    Name: { type: Sequelize.TEXT },
+    CommonBladeContribution: { type: Sequelize.INTEGER },
+    TotalLevel: { type: Sequelize.INTEGER },
+    Type: { type: Sequelize.TEXT }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const RequirementsMM = sequelize.define('requirementsMM', {
+    Blade: { type: Sequelize.INTEGER, references: {
+        model: Blade,
+        key: 'id'
+    } },
+    FieldSkill1: { type: Sequelize.INTEGER, references: {
+        model: FieldSkills,
+        key: 'id'
+    } },
+    FieldSkill1Level: { type: Sequelize.INTEGER },
+    FieldSkill2: { type: Sequelize.INTEGER, references: {
+        model: FieldSkills,
+        key: 'id'
+    } },
+    FieldSkill2Level: { type: Sequelize.INTEGER },
+    FieldSkill3: { type: Sequelize.INTEGER, references: {
+        model: FieldSkills,
+        key: 'id'
+    } },
+    FieldSkill3Level: { type: Sequelize.INTEGER }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const MercMission = sequelize.define('mercMission', {
+    Name: { type: Sequelize.TEXT },
+    MissionNation: { type: Sequelize.INTEGER, references: {
+        model: MajorAreas,
+        key: 'id'
+    } },
+    Giver: { type: Sequelize.TEXT },
+    GiverLocation: { type: Sequelize.INTEGER, references: {
+        model: Locations,
+        key: 'id'
+    } },
+    Duration: { type: Sequelize.TEXT },
+    Type: { type: Sequelize.TEXT },
+    Completed: { type: Sequelize.BOOLEAN },
+    Available: { type: Sequelize.BOOLEAN }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const Monster = sequelize.define('monster', {
+    Name: { type: Sequelize.TEXT },
+    Category: { type: Sequelize.TEXT },
+    Type: { type: Sequelize.TEXT },
+    LowestLevel: { type: Sequelize.INTEGER },
+    HighestLevel: { type: Sequelize.INTEGER },
+    Location: { type: Sequelize.INTEGER, references: {
+        model: Locations,
+        key: 'id'
+    } },
+    DLCRequired: { type: Sequelize.BOOLEAN },
+    SpawnCondition: { type: Sequelize.TEXT },
+    Drops: { type: Sequelize.TEXT },
+    Available: { type: Sequelize.BOOLEAN },
+    Beaten: { type: Sequelize.BOOLEAN }},
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const PrerequisitesACN = sequelize.define('prerequisitesACN', {
+    RequiredBy: { type: Sequelize.INTEGER, references: {
+        model: AffinityChartNode,
+        key: 'id'
+    } },
+    OtherPrerequisiteName: { type: Sequelize.TEXT },
+    OtherPrerequisiteDetail: { type: Sequelize.TEXT },
+    Location: { type: Sequelize.INTEGER, references: {
+        model: MajorAreas,
+        key: 'id'
+    } },
+    Heart2HeartTitle: { type: Sequelize.INTEGER, references: {
+        model: Heart2Heart,
+        key: 'id'
+    } },
+    SideQuest: { type: Sequelize.INTEGER, references: {
+        model: Quest,
+        key: 'id'
+    } },
+    MercMissionTitle: { type: Sequelize.INTEGER, references: {
+        model: MercMission,
+        key: 'id'
+    } },
+    MonsterTitle: { type: Sequelize.INTEGER, references: {
+        model: Monster,
+        key: 'id'
+    } },
+    AffinityChartNode: { type: Sequelize.INTEGER, references: {
+        model: AffinityChartNode,
+        key: 'id'
+    } },
+    PouchItemType: { type: Sequelize.INTEGER, references: {
+        model: ItemType,
+        key: 'id'
+    } },
+    PouchItem: { type: Sequelize.INTEGER, references: {
+        model: Item,
+        key: 'id'
+    } },
+    Progress: { type: Sequelize.TEXT }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const PrerequisitesBlade = sequelize.define('prerequisitesBlade', {
+    RequiredBy: { type: Sequelize.INTEGER, references: {
+        model: Blade,
+        key: 'id'
+    } },
+    StoryProgress: { type: Sequelize.INTEGER },
+    NewGamePlus: { type: Sequelize.BOOLEAN },
+    DLCUnlocked: { type: Sequelize.BOOLEAN },
+    SideQuest: { type: Sequelize.INTEGER, references: {
+        model: Quest,
+        key: 'id'
+    } },
+    MercMission: { type: Sequelize.INTEGER, references: {
+        model: MercMission,
+        key: 'id'
+    } } },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const PrerequisitesH2H = sequelize.define('prerequisitesH2H', {
+    RequiredBy: { type: Sequelize.INTEGER, references: {
+        model: Heart2Heart,
+        key: 'id'
+    } },
+    StoryProgress: { type: Sequelize.INTEGER },
+    NewGamePlus: { type: Sequelize.BOOLEAN },
+    DLCUnlocked: { type: Sequelize.BOOLEAN },
+    BladeAffinityChartNode: { type: Sequelize.INTEGER, references: {
+        model: AffinityChartNode,
+        key: 'id'
+    } },
+    FieldSkill1: { type: Sequelize.INTEGER, references: {
+        model: FieldSkills,
+        key: 'id'
+    } },
+    FieldSkill1Level: { type: Sequelize.INTEGER },
+    FieldSkill2: { type: Sequelize.INTEGER, references: {
+        model: FieldSkills,
+        key: 'id'
+    } },
+    FieldSkill2Level: { type: Sequelize.INTEGER },
+    StayAtAnInn: { type: Sequelize.TEXT },
+    InnLocation: { type: Sequelize.INTEGER, references: {
+        model: MajorAreas,
+        key: 'id'
+    } }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const PrerequisitesMM = sequelize.define('prerequisitesMM', {
+    RequirementsOf: { type: Sequelize.INTEGER, references: {
+        model: MercMission,
+        key: 'id'
+    } },
+    LocationDevLevel: { type: Sequelize.INTEGER },
+    MercLevel: { type: Sequelize.INTEGER },
+    BladeUnlocked: { type: Sequelize.INTEGER, references: {
+        model: Blade,
+        key: 'id'
+    } },
+    Quest: { type: Sequelize.INTEGER, references: {
+        model: Quest,
+        key: 'id'
+    } },
+    QuestStatus: { type: Sequelize.TEXT },
+    StoryProgress: { type: Sequelize.INTEGER },
+    DLCUnlocked: { type: Sequelize.BOOLEAN },
+    OtherPrerequisiteTitle: { type: Sequelize.TEXT },
+    OtherPrerequisiteDetails: { type: Sequelize.TEXT },
+    Progress: { type: Sequelize.TEXT }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const PrerequisitesQuests = sequelize.define('prerequisitesQuest', {
+    RequiredBy: { type: Sequelize.INTEGER, references: {
+        model: Quest,
+        key: 'id'
+    }},
+    StoryProgress: { type: Sequelize.INTEGER },
+    NewGamePlus: { type: Sequelize.BOOLEAN },
+    DLCUnlocked: { type: Sequelize.BOOLEAN },
+    MercMission: { type: Sequelize.INTEGER, references: {
+        model: MercMission,
+        key: 'id'
+    } },
+    BladeUnlocked: { type: Sequelize.INTEGER, references: {
+        model: Blade,
+        key: 'id'
+    } } },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
 const StoryProgress = sequelize.define('storyProgress', {
     OnlyShowAvailable: { type: Sequelize.BOOLEAN },
     Chapter: { type: Sequelize.INTEGER },
     NewGamePlus: { type: Sequelize.BOOLEAN },
     TimeOfDay: { type: Sequelize.TIME },
-    AreaWeather: { type: Sequelize.TEXT }
+    AreaWeather: { type: Sequelize.TEXT },
+    DLCUnlocked: { type: Sequelize.BOOLEAN }
     },
     {timestamps: false, createdAt: false, updatedAt: false}
 );
@@ -377,10 +593,20 @@ DriverArtDetails.sync()
 DriverArts.sync()
 DriverSkillNode.sync()
 DriverSkillTree.sync()
+FieldSkills.sync()
 Heart2Heart.sync()
 Item.sync()
 ItemType.sync()
+Locations.sync()
+MajorAreas.sync()
+MercMission.sync()
 Monster.sync()
+PrerequisitesACN.sync()
+PrerequisitesBlade.sync()
+PrerequisitesH2H.sync()
+PrerequisitesMM.sync()
+PrerequisitesQuests.sync()
+RequirementsMM.sync()
 Quest.sync()
 StoryProgress.sync()
 
@@ -394,10 +620,20 @@ module.exports = {
     DriverArts,
     DriverSkillNode,
     DriverSkillTree,
+    FieldSkills,
     Heart2Heart,
     Item,
     ItemType,
+    Locations,
+    MajorAreas,
+    MercMission,
     Monster,
+    PrerequisitesACN,
+    PrerequisitesBlade,
+    PrerequisitesH2H,
+    PrerequisitesMM,
+    PrerequisitesQuests,
+    RequirementsMM,
     Quest,
     StoryProgress
 }

@@ -14,12 +14,22 @@ const {
     DriverArts,
     DriverSkillNode,
     DriverSkillTree,
+    FieldSkills,
     Heart2Heart,
     Item,
     ItemType,
+    Locations,
+    MajorAreas,
+    MercMission,
     Monster,
+    PrerequisitesACN,
+    PrerequisitesBlade,
+    PrerequisitesH2H,
+    PrerequisitesMM,
+    PrerequisitesQuests,
+    RequirementsMM,
     Quest,
-    StoryProgress
+    StoryProgress,
 } = require('./db')
 
 // Import routes
@@ -49,10 +59,20 @@ app.use('/driverArtDetails', restRouter(DriverArtDetails))
 app.use('/driverArt', restRouter(DriverArts))
 app.use('/driverSkillNode', restRouter(DriverSkillNode))
 app.use('/driverSkillTree', restRouter(DriverSkillTree))
+app.use('/fieldSkill', restRouter(FieldSkills))
 app.use('/heart2Heart', restRouter(Heart2Heart))
 app.use('/item', restRouter(Item))
 app.use('/itemType', restRouter(ItemType))
+app.use('/location', restRouter(Locations))
+app.use('/majorArea', restRouter(MajorAreas))
+app.use('/mercMission', restRouter(MercMission))
 app.use('/monster', restRouter(Monster))
+app.use('/prerequisitesACN', restRouter(PrerequisitesACN))
+app.use('/prerequisitesBlade', restRouter(PrerequisitesBlade))
+app.use('/prerequisitesH2H', restRouter(PrerequisitesH2H))
+app.use('/prerequisitesMM', restRouter(PrerequisitesMM))
+app.use('/prerequisitesQuest', restRouter(PrerequisitesQuests))
+app.use('/requirementsMM', restRouter(RequirementsMM))
 app.use('/quest', restRouter(Quest))
 app.use('/storyProgress', restRouter(StoryProgress))
 

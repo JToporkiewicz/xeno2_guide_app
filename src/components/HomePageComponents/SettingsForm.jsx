@@ -24,6 +24,14 @@ function SettingsForm(props){
         fetchProgress(setSettings);
     }, [])
 
+    useEffect(() => {
+        if(settings !== null && settings !== []){
+            document.cookie = `Chapter = ${settings.Chapter}`;
+            document.cookie = `NewGamePlus =${settings.NewGamePlus}`;
+            document.cookie = `DLCUnlocked =${settings.DLCUnlocked}`;
+        }
+    }, [settings])
+
     function toggleCheckbox(settingKey, value){
         setSettings({...settings, [settingKey]: !value})
     }
@@ -46,6 +54,9 @@ function SettingsForm(props){
     }
 
     function saveChanges(){
+        document.cookie = `Chapter = ${settings.Chapter}`;
+        document.cookie = `NewGamePlus =${settings.NewGamePlus}`;
+        document.cookie = `DLCUnlocked =${settings.DLCUnlocked}`;
         client.resource('storyProgress').update(1, settings);
     }
 
@@ -85,9 +96,16 @@ function SettingsForm(props){
             <Dropdown
                 title="Area weather:"
                 settingKey="AreaWeather"
-                values={Weather}
+                values={Weather.sort((w1, w2) => w1 > w2)}
                 currentValue={settings.AreaWeather}
                 updateCurrentValue={updateDropdownValue.bind(this)}
+            />
+
+            <Checkbox
+                title="DLC unlocked:"
+                settingKey="DLCUnlocked"
+                value={settings.DLCUnlocked}
+                toggleValue={toggleCheckbox.bind(this)}
             />
             <button type="button" className="btn button-color" onClick={() => saveChanges()}>Update App</button>
         </CollapsibleComponent>
