@@ -49,33 +49,36 @@ function DriverBasicInfoComponent (props) {
     return (
         <CollapsibleComponent header={"Basic information"}>
             {dataLoaded ? 
-                <>
-                Chapter unlocked: {driverDetails.ChapterUnlocked}
-                <br />
-                <>Favourite Items: 
-                    {' '}<Link to={"/item/" + itemDetails[0].id}>{itemDetails[0].Name}</Link>, 
-                    {' '}<Link to={"/item/" + itemDetails[1].id}>{itemDetails[1].Name}</Link>
-                </>
-                <br />
-                <>Favourite Item Types: 
-                    {' '}<Link to={"/itemType/" + itemTypeDetails[0].id}>{itemTypeDetails[0].ItemType}</Link>, 
-                    {' '}<Link to={"/itemType/" + itemTypeDetails[1].id}>{itemTypeDetails[1].ItemType}</Link>
-                </>
-                <br />
-                Starting idea stats: 
-                <ul>
-                    {Object.entries(ideas).map(([idea, level]) => (<li>{idea}: {level}</li>))}
-                </ul>
-                </>
-            :
-                <>
-                Chapter unlocked: unknown<br />
-                Favourite Items: unknown<br />
-                Favourite Item Types: unknown<br />
-                Starting idea stats: unknown
-                </>
-            }
-                
+            <>
+            <img
+                src={"/images/driver/"+driverDetails.Name.replace(/\s+/g, '')+".jpeg"}
+                alt={driverDetails.Name}
+                className="basic-info-image"/>
+            Chapter unlocked: {driverDetails.ChapterUnlocked}
+            <br />
+            <>Favourite Items: 
+                {' '}<Link to={"/item/" + itemDetails[0].id}>{itemDetails[0].Name}</Link>, 
+                {' '}<Link to={"/item/" + itemDetails[1].id}>{itemDetails[1].Name}</Link>
+            </>
+            <br />
+            <>Favourite Item Types: 
+                {' '}<Link to={"/itemType/" + itemTypeDetails[0].id}>{itemTypeDetails[0].ItemType}</Link>, 
+                {' '}<Link to={"/itemType/" + itemTypeDetails[1].id}>{itemTypeDetails[1].ItemType}</Link>
+            </>
+            <br />
+            Starting idea stats: 
+            <ul>
+                {Object.entries(ideas).map(([idea, level]) => (<li>{idea}: {level}</li>))}
+            </ul>
+            </>
+        :
+            <>
+            Chapter unlocked: unknown<br />
+            Favourite Items: unknown<br />
+            Favourite Item Types: unknown<br />
+            Starting idea stats: unknown
+            </>
+            }           
         </CollapsibleComponent>
     )
 };

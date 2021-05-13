@@ -83,6 +83,20 @@ select{
     display: block;
 }
 
+.basic-info-image {
+    height: 20vw;
+    max-width: 230px;
+    max-height: 208px;
+    display: block;
+    border-style: solid;
+    border-width: thin;
+    border-color: skyblue;
+    border-radius: 10px;
+    float: left;
+    margin-right: 3vw;
+    margin-left: 1vw;
+}
+
 .weapon-class-image {
     height: 14vw;
     max-width: 150px;
