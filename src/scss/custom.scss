@@ -17,11 +17,19 @@ select{
 .background {
     background:url('./XC2-background.jpeg');
     background-position-x: center;
+    background-repeat: repeat;
 }
 
 .navigation-button {
     padding: 15px;
     font-size: x-large
+}
+
+.closed-navigation {
+    height: 2vw;
+    max-height: 30px;
+    margin: 10px;
+    position: absolute;
 }
 
 .open-navigation {
@@ -73,6 +81,7 @@ select{
     border-color: skyblue;
     border-radius: 10px;
     margin-bottom: 15px;
+    position: relative;
 }
 
 .character-image {
@@ -112,6 +121,39 @@ select{
     text-align: center;
     display: block;
 }
+
+.overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgb(135, 206, 235, 0);
+}
+
+.image-panel:hover .overlay { 
+    background: rgb(135, 206, 235, 0.2);
+}
+
+.peek-unlock-button{
+    border: skyblue;
+    border-radius: 10px;
+    border-style: solid;
+    height: 30%;
+    width: 30%;
+    opacity: 0;
+    margin-top: 35%;
+    margin-left: 13%;
+}
+
+.peek-unlock-button:hover {
+    cursor: pointer
+}
+
+.image-panel:hover .peek-unlock-button {
+    opacity: 1;
+    border-width: medium;
+    background: white;
+}
+
 .settings-names {
     margin: auto;
 }

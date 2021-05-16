@@ -13,10 +13,10 @@ function NavigationButton(props) {
     )
 }
 
-function Navigation(){
+function Navigation(props){
     return (
         <div className="col-md-2 open-navigation">
-            <div>
+            <div onClick={() => props.toggleNavigation()}>
                 Collapse
             </div>
             <hr />
