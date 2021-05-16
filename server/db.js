@@ -441,7 +441,8 @@ const PrerequisitesACN = sequelize.define('prerequisitesACN', {
         key: 'id'
     } },
     OtherPrerequisiteName: { type: Sequelize.TEXT },
-    OtherPrerequisiteDetail: { type: Sequelize.TEXT },
+    OtherPrerequisiteDetail: { type: Sequelize.INTEGER },
+    StoryProgress: { type: Sequelize.INTEGER },
     Location: { type: Sequelize.INTEGER, references: {
         model: MajorAreas,
         key: 'id'
@@ -474,7 +475,7 @@ const PrerequisitesACN = sequelize.define('prerequisitesACN', {
         model: Item,
         key: 'id'
     } },
-    Progress: { type: Sequelize.TEXT }
+    Progress: { type: Sequelize.INTEGER }
     },
     {timestamps: false, createdAt: false, updatedAt: false}
 );
@@ -530,8 +531,12 @@ const PrerequisitesH2H = sequelize.define('prerequisitesH2H', {
 );
 
 const PrerequisitesMM = sequelize.define('prerequisitesMM', {
-    RequirementsOf: { type: Sequelize.INTEGER, references: {
+    RequiredBy: { type: Sequelize.INTEGER, references: {
         model: MercMission,
+        key: 'id'
+    } },
+    Nation: { type: Sequelize.INTEGER, references: {
+        model: MajorAreas,
         key: 'id'
     } },
     LocationDevLevel: { type: Sequelize.INTEGER },
