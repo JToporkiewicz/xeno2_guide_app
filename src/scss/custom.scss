@@ -26,8 +26,9 @@ select{
 }
 
 .closed-navigation {
-    height: 2vw;
-    max-height: 30px;
+    height: 3vw;
+    max-height: 30px; 
+    max-width: 30px;
     margin: 10px;
     position: absolute;
 }
@@ -140,7 +141,7 @@ select{
     height: 30%;
     width: 30%;
     opacity: 0;
-    margin-top: 35%;
+    margin-top: 33%;
     margin-left: 13%;
 }
 
