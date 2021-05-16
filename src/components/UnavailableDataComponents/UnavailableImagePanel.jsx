@@ -5,7 +5,11 @@ function UnavailableImagePanel(props){
     return (
         <div className="col-sm-3">
             <div className="image-panel">
-                <PeekOrUnlockOverlay toggleShow={props.toggleShow} name={props.name} />
+                <PeekOrUnlockOverlay
+                    toggleShow={props.toggleShow}
+                    updateGameState={props.updateGameState}
+                    name={props.name}
+                    id={props.id} />
                 <img
                     src={"/images/Unknown.png"}
                     alt={"Unknown"}

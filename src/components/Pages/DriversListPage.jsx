@@ -38,9 +38,18 @@ function DriversListPage(){
 
     useEffect(() => {
         if(drivers !== undefined && progress !== undefined){
+
             function updateShow(driver){
                 setDrivers(drivers.map((d) => (d.Name === driver ? {...d, "Show": !d.Show} : d)))
             }
+
+            function updateGameState(entryId){
+                const driver = drivers.find(d => d.id === entryId);
+                setProgress({...progress,
+                    Chapter: driver.ChapterUnlocked})
+                client.resource("storyProgress").update(1, {Chapter: driver.ChapterUnlocked})
+            }
+
             setDriverList(    
                 drivers.map((driver) =>
                 (progress.OnlyShowAvailable || 
@@ -57,6 +66,7 @@ function DriversListPage(){
                         panelType="driver"
                         id={driver.id}
                         toggleShow={updateShow.bind(this)}
+                        updateGameState={updateGameState.bind(this)}
                         key={driver.Name}
                         />
                 ))
