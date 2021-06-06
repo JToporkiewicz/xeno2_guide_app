@@ -564,6 +564,10 @@ const PrerequisitesQuests = sequelize.define('prerequisitesQuest', {
         model: Quest,
         key: 'id'
     }},
+    Location: { type: Sequelize.INTEGER, references: {
+        model: Locations,
+        key: 'id'
+    } },
     StoryProgress: { type: Sequelize.INTEGER },
     NewGamePlus: { type: Sequelize.BOOLEAN },
     DLCUnlocked: { type: Sequelize.BOOLEAN },
@@ -574,7 +578,13 @@ const PrerequisitesQuests = sequelize.define('prerequisitesQuest', {
     BladeUnlocked: { type: Sequelize.INTEGER, references: {
         model: Blade,
         key: 'id'
-    } } },
+    } },
+    Quest: { type: Sequelize.INTEGER, references: {
+        model: Quest,
+        key: 'id'
+    } },
+    OtherPrerequisiteDetail: { type: Sequelize.TEXT }
+ },
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
