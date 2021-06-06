@@ -2,10 +2,7 @@ import React, { useEffect, useState } from "react";
 import client from '../../api-client';
 import CollapsibleComponent from "../CommonComponents/CollapsibleComponent";
 import Checkbox from "./SettingsComponents/Checkbox";
-import Dropdown from "./SettingsComponents/Dropdown";
 import IncrementDecrementNumber from "./SettingsComponents/IncrementDecrementNumber";
-import TimeInput from "./SettingsComponents/TimeInput";
-import { Weather } from './WeatherTypes';
 
 async function fetchProgress(setSettings){
     try {
@@ -44,15 +41,6 @@ function SettingsForm(props){
         setSettings({...settings, [settingKey]: value-1})
     }
 
-    function updateTime(settingKey){
-        let time = document.getElementById(settingKey).value
-        setSettings({...settings, [settingKey]: time ? time : "00:00"})
-    }
-
-    function updateDropdownValue(settingKey){
-        setSettings({...settings, [settingKey]: document.getElementById(settingKey).value})
-    }
-
     function saveChanges(){
         document.cookie = `Chapter = ${settings.Chapter}`;
         document.cookie = `NewGamePlus =${settings.NewGamePlus}`;
@@ -84,21 +72,6 @@ function SettingsForm(props){
                 settingKey="NewGamePlus"
                 value={settings.NewGamePlus}
                 toggleValue={toggleCheckbox.bind(this)}
-            />
-
-            <TimeInput 
-                title="Time of day:"
-                settingKey="TimeOfDay"
-                value={settings.TimeOfDay}
-                updateTime={updateTime.bind(this)}
-            />
-
-            <Dropdown
-                title="Area weather:"
-                settingKey="AreaWeather"
-                values={Weather.sort((w1, w2) => w1 > w2)}
-                currentValue={settings.AreaWeather}
-                updateCurrentValue={updateDropdownValue.bind(this)}
             />
 
             <Checkbox

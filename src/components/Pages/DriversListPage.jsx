@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import client from '../../api-client';
 import CharacterPanelContainer from '../CommonComponents/CharacterPanelsContainer';
-import ClosedImagePanel from '../CommonComponents/ClosedImagePanel';
+import ClosedLinkedImagePanel from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
 import HeaderContainer from '../CommonComponents/HeaderContainer';
 import UnavailableImagePanel from '../UnavailableDataComponents/UnavailableImagePanel';
 
@@ -54,8 +54,7 @@ function DriversListPage(){
                 drivers.map((driver) =>
                 (progress.OnlyShowAvailable || 
                     (driver.ChapterUnlocked <= progress.Chapter || driver.Show) ? 
-                    <ClosedImagePanel
-                        linked={true}
+                    <ClosedLinkedImagePanel
                         panelType="driver"
                         name={driver.Name}
                         id={driver.id}

@@ -76,6 +76,10 @@ select{
     margin: 0px !important;
 }
 
+.stretched-sibling-panels {
+    display: grid;
+}
+
 .image-panel {
     border-style: solid;
     border-width: medium;
