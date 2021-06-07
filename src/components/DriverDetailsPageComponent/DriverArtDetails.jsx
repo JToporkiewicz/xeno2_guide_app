@@ -47,7 +47,7 @@ function DriverArtDetails(props){
             setBladeList(    
                 blades.map((blade) =>
                 (progress.OnlyShowAvailable || 
-                    (!blade.Available || blade.Show) ? 
+                    (blade.Available || blade.Show) ? 
                     <Link to={"/blade/"+blade.id} className="small-image-panel">
                         <img
                             src={"/images/blade/"+blade.Name.replace(/\s+/g, '')+".jpeg"}
@@ -70,7 +70,7 @@ function DriverArtDetails(props){
     }, [blades, progress])
 
     return(
-        <div>
+        <div className="art-details-panel">
             <div className="art-details-header">
                 <img
                     src={"/images/weaponType/"+props.weapon.replace(/\s+/g, '')+".jpeg"}
@@ -91,7 +91,6 @@ function DriverArtDetails(props){
             <hr/>
             {props.weaponArts.map(art => (art.Name))}
 
-            <hr/>
         </div>
     )
 };

@@ -63,8 +63,17 @@ select{
     border-radius: 10px;
 }
 
+.art-details-panel {
+    border-bottom-style: solid;
+    border-width: medium;
+    border-color: skyblue;
+    margin: 0px -15px 10px -15px;
+    padding: 0px 15px 10px 15px;
+}
+
 .art-details-header {
     height: 15vw;
+
 }
 
 .header {
