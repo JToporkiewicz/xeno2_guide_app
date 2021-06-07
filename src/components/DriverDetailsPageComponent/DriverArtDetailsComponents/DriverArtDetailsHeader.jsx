@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import client from '../../api-client';
-import SmallUnavailableImagePanel from '../UnavailableDataComponents/SmallUnavailableImagePanel'
+import client from '../../../api-client';
+import SmallUnavailableImagePanel from '../../UnavailableDataComponents/SmallUnavailableImagePanel'
 
 async function findBladesByWeapon(weaponType, setBlades){
     try {
@@ -23,7 +23,7 @@ async function fetchProgress(setSettings){
     }
 };
 
-function DriverArtDetails(props){
+function DriverArtDetailsHeader(props){
     const [blades, setBlades] = useState([]);
     const [progress, setProgress] = useState([]);
     const [bladesList, setBladeList] = useState([]);
@@ -70,29 +70,24 @@ function DriverArtDetails(props){
     }, [blades, progress])
 
     return(
-        <div className="art-details-panel">
-            <div className="art-details-header">
-                <img
-                    src={"/images/weaponType/"+props.weapon.replace(/\s+/g, '')+".jpeg"}
-                    alt={props.weapon}
-                    className="driver-art-details-image"/>
-                <img
-                    src="/images/helper/close.png"
-                    alt="close"
-                    className="close-details"
-                    onClick={() => props.clearArt()}
-                    />
-                <h3><b>{props.weapon}</b></h3>
-                <div>
-                    <h4>Blades</h4>
-                    {bladesList}
-                </div>
+        <div className="art-details-header">
+            <img
+                src={"/images/weaponType/"+props.weapon.replace(/\s+/g, '')+".jpeg"}
+                alt={props.weapon}
+                className="driver-art-details-image"/>
+            <img
+                src="/images/helper/close.png"
+                alt="close"
+                className="close-details"
+                onClick={() => props.clearArt()}
+                />
+            <h3><b>{props.weapon}</b></h3>
+            <div>
+                <h4>Blades</h4>
+                {bladesList}
             </div>
-            <hr/>
-            {props.weaponArts.map(art => (art.Name))}
-
         </div>
     )
 };
 
-export default DriverArtDetails;
+export default DriverArtDetailsHeader;

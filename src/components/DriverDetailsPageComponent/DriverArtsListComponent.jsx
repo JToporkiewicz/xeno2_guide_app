@@ -3,7 +3,7 @@ import client from '../../api-client';
 import CollapsibleComponent from '../CommonComponents/CollapsibleComponent';
 import {SeparateChildrenIntoRows} from '../CommonFunctions';
 import ClosedUnlinkedImagePanel from '../CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
-import DriverArtDetails from './DriverArtDetails';
+import DriverArtDetails from './DriverArtDetailsComponents/DriverArtDetails';
 async function getDriverArts (setArts, driverId) {
     try {
         const response = await client.resource('driverArt').find({Driver: driverId});
