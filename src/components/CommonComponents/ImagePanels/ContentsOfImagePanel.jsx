@@ -2,7 +2,9 @@ import React from 'react';
 
 function ContentsOfImagePanel(props){
     return (
-        <div className="image-panel">
+        <div 
+            className={`image-panel ${props.focused ? " focused-panel" : ""}`}
+            onClick={props.focus ? () => props.focus(props.name) : () => {}}>
             <img
                 src={"/images/"+ props.panelType +"/"+props.name.replace(/\s+/g, '')+".jpeg"}
                 alt={props.name}

@@ -1,9 +1,9 @@
 import React from 'react';
 import PeekOrUnlockOverlay from './PeekOrUnlockOverlay';
 
-function UnavailableImagePanel(props){
+function SmallUnavailableImagePanel(props){
     return (
-        <div className="image-panel">
+        <div className="small-image-panel">
             <PeekOrUnlockOverlay
                 toggleShow={props.toggleShow}
                 updateState={props.updateState}
@@ -12,10 +12,9 @@ function UnavailableImagePanel(props){
             <img
                 src={"/images/Unknown.png"}
                 alt={"Unknown"}
-                className={props.panelType === "weaponType" ? "weapon-class-image" : "character-image"}/>
-            <div className="image-name">Spoiler</div>
+                className="small-image"/>
         </div>
     )
 };
 
-export default UnavailableImagePanel;
+export default SmallUnavailableImagePanel;

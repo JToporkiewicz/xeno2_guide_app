@@ -60,14 +60,16 @@ function DriversListPage(){
                         id={driver.id}
                         key={driver.Name}
                     /> :
-                    <UnavailableImagePanel
+                    <div className="col-sm-3">
+                        <UnavailableImagePanel
                         name={driver.Name}
                         panelType="driver"
                         id={driver.id}
                         toggleShow={updateShow.bind(this)}
-                        updateGameState={updateGameState.bind(this)}
+                        updateState={updateGameState.bind(this)}
                         key={driver.Name}
                         />
+                    </div>
                 ))
             )
         }

@@ -43,6 +43,30 @@ select{
     background-color: white;
 }
 
+.close-details {
+    float: right;
+    height: 3vw;
+    max-height: 30px; 
+    max-width: 30px;
+    margin: 10px;
+}
+
+.driver-art-details-image {
+    float: left;
+    height: 14vw;
+    max-width: 150px;
+    max-height: 150px;
+    margin: 10px;
+    border-style: solid;
+    border-width: medium;
+    border-color: skyblue;
+    border-radius: 10px;
+}
+
+.art-details-header {
+    height: 15vw;
+}
+
 .header {
     text-align: center;
     background: white;
@@ -55,6 +79,7 @@ select{
     border-width: medium;
     border-color:skyblue;
     border-radius: 10px;
+    border-width: medium;
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -119,6 +144,26 @@ select{
     margin: auto;
 }
 
+.small-image {
+    border-style: solid;
+    border-width: thin;
+    border-color: skyblue;
+    border-radius: 5px;
+    height: 7vw;
+    max-width: 60px;
+    max-height: 60px;
+    display: inline;
+    border-radius: 5px;
+}
+
+.small-image-panel {
+    margin-right: 10px;
+    max-width: 60px;
+    max-height: 60px;
+    display: inline-block;
+    position: relative;
+}
+
 .image-name {
     border-top-style: solid;
     border-top-width: thin;
@@ -134,7 +179,7 @@ select{
     background: rgb(135, 206, 235, 0);
 }
 
-.image-panel:hover .overlay { 
+.image-panel:hover .overlay, .small-image-panel:hover .overlay { 
     background: rgb(135, 206, 235, 0.2);
 }
 
@@ -157,6 +202,16 @@ select{
     opacity: 1;
     border-width: medium;
     background: white;
+}
+
+.small-image-panel:hover .peek-unlock-button {
+    opacity: 1;
+    border-width: medium;
+    background: white;
+    height: 50%;
+    width: 50%;
+    margin-top: 25%;
+    margin-left: 0px;
 }
 
 .settings-names {
