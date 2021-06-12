@@ -153,6 +153,10 @@ select{
     margin: auto;
 }
 
+.focused-panel {
+    background: aliceblue;
+}
+
 .small-image {
     border-style: solid;
     border-width: thin;
@@ -188,7 +192,7 @@ select{
     background: rgb(135, 206, 235, 0);
 }
 
-.image-panel:hover .overlay, .small-image-panel:hover .overlay { 
+.overlay:hover { 
     background: rgb(135, 206, 235, 0.2);
 }
 
@@ -213,7 +217,7 @@ select{
     background: white;
 }
 
-.small-image-panel:hover .peek-unlock-button {
+.small-image-panel:hover .peek-unlock-button, .art-detail-node:hover .peek-unlock-button {
     opacity: 1;
     border-width: medium;
     background: white;
@@ -233,6 +237,29 @@ select{
 
 .checkbox-layout {
     display: flex;
+}
+
+.art-detail-node {
+    border-style: solid;
+    border-width: medium;
+    border-color: lightblue;
+    border-radius: 5%;
+    font-size: small;
+    width: 12%;
+    max-height: 110px;
+    margin-left: 1%;
+    position: relative;
+}
+
+.art-icon {
+    border-style: solid;
+    border-width: thin;
+    border-color: lightblue;
+    border-radius: 100%;
+    width: 13%;
+    max-width: 110px;
+    max-height: 110px;
+    margin-left: 2%;
 }
 
 .increment-decrement-button {

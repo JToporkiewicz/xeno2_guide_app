@@ -1,5 +1,6 @@
 import React from 'react';
 import DriverArtDetailsHeader from './DriverArtDetailsHeader';
+import DriverArtLevels from './DriverArtLevels';
 
 function DriverArtDetails(props){
 
@@ -7,8 +8,15 @@ function DriverArtDetails(props){
         <div className="art-details-panel">
             <DriverArtDetailsHeader weapon={props.weapon} clearArt={props.clearArt} />
             <hr/>
-            {props.weaponArts.map(art => (art.Name))}
-
+            {
+                Object.values(props.weaponArts).map((art) => 
+                    <div>
+                        <b>{art.Name}</b>
+                        <DriverArtLevels {...art} />
+                        <br/>
+                    </div>
+                )
+            }
         </div>
     )
 };
