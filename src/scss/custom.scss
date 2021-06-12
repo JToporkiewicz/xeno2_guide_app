@@ -51,6 +51,27 @@ select{
     margin: 10px;
 }
 
+.collapse-expand {
+    height: 20px;
+    width: 60px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.small-collapse-expand {
+    height: 20px;
+    width: 30px;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.art-name {
+    font-size: larger
+}
+
 .driver-art-details-image {
     float: left;
     height: 14vw;
@@ -85,7 +106,6 @@ select{
 
 .collapsible-container {
     border-style: solid;
-    border-width: medium;
     border-color:skyblue;
     border-radius: 10px;
     border-width: medium;
@@ -204,7 +224,9 @@ select{
     height: 50%;
     width: 50%;
     margin-top: 25%;
-    margin-left: 25%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .align-right {
@@ -252,6 +274,17 @@ select{
 
 .checkbox-layout {
     display: flex;
+}
+
+.art-description {
+    border-style: solid;
+    border-color:skyblue;
+    border-radius: 10px;
+    border-width: thin;
+    padding: 5px;
+    background: aliceblue;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 .art-detail-node {
