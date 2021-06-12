@@ -10,7 +10,7 @@ function SmallUnavailableImagePanel(props){
                 name={props.name}
                 id={props.id} />
             <img
-                src={"/images/Unknown.png"}
+                src={"/images/helper/Unknown.png"}
                 alt={"Unknown"}
                 className="small-image"/>
         </div>

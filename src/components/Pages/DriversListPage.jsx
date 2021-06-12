@@ -52,8 +52,8 @@ function DriversListPage(){
 
             setDriverList(    
                 drivers.map((driver) =>
-                (progress.OnlyShowAvailable || 
-                    (driver.ChapterUnlocked <= progress.Chapter || driver.Show) ? 
+                (progress.OnlyShowAvailable ?
+                    ((driver.ChapterUnlocked <= progress.Chapter || driver.Show) ? 
                     <ClosedLinkedImagePanel
                         panelType="driver"
                         name={driver.Name}
@@ -69,7 +69,14 @@ function DriversListPage(){
                         updateState={updateGameState.bind(this)}
                         key={driver.Name}
                         />
-                    </div>
+                    </div>)
+                    : 
+                    <ClosedLinkedImagePanel
+                        panelType="driver"
+                        name={driver.Name}
+                        id={driver.id}
+                        key={driver.Name}
+                    />
                 ))
             )
         }

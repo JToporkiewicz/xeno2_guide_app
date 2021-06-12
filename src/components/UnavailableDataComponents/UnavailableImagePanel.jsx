@@ -10,7 +10,7 @@ function UnavailableImagePanel(props){
                 name={props.name}
                 id={props.id} />
             <img
-                src={"/images/Unknown.png"}
+                src={"/images/helper/Unknown.png"}
                 alt={"Unknown"}
                 className={props.panelType === "weaponType" ? "weapon-class-image" : "character-image"}/>
             <div className="image-name">Spoiler</div>

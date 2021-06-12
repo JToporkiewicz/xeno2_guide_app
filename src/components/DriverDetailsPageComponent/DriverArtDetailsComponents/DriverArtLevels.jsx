@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import client from '../../../api-client';
-import PeekOrUnlockOverlay from '../../UnavailableDataComponents/PeekOrUnlockOverlay';
+import UnlockOverlay from '../../UnavailableDataComponents/UnlockOverlay';
+import LockOverlay from '../../UnavailableDataComponents/LockOverlay';
 
 async function getDriverArtDetails(artId, setDriverArtDetails) {
     try {
@@ -26,45 +27,69 @@ async function updateDetail(artId, newLevel){
 
 function DriverArtLevels(props) {
     const [driverArtDetails, setDriverArtDetails] = useState([]);
-    const [unlockedLevel, setUnlockedLevel] = useState(props.LevelUnlocked)
+    const [unlockedLevel, setUnlockedLevel] = useState(props.LevelUnlocked);
+    const [totalSP, setSP] = useState(0);
+    const [remainingSP, setRemainingSP] = useState(0);
 
     useEffect(() => {
         getDriverArtDetails(props.Level1, setDriverArtDetails)
     }, [props.Level1]);
 
-    function updateLevel(newLevel){
-        setUnlockedLevel(newLevel)
-    }
+    useEffect(() => {
+        if(driverArtDetails[0]?.id !== undefined){
+            let SP = 0;
+            let remainingSP = 0;
+            for(let i = 0; i < driverArtDetails.length; i++){
+                SP = SP + driverArtDetails[i].SP
+                if(i >= unlockedLevel){
+                    remainingSP = remainingSP + driverArtDetails[i].SP
+                }
+            }
+            setSP(SP);
+            setRemainingSP(remainingSP);
+        }
+    }, [driverArtDetails, unlockedLevel])
 
     function updateArtLevel(newLevel){
+        setUnlockedLevel(newLevel)
         updateDetail(props.id, newLevel)
     }
 
     return (
-        <div className="row">
-            <img src="/images/Unknown.png" className="art-icon"/>
-            {driverArtDetails !== undefined ?
-                Object.values(driverArtDetails).map((level, key) => 
-                    key < unlockedLevel ? 
-                        <div className={`art-detail-node ${key+1 === unlockedLevel ? " focused-panel" : ""}`}>
+        <div>
+            <div className="row">
+                <img src="/images/helper/Unknown.png" className="art-icon"/>
+                {driverArtDetails !== undefined ?
+                    Object.values(driverArtDetails).map((level, key) => 
+                        key < unlockedLevel ? 
+                            <div className={`art-detail-node ${key+1 === unlockedLevel ? " focused-panel" : ""}`}>
+                                <LockOverlay
+                                    id={key+1}
+                                    updateGameState={updateArtLevel.bind(this)}
+                                />
+                                <b>Level {key < 5 ? key+1 : "5 Max Affinity"}</b><br/>
+                                {"Damage: " + level.Damage}<br/>
+                                {"Effect: " + level.EffectPotency}<br/>
+                                {"Recharge: " + level.Recharge}
+                            </div>
+                        : <div className="art-detail-node">
+                            <UnlockOverlay 
+                                id={key+1}
+                                updateGameState={updateArtLevel.bind(this)}
+                            />
                             <b>Level {key < 5 ? key+1 : "5 Max Affinity"}</b><br/>
-                            {"Damage: " + level.Damage}<br/>
-                            {"Effect: " + level.EffectPotency}<br/>
-                            {"Recharge: " + level.Recharge}
+                            LOCKED <br />
+                            Cost: {level.SP}SP
                         </div>
-                    : <div className="art-detail-node">
-                        <PeekOrUnlockOverlay 
-                            name={key+1}
-                            id={key+1}
-                            toggleShow={updateLevel.bind(this)}
-                            updateState={updateArtLevel.bind(this)}
-                        />
-                        <b>Level {key < 5 ? key+1 : "5 Max Affinity"}</b><br/>
-                        LOCKED
-                    </div>
-                )
-                : <div/>
-            }
+                    )
+                    : <div/>
+                }
+
+            </div>
+            <div>
+                Total SP: {totalSP} 
+                <span className="align-right">Remaining SP: {remainingSP} </span>
+            </div>
         </div>
     )
 }

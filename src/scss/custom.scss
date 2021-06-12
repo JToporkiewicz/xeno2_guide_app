@@ -196,6 +196,21 @@ select{
     background: rgb(135, 206, 235, 0.2);
 }
 
+.centered-image{
+    border: skyblue;
+    border-radius: 10px;
+    border-style: solid;
+    opacity: 0;
+    height: 50%;
+    width: 50%;
+    margin-top: 25%;
+    margin-left: 25%;
+}
+
+.align-right {
+    float: right;
+}
+
 .peek-unlock-button{
     border: skyblue;
     border-radius: 10px;
@@ -207,11 +222,11 @@ select{
     margin-left: 13%;
 }
 
-.peek-unlock-button:hover {
+.peek-unlock-button:hover, .centered-image:hover {
     cursor: pointer
 }
 
-.image-panel:hover .peek-unlock-button {
+.image-panel:hover .peek-unlock-button, .overlay:hover .centered-image {
     opacity: 1;
     border-width: medium;
     background: white;
