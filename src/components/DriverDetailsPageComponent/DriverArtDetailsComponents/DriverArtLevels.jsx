@@ -69,7 +69,7 @@ function DriverArtLevels(props) {
                                 />
                                 <b>Level {key < 5 ? key+1 : "5 Max Affinity"}</b><br/>
                                 {"Damage: " + level.Damage}<br/>
-                                {"Effect: " + level.EffectPotency}<br/>
+                                {level.EffectPotency !== '' ? <span>{"Effect: " + level.EffectPotency}<br/></span> : ''}
                                 {"Recharge: " + level.Recharge}
                             </div>
                         : <div className="art-detail-node">
