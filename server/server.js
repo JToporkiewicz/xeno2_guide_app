@@ -29,6 +29,8 @@ const {
     PrerequisitesQuests,
     RequirementsMM,
     Quest,
+    QuestStep,
+    QuestSubStep,
     StoryProgress,
 } = require('./db')
 
@@ -74,6 +76,8 @@ app.use('/prerequisitesMM', restRouter(PrerequisitesMM))
 app.use('/prerequisitesQuest', restRouter(PrerequisitesQuests))
 app.use('/requirementsMM', restRouter(RequirementsMM))
 app.use('/quest', restRouter(Quest))
+app.use('/questStep', restRouter(QuestStep))
+app.use('/questSubStep', restRouter(QuestSubStep))
 app.use('/storyProgress', restRouter(StoryProgress))
 
 // Implement 500 error route

@@ -70,10 +70,9 @@ const Quest = sequelize.define('quest', {
         model: Locations,
         key: 'id'
     } },
-    Objectives: { type: Sequelize.TEXT },
     Rewards: { type: Sequelize.TEXT },
-    Available: { type: Sequelize.BOOLEAN },
-    Completed: { type: Sequelize.BOOLEAN }},
+    Available: { type: Sequelize.TINYINT },
+    Status: { type: Sequelize.TEXT }},
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
@@ -521,6 +520,10 @@ const PrerequisitesH2H = sequelize.define('prerequisitesH2H', {
         key: 'id'
     } },
     FieldSkill2Level: { type: Sequelize.INTEGER },
+    Quest: { type: Sequelize.INTEGER, references: {
+        model: Quest,
+        key: 'id'
+    } },
     StayAtAnInn: { type: Sequelize.TEXT },
     InnLocation: { type: Sequelize.INTEGER, references: {
         model: MajorAreas,
@@ -559,6 +562,43 @@ const PrerequisitesMM = sequelize.define('prerequisitesMM', {
     {timestamps: false, createdAt: false, updatedAt: false}
 );
 
+const QuestStep = sequelize.define('questStep', {
+    Quest: { type: Sequelize.INTEGER, references: {
+        model: Quest,
+        key: 'id'
+    } },
+    StepNumber: { type: Sequelize.INTEGER },
+    Description: { type: Sequelize.TEXT },
+    Completed: { type: Sequelize.TINYINT }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
+const QuestSubStep = sequelize.define('questSubStep', {
+    QuestStep: { type: Sequelize.INTEGER, references: {
+        model: QuestStep,
+        key: 'id'
+    } },
+    SubStepNumber: { type: Sequelize.INTEGER },
+    Description: { type: Sequelize.TEXT },
+    CompleteSideQuest: { type: Sequelize.INTEGER, references: {
+        model: Quest,
+        key: 'id'
+    } },
+    DefeatMonster: { type: Sequelize.INTEGER, references: {
+        model: Monster,
+        key: 'id'
+    } },
+    CollectItem: { type: Sequelize.INTEGER, references: {
+        model: Item,
+        key: 'id'
+    } },
+    Count: { type: Sequelize.INTEGER },
+    CompletionProgress: { type: Sequelize.TINYINT }
+    },
+    {timestamps: false, createdAt: false, updatedAt: false}
+);
+
 const PrerequisitesQuests = sequelize.define('prerequisitesQuest', {
     RequiredBy: { type: Sequelize.INTEGER, references: {
         model: Quest,
@@ -575,8 +615,16 @@ const PrerequisitesQuests = sequelize.define('prerequisitesQuest', {
         model: MercMission,
         key: 'id'
     } },
+    Heart2Heart: { type: Sequelize.INTEGER, references: {
+        model: Heart2Heart,
+        key: 'id'
+    } },
     BladeUnlocked: { type: Sequelize.INTEGER, references: {
         model: Blade,
+        key: 'id'
+    } },
+    BladeAffinityChartNode: { type: Sequelize.INTEGER, references: {
+        model: AffinityChartNode,
         key: 'id'
     } },
     Quest: { type: Sequelize.INTEGER, references: {
@@ -623,6 +671,8 @@ PrerequisitesMM.sync()
 PrerequisitesQuests.sync()
 RequirementsMM.sync()
 Quest.sync()
+QuestStep.sync()
+QuestSubStep.sync()
 StoryProgress.sync()
 
 module.exports = {
@@ -650,5 +700,7 @@ module.exports = {
     PrerequisitesQuests,
     RequirementsMM,
     Quest,
+    QuestStep,
+    QuestSubStep,
     StoryProgress
 }
