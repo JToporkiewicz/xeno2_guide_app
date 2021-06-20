@@ -66,7 +66,7 @@ function DriversListPage(){
                         panelType="driver"
                         id={driver.id}
                         toggleShow={updateShow.bind(this)}
-                        updateState={updateGameState.bind(this)}
+                        updateGameState={updateGameState.bind(this)}
                         key={driver.Name}
                         />
                     </div>)

@@ -6,7 +6,7 @@ function UnavailableImagePanel(props){
         <div className="image-panel">
             <PeekOrUnlockOverlay
                 toggleShow={props.toggleShow}
-                updateState={props.updateState}
+                updateGameState={props.updateGameState}
                 name={props.name}
                 id={props.id} />
             <img
