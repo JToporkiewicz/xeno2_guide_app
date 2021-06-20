@@ -63,12 +63,14 @@ function DriverArtLevels(props) {
                     Object.values(driverArtDetails).map((level, key) => 
                         key < unlockedLevel ? 
                             <div className={`art-detail-node ${key+1 === unlockedLevel ? " focused-panel" : ""}`}>
-                                <LockOverlay
-                                    id={key+1}
-                                    updateGameState={updateArtLevel.bind(this)}
-                                />
+                                {key !== 0 ? 
+                                    <LockOverlay
+                                        id={key}
+                                        updateGameState={updateArtLevel.bind(this)}
+                                    />
+                                : <div/>}
                                 <b>Level {key < 5 ? key+1 : "5 Max Affinity"}</b><br/>
-                                {"Damage: " + level.Damage}<br/>
+                                {"Dmg: " + level.Damage}<br/>
                                 {level.EffectPotency !== '' ? <>{"Effect: " + level.EffectPotency}<br/></> : ''}
                                 {"Recharge: " + level.Recharge}
                             </div>
@@ -77,8 +79,7 @@ function DriverArtLevels(props) {
                                 id={key+1}
                                 updateGameState={updateArtLevel.bind(this)}
                             />
-                            <b>Level {key < 5 ? key+1 : "5 Max Affinity"}</b><br/>
-                            LOCKED <br />
+                            <img src="/images/helper/closedLock.png" alt="lock" className="centered-lock"/>
                             Cost: {level.SP}SP
                         </div>
                     )

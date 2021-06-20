@@ -11,9 +11,9 @@ function DriverArtDescription(props){
         <div className="art-description">
             {open ? 
             <>
-                Target: {props.Target}<br/>
-                Type: {props.Type}<br/>
-                Effects: 
+                <b>Target:</b> {props.Target}<br/>
+                <b>Type:</b> {props.Type}<br/>
+                <b>Effects:</b>
                 <ul>
                     {Object.values(JSON.parse(props.Effect)).map((effect) => <li>{effect}</li>)}
                 </ul>
