@@ -49,6 +49,7 @@ select{
     max-height: 30px; 
     max-width: 30px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .collapse-expand {
@@ -199,6 +200,7 @@ select{
     max-height: 150px;
     display: block;
     margin: auto;
+    cursor: pointer;
 }
 
 .focused-panel {
