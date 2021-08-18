@@ -50,7 +50,7 @@ function DriverArtDetailsHeader(props){
                     (blade.Available || blade.Show) ? 
                     <Link to={"/blade/"+blade.id} className="small-image-panel">
                         <img
-                            src={"/images/blade/"+blade.Name.replace(/\s+/g, '')+".jpeg"}
+                            src={"/images/blade/"+blade.Name.replaceAll(/\s+/g, '').replace('α','Alpha').replace('π', 'Pi')+".jpeg"}
                             alt={blade.Name}
                             className="small-image"
                         />
