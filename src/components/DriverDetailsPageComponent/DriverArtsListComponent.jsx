@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import client from '../../api-client';
 import CollapsibleComponent from '../CommonComponents/Containers/CollapsibleComponent';
-import {SeparateChildrenIntoRows} from '../CommonFunctions';
 import ClosedUnlinkedImagePanel from '../CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
 import DriverArtDetails from './DriverArtDetailsComponents/DriverArtDetails';
 
@@ -56,7 +55,9 @@ function DriverArtsListComponent (props) {
                     weaponArts={driverArts.filter((weapon) => weapon.WeaponType === focused)}/>
                 : <div/>}
             {uniqueWeapons.length > 0 ?
-                SeparateChildrenIntoRows(weaponsPanels).map(weapon => weapon)
+                <div className="row">
+                    {weaponsPanels}
+                </div>
             :
                 <>Unknown</>
             }
