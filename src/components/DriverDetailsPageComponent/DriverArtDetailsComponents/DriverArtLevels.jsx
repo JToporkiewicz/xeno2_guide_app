@@ -25,6 +25,16 @@ async function updateDetail(artId, newLevel){
     }
 }
 
+function getImage(artName) {
+    try {
+        require(`../../../../public/images/driverArt/${artName.trim().replace(/\s+/g, '')}.png`)
+        return <img alt={artName} src={`/images/driverArt/${artName.trim().replace(/\s+/g, '')}.png`} className="art-icon"/>
+    }
+    catch {
+        return <img alt="unknown art" src="/images/helper/Unknown.png" className="art-icon"/>
+    }
+}
+
 function DriverArtLevels(props) {
     const [driverArtDetails, setDriverArtDetails] = useState([]);
     const [unlockedLevel, setUnlockedLevel] = useState(props.LevelUnlocked);
@@ -58,7 +68,7 @@ function DriverArtLevels(props) {
     return (
         <div>
             <div className="row">
-                <img src="/images/helper/Unknown.png" className="art-icon"/>
+                {getImage(props.Name)}
                 {driverArtDetails !== undefined ?
                     Object.values(driverArtDetails).map((level, key) => 
                         key < unlockedLevel ? 
