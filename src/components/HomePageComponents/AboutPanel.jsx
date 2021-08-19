@@ -1,5 +1,5 @@
 import React from 'react';
-import CollapsibleComponent from '../CommonComponents/CollapsibleComponent';
+import CollapsibleComponent from '../CommonComponents/Containers/CollapsibleComponent';
 
 function AboutPanel () {
     return (

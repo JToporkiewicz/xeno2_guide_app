@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import client from '../../../api-client';
-import SmallUnavailableImagePanel from '../../UnavailableDataComponents/SmallUnavailableImagePanel'
+import SmallUnavailableImagePanel from '../../UnavailableDataComponents/Images/SmallUnavailableImagePanel'
 
 async function findBladesByWeapon(weaponType, setBlades){
     try {

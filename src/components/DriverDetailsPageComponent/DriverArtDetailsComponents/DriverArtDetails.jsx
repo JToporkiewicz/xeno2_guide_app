@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import DriverArtDetailsHeader from './DriverArtDetailsHeader';
 import DriverArtLevels from './DriverArtLevels';
 import DriverArtDescription from './DriverArtDescription';
-import InnerCollapsibleComponent from '../../CommonComponents/InnerCollapsibleComponent';
+import InnerCollapsibleComponent from '../../CommonComponents/Containers/InnerCollapsibleComponent';
 
 function DriverArtDetails(props){
     const [open, setOpen] = useState([]);

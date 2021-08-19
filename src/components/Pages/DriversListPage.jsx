@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import client from '../../api-client';
-import CharacterPanelContainer from '../CommonComponents/CharacterPanelsContainer';
+import CharacterPanelContainer from '../CommonComponents/Containers/CharacterPanelsContainer';
 import ClosedLinkedImagePanel from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
-import HeaderContainer from '../CommonComponents/HeaderContainer';
-import UnavailableImagePanel from '../UnavailableDataComponents/UnavailableImagePanel';
+import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
+import UnavailableImagePanel from '../UnavailableDataComponents/Images/UnavailableImagePanel';
 
 async function fetchDrivers(setDrivers){
     try {

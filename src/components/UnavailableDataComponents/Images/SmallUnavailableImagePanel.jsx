@@ -1,5 +1,5 @@
 import React from 'react';
-import PeekOrUnlockOverlay from './PeekOrUnlockOverlay';
+import PeekOrUnlockOverlay from '../Overlays/PeekOrUnlockOverlay';
 
 function SmallUnavailableImagePanel(props){
     return (

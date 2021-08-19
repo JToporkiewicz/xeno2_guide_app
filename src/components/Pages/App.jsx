@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import HomePage from "./HomePage";
 import DriversListPage from "./DriversListPage";
 import { Route, Switch } from "react-router-dom";
-import Navigation from "../Navigation";
-import ClosedNavigation from "../ClosedNavigation";
+import Navigation from "../CommonComponents/Navigation/Navigation";
+import ClosedNavigation from "../CommonComponents/Navigation/ClosedNavigation";
 import DriverDetailsPage from "./DriverDetailsPage";
 import Default from "./Default";
 

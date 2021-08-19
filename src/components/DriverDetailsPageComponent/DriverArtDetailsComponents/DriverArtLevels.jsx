@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import client from '../../../api-client';
-import UnlockOverlay from '../../UnavailableDataComponents/UnlockOverlay';
-import LockOverlay from '../../UnavailableDataComponents/LockOverlay';
+import UnlockOverlay from '../../UnavailableDataComponents/Overlays/UnlockOverlay';
+import LockOverlay from '../../UnavailableDataComponents/Overlays/LockOverlay';
 
 async function getDriverArtDetails(artId, setDriverArtDetails) {
     try {

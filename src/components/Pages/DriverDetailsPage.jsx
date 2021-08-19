@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import client from '../../api-client';
 import DriverBasicInfoComponent from '../DriverDetailsPageComponent/DriverBasicInfoComponent';
-import HeaderContainer from '../CommonComponents/HeaderContainer';
+import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import DriverArtsListComponent from '../DriverDetailsPageComponent/DriverArtsListComponent';
 
 async function fetchDriverDetails(setDetails, id){

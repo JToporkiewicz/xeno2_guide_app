@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import client from '../../api-client';
-import CollapsibleComponent from "../CommonComponents/CollapsibleComponent";
+import CollapsibleComponent from "../CommonComponents/Containers/CollapsibleComponent";
 import Checkbox from "./SettingsComponents/Checkbox";
 import IncrementDecrementNumber from "./SettingsComponents/IncrementDecrementNumber";
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CollapsibleComponent from './CollapsibleComponent';
-import {SeparateChildrenIntoRows} from '../CommonFunctions';
+import {SeparateChildrenIntoRows} from '../../CommonFunctions';
 
 function CharacterPanelContainer(props){
 

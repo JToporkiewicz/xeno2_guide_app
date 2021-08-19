@@ -1,5 +1,5 @@
 import React from "react";
-import HeaderContainer from "../CommonComponents/HeaderContainer";
+import HeaderContainer from "../CommonComponents/Containers/HeaderContainer";
 import AboutPanel from "../HomePageComponents/AboutPanel";
 import SettingsForm from "../HomePageComponents/SettingsForm";
 

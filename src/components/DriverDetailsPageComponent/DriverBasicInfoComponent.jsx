@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import client from '../../api-client';
 import { Link } from "react-router-dom";
-import CollapsibleComponent from '../CommonComponents/CollapsibleComponent';
+import CollapsibleComponent from '../CommonComponents/Containers/CollapsibleComponent';
 
 /*async function fetchOneData(setDetails, id, source){
     try {
