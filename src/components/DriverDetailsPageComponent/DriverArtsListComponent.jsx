@@ -6,7 +6,7 @@ import DriverArtDetails from './DriverArtDetailsComponents/DriverArtDetails';
 
 async function getDriverArts (setArts, driverId) {
     try {
-        const response = await client.resource('driverArt').find({Driver: driverId});
+        const response = await client.resource('driverArt').find({driver: driverId});
         setArts(response);
     }
     catch(err) {
