@@ -1,97 +1,64 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const compression = require('compression')
-const cors = require('cors')
-const helmet = require('helmet')
+const express = require("express");
+const cors = require("cors");
 
-const {
-    AffinityChart,
-    AffinityChartBranch,
-    AffinityChartNode,
-    Blade,
-    Driver,
-    DriverArtDetails,
-    DriverArts,
-    DriverSkillNode,
-    DriverSkillTree,
-    FieldSkills,
-    Heart2Heart,
-    Item,
-    ItemType,
-    Locations,
-    MajorAreas,
-    MercMission,
-    Monster,
-    PrerequisitesACN,
-    PrerequisitesBlade,
-    PrerequisitesH2H,
-    PrerequisitesMM,
-    PrerequisitesQuests,
-    RequirementsMM,
-    Quest,
-    QuestStep,
-    QuestSubStep,
-    StoryProgress,
-} = require('./db')
+const app = express();
+const corsOptions = {
+    origin: "http://localhost:3000"
+};
 
-// Import routes
+app.use(cors(corsOptions));
+
+app.use(express.json());
+
+app.use(express.urlencoded({ extended: true }));
+
+const db = require('./models');
 const restRouter = require('./router')
 
-// Set default port for express app
-const PORT = process.env.PORT || 4001
-
-// Create express app
-const app = express()
-
-// Apply middleware
-// Note: Keep this at the top, above routes
-app.use(cors())
-app.use(helmet())
-app.use(compression())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.get('/', (req, res) => {
+    res.json({ message: 'database works' })
+})
 
 // Implement routes
-app.use('/affinityChart', restRouter(AffinityChart))
-app.use('/affinityChartBranch', restRouter(AffinityChartBranch))
-app.use('/affinityChartNode', restRouter(AffinityChartNode))
-app.use('/blade', restRouter(Blade))
-app.use('/driver', restRouter(Driver))
-app.use('/driverArtDetails', restRouter(DriverArtDetails))
-app.use('/driverArt', restRouter(DriverArts))
-app.use('/driverSkillNode', restRouter(DriverSkillNode))
-app.use('/driverSkillTree', restRouter(DriverSkillTree))
-app.use('/fieldSkill', restRouter(FieldSkills))
-app.use('/heart2Heart', restRouter(Heart2Heart))
-app.use('/item', restRouter(Item))
-app.use('/itemType', restRouter(ItemType))
-app.use('/location', restRouter(Locations))
-app.use('/majorArea', restRouter(MajorAreas))
-app.use('/mercMission', restRouter(MercMission))
-app.use('/monster', restRouter(Monster))
-app.use('/prerequisitesACN', restRouter(PrerequisitesACN))
-app.use('/prerequisitesBlade', restRouter(PrerequisitesBlade))
-app.use('/prerequisitesH2H', restRouter(PrerequisitesH2H))
-app.use('/prerequisitesMM', restRouter(PrerequisitesMM))
-app.use('/prerequisitesQuest', restRouter(PrerequisitesQuests))
-app.use('/requirementsMM', restRouter(RequirementsMM))
-app.use('/quest', restRouter(Quest))
-app.use('/questStep', restRouter(QuestStep))
-app.use('/questSubStep', restRouter(QuestSubStep))
-app.use('/storyProgress', restRouter(StoryProgress))
+app.use('/affinityChart', restRouter(db.affinityChart))
+app.use('/affinityChartBranch', restRouter(db.affinityChartBranch))
+app.use('/affinityChartNode', restRouter(db.affinityChartNode))
+app.use('/blade', restRouter(db.blade))
+app.use('/driver', restRouter(db.driver))
+app.use('/driverArtDetails', restRouter(db.driverArtDetail))
+app.use('/driverArt', restRouter(db.driverArt))
+app.use('/driverSkillNode', restRouter(db.driverSkillNode))
+app.use('/driverSkillTree', restRouter(db.driverSkillTree))
+app.use('/fieldSkill', restRouter(db.fieldSkills))
+app.use('/heart2Heart', restRouter(db.heart2Heart))
+app.use('/item', restRouter(db.item))
+app.use('/itemType', restRouter(db.itemType))
+app.use('/location', restRouter(db.location))
+app.use('/majorArea', restRouter(db.majorArea))
+app.use('/mercMission', restRouter(db.mercMission))
+app.use('/monster', restRouter(db.monster))
+app.use('/prerequisitesACN', restRouter(db.prerequisitesACN))
+app.use('/prerequisitesBlade', restRouter(db.prerequisitesBlade))
+app.use('/prerequisitesH2H', restRouter(db.prerequisitesH2H))
+app.use('/prerequisitesMM', restRouter(db.prerequisitesMM))
+app.use('/prerequisitesQuest', restRouter(db.prerequisitesQuest))
+app.use('/requirementsMM', restRouter(db.requirementsMM))
+app.use('/quest', restRouter(db.quest))
+app.use('/questStep', restRouter(db.questStep))
+app.use('/questSubStep', restRouter(db.questSubStep))
+app.use('/storyProgress', restRouter(db.storyProgress))
 
-// Implement 500 error route
 app.use(function (err, req, res, next) {
-  console.error(err.stack)
-  res.status(500).send('Something is broken.')
+    console.error(err.stack)
+    res.status(500).send('Something is broken.')
 })
 
 // Implement 404 error route
 app.use(function (req, res, next) {
-  res.status(404).send('Sorry we could not find that.')
+    res.status(404).send('Sorry we could not find that.')
 })
 
-// Start express app
-app.listen(PORT, function() {
-  console.log(`Server is running on: ${PORT}`)
-})
+const PORT = process.env.PORT || 4001;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
