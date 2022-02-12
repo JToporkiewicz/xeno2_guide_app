@@ -1,4 +1,4 @@
-import updateAvailability from "./updateAvailability"
+// import updateAvailability from "./updateAvailability"
 
 class HttpError extends Error {
   constructor (status, message = 'HTTP Error') {
@@ -39,9 +39,9 @@ class Resource {
 
   update (id, data = {}, options = {}) {
     const defaultOptions = { method: 'put', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
-    if(this.name === "storyProgress"){
-      updateAvailability(data)
-    }
+    // if(this.name === "storyProgress"){
+    //   updateAvailability(data)
+    // }
     return request(this.url, this.name + '/' + id, {}, Object.assign(defaultOptions, options))
   }
 }

@@ -13,7 +13,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const db = require('./models');
-const restRouter = require('./router')
+const restRouter = require('./routers/defaultRouter');
+const storyProgressRestRouter = require('./routers/storyProgressRestRouter');
+const table = require('./storedProcedures');
+const { sequelize } = require("./models");
+db.sequelize.sync();
+for(var i = 0; i < table.length; i++) {
+    for(var j = 0; j < table[i].length; j++){
+        console.log(table[i][j].name);
+        db.sequelize.query('DROP PROCEDURE IF EXISTS ' + table[i][j].name)
+        db.sequelize.query(table[i][j].query)
+    }
+}
 
 app.get('/', (req, res) => {
     res.json({ message: 'database works' })
@@ -46,7 +57,7 @@ app.use('/requirementsMM', restRouter(db.requirementsMM))
 app.use('/quest', restRouter(db.quest))
 app.use('/questStep', restRouter(db.questStep))
 app.use('/questSubStep', restRouter(db.questSubStep))
-app.use('/storyProgress', restRouter(db.storyProgress))
+app.use('/storyProgress', storyProgressRestRouter(db.storyProgress, sequelize))
 
 app.use(function (err, req, res, next) {
     console.error(err.stack)
