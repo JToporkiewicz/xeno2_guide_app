@@ -10,13 +10,8 @@ module.exports = function(Model, sequelize) {
     const resource = await Model.findOne({ where: { id: req.params.id } })
     await resource.update(req.body)
     try {
-        await sequelize.query('CALL updateMonster ()');
-        await sequelize.query('CALL updateH2H ()');
-        await sequelize.query('CALL updateBlade ()');
         await sequelize.query('CALL updateMM ()');
         await sequelize.query('CALL updateQuest ()');
-        await sequelize.query('CALL updateACN ()');
-        await sequelize.query('CALL updateACNUnlocked ()');
     } catch (err) {
         return res.status(400).json({err: err.message})
     }

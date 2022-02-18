@@ -104,6 +104,8 @@
 
         *	Prerequisites MM – Available
 
+        *   Requirements MM - Available
+
     *	updates:
 
         *	Prerequisites ACN
@@ -274,7 +276,7 @@
 
 26.	requirementsMM : 
 
-    *	updated by:
+    *	updated by: (towards - MercMission available)
 
         *	Field Skill
 

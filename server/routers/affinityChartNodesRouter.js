@@ -10,10 +10,13 @@ module.exports = function(Model, sequelize) {
     const resource = await Model.findOne({ where: { id: req.params.id } })
     await resource.update(req.body)
     try {
-        await sequelize.query('CALL updateMonster ()');
+        await sequelize.query('CALL updateBranchACN (:skillId)', {
+          replacements: {skillId: req.params.id}
+        })
+        await sequelize.query('CALL updateFieldSkill (:skillId)', {
+          replacements: {skillId: req.params.id}
+        })
         await sequelize.query('CALL updateH2H ()');
-        await sequelize.query('CALL updateBlade ()');
-        await sequelize.query('CALL updateMM ()');
         await sequelize.query('CALL updateQuest ()');
         await sequelize.query('CALL updateACN ()');
         await sequelize.query('CALL updateACNUnlocked ()');

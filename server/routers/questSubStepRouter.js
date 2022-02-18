@@ -10,13 +10,18 @@ module.exports = function(Model, sequelize) {
     const resource = await Model.findOne({ where: { id: req.params.id } })
     await resource.update(req.body)
     try {
-        await sequelize.query('CALL updateMonster ()');
-        await sequelize.query('CALL updateH2H ()');
-        await sequelize.query('CALL updateBlade ()');
-        await sequelize.query('CALL updateMM ()');
-        await sequelize.query('CALL updateQuest ()');
-        await sequelize.query('CALL updateACN ()');
-        await sequelize.query('CALL updateACNUnlocked ()');
+      if(req.body.CompletionProgress !== 0) {
+        await sequelize.query('CALL updateCompleteQuestSubStepManually  (:questSubStepId)',{
+          replacement: {questSubStepId: req.params.id}
+        });
+      }
+      await sequelize.query('CALL updateH2H ()');
+      await sequelize.query('CALL updateBlade ()');
+      await sequelize.query('CALL updateMM ()');
+      await sequelize.query('CALL updateQuest ()');  
+      await sequelize.query('CALL updateQuestRelatedACN ()');
+      await sequelize.query('CALL updateACN ()');
+      await sequelize.query('CALL updateACNUnlocked ()');
     } catch (err) {
         return res.status(400).json({err: err.message})
     }

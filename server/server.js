@@ -15,6 +15,17 @@ app.use(express.urlencoded({ extended: true }));
 const db = require('./models');
 const restRouter = require('./routers/defaultRouter');
 const storyProgressRestRouter = require('./routers/storyProgressRestRouter');
+const affinityChartNodesRouter = require('./routers/affinityChartNodesRouter')
+const bladesRouter = require('./routers/bladesRouter');
+const heart2HeartRouter = require('./routers/heart2HeartRouter');
+const mercMissionRouter = require('./routers/mercMissionRouter');
+const questRouter = require('./routers/questRouter');
+const questStepRouter = require('./routers/questStepRouter');
+const questSubStepRouter = require('./routers/questSubStepRouter');
+const fieldSkillRouter = require('./routers/fieldSkillRouter');
+const driverSkillNodesRouter = require('./routers/driverSkillNodesRouter');
+const monsterRouter = require('./routers/monsterRouter');
+
 const table = require('./storedProcedures');
 const { sequelize } = require("./models");
 db.sequelize.sync();
@@ -33,30 +44,30 @@ app.get('/', (req, res) => {
 // Implement routes
 app.use('/affinityChart', restRouter(db.affinityChart))
 app.use('/affinityChartBranch', restRouter(db.affinityChartBranch))
-app.use('/affinityChartNode', restRouter(db.affinityChartNode))
-app.use('/blade', restRouter(db.blade))
+app.use('/affinityChartNode', affinityChartNodesRouter(db.affinityChartNode, sequelize))
+app.use('/blade', bladesRouter(db.blade, sequelize))
 app.use('/driver', restRouter(db.driver))
 app.use('/driverArtDetails', restRouter(db.driverArtDetail))
 app.use('/driverArt', restRouter(db.driverArt))
-app.use('/driverSkillNode', restRouter(db.driverSkillNode))
+app.use('/driverSkillNode', driverSkillNodesRouter(db.driverSkillNode, sequelize))
 app.use('/driverSkillTree', restRouter(db.driverSkillTree))
-app.use('/fieldSkill', restRouter(db.fieldSkills))
-app.use('/heart2Heart', restRouter(db.heart2Heart))
+app.use('/fieldSkill', fieldSkillRouter(db.fieldSkills, sequelize))
+app.use('/heart2Heart', heart2HeartRouter(db.heart2Heart, sequelize))
 app.use('/item', restRouter(db.item))
 app.use('/itemType', restRouter(db.itemType))
 app.use('/location', restRouter(db.location))
 app.use('/majorArea', restRouter(db.majorArea))
-app.use('/mercMission', restRouter(db.mercMission))
-app.use('/monster', restRouter(db.monster))
+app.use('/mercMission', mercMissionRouter(db.mercMission, sequelize))
+app.use('/monster', monsterRouter(db.monster, sequelize))
 app.use('/prerequisitesACN', restRouter(db.prerequisitesACN))
 app.use('/prerequisitesBlade', restRouter(db.prerequisitesBlade))
 app.use('/prerequisitesH2H', restRouter(db.prerequisitesH2H))
 app.use('/prerequisitesMM', restRouter(db.prerequisitesMM))
 app.use('/prerequisitesQuest', restRouter(db.prerequisitesQuest))
 app.use('/requirementsMM', restRouter(db.requirementsMM))
-app.use('/quest', restRouter(db.quest))
-app.use('/questStep', restRouter(db.questStep))
-app.use('/questSubStep', restRouter(db.questSubStep))
+app.use('/quest', questRouter(db.quest, sequelize))
+app.use('/questStep', questStepRouter(db.questStep, sequelize))
+app.use('/questSubStep', questSubStepRouter(db.questSubStep, sequelize))
 app.use('/storyProgress', storyProgressRestRouter(db.storyProgress, sequelize))
 
 app.use(function (err, req, res, next) {
