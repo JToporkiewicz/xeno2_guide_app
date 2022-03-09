@@ -20,6 +20,19 @@ select{
     background-repeat: repeat;
 }
 
+.header {
+    text-align: center;
+    background: white;
+    margin: 10vw;
+    min-width:fit-content;
+}
+
+.align-right {
+    float: right;
+}
+
+// ------------- navigation -------------
+
 .navigation-button {
     padding: 15px;
     font-size: x-large
@@ -43,15 +56,35 @@ select{
     background-color: white;
 }
 
-.close-details {
-    float: right;
-    height: 3vw;
-    max-height: 30px; 
-    max-width: 30px;
-    margin: 10px;
-    cursor: pointer;
+// ------------- collapsible component -------------
+
+.collapsible-container {
+    border-style: solid;
+    border-color:#0056b3;
+    border-radius: 10px;
+    border-width: medium;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
+.art-details-panel {
+    border-bottom-style: solid;
+    border-width: medium;
+    border-color: skyblue;
+    margin: 0px -15px 10px -15px;
+    padding: 0px 15px 10px 15px;
+}
+
+.image-panel {
+    border-style: solid;
+    border-width: medium;
+    border-color: #0056b3;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+// // ------------- close-open -------------
 .collapse-expand {
     height: 20px;
     width: 60px;
@@ -69,8 +102,97 @@ select{
     margin-bottom: 5px;
 }
 
+.close-details {
+    float: right;
+    height: 3vw;
+    max-height: 30px; 
+    max-width: 30px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+// ------------- component header -------------
+
+.container-header{
+    padding: 15px;
+    padding-top: 5px;
+    background-color:#0056b3;
+    margin: 0px;
+    color:white;
+    cursor: pointer;
+}
+
+.inner-container-header {
+    background: aliceblue;
+    padding: 5px;
+    margin: 0px;
+    color:#0056b3;
+    cursor: pointer;
+}
+
+.image-name {
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: #0056b3;
+    text-align: center;
+    display: block;
+}
+
+// // ------------- driver art -------------
+
 .art-name {
     font-size: larger
+}
+
+.art-details-header {
+    height: 15vw;
+
+}
+
+// ------------- image components -------------
+
+// // ------------- small images (lock) -------------
+.small-image {
+    border-style: solid;
+    border-width: thin;
+    border-color: #0056b3;
+    border-radius: 5px;
+    height: 7vw;
+    max-width: 60px;
+    max-height: 60px;
+    display: inline;
+    border-radius: 5px;
+}
+
+.small-image-panel {
+    margin-right: 10px;
+    max-width: 60px;
+    max-height: 60px;
+    display: inline-block;
+    position: relative;
+}
+
+// // ------------- medium image (main image) -------------
+
+.stretched-sibling-panels {
+    display: grid;
+}
+
+.character-image {
+    height: 14vw;
+    max-width: 280px;
+    max-height: 250px;
+    margin: auto;
+    display: block;
+}
+
+.weapon-class-image {
+    height: 14vw;
+    max-width: 150px;
+    max-height: 150px;
+    display: block;
+    margin: auto;
+    cursor: pointer;
 }
 
 .driver-art-details-image {
@@ -85,43 +207,34 @@ select{
     border-radius: 10px;
 }
 
-.art-details-panel {
-    border-bottom-style: solid;
-    border-width: medium;
-    border-color: skyblue;
-    margin: 0px -15px 10px -15px;
-    padding: 0px 15px 10px 15px;
-}
-
-.art-details-header {
-    height: 15vw;
-
-}
-
-.header {
-    text-align: center;
-    background: white;
-    margin: 10vw;
-    min-width:fit-content;
-}
-
-.collapsible-container {
+.art-icon {
     border-style: solid;
-    border-color:#0056b3;
-    border-radius: 10px;
-    border-width: medium;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    border-width: thin;
+    border-color: lightblue;
+    border-radius: 100%;
+    width: 13%;
+    max-width: 110px;
+    max-height: 110px;
+    margin-left: 2%;
 }
 
-.container-header{
-    padding: 15px;
-    padding-top: 5px;
-    background-color:#0056b3;
-    margin: 0px;
-    color:white;
-    cursor: pointer;
+// // ------------- large image (details) -------------
+
+.basic-info-image {
+    height: 20vw;
+    max-width: 230px;
+    max-height: 208px;
+    display: block;
+    border-style: solid;
+    border-width: thin;
+    border-color: #0056b3;
+    border-radius: 10px;
+    float: left;
+    margin-right: 3vw;
+    margin-left: 1vw;
 }
+
+// -------------  container body -------------
 
 .container-contents {
     padding: 15px;
@@ -140,14 +253,6 @@ select{
     margin-bottom: 10px;
 }
 
-.inner-container-header {
-    background: aliceblue;
-    padding: 5px;
-    margin: 0px;
-    color:#0056b3;
-    cursor: pointer;
-}
-
 .inner-container-contents {
     border-top-style: solid;
     border-top-width: thin;
@@ -159,65 +264,36 @@ select{
     margin: 0px !important;
 }
 
-.stretched-sibling-panels {
-    display: grid;
-}
-
-.image-panel {
-    border-style: solid;
-    border-width: medium;
-    border-color: #0056b3;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    position: relative;
-}
-
-.character-image {
-    height: 14vw;
-    max-width: 280px;
-    max-height: 250px;
-    margin: auto;
-    display: block;
-}
-
-.basic-info-image {
-    height: 20vw;
-    max-width: 230px;
-    max-height: 208px;
-    display: block;
-    border-style: solid;
-    border-width: thin;
-    border-color: #0056b3;
-    border-radius: 10px;
-    float: left;
-    margin-right: 3vw;
-    margin-left: 1vw;
-}
-
-.weapon-class-image {
-    height: 14vw;
-    max-width: 150px;
-    max-height: 150px;
-    display: block;
-    margin: auto;
-    cursor: pointer;
-}
-
 .focused-panel {
     background: aliceblue;
 }
 
-.small-image {
+// // ------------- driver art details -------------
+
+.art-description {
     border-style: solid;
+    border-color:skyblue;
+    border-radius: 10px;
     border-width: thin;
-    border-color: #0056b3;
-    border-radius: 5px;
-    height: 7vw;
-    max-width: 60px;
-    max-height: 60px;
-    display: inline;
-    border-radius: 5px;
+    padding: 5px;
+    background: aliceblue;
+    margin-top: 10px;
 }
+
+.art-detail-node {
+    border-style: solid;
+    border-width: medium;
+    border-color: lightblue;
+    border-radius: 5%;
+    font-size: small;
+    width: 12%;
+    max-height: 110px;
+    margin-left: 1%;
+    position: relative;
+    text-align: center;
+}
+
+// ------------- lock-unlock component -------------
 
 .centered-lock {
     height: 7vw;
@@ -225,22 +301,6 @@ select{
     max-height: 75px;
     display: block;
     margin: auto;
-}
-
-.small-image-panel {
-    margin-right: 10px;
-    max-width: 60px;
-    max-height: 60px;
-    display: inline-block;
-    position: relative;
-}
-
-.image-name {
-    border-top-style: solid;
-    border-top-width: thin;
-    border-top-color: #0056b3;
-    text-align: center;
-    display: block;
 }
 
 .overlay {
@@ -265,10 +325,6 @@ select{
     margin-left: auto;
     margin-right: auto;
     display: block;
-}
-
-.align-right {
-    float: right;
 }
 
 .peek-unlock-button{
@@ -302,6 +358,8 @@ select{
     margin-left: 0px;
 }
 
+// forms - core story progress
+
 .settings-names {
     margin: auto;
 }
@@ -312,40 +370,6 @@ select{
 
 .checkbox-layout {
     display: flex;
-}
-
-.art-description {
-    border-style: solid;
-    border-color:skyblue;
-    border-radius: 10px;
-    border-width: thin;
-    padding: 5px;
-    background: aliceblue;
-    margin-top: 10px;
-}
-
-.art-detail-node {
-    border-style: solid;
-    border-width: medium;
-    border-color: lightblue;
-    border-radius: 5%;
-    font-size: small;
-    width: 12%;
-    max-height: 110px;
-    margin-left: 1%;
-    position: relative;
-    text-align: center;
-}
-
-.art-icon {
-    border-style: solid;
-    border-width: thin;
-    border-color: lightblue;
-    border-radius: 100%;
-    width: 13%;
-    max-width: 110px;
-    max-height: 110px;
-    margin-left: 2%;
 }
 
 .increment-decrement-button {

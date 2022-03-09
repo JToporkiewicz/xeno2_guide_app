@@ -3,13 +3,13 @@ import client from '../../../api-client';
 import UnlockOverlay from '../../UnavailableDataComponents/Overlays/UnlockOverlay';
 import LockOverlay from '../../UnavailableDataComponents/Overlays/LockOverlay';
 
-async function getDriverArtDetails(artId, setDriverArtDetails) {
+async function getDADetails(artId, setDADetails) {
     try {
         let response = [];
         for (let i = artId; i < artId+6; i++){
             response = [...response, await client.resource('driverArtDetails').get(i)];
         }
-        setDriverArtDetails(response);
+        setDADetails(response);
     }
     catch(err) {
         console.log(`Error: ${err}`);
@@ -35,14 +35,14 @@ function getImage(artName) {
     }
 }
 
-function DriverArtLevels(props) {
-    const [driverArtDetails, setDriverArtDetails] = useState([]);
+function DALevels(props) {
+    const [driverArtDetails, setDADetails] = useState([]);
     const [unlockedLevel, setUnlockedLevel] = useState(props.LevelUnlocked);
     const [totalSP, setSP] = useState(0);
     const [remainingSP, setRemainingSP] = useState(0);
 
     useEffect(() => {
-        getDriverArtDetails(props.Level1, setDriverArtDetails)
+        getDADetails(props.Level1, setDADetails)
     }, [props.Level1]);
 
     useEffect(() => {
@@ -72,7 +72,9 @@ function DriverArtLevels(props) {
                 {driverArtDetails !== undefined ?
                     Object.values(driverArtDetails).map((level, key) => 
                         key < unlockedLevel ? 
-                            <div className={`art-detail-node ${key+1 === unlockedLevel ? " focused-panel" : ""}`}>
+                            <div
+                            className={`art-detail-node ${key+1 === unlockedLevel ? " focused-panel" : ""}`}
+                            key={key}>
                                 {key !== 0 ? 
                                     <LockOverlay
                                         id={key}
@@ -84,7 +86,7 @@ function DriverArtLevels(props) {
                                 {level.EffectPotency !== '' ? <>{"Effect: " + level.EffectPotency}<br/></> : ''}
                                 {"Recharge: " + level.Recharge}
                             </div>
-                        : <div className="art-detail-node">
+                        : <div className="art-detail-node" key={key}>
                             <UnlockOverlay 
                                 id={key+1}
                                 updateGameState={updateArtLevel.bind(this)}
@@ -105,4 +107,4 @@ function DriverArtLevels(props) {
     )
 }
 
-export default DriverArtLevels;
+export default DALevels;

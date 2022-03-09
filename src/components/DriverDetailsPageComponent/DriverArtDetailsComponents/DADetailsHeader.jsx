@@ -23,7 +23,7 @@ async function fetchProgress(setSettings){
     }
 };
 
-function DriverArtDetailsHeader(props){
+function DADetailsHeader(props){
     const [blades, setBlades] = useState([]);
     const [progress, setProgress] = useState([]);
     const [bladesList, setBladeList] = useState([]);
@@ -46,9 +46,13 @@ function DriverArtDetailsHeader(props){
 
             setBladeList(    
                 blades.map((blade) =>
-                (progress.OnlyShowAvailable || 
+                (!progress.OnlyShowAvailable || 
                     (blade.Available || blade.Show) ? 
-                    <Link to={"/blade/"+blade.id} className="small-image-panel">
+                    <Link
+                    to={"/blade/"+blade.id}
+                    className="small-image-panel"
+                    key={blade.Name}
+                    >
                         <img
                             src={"/images/blade/"+blade.Name.replaceAll(/\s+/g, '').replace('α','Alpha').replace('π', 'Pi')+".jpeg"}
                             alt={blade.Name}
@@ -90,4 +94,4 @@ function DriverArtDetailsHeader(props){
     )
 };
 
-export default DriverArtDetailsHeader;
+export default DADetailsHeader;

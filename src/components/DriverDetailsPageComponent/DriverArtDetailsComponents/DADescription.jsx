@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function DriverArtDescription(props){
+function DADescription(props){
     const [open, setOpen] = useState(false);
 
     function toggleCollapse(){
@@ -15,7 +15,9 @@ function DriverArtDescription(props){
                 <b>Type:</b> {props.Type}<br/>
                 <b>Effects:</b>
                 <ul>
-                    {Object.values(JSON.parse(props.Effect)).map((effect) => <li>{effect}</li>)}
+                    {Object.values(JSON.parse(props.Effect)).map((effect) =>
+                        <li key={effect}>{effect}</li>)
+                    }
                 </ul>
                 <img
                     src="/images/helper/collapse.png"
@@ -37,4 +39,4 @@ function DriverArtDescription(props){
     )
 }
 
-export default DriverArtDescription
+export default DADescription

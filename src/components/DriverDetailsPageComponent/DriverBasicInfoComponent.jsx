@@ -68,7 +68,9 @@ function DriverBasicInfoComponent (props) {
             <br />
             Starting idea stats: 
             <ul>
-                {Object.entries(ideas).map(([idea, level]) => (<li>{idea}: {level}</li>))}
+                {Object.entries(ideas).map(([idea, level]) => (
+                    <li key={idea}>{idea}: {level}</li>
+                ))}
             </ul>
             </>
         :

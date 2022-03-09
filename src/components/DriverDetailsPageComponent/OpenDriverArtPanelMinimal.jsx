@@ -1,6 +1,6 @@
 import React from 'react';
 
-function OpenDriverArtPanelMinimal(props){
+function OpenDAPanelMinimal(props){
     return (
         <div className="col-sm-3">
             <div className="titled-image-panel">
@@ -11,4 +11,4 @@ function OpenDriverArtPanelMinimal(props){
     )
 };
 
-export default OpenDriverArtPanelMinimal;
+export default OpenDAPanelMinimal;

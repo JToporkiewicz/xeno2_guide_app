@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import client from '../../api-client';
 import CollapsibleComponent from '../CommonComponents/Containers/CollapsibleComponent';
 import ClosedUnlinkedImagePanel from '../CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
-import DriverArtDetails from './DriverArtDetailsComponents/DriverArtDetails';
+import DADetails from './DriverArtDetailsComponents/DADetails';
 
 async function getDriverArts (setArts, driverId) {
     try {
@@ -43,13 +43,14 @@ function DriverArtsListComponent (props) {
             name={weapon}
             focused={focused === weapon}
             focus={focusArt.bind(this)}
+            key={weapon}
         />
     )))
 
     return (
         <CollapsibleComponent header={"Driver Arts"}>
             {focused.length > 0 ?
-                <DriverArtDetails
+                <DADetails
                     clearArt={focusArt.bind(this)}
                     weapon={focused}
                     weaponArts={driverArts.filter((weapon) => weapon.WeaponType === focused)}/>
