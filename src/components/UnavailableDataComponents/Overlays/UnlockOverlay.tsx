@@ -1,6 +1,6 @@
 interface IProps {
     id:number,
-    updateGameState:(id:number) => void
+    updateGameState:any
 }
 const UnlockOverlay = (props:IProps) => {
   return(

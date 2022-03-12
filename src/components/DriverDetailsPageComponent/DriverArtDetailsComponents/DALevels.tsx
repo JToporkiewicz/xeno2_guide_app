@@ -17,15 +17,6 @@ const getDADetails = async (artId:number, setDADetails:(arts:IDriverArtDetails[]
   }
 };
 
-const updateDetail = async (artId:number, newLevel:number) => {
-  try {
-    await client.resource('driverArt').update(artId, {LevelUnlocked: newLevel})
-  }
-  catch(err){
-    console.log(`Error: ${err}`)
-  }
-}
-
 const getImage = (artName:string) => {
   try {
     require(`../../../../public/images/driverArt/${artName.trim().replace(/\s+/g, '')}.png`)
@@ -45,17 +36,17 @@ interface IProps {
     Name:string,
     LevelUnlocked:number,
     Level1:number
+    updateArtLevel:(artId:number, level:number) => void
 }
 
 const DALevels = (props:IProps) => {
   const [driverArtDetails, setDADetails] = useState([] as IDriverArtDetails[]);
-  const [unlockedLevel, setUnlockedLevel] = useState(props.LevelUnlocked);
   const [totalSP, setSP] = useState(0);
   const [remainingSP, setRemainingSP] = useState(0);
 
   useEffect(() => {
     getDADetails(props.Level1, setDADetails)
-  }, [props.Level1]);
+  }, [props.Level1, props.LevelUnlocked]);
 
   useEffect(() => {
     if(driverArtDetails[0]?.id !== undefined){
@@ -63,19 +54,14 @@ const DALevels = (props:IProps) => {
       let remainingSP = 0;
       for(let i = 0; i < driverArtDetails.length; i++){
         SP = SP + driverArtDetails[i].SP
-        if(i >= unlockedLevel){
+        if(i >= props.LevelUnlocked){
           remainingSP = remainingSP + driverArtDetails[i].SP
         }
       }
       setSP(SP);
       setRemainingSP(remainingSP);
     }
-  }, [driverArtDetails, unlockedLevel])
-
-  const updateArtLevel = (newLevel:number) => {
-    setUnlockedLevel(newLevel)
-    updateDetail(props.id, newLevel)
-  }
+  }, [driverArtDetails])
 
   return (
     <div>
@@ -83,14 +69,16 @@ const DALevels = (props:IProps) => {
         {getImage(props.Name)}
         {driverArtDetails !== undefined ?
           Object.values(driverArtDetails).map((level, key) => 
-            key < unlockedLevel ? 
+            key < props.LevelUnlocked ? 
               <div
-                className={`art-detail-node ${key+1 === unlockedLevel ? ' focused-panel' : ''}`}
+                className={`art-detail-node ${key+1 === props.LevelUnlocked ?
+                  ' focused-panel'
+                  : ''}`}
                 key={key}>
                 {key !== 0 ? 
                   <LockOverlay
                     id={key}
-                    updateGameState={updateArtLevel.bind(this)}
+                    updateGameState={()=>props.updateArtLevel(props.id, key)}
                   />
                   : <div/>}
                 <b>Level {key < 5 ? key+1 : '5 Max Affinity'}</b><br/>
@@ -101,7 +89,7 @@ const DALevels = (props:IProps) => {
               : <div className="art-detail-node" key={key}>
                 <UnlockOverlay 
                   id={key+1}
-                  updateGameState={updateArtLevel.bind(this)}
+                  updateGameState={()=>props.updateArtLevel(props.id, key+1)}
                 />
                 <img src="/images/helper/closedLock.png" alt="lock" className="centered-lock"/>
                             Cost: {level.SP}SP

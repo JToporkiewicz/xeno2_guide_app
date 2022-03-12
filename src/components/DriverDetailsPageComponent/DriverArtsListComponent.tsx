@@ -15,6 +15,15 @@ const getDriverArts = async (setArts:(arts:IDriverArts[]) => void, driverId:numb
   }
 };
 
+const updateDetail = async (artId:number, newLevel:number) => {
+  try {
+    await client.resource('driverArt').update(artId, {LevelUnlocked: newLevel})
+  }
+  catch(err){
+    console.log(`Error: ${err}`)
+  }
+}
+
 interface IProps {
   driverId:number
 
@@ -39,6 +48,11 @@ const DriverArtsListComponent = (props:IProps) => {
     }
   }, [driverArts])
 
+  const updateArtLevel = (artId:number, newLevel:number) => {
+    updateDetail(artId, newLevel)
+    setTimeout(()=>getDriverArts(setArts, props.driverId), 100);
+  }
+
   const focusArt = (art = '') => {
     setFocused(art)
   }
@@ -60,7 +74,9 @@ const DriverArtsListComponent = (props:IProps) => {
         <DADetails
           clearArt={focusArt.bind(this)}
           weapon={focused}
-          weaponArts={driverArts.filter((weapon) => weapon.WeaponType === focused)}/>
+          weaponArts={driverArts.filter((weapon) => weapon.WeaponType === focused)}
+          updateArtLevel={updateArtLevel.bind(this)}
+        />
         : <div/>}
       {uniqueWeapons.length > 0 ?
         <div className="row">

@@ -7,7 +7,8 @@ import { IDriverArts } from '../../../interfaces';
 interface IProps {
   weapon:string,
   clearArt:() => void,
-  weaponArts:IDriverArts[]
+  weaponArts:IDriverArts[],
+  updateArtLevel:(artId:number, level:number) => void
 }
 
 const DADetails = (props:IProps) => {
@@ -20,7 +21,7 @@ const DADetails = (props:IProps) => {
         Object.values(props.weaponArts).map((art, key) => 
           <InnerCollapsibleComponent header={art.Name} key={key}>
             <>
-              <DALevels {...art} />
+              <DALevels {...art} updateArtLevel={props.updateArtLevel} />
               <DADescription {...art} />
             </>
           </InnerCollapsibleComponent>
