@@ -7,13 +7,13 @@ import UnavailableImagePanel from '../UnavailableDataComponents/Images/Unavailab
 import { defaultStoryProgress, IDriver, IStoryProgress } from '../../interfaces';
 
 interface IShownDriver extends IDriver {
-    Show:boolean
+    Show?:boolean
 }
 
 const fetchDrivers = async (setDrivers:(drivers:IShownDriver[]) => void) => {
   try {
     const response = await client.resource('driver').find();
-    setDrivers(response.map((r:IShownDriver) => ({...r, 'Show': false})));
+    setDrivers(response.map((r:IShownDriver) => ({...r, Show: false})));
   }
   catch(err) {
     console.log(`Error: ${err}`);

@@ -6,7 +6,7 @@ import SmallUnavailableImagePanel
   from '../../UnavailableDataComponents/Images/SmallUnavailableImagePanel';
 
 interface IShowingBlades extends IBlade {
-  Show:boolean
+  Show?:boolean
 }
 
 const findBladesByWeapon = async (
@@ -15,7 +15,7 @@ const findBladesByWeapon = async (
 ) => {
   try {
     const response = await client.resource('blade').find({Weapon: weaponType});
-    setBlades([...response]);
+    setBlades([...response.filter((blade:IShowingBlades) => blade.Name !== 'Dagas (Awakened)')]);
   }
   catch(err) {
     console.log(`Error: ${err}`);

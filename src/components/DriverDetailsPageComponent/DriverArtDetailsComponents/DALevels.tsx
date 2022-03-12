@@ -94,9 +94,9 @@ const DALevels = (props:IProps) => {
                   />
                   : <div/>}
                 <b>Level {key < 5 ? key+1 : '5 Max Affinity'}</b><br/>
-                {'Dmg: ' + level.Damage}<br/>
-                {level.EffectPotency !== '' ? <>{'Effect: ' + level.EffectPotency}<br/></> : ''}
-                {'Recharge: ' + level.Recharge}
+                {`Dmg: ${level.Damage}`}<br/>
+                {level.EffectPotency !== '' ? <>{`Effect: ${level.EffectPotency}`}<br/></> : ''}
+                {`Recharge: ${level.Recharge}`}
               </div>
               : <div className="art-detail-node" key={key}>
                 <UnlockOverlay 

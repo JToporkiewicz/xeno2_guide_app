@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
 import client from '../../api-client';
-import DriverBasicInfoComponent from '../DriverDetailsPageComponent/DriverBasicInfoComponent';
+import DriverBasicInfoComponent from './DriverBasicInfoComponent';
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
-import DriverArtsListComponent from '../DriverDetailsPageComponent/DriverArtsListComponent';
+import DriverArtsListComponent from './DriverArtsListComponent';
 import { defaultDriver, IDriver } from '../../interfaces';
 
 const fetchDriverDetails = async (setDetails:(driver:IDriver) => void, id:number) => {

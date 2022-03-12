@@ -1,6 +1,6 @@
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
-import AboutPanel from '../HomePageComponents/AboutPanel';
-import SettingsForm from '../HomePageComponents/SettingsForm';
+import AboutPanel from './AboutPanel';
+import SettingsForm from './SettingsForm';
 
 const HomePage = () => {
   return (

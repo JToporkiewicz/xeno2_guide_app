@@ -1,10 +1,10 @@
 import {useState} from 'react';
-import HomePage from './HomePage';
-import DriversListPage from './DriversListPage';
+import HomePage from './HomePageComponents/HomePage';
+import DriversListPage from './DriverListPageComponents/DriversListPage';
 import { Route, Switch } from 'react-router-dom';
-import Navigation from '../CommonComponents/Navigation/Navigation';
-import ClosedNavigation from '../CommonComponents/Navigation/ClosedNavigation';
-import DriverDetailsPage from './DriverDetailsPage';
+import Navigation from './CommonComponents/Navigation/Navigation';
+import ClosedNavigation from './CommonComponents/Navigation/ClosedNavigation';
+import DriverDetailsPage from './DriverDetailsPageComponent/DriverDetailsPage';
 import Default from './Default';
 
 const App = () => {

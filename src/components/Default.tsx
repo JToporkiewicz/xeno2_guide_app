@@ -1,4 +1,4 @@
-import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
+import HeaderContainer from './CommonComponents/Containers/HeaderContainer';
 
 const Default = () => {
   return (

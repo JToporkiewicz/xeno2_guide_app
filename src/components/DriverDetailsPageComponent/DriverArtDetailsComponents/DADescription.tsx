@@ -17,6 +17,13 @@ const DADescription = (props:IProps) => {
     <div className="art-description">
       {open ? 
         <>
+          <div onClick={() => toggleCollapse()}>
+            <img
+              src="/images/helper/collapse.png"
+              alt="collapse"
+              className="collapse-expand"
+            />
+          </div>
           <b>Target:</b> {props.Target}<br/>
           <b>Type:</b> {props.Type}<br/>
           <b>Effects:</b>
@@ -25,20 +32,17 @@ const DADescription = (props:IProps) => {
               <li key={effect}>{effect}</li>)
             }
           </ul>
-          <img
-            src="/images/helper/collapse.png"
-            alt="collapse"
-            onClick={() => toggleCollapse()}
-            className="collapse-expand"
-          />
         </>
         :
-        <img
-          src="/images/helper/expand.png"
-          alt="expand"
+        <div
           onClick={() => toggleCollapse()}
-          className="collapse-expand"
-        />
+        >
+          <img
+            src="/images/helper/expand.png"
+            alt="expand"
+            className="collapse-expand"
+          />
+        </div>
       }
 
     </div>
