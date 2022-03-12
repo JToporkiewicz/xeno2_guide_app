@@ -13,7 +13,7 @@ const InnerCollapsibleComponent = (props:IProps) => {
     <div className="inner-collapsible-container">
       <div className="inner-container-header" onClick={toggle}>
         <img
-          src={`/images/helper/${isOpen ? 'collapse' : 'expand'}.png`}
+          src={`/images/helper/${isOpen ? 'Down' : 'Up'}.svg`}
           alt={isOpen ? 'collapse' : 'expand'}
           className="small-collapse-expand"
         />

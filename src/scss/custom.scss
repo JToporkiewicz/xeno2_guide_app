@@ -18,6 +18,17 @@ select{
     background:url('./XC2-background.jpeg');
     background-position-x: center;
     background-repeat: repeat;
+    height: auto !important;
+}
+
+.part-page {
+    margin-left: 1%;
+    width: 79%
+}
+
+.full-page {
+    margin-left: 1%;
+    width: 93%
 }
 
 .header {
@@ -34,26 +45,45 @@ select{
 // ------------- navigation -------------
 
 .navigation-button {
-    padding: 15px;
-    font-size: x-large
+    padding: 5px;
+    font-size: x-large;
+    color:white;
+
+    &-text {
+        width: 70px;
+        display: inline;
+    }
+}
+
+.navigation-button:hover {
+    color: #007bff !important;
+    text-decoration: none;
+}
+
+.navigation-button-separator {
+    border-color: #007bff !important;
 }
 
 .closed-navigation {
-    height: 3vw;
-    max-height: 30px; 
-    max-width: 30px;
-    margin: 10px;
-    position: absolute;
+    border-right-color: #007bff;
+    border-right-style: solid;
+    border-right-width: thin;
+    height: auto;
+    width:5.5%;
+    padding: inherit !important;
+    text-align: left;
+    background-color: #0056b3;
 }
 
 .open-navigation {
+    border-right-color: #007bff;
     border-right-style: solid;
     border-right-width: thin;
-    border-right-color: #0056b3;
     height: auto;
+    width:20%;
     padding: inherit !important;
-    text-align: center;
-    background-color: white;
+    text-align: left;
+    background-color: #0056b3;
 }
 
 // ------------- collapsible component -------------
@@ -70,7 +100,7 @@ select{
 .art-details-panel {
     border-bottom-style: solid;
     border-width: medium;
-    border-color: skyblue;
+    border-color: #0056b3;;
     margin: 0px -15px 10px -15px;
     padding: 0px 15px 10px 15px;
 }
@@ -86,20 +116,19 @@ select{
 
 // // ------------- close-open -------------
 .collapse-expand {
-    height: 20px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
+    margin: -5px auto;
     display: block;
 }
 
 .small-collapse-expand {
-    height: 20px;
+    height: 25px;
     width: 30px;
     cursor: pointer;
+    margin-top: -5px;
     margin-right: 5px;
-    margin-bottom: 5px;
 }
 
 .close-details {
@@ -154,7 +183,7 @@ select{
 .small-image {
     border-style: solid;
     border-width: thin;
-    border-color: #0056b3;
+    border-color: white;
     border-radius: 5px;
     height: 7vw;
     max-width: 60px;
@@ -169,6 +198,20 @@ select{
     max-height: 60px;
     display: inline-block;
     position: relative;
+}
+
+.navigation-image {
+    height:30px;
+    width:30px;
+    margin-right: 10px;
+    margin-left: 5px;
+    margin-top: -10px;
+}
+
+.navigation-toggle {
+    height:20px;
+    width:20px;
+    margin:0% 45%;
 }
 
 // // ------------- medium image (main image) -------------

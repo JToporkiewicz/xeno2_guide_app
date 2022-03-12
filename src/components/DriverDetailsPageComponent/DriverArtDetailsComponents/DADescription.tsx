@@ -19,7 +19,7 @@ const DADescription = (props:IProps) => {
         <>
           <div onClick={() => toggleCollapse()}>
             <img
-              src="/images/helper/collapse.png"
+              src="/images/helper/Up.svg"
               alt="collapse"
               className="collapse-expand"
             />
@@ -38,7 +38,7 @@ const DADescription = (props:IProps) => {
           onClick={() => toggleCollapse()}
         >
           <img
-            src="/images/helper/expand.png"
+            src="/images/helper/Down.svg"
             alt="expand"
             className="collapse-expand"
           />
