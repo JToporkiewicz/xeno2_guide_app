@@ -10,11 +10,11 @@ module.exports = function(Model, sequelize) {
     const resource = await Model.findOne({ where: { id: req.params.id } })
     await resource.update(req.body)
     try {
-        await sequelize.query('CALL updateFieldSkillCommon (:skillId)',{
-          replacement: {skillId: req.params.id}
-        });
+      await sequelize.query('CALL updateFieldSkillCommon (:skillId)',{
+        replacement: {skillId: req.params.id}
+      });
     } catch (err) {
-        return res.status(400).json({err: err.message})
+      return res.status(400).json({err: err.message})
     }
     await resource.reload()
     res.send(resource)

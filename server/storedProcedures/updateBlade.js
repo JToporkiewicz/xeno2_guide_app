@@ -1,6 +1,6 @@
 const updateBlade = {
-    name: 'updateBlade',
-    query: `CREATE PROCEDURE updateBlade()
+  name: 'updateBlade',
+  query: `CREATE PROCEDURE updateBlade()
     BEGIN
 
         DECLARE current_chapter INT;
@@ -78,7 +78,7 @@ const updateBlade = {
 }
 
 const update_blade_procedures = [
-    updateBlade
+  updateBlade
 ]
 
 module.exports = update_blade_procedures

@@ -1,6 +1,6 @@
 const updateCompleteQuestSubStepManually = {
-    name: 'updateCompleteQuestSubStepManually',
-    query: `CREATE PROCEDURE updateCompleteQuestSubStepManually(
+  name: 'updateCompleteQuestSubStepManually',
+  query: `CREATE PROCEDURE updateCompleteQuestSubStepManually(
         IN questSubStepId INT
     )
     BEGIN
@@ -43,7 +43,7 @@ const updateCompleteQuestSubStepManually = {
 }
 
 const update_qss_procedures = [
-    updateCompleteQuestSubStepManually
+  updateCompleteQuestSubStepManually
 ]
 
 module.exports = update_qss_procedures

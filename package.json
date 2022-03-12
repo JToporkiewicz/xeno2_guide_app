@@ -8,6 +8,7 @@
     "start-server": "nodemon server/server.js PORT=3306",
     "start-front": "react-scripts start API_URL=4001",
     "build": "react-scripts build",
+    "lint": "eslint . --ext .tsx",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -40,6 +41,10 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.8.3",
+    "@types/react": "^17.0.39",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",
     "babel-polyfill": "^6.26.0",

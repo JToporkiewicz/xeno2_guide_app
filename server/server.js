@@ -1,9 +1,9 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const corsOptions = {
-    origin: "http://localhost:3000"
+  origin: 'http://localhost:3000'
 };
 
 app.use(cors(corsOptions));
@@ -27,18 +27,18 @@ const driverSkillNodesRouter = require('./routers/driverSkillNodesRouter');
 const monsterRouter = require('./routers/monsterRouter');
 
 const table = require('./storedProcedures');
-const { sequelize } = require("./models");
+const { sequelize } = require('./models');
 db.sequelize.sync();
 for(var i = 0; i < table.length; i++) {
-    for(var j = 0; j < table[i].length; j++){
-        console.log(table[i][j].name);
-        db.sequelize.query('DROP PROCEDURE IF EXISTS ' + table[i][j].name)
-        db.sequelize.query(table[i][j].query)
-    }
+  for(var j = 0; j < table[i].length; j++){
+    console.log(table[i][j].name);
+    db.sequelize.query('DROP PROCEDURE IF EXISTS ' + table[i][j].name)
+    db.sequelize.query(table[i][j].query)
+  }
 }
 
 app.get('/', (req, res) => {
-    res.json({ message: 'database works' })
+  res.json({ message: 'database works' })
 })
 
 // Implement routes
@@ -71,16 +71,16 @@ app.use('/questSubStep', questSubStepRouter(db.questSubStep, sequelize))
 app.use('/storyProgress', storyProgressRestRouter(db.storyProgress, sequelize))
 
 app.use(function (err, req, res, next) {
-    console.error(err.stack)
-    res.status(500).send('Something is broken.')
+  console.error(err.stack)
+  res.status(500).send('Something is broken.')
 })
 
 // Implement 404 error route
 app.use(function (req, res, next) {
-    res.status(404).send('Sorry we could not find that.')
+  res.status(404).send('Sorry we could not find that.')
 })
 
 const PORT = process.env.PORT || 4001;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });

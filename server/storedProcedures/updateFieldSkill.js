@@ -1,6 +1,6 @@
 const updateFieldSkill = {
-    name: 'updateFieldSkill',
-    query: `CREATE PROCEDURE updateFieldSkill(
+  name: 'updateFieldSkill',
+  query: `CREATE PROCEDURE updateFieldSkill(
         IN skillId INT
     )
     BEGIN
@@ -52,8 +52,8 @@ const updateFieldSkill = {
 }
 
 const updateFieldSkillCommon = {
-    name: 'updateFieldSkillCommon',
-    query: `CREATE PROCEDURE updateFieldSkillCommon(
+  name: 'updateFieldSkillCommon',
+  query: `CREATE PROCEDURE updateFieldSkillCommon(
         IN skillId INT
     )
     BEGIN
@@ -105,8 +105,8 @@ const updateFieldSkillCommon = {
 }
 
 const update_field_skill_procedures = [
-    updateFieldSkill,
-    updateFieldSkillCommon
+  updateFieldSkill,
+  updateFieldSkillCommon
 ]
 
 module.exports = update_field_skill_procedures

@@ -1,8 +1,7 @@
-import React from 'react';
 import { render } from 'react-dom';
-import {BrowserRouter as Router} from "react-router-dom";
-import App from "./components/Pages/App";
-import "./scss/custom.scss";
+import {BrowserRouter as Router} from 'react-router-dom';
+import App from './components/Pages/App';
+import './scss/custom.scss';
 
 render(
   <Router>
@@ -14,5 +13,5 @@ render(
     />
     <App />
   </Router>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

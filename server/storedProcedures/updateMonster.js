@@ -1,6 +1,6 @@
 const updateMonster = {
-    name: 'updateMonster',
-    query: `CREATE PROCEDURE updateMonster()
+  name: 'updateMonster',
+  query: `CREATE PROCEDURE updateMonster()
     BEGIN
 
         DECLARE current_chapter INT;
@@ -44,8 +44,8 @@ const updateMonster = {
 }
 
 const updateMonsterRelatedACN = {
-    name: 'updateMonsterRelatedACN',
-    query: `CREATE PROCEDURE updateMonsterRelatedACN()
+  name: 'updateMonsterRelatedACN',
+  query: `CREATE PROCEDURE updateMonsterRelatedACN()
     BEGIN
         UPDATE xenoblade2_guide.prerequisitesacns as preACN
         SET preACN.Progress = 1
@@ -69,8 +69,8 @@ const updateMonsterRelatedACN = {
 }
 
 const update_monster_procedures = [
-    updateMonster,
-    updateMonsterRelatedACN
+  updateMonster,
+  updateMonsterRelatedACN
 ]
 
 module.exports = update_monster_procedures

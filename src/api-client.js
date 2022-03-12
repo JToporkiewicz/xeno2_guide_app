@@ -1,5 +1,3 @@
-// import updateAvailability from "./updateAvailability"
-
 class HttpError extends Error {
   constructor (status, message = 'HTTP Error') {
     super(message)
@@ -8,7 +6,7 @@ class HttpError extends Error {
 }
 
 /** Get the response for a specific request **/
-async function request (url, path, query = {}, options = {}) {
+const request = async (url, path, query = {}, options = {}) => {
   let queryString = ''
   if (Object.keys(query).length > 0) {
     queryString = '?' + Object.keys(query).map(param => `${param}=${query[param]}`).join('&')
@@ -38,10 +36,11 @@ class Resource {
   }
 
   update (id, data = {}, options = {}) {
-    const defaultOptions = { method: 'put', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) }
-    // if(this.name === "storyProgress"){
-    //   updateAvailability(data)
-    // }
+    const defaultOptions = {
+      method: 'put',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }
     return request(this.url, this.name + '/' + id, {}, Object.assign(defaultOptions, options))
   }
 }
@@ -49,7 +48,7 @@ class Resource {
 /** Represents the API client **/
 class ApiClient {
   constructor (url) {
-    this.url = "http://localhost:" + url
+    this.url = 'http://localhost:' + url
   }
 
   /** Returns a single resource **/

@@ -23,7 +23,7 @@ module.exports = function(Model, sequelize) {
       await sequelize.query('CALL updateACN ()');
       await sequelize.query('CALL updateACNUnlocked ()');
     } catch (err) {
-        return res.status(400).json({err: err.message})
+      return res.status(400).json({err: err.message})
     }
     await resource.reload()
     res.send(resource)

@@ -1,6 +1,6 @@
 const updateMM = {
-    name: 'updateMM',
-    query: `CREATE PROCEDURE updateMM()
+  name: 'updateMM',
+  query: `CREATE PROCEDURE updateMM()
     BEGIN
 
         DECLARE current_chapter INT;
@@ -74,8 +74,8 @@ const updateMM = {
 }
 
 const updateMMRelatedACN = {
-    name: 'updateMMRelatedACN',
-    query: `CREATE PROCEDURE updateMMRelatedACN()
+  name: 'updateMMRelatedACN',
+  query: `CREATE PROCEDURE updateMMRelatedACN()
     BEGIN
         UPDATE xenoblade2_guide.prerequisitesacns as preACN
         SET preACN.Progress = 1
@@ -97,8 +97,8 @@ const updateMMRelatedACN = {
 }
 
 const update_mm_procedures = [
-    updateMM,
-    updateMMRelatedACN
+  updateMM,
+  updateMMRelatedACN
 ]
 
 module.exports = update_mm_procedures

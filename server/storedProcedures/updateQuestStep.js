@@ -1,6 +1,6 @@
 const updateUndoQuestStepCompletion = {
-    name: 'updateUndoQuestStepCompletion',
-    query: `CREATE PROCEDURE updateUndoQuestStepCompletion(
+  name: 'updateUndoQuestStepCompletion',
+  query: `CREATE PROCEDURE updateUndoQuestStepCompletion(
         IN questStepId INT
     )
     BEGIN
@@ -18,8 +18,8 @@ const updateUndoQuestStepCompletion = {
 }
 
 const updateCompleteQuestStepManually = {
-    name: 'updateCompleteQuestStepManually',
-    query: `CREATE PROCEDURE updateCompleteQuestStepManually(
+  name: 'updateCompleteQuestStepManually',
+  query: `CREATE PROCEDURE updateCompleteQuestStepManually(
         IN questStepId INT
     )
     BEGIN
@@ -62,8 +62,8 @@ const updateCompleteQuestStepManually = {
 }
 
 const update_qs_procedures = [
-    updateUndoQuestStepCompletion,
-    updateCompleteQuestStepManually
+  updateUndoQuestStepCompletion,
+  updateCompleteQuestStepManually
 ]
 
 module.exports = update_qs_procedures

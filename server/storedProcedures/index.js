@@ -10,16 +10,16 @@ const updateQuestStep = require('./updateQuestStep');
 const updateQuestSubStep = require('./updateQuestSubStep');
 
 const updateQueries = [
-    updateH2H,
-    updateMonster,
-    updateACN,
-    updateBlade,
-    updateMM,
-    updateQuest,
-    updateFieldSkill,
-    updateDSN,
-    updateQuestStep,
-    updateQuestSubStep
+  updateH2H,
+  updateMonster,
+  updateACN,
+  updateBlade,
+  updateMM,
+  updateQuest,
+  updateFieldSkill,
+  updateDSN,
+  updateQuestStep,
+  updateQuestSubStep
 ]
 
 module.exports = updateQueries;

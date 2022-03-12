@@ -1,6 +1,6 @@
 const updateACN = {
-    name: 'updateACN',
-    query: `CREATE PROCEDURE updateACN()
+  name: 'updateACN',
+  query: `CREATE PROCEDURE updateACN()
     BEGIN
 
         DECLARE current_chapter INT;
@@ -80,8 +80,8 @@ const updateACN = {
 }
 
 const updateBranchACN = {
-    name: 'updateBranchACN',
-    query: `CREATE PROCEDURE updateBranchACN(
+  name: 'updateBranchACN',
+  query: `CREATE PROCEDURE updateBranchACN(
         IN skillId INT
     )
     BEGIN
@@ -121,8 +121,8 @@ const updateBranchACN = {
 }
 
 const updateACNUnlocked = {
-    name: 'updateACNUnlocked',
-    query: `CREATE PROCEDURE updateACNUnlocked()
+  name: 'updateACNUnlocked',
+  query: `CREATE PROCEDURE updateACNUnlocked()
     BEGIN
         DECLARE current_chapter INT;
 
@@ -207,9 +207,9 @@ const updateACNUnlocked = {
 }
 
 const update_acn_procedures = [
-    updateACN,
-    updateBranchACN,
-    updateACNUnlocked
+  updateACN,
+  updateBranchACN,
+  updateACNUnlocked
 ]
 
 module.exports = update_acn_procedures

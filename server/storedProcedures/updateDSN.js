@@ -1,6 +1,6 @@
 const updateBranchDSN = {
-    name: 'updateBranchDSN',
-    query: `CREATE PROCEDURE updateBranchDSN(
+  name: 'updateBranchDSN',
+  query: `CREATE PROCEDURE updateBranchDSN(
         IN skillId INT
     )
     BEGIN
@@ -78,7 +78,7 @@ const updateBranchDSN = {
 }
 
 const update_dsn_procedures = [
-    updateBranchDSN
+  updateBranchDSN
 ]
 
 module.exports = update_dsn_procedures

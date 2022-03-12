@@ -1,6 +1,6 @@
 const updateH2H = {
-    name: 'updateH2H',
-    query: `CREATE PROCEDURE updateH2H()
+  name: 'updateH2H',
+  query: `CREATE PROCEDURE updateH2H()
     BEGIN
         DECLARE current_chapter INT;
 
@@ -70,8 +70,8 @@ const updateH2H = {
 }
 
 const updateH2HRelatedACN = {
-    name: 'updateH2HRelatedACN',
-    query: `CREATE PROCEDURE updateH2HRelatedACN()
+  name: 'updateH2HRelatedACN',
+  query: `CREATE PROCEDURE updateH2HRelatedACN()
     BEGIN
         UPDATE xenoblade2_guide.prerequisitesacns as preACN
         SET preACN.Progress = 1
@@ -94,8 +94,8 @@ const updateH2HRelatedACN = {
 
 
 const update_h2h_procedures = [
-    updateH2H,
-    updateH2HRelatedACN
+  updateH2H,
+  updateH2HRelatedACN
 ]
 
 module.exports = update_h2h_procedures

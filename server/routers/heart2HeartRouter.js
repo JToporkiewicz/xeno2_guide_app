@@ -10,12 +10,12 @@ module.exports = function(Model, sequelize) {
     const resource = await Model.findOne({ where: { id: req.params.id } })
     await resource.update(req.body)
     try {
-        await sequelize.query('CALL updateH2HRelatedACN ()');
-        await sequelize.query('CALL updateACNUnlocked ()');
-        await sequelize.query('CALL updateQuest ()');
-        await sequelize.query('CALL updateACN ()');
+      await sequelize.query('CALL updateH2HRelatedACN ()');
+      await sequelize.query('CALL updateACNUnlocked ()');
+      await sequelize.query('CALL updateQuest ()');
+      await sequelize.query('CALL updateACN ()');
     } catch (err) {
-        return res.status(400).json({err: err.message})
+      return res.status(400).json({err: err.message})
     }
     await resource.reload()
     res.send(resource)

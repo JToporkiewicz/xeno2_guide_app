@@ -1,0 +1,52 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true,
+            "tsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "no-dupe-args": 1,
+        "no-empty-pattern": 2,
+        "no-dupe-class-members": 2,
+        "no-dupe-else-if": 2,
+        "no-dupe-keys": 2,
+        "no-duplicate-case": 2,
+        "no-duplicate-imports": 2,
+        "no-empty-character-class": 2,
+        "no-invalid-regexp": 2,
+        "no-irregular-whitespace": 1,
+        "no-self-assign": 1,
+        "no-self-compare": 1,
+        "no-setter-return": 1,
+        "no-sparse-arrays": 1,
+        "no-unexpected-multiline": 1,
+        "no-unmodified-loop-condition": 1,
+        "no-unreachable": 1,
+        "no-unused-vars": 0,
+        "@typescript-eslint/no-unused-vars": 1,
+        "no-use-before-define": 1,
+        "default-case": 1,
+        "func-style": 1,
+        "no-empty": 1,
+        "no-global-assign": 1,
+        "max-len": [1, {
+            "code": 100,
+            "tabWidth": 2
+        }],
+        "indent": [1, 2],
+        "no-extra-parens": 1,
+        "no-multiple-empty-lines": 1,
+        "quotes": [1, "single"]
+    }
+}

@@ -1,6 +1,6 @@
 const updateQuest = {
-    name: 'updateQuest',
-    query: `CREATE PROCEDURE updateQuest()
+  name: 'updateQuest',
+  query: `CREATE PROCEDURE updateQuest()
     BEGIN
         DECLARE current_chapter INT;
 
@@ -82,8 +82,8 @@ const updateQuest = {
 }
 
 const updateQuestRelatedACN = {
-    name: 'updateQuestRelatedACN',
-    query: `CREATE PROCEDURE updateQuestRelatedACN()
+  name: 'updateQuestRelatedACN',
+  query: `CREATE PROCEDURE updateQuestRelatedACN()
     BEGIN
         UPDATE xenoblade2_guide.prerequisitesacns as preACN
         SET preACN.Progress = 1
@@ -105,8 +105,8 @@ const updateQuestRelatedACN = {
 }
 
 const updateUndoQuestCompletion = {
-    name: 'updateUndoQuestCompletion',
-    query: `CREATE PROCEDURE updateUndoQuestCompletion(
+  name: 'updateUndoQuestCompletion',
+  query: `CREATE PROCEDURE updateUndoQuestCompletion(
         IN questId INT
     )
     BEGIN
@@ -126,8 +126,8 @@ const updateUndoQuestCompletion = {
 }
 
 const updateClearQuestCompletion = {
-    name: 'updateClearQuestCompletion',
-    query: `CREATE PROCEDURE updateClearQuestCompletion(
+  name: 'updateClearQuestCompletion',
+  query: `CREATE PROCEDURE updateClearQuestCompletion(
         IN questId INT
     )
     BEGIN
@@ -147,8 +147,8 @@ const updateClearQuestCompletion = {
 
 
 const updateCompleteQuestManually = {
-    name: 'updateCompleteQuestManually',
-    query: `CREATE PROCEDURE updateCompleteQuestManually(
+  name: 'updateCompleteQuestManually',
+  query: `CREATE PROCEDURE updateCompleteQuestManually(
         IN questId INT
     )
     BEGIN
@@ -168,11 +168,11 @@ const updateCompleteQuestManually = {
 
 
 const update_quest_procedures = [
-    updateQuest,
-    updateQuestRelatedACN,
-    updateUndoQuestCompletion,
-    updateClearQuestCompletion,
-    updateCompleteQuestManually
+  updateQuest,
+  updateQuestRelatedACN,
+  updateUndoQuestCompletion,
+  updateClearQuestCompletion,
+  updateCompleteQuestManually
 ]
 
 module.exports = update_quest_procedures
