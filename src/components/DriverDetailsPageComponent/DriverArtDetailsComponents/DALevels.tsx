@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import client from '../../../api-client';
 import UnlockOverlay from '../../UnavailableDataComponents/Overlays/UnlockOverlay';
 import LockOverlay from '../../UnavailableDataComponents/Overlays/LockOverlay';
 import { IDriverArtDetails } from '../../../interfaces';
+import { LoaderContext } from '../../App';
 
 const getDADetails = async (artId:number, setDADetails:(arts:IDriverArtDetails[]) => void) => {
   try {
@@ -43,9 +44,14 @@ const DALevels = (props:IProps) => {
   const [driverArtDetails, setDADetails] = useState([] as IDriverArtDetails[]);
   const [totalSP, setSP] = useState(0);
   const [remainingSP, setRemainingSP] = useState(0);
+  const loaderContext = useContext(LoaderContext);
 
   useEffect(() => {
+    loaderContext.setLoader(loaderContext.loaderState.concat('Fetch driver art details'))
     getDADetails(props.Level1, setDADetails)
+    loaderContext.setLoader(
+      loaderContext.loaderState.filter((state) => state !== 'Fetch driver art details')
+    )
   }, [props.Level1, props.LevelUnlocked]);
 
   useEffect(() => {

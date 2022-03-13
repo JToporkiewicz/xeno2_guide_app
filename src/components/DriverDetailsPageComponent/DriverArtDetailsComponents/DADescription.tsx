@@ -17,7 +17,10 @@ const DADescription = (props:IProps) => {
     <div className="art-description">
       {open ? 
         <>
-          <div onClick={() => toggleCollapse()}>
+          <div
+            onClick={() => toggleCollapse()}
+            className="expended-description-header"
+          >
             <img
               src="/images/helper/Up.svg"
               alt="collapse"

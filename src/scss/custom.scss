@@ -1,9 +1,14 @@
+:root {
+    --main-color: #0056b3;
+    --secondary-color: #007bff;
+}
+
 html, body, #root, .container-fluid, .row{
     height: 100% !important
 }
 
 hr {
-    border-color: #0056b3 !important;
+    border-color: var(--main-color) !important;
 }
 
 input[type="time"]{
@@ -43,10 +48,37 @@ select{
     float: right;
 }
 
+// ------------- loader -------------
+
+.loading-overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+}
+
+.loading-background {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: var(--main-color);
+    opacity: 0.5;
+}
+
+.loading-text {
+    height:100%;
+    width:100%;
+    margin: 40% auto;
+    position:absolute;
+    text-align:center;
+    font-size: x-large;
+    font-weight: bold;
+}
+
 // ------------- navigation -------------
 
 .navigation-button {
-    padding: 5px;
+    padding: 5px 0px 5px 5px;
     font-size: x-large;
     color:white;
 
@@ -57,41 +89,46 @@ select{
 }
 
 .navigation-button:hover {
-    color: #007bff !important;
+    color: var(--secondary-color) !important;
     text-decoration: none;
 }
 
 .navigation-button-separator {
-    border-color: #007bff !important;
+    border-color: var(--secondary-color) !important;
 }
 
 .closed-navigation {
-    border-right-color: #007bff;
+    border-right-color: var(--secondary-color);
     border-right-style: solid;
     border-right-width: thin;
     height: auto;
     width:5.5%;
     padding: inherit !important;
     text-align: left;
-    background-color: #0056b3;
+    background-color: var(--main-color);
 }
 
 .open-navigation {
-    border-right-color: #007bff;
+    border-right-color: var(--secondary-color);
     border-right-style: solid;
     border-right-width: thin;
     height: auto;
     width:20%;
     padding: inherit !important;
     text-align: left;
-    background-color: #0056b3;
+    background-color: var(--main-color);
+}
+
+.sticky-navigation {
+    position:fixed;
+    max-width:188px;
 }
 
 // ------------- collapsible component -------------
 
 .collapsible-container {
     border-style: solid;
-    border-color:#0056b3;
+    border-color:var(--main-color);
     border-radius: 10px;
     border-width: medium;
     margin-top: 15px;
@@ -101,7 +138,7 @@ select{
 .art-details-panel {
     border-bottom-style: solid;
     border-width: medium;
-    border-color: #0056b3;;
+    border-color: var(--main-color);;
     margin: 0px -15px 10px -15px;
     padding: 0px 15px 10px 15px;
 }
@@ -109,7 +146,7 @@ select{
 .image-panel {
     border-style: solid;
     border-width: medium;
-    border-color: #0056b3;
+    border-color: var(--main-color);
     border-radius: 10px;
     margin-bottom: 15px;
     position: relative;
@@ -146,7 +183,7 @@ select{
 .container-header{
     padding: 15px;
     padding-top: 5px;
-    background-color:#0056b3;
+    background-color:var(--main-color);
     margin: 0px;
     color:white;
     cursor: pointer;
@@ -156,14 +193,14 @@ select{
     background: aliceblue;
     padding: 5px;
     margin: 0px;
-    color:#0056b3;
+    color:var(--main-color);
     cursor: pointer;
 }
 
 .image-name {
     border-top-style: solid;
     border-top-width: thin;
-    border-top-color: #0056b3;
+    border-top-color: var(--main-color);
     text-align: center;
     display: block;
 }
@@ -184,7 +221,7 @@ select{
 .small-image {
     border-style: solid;
     border-width: thin;
-    border-color: white;
+    border-color: var(--main-color);
     border-radius: 5px;
     height: 7vw;
     max-width: 60px;
@@ -245,7 +282,7 @@ select{
     margin: 10px;
     border-style: solid;
     border-width: medium;
-    border-color: #0056b3;
+    border-color: var(--main-color);
     border-radius: 10px;
 }
 
@@ -270,7 +307,7 @@ select{
     display: block;
     border-style: solid;
     border-width: thin;
-    border-color: #0056b3;
+    border-color: var(--main-color);
     border-radius: 10px;
     float: left;
     margin-right: 3vw;
@@ -336,6 +373,10 @@ select{
     text-align: center;
 }
 
+.expended-description-header {
+    border-bottom: skyblue solid 1px;
+}
+
 // ------------- lock-unlock component -------------
 
 .centered-lock {
@@ -371,7 +412,7 @@ select{
 }
 
 .peek-unlock-button{
-    border: #0056b3;
+    border: var(--main-color);
     border-radius: 10px;
     border-style: solid;
     height: 30%;
@@ -433,8 +474,8 @@ select{
 }
 
 .button-color{
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: var(--main-color);
+    border-color: var(--main-color);
     color: white;
     margin-left: 40%;
     margin-top: 10px;

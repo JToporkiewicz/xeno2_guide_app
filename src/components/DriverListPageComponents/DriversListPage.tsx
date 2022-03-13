@@ -1,10 +1,11 @@
-import { useState, useEffect, ReactChild } from 'react';
+import { useState, useEffect, ReactChild, useContext } from 'react';
 import client from '../../api-client';
 import CharacterPanelContainer from '../CommonComponents/Containers/CharacterPanelsContainer';
 import ClosedLinkedImagePanel from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import UnavailableImagePanel from '../UnavailableDataComponents/Images/UnavailableImagePanel';
 import { defaultStoryProgress, IDriver, IStoryProgress } from '../../interfaces';
+import { LoaderContext } from '../App';
 
 interface IShownDriver extends IDriver {
     Show?:boolean
@@ -35,14 +36,20 @@ const DriversListPage = () => {
   const [drivers, setDrivers] = useState([] as IShownDriver[])
   const [progress, setProgress] = useState(defaultStoryProgress)
   const [driversList, setDriverList] = useState([] as ReactChild[]);
+  const loaderContext = useContext(LoaderContext);
 
   useEffect(() => {
+    loaderContext.setLoader(loaderContext.loaderState.concat('Fetch driver list'));
     fetchDrivers(setDrivers);
     fetchProgress(setProgress);
+    loaderContext.setLoader(
+      loaderContext.loaderState.filter((state) => state !== 'Fetch driver list')
+    )
   }, [])
 
   useEffect(() => {
     if(drivers !== undefined && progress !== undefined){
+      loaderContext.setLoader(loaderContext.loaderState.concat('Update driver list'));
 
       const updateShow = (driver:string) => {
         setDrivers(drivers.map((d) => d.Name === driver ? {...d, 'Show': !d.Show} : d))
@@ -85,6 +92,10 @@ const DriversListPage = () => {
               key={driver.Name}
             />
         )
+      )
+
+      loaderContext.setLoader(
+        loaderContext.loaderState.filter((state) => state !== 'Update driver list')
       )
     }
   }, [drivers, progress])

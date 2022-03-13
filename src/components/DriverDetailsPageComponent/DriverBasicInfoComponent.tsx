@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import client from '../../api-client';
 import { Link } from 'react-router-dom';
 import CollapsibleComponent from '../CommonComponents/Containers/CollapsibleComponent';
 import { IDriver, IItem, IItemType } from '../../interfaces';
+import { LoaderContext } from '../App';
 
 const fetchTwoData = async (
   setDetails:(detail1:any[]) => void,
@@ -30,6 +31,8 @@ const DriverBasicInfoComponent = (props:IProps) => {
   const [ideas, setIdeas] = useState({});
   const [dataLoaded, setLoadingStatus] = useState(false);
 
+  const loaderContext = useContext(LoaderContext);
+
   useEffect(() => {
     if(
       driverDetails.FavItem1 &&
@@ -37,6 +40,7 @@ const DriverBasicInfoComponent = (props:IProps) => {
       driverDetails.IdeaStats &&
       driverDetails.FavItemType1 &&
       driverDetails.FavItemType2) {
+      loaderContext.setLoader(loaderContext.loaderState.concat(['Fetch items']))
       fetchTwoData(
         setItems,
         driverDetails.FavItem1,
@@ -49,6 +53,9 @@ const DriverBasicInfoComponent = (props:IProps) => {
         'itemType'
       );
       setIdeas(JSON.parse(driverDetails.IdeaStats));
+      loaderContext.setLoader(
+        loaderContext.loaderState.filter((entry:string) => entry !== 'Fetch items')
+      )
     }
   }, [
     driverDetails.FavItem1,
@@ -68,7 +75,7 @@ const DriverBasicInfoComponent = (props:IProps) => {
 
   return (
     <CollapsibleComponent header={'Basic information'}>
-      {dataLoaded ? 
+      {dataLoaded ?
         <>
           <img
             src={`/images/driver/${driverDetails.Name.replace(/\s+/g, '')}.jpeg`}
@@ -97,10 +104,10 @@ const DriverBasicInfoComponent = (props:IProps) => {
         </>
         :
         <>
-            Chapter unlocked: unknown<br />
-            Favourite Items: unknown<br />
-            Favourite Item Types: unknown<br />
-            Starting idea stats: unknown
+          Chapter unlocked: unknown<br />
+          Favourite Items: unknown<br />
+          Favourite Item Types: unknown<br />
+          Starting idea stats: unknown
         </>
       }           
     </CollapsibleComponent>

@@ -1,11 +1,15 @@
-import { useState, useEffect, ReactChild } from 'react';
+import { useState, useEffect, ReactChild, useContext } from 'react';
 import client from '../../api-client';
 import { IDriverArts } from '../../interfaces';
+import { LoaderContext } from '../App';
 import CollapsibleComponent from '../CommonComponents/Containers/CollapsibleComponent';
 import ClosedUnlinkedImagePanel from '../CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
 import DADetails from './DriverArtDetailsComponents/DADetails';
 
-const getDriverArts = async (setArts:(arts:IDriverArts[]) => void, driverId:number) => {
+const getDriverArts = async (
+  setArts:(arts:IDriverArts[]) => void,
+  driverId:number
+) => {
   try {
     const response = await client.resource('driverArt').find({driver: driverId});
     setArts(response);
@@ -15,7 +19,10 @@ const getDriverArts = async (setArts:(arts:IDriverArts[]) => void, driverId:numb
   }
 };
 
-const updateDetail = async (artId:number, newLevel:number) => {
+const updateDetail = async (
+  artId:number,
+  newLevel:number
+) => {
   try {
     await client.resource('driverArt').update(artId, {LevelUnlocked: newLevel})
   }
@@ -33,10 +40,15 @@ const DriverArtsListComponent = (props:IProps) => {
   const [driverArts, setArts] = useState([] as IDriverArts[]);
   const [uniqueWeapons, setUniqueWeapons] = useState([] as string[]);
   const [focused, setFocused] = useState('');
+  const loaderContext = useContext(LoaderContext);
 
   useEffect(() => {
     if(props.driverId){
+      loaderContext.setLoader(loaderContext.loaderState.concat(['Fetching driver arts']))
       getDriverArts(setArts, props.driverId);
+      loaderContext.setLoader(
+        loaderContext.loaderState.filter((entry:string) => entry !== 'Fetching driver arts')
+      )
     }
   }, [props.driverId]);
 
@@ -49,8 +61,12 @@ const DriverArtsListComponent = (props:IProps) => {
   }, [driverArts])
 
   const updateArtLevel = (artId:number, newLevel:number) => {
+    loaderContext.setLoader(loaderContext.loaderState.concat(['Updating driver arts']))
     updateDetail(artId, newLevel)
     setTimeout(()=>getDriverArts(setArts, props.driverId), 100);
+    loaderContext.setLoader(
+      loaderContext.loaderState.filter((entry:string) => entry !== 'Updating driver arts')
+    )
   }
 
   const focusArt = (art = '') => {

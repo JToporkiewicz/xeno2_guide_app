@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import client from '../../api-client';
 import { defaultStoryProgress, IStoryProgress } from '../../interfaces';
+import { LoaderContext } from '../App';
 import CollapsibleComponent from '../CommonComponents/Containers/CollapsibleComponent';
 import Checkbox from './SettingsComponents/Checkbox';
 import IncrementDecrementNumber from './SettingsComponents/IncrementDecrementNumber';
 
-const fetchProgress = async (setSettings:(story:IStoryProgress) => void) => {
+const fetchProgress = async (
+  setSettings:(story:IStoryProgress) => void
+) => {
   try {
     const response = await client.resource('storyProgress').get(1);
     setSettings(response);
@@ -17,9 +20,14 @@ const fetchProgress = async (setSettings:(story:IStoryProgress) => void) => {
 
 const SettingsForm = () => {
   const [settings, setSettings] = useState(defaultStoryProgress)
+  const loaderContext = useContext(LoaderContext);
 
   useEffect(() => {
+    loaderContext.setLoader(loaderContext.loaderState.concat(['Fetching story progress']))
     fetchProgress(setSettings);
+    loaderContext.setLoader(
+      loaderContext.loaderState.filter((entry:string) => entry !== 'Fetching story progress')
+    )
   }, [])
 
   useEffect(() => {
@@ -43,10 +51,14 @@ const SettingsForm = () => {
   }
 
   const saveChanges = () => {
+    loaderContext.setLoader(loaderContext.loaderState.concat(['Saving story progress']))
     document.cookie = `Chapter = ${settings.Chapter}`;
     document.cookie = `NewGamePlus =${settings.NewGamePlus}`;
     document.cookie = `DLCUnlocked =${settings.DLCUnlocked}`;
     client.resource('storyProgress').update(1, settings);
+    loaderContext.setLoader(
+      loaderContext.loaderState.filter((entry) => entry !== 'Saving story progress')
+    )
   }
 
   return(

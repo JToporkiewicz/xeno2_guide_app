@@ -53,22 +53,24 @@ const Navigation = (props:IProps) => {
   ]
   return (
     <div className={props.openNavigation ? 'open-navigation' : 'closed-navigation'}>
-      <div
-        onClick={() => props.toggleNavigation()}
-      >
-        <img
-          src={`/images/helper/${props.openNavigation ? 'Left' : 'Right'}.svg`}
+      <div className="sticky-navigation">
+        <div
           onClick={() => props.toggleNavigation()}
-          className="navigation-toggle"
-        />        
-        <hr className="navigation-button-separator"/>
-      </div>
+        >
+          <img
+            src={`/images/helper/${props.openNavigation ? 'Left' : 'Right'}.svg`}
+            onClick={() => props.toggleNavigation()}
+            className="navigation-toggle"
+          />        
+          <hr className="navigation-button-separator"/>
+        </div>
 
-      {navigationButtons.map((button:{link:string, title:string}) =>
-        props.openNavigation ?
-          <OpenNavigationButton link={button.link} title={button.title} />
-          : <ClosedNavigationButton link={button.link} title={button.title} />
-      )}
+        {navigationButtons.map((button:{link:string, title:string}) =>
+          props.openNavigation ?
+            <OpenNavigationButton link={button.link} title={button.title} />
+            : <ClosedNavigationButton link={button.link} title={button.title} />
+        )}
+      </div>
     </div>
   );
 }
