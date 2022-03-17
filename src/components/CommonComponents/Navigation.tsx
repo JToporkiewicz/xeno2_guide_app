@@ -67,8 +67,8 @@ const Navigation = (props:IProps) => {
 
         {navigationButtons.map((button:{link:string, title:string}) =>
           props.openNavigation ?
-            <OpenNavigationButton link={button.link} title={button.title} />
-            : <ClosedNavigationButton link={button.link} title={button.title} />
+            <OpenNavigationButton link={button.link} title={button.title} key={button.title}/>
+            : <ClosedNavigationButton link={button.link} title={button.title} key={button.title}/>
         )}
       </div>
     </div>

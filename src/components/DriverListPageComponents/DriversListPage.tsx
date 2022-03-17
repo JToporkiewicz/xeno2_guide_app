@@ -36,7 +36,18 @@ const DriversListPage = () => {
   const [drivers, setDrivers] = useState([] as IShownDriver[])
   const [progress, setProgress] = useState(defaultStoryProgress)
   const [driversList, setDriverList] = useState([] as ReactChild[]);
+  const [orderType, setOrderType] = useState('default');
   const loaderContext = useContext(LoaderContext);
+
+  const orderOptions: {[key:string]: keyof IShownDriver} = {
+    default: 'id',
+    alphabetically: 'Name',
+    chapter: 'ChapterUnlocked'
+  }
+  
+  const getOrderTypeColumn = (order: string): keyof IShownDriver => {
+    return orderOptions[order] || orderOptions.default
+  }
 
   useEffect(() => {
     loaderContext.setLoader(loaderContext.loaderState.concat('Fetch driver list'));
@@ -65,46 +76,61 @@ const DriversListPage = () => {
       }
 
       setDriverList(    
-        drivers.map((driver) =>
-          progress.OnlyShowAvailable ?
-            driver.ChapterUnlocked <= progress.Chapter || driver.Show ? 
+        drivers
+          .sort((driverA, driverB) => {
+            const driverAValue = driverA[getOrderTypeColumn(orderType)]
+            const driverBValue = driverB[getOrderTypeColumn(orderType)]
+            if(driverAValue && driverBValue) {
+              return driverAValue < driverBValue ? -1
+                : driverAValue > driverBValue ? 1 : 0
+            }
+            return 0
+          })
+          .map((driver) =>
+            progress.OnlyShowAvailable ?
+              driver.ChapterUnlocked <= progress.Chapter || driver.Show ? 
+                <ClosedLinkedImagePanel
+                  panelType="driver"
+                  name={driver.Name}
+                  id={driver.id}
+                  key={driver.Name}
+                /> :
+                <div className="col-sm-3">
+                  <UnavailableImagePanel
+                    name={driver.Name}
+                    panelType="driver"
+                    id={driver.id}
+                    toggleShow={updateShow.bind(this)}
+                    updateState={updateGameState.bind(this)}
+                    key={driver.Name}
+                  />
+                </div>
+              :
               <ClosedLinkedImagePanel
                 panelType="driver"
                 name={driver.Name}
                 id={driver.id}
                 key={driver.Name}
-              /> :
-              <div className="col-sm-3">
-                <UnavailableImagePanel
-                  name={driver.Name}
-                  panelType="driver"
-                  id={driver.id}
-                  toggleShow={updateShow.bind(this)}
-                  updateState={updateGameState.bind(this)}
-                  key={driver.Name}
-                />
-              </div>
-            : 
-            <ClosedLinkedImagePanel
-              panelType="driver"
-              name={driver.Name}
-              id={driver.id}
-              key={driver.Name}
-            />
-        )
+              />
+          )
       )
 
       loaderContext.setLoader(
         loaderContext.loaderState.filter((state) => state !== 'Update driver list')
       )
     }
-  }, [drivers, progress])
+  }, [drivers, progress, orderType])
 
 
   return(
     <>
       <HeaderContainer title="Drivers"/>
-      <CharacterPanelContainer title="Drivers">
+      <CharacterPanelContainer
+        title="Drivers"
+        orderOptions={Object.keys(orderOptions)}
+        orderType={orderType}
+        setOrderType={setOrderType}
+      >
         {driversList}
       </CharacterPanelContainer>
     </>

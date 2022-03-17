@@ -124,6 +124,61 @@ select{
     max-width:188px;
 }
 
+// ------------- order by -------------
+.order-by {
+    border-style: solid;
+    border-color:var(--secondary-color);
+    border-radius: 5px;
+    border-width: medium;
+    background:var(--main-color);
+    color: white;
+    width: fit-content;
+    padding: 0px 5px;
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.order-title {
+    margin: 0px 10px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.order-by-expand {
+    border-left-color: var(--secondary-color);
+    border-left-style: solid;
+    border-left-width: thin;
+    height: 25px;
+    width: 20px;
+    margin-top: -5px;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+
+.order-by-list {
+    position: absolute;
+    background: var(--main-color);
+    color: white;
+    z-index: 100;
+    border-style: solid;
+    border-color:var(--secondary-color);
+    border-radius: 10px;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-width: thin;
+    margin-top: -5px;
+
+}
+
+.order-by-option {
+    text-align: center;
+    border-style: solid;
+    border-color:var(--main-color);
+    border-width: thin;
+    border-style: solid;
+    padding: 0px 5px;
+}
+
 // ------------- collapsible component -------------
 
 .collapsible-container {
@@ -441,6 +496,9 @@ select{
     background: white;
 }
 
+.small-image-panel:hover .center-buttons {
+    margin-left:0px;
+}
 .small-image-panel:hover .peek-unlock-button, .art-detail-node:hover .peek-unlock-button {
     opacity: 1;
     border-width: medium;
