@@ -99,7 +99,7 @@ const DriverHeart2HeartList = (props:IProps) => {
                 <input
                   type='checkbox'
                   checked={h2h.Viewed}
-                  onClick={() => h2h.Available && 
+                  onChange={() => h2h.Available && 
                     (
                       setHeart2Hearts([
                         ...heart2Hearts.filter((h) => h.id !== h2h.id),
@@ -125,7 +125,7 @@ const DriverHeart2HeartList = (props:IProps) => {
               >
                 {h2h.Available ? 'Available' : 'Unavailable'}
               </div>
-              <Link className="col-sm-8" to={`/heart2Heart/${h2h.id}`}>{h2h.Title}</Link>
+              <Link className="text-list-link" to={`/heart2Heart/${h2h.id}`}>{h2h.Title}</Link>
             </div>
           )}
         </>
