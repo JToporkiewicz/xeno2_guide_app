@@ -87,24 +87,18 @@ const DriversListPage = () => {
             return 0
           })
           .map((driver) =>
-            progress.OnlyShowAvailable ?
-              driver.ChapterUnlocked <= progress.Chapter || driver.Show ? 
-                <ClosedLinkedImagePanel
-                  panelType="driver"
+            progress.OnlyShowAvailable &&
+              (driver.ChapterUnlocked > progress.Chapter && !driver.Show) ? 
+              <div className="col-sm-3">
+                <UnavailableImagePanel
                   name={driver.Name}
+                  panelType="driver"
                   id={driver.id}
+                  toggleShow={updateShow.bind(this)}
+                  updateState={updateGameState.bind(this)}
                   key={driver.Name}
-                /> :
-                <div className="col-sm-3">
-                  <UnavailableImagePanel
-                    name={driver.Name}
-                    panelType="driver"
-                    id={driver.id}
-                    toggleShow={updateShow.bind(this)}
-                    updateState={updateGameState.bind(this)}
-                    key={driver.Name}
-                  />
-                </div>
+                />
+              </div>
               :
               <ClosedLinkedImagePanel
                 panelType="driver"
