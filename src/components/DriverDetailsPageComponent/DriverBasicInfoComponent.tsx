@@ -76,32 +76,37 @@ const DriverBasicInfoComponent = (props:IProps) => {
   return (
     <CollapsibleComponent header={'Basic information'}>
       {dataLoaded ?
-        <>
-          <img
-            src={`/images/driver/${driverDetails.Name.replace(/\s+/g, '')}.jpeg`}
-            alt={driverDetails.Name}
-            className="basic-info-image"/>
+        <div className="row">
+          <div className="col-sm-4">
+            <img
+              src={`/images/driver/${driverDetails.Name.replace(/\s+/g, '')}.jpeg`}
+              alt={driverDetails.Name}
+              className="basic-info-image"/>            
+          </div>
+          <div>
             Chapter unlocked: {driverDetails.ChapterUnlocked}
-          <br />
-          <>Favourite Items: 
-            {' '}<Link to={`/item/${itemDetails[0].id}`}>{itemDetails[0].Name}</Link>, 
-            {' '}<Link to={`/item/${itemDetails[1].id}`}>{itemDetails[1].Name}</Link>
-          </>
-          <br />
-          <>Favourite Item Types: 
-            {' '}
-            <Link to={`/itemType/${itemTypeDetails[0].id}`}>{itemTypeDetails[0].ItemType}</Link>, 
-            {' '}
-            <Link to={`/itemType/${itemTypeDetails[1].id}`}>{itemTypeDetails[1].ItemType}</Link>
-          </>
-          <br />
-            Starting idea stats: 
-          <ul>
-            {Object.entries(ideas).map(([idea, level]) => 
-              <li key={idea}>{idea}: {level}</li>
-            )}
-          </ul>
-        </>
+            <br />
+            <>Favourite Items: 
+              {' '}<Link to={`/item/${itemDetails[0].id}`}>{itemDetails[0].Name}</Link>, 
+              {' '}<Link to={`/item/${itemDetails[1].id}`}>{itemDetails[1].Name}</Link>
+            </>
+            <br />
+            <>Favourite Item Types: 
+              {' '}
+              <Link to={`/itemType/${itemTypeDetails[0].id}`}>{itemTypeDetails[0].ItemType}</Link>, 
+              {' '}
+              <Link to={`/itemType/${itemTypeDetails[1].id}`}>{itemTypeDetails[1].ItemType}</Link>
+            </>
+            <br />
+              Starting idea stats: 
+            <ul>
+              {Object.entries(ideas).map(([idea, level]) => 
+                <li key={idea}>{idea}: {level}</li>
+              )}
+            </ul>
+
+          </div>
+        </div>
         :
         <>
           Chapter unlocked: unknown<br />
