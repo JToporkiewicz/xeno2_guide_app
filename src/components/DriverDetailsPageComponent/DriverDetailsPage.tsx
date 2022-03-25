@@ -5,7 +5,7 @@ import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import DriverArtsListComponent from './DriverArtsListComponent';
 import { defaultDriver, IDriver } from '../../interfaces';
 import { LoaderContext } from '../App';
-import DriverHeart2HeartList from './DriverHeart2HeartList';
+import Heart2HeartList from '../Heart2HeartsPage/Heart2HeartList';
 
 const fetchDriverDetails = async (
   setDetails:(driver:IDriver) => void,
@@ -43,7 +43,10 @@ const DriverDetailsPage = (props:IProps) => {
       <HeaderContainer title={driverDetails.Name} />
       <DriverBasicInfoComponent driverDetails={driverDetails} />
       <DriverArtsListComponent driverId={driverId} />
-      <DriverHeart2HeartList driverId={driverId} driverName={driverDetails.Name} />
+      <Heart2HeartList
+        characterName={driverDetails.Name}
+        parentPage={'driver'}
+      />
     </>
   )
 

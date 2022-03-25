@@ -19,11 +19,11 @@ const getHeart2Hearts = async (
 };
 
 interface IProps {
-  driverId: number;
-  driverName: string;
+  parentPage: string;
+  characterName?: string;
 }
 
-const DriverHeart2HeartList = (props:IProps) => {
+const Heart2HeartList = (props:IProps) => {
   const [heart2Hearts, setHeart2Hearts] = useState([] as IHeart2Heart[]);
   const loaderContext = useContext(LoaderContext);
   const [orderType, setOrderType] = useState('default');
@@ -31,14 +31,14 @@ const DriverHeart2HeartList = (props:IProps) => {
   const toUpdate = useRef([] as IHeart2Heart[]);
 
   useEffect(() => {
-    if(props.driverId){
+    if(props.parentPage){
       loaderContext.setLoader(loaderContext.loaderState.concat(['Fetching Heart 2 Hearts']));
       getHeart2Hearts(setHeart2Hearts);
       loaderContext.setLoader(
         loaderContext.loaderState.filter((entry:string) => entry !== 'Fetching Heart 2 Hearts')
       )
     }
-  }, [props.driverId]);
+  }, [props.parentPage]);
 
   useEffect(() => {
     return () => {
@@ -75,15 +75,17 @@ const DriverHeart2HeartList = (props:IProps) => {
             chosenOrder={orderType}
             changeOrder={setOrderType}
           />
-          Heart 2 hearts in which {props.driverName} participates:
+          {props.characterName && `Heart 2 hearts in which ${props.characterName} participates:`}
           <div className="row">
             <b className="col-sm-1 order-title">Viewed</b>
             <b className="col-sm-2 order-title">Status</b>
             <b className="order-title">Title</b>
           </div>
-          {heart2Hearts.filter((h2h:IHeart2Heart) =>
-            h2h.Who.includes(props.driverName) || h2h.Who.includes('\'s Driver')
-          ).sort((h2hA, h2hB) => {
+          {heart2Hearts.filter((h2h:IHeart2Heart) => {
+            if (!props.characterName) return true
+            return h2h.Who.includes(props.characterName) ||
+              h2h.Who.includes('\'s Driver') && props.parentPage === 'driver'
+          }).sort((h2hA, h2hB) => {
             const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
             const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
             if(h2hAValue !== undefined && h2hBValue !== undefined) {
@@ -134,4 +136,4 @@ const DriverHeart2HeartList = (props:IProps) => {
   )
 };
 
-export default DriverHeart2HeartList;
+export default Heart2HeartList;
