@@ -44,13 +44,13 @@ const DALevels = (props:IProps) => {
   const [driverArtDetails, setDADetails] = useState([] as IDriverArtDetails[]);
   const [totalSP, setSP] = useState(0);
   const [remainingSP, setRemainingSP] = useState(0);
-  const loaderContext = useContext(LoaderContext);
+  const {loaderState, setLoader} = useContext(LoaderContext);
 
   useEffect(() => {
-    loaderContext.setLoader(loaderContext.loaderState.concat('Fetch driver art details'))
+    setLoader(loaderState.concat('Fetch driver art details'))
     getDADetails(props.Level1, setDADetails)
-    loaderContext.setLoader(
-      loaderContext.loaderState.filter((state) => state !== 'Fetch driver art details')
+    setLoader(
+      loaderState.filter((state) => state !== 'Fetch driver art details')
     )
   }, [props.Level1, props.LevelUnlocked]);
 

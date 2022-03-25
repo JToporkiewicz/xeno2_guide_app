@@ -1,8 +1,8 @@
 import { useState, useEffect, ReactChild, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import client from '../../../api-client';
-import { defaultStoryProgress, IBlade, IStoryProgress } from '../../../interfaces';
-import { LoaderContext } from '../../App';
+import { IBlade } from '../../../interfaces';
+import { LoaderContext, ProgressContext } from '../../App';
 import SmallUnavailableImagePanel
   from '../../UnavailableDataComponents/Images/SmallUnavailableImagePanel';
 
@@ -23,16 +23,6 @@ const findBladesByWeapon = async (
   }
 };
 
-const fetchProgress = async (setSettings:(value:IStoryProgress) => void) => {
-  try {
-    const response = await client.resource('storyProgress').get(1);
-    setSettings(response);
-  }
-  catch(err) {
-    console.log(`Error: ${err}`);
-  }
-};
-
 interface IProps {
   weapon:string,
   clearArt:() => void
@@ -40,23 +30,22 @@ interface IProps {
 
 const DADetailsHeader = (props:IProps) => {
   const [blades, setBlades] = useState([] as IShowingBlades[]);
-  const [progress, setProgress] = useState(defaultStoryProgress);
   const [bladesList, setBladeList] = useState([] as ReactChild[]);
-  const loaderContext = useContext(LoaderContext);
+  const {loaderState, setLoader} = useContext(LoaderContext);
+  const progressState = useContext(ProgressContext).progressState;
 
   useEffect(() => {
-    loaderContext.setLoader(loaderContext.loaderState.concat(['Fetch blades list']));
+    setLoader(loaderState.concat(['Fetch blades list']));
     findBladesByWeapon(props.weapon, setBlades);
-    fetchProgress(setProgress);
-    loaderContext.setLoader(
-      loaderContext.loaderState.filter((state) => state !== 'Fetch blades list')
+    setLoader(
+      loaderState.filter((state) => state !== 'Fetch blades list')
     )
   }, [props.weapon]);
 
   useEffect(() => {
-    if(blades !== undefined && progress !== undefined){
+    if(blades !== undefined){
 
-      loaderContext.setLoader(loaderContext.loaderState.concat(['Update art details']));
+      setLoader(loaderState.concat(['Update art details']));
       const updateShow = (blade:string) => {
         setBlades(blades.map((b) => b.Name === blade ? {...b, 'Show': !b.Show} : b))
       }
@@ -67,7 +56,7 @@ const DADetailsHeader = (props:IProps) => {
 
       setBladeList(    
         blades.map((blade:IShowingBlades) =>
-          !progress.OnlyShowAvailable || 
+          !progressState.OnlyShowAvailable || 
                     (blade.Available || blade.Show) ? 
             <Link
               to={`/blade/${blade.id}`}
@@ -93,11 +82,11 @@ const DADetailsHeader = (props:IProps) => {
             />
         )
       )
-      loaderContext.setLoader(
-        loaderContext.loaderState.filter((state) => state !== 'Update art details')
+      setLoader(
+        loaderState.filter((state) => state !== 'Update art details')
       )
     }
-  }, [blades, progress])
+  }, [blades])
 
   return(
     <div className="art-details-header">

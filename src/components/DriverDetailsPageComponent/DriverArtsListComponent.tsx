@@ -40,14 +40,14 @@ const DriverArtsListComponent = (props:IProps) => {
   const [driverArts, setArts] = useState([] as IDriverArts[]);
   const [uniqueWeapons, setUniqueWeapons] = useState([] as string[]);
   const [focused, setFocused] = useState('');
-  const loaderContext = useContext(LoaderContext);
+  const {loaderState, setLoader} = useContext(LoaderContext);
 
   useEffect(() => {
     if(props.driverId){
-      loaderContext.setLoader(loaderContext.loaderState.concat(['Fetching driver arts']))
+      setLoader(loaderState.concat(['Fetching driver arts']))
       getDriverArts(setArts, props.driverId);
-      loaderContext.setLoader(
-        loaderContext.loaderState.filter((entry:string) => entry !== 'Fetching driver arts')
+      setLoader(
+        loaderState.filter((entry:string) => entry !== 'Fetching driver arts')
       )
     }
   }, [props.driverId]);
@@ -61,11 +61,11 @@ const DriverArtsListComponent = (props:IProps) => {
   }, [driverArts])
 
   const updateArtLevel = (artId:number, newLevel:number) => {
-    loaderContext.setLoader(loaderContext.loaderState.concat(['Updating driver arts']))
+    setLoader(loaderState.concat(['Updating driver arts']))
     updateDetail(artId, newLevel)
     setTimeout(()=>getDriverArts(setArts, props.driverId), 100);
-    loaderContext.setLoader(
-      loaderContext.loaderState.filter((entry:string) => entry !== 'Updating driver arts')
+    setLoader(
+      loaderState.filter((entry:string) => entry !== 'Updating driver arts')
     )
   }
 

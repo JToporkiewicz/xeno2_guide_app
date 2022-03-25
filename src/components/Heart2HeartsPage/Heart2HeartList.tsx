@@ -25,30 +25,30 @@ interface IProps {
 
 const Heart2HeartList = (props:IProps) => {
   const [heart2Hearts, setHeart2Hearts] = useState([] as IHeart2Heart[]);
-  const loaderContext = useContext(LoaderContext);
   const [orderType, setOrderType] = useState('default');
+  const {loaderState, setLoader} = useContext(LoaderContext);
 
   const toUpdate = useRef([] as IHeart2Heart[]);
 
   useEffect(() => {
     if(props.parentPage){
-      loaderContext.setLoader(loaderContext.loaderState.concat(['Fetching Heart 2 Hearts']));
+      setLoader(loaderState.concat(['Fetching Heart 2 Hearts']));
       getHeart2Hearts(setHeart2Hearts);
-      loaderContext.setLoader(
-        loaderContext.loaderState.filter((entry:string) => entry !== 'Fetching Heart 2 Hearts')
+      setLoader(
+        loaderState.filter((entry:string) => entry !== 'Fetching Heart 2 Hearts')
       )
     }
   }, [props.parentPage]);
 
   useEffect(() => {
     return () => {
-      loaderContext.setLoader(loaderContext.loaderState.concat(['Updating Heart 2 Hearts']));
+      setLoader(loaderState.concat(['Updating Heart 2 Hearts']));
       toUpdate.current.map(async (h2h:IHeart2Heart) => {
         await client.resource('heart2Heart').update(h2h.id, h2h)
 
       })
-      loaderContext.setLoader(
-        loaderContext.loaderState.filter((entry:string) => entry !== 'Updating Heart 2 Hearts')
+      setLoader(
+        loaderState.filter((entry:string) => entry !== 'Updating Heart 2 Hearts')
       )
     } 
   }, [])
@@ -67,7 +67,7 @@ const Heart2HeartList = (props:IProps) => {
 
   return (
     <CollapsibleComponent header={'Heart 2 Hearts'}>
-      {loaderContext.loaderState.includes('Fetching Heart 2 Hearts') || heart2Hearts.length === 0 ?
+      {loaderState.includes('Fetching Heart 2 Hearts') || heart2Hearts.length === 0 ?
         <>No heart 2 hearts found.</>
         : <>
           <OrderBy

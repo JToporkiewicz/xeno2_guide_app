@@ -31,7 +31,7 @@ const DriverBasicInfoComponent = (props:IProps) => {
   const [ideas, setIdeas] = useState({});
   const [dataLoaded, setLoadingStatus] = useState(false);
 
-  const loaderContext = useContext(LoaderContext);
+  const {loaderState, setLoader} = useContext(LoaderContext);
 
   useEffect(() => {
     if(
@@ -40,7 +40,7 @@ const DriverBasicInfoComponent = (props:IProps) => {
       driverDetails.IdeaStats &&
       driverDetails.FavItemType1 &&
       driverDetails.FavItemType2) {
-      loaderContext.setLoader(loaderContext.loaderState.concat(['Fetch items']))
+      setLoader(loaderState.concat(['Fetch items']))
       fetchTwoData(
         setItems,
         driverDetails.FavItem1,
@@ -53,8 +53,8 @@ const DriverBasicInfoComponent = (props:IProps) => {
         'itemType'
       );
       setIdeas(JSON.parse(driverDetails.IdeaStats));
-      loaderContext.setLoader(
-        loaderContext.loaderState.filter((entry:string) => entry !== 'Fetch items')
+      setLoader(
+        loaderState.filter((entry:string) => entry !== 'Fetch items')
       )
     }
   }, [

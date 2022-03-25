@@ -4,8 +4,8 @@ import CharacterPanelContainer from '../CommonComponents/Containers/CharacterPan
 import ClosedLinkedImagePanel from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import UnavailableImagePanel from '../UnavailableDataComponents/Images/UnavailableImagePanel';
-import { defaultStoryProgress, IDriver, IStoryProgress } from '../../interfaces';
-import { LoaderContext } from '../App';
+import { IDriver } from '../../interfaces';
+import { LoaderContext, ProgressContext } from '../App';
 
 interface IShownDriver extends IDriver {
     Show?:boolean
@@ -21,23 +21,13 @@ const fetchDrivers = async (setDrivers:(drivers:IShownDriver[]) => void) => {
   }
 };
 
-const fetchProgress = async (setSettings:(story:IStoryProgress) => void) => {
-  try {
-    const response = await client.resource('storyProgress').get(1);
-    setSettings(response);
-  }
-  catch(err) {
-    console.log(`Error: ${err}`);
-  }
-}
-
 const DriversListPage = () => {
 
   const [drivers, setDrivers] = useState([] as IShownDriver[])
-  const [progress, setProgress] = useState(defaultStoryProgress)
   const [driversList, setDriverList] = useState([] as ReactChild[]);
   const [orderType, setOrderType] = useState('default');
-  const loaderContext = useContext(LoaderContext);
+  const {loaderState, setLoader} = useContext(LoaderContext);
+  const {progressState, setProgress} = useContext(ProgressContext);
 
   const orderOptions: {[key:string]: keyof IShownDriver} = {
     default: 'id',
@@ -50,17 +40,16 @@ const DriversListPage = () => {
   }
 
   useEffect(() => {
-    loaderContext.setLoader(loaderContext.loaderState.concat('Fetch driver list'));
+    setLoader(loaderState.concat('Fetch driver list'));
     fetchDrivers(setDrivers);
-    fetchProgress(setProgress);
-    loaderContext.setLoader(
-      loaderContext.loaderState.filter((state) => state !== 'Fetch driver list')
+    setLoader(
+      loaderState.filter((state) => state !== 'Fetch driver list')
     )
   }, [])
 
   useEffect(() => {
-    if(drivers !== undefined && progress !== undefined){
-      loaderContext.setLoader(loaderContext.loaderState.concat('Update driver list'));
+    if(drivers !== undefined){
+      setLoader(loaderState.concat('Update driver list'));
 
       const updateShow = (driver:string) => {
         setDrivers(drivers.map((d) => d.Name === driver ? {...d, 'Show': !d.Show} : d))
@@ -69,7 +58,7 @@ const DriversListPage = () => {
       const updateGameState = (entryId:number) => {
         const driver = drivers.find(d => d.id === entryId);
         if(driver) {
-          setProgress({...progress,
+          setProgress({...progressState,
             Chapter: driver.ChapterUnlocked})
           client.resource('storyProgress').update(1, {Chapter: driver.ChapterUnlocked})
         }
@@ -87,8 +76,8 @@ const DriversListPage = () => {
             return 0
           })
           .map((driver) =>
-            progress.OnlyShowAvailable &&
-              (driver.ChapterUnlocked > progress.Chapter && !driver.Show) ? 
+            progressState.OnlyShowAvailable &&
+              (driver.ChapterUnlocked > progressState.Chapter && !driver.Show) ? 
               <div className="col-sm-3">
                 <UnavailableImagePanel
                   name={driver.Name}
@@ -109,11 +98,11 @@ const DriversListPage = () => {
           )
       )
 
-      loaderContext.setLoader(
-        loaderContext.loaderState.filter((state) => state !== 'Update driver list')
+      setLoader(
+        loaderState.filter((state) => state !== 'Update driver list')
       )
     }
-  }, [drivers, progress, orderType])
+  }, [drivers, orderType])
 
 
   return(
