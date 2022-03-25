@@ -80,7 +80,7 @@ const DriversListPage = () => {
           .sort((driverA, driverB) => {
             const driverAValue = driverA[getOrderTypeColumn(orderType)]
             const driverBValue = driverB[getOrderTypeColumn(orderType)]
-            if(driverAValue && driverBValue) {
+            if(driverAValue !== undefined && driverBValue !== undefined) {
               return driverAValue < driverBValue ? -1
                 : driverAValue > driverBValue ? 1 : 0
             }

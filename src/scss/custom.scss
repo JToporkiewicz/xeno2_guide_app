@@ -19,6 +19,14 @@ select{
     max-width: 180px;
 }
 
+.hoverPointer {
+    cursor: pointer;
+}
+
+.blockClick {
+    cursor: not-allowed;
+}
+
 .background {
     background:url('./XC2-background.jpeg');
     background-position-x: center;
@@ -126,10 +134,7 @@ select{
 
 // ------------- order by -------------
 .order-by {
-    border-style: solid;
-    border-color:var(--secondary-color);
     border-radius: 5px;
-    border-width: medium;
     background:var(--main-color);
     color: white;
     width: fit-content;
@@ -270,6 +275,22 @@ select{
     height: 180px;
 }
 
+// ------------- text list -------------
+
+.text-list-entry {
+    border-radius: 5px;
+    border-width: medium;
+    border-style: solid;
+    border-color: var(--secondary-color);
+    margin: 5px !important;
+}
+
+.text-list-status {
+    border-right-style: solid;
+    border-right-width: thin;
+    border-right-color: var(--secondary-color);
+}
+
 // ------------- image components -------------
 
 // // ------------- small images (lock) -------------
@@ -305,6 +326,13 @@ select{
     height:20px;
     width:20px;
     margin:0% 45%;
+}
+
+.extra-small-image {
+    height:20px;
+    width:20px;
+    margin:auto;
+    display:block;
 }
 
 // // ------------- medium image (main image) -------------

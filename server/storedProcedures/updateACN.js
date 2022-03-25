@@ -186,7 +186,7 @@ const updateACNUnlocked = {
         SET Unlocked = 1
         WHERE id IN (
             SELECT id
-            FROM xenoblade2_guide._availableACN
+            FROM xenoblade2_guide._completedACN
         )
         OR id NOT IN (
             SELECT preACN.RequiredBy as id
@@ -197,7 +197,7 @@ const updateACNUnlocked = {
         SET Unlocked = 0
         WHERE id NOT IN (
             SELECT id
-            FROM xenoblade2_guide._availableACN
+            FROM xenoblade2_guide._completedACN
         )
         AND id IN (
             SELECT preACN.RequiredBy as id
