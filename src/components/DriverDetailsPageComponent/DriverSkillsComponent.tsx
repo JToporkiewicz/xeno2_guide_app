@@ -113,12 +113,10 @@ const DriverSkillsComponent = (props:IProps) => {
             !nodes.includes(node) && node.id >= driverSkillNodes[0].id + 4)
         )
       } else if(newUnlockedTier1 + newUnlockedTier2 < 5) {
-        console.log(nodes)
         nodes = nodes.concat(
           driverSkillNodes.filter((node:IDriverSkillNode) =>
             !nodes.includes(node) && node.id >= driverSkillNodes[0].id + 9)
         )
-        console.log(nodes)
       }
     }
     setDriverSkillNodes(
@@ -140,7 +138,6 @@ const DriverSkillsComponent = (props:IProps) => {
         node.id >= driverSkillNodes[5].id && node.id < driverSkillNodes[9].id
         && node.Unlocked
       ).length;
-      console.log(`tier 1: ${unlocked1}, tier 2: ${unlocked2}`)
       setUnlockedLevel1(unlocked1);
       setUnlockedLevel2(unlocked2);
       setDriverSkills(driverSkillNodes.filter((_, index) => index < 5).map((_, i) => 
