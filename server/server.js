@@ -23,7 +23,6 @@ const questRouter = require('./routers/questRouter');
 const questStepRouter = require('./routers/questStepRouter');
 const questSubStepRouter = require('./routers/questSubStepRouter');
 const fieldSkillRouter = require('./routers/fieldSkillRouter');
-const driverSkillNodesRouter = require('./routers/driverSkillNodesRouter');
 const monsterRouter = require('./routers/monsterRouter');
 
 const table = require('./storedProcedures');
@@ -49,7 +48,7 @@ app.use('/blade', bladesRouter(db.blade, sequelize))
 app.use('/driver', restRouter(db.driver))
 app.use('/driverArtDetails', restRouter(db.driverArtDetail))
 app.use('/driverArt', restRouter(db.driverArt))
-app.use('/driverSkillNode', driverSkillNodesRouter(db.driverSkillNode, sequelize))
+app.use('/driverSkillNode', restRouter(db.driverSkillNode))
 app.use('/driverSkillTree', restRouter(db.driverSkillTree))
 app.use('/fieldSkill', fieldSkillRouter(db.fieldSkills, sequelize))
 app.use('/heart2Heart', heart2HeartRouter(db.heart2Heart, sequelize))

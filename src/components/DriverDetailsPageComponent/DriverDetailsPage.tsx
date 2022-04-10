@@ -45,9 +45,9 @@ const DriverDetailsPage = (props:IProps) => {
       <HeaderContainer title={driverDetails.Name} />
       <DriverBasicInfoComponent driverDetails={driverDetails} />
       <DriverArtsListComponent driverId={driverId} />
-      <DriverSkillsComponent driverId={driverId} />
+      <DriverSkillsComponent treeId={driverDetails.DriverSkillTree} />
       {(!progressState.OnlyShowAvailable || progressState.NewGamePlus)
-        && <DriverSkillsComponent driverId={driverId} hiddenTree={true} />}
+        && <DriverSkillsComponent treeId={driverDetails.HiddenSkillTree} hiddenTree={true} />}
       <Heart2HeartList
         characterName={driverDetails.Name}
         parentPage={'driver'}

@@ -5,7 +5,6 @@ const updateBlade = require('./updateBlade');
 const updateMM = require('./updateMM');
 const updateQuest = require('./updateQuest');
 const updateFieldSkill = require('./updateFieldSkill')
-const updateDSN = require('./updateDSN');
 const updateQuestStep = require('./updateQuestStep');
 const updateQuestSubStep = require('./updateQuestSubStep');
 
@@ -17,7 +16,6 @@ const updateQueries = [
   updateMM,
   updateQuest,
   updateFieldSkill,
-  updateDSN,
   updateQuestStep,
   updateQuestSubStep
 ]

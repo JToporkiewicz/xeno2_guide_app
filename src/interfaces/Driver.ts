@@ -77,3 +77,22 @@ export interface IDriverSkillTree {
   Tier3Branch4:number,
   Tier3Branch5:number
 }
+
+export const defaultDriverSkillTree = {
+  id:0,
+  Tier1Branch1:0,
+  Tier1Branch2:0,
+  Tier1Branch3:0,
+  Tier1Branch4:0,
+  Tier1Branch5:0,
+  Tier2Branch1:0,
+  Tier2Branch2:0,
+  Tier2Branch3:0,
+  Tier2Branch4:0,
+  Tier2Branch5:0,
+  Tier3Branch1:0,
+  Tier3Branch2:0,
+  Tier3Branch3:0,
+  Tier3Branch4:0,
+  Tier3Branch5:0
+}

@@ -78,14 +78,13 @@ const DriversListPage = () => {
           .map((driver) =>
             progressState.OnlyShowAvailable &&
               (driver.ChapterUnlocked > progressState.Chapter && !driver.Show) ? 
-              <div className="col-sm-3">
+              <div className="col-sm-3" key={driver.Name}>
                 <UnavailableImagePanel
                   name={driver.Name}
                   panelType="driver"
                   id={driver.id}
                   toggleShow={updateShow.bind(this)}
                   updateState={updateGameState.bind(this)}
-                  key={driver.Name}
                 />
               </div>
               :

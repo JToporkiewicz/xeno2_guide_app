@@ -1,6 +1,7 @@
 :root {
-    --main-color: #0056b3;
-    --secondary-color: #007bff;
+    --main-color: rgb(0, 86, 179);
+    --secondary-color: rgb(0, 123, 255);
+    --main-color-o25: rgb(0, 86, 179, 0.25)
 }
 
 html, body, #root, .container-fluid, .row{
@@ -210,6 +211,7 @@ select{
     border-radius: 10px;
     margin-bottom: 15px;
     position: relative;
+    width: 100%;
 }
 
 // // ------------- close-open -------------
@@ -339,6 +341,13 @@ select{
     display:block;
 }
 
+.small-centered-borderless-image {
+    height: 60px;
+    width: auto;
+    margin: auto;
+    display: block;
+}
+
 // // ------------- medium image (main image) -------------
 
 .stretched-sibling-panels {
@@ -464,7 +473,68 @@ select{
     border-bottom: skyblue solid 1px;
 }
 
+// ------------- driver skill component -------------
+
+
+.unlocked {
+    background: var(--main-color-o25);
+}
+
+.unavailable {
+    background: grey;
+    opacity: 0.5;
+    position: absolute;
+    height: 100%;
+    width: inherit;
+    cursor: not-allowed;
+    border-radius: 5px;
+}
+
+.driver-skill-branch-status {
+    text-align: center;
+}
+
+.driver-skill-branch {
+    display: flex;
+    margin: 5px 0px;
+}
+
+.driver-skill-node-container {
+    display: flex;
+    padding: 0px !important;
+}
+
+.driver-skill-node {
+    width: 80%;
+}
+
+.driver-skill-node-details {
+    border-radius: 5px;
+    border-style: solid;
+    border-width: medium;
+    border-color: var(--main-color);
+    padding: 5px;
+    height: 100%;
+}
+
+.driver-skill-node-separator {
+    border-style: solid;
+    border-width: thin;
+    border-color: var(--main-color);
+    margin: auto;
+    height:0px;
+    width:20%;
+}
+
 // ------------- lock-unlock component -------------
+
+.full-width {
+    width:100%
+}
+
+.non-click {
+    cursor: auto;
+}
 
 .centered-lock {
     height: 7vw;
@@ -477,7 +547,7 @@ select{
 .overlay {
     position: absolute;
     height: 100%;
-    width: 100%;
+    width: inherit;
     background: rgb(135, 206, 235, 0);
 }
 

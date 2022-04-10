@@ -81,24 +81,29 @@ const DALevels = (props:IProps) => {
                   ' focused-panel'
                   : ''}`}
                 key={key}>
-                {key !== 0 ? 
-                  <LockOverlay
-                    id={key}
-                    updateGameState={()=>props.updateArtLevel(props.id, key)}
-                  />
-                  : <div/>}
-                <b>Level {key < 5 ? key+1 : '5 Max Affinity'}</b><br/>
-                {`Dmg: ${level.Damage}`}<br/>
-                {level.EffectPotency !== '' ? <>{`Effect: ${level.EffectPotency}`}<br/></> : ''}
-                {`Recharge: ${level.Recharge}`}
+                <div className="full-width">
+                  {key !== 0 ? 
+                    <LockOverlay
+                      id={key}
+                      updateGameState={()=>props.updateArtLevel(props.id, key)}
+                    />
+                    : <div/>}
+                  <b>Level {key < 5 ? key+1 : '5 Max Affinity'}</b><br/>
+                  {`Dmg: ${level.Damage}`}<br/>
+                  {level.EffectPotency !== '' ? <>{`Effect: ${level.EffectPotency}`}<br/></> : ''}
+                  {`Recharge: ${level.Recharge}`}
+                </div>
+                
               </div>
               : <div className="art-detail-node" key={key}>
-                <UnlockOverlay 
-                  id={key+1}
-                  updateGameState={()=>props.updateArtLevel(props.id, key+1)}
-                />
-                <img src="/images/helper/closedLock.png" alt="lock" className="centered-lock"/>
+                <div className="full-width">
+                  <UnlockOverlay 
+                    id={key+1}
+                    updateGameState={()=>props.updateArtLevel(props.id, key+1)}
+                  />
+                  <img src="/images/helper/closedLock.png" alt="lock" className="centered-lock"/>
                             Cost: {level.SP}SP
+                </div>
               </div>
           )
           : <div/>
