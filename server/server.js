@@ -30,7 +30,6 @@ const { sequelize } = require('./models');
 db.sequelize.sync();
 for(var i = 0; i < table.length; i++) {
   for(var j = 0; j < table[i].length; j++){
-    console.log(table[i][j].name);
     db.sequelize.query('DROP PROCEDURE IF EXISTS ' + table[i][j].name)
     db.sequelize.query(table[i][j].query)
   }

@@ -1,5 +1,5 @@
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer'
-import Heart2HeartList from './Heart2HeartList'
+import { Heart2HeartList } from './Heart2HeartList'
 
 const Heart2HeartsPage = () => {
   return (
