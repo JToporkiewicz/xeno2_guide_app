@@ -58,7 +58,7 @@ export const DALevelsView = (props:IOwnProps) => {
           Object.values(driverArtDetails).map((level, key) => 
             key < props.art.levelUnlocked ? 
               <div
-                className={`art-detail-node ${key === props.art.levelUnlocked ?
+                className={`art-detail-node ${key + 1 === props.art.levelUnlocked ?
                   ' focused-panel'
                   : ''}`}
                 key={key}>

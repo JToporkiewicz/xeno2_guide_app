@@ -227,8 +227,7 @@ select{
     height: 25px;
     width: 30px;
     cursor: pointer;
-    margin-top: -5px;
-    margin-right: 5px;
+    margin: auto 5px;
 }
 
 .close-details {
@@ -648,4 +647,46 @@ select{
     color: white;
     margin-left: 40%;
     margin-top: 10px;
+}
+
+// ------------- progress status -------------
+
+.statusProgress {
+    padding: 5px;
+    border: solid thin var(--main-color);
+    border-radius: 5px;
+    margin: 5px 0px;
+    hr {
+        margin: 5px 0px;
+    }
+}
+
+.statusHeader {
+    display: flex;
+}
+
+.subStatus {
+    border-bottom: dashed thin var(--main-color);
+}
+
+.progressHeader {
+    width: 30%
+}
+
+.greyBar {
+    margin: auto 10px;
+    height: 10px;
+    width: 350px;
+    border-radius: 5px;
+    background-color: grey;
+}
+
+.obtained {
+    height: inherit;
+    border-radius: inherit;
+    background-color: var(--main-color);
+}
+
+.detailedProgress {
+    margin: 0px 0px 0px 40px;
 }
