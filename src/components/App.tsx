@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import HomePage from './HomePageComponents/HomePage';
-import { DriversListPage } from './DriverListPageComponents/DriversListPage';
+import { DriversListPage } from './DriverListPage';
 import { Route, Switch } from 'react-router-dom';
 import Navigation from './CommonComponents/Navigation';
 import { DriverDetailsPage } from './DriverDetailsPageComponent/DriverDetailsPage';

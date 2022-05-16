@@ -36,7 +36,7 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
       }
 
       setBladeList(    
-        props.blades.filter((blade) => blade.weapon === props.weapon)
+        props.blades.filter((blade) => blade.weapon === props.weapon && blade.id !== 53)
           .map((blade:IBladeState) =>
             !props.storyProgress.OnlyShowAvailable || 
                     (blade.available || blade.show) ? 

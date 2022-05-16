@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getDrivers, getStoryProgress, getLoaderState } from '../../../redux/selectors';
+import { getDrivers, getStoryProgress, getLoaderState } from '../../redux/selectors';
 
 export default createSelector(
   getDrivers,

@@ -1,10 +1,10 @@
 import { useState, useEffect, ReactChild } from 'react';
-import CharacterPanelContainer from '../../CommonComponents/Containers/CharacterPanelsContainer';
-import { ClosedLinkedImagePanel } from '../../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
-import HeaderContainer from '../../CommonComponents/Containers/HeaderContainer';
-import UnavailableImagePanel from '../../UnavailableDataComponents/Images/UnavailableImagePanel';
-import { IStoryProgress } from '../../../interfaces';
-import { IDriverState, IUpdateShow } from '../../../redux/interfaces/reduxState';
+import CharacterPanelContainer from '../CommonComponents/Containers/CharacterPanelsContainer';
+import { ClosedLinkedImagePanel } from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
+import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
+import UnavailableImagePanel from '../UnavailableDataComponents/Images/UnavailableImagePanel';
+import { IStoryProgress } from '../../interfaces';
+import { IDriverState, IUpdateShow } from '../../redux/interfaces/reduxState';
 
 interface IDispatchProps {
   saveStoryProgress: (payload:IStoryProgress) => void;

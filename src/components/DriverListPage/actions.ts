@@ -2,8 +2,8 @@ import {
   saveStoryProgress,
   showLoader,
   hideLoader
-} from '../../../redux/actions/core';
-import { updateShowDriver } from '../../../redux/actions/drivers';
+} from '../../redux/actions/core';
+import { updateShowDriver } from '../../redux/actions/drivers';
 
 export default {
   saveStoryProgress,
