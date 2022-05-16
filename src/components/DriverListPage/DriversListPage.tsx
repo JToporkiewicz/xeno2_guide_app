@@ -16,7 +16,6 @@ interface IDispatchProps {
 interface IProps {
   drivers: IDriverState[];
   storyProgress: IStoryProgress;
-  loaderState: string[];
 }
 
 export const DriversListPageView = (props:IProps & IDispatchProps) => {

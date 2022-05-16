@@ -129,7 +129,7 @@ export interface IBladeState {
   favItemType2:number,
   unlocked: boolean,
   available: boolean,
-  show:boolean
+  show?:boolean
 }
 
 export interface IQuestState extends IQuest {

@@ -7,6 +7,8 @@ import { DriverDetailsPage } from './DriverDetailsPageComponent/DriverDetailsPag
 import Default from './Default';
 import { Loader } from './CommonComponents/Loader';
 import Heart2HeartsPage from './Heart2HeartsPage/Heart2HeartsPage';
+import { BladeListPage } from './BladeListPage';
+import { BladeDetailsPage } from './BladeDetailsPageComponent/BladeDetailsPage';
 
 const App = () => {
   const [openNavigation, setNavigation] = useState(false);
@@ -28,6 +30,8 @@ const App = () => {
             <Route path="/" exact component={HomePage} />
             <Route path="/driverslist" component={DriversListPage} />
             <Route path="/driver/:slug" component={DriverDetailsPage} />
+            <Route path="/bladeList" component={BladeListPage} />
+            <Route path="/blade/:slug" component={BladeDetailsPage} />
             <Route path="/heart2HeartList" component={Heart2HeartsPage} />
             <Route component={Default} />
           </Switch>

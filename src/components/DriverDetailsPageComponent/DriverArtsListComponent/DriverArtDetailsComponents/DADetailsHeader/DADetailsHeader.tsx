@@ -31,7 +31,7 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
       const updateShow = (id:number) => {
         const bladeDetails = props.blades.find((b) => b.id === id);
         if(bladeDetails) {
-          props.updateShowBlade({id: bladeDetails.id, show: bladeDetails.show});
+          props.updateShowBlade({id: bladeDetails.id, 'show': !bladeDetails.show});
         }
       }
 
