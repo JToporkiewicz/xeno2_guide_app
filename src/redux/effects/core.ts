@@ -1,9 +1,13 @@
 import { AnyAction } from 'redux'
 import { Epic, ofType, combineEpics } from 'redux-observable'
-import { mergeMap, from, of } from 'rxjs'
+import { mergeMap, from, of, concat, switchMap } from 'rxjs'
 import { callWithLoader$ } from '.'
-import { CoreActions, setStoryProgress } from '../actions/core'
+import { CoreActions, fetchStoryProgress, setStoryProgress } from '../actions/core'
 import client from '../../api-client';
+import { fetchAllBlades } from '../actions/blades'
+import { fetchAllDrivers } from '../actions/drivers'
+import { fetchHeart2Hearts } from '../actions/heart2Hearts'
+import { fetchQuests } from '../actions/quests'
 
 const fetchStoryProgressEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -29,7 +33,22 @@ const saveStoryProgressEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
+const resetStateEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(CoreActions.ResetState),
+    switchMap(() =>
+      concat(
+        of(fetchStoryProgress()),
+        of(fetchAllDrivers()),
+        of(fetchAllBlades()),
+        of(fetchHeart2Hearts()),
+        of(fetchQuests())
+      )
+    )
+  )
+
 export const effects = combineEpics(
   fetchStoryProgressEffect,
-  saveStoryProgressEffect
+  saveStoryProgressEffect,
+  resetStateEffect
 )

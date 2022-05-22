@@ -37,12 +37,16 @@ const ClosedNavigationButton = (props:IButtonProps) => {
   )
 }
 
-interface IProps {
+interface IDispatchProps {
+  resetState:() => void
+}
+
+interface IOwnProps {
   toggleNavigation:()=>void,
   openNavigation:boolean
 }
 
-const Navigation = (props:IProps) => {
+export const NavigationView = (props:IOwnProps & IDispatchProps) => {
   const navigationButtons = [
     { link: '/', title: 'Home' },
     { link: '/driversList', title: 'Drivers' },
@@ -70,9 +74,14 @@ const Navigation = (props:IProps) => {
             <OpenNavigationButton link={button.link} title={button.title} key={button.title}/>
             : <ClosedNavigationButton link={button.link} title={button.title} key={button.title}/>
         )}
+        <div className="navigation-buttom">
+          <img
+            src='/images/helper/reset.svg'
+            onClick={() => props.resetState()}
+            className="navigation-image"
+          />
+        </div>
       </div>
     </div>
   );
-}
-
-export default Navigation;
+};

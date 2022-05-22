@@ -3,6 +3,8 @@ import { IStoryProgress } from '../../interfaces';
 import { ISelectedState } from '../interfaces/reduxState';
 
 export enum CoreActions {
+  ResetState = 'RESET_STATE',
+
   ShowLoader = 'SHOW_LOADER',
   HideLoader = 'HIDE_LOADER',
   ResetLoader = 'RESET_LOADER',
@@ -16,6 +18,7 @@ export enum CoreActions {
 }
 
 export type ActionTypes =
+  | IFluxAction<CoreActions.ResetState>
   | IFluxPayloadAction<CoreActions.ShowLoader, string>
   | IFluxPayloadAction<CoreActions.HideLoader, string>
   | IFluxAction<CoreActions.FetchStoryProgress>
@@ -24,6 +27,9 @@ export type ActionTypes =
   | IFluxPayloadAction<CoreActions.SetSelected, ISelectedState>
   | IFluxAction<CoreActions.ClearSelected>;
 
+export const resetState = () => ({
+  type: CoreActions.ResetState
+});
 
 export const showLoader = (payload:string):ActionTypes => ({
   type: CoreActions.ShowLoader,

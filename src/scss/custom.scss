@@ -97,6 +97,12 @@ select{
     }
 }
 
+.navigation-buttom {
+    position: fixed;
+    bottom: 10px;
+    left: 5px;
+}
+
 .navigation-button:hover {
     color: var(--secondary-color) !important;
     text-decoration: none;

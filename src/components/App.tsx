@@ -2,7 +2,7 @@ import { useState } from 'react';
 import HomePage from './HomePageComponents/HomePage';
 import { DriversListPage } from './DriverListPage';
 import { Route, Switch } from 'react-router-dom';
-import Navigation from './CommonComponents/Navigation';
+import { Navigation } from './CommonComponents/Navigation';
 import { DriverDetailsPage } from './DriverDetailsPageComponent/DriverDetailsPage';
 import Default from './Default';
 import { Loader } from './CommonComponents/Loader';
