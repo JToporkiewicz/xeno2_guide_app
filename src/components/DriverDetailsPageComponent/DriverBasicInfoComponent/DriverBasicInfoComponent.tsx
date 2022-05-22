@@ -31,31 +31,36 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
             className="basic-info-image"/>            
         </div>
         <div>
-            Chapter unlocked: {props.driverDetails.chapterUnlocked}
+          <b>Chapter unlocked: </b>{props.driverDetails.chapterUnlocked}
           <br />
-          <>Favourite Items: {
-            props.item1 && props.item2 ? 
-              <>
-                {' '}<Link to={`/item/${props.item1.id}`}>{props.item1.Name}</Link>, 
-                {' '}<Link to={`/item/${props.item2.id}`}>{props.item2.Name}</Link>
-              </>
-              : 'undefined'
-          }
+          <>
+            <b>Favourite Items: </b>
+            {
+              props.item1 && props.item2 ? 
+                <>
+                  {' '}<Link to={`/item/${props.item1.id}`}>{props.item1.Name}</Link>, 
+                  {' '}<Link to={`/item/${props.item2.id}`}>{props.item2.Name}</Link>
+                </>
+                : 'undefined'
+            }
           </>
           <br />
-          <>Favourite Item Types: {
-            props.itemType1 && props.itemType2 ?
-              <>
-                {' '}
-                <Link to={`/itemType/${props.itemType1.id}`}>{props.itemType1.ItemType}</Link>, 
-                {' '}
-                <Link to={`/itemType/${props.itemType2.id}`}>{props.itemType2.ItemType}</Link>
-              </>
-              : 'undefined'
-          }
+          <>
+            <b>Favourite Item Types: </b>
+            {
+              props.itemType1 && props.itemType2 ?
+                <>
+                  {' '}
+                  <Link to={`/itemType/${props.itemType1.id}`}>{props.itemType1.ItemType}</Link>, 
+                  {' '}
+                  <Link to={`/itemType/${props.itemType2.id}`}>{props.itemType2.ItemType}</Link>
+                </>
+                : 'undefined'
+            }
           </>
           <br />
-              Starting idea stats: {
+          <b>Starting idea stats: </b>
+          {
             ideas ? 
               <ul>
                 {Object.entries(ideas).map(([idea, level]) => 

@@ -17,7 +17,7 @@ const fetchItemEffect:Epic<AnyAction, AnyAction> = (action$) =>
 
 const fetchItemTypeEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
-    ofType(ItemActions.FetchItem),
+    ofType(ItemActions.FetchItemType),
     mergeMap((action) => callWithLoader$(
       'Fetching item type details',
       from(client.resource('itemType').get(action.payload))

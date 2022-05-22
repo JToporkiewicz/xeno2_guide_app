@@ -1,3 +1,3 @@
-export enum FieldSkillsActions {
+export enum MonstersActions {
   FetchMonsters = 'FETCH_MONSTERS'
 }

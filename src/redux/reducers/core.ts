@@ -6,7 +6,10 @@ import { CoreActions } from '../actions/core';
 
 const loaderState = createReducer<string[], string>(
   [CoreActions.ShowLoader, (state, payload) => state.concat([payload])],
-  [CoreActions.HideLoader, (state, payload) => state.filter((loader: string) => loader !== payload)]
+  [CoreActions.HideLoader,
+    (state, payload) =>
+      state.filter((loader: string) => loader !== payload)],
+  [CoreActions.ResetLoader, () => []]
 )([]);
 const storyProgress = createReducer<IStoryProgress>(
   [CoreActions.SetStoryProgress, (_:IStoryProgress, storyProgress: IStoryProgress) => storyProgress]

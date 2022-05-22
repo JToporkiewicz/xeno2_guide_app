@@ -1,13 +1,22 @@
 import { createSelector } from 'reselect';
 import { defaultBladeState } from '../../../redux/interfaces/blades';
-import { getBlades, getItems, getItemTypes, getSelected } from '../../../redux/selectors';
+import {
+  getBlades,
+  getHeart2Heart,
+  getItems,
+  getItemTypes,
+  getQuests,
+  getSelected
+} from '../../../redux/selectors';
 
 export default createSelector(
   getBlades,
   getItems,
   getItemTypes,
   getSelected,
-  (blades, items, itemTypes, selected) => {
+  getHeart2Heart,
+  getQuests,
+  (blades, items, itemTypes, selected, heart2Hearts, quests) => {
     const foundBlade = blades.find((blade) => blade.id === selected.id)
     if (foundBlade) {
       return {
@@ -16,6 +25,8 @@ export default createSelector(
         item2: items.find((item) => item.id === foundBlade.favItem2),
         itemType1: itemTypes.find((item) => item.id === foundBlade.favItemType1),
         itemType2: itemTypes.find((item) => item.id === foundBlade.favItemType2),
+        heart2Heart: heart2Hearts.find((h2h) => h2h.id === foundBlade.heart2heartId),
+        quest: quests.find((q) => q.id === foundBlade.bladeQuestId)
       }
     }
     return {

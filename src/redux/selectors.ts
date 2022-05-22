@@ -8,3 +8,4 @@ export const getDrivers = (state:IXenobladeState) => state.drivers;
 export const getHeart2Heart = (state:IXenobladeState) => state.heart2hearts;
 export const getItems = (state:IXenobladeState) => state.items.items;
 export const getItemTypes = (state:IXenobladeState) => state.items.itemTypes;
+export const getQuests = (state:IXenobladeState) => state.quests;

@@ -5,6 +5,7 @@ import { ISelectedState } from '../interfaces/reduxState';
 export enum CoreActions {
   ShowLoader = 'SHOW_LOADER',
   HideLoader = 'HIDE_LOADER',
+  ResetLoader = 'RESET_LOADER',
 
   FetchStoryProgress = 'FETCH_STORY_PROGRESS',
   SetStoryProgress = 'SET_STORY_PROGRESS',
@@ -32,6 +33,10 @@ export const showLoader = (payload:string):ActionTypes => ({
 export const hideLoader = (payload:string):ActionTypes => ({
   type: CoreActions.HideLoader,
   payload
+});
+
+export const resetLoader = () => ({
+  type: CoreActions.ResetLoader
 });
   
 export const fetchStoryProgress = ():ActionTypes => ({
