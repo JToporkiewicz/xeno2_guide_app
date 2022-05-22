@@ -75,11 +75,21 @@ export const NavigationView = (props:IOwnProps & IDispatchProps) => {
             : <ClosedNavigationButton link={button.link} title={button.title} key={button.title}/>
         )}
         <div className="navigation-buttom">
-          <img
-            src='/images/helper/reset.svg'
+          <div
+            className="navigation-button"
             onClick={() => props.resetState()}
-            className="navigation-image"
-          />
+          >
+            <img
+              src='/images/helper/reset.svg'
+              className="navigation-image"
+            />
+            {props.openNavigation &&
+              <span className="navigation-button-text">
+                Reset
+              </span>        
+            }
+
+          </div>
         </div>
       </div>
     </div>
