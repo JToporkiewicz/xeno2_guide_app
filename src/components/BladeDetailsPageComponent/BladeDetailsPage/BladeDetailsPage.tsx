@@ -21,7 +21,6 @@ interface IProps {
 
 export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
   useEffect(() => {
-    console.log(props)
     if(props.bladeDetails && !props.item1) {
       props.fetchItem(props.bladeDetails.favItem1);
     }

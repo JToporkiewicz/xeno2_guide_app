@@ -81,9 +81,6 @@ const fetchBladeSkillBranchEffect:Epic<AnyAction, AnyAction> = (action$) =>
           const actions:ActionTypes[] = [];
 
           Object.entries(branch).map((entry) => {
-            if(action.payload.branchId === 8) {
-              console.log(entry)
-            }
             if(!['id','BranchName'].includes(entry[0]) && entry[1] !== null) {
               actions.push(fetchBladeSkillNode({
                 treeId: action.payload.treeId,
