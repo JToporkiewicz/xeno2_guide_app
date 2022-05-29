@@ -1,7 +1,6 @@
 import { ReactChild, useEffect, useRef, useState } from 'react';
 import { IDriverSkillNode } from '../../../interfaces';
 import {
-  IDriverSkillNodeResponse,
   IDriverSkillNodeUpdate
 } from '../../../redux/interfaces/drivers';
 import { ISkillTreeState } from '../../../redux/interfaces/reduxState';
@@ -10,7 +9,7 @@ import DriverSkillTreeBranch from './TreeComponents/DriverSkillTreeBranch';
 import DriverSkillTreeTierStatus from './TreeComponents/DriverSkillTreeTierStatus';
 
 interface IDispatchProps {
-  setDriverSkillNode: (payload:IDriverSkillNodeResponse) => void;
+  setDriverSkillNode: (payload:IDriverSkillNode) => void;
   saveDriverSkillNode: (payload:IDriverSkillNodeUpdate) => void;
 }
 
@@ -76,9 +75,8 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
     }
     const nodesIds = nodes.map((nodeDetails) => nodeDetails.node.id);
     nodes.forEach((nodeDetails) => props.setDriverSkillNode({
-      treeId: props.tree.treeId,
-      branchId: nodeDetails.tier,
-      node: { ...nodeDetails.node, Unlocked: unlock}
+      ...nodeDetails.node,
+      Unlocked: unlock
     }))
     toUpdate.current = toUpdate.current.filter((node) => !nodesIds.includes(node.id))
       .concat(nodes.map((nodeDetails) => nodeDetails.node))

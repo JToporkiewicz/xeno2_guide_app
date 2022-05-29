@@ -9,7 +9,8 @@ import { useEffect } from 'react';
 
 interface IDispatchProps {
   fetchItem: (payload:number) => void,
-  fetchItemType: (payload:number) => void
+  fetchItemType: (payload:number) => void,
+  fetchDriverDetails: (payload: number) => void
 }
 
 interface IProps {
@@ -39,7 +40,11 @@ export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {
   if (props.driverDetails) {
     return (
       <>
-        <HeaderContainer title={props.driverDetails.name} />
+        <HeaderContainer
+          title={props.driverDetails.name}
+          refreshData={props.fetchDriverDetails}
+          refreshDataId={props.driverDetails.id}
+        />
         <DriverBasicInfoComponent
           driverDetails={props.driverDetails}
           item1={props.item1}

@@ -48,9 +48,12 @@ select{
 
 .header {
     text-align: center;
-    background: white;
-    margin: 10vw;
+    background: var(--main-color);
+    color: white;
+    margin: 0px -1% 10px;
     min-width:fit-content;
+    position: relative;
+    padding-bottom: 2px;
 }
 
 .align-right {
@@ -106,6 +109,7 @@ select{
 .navigation-button:hover {
     color: var(--secondary-color) !important;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .navigation-button-separator {
@@ -335,6 +339,18 @@ select{
     margin-right: 10px;
     margin-left: 5px;
     margin-top: -10px;
+}
+
+.refresh-image {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    right: 20px;
+    top: calc(50% - 15px);
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .navigation-toggle {

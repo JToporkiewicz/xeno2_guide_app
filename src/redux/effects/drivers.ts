@@ -3,18 +3,30 @@ import { Epic, ofType, combineEpics } from 'redux-observable'
 import { mergeMap, from, of, concat, EMPTY } from 'rxjs'
 import { callWithLoader$ } from '.'
 import {
+  ActionTypes,
   DriverActions,
+  fetchAllDriverArtLists,
+  fetchAllDriverArtNodes,
+  fetchAllDriverSkillNodes,
+  fetchAllDriverSkillTrees,
   fetchDriverArtList,
   fetchDriverArtNode,
   fetchDriverSkillNodes,
   fetchDriverSkillTree,
-  setDriverArtAllLists,
+  setDriverArtList,
   setDriverArtNode,
   setDriverDetails,
-  setDriverSkillNode
+  setDriverSkillNode,
+  setDriverSkillTree
 } from '../actions/drivers'
 import client from '../../api-client';
-import { IDriver, IDriverArts, IDriverSkillTree } from '../../interfaces'
+import {
+  IDriver,
+  IDriverArtDetails,
+  IDriverArts,
+  IDriverSkillNode,
+  IDriverSkillTree
+} from '../../interfaces'
 
 const fetchAllDriversEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -23,10 +35,37 @@ const fetchAllDriversEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching drivers',
       from(client.resource('driver').find())
         .pipe(mergeMap((drivers:IDriver[]) => concat(
-          of(setDriverDetails(drivers)),
-          of(...drivers.map((driver) => fetchDriverArtList(driver.id))),
-          of(...drivers.map((driver) => fetchDriverSkillTree(driver.DriverSkillTree))),
-          of(...drivers.map((driver) => fetchDriverSkillTree(driver.HiddenSkillTree)))
+          of(...drivers.map((driver) => setDriverDetails(driver))),
+          of(fetchAllDriverArtLists()),
+          of(fetchAllDriverSkillTrees()),
+        )))
+    ))
+  )
+
+const fetchDriverDetailsEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(DriverActions.FetchDriverDetails),
+    mergeMap((action) => callWithLoader$(
+      'Fetching driver',
+      from(client.resource('driver').get(action.payload))
+        .pipe(mergeMap((driver:IDriver) => concat(
+          of(setDriverDetails(driver)),
+          of(fetchDriverArtList(driver.id)),
+          of(fetchDriverSkillTree(driver.DriverSkillTree)),
+          of(fetchDriverSkillTree(driver.HiddenSkillTree))
+        )))
+    ))
+  )
+
+const fetchAllDriverSkillTreesEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(DriverActions.FetchAllDriverSkillTrees),
+    mergeMap(() => callWithLoader$(
+      'Fetching driver skill trees',
+      from(client.resource('driverskilltree').find())
+        .pipe(mergeMap((trees:IDriverSkillTree[]) => concat(
+          of(...trees.map((tree) => setDriverSkillTree(tree))),
+          of(fetchAllDriverSkillNodes())
         )))
     ))
   )
@@ -38,84 +77,31 @@ const fetchDriverSkillTreeEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching driver skill tree - ' + action.payload,
       from(client.resource('driverskilltree').get(action.payload))
         .pipe(
-          mergeMap((tree:IDriverSkillTree) => concat(
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 1,
-              nodeId: tree.Tier1Branch1
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 1,
-              nodeId: tree.Tier1Branch2
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 1,
-              nodeId: tree.Tier1Branch3
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 1,
-              nodeId: tree.Tier1Branch4
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 1,
-              nodeId: tree.Tier1Branch5
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 2,
-              nodeId: tree.Tier2Branch1
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 2,
-              nodeId: tree.Tier2Branch2
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 2,
-              nodeId: tree.Tier2Branch3
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 2,
-              nodeId: tree.Tier2Branch4
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 2,
-              nodeId: tree.Tier2Branch5
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 3,
-              nodeId: tree.Tier3Branch1
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 3,
-              nodeId: tree.Tier3Branch2
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 3,
-              nodeId: tree.Tier3Branch3
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 3,
-              nodeId: tree.Tier3Branch4
-            })),
-            of(fetchDriverSkillNodes({
-              treeId: tree.id,
-              branchId: 3,
-              nodeId: tree.Tier3Branch5
-            })),
-          )),
+          mergeMap((tree:IDriverSkillTree) => {
+            const actions:ActionTypes[] = []
+            Object.entries(tree).map((entry) => {
+              if(entry[0] !== 'id') {
+                actions.push(fetchDriverSkillNodes(entry[1]))
+              }
+            })
+            return concat(
+              of(setDriverSkillTree(tree)),
+              of(...actions)
+            )
+          }),
         )
+    ))
+  )
+
+const fetchAllDriverSkillNodesEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(DriverActions.FetchAllDriverSkillNodes),
+    mergeMap(() => callWithLoader$(
+      'Fetching driver skill nodes',
+      from(client.resource('driverskillnode').find())
+        .pipe(mergeMap((nodes:IDriverSkillNode[]) => concat(
+          of(...nodes.map((node) => setDriverSkillNode(node)))
+        )))
     ))
   )
 
@@ -123,13 +109,9 @@ const fetchDriverSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(DriverActions.FetchDriverSkillNodes),
     mergeMap((action) => callWithLoader$(
-      'Fetching driver skill node - ' + action.payload.nodeId,
-      from(client.resource('driverskillnode').get(action.payload.nodeId))
-        .pipe(mergeMap((node) => of(setDriverSkillNode({
-          treeId: action.payload.treeId,
-          branchId: action.payload.branchId,
-          node
-        }))))
+      'Fetching driver skill node - ' + action.payload,
+      from(client.resource('driverskillnode').get(action.payload))
+        .pipe(mergeMap((node) => of(setDriverSkillNode(node))))
     ))
   )
 
@@ -144,6 +126,19 @@ const saveDriverSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
+const fetchAllDriverArtListsEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(DriverActions.FetchAllDriverArtLists),
+    mergeMap(() => callWithLoader$(
+      'Fetching driver arts',
+      from(client.resource('driverArt').find())
+        .pipe(mergeMap((artLists:IDriverArts[]) => concat(
+          of(...artLists.map((list) => setDriverArtList(list))),
+          of(fetchAllDriverArtNodes())
+        )))
+    ))
+  )
+
 const fetchDriverArtListEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(DriverActions.FetchDriverArtList),
@@ -151,10 +146,7 @@ const fetchDriverArtListEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching driver art list - ' + action.payload,
       from(client.resource('driverArt').find({driver: action.payload}))
         .pipe(mergeMap((artList:IDriverArts[]) => concat(
-          of(setDriverArtAllLists({
-            driverId: action.payload,
-            artList
-          })),
+          of(...artList.map((art) => setDriverArtList(art))),
           of(...artList.map((art) => fetchDriverArtNode({
             artId: art.id,
             artNode: art.Level1,
@@ -194,17 +186,25 @@ const saveDriverArtLevelEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
+const fetchAllDriverArtNodesEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(DriverActions.FetchAllDriverArtNodes),
+    mergeMap(() => callWithLoader$(
+      'Fetching driver art nodes',
+      from(client.resource('driverArtDetails').find())
+        .pipe(mergeMap((nodes:IDriverArtDetails[]) => concat(
+          of(...nodes.map((node) => setDriverArtNode(node)))
+        )))
+    ))
+  )
+
 const fetchDriverArtNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(DriverActions.FetchDriverArtNode),
     mergeMap((action) => callWithLoader$(
       'Fetching driver art node - ' + action.payload.artNode,
       from(client.resource('driverArtDetails').get(action.payload.artNode))
-        .pipe(mergeMap((node) => of(setDriverArtNode({
-          artId: action.payload.artId,
-          artNodeLevel: action.payload.artNodeLevel,
-          artNode: node
-        }))
+        .pipe(mergeMap((node) => of(setDriverArtNode(node))
         ))
     )
     ),
@@ -212,10 +212,15 @@ const fetchDriverArtNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
 
 export const effects = combineEpics(
   fetchAllDriversEffect,
+  fetchDriverDetailsEffect,
+  fetchAllDriverSkillTreesEffect,
   fetchDriverSkillTreeEffect,
+  fetchAllDriverSkillNodesEffect,
   fetchDriverSkillNodeEffect,
   saveDriverSkillNodeEffect,
+  fetchAllDriverArtListsEffect,
   fetchDriverArtListEffect,
   saveDriverArtLevelEffect,
+  fetchAllDriverArtNodesEffect,
   fetchDriverArtNodeEffect
 )

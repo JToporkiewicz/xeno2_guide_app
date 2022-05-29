@@ -1,11 +1,19 @@
-import { IDriverArtDetails, IDriverArts, IDriverSkillNode } from '../../interfaces';
+import { IDriverSkillNode } from '../../interfaces';
 import { IDriverArtsState } from './reduxState';
 
 export const defaultSkillTree = {
   treeId: 0,
-  tier1: [],
-  tier2: [],
-  tier3: []
+  tier1: [] as IDriverSkillNode[],
+  tier2: [] as IDriverSkillNode[],
+  tier3: [] as IDriverSkillNode[]
+}
+
+export const defaultSkillNode:IDriverSkillNode = {
+  id: 0,
+  Name:'',
+  Effect:'',
+  SP:0,
+  Unlocked:false
 }
 
 export const defaultDriverState = {
@@ -22,26 +30,29 @@ export const defaultDriverState = {
   ideaStats:''
 }
 
-export interface IDriverSkillNodeRequest {
-  treeId: number,
-  branchId: number,
-  nodeId: number
+export const defaultDriverArt = {
+  id: 0,
+  name: '',
+  weaponType: '',
+  effect: '',
+  target: '',
+  type: '',
+  levelUnlocked: 0,
+  nodes: []
 }
 
-export interface IDriverSkillNodeResponse {
-  treeId: number,
-  branchId: number,
-  node: IDriverSkillNode
+export const defaultDriverArtNode = {
+  id:0,
+  SP:-1,
+  Damage:0,
+  EffectPotency:'',
+  Recharge:'',
+  Level: 0
 }
 
 export interface IDriverSkillNodeUpdate {
   nodeId: number,
   node: IDriverSkillNode
-}
-
-export interface IDriverArtListResponse {
-  driverId:number,
-  artList: IDriverArts[]
 }
 
 export interface IDriverArtOneListUpdate {
@@ -53,12 +64,6 @@ export interface IDriverArtNodeRequest {
   artId: number,
   artNode: number,
   artNodeLevel: number
-}
-
-export interface IDriverArtNodeResponse {
-  artId: number,
-  artNode: IDriverArtDetails
-  artNodeLevel: number,
 }
 
 export interface IDriverArtUpdateData {
