@@ -1,4 +1,18 @@
-import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode } from '../../interfaces'
+export const defaultBladeAffinityNode = {
+  id:0,
+  Name:'',
+  SkillLevel:0,
+  Effect:'',
+  Available:false,
+  Unlocked:false,
+  Tier: 0
+}
+
+export const defaultBladeAffinityBranch = {
+  id: 0,
+  branchName: '',
+  nodes: []
+}
 
 export const defaultBladeAffinityChart = {
   id: 0,
@@ -26,26 +40,3 @@ export const defaultBladeState = {
   available: false,
   show:false
 }
-
-export interface IBladeTreeResponse {
-  treeId: number,
-  tree: IAffinityChart
-};
-
-export interface IBladeBranchRequest {
-  treeId: number,
-  branchId: number
-};
-
-export interface IBladeBranchResponse extends IBladeBranchRequest {
-  branch: IAffinityChartBranch
-};
-
-export interface IBladeNodeRequest extends IBladeBranchRequest {
-  nodeId: number,
-  nodeTier: number
-};
-
-export interface IBladeNodeResponse extends IBladeNodeRequest {
-  node: IAffinityChartNode
-};

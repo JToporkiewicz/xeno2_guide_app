@@ -1,14 +1,18 @@
 import createReducer from 'redux-action-reducer';
-import { IAffinityChartNode, IBlade } from '../../interfaces';
+import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode, IBlade } from '../../interfaces';
 import { BladeActions } from '../actions/blades';
-import { IBladeBranchResponse, IBladeNodeResponse, IBladeTreeResponse } from '../interfaces/blades';
-import { IAffinityChartBranchState, IBladeState, IUpdateShow } from '../interfaces/reduxState';
+import { defaultBladeAffinityBranch, defaultBladeAffinityNode } from '../interfaces/blades';
+import {
+  IAffinityChartBranchState,
+  IAffinityChartNodeState,
+  IBladeState,
+  IUpdateShow
+} from '../interfaces/reduxState';
 
 export const bladesReducer = createReducer<IBladeState[]>(
-  [BladeActions.SetBlade, (bladeState:IBladeState[], blades:IBlade[]) => {
-    const newBladeIds = blades.map((driver:IBlade) => driver.id)
-    return bladeState.filter((old) => !newBladeIds.includes(old.id))
-      .concat(blades.map((blade) => ({
+  [BladeActions.SetBlade, (bladeState:IBladeState[], blade:IBlade) => {
+    return bladeState.filter((old) => old.id !== blade.id)
+      .concat({
         id: blade.id,
         name: blade.Name,
         gender: blade.Gender,
@@ -31,7 +35,7 @@ export const bladesReducer = createReducer<IBladeState[]>(
         unlocked: blade.Unlocked,
         available: blade.Available,
         show: false
-      }))).sort((bladeA, bladeB) =>
+      }).sort((bladeA, bladeB) =>
         bladeA.id < bladeB.id ? -1 : 1
       )
   }],
@@ -49,22 +53,22 @@ export const bladesReducer = createReducer<IBladeState[]>(
         bladeA.id < bladeB.id ? -1 : 1
       )
   }],
-  [BladeActions.SetBladeSkillTree, (bladeState:IBladeState[], bladeChart:IBladeTreeResponse) => {
-    const foundBlade = bladeState.find((blade) => blade.affinityChart.id === bladeChart.treeId);
+  [BladeActions.SetBladeSkillTree, (bladeState:IBladeState[], tree:IAffinityChart) => {
+    const foundBlade = bladeState.find((blade) => blade.affinityChart.id === tree.id);
     if (!foundBlade) {
       return bladeState;
     }
 
     const branches:IAffinityChartBranchState[] = []
     
-    Object.entries(bladeChart.tree).map((value) => {
+    Object.entries(tree).map((value) => {
       if (value[0] !== 'id' && value[1] !== null) branches.push({
         id: parseInt(value[1]),
         branchName: '',
-        nodes: [] as IAffinityChartNode[]
+        nodes: [] as IAffinityChartNodeState[]
       })
     })
-    return bladeState.filter((blade) => blade.affinityChart.id !== bladeChart.treeId)
+    return bladeState.filter((blade) => blade.affinityChart.id !== tree.id)
       .concat([{
         ...foundBlade,
         affinityChart: {
@@ -76,35 +80,46 @@ export const bladesReducer = createReducer<IBladeState[]>(
       )
   }],
   [BladeActions.SetBladeSkillBranch,
-    (bladeState:IBladeState[], bladeBranch:IBladeBranchResponse) => {
-      const foundBlade = bladeState.find((blade) => blade.affinityChart.id === bladeBranch.treeId);
+    (bladeState:IBladeState[], bladeBranch:IAffinityChartBranch) => {
+      let oldBranch:any = undefined;
+      const foundBlade = bladeState
+        .find((blade) => {
+          const result = blade.affinityChart.branches
+            .find((branch) => branch.id === bladeBranch.id);
+          if(result) {
+            oldBranch = result;
+            return true;
+          }
+          return false;          
+        });
       if (!foundBlade) {
         return bladeState;
       }
 
-      const nodes:IAffinityChartNode[] = []
+      const nodes:IAffinityChartNodeState[] = []
     
-      Object.entries(bladeBranch.branch).map((value) => {
+      Object.entries(bladeBranch).map((value) => {
         if (value[0] !== 'id' && value[0] !== 'BranchName' && value[1] !== null) nodes.push({
           id: parseInt(value[1]),
           Name: '',
           SkillLevel: 0,
           Effect: '',
           Available: false,
-          Unlocked: false
+          Unlocked: false,
+          Tier: parseInt(value[0][value[0].length - 1])
         })
       })
 
-      return bladeState.filter((blade) => blade.affinityChart.id !== bladeBranch.treeId)
+      return bladeState.filter((blade) => blade.id !== foundBlade.id)
         .concat([{
           ...foundBlade,
           affinityChart: {
             id: foundBlade.affinityChart.id,
             branches: foundBlade.affinityChart.branches
-              .filter((branch) => branch.id !== bladeBranch.branchId)
+              .filter((branch) => branch.id !== oldBranch.id)
               .concat([{
-                id: bladeBranch.branchId,
-                branchName: bladeBranch.branch.BranchName,
+                id: oldBranch.id,
+                branchName: bladeBranch.BranchName,
                 nodes
               }]).sort((branchA, branchB) =>
                 branchA.id < branchB.id ? -1 : 1
@@ -115,39 +130,53 @@ export const bladesReducer = createReducer<IBladeState[]>(
         )
     }
   ],
-  [BladeActions.SetBladeSkillNode, (bladeState:IBladeState[], bladeNode:IBladeNodeResponse) => {
-    const foundBlade = bladeState.find((blade) => blade.affinityChart.id === bladeNode.treeId);
+  [BladeActions.SetBladeSkillNode, (bladeState:IBladeState[], bladeNode:IAffinityChartNode) => {
+    let foundBlade:any = undefined;
+    let foundBranch:IAffinityChartBranchState = defaultBladeAffinityBranch;
+    let foundNode:IAffinityChartNodeState = defaultBladeAffinityNode;
+    bladeState.map((blade) => {
+      if (!foundBlade) {
+        blade.affinityChart.branches
+          .map((branch) => {
+            if (!foundBlade) {
+              branch.nodes
+                .map((node) => {
+                  if (node.id === bladeNode.id) {
+                    foundBlade = blade;
+                    foundBranch = branch;
+                    foundNode = node;
+                  }
+                })
+            }
+          })
+      }
+    });
     if (!foundBlade) {
       return bladeState;
     }
-    const foundBranch = foundBlade.affinityChart.branches
-      .find((branch) => branch.id === bladeNode.branchId);
 
-    if (!foundBranch) {
-      return bladeState;
-    }
-
-    return bladeState.filter((blade) => blade.affinityChart.id !== bladeNode.treeId)
+    return bladeState.filter((blade) => blade.id !== foundBlade.id)
       .concat([{
         ...foundBlade,
         affinityChart: {
           id: foundBlade.affinityChart.id,
           branches: foundBlade.affinityChart.branches
-            .filter((branch) => branch.id !== bladeNode.branchId)
+            .filter((branch:IAffinityChartBranchState) => branch.id !== foundBranch.id)
             .concat([{
               ...foundBranch,
-              nodes: foundBranch.nodes.filter((node) => node.id !== bladeNode.nodeId)
+              nodes: foundBranch.nodes.filter((node) => node.id !== bladeNode.id)
                 .concat([{
-                  id: bladeNode.nodeId,
-                  Name: bladeNode.node.Name,
-                  SkillLevel: bladeNode.node.SkillLevel,
-                  Effect: bladeNode.node.Effect,
-                  Available: bladeNode.node.Available,
-                  Unlocked: bladeNode.node.Unlocked      
+                  id: bladeNode.id,
+                  Name: bladeNode.Name,
+                  SkillLevel: bladeNode.SkillLevel,
+                  Effect: bladeNode.Effect,
+                  Available: bladeNode.Available,
+                  Unlocked: bladeNode.Unlocked,
+                  Tier: foundNode.Tier
                 }]).sort((nodeA, nodeB) =>
                   nodeA.id < nodeB.id ? -1 : 1
                 )
-            }]).sort((branchA, branchB) =>
+            }]).sort((branchA:IAffinityChartBranchState, branchB:IAffinityChartBranchState) =>
               branchA.id < branchB.id ? -1 : 1
             )
         }

@@ -6,7 +6,8 @@ import { BladeBasicInfoComponent } from '../BladeBasicInfoComponent'
 
 interface IDispatchProps {
   fetchItem: (payload:number) => void,
-  fetchItemType: (payload:number) => void
+  fetchItemType: (payload:number) => void,
+  fetchBlade: (payload: number) => void
 }
 
 interface IProps {
@@ -37,7 +38,11 @@ export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
   if (props.bladeDetails) {
     return(
       <>
-        <HeaderContainer title={props.bladeDetails.name} />
+        <HeaderContainer
+          title={props.bladeDetails.name}
+          refreshData={props.fetchBlade}
+          refreshDataId={props.bladeDetails.id}
+        />
         <BladeBasicInfoComponent {...props} />
       </>
     )

@@ -99,10 +99,14 @@ export interface IDriverState {
   show?:boolean
 }
 
+export interface IAffinityChartNodeState extends IAffinityChartNode {
+  Tier: number
+}
+
 export interface IAffinityChartBranchState {
   id: number,
   branchName: string,
-  nodes: IAffinityChartNode[]
+  nodes: IAffinityChartNodeState[]
 }
 
 export interface IAffinityChartState {
