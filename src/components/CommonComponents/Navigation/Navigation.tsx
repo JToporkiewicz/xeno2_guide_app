@@ -76,7 +76,6 @@ export const NavigationView = (props:IOwnProps & IDispatchProps) => {
         )}
         <div className="navigation-buttom">
           <div
-            className="navigation-button"
             onClick={() => props.resetState()}
           >
             <img

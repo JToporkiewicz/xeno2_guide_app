@@ -37,20 +37,18 @@ select{
 }
 
 .part-page {
-    margin-left: 1%;
-    width: calc(99% - 199px);
+    width: calc(100% - 180px);
 }
 
 .full-page {
-    margin-left: 1%;
-    width: calc(99% - 62px);
+    width: calc(100% - 60px);
 }
 
 .header {
     text-align: center;
     background: var(--main-color);
     color: white;
-    margin: 0px -1% 10px;
+    margin-bottom: 10px;
     min-width:fit-content;
     position: relative;
     padding-bottom: 2px;
@@ -90,13 +88,13 @@ select{
 // ------------- navigation -------------
 
 .navigation-button {
-    padding: 5px 0px 5px 5px;
-    font-size: x-large;
-    color:white;
+    display: flex;
 
     &-text {
-        width: 70px;
+        font-size: x-large;
+        color:white;    
         display: inline;
+        padding-right: 10px;
     }
 }
 
@@ -114,6 +112,7 @@ select{
 
 .navigation-button-separator {
     border-color: var(--secondary-color) !important;
+    margin: 5px 0px;
 }
 
 .closed-navigation {
@@ -121,7 +120,7 @@ select{
     border-right-style: solid;
     border-right-width: thin;
     height: auto;
-    width: 51.75px;
+    width: 60px;
     padding: inherit !important;
     text-align: left;
     background-color: var(--main-color);
@@ -132,7 +131,7 @@ select{
     border-right-style: solid;
     border-right-width: thin;
     height: auto;
-    width:189px;
+    width:180px;
     padding: inherit !important;
     text-align: left;
     background-color: var(--main-color);
@@ -140,7 +139,7 @@ select{
 
 .sticky-navigation {
     position:fixed;
-    max-width:188px;
+    width: inherit;
 }
 
 // ------------- order by -------------
@@ -202,8 +201,7 @@ select{
     border-color:var(--main-color);
     border-radius: 10px;
     border-width: medium;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 15px;
 }
 
 .art-details-panel {
@@ -336,9 +334,7 @@ select{
 .navigation-image {
     height:30px;
     width:30px;
-    margin-right: 10px;
-    margin-left: 5px;
-    margin-top: -10px;
+    margin: 10px;
 }
 
 .refresh-image {

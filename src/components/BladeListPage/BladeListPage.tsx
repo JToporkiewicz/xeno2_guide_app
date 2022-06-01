@@ -32,7 +32,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
       }
 
       setBladeList(
-        props.blades
+        props.blades.filter((blade) => !blade.name.includes('Awakened'))
           .map((blade) =>
             props.storyProgress.OnlyShowAvailable &&
               (!blade.unlocked && !blade.show) ?
