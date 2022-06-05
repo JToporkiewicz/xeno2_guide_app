@@ -51,7 +51,8 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
                     .replace('α','Alpha')
                     .replace('π', 'Pi')}.jpeg`}
                   alt={blade.name}
-                  className="small-image"
+                  className={`small-image${
+                    blade.unlocked === false ? ' not-unlocked-character' : ''}`}
                 />
               </Link>
               :

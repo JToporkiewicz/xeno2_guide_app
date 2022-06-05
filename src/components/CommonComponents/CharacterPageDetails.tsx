@@ -34,9 +34,13 @@ export const CharacterPageDetails = (props: IProps) =>
         <b>{props.name}</b>
         <br/>
         {props.unlocked ?
-          props.unlocked
-          : props.availability
+          <>
+            {props.unlocked}
+            <br/>
+          </>
+          : undefined
         }
+        {props.availability}
         <br />
         <br />
         {props.list.map((list) =>

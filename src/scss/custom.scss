@@ -220,10 +220,14 @@ select{
     margin-bottom: 15px;
     position: relative;
     width: 100%;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .not-unlocked-character {
-    background: #e5ebf0;
+    filter: grayscale(100%);
 }
 
 .fit-contents {
