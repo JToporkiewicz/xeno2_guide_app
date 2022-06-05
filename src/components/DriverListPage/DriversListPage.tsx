@@ -120,11 +120,6 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
             availability={`Available from chapter: ${selectedDriver.chapterUnlocked}`}
             list={[
               {
-                label: 'test: ',
-                unlocked: 100,
-                total: 100
-              },
-              {
                 label: 'Arts: ',
                 unlocked: selectedDriver.arts
                   .reduce((artTotal, art) => artTotal + art.levelUnlocked, 0),
