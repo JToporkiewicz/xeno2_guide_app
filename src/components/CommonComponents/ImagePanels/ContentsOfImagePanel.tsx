@@ -3,13 +3,15 @@ interface IProps {
   panelType:string,
   focused?:boolean,
   focus?:(value:string) => any,
-  progress?:number
+  progress?:number,
+  unlocked?:boolean
 }
 
 const ContentsOfImagePanel = (props:IProps) => {
   return (
     <div 
-      className={`image-panel ${props.focused ? ' focused-panel' : ''}`}
+      className={`image-panel${props.focused ? ' focused-panel' : ''}${
+        props.unlocked === false ? ' not-unlocked-character' : ''}`}
       onClick={() => props.focus ? props.focus(props.name) : {}}>
       <img
         src={`/images/${props.panelType}/${props.name.replace(/\s+/g, '')}.jpeg`}

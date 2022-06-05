@@ -38,7 +38,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
         props.blades.filter((blade) => !blade.name.includes('Awakened'))
           .map((blade) =>
             props.storyProgress.OnlyShowAvailable &&
-              (!blade.unlocked && !blade.show) ?
+              (!blade.available && !blade.show) ?
               <div className="col-sm-3" key={blade.name}>
                 <UnavailableImagePanel
                   name={blade.name}
@@ -54,6 +54,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
                 name={blade.name}
                 id={blade.id}
                 key={blade.name}
+                unlocked={blade.unlocked}
                 selectCharacter={setSelectedBlade.bind(this, blade)}
               />
           )
@@ -70,7 +71,8 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             area="blade"
             id={selectedBlade.id}
             name={selectedBlade.name}
-            availability={`Available: ${selectedBlade.available}`}
+            unlocked={`Unlocked: ${selectedBlade.unlocked ? 'Yes' : 'No'}`}
+            availability={`Available: ${selectedBlade.available ? 'Yes' : 'No'}`}
             list={[]}
             onClose={setSelectedBlade.bind(this, defaultBladeState)}
           />

@@ -4,6 +4,7 @@ interface IProps {
   area: string,
   id: number,
   name: string,
+  unlocked?:string,
   availability: string,
   list: {
     label: string,
@@ -32,7 +33,10 @@ export const CharacterPageDetails = (props: IProps) =>
       <div className="character-details">
         <b>{props.name}</b>
         <br/>
-        {props.availability}
+        {props.unlocked ?
+          props.unlocked
+          : props.availability
+        }
         <br />
         <br />
         {props.list.map((list) =>

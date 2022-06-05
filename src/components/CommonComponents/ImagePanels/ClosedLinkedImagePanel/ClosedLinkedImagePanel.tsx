@@ -8,7 +8,8 @@ interface IOwnProps {
   focused?:boolean,
   focus?:(value:string) => any,
   selectCharacter:() => any,
-  progress?:number
+  progress?:number,
+  unlocked?:boolean
 }
 
 interface IProps {
