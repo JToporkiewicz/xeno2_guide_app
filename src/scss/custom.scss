@@ -779,12 +779,14 @@ select{
 .greyBar {
     margin: 0px 10px 5px;
     width: auto;
-    height: 24px;
+    height: 16px;
     position: relative;
     border-radius: 5px;
     background-color: var(--main-color-o25);
 
     p {
+        font-size: small;
+        line-height: 14px;
         font-weight: bold;
         color: white;
         text-align: center;
