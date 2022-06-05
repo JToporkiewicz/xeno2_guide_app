@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { ISelectedState } from '../../../../redux/interfaces/reduxState';
 import ContentsOfImagePanel from '../ContentsOfImagePanel';
 
@@ -8,6 +7,8 @@ interface IOwnProps {
   panelType:string,
   focused?:boolean,
   focus?:(value:string) => any,
+  selectCharacter:() => any,
+  progress?:number
 }
 
 interface IProps {
@@ -18,11 +19,14 @@ export const ClosedLinkedImagePanelView = (props:IProps & IOwnProps) => {
   return (
     <div
       className="col-sm-3 stretched-sibling-panels"
-      onClick={() => props.setSelected({id: props.id, area: props.panelType})}
+      onClick={() => {
+        props.setSelected({id: props.id, area: props.panelType})
+        props.selectCharacter()
+      }}
     >
-      <Link to={`/${props.panelType}/${props.id}`} className="titled-image-name">
+      <div className="titled-image-name">
         <ContentsOfImagePanel {...props} />
-      </Link>
+      </div>
     </div>
   )
 };

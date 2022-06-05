@@ -5,6 +5,8 @@ import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import UnavailableImagePanel from '../UnavailableDataComponents/Images/UnavailableImagePanel';
 import { IStoryProgress } from '../../interfaces';
 import { IDriverState, IUpdateShow } from '../../redux/interfaces/reduxState';
+import { CharacterPageDetails } from '../CommonComponents/CharacterPageDetails';
+import { defaultDriverState } from '../../redux/interfaces/drivers';
 
 interface IDispatchProps {
   saveStoryProgress: (payload:IStoryProgress) => void;
@@ -21,6 +23,7 @@ interface IProps {
 export const DriversListPageView = (props:IProps & IDispatchProps) => {
   const [driversList, setDriverList] = useState([] as ReactChild[]);
   const [orderType, setOrderType] = useState('default');
+  const [selectedDriver, setSelectedDriver] = useState(defaultDriverState as IDriverState);
 
   const orderOptions: {[key:string]: keyof IDriverState} = {
     default: 'id',
@@ -62,8 +65,23 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
             }
             return 0
           })
-          .map((driver) =>
-            props.storyProgress.OnlyShowAvailable &&
+          .map((driver) => {
+            const progress=Math.round((driver.arts
+              .reduce((artTotal, art) => artTotal + art.levelUnlocked, 0)
+              + driver.skillTree.tier1.filter((node) => node.Unlocked).length
+              + driver.skillTree.tier2.filter((node) => node.Unlocked).length
+              + driver.skillTree.tier3.filter((node) => node.Unlocked).length
+              + driver.hiddenSkillTree.tier1.filter((node) => node.Unlocked).length
+              + driver.hiddenSkillTree.tier2.filter((node) => node.Unlocked).length
+              + driver.hiddenSkillTree.tier3.filter((node) => node.Unlocked).length
+            )/(driver.arts.length * 6
+              + driver.skillTree.tier1.length
+              + driver.skillTree.tier2.length
+              + driver.skillTree.tier3.length
+              + driver.hiddenSkillTree.tier1.length
+              + driver.hiddenSkillTree.tier2.length
+              + driver.hiddenSkillTree.tier3.length) * 10000) / 100
+            return props.storyProgress.OnlyShowAvailable &&
               (driver.chapterUnlocked > props.storyProgress.Chapter && !driver.show) ? 
               <div className="col-sm-3" key={driver.name}>
                 <UnavailableImagePanel
@@ -80,8 +98,10 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
                 name={driver.name}
                 id={driver.id}
                 key={driver.name}
+                selectCharacter={setSelectedDriver.bind(this, driver)}
+                progress={progress}
               />
-          )
+          })
       )
 
       props.hideLoader('Update driver list')
@@ -91,6 +111,49 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
 
   return(
     <>
+      {
+        selectedDriver !== defaultDriverState ?
+          <CharacterPageDetails
+            area="driver"
+            id={selectedDriver.id}
+            name={selectedDriver.name}
+            availability={`Available from chapter: ${selectedDriver.chapterUnlocked}`}
+            list={[
+              {
+                label: 'test: ',
+                unlocked: 100,
+                total: 100
+              },
+              {
+                label: 'Arts: ',
+                unlocked: selectedDriver.arts
+                  .reduce((artTotal, art) => artTotal + art.levelUnlocked, 0),
+                total: selectedDriver.arts.length * 6
+              },
+              {
+                label: 'Skills: ',
+                unlocked: selectedDriver.skillTree.tier1.filter((node) => node.Unlocked).length
+                  + selectedDriver.skillTree.tier2.filter((node) => node.Unlocked).length
+                  + selectedDriver.skillTree.tier3.filter((node) => node.Unlocked).length,
+                total: selectedDriver.skillTree.tier1.length
+                  + selectedDriver.skillTree.tier2.length
+                  + selectedDriver.skillTree.tier3.length
+              },
+              {
+                label: 'Hidden Skills: ',
+                unlocked: selectedDriver.hiddenSkillTree.tier1
+                  .filter((node) => node.Unlocked).length
+                  + selectedDriver.hiddenSkillTree.tier2.filter((node) => node.Unlocked).length
+                  + selectedDriver.hiddenSkillTree.tier3.filter((node) => node.Unlocked).length,
+                total: selectedDriver.hiddenSkillTree.tier1.length
+                  + selectedDriver.hiddenSkillTree.tier2.length
+                  + selectedDriver.hiddenSkillTree.tier3.length
+              },
+            ]}
+            onClose={setSelectedDriver.bind(this, defaultDriverState)}
+          />
+          : undefined
+      }
       <HeaderContainer title="Drivers"/>
       <CharacterPanelContainer
         title="Drivers"

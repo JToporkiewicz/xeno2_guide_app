@@ -1,6 +1,8 @@
 import { ReactChild, useEffect, useState } from 'react'
 import { IStoryProgress } from '../../interfaces';
+import { defaultBladeState } from '../../redux/interfaces/blades';
 import { IBladeState, IUpdateShow } from '../../redux/interfaces/reduxState';
+import { CharacterPageDetails } from '../CommonComponents/CharacterPageDetails';
 import CharacterPanelContainer from '../CommonComponents/Containers/CharacterPanelsContainer';
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import { ClosedLinkedImagePanel } from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
@@ -20,6 +22,7 @@ interface IProps {
 
 export const BladeListPageView = (props:IProps&IDispatchProps) => {
   const [bladeList, setBladeList] = useState([] as ReactChild[]);
+  const [selectedBlade, setSelectedBlade] = useState(defaultBladeState as IBladeState)
   useEffect(() => {
     if(props.blades !== undefined) {
       props.showLoader('Update blade list');
@@ -51,6 +54,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
                 name={blade.name}
                 id={blade.id}
                 key={blade.name}
+                selectCharacter={setSelectedBlade.bind(this, blade)}
               />
           )
       )
@@ -60,6 +64,18 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
 
   return(
     <>
+      {
+        selectedBlade !== defaultBladeState ?
+          <CharacterPageDetails
+            area="blade"
+            id={selectedBlade.id}
+            name={selectedBlade.name}
+            availability={`Available: ${selectedBlade.available}`}
+            list={[]}
+            onClose={setSelectedBlade.bind(this, defaultBladeState)}
+          />
+          : undefined
+      }
       <HeaderContainer title="Blades" />
       <CharacterPanelContainer
         title="Blades"

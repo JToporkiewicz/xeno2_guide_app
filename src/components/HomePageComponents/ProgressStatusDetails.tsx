@@ -27,7 +27,9 @@ export const ProgressStatusDetails = (props:IProps) => {
       <div className="progressHeader">
         {props.listTitle} Unlocked:
       </div>
-      {(allUnlocked / allDTotal * 100).toPrecision(2)}%
+      <div className="progressAmount">
+        {Math.round(allUnlocked / allDTotal * 10000) / 100}%
+      </div>
       <div className="greyBar">
         <div
           className="obtained"
@@ -45,7 +47,9 @@ export const ProgressStatusDetails = (props:IProps) => {
                 <div className="progressHeader">
                   {entry[0]}:
                 </div>
-                {(entry[1].unlocked / entry[1].total * 100).toPrecision(2)}%
+                <div className="progressAmount">
+                  {Math.round(entry[1].unlocked / entry[1].total * 10000) / 100}%
+                </div>
                 <div className="greyBar">
                   <div
                     className="obtained"
