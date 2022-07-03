@@ -81,7 +81,15 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             name={selectedBlade.name}
             unlocked={`Unlocked: ${selectedBlade.unlocked ? 'Yes' : 'No'}`}
             availability={`Available: ${selectedBlade.available ? 'Yes' : 'No'}`}
-            list={[]}
+            list={[{
+              label: 'Skills: ',
+              unlocked: selectedBlade.affinityChart.branches
+                .reduce((skillsTotal, branch) =>
+                  skillsTotal + (branch.nodes.find((node) => !node.Unlocked)?.SkillLevel
+                    || branch.nodes.length + 1) - 1, 0),
+              total: selectedBlade.affinityChart.branches.reduce((skillsTotal, branch) =>
+                skillsTotal + (branch.nodes.length || -1) + 1, 0)
+            }]}
             onClose={setSelectedBlade.bind(this, defaultBladeState)}
           />
           : undefined

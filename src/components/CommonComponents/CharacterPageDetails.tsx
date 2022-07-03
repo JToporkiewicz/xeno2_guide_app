@@ -45,7 +45,7 @@ export const CharacterPageDetails = (props: IProps) =>
         <br />
         {props.list.map((list) =>
           <div>
-            <b>{list.label}</b>
+            <b>{list.label}</b>{list.unlocked} out of {list.total}
             <div className="greyBar">
               <div
                 className="obtained"
