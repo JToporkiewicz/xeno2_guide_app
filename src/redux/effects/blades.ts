@@ -162,6 +162,17 @@ const saveBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
+const saveBladeStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(BladeActions.SaveBladeStatus),
+    mergeMap((action) => callWithLoader$(
+      'Saving blade status - ' + action.payload.id,
+      from(client.resource('blade')
+        .update(action.payload.id, { Unlocked: action.payload.unlocked}))
+        .pipe(mergeMap(() => EMPTY))
+    ))
+  )
+
 export const effects = combineEpics(
   fetchAllBladesEffect,
   fetchBladesByWeaponEffect,
@@ -172,5 +183,6 @@ export const effects = combineEpics(
   fetchBladeSkillBranchEffect,
   fetchAllBladeSkillNodeEffect,
   fetchBladeSkillNodeEffect,
-  saveBladeSkillNodeEffect
+  saveBladeSkillNodeEffect,
+  saveBladeStatusEffect
 )

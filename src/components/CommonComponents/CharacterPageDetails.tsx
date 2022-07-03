@@ -11,7 +11,9 @@ interface IProps {
     unlocked: number,
     total: number
   }[],
-  onClose:(input:any) => any
+  onClose:(input:any) => any,
+  unlockButton?:boolean,
+  onUnlock?:() => any
 }
 
 export const CharacterPageDetails = (props: IProps) => 
@@ -58,15 +60,32 @@ export const CharacterPageDetails = (props: IProps) =>
           </div>
         )}      
       </div>
-      <Link to={`/${props.area}/${props.id}`} className="centered-button">
-        <div className="proceed-button centered-button">
-          <img
-            src='/images/helper/Right.svg'
-            alt='Proceed'
-            className="extra-small-image"
-          />
-        </div>
-      </Link>
+      <div className="centered-button">
+        {props.unlockButton &&
+          <div
+            className={`proceed-button centered-button${props.availability.endsWith('No') ?
+              ' disabledButton' : ''}`}
+            onClick={() => props.availability.endsWith('Yes')
+              && props.onUnlock ? props.onUnlock() : {}}
+          >
+            <img
+              src={`/images/helper/${props.unlocked?.endsWith('Yes') ?
+                'closedLock' : 'openLock'}.svg`}
+              alt={props.unlocked?.endsWith('Yes') ? 'Unlock' : 'Lock'}
+              className="extra-small-image"
+            />
+          </div>
+        }
+        <Link to={`/${props.area}/${props.id}`}>
+          <div className="proceed-button centered-button">
+            <img
+              src='/images/helper/Right.svg'
+              alt='Proceed'
+              className="extra-small-image"
+            />
+          </div>
+        </Link>
+      </div>
     </div>
   </div>
 ;

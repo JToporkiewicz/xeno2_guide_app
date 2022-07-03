@@ -53,6 +53,20 @@ export const bladesReducer = createReducer<IBladeState[]>(
         bladeA.id < bladeB.id ? -1 : 1
       )
   }],
+  [BladeActions.UpdateBladeUnlocked, (bladeState:IBladeState[], updateUnlocked: IBladeState) => {
+    const oldBlade = bladeState.find((blade) => blade.id === updateUnlocked.id);
+    if (!oldBlade) {
+      return bladeState;
+    }
+
+    return bladeState.filter((blade) => blade.id !== updateUnlocked.id)
+      .concat([{
+        ...oldBlade,
+        unlocked: updateUnlocked.unlocked
+      }]).sort((bladeA, bladeB) =>
+        bladeA.id < bladeB.id ? -1 : 1
+      )
+  }],
   [BladeActions.SetBladeSkillTree, (bladeState:IBladeState[], tree:IAffinityChart) => {
     const foundBlade = bladeState.find((blade) => blade.affinityChart.id === tree.id);
     if (!foundBlade) {

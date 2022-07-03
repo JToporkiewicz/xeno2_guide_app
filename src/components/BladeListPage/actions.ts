@@ -3,11 +3,17 @@ import {
   showLoader,
   hideLoader
 } from '../../redux/actions/core';
-import { updateShowBlade } from '../../redux/actions/blades';
+import {
+  updateShowBlade,
+  updateBladeUnlocked,
+  saveBladeStatus
+} from '../../redux/actions/blades';
 
 export default {
   saveStoryProgress,
   showLoader,
   hideLoader,
-  updateShowBlade
+  updateShowBlade,
+  updateBladeUnlocked,
+  saveBladeStatus
 }

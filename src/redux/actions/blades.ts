@@ -1,5 +1,5 @@
 import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode, IBlade } from '../../interfaces';
-import { IUpdateShow } from '../interfaces/reduxState';
+import { IBladeState, IUpdateShow } from '../interfaces/reduxState';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 
 export enum BladeActions {
@@ -18,7 +18,9 @@ export enum BladeActions {
   FetchBladeSkillNode = 'FETCH_BLADE_SKILL_NODE',
   SetBladeSkillNode = 'SET_BLADE_SKILL_NODE',
   UpdateShowBlade = 'UPDATE_SHOW_BLADE',
-  SaveBladeSkillNode = 'SAVE_BLADE_SKILL_NODE'
+  UpdateBladeUnlocked = 'UPDATE_BLADE_UNLOCKED',
+  SaveBladeSkillNode = 'SAVE_BLADE_SKILL_NODE',
+  SaveBladeStatus = 'SAVE_BLADE_STATUS'
 }
 
 export type ActionTypes =
@@ -36,7 +38,9 @@ export type ActionTypes =
   | IFluxAction<BladeActions.FetchAllBladeSkillNodes>
   | IFluxPayloadAction<BladeActions.FetchBladeSkillNode, number>
   | IFluxPayloadAction<BladeActions.SetBladeSkillNode, IAffinityChartNode>
-  | IFluxPayloadAction<BladeActions.SaveBladeSkillNode, IAffinityChartNode>;
+  | IFluxPayloadAction<BladeActions.UpdateBladeUnlocked, IBladeState>
+  | IFluxPayloadAction<BladeActions.SaveBladeSkillNode, IAffinityChartNode>
+  | IFluxPayloadAction<BladeActions.SaveBladeStatus, IBladeState>;
 
 export const fetchAllBlades = ():ActionTypes => ({
   type: BladeActions.FetchAllBlades
@@ -104,7 +108,17 @@ export const setBladeSkillNode = (payload: IAffinityChartNode):ActionTypes => ({
   payload
 });
 
+export const updateBladeUnlocked = (payload: IBladeState):ActionTypes => ({
+  type: BladeActions.UpdateBladeUnlocked,
+  payload
+});
+
 export const saveBladeSkillNode = (payload: IAffinityChartNode):ActionTypes => ({
   type: BladeActions.SaveBladeSkillNode,
+  payload
+});
+
+export const saveBladeStatus = (payload: IBladeState):ActionTypes => ({
+  type: BladeActions.SaveBladeStatus,
   payload
 });

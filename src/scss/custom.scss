@@ -297,6 +297,13 @@ select{
     padding: 5px;
     width: 75px;
     background: var(--main-color);
+    cursor: pointer;
+}
+
+.disabledButton {
+    cursor: not-allowed;
+    background: var(--very-light-blue);
+    border: solid medium var(--very-light-blue);
 }
 
 // // ------------- close-open -------------
@@ -441,6 +448,7 @@ select{
     width:20px;
     margin:auto;
     display:block;
+    filter: brightness(0) invert(1);
 }
 
 .small-centered-borderless-image {

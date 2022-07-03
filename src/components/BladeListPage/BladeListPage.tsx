@@ -1,4 +1,4 @@
-import { ReactChild, useEffect, useState } from 'react'
+import { ReactChild, useEffect, useRef, useState } from 'react'
 import { IStoryProgress } from '../../interfaces';
 import { defaultBladeState } from '../../redux/interfaces/blades';
 import { IBladeState, IUpdateShow } from '../../redux/interfaces/reduxState';
@@ -13,6 +13,8 @@ interface IDispatchProps {
   showLoader: (payload:string) => void;
   hideLoader: (payload:string) => void;
   updateShowBlade: (payload:IUpdateShow) => void;
+  updateBladeUnlocked: (payload:IBladeState) => void;
+  saveBladeStatus: (payload:IBladeState) => void;
 }
 
 interface IProps {
@@ -23,6 +25,22 @@ interface IProps {
 export const BladeListPageView = (props:IProps&IDispatchProps) => {
   const [bladeList, setBladeList] = useState([] as ReactChild[]);
   const [selectedBlade, setSelectedBlade] = useState(defaultBladeState as IBladeState)
+  const toUpdate = useRef([] as IBladeState[]);
+
+  const updateBladeAvailability = (blade: IBladeState) => {
+    toUpdate.current = toUpdate.current
+      .filter((updateBlade) => !(blade.id === updateBlade.id))
+      .concat({
+        ...blade,
+        unlocked: !blade.unlocked
+      })
+    setSelectedBlade({...blade, unlocked: !blade.unlocked})
+    props.updateBladeUnlocked({
+      ...blade,
+      unlocked: !blade.unlocked
+    })
+  }
+
   useEffect(() => {
     if(props.blades !== undefined) {
       props.showLoader('Update blade list');
@@ -71,6 +89,14 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
     }
   }, [props.blades])
 
+  useEffect(() => {
+    return () => {
+      toUpdate.current.forEach((blade:IBladeState) =>
+        props.saveBladeStatus(blade)
+      )
+    }
+  }, [])
+
   return(
     <>
       {
@@ -91,6 +117,8 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
                 skillsTotal + (branch.nodes.length || -1) + 1, 0)
             }]}
             onClose={setSelectedBlade.bind(this, defaultBladeState)}
+            unlockButton
+            onUnlock={updateBladeAvailability.bind(this, selectedBlade)}
           />
           : undefined
       }
