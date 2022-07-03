@@ -82,7 +82,7 @@ export const DALevelsView = (props:IOwnProps) => {
                     id={key+1}
                     updateGameState={()=>props.updateArtLevel(props.art.id, key+1)}
                   />
-                  <img src="/images/helper/closedLock.png" alt="lock" className="centered-lock"/>
+                  <img src="/images/helper/closedLock.svg" alt="lock" className="centered-lock"/>
                             Cost: {level.SP}SP
                 </div>
               </div>

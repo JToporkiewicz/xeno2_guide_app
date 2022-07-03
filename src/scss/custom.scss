@@ -1,7 +1,9 @@
 :root {
     --main-color: rgb(0, 86, 179);
     --secondary-color: rgb(0, 123, 255);
-    --main-color-o25: rgb(0, 86, 179, 0.25)
+    --very-light-blue: rgb(190, 216, 250);
+    --main-color-o5: rgb(0, 86, 179, 0.5);
+    --grey-main-color: rgb(101, 149, 201);
 }
 
 html, body, #root, .container-fluid, .row{
@@ -426,6 +428,14 @@ select{
     margin:0% 45%;
 }
 
+.node-image {
+    height:30px;
+    width:30px;
+    margin:auto;
+    display:block;
+    filter: invert(100%)
+}
+
 .extra-small-image {
     height:20px;
     width:20px;
@@ -567,9 +577,8 @@ select{
 
 // ------------- driver skill component -------------
 
-
 .unlocked {
-    background: var(--main-color-o25);
+    background: var(--very-light-blue);
 }
 
 .unavailable {
@@ -577,7 +586,7 @@ select{
     opacity: 0.5;
     position: absolute;
     height: 100%;
-    width: inherit;
+    width: 100%;
     cursor: not-allowed;
     border-radius: 5px;
 }
@@ -588,6 +597,7 @@ select{
 
 .driver-skill-branch {
     display: flex;
+    position: relative;
     margin: 5px 0px;
 }
 
@@ -618,6 +628,179 @@ select{
     width:20%;
 }
 
+// ------------- tree structures -------------
+
+// // ------------- tree main structure -------------
+
+.tree-wrapper {
+    position: relative;
+    height: 28em;
+    overflow: hidden;
+}
+
+.tree-area {
+    height: 50em;
+    width: 50em;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+}
+
+// // ------------- branch main structures -------------
+
+.branch-area {
+    position: absolute;
+    height: 50%;
+    width: 10%;
+    left: 45%;
+    transform-origin: bottom center;
+}
+
+.branch-label {
+    height: 40px;
+    line-height: 18px;
+    text-align: center;
+}
+
+.branch-body {
+    height: 65%;
+    width: 100%;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.branch-track {
+    height: 90%;
+    border: medium solid var(--main-color);
+    margin: auto 50%;
+    width: 0px;
+    position: absolute;
+    transform: translateX(-50%);
+}
+
+// // ------------- branch nodes structures -------------
+
+.branch-node-area {
+    display: flex;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    flex-direction: column;
+    height: 100%;
+}
+
+.chart-node,
+.empty-chart-node {
+    border: medium solid var(--main-color);
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    margin: auto;
+    background: var(--main-color);
+    position: relative;
+}
+
+.empty-chart-node + .empty-chart-node {
+    margin-top: 30px;
+}
+
+.branch-node-area > .empty-chart-node:first-child,
+.branch-node-area > .chart-node:first-child {
+    margin-top: 0px;
+}
+
+.branch-node-area > .chart-node:last-child {
+    margin-bottom: 0px;
+}
+
+.branch-node-area > .empty-chart-node:last-child {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.chart-node {
+    height: 40px;
+    width: 40px;
+}
+
+.chart-node-unlocked {
+    background: var(--grey-main-color);
+}
+
+.branch-name {
+    position: absolute;
+    height: 100%;
+    width: 75%;
+    background: var(--main-color-o5);
+    border-radius: 50px;
+    display: none;
+    align-content: center;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    overflow-wrap: anywhere;
+    margin: 0px 50%;
+    transform: translateX(-50%);
+}
+
+.branch-body:hover .branch-name {
+    display: grid;
+}
+
+// // ------------- branch details structures -------------
+
+.branch-details {
+    display: flex;
+    position: relative;
+}
+
+.branch-details-track {
+    width: 90%;
+    margin: auto 5%;
+    border: medium solid var(--main-color);
+    top: 50%;
+    height: 0px;
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.branch-details-area {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    position: relative;
+    width: 100%;
+    margin-top: 10px;
+    
+    .unlocked {
+        background: var(--very-light-blue);
+    }    
+}
+
+.branch-details-node {
+    border-radius: 5px;
+    border-style: solid;
+    border-width: medium;
+    border-color: var(--main-color);
+    background: white;
+    padding: 5px;
+    height: 100%;
+}
+
+.branch-details-node-area {
+    position: relative;
+    margin-right: 5%;
+}
+
+.branch-details-area > .branch-details-node-area:last-child {
+    margin-right: 0px;
+}
+
 // ------------- lock-unlock component -------------
 
 .full-width {
@@ -639,7 +822,7 @@ select{
 .overlay {
     position: absolute;
     height: 100%;
-    width: inherit;
+    width: 100%;
     background: rgb(135, 206, 235, 0);
 }
 
@@ -663,11 +846,14 @@ select{
 .center-buttons {
     display: flex;
     margin-right:auto;
-    margin-left:-7%;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
+
+    .peek-unlock-button {
+        margin: 10%;
+    }
 }
 
 .peek-unlock-button{
@@ -677,7 +863,6 @@ select{
     height: 30%;
     width: auto;
     opacity: 0;
-    margin-left: 13%;
 }
 
 .peek-unlock-button:hover, .centered-image:hover {
@@ -700,7 +885,6 @@ select{
     height: 50%;
     width: 50%;
     margin-top: 25%;
-    margin-left: 0px;
 }
 
 // forms - core story progress
@@ -782,7 +966,7 @@ select{
     height: 16px;
     position: relative;
     border-radius: 5px;
-    background-color: var(--main-color-o25);
+    background-color: var(--very-light-blue);
 
     p {
         font-size: small;

@@ -2,7 +2,7 @@ import { ReactChild, useState } from 'react';
 
 interface IProps {
   header:string,
-  children: ReactChild | ReactChild[] | Element | Element[]
+  children?: ReactChild | ReactChild[] | Element | Element[]
 }
 
 const CollapsibleComponent = (props:IProps) => {

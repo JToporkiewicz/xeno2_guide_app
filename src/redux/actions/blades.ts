@@ -17,7 +17,8 @@ export enum BladeActions {
   FetchAllBladeSkillNodes = 'FETCH_ALL_BLADE_SKILL_NODES',
   FetchBladeSkillNode = 'FETCH_BLADE_SKILL_NODE',
   SetBladeSkillNode = 'SET_BLADE_SKILL_NODE',
-  UpdateShowBlade = 'UPDATE_SHOW_BLADE'
+  UpdateShowBlade = 'UPDATE_SHOW_BLADE',
+  SaveBladeSkillNode = 'SAVE_BLADE_SKILL_NODE'
 }
 
 export type ActionTypes =
@@ -34,7 +35,8 @@ export type ActionTypes =
   | IFluxPayloadAction<BladeActions.SetBladeSkillBranch, IAffinityChartBranch>
   | IFluxAction<BladeActions.FetchAllBladeSkillNodes>
   | IFluxPayloadAction<BladeActions.FetchBladeSkillNode, number>
-  | IFluxPayloadAction<BladeActions.SetBladeSkillNode, IAffinityChartNode>;
+  | IFluxPayloadAction<BladeActions.SetBladeSkillNode, IAffinityChartNode>
+  | IFluxPayloadAction<BladeActions.SaveBladeSkillNode, IAffinityChartNode>;
 
 export const fetchAllBlades = ():ActionTypes => ({
   type: BladeActions.FetchAllBlades
@@ -99,5 +101,10 @@ export const fetchBladeSkillNode = (payload: number):ActionTypes => ({
 
 export const setBladeSkillNode = (payload: IAffinityChartNode):ActionTypes => ({
   type: BladeActions.SetBladeSkillNode,
+  payload
+});
+
+export const saveBladeSkillNode = (payload: IAffinityChartNode):ActionTypes => ({
+  type: BladeActions.SaveBladeSkillNode,
   payload
 });

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { IHeart2Heart, IItem, IItemType } from '../../../interfaces'
 import { IBladeState, IQuestState } from '../../../redux/interfaces/reduxState'
 import HeaderContainer from '../../CommonComponents/Containers/HeaderContainer'
+import { BladeAffinityTree } from '../BladeAffinityTree'
 import { BladeBasicInfoComponent } from '../BladeBasicInfoComponent'
 
 interface IDispatchProps {
@@ -44,6 +45,7 @@ export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
           refreshDataId={props.bladeDetails.id}
         />
         <BladeBasicInfoComponent {...props} />
+        <BladeAffinityTree affinityChart={props.bladeDetails.affinityChart}/>
       </>
     )
   }

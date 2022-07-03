@@ -36,8 +36,15 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
 
       setBladeList(
         props.blades.filter((blade) => !blade.name.includes('Awakened'))
-          .map((blade) =>
-            props.storyProgress.OnlyShowAvailable &&
+          .map((blade) =>{
+            const progress = Math.round(blade.affinityChart.branches
+              .reduce((skillsTotal, branch) =>
+                skillsTotal +
+                  (branch.nodes.find((node) => !node.Unlocked)?.SkillLevel
+                    || branch.nodes.length + 1) - 1, 0)
+                    / blade.affinityChart.branches.reduce((skillsTotal, branch) =>
+                      skillsTotal + (branch.nodes.length || -1) + 1, 0) * 10000) / 100
+            return props.storyProgress.OnlyShowAvailable &&
               (!blade.available && !blade.show) ?
               <div className="col-sm-3" key={blade.name}>
                 <UnavailableImagePanel
@@ -56,8 +63,9 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
                 key={blade.name}
                 unlocked={blade.unlocked}
                 selectCharacter={setSelectedBlade.bind(this, blade)}
+                progress={progress}
               />
-          )
+          })
       )
       props.hideLoader('Update blade list');
     }

@@ -108,12 +108,12 @@ const updateBranchACN = {
         );
 
         UPDATE xenoblade2_guide.affinitychartnodes as acn
-        SET acn.Unlocked = 1
+        SET acn.Available = 1
         WHERE acn.id >= lowestNode
         AND acn.id < skillId;
 
         UPDATE xenoblade2_guide.affinitychartnodes as acn
-        SET acn.Unlocked = 0
+        SET acn.Available = 0
         WHERE acn.id > skillId
         AND acn.id <= highestNode;
 
@@ -183,7 +183,7 @@ const updateACNUnlocked = {
             OR preACN.OtherPrerequisiteDetail IS NULL);
 
         UPDATE xenoblade2_guide.affinitychartnodes
-        SET Unlocked = 1
+        SET Available = 1
         WHERE id IN (
             SELECT id
             FROM xenoblade2_guide._completedACN
@@ -194,7 +194,7 @@ const updateACNUnlocked = {
         );
 
         UPDATE xenoblade2_guide.affinitychartnodes
-        SET Unlocked = 0
+        SET Available = 0
         WHERE id NOT IN (
             SELECT id
             FROM xenoblade2_guide._completedACN

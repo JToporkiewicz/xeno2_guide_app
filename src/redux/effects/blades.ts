@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 import { combineEpics, Epic, ofType } from 'redux-observable';
-import { from, mergeMap, of, concat } from 'rxjs';
+import { from, mergeMap, of, concat, EMPTY } from 'rxjs';
 import { callWithLoader$ } from '.';
 import {
   ActionTypes,
@@ -152,6 +152,16 @@ const fetchBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
+const saveBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(BladeActions.SaveBladeSkillNode),
+    mergeMap((action) => callWithLoader$(
+      'Saving blade skill node - ' + action.payload.id,
+      from(client.resource('affinityChartNode').update(action.payload.id, action.payload))
+        .pipe(mergeMap(() => EMPTY))
+    ))
+  )
+
 export const effects = combineEpics(
   fetchAllBladesEffect,
   fetchBladesByWeaponEffect,
@@ -161,5 +171,6 @@ export const effects = combineEpics(
   fetchAllBladeSkillBranchEffect,
   fetchBladeSkillBranchEffect,
   fetchAllBladeSkillNodeEffect,
-  fetchBladeSkillNodeEffect
+  fetchBladeSkillNodeEffect,
+  saveBladeSkillNodeEffect
 )

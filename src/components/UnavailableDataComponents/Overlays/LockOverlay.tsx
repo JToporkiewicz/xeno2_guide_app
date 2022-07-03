@@ -7,7 +7,7 @@ const LockOverlay = (props:IProps) => {
     <div className="overlay">
       <img
         className="centered-image"
-        src="/images/helper/closedLock.png"
+        src="/images/helper/closedLock.svg"
         alt="lock"
         onClick={() => props.updateGameState(props.id)}
       />

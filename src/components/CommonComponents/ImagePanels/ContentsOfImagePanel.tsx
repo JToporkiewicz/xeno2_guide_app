@@ -18,7 +18,7 @@ const ContentsOfImagePanel = (props:IProps) => {
         className={`${props.panelType === 'weaponType' ? 'weapon-class-image' : 'character-image'}${
           props.unlocked === false ? ' not-unlocked-character' : ''}`}/>
       <div className="image-name">{props.name}</div>
-      {props.progress ?
+      {props.progress != undefined && props.progress !== null ?
         <div className="greyBar">
           <div
             className="obtained"

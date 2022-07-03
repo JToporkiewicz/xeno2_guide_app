@@ -15,6 +15,7 @@ interface IProps {
 const DriverSkillTreeBranch = (props:IProps) => {
   return (
     <div className="driver-skill-branch">
+      <div className="branch-details-track" />
       <DriverSkillNode
         node={props.node1}
         column={props.column}

@@ -17,7 +17,7 @@ const PeekOrUnlockOverlay = (props:IProps) => {
         />
         <img
           className="peek-unlock-button"
-          src="/images/helper/openLock.png"
+          src="/images/helper/openLock.svg"
           alt="unlock"
           onClick={() => props.updateState(props.id)}
         />
