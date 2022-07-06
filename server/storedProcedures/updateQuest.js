@@ -135,7 +135,7 @@ const updateClearQuestCompletion = {
         SET qs.Completed = 0
         WHERE qs.Quest = questId;
 
-        UPDATE xenoblade2_guide.queststeps as qss
+        UPDATE xenoblade2_guide.questsubsteps as qss
         SET qss.CompletionProgress = 0
         WHERE qss.QuestStep IN (
             SELECT qs.id
@@ -156,8 +156,8 @@ const updateCompleteQuestManually = {
         SET qs.Completed = 1
         WHERE qs.Quest = questId;
 
-        UPDATE xenoblade2_guide.queststeps as qss
-        SET qss.CompletionProgress = 1
+        UPDATE xenoblade2_guide.questsubsteps as qss
+        SET qss.CompletionProgress = qss.Count
         WHERE qss.QuestStep IN (
             SELECT qs.id
             FROM xenoblade2_guide.queststeps as qs

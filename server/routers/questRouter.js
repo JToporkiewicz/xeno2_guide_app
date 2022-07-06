@@ -13,18 +13,18 @@ module.exports = function(Model, sequelize) {
       switch (req.body.Status) {
       case 'NOT STARTED':
         await sequelize.query('CALL updateClearQuestCompletion (:questId)',{
-          replacement: {questId: req.params.id}
+          replacements: {questId: req.params.id}
         });
         break;
       case 'FINISHED':
         await sequelize.query('CALL updateCompleteQuestManually (:questId)',{
-          replacement: {questId: req.params.id}
+          replacements: {questId: req.params.id}
         });
         break;
       case 'STARTED':
       default:
         await sequelize.query('CALL updateUndoQuestCompletion (:questId)',{
-          replacement: {questId: req.params.id}
+          replacements: {questId: req.params.id}
         });
         break;
       }

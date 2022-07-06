@@ -146,6 +146,7 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
                 const unlockedTreeTier =
                 unlockedTier1 + unlockedTier2 >= 5 ? 3 : unlockedTier1 >= 2 ? 2 : 1;
                 return <TreeBranch
+                  key={(props.hiddenTree ? 'hidden' : 'tree - branch ') + index}
                   index={index}
                   treeBranchesCount={props.tree.tier1.length + 1}
                   nodesPerBranch={3}

@@ -11,4 +11,11 @@ export const questsReducer = createReducer<IQuestState[]>(
         Steps: [],
         SubSteps: []
       }))],
+  [QuestsActions.UpdateQuestStatus,
+    (state:IQuestState[], newQuest: IQuestState) =>
+      state.filter((quest) => quest.id !== newQuest.id)
+        .concat([newQuest]).sort((questA, questB) =>
+          questA.id < questB.id ? -1 : 1
+        )
+  ]
 )([]);

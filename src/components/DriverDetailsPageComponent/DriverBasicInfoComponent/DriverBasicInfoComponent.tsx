@@ -24,13 +24,13 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
   return (
     <CollapsibleComponent header={'Basic information'}>
       <div className="row">
-        <div className="col-sm-4">
+        <div className="basic-info-image-area">
           <img
             src={`/images/driver/${props.driverDetails.name.replace(/\s+/g, '')}.jpeg`}
             alt={props.driverDetails.name}
             className="basic-info-image"/>            
         </div>
-        <div>
+        <div className='col-sm-8'>
           <b>Chapter unlocked: </b>{props.driverDetails.chapterUnlocked}
           <br />
           <>
