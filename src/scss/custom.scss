@@ -60,6 +60,12 @@ select{
     float: right;
 }
 
+.sub-text {
+    font-size: small;
+    margin-top: auto;
+    color: var(--grey-main-color);
+}
+
 // ------------- loader -------------
 
 .loading-overlay {
@@ -977,12 +983,8 @@ select{
     border-bottom: dashed thin var(--main-color);
 }
 
-.progressHeader {
-    width: 30%
-}
-
 .progressAmount {
-    width: 60px;
+    margin-left: auto;
 }
 
 .greyBar {

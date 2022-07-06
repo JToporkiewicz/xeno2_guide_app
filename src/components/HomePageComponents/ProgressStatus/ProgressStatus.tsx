@@ -11,7 +11,11 @@ export interface IProgressList {
 interface IProps {
   driverArts: IProgressList,
   driverSkills: IProgressList,
-  driverHiddenSkills: IProgressList
+  driverHiddenSkills: IProgressList,
+  bladesUnlocked: IProgressList,
+  bladeAffinitySkills: IProgressList,
+  questsFinished: IProgressList,
+  h2hUnlocked: IProgressList
 }
 
 export const ProgressStatusView = (props: IProps) => 
@@ -20,17 +24,35 @@ export const ProgressStatusView = (props: IProps) =>
       <b>Drivers:</b>
       <ProgressStatusDetails
         list={props.driverArts}
-        listTitle="Driver Arts"
+        listTitle="Driver Arts Unlocked:"
       />
       <ProgressStatusDetails
         list={props.driverSkills}
-        listTitle="Driver Skills"
+        listTitle="Driver Skills Unlocked:"
       />
       <ProgressStatusDetails
         list={props.driverHiddenSkills}
-        listTitle="Driver Hidden Skills"
+        listTitle="Driver Hidden Skills Unlocked:"
       />
-
+      <b>Blades:</b>
+      <ProgressStatusDetails
+        list={props.bladesUnlocked}
+        listTitle="Unique Blades Unlocked:"
+      />
+      <ProgressStatusDetails
+        list={props.bladeAffinitySkills}
+        listTitle="Blade Affinity Skills Unlocked:"
+      />
+      <b>Quests:</b>
+      <ProgressStatusDetails
+        list={props.questsFinished}
+        listTitle="Quests Finished:"
+      />
+      <b>Heart2hearts:</b>
+      <ProgressStatusDetails
+        list={props.h2hUnlocked}
+        listTitle="Heart2hearts Viewed:"
+      />
     </>
   </CollapsibleComponent>
   

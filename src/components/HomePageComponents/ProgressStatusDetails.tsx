@@ -12,7 +12,7 @@ export const ProgressStatusDetails = (props:IProps) => {
   const [openDetails, setOpenDetails] = useState(false);
   const allUnlocked = Object.values(props.list)
     .reduce((total, entry) => total + entry.unlocked, 0);
-  const allDTotal = Object.values(props.list)
+  const allTotal = Object.values(props.list)
     .reduce((total, entry) => total + entry.total, 0);
   return <div
     className="statusProgress"
@@ -24,16 +24,16 @@ export const ProgressStatusDetails = (props:IProps) => {
         alt={openDetails ? 'collapse' : 'expand'}
         className="small-collapse-expand"
       />
-      <div className="progressHeader">
-        {props.listTitle} Unlocked:
+      <div>
+        {props.listTitle} <i className="sub-text">{allUnlocked} out of {allTotal}</i>
       </div>
       <div className="progressAmount">
-        {Math.round(allUnlocked / allDTotal * 10000) / 100}%
+        {Math.round(allUnlocked / allTotal * 10000) / 100}%
       </div>
       <div className="greyBar">
         <div
           className="obtained"
-          style={{width: (allUnlocked / allDTotal * 100).toPrecision(2) + '%'}}
+          style={{width: (allUnlocked / allTotal * 100).toPrecision(2) + '%'}}
         />
       </div>
     </div>
@@ -44,8 +44,9 @@ export const ProgressStatusDetails = (props:IProps) => {
           {Object.entries(props.list)
             .map((entry) => 
               <div className="statusHeader subStatus">
-                <div className="progressHeader">
+                <div>
                   {entry[0]}:
+                  <i className="sub-text"> {entry[1].unlocked} out of {entry[1].total}</i>
                 </div>
                 <div className="progressAmount">
                   {Math.round(entry[1].unlocked / entry[1].total * 10000) / 100}%
