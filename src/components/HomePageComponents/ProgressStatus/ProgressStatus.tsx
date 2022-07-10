@@ -11,7 +11,7 @@ export interface IProgressList {
 interface IProps {
   driverArts: IProgressList,
   driverSkills: IProgressList,
-  driverHiddenSkills: IProgressList,
+  driverHiddenSkills?: IProgressList,
   bladesUnlocked: IProgressList,
   bladeAffinitySkills: IProgressList,
   questsFinished: IProgressList,
@@ -30,10 +30,12 @@ export const ProgressStatusView = (props: IProps) =>
         list={props.driverSkills}
         listTitle="Driver Skills Unlocked:"
       />
-      <ProgressStatusDetails
-        list={props.driverHiddenSkills}
-        listTitle="Driver Hidden Skills Unlocked:"
-      />
+      {props.driverHiddenSkills &&
+        <ProgressStatusDetails
+          list={props.driverHiddenSkills}
+          listTitle="Driver Hidden Skills Unlocked:"
+        />
+      }
       <b>Blades:</b>
       <ProgressStatusDetails
         list={props.bladesUnlocked}

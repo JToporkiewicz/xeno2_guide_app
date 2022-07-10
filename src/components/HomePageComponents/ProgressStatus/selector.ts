@@ -46,24 +46,26 @@ export default createSelector(
               skills['Unavailable Drivers']?.unlocked : 0)
         }
       }}, {}),
-    driverHiddenSkills: drivers.reduce((skills: IProgressList, driver) => {
-      const showDriver = driver.chapterUnlocked <= progress.Chapter
-        || !progress.OnlyShowAvailable;
-      return {
-        ...skills,
-        [showDriver ? driver.name : 'Unavailable Drivers']: {
-          total: driver.hiddenSkillTree.tier1.length
-            + driver.hiddenSkillTree.tier2.length
-            + driver.hiddenSkillTree.tier3.length
-            + (!showDriver && skills['Unavailable Drivers'] ?
-              skills['Unavailable Drivers']?.total : 0),
-          unlocked: driver.hiddenSkillTree.tier1.filter((node) => node.Unlocked).length
-            + driver.hiddenSkillTree.tier2.filter((node) => node.Unlocked).length
-            + driver.hiddenSkillTree.tier3.filter((node) => node.Unlocked).length
-            + (!showDriver && skills['Unavailable Drivers'] ?
-              skills['Unavailable Drivers']?.unlocked : 0)
-        }
-      }}, {}),
+    driverHiddenSkills: progress.NewGamePlus || !progress.OnlyShowAvailable ?
+      drivers.reduce((skills: IProgressList, driver) => {
+        const showDriver = driver.chapterUnlocked <= progress.Chapter
+          || !progress.OnlyShowAvailable;
+        return {
+          ...skills,
+          [showDriver ? driver.name : 'Unavailable Drivers']: {
+            total: driver.hiddenSkillTree.tier1.length
+              + driver.hiddenSkillTree.tier2.length
+              + driver.hiddenSkillTree.tier3.length
+              + (!showDriver && skills['Unavailable Drivers'] ?
+                skills['Unavailable Drivers']?.total : 0),
+            unlocked: driver.hiddenSkillTree.tier1.filter((node) => node.Unlocked).length
+              + driver.hiddenSkillTree.tier2.filter((node) => node.Unlocked).length
+              + driver.hiddenSkillTree.tier3.filter((node) => node.Unlocked).length
+              + (!showDriver && skills['Unavailable Drivers'] ?
+                skills['Unavailable Drivers']?.unlocked : 0)
+          }
+        }}, {})
+      : undefined,
     bladesUnlocked: {
       UniqueBlades: {
         total: blades.length,
