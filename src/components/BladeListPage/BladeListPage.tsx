@@ -23,9 +23,21 @@ interface IProps {
 }
 
 export const BladeListPageView = (props:IProps&IDispatchProps) => {
-  const [bladeList, setBladeList] = useState([] as ReactChild[]);
+  const [bladeList, setBladeList] = useState({} as {[group:string]: ReactChild[]});
+  const [orderType, setOrderType] = useState('default');
   const [selectedBlade, setSelectedBlade] = useState(defaultBladeState as IBladeState)
   const toUpdate = useRef([] as IBladeState[]);
+
+  const orderOptions: {[key:string]: keyof IBladeState} = {
+    default: 'id',
+    alphabetically: 'name',
+    gender: 'gender',
+    weapon: 'weapon',
+    element: 'element',
+    role: 'role',
+    source: 'source',
+    availability: 'available'
+  }
 
   const updateBladeAvailability = (blade: IBladeState) => {
     toUpdate.current = toUpdate.current
@@ -41,6 +53,10 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
     })
   }
 
+  const getOrderTypeColumn = (order: string): keyof IBladeState => {
+    return orderOptions[order] || orderOptions.default
+  }
+
   useEffect(() => {
     if(props.blades !== undefined) {
       props.showLoader('Update blade list');
@@ -54,7 +70,16 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
 
       setBladeList(
         props.blades.filter((blade) => !blade.name.includes('Awakened'))
-          .map((blade) =>{
+          .sort((bladeA, bladeB) => {
+            const bladeAValue = bladeA[getOrderTypeColumn(orderType)]
+            const bladeBValue = bladeB[getOrderTypeColumn(orderType)]
+            if(bladeAValue !== undefined && bladeBValue !== undefined) {
+              return bladeAValue < bladeBValue ? -1
+                : bladeAValue > bladeBValue ? 1 : 0
+            }
+            return 0
+          })
+          .reduce((bladeList, blade) =>{
             const progress = Math.round(blade.affinityChart.branches
               .reduce((skillsTotal, branch) =>
                 skillsTotal +
@@ -62,32 +87,38 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
                     || branch.nodes.length + 1) - 1, 0)
                     / blade.affinityChart.branches.reduce((skillsTotal, branch) =>
                       skillsTotal + (branch.nodes.length || -1) + 1, 0) * 10000) / 100
-            return props.storyProgress.OnlyShowAvailable &&
-              (!blade.available && !blade.show) ?
-              <div className="col-sm-3" key={blade.name}>
-                <UnavailableImagePanel
-                  name={blade.name}
-                  panelType="blade"
-                  id={blade.id}
-                  toggleShow={updateShow.bind(this)}
-                  updateState={() => {}}
-                />
-              </div>
-              :
-              <ClosedLinkedImagePanel
-                panelType="blade"
-                name={blade.name}
-                id={blade.id}
-                key={blade.name}
-                unlocked={blade.unlocked}
-                selectCharacter={setSelectedBlade.bind(this, blade)}
-                progress={progress}
-              />
-          })
+            const group = blade[getOrderTypeColumn(orderType)];
+            const groupName = orderType === 'availability' && typeof group === 'boolean' ?
+              group ? 'Available' : 'Unavailable' : String(group);
+            return {
+              ...bladeList,
+              [groupName]: (bladeList[groupName] || []).concat(
+                props.storyProgress.OnlyShowAvailable &&
+                (!blade.available && !blade.show) ?
+                  <div className="col-sm-3" key={blade.name}>
+                    <UnavailableImagePanel
+                      name={blade.name}
+                      panelType="blade"
+                      id={blade.id}
+                      toggleShow={updateShow.bind(this)}
+                      updateState={() => {}}
+                    />
+                  </div>
+                  :
+                  <ClosedLinkedImagePanel
+                    panelType="blade"
+                    name={blade.name}
+                    id={blade.id}
+                    key={blade.name}
+                    unlocked={blade.unlocked}
+                    selectCharacter={setSelectedBlade.bind(this, blade)}
+                    progress={progress}
+                  />)
+            }}, {} as any)
       )
       props.hideLoader('Update blade list');
     }
-  }, [props.blades])
+  }, [props.blades, orderType])
 
   useEffect(() => {
     return () => {
@@ -125,8 +156,13 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
       <HeaderContainer title="Blades" />
       <CharacterPanelContainer
         title="Blades"
+        orderOptions={Object.keys(orderOptions)}
+        orderType={orderType}
+        setOrderType={setOrderType}
       >
-        {bladeList}
+        {orderType === 'default' || orderType === 'alphabetically' ?
+          Object.entries(bladeList).flatMap((group) => group[1])
+          : bladeList}
       </CharacterPanelContainer>
     </>
   )
