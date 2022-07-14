@@ -1,8 +1,7 @@
 interface IProps {
     title:string,
-    settingKey:string,
     value:boolean,
-    toggleValue:(key:string, value:boolean) => void
+    toggleValue:(value:boolean) => void
 }
 const Checkbox = (props:IProps) => {
   return(
@@ -15,7 +14,7 @@ const Checkbox = (props:IProps) => {
         <input
           type="checkbox"
           checked={props.value}
-          onChange={() => props.toggleValue(props.settingKey, props.value)}/>
+          onChange={() => props.toggleValue(props.value)}/>
       </div>
     </div>
   )

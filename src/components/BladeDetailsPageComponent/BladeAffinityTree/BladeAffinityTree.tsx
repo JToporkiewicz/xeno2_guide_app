@@ -12,6 +12,7 @@ interface IOwnProps {
 interface IDispatchProps {
   setBladeSkillNode: (node: IAffinityChartNode[]) => void;
   saveBladeSkillNode: (node: IAffinityChartNode) => void;
+  fetchFieldSkills: () => void;
 }
 
 export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
@@ -95,6 +96,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
           Unlocked: node.Unlocked
         })
       )
+      setTimeout(props.fetchFieldSkills, 1000)
     }
   }, [])
 

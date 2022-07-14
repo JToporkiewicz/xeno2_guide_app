@@ -12,7 +12,7 @@ module.exports = function(Model, sequelize) {
     try {
       if(req.body.CompletionProgress !== 0) {
         await sequelize.query('CALL updateCompleteQuestSubStepManually  (:questSubStepId)',{
-          replacement: {questSubStepId: req.params.id}
+          replacements: {questSubStepId: req.params.id}
         });
       }
       await sequelize.query('CALL updateH2H ()');

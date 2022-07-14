@@ -1,7 +1,8 @@
 import { IStoryProgress } from '../../../interfaces';
 import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent';
-import Checkbox from './SettingsComponents/Checkbox';
-import IncrementDecrementNumber from './SettingsComponents/IncrementDecrementNumber';
+import Checkbox from '../../CommonComponents/FormComponents/Checkbox';
+import IncrementDecrementNumber
+  from '../../CommonComponents/FormComponents/IncrementDecrementNumber';
 
 interface IDispatchProps {
   saveStoryProgress:(payload:IStoryProgress) => void;
@@ -18,12 +19,8 @@ export const SettingsFormView = (props: IProps & IDispatchProps) => {
     props.setStoryProgress({...props.storyProgress, [settingKey]: !value})
   }
 
-  const increaseNumber = (settingKey:string, value:number) => {
-    props.setStoryProgress({...props.storyProgress, [settingKey]: value+1})
-  }
-
-  const decreaseNumber = (settingKey:string, value:number) => {
-    props.setStoryProgress({...props.storyProgress, [settingKey]: value-1})
+  const updateValue = (value:number) => {
+    props.setStoryProgress({...props.storyProgress, Chapter: value})
   }
 
   const saveChanges = () => {
@@ -34,33 +31,28 @@ export const SettingsFormView = (props: IProps & IDispatchProps) => {
     <CollapsibleComponent header="App Settings and Game Progress">
       <Checkbox 
         title="Only show items/characters available. Avoid spoilers:"
-        settingKey="OnlyShowAvailable"
         value={props.storyProgress.OnlyShowAvailable}
-        toggleValue={toggleCheckbox.bind(this)}
+        toggleValue={toggleCheckbox.bind(this, 'OnlyShowAvailable')}
       />
             
       <IncrementDecrementNumber 
         title="Chapter:"
-        settingKey="Chapter"
         value={props.storyProgress ? props.storyProgress.Chapter : 1}
         minimum={1}
         maximum={10}
-        decreaseValue={decreaseNumber.bind(this)}
-        increaseValue={increaseNumber.bind(this)}
+        updateValue={updateValue.bind(this)}
       />
 
       <Checkbox 
         title="New Game Plus playthrough:"
-        settingKey="NewGamePlus"
         value={props.storyProgress.NewGamePlus}
-        toggleValue={toggleCheckbox.bind(this)}
+        toggleValue={toggleCheckbox.bind(this, 'NewGamePlus')}
       />
 
       <Checkbox
         title="DLC unlocked:"
-        settingKey="DLCUnlocked"
         value={props.storyProgress.DLCUnlocked}
-        toggleValue={toggleCheckbox.bind(this)}
+        toggleValue={toggleCheckbox.bind(this, 'DLCUnlocked')}
       />
       <button
         type="button"

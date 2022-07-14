@@ -7,7 +7,7 @@ export const questsReducer = createReducer<IQuestState[]>(
   [QuestsActions.SetQuests,
     (questState: IQuestState[], quests: IQuest[]) => {
       const questIds = quests.map((q) => q.id);
-      return questState.filter((old) => !(old.id in questIds))
+      return questState.filter((old) => !questIds.includes(old.id))
         .concat(
           quests.map((quest) => ({
             ...quest,

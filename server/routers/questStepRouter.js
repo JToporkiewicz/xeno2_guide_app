@@ -12,11 +12,11 @@ module.exports = function(Model, sequelize) {
     try {
       if(req.body.Completed === 0) {
         await sequelize.query('CALL updateUndoQuestStepCompletion (:questStepId)',{
-          replacement: {questStepId: req.params.id}
+          replacements: {questStepId: req.params.id}
         });
       } else {
         await sequelize.query('CALL updateCompleteQuestStepManually  (:questStepId)',{
-          replacement: {questStepId: req.params.id}
+          replacements: {questStepId: req.params.id}
         });
       }
       await sequelize.query('CALL updateH2H ()');

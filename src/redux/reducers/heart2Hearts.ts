@@ -6,7 +6,7 @@ export const heart2HeartReducer = createReducer<IHeart2Heart[]>(
   [Heart2HeartActions.SetHeart2Hearts,
     (h2hState: IHeart2Heart[], heart2Hearts: IHeart2Heart[]) => {
       const h2hIds = heart2Hearts.map((h2h) => h2h.id);
-      return h2hState.filter((old) => !(old.id in h2hIds))
+      return h2hState.filter((old) => !h2hIds.includes(old.id))
         .concat(heart2Hearts);
     }],
   [Heart2HeartActions.UpdateHeart2Hearts,

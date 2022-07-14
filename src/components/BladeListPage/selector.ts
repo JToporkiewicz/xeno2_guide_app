@@ -1,11 +1,13 @@
 import { createSelector } from 'reselect';
-import { getBlades, getStoryProgress } from '../../redux/selectors';
+import { getBlades, getFieldSkills, getStoryProgress } from '../../redux/selectors';
 
 export default createSelector(
   getBlades,
   getStoryProgress,
-  (blades, storyProgress) => ({
+  getFieldSkills,
+  (blades, storyProgress, fieldSkills) => ({
     blades,
-    storyProgress
+    storyProgress,
+    fieldSkills
   })
 )

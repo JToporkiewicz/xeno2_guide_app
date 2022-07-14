@@ -11,7 +11,7 @@ module.exports = function(Model, sequelize) {
     await resource.update(req.body)
     try {
       await sequelize.query('CALL updateFieldSkillCommon (:skillId)',{
-        replacement: {skillId: req.params.id}
+        replacements: {skillId: req.params.id}
       });
     } catch (err) {
       return res.status(400).json({err: err.message})

@@ -1,4 +1,5 @@
 import { IFieldSkills } from '../../interfaces'
+import { IUpdateFieldSkillLevel } from '../interfaces/fieldSkills';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions'
 
 export enum FieldSkillsActions {
@@ -11,8 +12,8 @@ export enum FieldSkillsActions {
 export type ActionTypes =
   | IFluxAction<FieldSkillsActions.FetchFieldSkills>
   | IFluxPayloadAction<FieldSkillsActions.SetFieldSkills, IFieldSkills[]>
-  | IFluxPayloadAction<FieldSkillsActions.UpdateFieldSkillLevelUnlocked, IFieldSkills>
-  | IFluxPayloadAction<FieldSkillsActions.SaveFieldSkillLevelUnlocked, IFieldSkills>;
+  | IFluxPayloadAction<FieldSkillsActions.UpdateFieldSkillLevelUnlocked, IUpdateFieldSkillLevel>
+  | IFluxPayloadAction<FieldSkillsActions.SaveFieldSkillLevelUnlocked, IUpdateFieldSkillLevel>;
 
 export const fetchFieldSkills = ():ActionTypes => ({
   type: FieldSkillsActions.FetchFieldSkills
@@ -23,12 +24,12 @@ export const setFieldSkills = (payload:IFieldSkills[]):ActionTypes => ({
   payload
 });
 
-export const updateFieldSkillLevelUnlocked = (payload:IFieldSkills):ActionTypes => ({
+export const updateFieldSkillLevelUnlocked = (payload:IUpdateFieldSkillLevel):ActionTypes => ({
   type: FieldSkillsActions.UpdateFieldSkillLevelUnlocked,
   payload
 });
 
-export const saveFieldSkillLevelUnlocked = (payload:IFieldSkills):ActionTypes => ({
+export const saveFieldSkillLevelUnlocked = (payload:IUpdateFieldSkillLevel):ActionTypes => ({
   type: FieldSkillsActions.SaveFieldSkillLevelUnlocked, 
   payload
 });

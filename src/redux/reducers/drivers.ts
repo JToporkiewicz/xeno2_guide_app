@@ -24,7 +24,7 @@ export const driversReducer = createReducer<IDriverState[]>(
   [DriverActions.SetDriverDetails, (driverState:IDriverState[], drivers:IDriver[]) => {
     const driverIds = drivers.map((driver) => driver.id);
 
-    return driverState.filter((oldDriver:IDriverState) => !(oldDriver.id in driverIds))
+    return driverState.filter((oldDriver:IDriverState) => !driverIds.includes(oldDriver.id))
       .concat(drivers.map((driver) => {
         const old = driverState.find((d) => d.id === driver.id);
         return {
@@ -119,8 +119,8 @@ export const driversReducer = createReducer<IDriverState[]>(
         return driverState;
       }
 
-      return driverState.filter((driver) => !(driver.skillTree.treeId in dstIds)
-        && !(driver.hiddenSkillTree.treeId in dstIds))
+      return driverState.filter((driver) => !dstIds.includes(driver.skillTree.treeId)
+        && !dstIds.includes(driver.hiddenSkillTree.treeId))
         .concat(newDrivers).sort((driverA, driverB) =>
           driverA.id < driverB.id ? -1 : 1
         )
@@ -240,7 +240,7 @@ export const driversReducer = createReducer<IDriverState[]>(
         return driverState;
       }
 
-      return driverState.filter((old:IDriverState) => !(old.id in oldDrivers.map((d) => d.id)))
+      return driverState.filter((old:IDriverState) => !oldDrivers.map((d) => d.id).includes(old.id))
         .concat(oldDrivers).sort((driverA, driverB) =>
           driverA.id < driverB.id ? -1 : 1
         )
@@ -308,7 +308,7 @@ export const driversReducer = createReducer<IDriverState[]>(
 
     })
 
-    return driverState.filter((driver) => !(driver.id in driverIds))
+    return driverState.filter((driver) => !driverIds.includes(driver.id))
       .concat(newDrivers).sort((driverA, driverB) =>
         driverA.id < driverB.id ? -1 : 1
       )
@@ -388,7 +388,7 @@ export const driversReducer = createReducer<IDriverState[]>(
 
 
     return driverState.filter((old:IDriverState) =>
-      !(old.id in oldDrivers.map((driver) => driver.id)))
+      !oldDrivers.map((driver) => driver.id).includes(old.id))
       .concat(oldDrivers).sort((driverA, driverB) =>
         driverA.id < driverB.id ? -1 : 1
       )

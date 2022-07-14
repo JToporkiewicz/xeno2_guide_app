@@ -8,6 +8,11 @@ import {
   updateBladeUnlocked,
   saveBladeStatus
 } from '../../redux/actions/blades';
+import {
+  fetchFieldSkills,
+  saveFieldSkillLevelUnlocked,
+  updateFieldSkillLevelUnlocked
+} from '../../redux/actions/fieldSkills';
 
 export default {
   saveStoryProgress,
@@ -15,5 +20,8 @@ export default {
   hideLoader,
   updateShowBlade,
   updateBladeUnlocked,
-  saveBladeStatus
+  saveBladeStatus,
+  fetchFieldSkills,
+  updateFieldSkillLevelUnlocked,
+  saveFieldSkillLevelUnlocked
 }

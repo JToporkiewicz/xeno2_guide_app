@@ -11,7 +11,7 @@ import {
 export const bladesReducer = createReducer<IBladeState[]>(
   [BladeActions.SetBlade, (bladeState:IBladeState[], blades:IBlade[]) => {
     const bladeIds = blades.map((b) => b.id);
-    return bladeState.filter((old) => !(old.id in bladeIds))
+    return bladeState.filter((old) => !bladeIds.includes(old.id))
       .concat(blades.map((blade) => ({
         id: blade.id,
         name: blade.Name,
@@ -92,7 +92,8 @@ export const bladesReducer = createReducer<IBladeState[]>(
     }
 
     return bladeState
-      .filter((blade) => !(blade.affinityChart.id in updatedBlades.map((updated) => updated.id)))
+      .filter((blade) =>
+        !updatedBlades.map((updated) => updated.id).includes(blade.affinityChart.id))
       .concat(updatedBlades).sort((bladeA, bladeB) =>
         bladeA.id < bladeB.id ? -1 : 1
       )
@@ -150,7 +151,8 @@ export const bladesReducer = createReducer<IBladeState[]>(
         return bladeState;
       }
 
-      return bladeState.filter((blade) => !(blade.id in updatedBlades.map((update) => update.id)))
+      return bladeState
+        .filter((blade) => !updatedBlades.map((update) => update.id).includes(blade.id))
         .concat(updatedBlades).sort((bladeA, bladeB) =>
           bladeA.id < bladeB.id ? -1 : 1
         )
@@ -213,7 +215,8 @@ export const bladesReducer = createReducer<IBladeState[]>(
       return bladeState;
     }
 
-    return bladeState.filter((blade) => !(blade.id in updatedBlades.map((update) => update.id)))
+    return bladeState
+      .filter((blade) =>!updatedBlades.map((update) => update.id).includes(blade.id))
       .concat(updatedBlades).sort((bladeA, bladeB) =>
         bladeA.id < bladeB.id ? -1 : 1
       )
