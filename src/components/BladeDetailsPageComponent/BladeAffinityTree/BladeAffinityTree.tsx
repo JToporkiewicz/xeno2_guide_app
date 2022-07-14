@@ -10,7 +10,7 @@ interface IOwnProps {
 }
 
 interface IDispatchProps {
-  setBladeSkillNode: (node: IAffinityChartNode) => void;
+  setBladeSkillNode: (node: IAffinityChartNode[]) => void;
   saveBladeSkillNode: (node: IAffinityChartNode) => void;
 }
 
@@ -34,7 +34,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
             .map((n) => ({...n, Unlocked: false}))))
       }
     }
-    updatingNodes.map((node) => props.setBladeSkillNode(node))
+    props.setBladeSkillNode(updatingNodes)
     toUpdate.current = toUpdate.current
       .filter((node) => !updatingNodes.find((un) => un.id === node.id))
       .concat(updatingNodes)

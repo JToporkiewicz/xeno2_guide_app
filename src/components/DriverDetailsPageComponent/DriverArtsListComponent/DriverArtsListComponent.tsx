@@ -1,5 +1,8 @@
 import { useState, useEffect, ReactChild } from 'react';
-import { IDriverArtOneListUpdate, IDriverArtUpdateData } from '../../../redux/interfaces/drivers';
+import {
+  IDriverArtUpdateLevelUnlocked,
+  IDriverArtUpdateData
+} from '../../../redux/interfaces/drivers';
 import { IDriverArtsState } from '../../../redux/interfaces/reduxState';
 import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent';
 import ClosedUnlinkedImagePanel from '../../CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
@@ -7,7 +10,7 @@ import DADetails from './DriverArtDetailsComponents/DADetails';
 
 interface IDispatchProps {
   saveDriverArtLevel: (payload: IDriverArtUpdateData) => void,
-  setDriverArtOneList: (payload: IDriverArtOneListUpdate) => void
+  updateDriverArtLevelUnlocked: (payload: IDriverArtUpdateLevelUnlocked) => void
 }
 
 interface IProps {
@@ -32,12 +35,10 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
       .find((artList) => artList.id === artId);
     if (artList) {
       props.saveDriverArtLevel({artId, newLevel});
-      props.setDriverArtOneList({
+      props.updateDriverArtLevelUnlocked({
         driverId: props.driverId,
-        artList: {
-          ...artList,
-          levelUnlocked: newLevel
-        }
+        artId: artList.id,
+        levelUnlocked: newLevel
       })
     }
 

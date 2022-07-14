@@ -9,7 +9,7 @@ import {
   IDriverArtUpdateData,
   IDriverSkillNodeUpdate,
   IDriverArtNodeRequest,
-  IDriverArtOneListUpdate
+  IDriverArtUpdateLevelUnlocked
 } from '../interfaces/drivers';
 import { IUpdateShow } from '../interfaces/reduxState';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
@@ -29,7 +29,7 @@ export enum DriverActions {
   FetchAllDriverArtLists = 'FETCH_ALL_DRIVER_ART_LISTS',
   FetchDriverArtList = 'FETCH_DRIVER_ART_LIST',
   SetDriverArtList = 'SET_DRIVER_ART_LIST',
-  SetDriverArtOneList = 'SET_DRIVER_ART_ONE_LIST',
+  UpdateDriverArtLevelUnlocked = 'UPDATE_DRIVER_ART_LEVEL_UNLOCKED',
   SaveDriverArtLevel = 'SAVE_DRIVER_ART_LEVEL',
   FetchAllDriverArtNodes = 'FETCH_ALL_DRIVER_ART_NODES',
   FetchDriverArtNode = 'FETCH_DRIVER_ART_NODE',
@@ -39,23 +39,23 @@ export enum DriverActions {
 export type ActionTypes =
   | IFluxAction<DriverActions.FetchAllDrivers>
   | IFluxPayloadAction<DriverActions.FetchDriverDetails, number>
-  | IFluxPayloadAction<DriverActions.SetDriverDetails, IDriver>
+  | IFluxPayloadAction<DriverActions.SetDriverDetails, IDriver[]>
   | IFluxPayloadAction<DriverActions.UpdateShowDriver, IUpdateShow>
   | IFluxAction<DriverActions.FetchAllDriverSkillTrees>
   | IFluxPayloadAction<DriverActions.FetchDriverSkillTree, number>
-  | IFluxPayloadAction<DriverActions.SetDriverSkillTree, IDriverSkillTree>
+  | IFluxPayloadAction<DriverActions.SetDriverSkillTree, IDriverSkillTree[]>
   | IFluxAction<DriverActions.FetchAllDriverSkillNodes>
   | IFluxPayloadAction<DriverActions.FetchDriverSkillNodes, number>
-  | IFluxPayloadAction<DriverActions.SetDriverSkillNode, IDriverSkillNode>
+  | IFluxPayloadAction<DriverActions.SetDriverSkillNode, IDriverSkillNode[]>
   | IFluxPayloadAction<DriverActions.SaveDriverSkillNode, IDriverSkillNodeUpdate>
   | IFluxAction<DriverActions.FetchAllDriverArtLists>
   | IFluxPayloadAction<DriverActions.FetchDriverArtList, number>
-  | IFluxPayloadAction<DriverActions.SetDriverArtList, IDriverArts>
-  | IFluxPayloadAction<DriverActions.SetDriverArtOneList, IDriverArtOneListUpdate>
+  | IFluxPayloadAction<DriverActions.SetDriverArtList, IDriverArts[]>
+  | IFluxPayloadAction<DriverActions.UpdateDriverArtLevelUnlocked, IDriverArtUpdateLevelUnlocked>
   | IFluxPayloadAction<DriverActions.SaveDriverArtLevel, IDriverArtUpdateData>
   | IFluxAction<DriverActions.FetchAllDriverArtNodes>
   | IFluxPayloadAction<DriverActions.FetchDriverArtNode, IDriverArtNodeRequest>
-  | IFluxPayloadAction<DriverActions.SetDriverArtNode, IDriverArtDetails>;
+  | IFluxPayloadAction<DriverActions.SetDriverArtNode, IDriverArtDetails[]>;
 
 export const fetchAllDrivers = ():ActionTypes => ({
   type: DriverActions.FetchAllDrivers
@@ -66,7 +66,7 @@ export const fetchDriverDetails = (payload:number):ActionTypes => ({
   payload
 });
 
-export const setDriverDetails = (payload:IDriver):ActionTypes => ({
+export const setDriverDetails = (payload:IDriver[]):ActionTypes => ({
   type: DriverActions.SetDriverDetails,
   payload
 });
@@ -85,7 +85,7 @@ export const fetchDriverSkillTree = (payload:number):ActionTypes => ({
   payload
 });
 
-export const setDriverSkillTree = (payload:IDriverSkillTree):ActionTypes => ({
+export const setDriverSkillTree = (payload:IDriverSkillTree[]):ActionTypes => ({
   type: DriverActions.SetDriverSkillTree,
   payload
 });
@@ -99,7 +99,7 @@ export const fetchDriverSkillNodes = (payload:number):ActionTypes => ({
   payload
 });
 
-export const setDriverSkillNode = (payload:IDriverSkillNode):ActionTypes => ({
+export const setDriverSkillNode = (payload:IDriverSkillNode[]):ActionTypes => ({
   type: DriverActions.SetDriverSkillNode,
   payload
 });
@@ -118,13 +118,15 @@ export const fetchDriverArtList = (payload:number):ActionTypes => ({
   payload
 });
 
-export const setDriverArtList = (payload:IDriverArts):ActionTypes => ({
+export const setDriverArtList = (payload:IDriverArts[]):ActionTypes => ({
   type: DriverActions.SetDriverArtList,
   payload
 })
 
-export const setDriverArtOneList = (payload:IDriverArtOneListUpdate):ActionTypes => ({
-  type: DriverActions.SetDriverArtOneList,
+export const updateDriverArtLevelUnlocked = (
+  payload:IDriverArtUpdateLevelUnlocked
+):ActionTypes => ({
+  type: DriverActions.UpdateDriverArtLevelUnlocked,
   payload
 });
 
@@ -142,7 +144,7 @@ export const fetchDriverArtNode = (payload:IDriverArtNodeRequest):ActionTypes =>
   payload
 });
 
-export const setDriverArtNode = (payload:IDriverArtDetails):ActionTypes => ({
+export const setDriverArtNode = (payload:IDriverArtDetails[]):ActionTypes => ({
   type: DriverActions.SetDriverArtNode,
   payload
 });

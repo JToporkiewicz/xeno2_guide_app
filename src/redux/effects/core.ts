@@ -8,6 +8,7 @@ import { fetchAllBlades } from '../actions/blades'
 import { fetchAllDrivers } from '../actions/drivers'
 import { fetchHeart2Hearts } from '../actions/heart2Hearts'
 import { fetchQuests } from '../actions/quests'
+import { fetchFieldSkills } from '../actions/fieldSkills'
 
 const fetchStoryProgressEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -42,7 +43,8 @@ const resetStateEffect:Epic<AnyAction, AnyAction> = (action$) =>
         of(fetchAllDrivers()),
         of(fetchAllBlades()),
         of(fetchHeart2Hearts()),
-        of(fetchQuests())
+        of(fetchQuests()),
+        of(fetchFieldSkills())
       )
     )
   )

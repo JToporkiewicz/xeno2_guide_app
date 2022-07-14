@@ -35,7 +35,7 @@ const fetchAllDriversEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching drivers',
       from(client.resource('driver').find())
         .pipe(mergeMap((drivers:IDriver[]) => concat(
-          of(...drivers.map((driver) => setDriverDetails(driver))),
+          of(setDriverDetails(drivers)),
           of(fetchAllDriverArtLists()),
           of(fetchAllDriverSkillTrees()),
         )))
@@ -49,7 +49,7 @@ const fetchDriverDetailsEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching driver',
       from(client.resource('driver').get(action.payload))
         .pipe(mergeMap((driver:IDriver) => concat(
-          of(setDriverDetails(driver)),
+          of(setDriverDetails([driver])),
           of(fetchDriverArtList(driver.id)),
           of(fetchDriverSkillTree(driver.DriverSkillTree)),
           of(fetchDriverSkillTree(driver.HiddenSkillTree))
@@ -64,7 +64,7 @@ const fetchAllDriverSkillTreesEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching driver skill trees',
       from(client.resource('driverskilltree').find())
         .pipe(mergeMap((trees:IDriverSkillTree[]) => concat(
-          of(...trees.map((tree) => setDriverSkillTree(tree))),
+          of(setDriverSkillTree(trees)),
           of(fetchAllDriverSkillNodes())
         )))
     ))
@@ -85,7 +85,7 @@ const fetchDriverSkillTreeEffect:Epic<AnyAction, AnyAction> = (action$) =>
               }
             })
             return concat(
-              of(setDriverSkillTree(tree)),
+              of(setDriverSkillTree([tree])),
               of(...actions)
             )
           }),
@@ -100,7 +100,7 @@ const fetchAllDriverSkillNodesEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching driver skill nodes',
       from(client.resource('driverskillnode').find())
         .pipe(mergeMap((nodes:IDriverSkillNode[]) => concat(
-          of(...nodes.map((node) => setDriverSkillNode(node)))
+          of(setDriverSkillNode(nodes))
         )))
     ))
   )
@@ -111,7 +111,7 @@ const fetchDriverSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
     mergeMap((action) => callWithLoader$(
       'Fetching driver skill node - ' + action.payload,
       from(client.resource('driverskillnode').get(action.payload))
-        .pipe(mergeMap((node) => of(setDriverSkillNode(node))))
+        .pipe(mergeMap((node) => of(setDriverSkillNode([node]))))
     ))
   )
 
@@ -133,7 +133,7 @@ const fetchAllDriverArtListsEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching driver arts',
       from(client.resource('driverArt').find())
         .pipe(mergeMap((artLists:IDriverArts[]) => concat(
-          of(...artLists.map((list) => setDriverArtList(list))),
+          of(setDriverArtList(artLists)),
           of(fetchAllDriverArtNodes())
         )))
     ))
@@ -146,7 +146,7 @@ const fetchDriverArtListEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching driver art list - ' + action.payload,
       from(client.resource('driverArt').find({driver: action.payload}))
         .pipe(mergeMap((artList:IDriverArts[]) => concat(
-          of(...artList.map((art) => setDriverArtList(art))),
+          of(setDriverArtList(artList)),
           of(...artList.map((art) => fetchDriverArtNode({
             artId: art.id,
             artNode: art.Level1,
@@ -193,7 +193,7 @@ const fetchAllDriverArtNodesEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching driver art nodes',
       from(client.resource('driverArtDetails').find())
         .pipe(mergeMap((nodes:IDriverArtDetails[]) => concat(
-          of(...nodes.map((node) => setDriverArtNode(node)))
+          of(setDriverArtNode(nodes))
         )))
     ))
   )
@@ -204,7 +204,7 @@ const fetchDriverArtNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
     mergeMap((action) => callWithLoader$(
       'Fetching driver art node - ' + action.payload.artNode,
       from(client.resource('driverArtDetails').get(action.payload.artNode))
-        .pipe(mergeMap((node) => of(setDriverArtNode(node))
+        .pipe(mergeMap((node) => of(setDriverArtNode([node]))
         ))
     )
     ),

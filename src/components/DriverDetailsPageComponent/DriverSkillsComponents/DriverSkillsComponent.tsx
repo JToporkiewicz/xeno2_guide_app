@@ -10,7 +10,7 @@ import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleC
 import DriverSkillTreeTierStatus from './TreeComponents/DriverSkillTreeTierStatus';
 
 interface IDispatchProps {
-  setDriverSkillNode: (payload:IDriverSkillNode) => void;
+  setDriverSkillNode: (payload:IDriverSkillNode[]) => void;
   saveDriverSkillNode: (payload:IDriverSkillNodeUpdate) => void;
 }
 
@@ -75,10 +75,10 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
       }
     }
     const nodesIds = nodes.map((nodeDetails) => nodeDetails.node.id);
-    nodes.forEach((nodeDetails) => props.setDriverSkillNode({
+    props.setDriverSkillNode(nodes.map((nodeDetails) => ({
       ...nodeDetails.node,
       Unlocked: unlock
-    }))
+    })))
     toUpdate.current = toUpdate.current.filter((node) => !nodesIds.includes(node.id))
       .concat(nodes.map((nodeDetails) => nodeDetails.node))
   }

@@ -9,11 +9,13 @@ import { effects as heart2HeartEffects } from './heart2Hearts';
 import { effects as bladeEffects } from './blades';
 import { effects as itemEffects } from './items';
 import { effects as questEffects } from './quests';
+import { effects as fieldSkillEffects } from './fieldSkills';
 import { fetchAllBlades } from '../actions/blades';
 import { fetchAllDrivers } from '../actions/drivers';
 import { fetchHeart2Hearts } from '../actions/heart2Hearts';
 import { getDrivers } from '../selectors';
 import { fetchQuests } from '../actions/quests';
+import { fetchFieldSkills } from '../actions/fieldSkills';
 
 export const callWithLoader$ = <T extends Action>(loaderState:string, action$:Observable<T>) =>
   concat(
@@ -32,7 +34,8 @@ const initialLoad:Epic<AnyAction, AnyAction> = (action$, state$) =>
           of(fetchAllDrivers()),
           of(fetchAllBlades()),
           of(fetchHeart2Hearts()),
-          of(fetchQuests())
+          of(fetchQuests()),
+          of(fetchFieldSkills())
         ),
         of(resetLoader())
       )
@@ -44,6 +47,7 @@ export const effects = combineEpics(
   bladeEffects,
   coreEffects,
   driverEffects,
+  fieldSkillEffects,
   heart2HeartEffects,
   itemEffects,
   questEffects

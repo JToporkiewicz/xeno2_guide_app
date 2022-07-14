@@ -5,12 +5,18 @@ import { IQuestState } from '../interfaces/reduxState';
 
 export const questsReducer = createReducer<IQuestState[]>(
   [QuestsActions.SetQuests,
-    (_: IQuestState[], quests: IQuest[]) =>
-      quests.map((quest) => ({
-        ...quest,
-        Steps: [],
-        SubSteps: []
-      }))],
+    (questState: IQuestState[], quests: IQuest[]) => {
+      const questIds = quests.map((q) => q.id);
+      return questState.filter((old) => !(old.id in questIds))
+        .concat(
+          quests.map((quest) => ({
+            ...quest,
+            Steps: [],
+            SubSteps: []
+          }))
+        )
+    }
+  ],
   [QuestsActions.UpdateQuestStatus,
     (state:IQuestState[], newQuest: IQuestState) =>
       state.filter((quest) => quest.id !== newQuest.id)

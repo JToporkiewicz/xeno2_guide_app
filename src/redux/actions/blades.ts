@@ -27,17 +27,17 @@ export type ActionTypes =
   | IFluxAction<BladeActions.FetchAllBlades>
   | IFluxPayloadAction<BladeActions.FetchBlade, number>
   | IFluxPayloadAction<BladeActions.FetchBladesByWeapon, string>
-  | IFluxPayloadAction<BladeActions.SetBlade, IBlade>
+  | IFluxPayloadAction<BladeActions.SetBlade, IBlade[]>
   | IFluxPayloadAction<BladeActions.UpdateShowBlade, IUpdateShow>
   | IFluxAction<BladeActions.FetchAllBladeSkillTrees>
   | IFluxPayloadAction<BladeActions.FetchBladeSkillTree, number>
-  | IFluxPayloadAction<BladeActions.SetBladeSkillTree, IAffinityChart>
+  | IFluxPayloadAction<BladeActions.SetBladeSkillTree, IAffinityChart[]>
   | IFluxAction<BladeActions.FetchAllBladeSkillBranches>
   | IFluxPayloadAction<BladeActions.FetchBladeSkillBranch, number>
-  | IFluxPayloadAction<BladeActions.SetBladeSkillBranch, IAffinityChartBranch>
+  | IFluxPayloadAction<BladeActions.SetBladeSkillBranch, IAffinityChartBranch[]>
   | IFluxAction<BladeActions.FetchAllBladeSkillNodes>
   | IFluxPayloadAction<BladeActions.FetchBladeSkillNode, number>
-  | IFluxPayloadAction<BladeActions.SetBladeSkillNode, IAffinityChartNode>
+  | IFluxPayloadAction<BladeActions.SetBladeSkillNode, IAffinityChartNode[]>
   | IFluxPayloadAction<BladeActions.UpdateBladeUnlocked, IBladeState>
   | IFluxPayloadAction<BladeActions.SaveBladeSkillNode, IAffinityChartNode>
   | IFluxPayloadAction<BladeActions.SaveBladeStatus, IBladeState>;
@@ -56,7 +56,7 @@ export const fetchBladesByWeapon = (payload: string):ActionTypes => ({
   payload
 });
 
-export const setBlade = (payload: IBlade):ActionTypes => ({
+export const setBlade = (payload: IBlade[]):ActionTypes => ({
   type: BladeActions.SetBlade,
   payload
 });
@@ -75,7 +75,7 @@ export const fetchBladeSkillTree = (payload: number):ActionTypes => ({
   payload
 });
 
-export const setBladeSkillTree = (payload: IAffinityChart):ActionTypes => ({
+export const setBladeSkillTree = (payload: IAffinityChart[]):ActionTypes => ({
   type: BladeActions.SetBladeSkillTree,
   payload
 });
@@ -89,7 +89,7 @@ export const fetchBladeSkillBranch = (payload: number):ActionTypes => ({
   payload
 });
 
-export const setBladeSkillBranch = (payload: IAffinityChartBranch):ActionTypes => ({
+export const setBladeSkillBranch = (payload: IAffinityChartBranch[]):ActionTypes => ({
   type: BladeActions.SetBladeSkillBranch,
   payload
 });
@@ -103,7 +103,7 @@ export const fetchBladeSkillNode = (payload: number):ActionTypes => ({
   payload
 });
 
-export const setBladeSkillNode = (payload: IAffinityChartNode):ActionTypes => ({
+export const setBladeSkillNode = (payload: IAffinityChartNode[]):ActionTypes => ({
   type: BladeActions.SetBladeSkillNode,
   payload
 });

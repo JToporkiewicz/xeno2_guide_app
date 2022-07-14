@@ -1,5 +1,4 @@
 import { IDriverSkillNode } from '../../interfaces';
-import { IDriverArtsState } from './reduxState';
 
 export const defaultSkillTree = {
   treeId: 0,
@@ -55,9 +54,10 @@ export interface IDriverSkillNodeUpdate {
   node: IDriverSkillNode
 }
 
-export interface IDriverArtOneListUpdate {
+export interface IDriverArtUpdateLevelUnlocked {
   driverId:number,
-  artList: IDriverArtsState
+  artId:number,
+  levelUnlocked:number
 }
 
 export interface IDriverArtNodeRequest {

@@ -26,7 +26,7 @@ const fetchAllBladesEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching blades',
       from(client.resource('blade').find())
         .pipe(mergeMap((blades:IBlade[]) => concat(
-          of(...blades.map((blade) => setBlade(blade))),
+          of(setBlade(blades)),
           of(fetchAllBladeSkillTrees())
         )))
     ))
@@ -39,7 +39,7 @@ const fetchBladeEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching blade - ' + action.payload,
       from(client.resource('blade').get(action.payload))
         .pipe(mergeMap((blade:IBlade) => concat(
-          of(setBlade(blade)),
+          of(setBlade([blade])),
           of(fetchBladeSkillTree(blade.AffinityChart))
         )))
     ))
@@ -52,7 +52,7 @@ const fetchBladesByWeaponEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching blades',
       from(client.resource('blade').find({Weapon: action.payload}))
         .pipe(mergeMap((blades:IBlade[]) => concat(
-          of(...blades.map((blade) => setBlade(blade))),
+          of(setBlade(blades)),
           of(...blades.map((blade) => fetchBladeSkillTree(blade.AffinityChart)))
         )))
     ))
@@ -65,7 +65,7 @@ const fetchAllBladeSkillTreesEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching blade skill trees',
       from(client.resource('affinityChart').find())
         .pipe(mergeMap((trees:IAffinityChart[]) => concat(
-          of(...trees.map((tree) => setBladeSkillTree(tree))),
+          of(setBladeSkillTree(trees)),
           of(fetchAllBladeSkillBranches())
         )))
     ))
@@ -87,7 +87,7 @@ const fetchBladeSkillTreeEffect:Epic<AnyAction, AnyAction> = (action$) =>
           })
 
           return concat(
-            of(setBladeSkillTree(tree)),
+            of(setBladeSkillTree([tree])),
             of(...actions)
           )}
         ))
@@ -101,7 +101,7 @@ const fetchAllBladeSkillBranchEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching blade skill branches',
       from(client.resource('affinityChartBranch').find())
         .pipe(mergeMap((branches:IAffinityChartBranch[]) => concat(
-          of(...branches.map((branch) => setBladeSkillBranch(branch))),
+          of(setBladeSkillBranch(branches)),
           of(fetchAllBladeSkillNode())
         )))
     ))
@@ -123,7 +123,7 @@ const fetchBladeSkillBranchEffect:Epic<AnyAction, AnyAction> = (action$) =>
           })
 
           return concat(
-            of(setBladeSkillBranch(branch)),
+            of(setBladeSkillBranch([branch])),
             of(...actions)
           )
         }))
@@ -137,7 +137,7 @@ const fetchAllBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Fetching blade skill nodes',
       from(client.resource('affinityChartNode').find())
         .pipe(mergeMap((nodes:IAffinityChartNode[]) =>
-          of(...nodes.map((node) => setBladeSkillNode(node)))
+          of(setBladeSkillNode(nodes))
         ))
     ))
   )
@@ -148,7 +148,7 @@ const fetchBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
     mergeMap((action) => callWithLoader$(
       'Fetching blade skill node - ' + action.payload,
       from(client.resource('affinityChartNode').get(action.payload))
-        .pipe(mergeMap((node:IAffinityChartNode) => of(setBladeSkillNode(node))))
+        .pipe(mergeMap((node:IAffinityChartNode) => of(setBladeSkillNode([node]))))
     ))
   )
 
