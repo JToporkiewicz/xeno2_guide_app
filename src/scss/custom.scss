@@ -83,14 +83,41 @@ select{
     opacity: 0.5;
 }
 
+.loading-details {
+    margin: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: fit-content;
+
+}
+
 .loading-text {
-    height:100%;
-    width:100%;
-    margin: 40% auto;
-    position:absolute;
+    width:max-content;
     text-align:center;
     font-size: x-large;
     font-weight: bold;
+    margin: auto;
+    border: medium solid var(--main-color);
+    border-radius: 10px;
+    background:  var(--main-color);
+    padding: 10px 20px;
+    color: white;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+.loading-icon-image {
+    width: 20vw;
+    display: block;
+    margin: 0px auto 10px;
+    animation: rotation 6s infinite linear;
 }
 
 // ------------- navigation -------------
