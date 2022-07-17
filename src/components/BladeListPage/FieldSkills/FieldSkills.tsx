@@ -18,7 +18,7 @@ interface IProps {
 
 export const FieldSkillsView = (props:IProps&IDispatchProps) => {
   const [orderType, setOrderType] = useState('default');
-  const [isOrderAsc, setIsOrderAsc] = useState(false);
+  const [isOrderAsc, setIsOrderAsc] = useState(true);
   const toUpdateFieldSkills = useRef([] as IUpdateFieldSkillLevel[]);
 
   const orderOptions: {[key:string]: keyof IFieldSkills} = {
