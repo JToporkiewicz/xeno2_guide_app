@@ -1,3 +1,5 @@
+import 'scss/loading.scss';
+
 interface IProps {
   loaderState: string[];
 }

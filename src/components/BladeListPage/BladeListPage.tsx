@@ -200,7 +200,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             | <div className='col-sm-2'><b>Total Level</b></div>
           </div>
           {props.fieldSkills.map((skills) =>
-            <div className='row'>
+            <div className='row' key={skills.Name}>
               <div className='col-sm-2'>{skills.Name}</div>
               | <div className='col-sm-2'>{skills.Type}</div>
               |

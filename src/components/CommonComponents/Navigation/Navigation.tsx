@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import 'scss/navigation.scss';
 
 interface IButtonProps {
   link:string,

@@ -43,7 +43,7 @@ export const ProgressStatusDetails = (props:IProps) => {
         <div className="detailedProgress">
           {Object.entries(props.list)
             .map((entry) => 
-              <div className="statusHeader subStatus">
+              <div className="statusHeader subStatus" key={`${entry[0]}`}>
                 <div>
                   {entry[0]}:
                   <i className="sub-text"> {entry[1].unlocked} out of {entry[1].total}</i>

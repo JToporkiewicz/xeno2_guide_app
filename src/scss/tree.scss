@@ -1,0 +1,170 @@
+// // ------------- tree main structure -------------
+
+.tree-wrapper {
+  position: relative;
+  height: 28em;
+  overflow: hidden;
+}
+
+.tree-area {
+  height: 50em;
+  width: 50em;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+}
+
+// // ------------- branch main structures -------------
+
+.branch-area {
+  position: absolute;
+  height: 50%;
+  width: 10%;
+  left: 45%;
+  transform-origin: bottom center;
+}
+
+.branch-label {
+  height: 40px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.branch-body {
+  height: 65%;
+  width: 100%;
+  position: relative;
+
+  &:hover {
+      cursor: pointer;
+  }
+}
+
+.branch-track {
+  height: 90%;
+  border: medium solid var(--main-color);
+  margin: auto 50%;
+  width: 0px;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+// // ------------- branch nodes structures -------------
+
+.branch-node-area {
+  display: flex;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  flex-direction: column;
+  height: 100%;
+}
+
+.chart-node,
+.empty-chart-node {
+  border: medium solid var(--main-color);
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  margin: auto;
+  background: var(--main-color);
+  position: relative;
+}
+
+.empty-chart-node + .empty-chart-node {
+  margin-top: 30px;
+}
+
+.branch-node-area > .empty-chart-node:first-child,
+.branch-node-area > .chart-node:first-child {
+  margin-top: 0px;
+}
+
+.branch-node-area > .chart-node:last-child {
+  margin-bottom: 0px;
+}
+
+.branch-node-area > .empty-chart-node:last-child {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.chart-node {
+  height: 40px;
+  width: 40px;
+}
+
+.chart-node-unlocked {
+  background: var(--grey-main-color);
+}
+
+.branch-name {
+  position: absolute;
+  height: 100%;
+  width: 75%;
+  background: var(--main-color-o5);
+  border-radius: 50px;
+  display: none;
+  align-content: center;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  overflow-wrap: anywhere;
+  margin: 0px 50%;
+  transform: translateX(-50%);
+}
+
+.branch-body:hover .branch-name {
+  display: grid;
+}
+
+// // ------------- branch details structures -------------
+
+.branch-details {
+  display: flex;
+  position: relative;
+}
+
+.branch-details-track {
+  width: 90%;
+  margin: auto 5%;
+  border: medium solid var(--main-color);
+  top: 50%;
+  height: 0px;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.branch-details-area {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+  
+  .unlocked {
+      background: var(--very-light-blue);
+  }    
+}
+
+.branch-details-node {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: medium;
+  border-color: var(--main-color);
+  background: white;
+  padding: 5px;
+  height: 100%;
+}
+
+.branch-details-node-area {
+  position: relative;
+  margin-right: 5%;
+}
+
+.branch-details-area > .branch-details-node-area:last-child {
+  margin-right: 0px;
+}
