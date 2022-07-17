@@ -1,15 +1,13 @@
 import { ReactChild, useEffect, useRef, useState } from 'react'
-import { IFieldSkills, IStoryProgress } from '../../interfaces';
+import { IStoryProgress } from '../../interfaces';
 import { defaultBladeState } from '../../redux/interfaces/blades';
-import { IUpdateFieldSkillLevel } from '../../redux/interfaces/fieldSkills';
 import { IBladeState, IUpdateShow } from '../../redux/interfaces/reduxState';
 import { CharacterPageDetails } from '../CommonComponents/CharacterPageDetails';
 import CharacterPanelContainer from '../CommonComponents/Containers/CharacterPanelsContainer';
-import CollapsibleComponent from '../CommonComponents/Containers/CollapsibleComponent';
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
-import IncrementDecrementNumber from '../CommonComponents/FormComponents/IncrementDecrementNumber';
 import { ClosedLinkedImagePanel } from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
 import UnavailableImagePanel from '../UnavailableDataComponents/Images/UnavailableImagePanel';
+import { FieldSkills } from './FieldSkills';
 
 interface IDispatchProps {
   saveStoryProgress: (payload:IStoryProgress) => void;
@@ -18,15 +16,11 @@ interface IDispatchProps {
   updateShowBlade: (payload:IUpdateShow) => void;
   updateBladeUnlocked: (payload:IBladeState) => void;
   saveBladeStatus: (payload:IBladeState) => void;
-  fetchFieldSkills: () => void;
-  updateFieldSkillLevelUnlocked: (payload:IUpdateFieldSkillLevel) => void;
-  saveFieldSkillLevelUnlocked: (payload:IUpdateFieldSkillLevel) => void;
 }
 
 interface IProps {
   blades: IBladeState[];
   storyProgress: IStoryProgress;
-  fieldSkills: IFieldSkills[];
 }
 
 export const BladeListPageView = (props:IProps&IDispatchProps) => {
@@ -34,7 +28,6 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
   const [orderType, setOrderType] = useState('default');
   const [selectedBlade, setSelectedBlade] = useState(defaultBladeState as IBladeState)
   const toUpdateBlades = useRef([] as IBladeState[]);
-  const toUpdateFieldSkills = useRef([] as IUpdateFieldSkillLevel[]);
 
   const orderOptions: {[key:string]: keyof IBladeState} = {
     default: 'id',
@@ -59,19 +52,6 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
       ...blade,
       unlocked: !blade.unlocked
     })
-  }
-
-  const updateSkillLevelUnlocked = (id:number, value:number) => {
-    props.updateFieldSkillLevelUnlocked({
-      id,
-      CommonBladeContribution: value
-    })
-    toUpdateFieldSkills.current = toUpdateFieldSkills.current
-      .filter((updateSkill) => updateSkill.id !== id)
-      .concat({
-        id,
-        CommonBladeContribution: value
-      });
   }
 
   const getOrderTypeColumn = (order: string): keyof IBladeState => {
@@ -142,15 +122,9 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
   }, [props.blades, orderType])
 
   useEffect(() => {
-    if (props.fieldSkills.length === 0) {
-      props.fetchFieldSkills();
-    }
     return () => {
       toUpdateBlades.current.forEach((blade:IBladeState) =>
         props.saveBladeStatus(blade)
-      )
-      toUpdateFieldSkills.current.forEach((skill: IUpdateFieldSkillLevel) =>
-        props.saveFieldSkillLevelUnlocked(skill)
       )
     }
   }, [])
@@ -191,31 +165,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
           Object.entries(bladeList).flatMap((group) => group[1])
           : bladeList}
       </CharacterPanelContainer>
-      <CollapsibleComponent header='Field Skill Levels'>
-        <>
-          <div className='row'>
-            <div className='col-sm-2'><b>Name</b></div>
-            | <div className='col-sm-2'><b>Type</b></div>
-            | <div className='col-sm-3'><b>Common Blade Contribution</b></div>
-            | <div className='col-sm-2'><b>Total Level</b></div>
-          </div>
-          {props.fieldSkills.map((skills) =>
-            <div className='row' key={skills.Name}>
-              <div className='col-sm-2'>{skills.Name}</div>
-              | <div className='col-sm-2'>{skills.Type}</div>
-              |
-              <div className='col-sm-3'>
-                <IncrementDecrementNumber
-                  value={skills.CommonBladeContribution}
-                  minimum={0}
-                  updateValue={updateSkillLevelUnlocked.bind(this, skills.id)}
-                />
-              </div>
-              | <div className='col-sm-2'>{skills.TotalLevel}</div>
-            </div>
-          )}
-        </>
-      </CollapsibleComponent>
+      <FieldSkills/>
     </>
   )
 }

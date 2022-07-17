@@ -553,6 +553,12 @@ select{
     vertical-align: middle;
 }
 
+img.increment-decrement-button {
+    background-color: var(--main-color);
+    border-radius: 50%;
+    padding: 3px;
+}
+
 .dropdown-layout {
     display: flex;
     height: 40px;
@@ -656,5 +662,35 @@ select{
 
     .hover-version {
         margin: 0px;
+    }
+}
+
+// ------------- field skills -------------
+.field-title {
+    color: var(--main-color);
+    padding: 0px 20px 10px;
+    text-align: center;
+}
+
+.field-skills {
+    border: solid medium var(--main-color);
+    border-radius: 10px;
+}
+
+.field-row {
+    border-bottom: thin solid var(--main-color);
+    display: flex;
+}
+
+.field-entry {
+    text-align: center;
+    border-right: thin solid var(--main-color);
+
+    &:last-child {
+        border-right: none;
+    }
+
+    .col-md-7 {
+        margin: 0px auto;
     }
 }

@@ -66,6 +66,15 @@
   display: block;
 }
 
+.sort-icon {
+  margin-left: 1px;
+  width: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 // // ------------- medium image (main image) -------------
 
 .stretched-sibling-panels {
