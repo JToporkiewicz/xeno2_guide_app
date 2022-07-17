@@ -1,3 +1,4 @@
+import { sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
 import { IFieldSkills } from '../../../interfaces';
 import { IUpdateFieldSkillLevel } from '../../../redux/interfaces/fieldSkills';
@@ -106,13 +107,7 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
             .sort((skillA, skillB) => {
               const skillAValue = skillA[getOrderTypeColumn(orderType)]
               const skillBValue = skillB[getOrderTypeColumn(orderType)]
-              if (skillAValue != undefined && skillBValue != undefined) {
-                return skillAValue < skillBValue && !isOrderAsc
-                  || skillAValue > skillBValue && isOrderAsc ? -1
-                  : skillAValue > skillBValue && !isOrderAsc
-                  || skillAValue < skillBValue && isOrderAsc ? 1 : 0
-              }
-              return 0
+              return sortFunction(skillAValue, skillBValue, isOrderAsc)
             })
             .map((skills) =>
               <div className='field-row' key={skills.Name}>

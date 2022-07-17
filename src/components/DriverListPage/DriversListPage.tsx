@@ -7,6 +7,7 @@ import { IStoryProgress } from '../../interfaces';
 import { IDriverState, IUpdateShow } from '../../redux/interfaces/reduxState';
 import { CharacterPageDetails } from '../CommonComponents/CharacterPageDetails';
 import { defaultDriverState } from '../../redux/interfaces/drivers';
+import { sortFunction } from 'helpers';
 
 interface IDispatchProps {
   saveStoryProgress: (payload:IStoryProgress) => void;
@@ -23,6 +24,7 @@ interface IProps {
 export const DriversListPageView = (props:IProps & IDispatchProps) => {
   const [driversList, setDriverList] = useState([] as ReactChild[]);
   const [orderType, setOrderType] = useState('default');
+  const [sortOrderAsc, setSortOrderAsc] = useState(true);
   const [selectedDriver, setSelectedDriver] = useState(defaultDriverState as IDriverState);
 
   const orderOptions: {[key:string]: keyof IDriverState} = {
@@ -59,11 +61,7 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
           .sort((driverA, driverB) => {
             const driverAValue = driverA[getOrderTypeColumn(orderType)]
             const driverBValue = driverB[getOrderTypeColumn(orderType)]
-            if(driverAValue !== undefined && driverBValue !== undefined) {
-              return driverAValue < driverBValue ? -1
-                : driverAValue > driverBValue ? 1 : 0
-            }
-            return 0
+            return sortFunction(driverAValue, driverBValue, sortOrderAsc)
           })
           .map((driver) => {
             const progress=Math.round((driver.arts
@@ -106,7 +104,7 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
 
       props.hideLoader('Update driver list')
     }
-  }, [props.drivers, orderType])
+  }, [props.drivers, orderType, sortOrderAsc])
 
 
   return(
@@ -155,6 +153,8 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
         orderOptions={Object.keys(orderOptions)}
         orderType={orderType}
         setOrderType={setOrderType}
+        sortOrderAsc={sortOrderAsc}
+        changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}  
       >
         {driversList}
       </CharacterPanelContainer>

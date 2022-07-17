@@ -1,3 +1,4 @@
+import { sortFunction } from 'helpers';
 import { ReactChild, useEffect, useRef, useState } from 'react'
 import { IStoryProgress } from '../../interfaces';
 import { defaultBladeState } from '../../redux/interfaces/blades';
@@ -26,6 +27,7 @@ interface IProps {
 export const BladeListPageView = (props:IProps&IDispatchProps) => {
   const [bladeList, setBladeList] = useState({} as {[group:string]: ReactChild[]});
   const [orderType, setOrderType] = useState('default');
+  const [sortOrderAsc, setSortOrderAsc] = useState(true);
   const [selectedBlade, setSelectedBlade] = useState(defaultBladeState as IBladeState)
   const toUpdateBlades = useRef([] as IBladeState[]);
 
@@ -68,19 +70,14 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
           props.updateShowBlade({id: bladeDetails.id, 'show': !bladeDetails.show})
         }
       }
-
       setBladeList(
         props.blades.filter((blade) => !blade.name.includes('Awakened'))
           .sort((bladeA, bladeB) => {
             const bladeAValue = bladeA[getOrderTypeColumn(orderType)]
             const bladeBValue = bladeB[getOrderTypeColumn(orderType)]
-            if(bladeAValue !== undefined && bladeBValue !== undefined) {
-              return bladeAValue < bladeBValue ? -1
-                : bladeAValue > bladeBValue ? 1 : 0
-            }
-            return 0
+            return sortFunction(bladeAValue, bladeBValue, sortOrderAsc)
           })
-          .reduce((bladeList, blade) =>{
+          .reduce((bladeList, blade) => {
             const progress = Math.round(blade.affinityChart.branches
               .reduce((skillsTotal, branch) =>
                 skillsTotal +
@@ -119,7 +116,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
       )
       props.hideLoader('Update blade list');
     }
-  }, [props.blades, orderType])
+  }, [props.blades, orderType, sortOrderAsc])
 
   useEffect(() => {
     return () => {
@@ -160,10 +157,15 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
         orderOptions={Object.keys(orderOptions)}
         orderType={orderType}
         setOrderType={setOrderType}
+        sortOrderAsc={sortOrderAsc}
+        changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
       >
-        {orderType === 'default' || orderType === 'alphabetically' ?
-          Object.entries(bladeList).flatMap((group) => group[1])
-          : bladeList}
+        {orderType === 'default' ? Object.entries(bladeList).sort((bladeA, bladeB) => {
+          return sortFunction(bladeA[0], bladeB[1], sortOrderAsc)
+        }).flatMap((group) => group[1])
+          : orderType === 'alphabetically' ?
+            Object.entries(bladeList).flatMap((group) => group[1])
+            : bladeList}
       </CharacterPanelContainer>
       <FieldSkills/>
     </>

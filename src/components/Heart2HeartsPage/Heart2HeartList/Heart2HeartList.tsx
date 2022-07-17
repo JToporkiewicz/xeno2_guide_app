@@ -1,3 +1,4 @@
+import { sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { IHeart2Heart } from '../../../interfaces'
@@ -20,6 +21,7 @@ interface IOwnProps {
 
 export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) => {
   const [orderType, setOrderType] = useState('default');
+  const [sortOrderAsc, setSortOrderAsc] = useState(true);
 
   const toUpdate = useRef([] as IHeart2Heart[]);
 
@@ -50,6 +52,8 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
             orderOptions={Object.keys(orderOptions)}
             chosenOrder={orderType}
             changeOrder={setOrderType}
+            sortOrderAsc={sortOrderAsc}
+            changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}  
           />
           {props.characterName && `Heart 2 hearts in which ${props.characterName} participates:`}
           <div className="row">
@@ -64,11 +68,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
           }).sort((h2hA, h2hB) => {
             const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
             const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
-            if(h2hAValue !== undefined && h2hBValue !== undefined) {
-              return h2hAValue < h2hBValue ? -1
-                : h2hAValue > h2hBValue ? 1 : 0
-            }
-            return 0
+            return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
           }).map((h2h:IHeart2Heart) => 
             <div className="row text-list-entry" key={h2h.id}>
               <div

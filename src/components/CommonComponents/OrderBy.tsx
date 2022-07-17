@@ -4,6 +4,8 @@ interface IProps {
   orderOptions: string[],
   chosenOrder: string,
   changeOrder: (order:string) => void;
+  sortOrderAsc: boolean,
+  changeSortOrderAsc: () => void;
 }
 
 const OrderBy = (props:IProps) => {
@@ -37,6 +39,23 @@ const OrderBy = (props:IProps) => {
         </div>
         }
       </div>
+      <div className="order-title">Sort order: </div>
+      <input
+        name='ascending'
+        type='checkbox'
+        checked={props.sortOrderAsc}
+        onChange={() => props.changeSortOrderAsc()}
+        className='sort-order'
+      />
+      <label className='sort-order-label' htmlFor='ascending'>Ascending</label>
+      <input
+        id='descending'
+        type='checkbox'
+        checked={!props.sortOrderAsc}
+        onChange={() => props.changeSortOrderAsc()}
+        className='sort-order'
+      />
+      <label className='sort-order-label' htmlFor='sort-order'>Descending</label>
     </div>
   )
 }
