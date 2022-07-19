@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { defaultBladeState } from '../../../redux/interfaces/blades';
+import { defaultBladeState } from 'reduxState/interfaces/blades';
 import {
   getBlades,
   getHeart2Heart,
@@ -7,7 +7,7 @@ import {
   getItemTypes,
   getQuests,
   getSelected
-} from '../../../redux/selectors';
+} from 'reduxState/selectors';
 
 export default createSelector(
   getBlades,

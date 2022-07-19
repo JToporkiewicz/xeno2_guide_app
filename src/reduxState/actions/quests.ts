@@ -1,4 +1,4 @@
-import { IQuest } from '../../interfaces';
+import { IQuest } from 'interfaces';
 import { IQuestState } from '../interfaces/reduxState';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 

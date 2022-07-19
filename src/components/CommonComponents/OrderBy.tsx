@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import path from 'path';
 
 interface IProps {
   orderOptions: string[],
@@ -20,7 +21,7 @@ const OrderBy = (props:IProps) => {
         >
           {props.chosenOrder}
           <img
-            src={`/images/helper/${isOpen ? 'Up': 'Down'}.svg`}
+            src={path.resolve(`images/helper/${isOpen ? 'Up': 'Down'}.svg`)}
             alt={isOpen ? 'collapse' : 'expand'}
             className="order-by-expand"
           />

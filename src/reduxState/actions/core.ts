@@ -1,5 +1,5 @@
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
-import { IStoryProgress } from '../../interfaces';
+import { IStoryProgress } from 'interfaces';
 import { ISelectedState } from '../interfaces/reduxState';
 
 export enum CoreActions {

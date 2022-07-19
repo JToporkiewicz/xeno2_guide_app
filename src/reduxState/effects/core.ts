@@ -3,7 +3,7 @@ import { Epic, ofType, combineEpics } from 'redux-observable'
 import { mergeMap, from, of, concat, switchMap } from 'rxjs'
 import { callWithLoader$ } from '.'
 import { CoreActions, fetchStoryProgress, setStoryProgress } from '../actions/core'
-import client from '../../api-client';
+import client from 'api-client';
 import { fetchAllBlades } from '../actions/blades'
 import { fetchAllDrivers } from '../actions/drivers'
 import { fetchHeart2Hearts } from '../actions/heart2Hearts'

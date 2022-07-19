@@ -5,7 +5,7 @@ import {
   IDriverArts,
   IDriverSkillNode,
   IDriverSkillTree
-} from '../../interfaces';
+} from 'interfaces';
 import {
   IDriverArtsState,
   IDriverState,

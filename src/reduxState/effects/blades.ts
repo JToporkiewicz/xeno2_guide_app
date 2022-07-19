@@ -16,8 +16,8 @@ import {
   setBladeSkillNode,
   setBladeSkillTree
 } from '../actions/blades';
-import client from '../../api-client';
-import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode, IBlade } from '../../interfaces';
+import client from 'api-client';
+import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode, IBlade } from 'interfaces';
 
 const fetchAllBladesEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(

@@ -1,4 +1,5 @@
 import PeekOverlay from '../Overlays/PeekOverlay';
+import path from 'path';
 
 interface IProps {
     updateState:(id:number) => void
@@ -12,7 +13,7 @@ const SmallPeekPanel = (props:IProps) => {
         updateGameState={props.updateState}
         id={props.id} />
       <img
-        src={'/images/helper/Unknown.png'}
+        src={path.resolve('images/helper/Unknown.png')}
         alt={'Unknown'}
         className="small-image"/>
     </div>

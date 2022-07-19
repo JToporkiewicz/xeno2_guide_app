@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
-import { defaultDriverState } from '../../../redux/interfaces/drivers';
+import { defaultDriverState } from 'reduxState/interfaces/drivers';
 import {
   getDrivers,
   getItems,
   getItemTypes,
   getSelected,
   getStoryProgress
-} from '../../../redux/selectors';
+} from 'reduxState/selectors';
 
 export default createSelector(
   getDrivers,

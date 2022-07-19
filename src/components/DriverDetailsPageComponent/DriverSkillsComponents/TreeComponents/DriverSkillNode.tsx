@@ -1,6 +1,6 @@
-import { IDriverSkillNode } from '../../../../interfaces';
-import LockOverlay from '../../../UnavailableDataComponents/Overlays/LockOverlay';
-import UnlockOverlay from '../../../UnavailableDataComponents/Overlays/UnlockOverlay';
+import { IDriverSkillNode } from 'interfaces';
+import LockOverlay from 'components/UnavailableDataComponents/Overlays/LockOverlay';
+import UnlockOverlay from 'components/UnavailableDataComponents/Overlays/UnlockOverlay';
 
 interface IProps {
   node:IDriverSkillNode,

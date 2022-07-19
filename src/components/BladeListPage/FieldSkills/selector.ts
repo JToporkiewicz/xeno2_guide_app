@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getFieldSkills } from '../../../redux/selectors';
+import { getFieldSkills } from 'reduxState/selectors';
 
 export default createSelector(
   getFieldSkills,

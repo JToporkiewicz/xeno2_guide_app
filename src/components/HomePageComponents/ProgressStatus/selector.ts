@@ -5,7 +5,7 @@ import {
   getHeart2Heart,
   getQuests,
   getStoryProgress
-} from '../../../redux/selectors';
+} from 'reduxState/selectors';
 import { IProgressList } from './ProgressStatus';
 
 export default createSelector(

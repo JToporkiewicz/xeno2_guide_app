@@ -1,10 +1,10 @@
 import { sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
-import { IFieldSkills } from '../../../interfaces';
-import { IUpdateFieldSkillLevel } from '../../../redux/interfaces/fieldSkills';
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent';
+import { IFieldSkills } from 'interfaces';
+import { IUpdateFieldSkillLevel } from 'reduxState/interfaces/fieldSkills';
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import IncrementDecrementNumber
-  from '../../CommonComponents/FormComponents/IncrementDecrementNumber';
+  from 'components/CommonComponents/FormComponents/IncrementDecrementNumber';
 
 interface IDispatchProps {
   fetchFieldSkills: () => void;

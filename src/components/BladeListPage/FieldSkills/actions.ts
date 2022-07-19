@@ -2,7 +2,7 @@ import {
   fetchFieldSkills,
   saveFieldSkillLevelUnlocked,
   updateFieldSkillLevelUnlocked
-} from '../../../redux/actions/fieldSkills';
+} from 'reduxState/actions/fieldSkills';
 
 export default {
   fetchFieldSkills,

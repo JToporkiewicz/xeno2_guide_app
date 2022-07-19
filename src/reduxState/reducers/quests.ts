@@ -1,5 +1,5 @@
 import createReducer from 'redux-action-reducer';
-import { IQuest } from '../../interfaces';
+import { IQuest } from 'interfaces';
 import { QuestsActions } from '../actions/quests';
 import { IQuestState } from '../interfaces/reduxState';
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import path from 'path';
 
 interface IProps {
   target:string,
@@ -22,7 +23,7 @@ const DADescription = (props:IProps) => {
             className="expended-description-header"
           >
             <img
-              src="/images/helper/Up.svg"
+              src={path.resolve('images/helper/Up.svg')}
               alt="collapse"
               className="collapse-expand"
             />
@@ -41,7 +42,7 @@ const DADescription = (props:IProps) => {
           onClick={() => toggleCollapse()}
         >
           <img
-            src="/images/helper/Down.svg"
+            src={path.resolve('images/helper/Down.svg')}
             alt="expand"
             className="collapse-expand"
           />

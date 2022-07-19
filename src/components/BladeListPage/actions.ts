@@ -2,12 +2,12 @@ import {
   saveStoryProgress,
   showLoader,
   hideLoader
-} from '../../redux/actions/core';
+} from 'reduxState/actions/core';
 import {
   updateShowBlade,
   updateBladeUnlocked,
   saveBladeStatus
-} from '../../redux/actions/blades';
+} from 'reduxState/actions/blades';
 
 export default {
   saveStoryProgress,

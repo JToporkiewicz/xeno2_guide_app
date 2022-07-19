@@ -1,4 +1,4 @@
-import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode, IBlade } from '../../interfaces';
+import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode, IBlade } from 'interfaces';
 import { IBladeState, IUpdateShow } from '../interfaces/reduxState';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 

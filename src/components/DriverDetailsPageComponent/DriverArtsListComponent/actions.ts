@@ -1,7 +1,7 @@
 import {
   saveDriverArtLevel,
   updateDriverArtLevelUnlocked
-} from '../../../redux/actions/drivers';
+} from 'reduxState/actions/drivers';
 
 export default {
   saveDriverArtLevel,

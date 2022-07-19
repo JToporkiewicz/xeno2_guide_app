@@ -1,4 +1,4 @@
-import { resetState } from '../../../redux/actions/core';
+import { resetState } from 'reduxState/actions/core';
 
 export default {
   resetState

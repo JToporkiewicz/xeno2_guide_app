@@ -1,13 +1,16 @@
 import { sortFunction } from 'helpers';
 import { ReactChild, useEffect, useRef, useState } from 'react'
-import { IStoryProgress } from '../../interfaces';
-import { defaultBladeState } from '../../redux/interfaces/blades';
-import { IBladeState, IUpdateShow } from '../../redux/interfaces/reduxState';
-import { CharacterPageDetails } from '../CommonComponents/CharacterPageDetails';
-import CharacterPanelContainer from '../CommonComponents/Containers/CharacterPanelsContainer';
-import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
-import { ClosedLinkedImagePanel } from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
-import UnavailableImagePanel from '../UnavailableDataComponents/Images/UnavailableImagePanel';
+import { IStoryProgress } from 'interfaces';
+import { defaultBladeState } from 'reduxState/interfaces/blades';
+import { IBladeState, IUpdateShow } from 'reduxState/interfaces/reduxState';
+import { CharacterPageDetails } from 'components/CommonComponents/CharacterPageDetails';
+import CharacterPanelContainer
+  from 'components/CommonComponents/Containers/CharacterPanelsContainer';
+import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer';
+import { ClosedLinkedImagePanel }
+  from 'components/CommonComponents/ImagePanels/ClosedLinkedImagePanel';
+import UnavailableImagePanel
+  from 'components/UnavailableDataComponents/Images/UnavailableImagePanel';
 import { FieldSkills } from './FieldSkills';
 
 interface IDispatchProps {

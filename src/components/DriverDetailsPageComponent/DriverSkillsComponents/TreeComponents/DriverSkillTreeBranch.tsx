@@ -1,4 +1,4 @@
-import { IDriverSkillNode } from '../../../../interfaces';
+import { IDriverSkillNode } from 'interfaces';
 import DriverSkillNode from './DriverSkillNode';
 
 interface IProps {

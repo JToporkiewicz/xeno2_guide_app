@@ -1,4 +1,4 @@
-import { IFieldSkills } from '../../interfaces'
+import { IFieldSkills } from 'interfaces'
 import { IUpdateFieldSkillLevel } from '../interfaces/fieldSkills';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions'
 

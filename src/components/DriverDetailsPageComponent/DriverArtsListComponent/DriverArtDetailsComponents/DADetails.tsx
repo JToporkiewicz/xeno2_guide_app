@@ -2,8 +2,8 @@ import { DADetailsHeader } from './DADetailsHeader';
 import { DALevels } from './DALevels';
 import DADescription from './DADescription';
 import InnerCollapsibleComponent
-  from '../../../CommonComponents/Containers/InnerCollapsibleComponent';
-import { IDriverArtsState } from '../../../../redux/interfaces/reduxState';
+  from 'components/CommonComponents/Containers/InnerCollapsibleComponent';
+import { IDriverArtsState } from 'reduxState/interfaces/reduxState';
 
 interface IProps {
   weapon:string,

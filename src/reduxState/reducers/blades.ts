@@ -1,5 +1,5 @@
 import createReducer from 'redux-action-reducer';
-import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode, IBlade } from '../../interfaces';
+import { IAffinityChart, IAffinityChartBranch, IAffinityChartNode, IBlade } from 'interfaces';
 import { BladeActions } from '../actions/blades';
 import {
   IAffinityChartBranchState,

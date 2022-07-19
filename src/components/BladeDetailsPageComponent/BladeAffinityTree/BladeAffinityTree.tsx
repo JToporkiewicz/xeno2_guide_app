@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { IAffinityChartNode } from '../../../interfaces/AffinityChart';
-import { IAffinityChartNodeState, IAffinityChartState } from '../../../redux/interfaces/reduxState'
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent'
-import { BranchDetails } from '../../CommonComponents/BranchDetails';
-import { TreeBranch } from '../../CommonComponents/TreeBranch';
+import { IAffinityChartNode } from 'interfaces/AffinityChart';
+import { IAffinityChartNodeState, IAffinityChartState } from 'reduxState/interfaces/reduxState'
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
+import { BranchDetails } from 'components/CommonComponents/BranchDetails';
+import { TreeBranch } from 'components/CommonComponents/TreeBranch';
 
 interface IOwnProps {
   affinityChart: IAffinityChartState

@@ -1,4 +1,4 @@
-import { saveStoryProgress, setStoryProgress } from '../../../redux/actions/core'
+import { saveStoryProgress, setStoryProgress } from 'reduxState/actions/core'
 
 export default {
   saveStoryProgress,

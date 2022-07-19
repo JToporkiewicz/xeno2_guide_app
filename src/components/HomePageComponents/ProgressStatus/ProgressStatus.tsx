@@ -1,4 +1,4 @@
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent';
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { ProgressStatusDetails } from '../ProgressStatusDetails';
 
 export interface IProgressList {

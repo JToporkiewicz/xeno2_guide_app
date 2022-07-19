@@ -2,7 +2,7 @@ import { AnyAction } from 'redux'
 import { combineEpics, Epic, ofType } from 'redux-observable'
 import { mergeMap, from, of, EMPTY } from 'rxjs'
 import { callWithLoader$ } from '.'
-import client from '../../api-client';
+import client from 'api-client';
 import { FieldSkillsActions, setFieldSkills } from '../actions/fieldSkills'
 
 const fetchFieldSkillsEffect:Epic<AnyAction, AnyAction> = (action$) =>

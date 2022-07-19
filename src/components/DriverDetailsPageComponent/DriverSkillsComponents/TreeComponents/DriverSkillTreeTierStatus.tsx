@@ -1,3 +1,5 @@
+import path from 'path';
+
 interface IProps {
   unlockedTier1:number;
   unlockedTier2:number;
@@ -9,7 +11,7 @@ const DriverSkillTreeTierStatus = (props: IProps) => {
       <div className="branch-details-node-area" >
         <img
           className="small-centered-borderless-image non-click"
-          src="/images/helper/openLock.svg"
+          src={path.resolve('images/helper/openLock.svg')}
           alt="unlock"
         />
         <div className="driver-skill-branch-status">
@@ -21,7 +23,7 @@ const DriverSkillTreeTierStatus = (props: IProps) => {
           <>
             <img
               className="small-centered-borderless-image non-click"
-              src="/images/helper/openLock.svg"
+              src={path.resolve('images/helper/openLock.svg')}
               alt="unlock"
             />
             <div className="driver-skill-branch-status">
@@ -33,7 +35,7 @@ const DriverSkillTreeTierStatus = (props: IProps) => {
           : <>
             <img
               className="small-centered-borderless-image non-click"
-              src="/images/helper/closedLock.svg"
+              src={path.resolve('images/helper/closedLock.svg')}
               alt="lock"
             />
             <div className="driver-skill-branch-status">
@@ -49,7 +51,7 @@ const DriverSkillTreeTierStatus = (props: IProps) => {
           <>
             <img
               className="small-centered-borderless-image"
-              src="/images/helper/openLock.svg"
+              src={path.resolve('images/helper/openLock.svg')}
               alt="unlock"
             />
             <div className="driver-skill-branch-status">
@@ -61,7 +63,7 @@ const DriverSkillTreeTierStatus = (props: IProps) => {
           : <>
             <img
               className="small-centered-borderless-image"
-              src="/images/helper/closedLock.svg"
+              src={path.resolve('images/helper/closedLock.svg')}
               alt="lock"
             />
             <div className="driver-skill-branch-status">

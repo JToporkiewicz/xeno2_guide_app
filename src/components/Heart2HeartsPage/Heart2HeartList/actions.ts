@@ -1,5 +1,5 @@
-import { updateHeart2Hearts, saveHeart2Hearts } from '../../../redux/actions/heart2Hearts'
-import { setSelected } from '../../../redux/actions/core';
+import { updateHeart2Hearts, saveHeart2Hearts } from 'reduxState/actions/heart2Hearts'
+import { setSelected } from 'reduxState/actions/core';
 
 export default {
   updateHeart2Hearts,

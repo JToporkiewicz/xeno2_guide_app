@@ -1,12 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
-import { IDriverSkillNode } from '../../../interfaces';
-import {
-  IDriverSkillNodeUpdate
-} from '../../../redux/interfaces/drivers';
-import { ISkillTreeState } from '../../../redux/interfaces/reduxState';
-import { BranchDetails } from '../../CommonComponents/BranchDetails';
-import { TreeBranch } from '../../CommonComponents/TreeBranch';
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent'
+import { IDriverSkillNode } from 'interfaces';
+import { IDriverSkillNodeUpdate } from 'reduxState/interfaces/drivers';
+import { ISkillTreeState } from 'reduxState/interfaces/reduxState';
+import { BranchDetails } from 'components/CommonComponents/BranchDetails';
+import { TreeBranch } from 'components/CommonComponents/TreeBranch';
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import DriverSkillTreeTierStatus from './TreeComponents/DriverSkillTreeTierStatus';
 
 interface IDispatchProps {

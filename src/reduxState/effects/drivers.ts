@@ -19,14 +19,14 @@ import {
   setDriverSkillNode,
   setDriverSkillTree
 } from '../actions/drivers'
-import client from '../../api-client';
+import client from 'api-client';
 import {
   IDriver,
   IDriverArtDetails,
   IDriverArts,
   IDriverSkillNode,
   IDriverSkillTree
-} from '../../interfaces'
+} from 'interfaces'
 
 const fetchAllDriversEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(

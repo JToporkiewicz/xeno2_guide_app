@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getStoryProgress } from '../../../redux/selectors';
+import { getStoryProgress } from 'reduxState/selectors';
 
 export default createSelector(
   getStoryProgress,

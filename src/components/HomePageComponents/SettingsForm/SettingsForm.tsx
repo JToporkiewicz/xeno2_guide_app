@@ -1,8 +1,8 @@
-import { IStoryProgress } from '../../../interfaces';
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent';
-import Checkbox from '../../CommonComponents/FormComponents/Checkbox';
+import { IStoryProgress } from 'interfaces';
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
+import Checkbox from 'components/CommonComponents/FormComponents/Checkbox';
 import IncrementDecrementNumber
-  from '../../CommonComponents/FormComponents/IncrementDecrementNumber';
+  from 'components/CommonComponents/FormComponents/IncrementDecrementNumber';
 
 interface IDispatchProps {
   saveStoryProgress:(payload:IStoryProgress) => void;

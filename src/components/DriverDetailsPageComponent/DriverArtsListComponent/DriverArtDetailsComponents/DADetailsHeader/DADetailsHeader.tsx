@@ -1,9 +1,10 @@
 import { useState, useEffect, ReactChild } from 'react';
 import { Link } from 'react-router-dom';
-import { IStoryProgress } from '../../../../../interfaces/StoryProgress';
-import { IBladeState, IUpdateShow } from '../../../../../redux/interfaces/reduxState';
+import path from 'path';
+import { IStoryProgress } from 'interfaces/StoryProgress';
+import { IBladeState, IUpdateShow } from 'reduxState/interfaces/reduxState';
 import SmallPeekPanel
-  from '../../../../UnavailableDataComponents/Images/SmallPeekPanel';
+  from 'components/UnavailableDataComponents/Images/SmallPeekPanel';
 
 interface IDispatchProps {
   updateShowBlade:(payload:IUpdateShow) => void;
@@ -46,10 +47,10 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
                 key={blade.name}
               >
                 <img
-                  src={`/images/blade/${blade.name
+                  src={path.resolve(`images/blade/${blade.name
                     .replaceAll(/\s+/g, '')
                     .replace('α','Alpha')
-                    .replace('π', 'Pi')}.jpeg`}
+                    .replace('π', 'Pi')}.jpeg`)}
                   alt={blade.name}
                   className={`small-image${
                     blade.unlocked === false ? ' not-unlocked-character' : ''}`}
@@ -70,11 +71,11 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
   return(
     <div className="art-details-header">
       <img
-        src={`/images/weaponType/${props.weapon.replace(/\s+/g, '')}.jpeg`}
+        src={path.resolve(`images/weaponType/${props.weapon.replace(/\s+/g, '')}.jpeg`)}
         alt={props.weapon}
         className="driver-art-details-image"/>
       <img
-        src="/images/helper/Close.svg"
+        src={path.resolve('images/helper/Close.svg')}
         alt="close"
         className="close-details"
         onClick={() => props.clearArt()}

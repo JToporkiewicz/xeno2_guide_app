@@ -1,3 +1,5 @@
+import path from 'path';
+
 interface IProps {
   title:string,
   subtitle?:string,
@@ -12,7 +14,7 @@ const HeaderContainer = (props:IProps) =>
       {
         props.refreshData !== undefined ?
           <img
-            src='/images/helper/reset.svg'
+            src={path.resolve('images/helper/reset.svg')}
             className="refresh-image"
             onClick={() => props.refreshData && (props.refreshDataId ?
               props.refreshData(props.refreshDataId)

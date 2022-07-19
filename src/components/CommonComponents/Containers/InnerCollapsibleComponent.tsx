@@ -1,4 +1,5 @@
 import { ReactChild, useState } from 'react';
+import path from 'path';
 
 interface IProps {
   header:string,
@@ -13,7 +14,7 @@ const InnerCollapsibleComponent = (props:IProps) => {
     <div className="inner-collapsible-container">
       <div className="inner-container-header" onClick={toggle}>
         <img
-          src={`/images/helper/${isOpen ? 'Down' : 'Up'}.svg`}
+          src={path.resolve(`images/helper/${isOpen ? 'Down' : 'Up'}.svg`)}
           alt={isOpen ? 'collapse' : 'expand'}
           className="small-collapse-expand"
         />

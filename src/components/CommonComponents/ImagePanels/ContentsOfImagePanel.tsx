@@ -1,3 +1,5 @@
+import path from 'path';
+
 interface IProps {
   name:string,
   panelType:string,
@@ -13,7 +15,7 @@ const ContentsOfImagePanel = (props:IProps) => {
       className={`image-panel${props.focused ? ' focused-panel' : ''}`}
       onClick={() => props.focus ? props.focus(props.name) : {}}>
       <img
-        src={`/images/${props.panelType}/${props.name.replace(/\s+/g, '')}.jpeg`}
+        src={path.resolve(`images/${props.panelType}/${props.name.replace(/\s+/g, '')}.jpeg`)}
         alt={props.name}
         className={`${props.panelType === 'weaponType' ? 'weapon-class-image' : 'character-image'}${
           props.unlocked === false ? ' not-unlocked-character' : ''}`}/>

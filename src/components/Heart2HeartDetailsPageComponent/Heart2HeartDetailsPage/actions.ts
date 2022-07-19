@@ -1,4 +1,4 @@
-import { fetchHeart2Heart } from '../../../redux/actions/heart2Hearts';
+import { fetchHeart2Heart } from 'reduxState/actions/heart2Hearts';
 
 export default {
   fetchHeart2Heart

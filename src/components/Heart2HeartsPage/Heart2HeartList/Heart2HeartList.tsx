@@ -1,10 +1,10 @@
 import { sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { ISelectedState } from 'redux/interfaces/reduxState';
-import { IHeart2Heart } from '../../../interfaces'
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent'
-import OrderBy from '../../CommonComponents/OrderBy';
+import { ISelectedState } from 'reduxState/interfaces/reduxState';
+import { IHeart2Heart } from 'interfaces'
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
+import OrderBy from 'components/CommonComponents/OrderBy';
 
 interface IDispatchProps {
   updateHeart2Hearts:(payload:IHeart2Heart) => void;

@@ -1,4 +1,4 @@
-import { setDriverSkillNode, saveDriverSkillNode } from '../../../redux/actions/drivers'
+import { setDriverSkillNode, saveDriverSkillNode } from 'reduxState/actions/drivers'
 
 export default {
   setDriverSkillNode,

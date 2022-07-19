@@ -1,5 +1,5 @@
-import { fetchItem, fetchItemType } from '../../../redux/actions/items'
-import { fetchBlade } from '../../../redux/actions/blades';
+import { fetchItem, fetchItemType } from 'reduxState/actions/items'
+import { fetchBlade } from 'reduxState/actions/blades';
 
 export default {
   fetchItem,

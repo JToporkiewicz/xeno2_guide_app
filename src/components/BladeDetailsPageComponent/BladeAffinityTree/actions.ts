@@ -1,5 +1,5 @@
-import { setBladeSkillNode, saveBladeSkillNode } from '../../../redux/actions/blades';
-import { fetchFieldSkills } from '../../../redux/actions/fieldSkills';
+import { setBladeSkillNode, saveBladeSkillNode } from 'reduxState/actions/blades';
+import { fetchFieldSkills } from 'reduxState/actions/fieldSkills';
 
 export default {
   setBladeSkillNode,

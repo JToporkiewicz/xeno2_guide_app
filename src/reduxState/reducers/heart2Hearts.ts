@@ -1,5 +1,5 @@
 import createReducer from 'redux-action-reducer';
-import { IHeart2Heart } from '../../interfaces';
+import { IHeart2Heart } from 'interfaces';
 import { Heart2HeartActions } from '../actions/heart2Hearts';
 
 export const heart2HeartReducer = createReducer<IHeart2Heart[]>(

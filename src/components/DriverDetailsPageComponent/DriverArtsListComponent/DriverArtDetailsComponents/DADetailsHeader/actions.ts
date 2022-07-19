@@ -1,8 +1,5 @@
-import { updateShowBlade } from '../../../../../redux/actions/blades';
-import {
-  showLoader,
-  hideLoader
-} from '../../../../../redux/actions/core';
+import { updateShowBlade } from 'reduxState/actions/blades';
+import { showLoader, hideLoader } from 'reduxState/actions/core';
 
 export default {
   updateShowBlade,

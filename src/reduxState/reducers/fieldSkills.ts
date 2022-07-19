@@ -1,5 +1,5 @@
 import createReducer from 'redux-action-reducer';
-import { IFieldSkills } from '../../interfaces';
+import { IFieldSkills } from 'interfaces';
 import { FieldSkillsActions } from '../actions/fieldSkills';
 import { IUpdateFieldSkillLevel } from '../interfaces/fieldSkills';
 

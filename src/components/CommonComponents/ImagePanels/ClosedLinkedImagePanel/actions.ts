@@ -1,4 +1,4 @@
-import { setSelected } from '../../../../redux/actions/core'
+import { setSelected } from 'reduxState/actions/core'
 
 export default {
   setSelected

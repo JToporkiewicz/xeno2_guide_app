@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import path from 'path';
 
 interface IProps {
   area: string,
@@ -27,7 +28,7 @@ export const CharacterPageDetails = (props: IProps) =>
         onClick={() => props.onClose(0)}
       />
       <img
-        src={`/images/${props.area}/${props.name.replace(/\s+/g, '')}.jpeg`}
+        src={path.resolve(`images/${props.area}/${props.name.replace(/\s+/g, '')}.jpeg`)}
         alt={props.name}    
         className="basic-info-image"
       />
@@ -69,8 +70,8 @@ export const CharacterPageDetails = (props: IProps) =>
               && props.onUnlock ? props.onUnlock() : {}}
           >
             <img
-              src={`/images/helper/${props.unlocked?.endsWith('Yes') ?
-                'closedLock' : 'openLock'}.svg`}
+              src={path.resolve(`images/helper/${props.unlocked?.endsWith('Yes') ?
+                'closedLock' : 'openLock'}.svg`)}
               alt={props.unlocked?.endsWith('Yes') ? 'Unlock' : 'Lock'}
               className="extra-small-image"
             />
@@ -79,7 +80,7 @@ export const CharacterPageDetails = (props: IProps) =>
         <Link to={`/${props.area}/${props.id}`}>
           <div className="proceed-button centered-button">
             <img
-              src='/images/helper/Right.svg'
+              src={path.resolve('images/helper/Right.svg')}
               alt='Proceed'
               className="extra-small-image"
             />

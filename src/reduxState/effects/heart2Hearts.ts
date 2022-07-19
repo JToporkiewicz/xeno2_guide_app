@@ -2,9 +2,9 @@ import { AnyAction } from 'redux'
 import { combineEpics, Epic, ofType } from 'redux-observable'
 import { mergeMap, from, of, EMPTY } from 'rxjs'
 import { callWithLoader$ } from '.'
-import { IHeart2Heart } from '../../interfaces'
+import { IHeart2Heart } from 'interfaces'
 import { Heart2HeartActions, setHeart2Hearts } from '../actions/heart2Hearts'
-import client from '../../api-client';
+import client from 'api-client';
 
 const fetchHeart2HeartsEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(

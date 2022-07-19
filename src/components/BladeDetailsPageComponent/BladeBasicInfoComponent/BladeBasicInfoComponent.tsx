@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { IHeart2Heart, IItem, IItemType } from '../../../interfaces'
-import { IBladeState, IQuestState } from '../../../redux/interfaces/reduxState'
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent'
+import { IHeart2Heart, IItem, IItemType } from 'interfaces'
+import { IBladeState, IQuestState } from 'reduxState/interfaces/reduxState'
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
+import path from 'path';
 
 interface IOwnProps {
   bladeDetails:IBladeState,
@@ -109,7 +110,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
       <div className="row">
         <div className="basic-info-image-area">
           <img
-            src={`/images/blade/${props.bladeDetails.name.replace(/\s+/g, '')}.jpeg`}
+            src={path.resolve(`images/blade/${props.bladeDetails.name.replace(/\s+/g, '')}.jpeg`)}
             alt={props.bladeDetails.name}
             className="basic-info-image"
           />
@@ -172,7 +173,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
               >
                 {props.bladeDetails.unlocked &&
                   <img
-                    src={'/images/helper/Checkmark.svg'}
+                    src={path.resolve('images/helper/Checkmark.svg')}
                     alt={'Unlock'}
                     className="unlock-button-image"
                   />
@@ -194,7 +195,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
               >
                 {props.heart2Heart?.Viewed &&
                   <img
-                    src={'/images/helper/Checkmark.svg'}
+                    src={path.resolve('images/helper/Checkmark.svg')}
                     alt={'Unlock'}
                     className="unlock-button-image"
                   />
@@ -223,14 +224,14 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                 >
                   {props.quest.Status === 'STARTED' &&
                     <img
-                      src={'/images/helper/Plus.svg'}
+                      src={path.resolve('images/helper/Plus.svg')}
                       alt={'Unlock'}
                       className="unlock-button-image"
                     />
                   }
                   {props.quest.Status === 'FINISHED' &&
                     <img
-                      src={'/images/helper/Checkmark.svg'}
+                      src={path.resolve('images/helper/Checkmark.svg')}
                       alt={'Unlock'}
                       className="unlock-button-image"
                     />
@@ -252,7 +253,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                         }}
                       >
                         <img
-                          src={'/images/helper/Plus.svg'}
+                          src={path.resolve('images/helper/Plus.svg')}
                           alt={'Unlock'}
                           className="unlock-button-image"
                         />
@@ -265,7 +266,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                         }}
                       >
                         <img
-                          src={'/images/helper/Checkmark.svg'}
+                          src={path.resolve('images/helper/Checkmark.svg')}
                           alt={'Unlock'}
                           className="unlock-button-image"
                         />

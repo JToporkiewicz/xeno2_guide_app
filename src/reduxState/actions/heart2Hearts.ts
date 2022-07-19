@@ -1,4 +1,4 @@
-import { IHeart2Heart } from '../../interfaces';
+import { IHeart2Heart } from 'interfaces';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 
 export enum Heart2HeartActions {

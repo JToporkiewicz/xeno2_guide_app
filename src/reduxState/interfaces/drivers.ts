@@ -1,4 +1,4 @@
-import { IDriverSkillNode } from '../../interfaces';
+import { IDriverSkillNode } from 'interfaces';
 
 export const defaultSkillTree = {
   treeId: 0,

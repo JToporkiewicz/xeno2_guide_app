@@ -1,4 +1,5 @@
 import PeekOrUnlockOverlay from '../Overlays/PeekOrUnlockOverlay';
+import path from 'path';
 
 interface IProps {
     toggleShow:(name:string) => void,
@@ -17,7 +18,7 @@ const UnavailableImagePanel = (props:IProps) => {
         name={props.name}
         id={props.id} />
       <img
-        src={'/images/helper/Unknown.png'}
+        src={path.resolve('images/helper/Unknown.png')}
         alt={'Unknown'}
         className={props.panelType === 'weaponType' ? 'weapon-class-image' : 'character-image'}/>
       <div className="image-name">Spoiler</div>

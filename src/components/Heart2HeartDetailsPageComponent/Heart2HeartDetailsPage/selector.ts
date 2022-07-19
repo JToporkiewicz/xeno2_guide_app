@@ -1,6 +1,6 @@
-import { getHeart2Heart, getSelected } from '../../../redux/selectors';
+import { getHeart2Heart, getSelected } from 'reduxState/selectors';
 import { createSelector } from 'reselect';
-import { defaultHeart2HeartState } from 'redux/interfaces/heart2Hearts';
+import { defaultHeart2HeartState } from 'reduxState/interfaces/heart2Hearts';
 
 export default createSelector(
   getHeart2Heart,

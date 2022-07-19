@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import path from 'path';
 
 interface IProps {
   listTitle: string,
@@ -20,7 +21,7 @@ export const ProgressStatusDetails = (props:IProps) => {
   >
     <div className="statusHeader">
       <img
-        src={`/images/helper/${openDetails ? 'Up' : 'Down'}.svg`}
+        src={path.resolve(`images/helper/${openDetails ? 'Up' : 'Down'}.svg`)}
         alt={openDetails ? 'collapse' : 'expand'}
         className="small-collapse-expand"
       />

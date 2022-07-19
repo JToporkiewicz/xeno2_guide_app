@@ -1,5 +1,5 @@
-import { fetchItem, fetchItemType } from '../../../redux/actions/items';
-import { fetchDriverDetails } from '../../../redux/actions/drivers';
+import { fetchItem, fetchItemType } from 'reduxState/actions/items';
+import { fetchDriverDetails } from 'reduxState/actions/drivers';
 
 export default {
   fetchItem,

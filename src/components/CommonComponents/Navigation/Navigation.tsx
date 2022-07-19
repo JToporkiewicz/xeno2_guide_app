@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import path from 'path';
 import 'scss/navigation.scss';
 
 interface IButtonProps {
@@ -12,7 +13,7 @@ const OpenNavigationButton = (props:IButtonProps) => {
     <div>
       <Link to={props.link} className="navigation-button">
         <img
-          src={`/images/helper/${props.title.replaceAll(' ', '')}.svg`}
+          src={path.resolve(`images/helper/${props.title.replaceAll(' ', '')}.svg`)}
           className="navigation-image"
         />
         <span className="navigation-button-text">
@@ -29,7 +30,7 @@ const ClosedNavigationButton = (props:IButtonProps) => {
     <div>
       <Link to={props.link} className="navigation-button">
         <img
-          src={`/images/helper/${props.title.replaceAll(' ', '')}.svg`}
+          src={path.resolve(`images/helper/${props.title.replaceAll(' ', '')}.svg`)}
           className="navigation-image"
         />
       </Link>
@@ -63,7 +64,7 @@ export const NavigationView = (props:IOwnProps & IDispatchProps) => {
           onClick={() => props.toggleNavigation()}
         >
           <img
-            src={`/images/helper/${props.openNavigation ? 'Left' : 'Right'}.svg`}
+            src={path.resolve(`images/helper/${props.openNavigation ? 'Left' : 'Right'}.svg`)}
             onClick={() => props.toggleNavigation()}
             className="navigation-toggle"
           />        
@@ -80,7 +81,7 @@ export const NavigationView = (props:IOwnProps & IDispatchProps) => {
             onClick={() => props.resetState()}
           >
             <img
-              src='/images/helper/reset.svg'
+              src={path.resolve('images/helper/reset.svg')}
               className="navigation-image"
             />
             {props.openNavigation &&

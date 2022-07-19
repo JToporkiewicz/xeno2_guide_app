@@ -1,4 +1,4 @@
-import { ISelectedState } from '../../../../redux/interfaces/reduxState';
+import { ISelectedState } from 'reduxState/interfaces/reduxState';
 import ContentsOfImagePanel from '../ContentsOfImagePanel';
 
 interface IOwnProps {

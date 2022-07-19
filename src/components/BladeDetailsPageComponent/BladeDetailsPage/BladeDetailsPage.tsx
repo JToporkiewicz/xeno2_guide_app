@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import { IHeart2Heart, IItem, IItemType } from '../../../interfaces'
-import { IBladeState, IQuestState } from '../../../redux/interfaces/reduxState'
-import HeaderContainer from '../../CommonComponents/Containers/HeaderContainer'
+import { IHeart2Heart, IItem, IItemType } from 'interfaces'
+import { IBladeState, IQuestState } from 'reduxState/interfaces/reduxState'
+import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { BladeAffinityTree } from '../BladeAffinityTree'
 import { BladeBasicInfoComponent } from '../BladeBasicInfoComponent'
 

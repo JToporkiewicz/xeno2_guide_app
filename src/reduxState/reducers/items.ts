@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import createReducer from 'redux-action-reducer';
-import { IItem, IItemType } from '../../interfaces';
+import { IItem, IItemType } from 'interfaces';
 import { ItemActions } from '../actions/items';
 import { IItemState } from '../interfaces/reduxState';
 

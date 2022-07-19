@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent';
-import { IItem, IItemType } from '../../../interfaces';
-import { IDriverState } from '../../../redux/interfaces/reduxState';
+import path from 'path';
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
+import { IItem, IItemType } from 'interfaces';
+import { IDriverState } from 'reduxState/interfaces/reduxState';
 
 interface IOwnProps {
   driverDetails:IDriverState,
@@ -26,7 +27,7 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
       <div className="row">
         <div className="basic-info-image-area">
           <img
-            src={`/images/driver/${props.driverDetails.name.replace(/\s+/g, '')}.jpeg`}
+            src={path.resolve(`images/driver/${props.driverDetails.name.replace(/\s+/g, '')}.jpeg`)}
             alt={props.driverDetails.name}
             className="basic-info-image"/>            
         </div>

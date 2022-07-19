@@ -25,15 +25,15 @@ const questSubStepRouter = require('./routers/questSubStepRouter');
 const fieldSkillRouter = require('./routers/fieldSkillRouter');
 const monsterRouter = require('./routers/monsterRouter');
 
-const table = require('./storedProcedures');
+// const table = require('./storedProcedures');
 const { sequelize } = require('./models');
 db.sequelize.sync();
-for(var i = 0; i < table.length; i++) {
-  for(var j = 0; j < table[i].length; j++){
-    db.sequelize.query('DROP PROCEDURE IF EXISTS ' + table[i][j].name)
-    db.sequelize.query(table[i][j].query)
-  }
-}
+// for(var i = 0; i < table.length; i++) {
+//   for(var j = 0; j < table[i].length; j++){
+//     db.sequelize.query('DROP PROCEDURE IF EXISTS ' + table[i][j].name)
+//     db.sequelize.query(table[i][j].query)
+//   }
+// }
 
 app.get('/', (req, res) => {
   res.json({ message: 'database works' })
@@ -49,7 +49,7 @@ app.use('/driverArtDetails', restRouter(db.driverArtDetail))
 app.use('/driverArt', restRouter(db.driverArt))
 app.use('/driverSkillNode', restRouter(db.driverSkillNode))
 app.use('/driverSkillTree', restRouter(db.driverSkillTree))
-app.use('/fieldSkill', fieldSkillRouter(db.fieldSkills, sequelize))
+app.use('/fieldSkill', fieldSkillRouter(db.fieldSkill, sequelize))
 app.use('/heart2Heart', heart2HeartRouter(db.heart2Heart, sequelize))
 app.use('/item', restRouter(db.item))
 app.use('/itemType', restRouter(db.itemType))

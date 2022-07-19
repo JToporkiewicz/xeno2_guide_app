@@ -3,10 +3,10 @@ import CharacterPanelContainer from '../CommonComponents/Containers/CharacterPan
 import { ClosedLinkedImagePanel } from '../CommonComponents/ImagePanels/ClosedLinkedImagePanel';
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import UnavailableImagePanel from '../UnavailableDataComponents/Images/UnavailableImagePanel';
-import { IStoryProgress } from '../../interfaces';
-import { IDriverState, IUpdateShow } from '../../redux/interfaces/reduxState';
+import { IStoryProgress } from 'interfaces';
+import { IDriverState, IUpdateShow } from 'reduxState/interfaces/reduxState';
 import { CharacterPageDetails } from '../CommonComponents/CharacterPageDetails';
-import { defaultDriverState } from '../../redux/interfaces/drivers';
+import { defaultDriverState } from 'reduxState/interfaces/drivers';
 import { sortFunction } from 'helpers';
 
 interface IDispatchProps {

@@ -3,13 +3,13 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import App from './components/App';
+import App from 'components/App';
 import 'scss/custom.scss';
 import 'scss/image.scss';
 import 'scss/tree.scss';
-import { reducers } from './redux/reducers';
-import { effects } from './redux/effects';
-import { initialLoad } from './redux/actions';
+import { reducers } from 'reduxState/reducers';
+import { effects } from 'reduxState/effects';
+import { initialLoad } from 'reduxState/actions';
 import { debounce } from 'lodash';
 
 const epicMiddleware = createEpicMiddleware();

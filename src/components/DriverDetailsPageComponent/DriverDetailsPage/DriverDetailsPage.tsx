@@ -1,10 +1,10 @@
-import HeaderContainer from '../../CommonComponents/Containers/HeaderContainer';
+import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer';
 import { DriverBasicInfoComponent } from '../DriverBasicInfoComponent';
 import { DriverArtsListComponent } from '../DriverArtsListComponent';
-import { IItem, IItemType, IStoryProgress } from '../../../interfaces';
-import { Heart2HeartList } from '../../Heart2HeartsPage/Heart2HeartList';
+import { IItem, IItemType, IStoryProgress } from 'interfaces';
+import { Heart2HeartList } from 'components/Heart2HeartsPage/Heart2HeartList';
 import { DriverSkillsComponent } from '../DriverSkillsComponents';
-import { IDriverState } from '../../../redux/interfaces/reduxState';
+import { IDriverState } from 'reduxState/interfaces/reduxState';
 import { useEffect } from 'react';
 
 interface IDispatchProps {

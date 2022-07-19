@@ -1,4 +1,4 @@
-import { IItem, IItemType } from '../../interfaces';
+import { IItem, IItemType } from 'interfaces';
 import { IFluxPayloadAction } from './fluxActions';
 
 export enum ItemActions {

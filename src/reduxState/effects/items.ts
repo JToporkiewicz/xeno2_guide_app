@@ -3,7 +3,7 @@ import { combineEpics, Epic, ofType } from 'redux-observable';
 import { mergeMap, from, of } from 'rxjs';
 import { callWithLoader$ } from '.';
 import { ItemActions, setItem, setItemType } from '../actions/items';
-import client from '../../api-client';
+import client from 'api-client';
 
 const fetchItemEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(

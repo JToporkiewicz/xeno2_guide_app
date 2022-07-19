@@ -1,15 +1,15 @@
 import {
   updateBladeUnlocked,
   saveBladeStatus
-} from '../../../redux/actions/blades';
+} from 'reduxState/actions/blades';
 import {
   updateQuestStatus,
   saveQuestStatus
-} from '../../../redux/actions/quests';
+} from 'reduxState/actions/quests';
 import {
   updateHeart2HeartStatus,
   saveHeart2HeartStatus
-} from '../../../redux/actions/heart2Hearts';
+} from 'reduxState/actions/heart2Hearts';
 
 export default {
   updateBladeUnlocked,

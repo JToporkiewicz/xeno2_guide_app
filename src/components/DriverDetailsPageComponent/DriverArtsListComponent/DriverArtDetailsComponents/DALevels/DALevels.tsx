@@ -1,22 +1,27 @@
 import { useState, useEffect } from 'react';
-import UnlockOverlay from '../../../../UnavailableDataComponents/Overlays/UnlockOverlay';
-import LockOverlay from '../../../../UnavailableDataComponents/Overlays/LockOverlay';
+import UnlockOverlay from 'components/UnavailableDataComponents/Overlays/UnlockOverlay';
+import LockOverlay from 'components/UnavailableDataComponents/Overlays/LockOverlay';
 import {
   IDriverArtNode,
   IDriverArtsState
-} from '../../../../../redux/interfaces/reduxState';
+} from 'reduxState/interfaces/reduxState';
+import path from 'path';
 
 const getImage = (artName:string) => {
   try {
-    require(`../../../../../../public/images/driverArt/${artName.trim().replace(/\s+/g, '')}.png`)
+    path.resolve(`images/driverArt/${artName.trim().replace(/\s+/g, '')}.png`)
     return <img
       alt={artName}
-      src={`/images/driverArt/${artName.trim().replace(/\s+/g, '')}.png`}
+      src={path.resolve(`images/driverArt/${artName.trim().replace(/\s+/g, '')}.png`)}
       className="art-icon"
     />
   }
   catch {
-    return <img alt="unknown art" src="/images/helper/Unknown.png" className="art-icon"/>
+    return <img
+      alt="unknown art"
+      src={path.resolve('images/helper/Unknown.png')}
+      className="art-icon"
+    />
   }
 }
 
@@ -82,8 +87,12 @@ export const DALevelsView = (props:IOwnProps) => {
                     id={key+1}
                     updateGameState={()=>props.updateArtLevel(props.art.id, key+1)}
                   />
-                  <img src="/images/helper/closedLock.svg" alt="lock" className="centered-lock"/>
-                            Cost: {level.SP}SP
+                  <img
+                    src={path.resolve('images/helper/closedLock.svg')}
+                    alt="lock"
+                    className="centered-lock"
+                  />
+                  Cost: {level.SP}SP
                 </div>
               </div>
           )

@@ -1,3 +1,5 @@
+import path from 'path';
+
 interface IBranchNodes {
   tier: number,
   unlocked: boolean,
@@ -37,14 +39,14 @@ export const TreeBranch = (props: IOwnProps) => {
             {nodeStatus === 'unavailable' &&
               <img
                 className="node-image"
-                src="/images/helper/closedLock.svg"
+                src={path.resolve('images/helper/closedLock.svg')}
                 alt="lock"
               />
             }
             {nodeStatus === 'unlocked' &&
               <img
                 className="node-image"
-                src="/images/helper/Checkmark.svg"
+                src={path.resolve('images/helper/Checkmark.svg')}
                 alt="lock"
               />
             }

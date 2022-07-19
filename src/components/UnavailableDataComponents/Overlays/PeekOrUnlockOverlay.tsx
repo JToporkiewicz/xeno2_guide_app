@@ -1,3 +1,5 @@
+import path from 'path';
+
 interface IProps {
     id:number,
     name:string,
@@ -11,13 +13,13 @@ const PeekOrUnlockOverlay = (props:IProps) => {
       <div className="center-buttons">
         <img
           className="peek-unlock-button"
-          src="/images/helper/peek.png"
+          src={path.resolve('images/helper/peek.png')}
           alt="peek"
           onClick={() => props.toggleShow(props.name)}
         />
         <img
           className="peek-unlock-button"
-          src="/images/helper/openLock.svg"
+          src={path.resolve('images/helper/openLock.svg')}
           alt="unlock"
           onClick={() => props.updateState(props.id)}
         />

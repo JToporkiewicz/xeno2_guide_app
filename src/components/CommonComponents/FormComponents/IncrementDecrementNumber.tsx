@@ -1,3 +1,5 @@
+import path from 'path';
+
 interface IProps {
     title?:string,
     value:number,
@@ -16,7 +18,7 @@ const IncrementDecrementNumber = (props:IProps) => {
       <div className="col-md-7">
         {props.value > props.minimum ? 
           <img
-            src="/images/helper/FormMinus.svg"
+            src={path.resolve('images/helper/FormMinus.svg')}
             alt="-"
             className="increment-decrement-button"
             onClick={() => props.updateValue(props.value - 1)}/>
@@ -26,7 +28,7 @@ const IncrementDecrementNumber = (props:IProps) => {
 
         {!props.maximum || props.value < props.maximum ? 
           <img 
-            src="/images/helper/FormPlus.svg"
+            src={path.resolve('images/helper/FormPlus.svg')}
             alt="+"
             className="increment-decrement-button"
             onClick={() => props.updateValue(props.value + 1)}/>

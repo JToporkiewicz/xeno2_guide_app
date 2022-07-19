@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import createReducer from 'redux-action-reducer';
-import { IStoryProgress, defaultStoryProgress } from '../../interfaces';
+import { IStoryProgress, defaultStoryProgress } from 'interfaces';
 import { defaultSelected, ICoreState, ISelectedState } from '../interfaces/reduxState';
 import { CoreActions } from '../actions/core';
 

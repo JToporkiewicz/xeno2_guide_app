@@ -2,10 +2,11 @@ import { useState, useEffect, ReactChild } from 'react';
 import {
   IDriverArtUpdateLevelUnlocked,
   IDriverArtUpdateData
-} from '../../../redux/interfaces/drivers';
-import { IDriverArtsState } from '../../../redux/interfaces/reduxState';
-import CollapsibleComponent from '../../CommonComponents/Containers/CollapsibleComponent';
-import ClosedUnlinkedImagePanel from '../../CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
+} from 'reduxState/interfaces/drivers';
+import { IDriverArtsState } from 'reduxState/interfaces/reduxState';
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
+import ClosedUnlinkedImagePanel
+  from 'components/CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
 import DADetails from './DriverArtDetailsComponents/DADetails';
 
 interface IDispatchProps {
