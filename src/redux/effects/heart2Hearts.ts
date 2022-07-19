@@ -16,6 +16,16 @@ const fetchHeart2HeartsEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
+const fetchHeart2HeartEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(Heart2HeartActions.FetchHeart2Heart),
+    mergeMap((action) => callWithLoader$(
+      'Fetching Heart 2 Hearts',
+      from(client.resource('heart2Heart').get(action.payload))
+        .pipe(mergeMap((heart2Heart) => of(setHeart2Hearts([heart2Heart]))))
+    ))
+  )
+
 const saveHeart2HeartsEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(Heart2HeartActions.SaveHeart2Hearts),
@@ -41,6 +51,7 @@ const saveHeart2HeartStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
 
 export const effects = combineEpics(
   fetchHeart2HeartsEffect,
+  fetchHeart2HeartEffect,
   saveHeart2HeartsEffect,
   saveHeart2HeartStatusEffect
 )

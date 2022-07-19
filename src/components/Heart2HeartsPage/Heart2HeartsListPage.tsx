@@ -1,7 +1,7 @@
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer'
 import { Heart2HeartList } from './Heart2HeartList'
 
-const Heart2HeartsPage = () => {
+export const Heart2HeartsListPage = () => {
   return (
     <>
       <HeaderContainer title='Heart2Hearts'/>
@@ -9,5 +9,3 @@ const Heart2HeartsPage = () => {
     </>
   )
 };
-
-export default Heart2HeartsPage;

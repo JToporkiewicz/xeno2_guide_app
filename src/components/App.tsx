@@ -6,9 +6,12 @@ import { Navigation } from './CommonComponents/Navigation';
 import { DriverDetailsPage } from './DriverDetailsPageComponent/DriverDetailsPage';
 import Default from './Default';
 import { Loader } from './CommonComponents/Loader';
-import Heart2HeartsPage from './Heart2HeartsPage/Heart2HeartsPage';
+import { Heart2HeartsListPage } from './Heart2HeartsPage/Heart2HeartsListPage';
 import { BladeListPage } from './BladeListPage';
 import { BladeDetailsPage } from './BladeDetailsPageComponent/BladeDetailsPage';
+import {
+  Heart2HeartDetailsPage
+} from './Heart2HeartDetailsPageComponent/Heart2HeartDetailsPage';
 
 const App = () => {
   const [openNavigation, setNavigation] = useState(false);
@@ -32,7 +35,8 @@ const App = () => {
             <Route path="/driver/:slug" component={DriverDetailsPage} />
             <Route path="/bladeList" component={BladeListPage} />
             <Route path="/blade/:slug" component={BladeDetailsPage} />
-            <Route path="/heart2HeartList" component={Heart2HeartsPage} />
+            <Route path="/heart2HeartList" component={Heart2HeartsListPage} />
+            <Route path="/heart2heart/:slug" component={Heart2HeartDetailsPage} />
             <Route component={Default} />
           </Switch>
         </div>
