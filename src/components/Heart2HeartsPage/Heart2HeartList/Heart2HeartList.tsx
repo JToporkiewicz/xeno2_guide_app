@@ -1,7 +1,6 @@
 import { sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { ISelectedState } from 'reduxState/interfaces/reduxState';
 import { IHeart2Heart } from 'interfaces'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import OrderBy from 'components/CommonComponents/OrderBy';
@@ -9,7 +8,6 @@ import OrderBy from 'components/CommonComponents/OrderBy';
 interface IDispatchProps {
   updateHeart2Hearts:(payload:IHeart2Heart) => void;
   saveHeart2Hearts:(payload:IHeart2Heart[]) => void;
-  setSelected:(payload:ISelectedState) => void;
 }
 
 interface IProps {
@@ -106,7 +104,6 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
               <Link
                 className="text-list-link"
                 to={`/heart2Heart/${h2h.id}`}
-                onClick={() => props.setSelected({id: h2h.id, area: 'heart2heart'})}
               >
                 {h2h.Title}
               </Link>

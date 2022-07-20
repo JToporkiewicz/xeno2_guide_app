@@ -3,7 +3,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createEpicMiddleware } from 'redux-observable';
-import App from 'components/App';
+import { App } from 'components/App/index';
 import 'scss/custom.scss';
 import 'scss/image.scss';
 import 'scss/tree.scss';

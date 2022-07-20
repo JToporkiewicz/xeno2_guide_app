@@ -17,7 +17,8 @@ export default createSelector(
   getHeart2Heart,
   getQuests,
   (blades, items, itemTypes, selected, heart2Hearts, quests) => {
-    const foundBlade = blades.find((blade) => blade.id === selected.id)
+    const foundBlade = blades.find((blade) =>
+      blade.id === selected.id && selected.area === 'blade')
     if (foundBlade) {
       return {
         bladeDetails: foundBlade,

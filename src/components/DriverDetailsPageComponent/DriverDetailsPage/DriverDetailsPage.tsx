@@ -24,20 +24,23 @@ interface IProps {
 
 export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {
   useEffect(() => {
-    if(props.driverDetails && !props.item1) {
-      props.fetchItem(props.driverDetails.favItem1);
+    if (props.driverDetails && props.driverDetails.id !== 0) {
+      if(!props.item1) {
+        props.fetchItem(props.driverDetails.favItem1);
+      }
+      if(!props.item2) {
+        props.fetchItem(props.driverDetails.favItem2);
+      }
+      if(!props.itemType1) {
+        props.fetchItemType(props.driverDetails.favItemType1);
+      }
+      if(!props.itemType2) {
+        props.fetchItemType(props.driverDetails.favItemType2);
+      }
     }
-    if(props.driverDetails && !props.item2) {
-      props.fetchItem(props.driverDetails.favItem2);
-    }
-    if(props.driverDetails && !props.itemType1) {
-      props.fetchItemType(props.driverDetails.favItemType1);
-    }
-    if(props.driverDetails && !props.itemType2) {
-      props.fetchItemType(props.driverDetails.favItemType2);
-    }
-  }, [])
-  if (props.driverDetails) {
+  }, [props.driverDetails])
+
+  if (props.driverDetails && props.driverDetails.id !== 0) {
     return (
       <>
         <HeaderContainer

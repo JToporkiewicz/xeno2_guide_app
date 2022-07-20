@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { IHeart2Heart, IItem, IItemType } from 'interfaces'
 import { IBladeState, IQuestState } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import path from 'path';
+import { LargeCheckbox } from 'components/CommonComponents/LargeCheckbox';
 
 interface IOwnProps {
   bladeDetails:IBladeState,
@@ -25,11 +26,9 @@ interface IDispatchProps {
 }
 
 export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) => {
-  const bladeToUpdate = useRef(props.bladeDetails);
+  const bladeToUpdate = useRef(props.bladeDetails.id !== 0 ? props.bladeDetails : undefined);
   const questToUpdate = useRef(props.quest);
   const h2hToUpdate = useRef(props.heart2Heart);
-
-  const [questOptionsOpen, setQuestOptionsOpen] = useState(false);
 
   const updateBladeUnlocked = () => {
     bladeToUpdate.current = {
@@ -65,8 +64,8 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
     }
   }
 
-  const updateQuestCompleted = (status:string) => {
-    if(props.quest) {
+  const updateQuestCompleted = (status:string | boolean) => {
+    if(props.quest && typeof status === 'string') {
       questToUpdate.current = {
         ...props.quest,
         Status: status
@@ -95,7 +94,9 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
 
   useEffect(() => {
     return () => {
-      props.saveBladeStatus(bladeToUpdate.current);
+      if (bladeToUpdate.current) {
+        props.saveBladeStatus(bladeToUpdate.current);
+      }
       if (questToUpdate.current) {
         props.saveQuestStatus(questToUpdate.current);
       }
@@ -162,129 +163,56 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
             }
           </>
           <div className="centered-button">
-            <div className="details-unlock-section">
-              <b>Unlocked: </b>
-              <br/>
-              <div
-                className={`large-unlock-button${!props.bladeDetails.available ?
-                  ' disabledButton' : ''}`}
-                onClick={() => props.bladeDetails.available ?
-                  updateBladeUnlocked() : {}}
-              >
-                {props.bladeDetails.unlocked &&
-                  <img
-                    src={path.resolve('images/helper/Checkmark.svg')}
-                    alt={'Unlock'}
-                    className="unlock-button-image"
-                  />
-                }
-              </div>
-              <div>Available: {props.bladeDetails.available ? 'Yes' : 'No'}</div>
-            </div>
-
-            {props.heart2Heart &&
-            <div className="details-unlock-section">
-              <b>Heart 2 Heart: </b>
-              <br/>
-              <div
-                className={`large-unlock-button${
-                  !props.heart2Heart.Available || !props.bladeDetails.unlocked ?
-                    ' disabledButton' : ''}`}
-                onClick={() => props.heart2Heart?.Available && props.bladeDetails.unlocked ?
-                  updateH2HViewed() : {}}
-              >
-                {props.heart2Heart?.Viewed &&
-                  <img
-                    src={path.resolve('images/helper/Checkmark.svg')}
-                    alt={'Unlock'}
-                    className="unlock-button-image"
-                  />
-                }
-              </div>
-              <Link to={`/h2h/${props.heart2Heart.id}`}>
-                {props.heart2Heart.Title}
-              </Link>
-              <br/>
-              <div>
-                Available: {props.heart2Heart.Available && props.bladeDetails.unlocked ?
-                  'Yes' : 'No'}
-              </div>
-            </div>          
+            <LargeCheckbox
+              title='Unlocked: '
+              available={props.bladeDetails.available}
+              unlocked={props.bladeDetails.unlocked}
+              onClick={updateBladeUnlocked}
+            />
+            {
+              props.heart2Heart &&
+                <LargeCheckbox
+                  title='Heart 2 Heart: '
+                  available={props.heart2Heart.Available && props.bladeDetails.unlocked}
+                  unlocked={props.heart2Heart?.Viewed}
+                  onClick={updateH2HViewed}
+                  link={
+                    <Link to={`/heart2heart/${props.heart2Heart.id}`}>
+                      {props.heart2Heart.Title}
+                    </Link>
+                  }
+                />
             }
-            {props.quest &&
-              <div className="details-unlock-section">
-                <b>Blade Quest: </b>
-                <br/>
-                <div
-                  className={`large-unlock-button${
-                    !props.quest.Available || !props.bladeDetails.unlocked?
-                      ' disabledButton' : ''}`}
-                  onClick={() => props.quest?.Available && props.bladeDetails.unlocked ?
-                    setQuestOptionsOpen(!questOptionsOpen) : {}}
-                >
-                  {props.quest.Status === 'STARTED' &&
-                    <img
-                      src={path.resolve('images/helper/Plus.svg')}
-                      alt={'Unlock'}
-                      className="unlock-button-image"
-                    />
+            {
+              props.quest &&
+              <LargeCheckbox
+                title='Blade Quest: '
+                available={props.quest.Available && props.bladeDetails.unlocked}
+                states={[
+                  {
+                    text: 'NOT STARTED',
+                    active: props.quest.Status === 'NOT STARTED'
+                  },
+                  {
+                    text: 'STARTED',
+                    imgName: 'Plus',
+                    active: props.quest.Status === 'STARTED'
+                  },
+                  {
+                    text: 'FINISHED',
+                    imgName: 'Checkmark',
+                    active: props.quest.Status === 'FINISHED'
                   }
-                  {props.quest.Status === 'FINISHED' &&
-                    <img
-                      src={path.resolve('images/helper/Checkmark.svg')}
-                      alt={'Unlock'}
-                      className="unlock-button-image"
-                    />
-                  }
-                  {questOptionsOpen &&
-                    <div className='hover-options'>
-                      <div
-                        className='large-unlock-button hover-version'
-                        onClick={() => {
-                          setQuestOptionsOpen(false)
-                          updateQuestCompleted('NOT STARTED')
-                        }}
-                      />
-                      <div
-                        className='large-unlock-button hover-version'
-                        onClick={() => {
-                          setQuestOptionsOpen(false)
-                          updateQuestCompleted('STARTED')
-                        }}
-                      >
-                        <img
-                          src={path.resolve('images/helper/Plus.svg')}
-                          alt={'Unlock'}
-                          className="unlock-button-image"
-                        />
-                      </div>
-                      <div
-                        className='large-unlock-button hover-version'
-                        onClick={() => {
-                          setQuestOptionsOpen(false)
-                          updateQuestCompleted('FINISHED')
-                        }}
-                      >
-                        <img
-                          src={path.resolve('images/helper/Checkmark.svg')}
-                          alt={'Unlock'}
-                          className="unlock-button-image"
-                        />
-                      </div>
-                    </div>
-                  }
-                </div>
-                <Link to={`/quest/${props.quest?.id}`}>
-                  {props.quest?.Name}
-                </Link>
-                <br/>
-                <div>
-                  Available: {props.quest.Available && props.bladeDetails.unlocked ? 'Yes' : 'No'}
-                </div>
-              </div>
+                ]}
+                onClick={updateQuestCompleted}
+                link={
+                  <Link to={`/quest/${props.quest?.id}`}>
+                    {props.quest?.Name}
+                  </Link>
+                }
+              />
             }
           </div>
-
         </div>
       </div>
     </CollapsibleComponent>

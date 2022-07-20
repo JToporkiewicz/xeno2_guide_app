@@ -15,7 +15,8 @@ export default createSelector(
   getItems,
   getItemTypes,
   (drivers, storyProgress, selected, items, itemTypes) => {
-    const foundDriver = drivers.find((driver) => driver.id === selected.id)
+    const foundDriver = drivers.find((driver) =>
+      driver.id === selected.id && selected.area === 'driver')
     if (foundDriver) {
       return {
         driverDetails: foundDriver,

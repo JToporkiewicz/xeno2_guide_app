@@ -23,20 +23,23 @@ interface IProps {
 
 export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
   useEffect(() => {
-    if(props.bladeDetails && !props.item1) {
-      props.fetchItem(props.bladeDetails.favItem1);
+    if (props.bladeDetails && props.bladeDetails.id !== 0) {
+      if(!props.item1) {
+        props.fetchItem(props.bladeDetails.favItem1);
+      }
+      if(!props.item2) {
+        props.fetchItem(props.bladeDetails.favItem2);
+      }
+      if(!props.itemType1) {
+        props.fetchItemType(props.bladeDetails.favItemType1);
+      }
+      if(!props.itemType2) {
+        props.fetchItemType(props.bladeDetails.favItemType2);
+      }
     }
-    if(props.bladeDetails && !props.item2) {
-      props.fetchItem(props.bladeDetails.favItem2);
-    }
-    if(props.bladeDetails && !props.itemType1) {
-      props.fetchItemType(props.bladeDetails.favItemType1);
-    }
-    if(props.bladeDetails && !props.itemType2) {
-      props.fetchItemType(props.bladeDetails.favItemType2);
-    }
-  }, [])
-  if (props.bladeDetails) {
+  }, [props.bladeDetails])
+
+  if (props.bladeDetails && props.bladeDetails.id !== 0) {
     return(
       <>
         <HeaderContainer
