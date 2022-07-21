@@ -12,7 +12,6 @@ import {
   IItemType
 } from 'interfaces';
 import { IFieldSkills } from 'interfaces/FieldSkills';
-import { ILocations } from 'interfaces/Locations';
 import { IMonster } from 'interfaces/Monster';
 
 export interface IUpdateShow {
@@ -36,11 +35,18 @@ export interface ICoreState {
   selected: ISelectedState,
 }
 
+export interface ILocationState {
+  id: number,
+  Location: string,
+  Type: string,
+  StoryProgress: number
+}
+
 export interface IInnerMajorArea {
   id: number,
   Name: string,
   StoryProgress: number,
-  Locations: ILocations
+  Locations: ILocationState[]
 }
 
 export interface IMajorLocations {

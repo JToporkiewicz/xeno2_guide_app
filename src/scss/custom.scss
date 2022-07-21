@@ -582,7 +582,8 @@ img.increment-decrement-button {
     background-color: var(--main-color);
     border-color: var(--main-color);
     color: white;
-    margin-left: 40%;
+    margin-left: 50%;
+    transform: translateX(-50%);
     margin-top: 10px;
 }
 
