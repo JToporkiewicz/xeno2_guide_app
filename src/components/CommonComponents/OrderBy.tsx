@@ -41,22 +41,24 @@ const OrderBy = (props:IProps) => {
         }
       </div>
       <div className="order-title">Sort order: </div>
-      <input
-        name='ascending'
-        type='checkbox'
-        checked={props.sortOrderAsc}
-        onChange={() => props.changeSortOrderAsc()}
-        className='sort-order'
-      />
-      <label className='sort-order-label' htmlFor='ascending'>Ascending</label>
-      <input
-        id='descending'
-        type='checkbox'
-        checked={!props.sortOrderAsc}
-        onChange={() => props.changeSortOrderAsc()}
-        className='sort-order'
-      />
-      <label className='sort-order-label' htmlFor='sort-order'>Descending</label>
+      <div className="sort-section">
+        <input
+          name='ascending'
+          type='radio'
+          checked={props.sortOrderAsc}
+          onChange={() => props.changeSortOrderAsc()}
+          className='sort-order'
+        />
+        <label className='sort-order-label' htmlFor='ascending'>Ascending</label>
+        <input
+          id='descending'
+          type='radio'
+          checked={!props.sortOrderAsc}
+          onChange={() => props.changeSortOrderAsc()}
+          className='sort-order'
+        />
+        <label className='sort-order-label' htmlFor='descending'>Descending</label>
+      </div>
     </div>
   )
 }

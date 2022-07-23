@@ -118,6 +118,10 @@ select{
     padding: 0px 5px;
 }
 
+.sort-section {
+    margin-top: -2px;
+}
+
 .sort-order {
     margin: 2px;
 }
@@ -543,22 +547,21 @@ select{
 
 // ------------- forms - core story progress -------------
 
-.settings-names {
-    margin: auto;
-}
-
-.chapter-input {
-    width: 5vw;
-}
-
 .checkbox-layout {
     display: flex;
+    margin-top: -15px;
+}
+
+select,
+input[type="time"] {
+    margin-top: -3px !important;
+    height: fit-content;
 }
 
 .increment-decrement-button {
     height: 18px;
     width: 18px;
-    margin: 1vw;
+    margin: 3px 15px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -569,13 +572,26 @@ img.increment-decrement-button {
     padding: 3px;
 }
 
-.dropdown-layout {
-    display: flex;
-    height: 40px;
-}
-
 .setting-row {
     margin-bottom: 10px;
+}
+
+.progress-update-row {
+    margin: 5px 0px;
+    padding-top: 10px;
+    border-bottom: dashed thin var(--main-color);
+
+    p {
+        margin-top: -3px;
+    }
+
+    &:first-child {
+        padding-top: 0px;
+    }
+
+    &:last-child {
+        border-bottom: none;
+    }
 }
 
 .button-color{
@@ -585,6 +601,73 @@ img.increment-decrement-button {
     margin-left: 50%;
     transform: translateX(-50%);
     margin-top: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.number-slider {
+    color: var(--main-color);
+
+    b {
+        margin: -3px 20px;
+        color: var(--main-color);
+
+        &:first-child {
+            margin-left: 0px;
+        }
+
+        &:last-child {
+            margin-right: 0px;
+        }
+    }
+}
+
+.number-slider.disabled {
+    b {
+        color: var(--main-color-o5);
+    }
+
+    .number-slider-node {
+        border: solid medium var(--main-color-o5);
+
+        &:hover {
+            cursor: not-allowed;
+        }
+    }
+
+    .number-slider-node.active {
+        background: var(--main-color-o5);
+    }
+
+    .number-slider-node-current {
+        background: var(--main-color-o5);
+    }
+}
+
+.number-slider-node {
+    margin: auto 5px;
+    width: 20px;
+    height: 20px;
+    border: solid medium var(--main-color);
+    border-radius: 50%;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.number-slider-node.active {
+    background: var(--main-color);
+}
+
+.number-slider-node-current {
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    margin: 2px;
+    background: var(--main-color);
+    border-radius: 50%;
 }
 
 // ------------- progress status -------------

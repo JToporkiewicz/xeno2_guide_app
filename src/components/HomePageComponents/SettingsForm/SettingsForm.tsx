@@ -1,8 +1,7 @@
 import { IStoryProgress } from 'interfaces';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import Checkbox from 'components/CommonComponents/FormComponents/Checkbox';
-import IncrementDecrementNumber
-  from 'components/CommonComponents/FormComponents/IncrementDecrementNumber';
+import { NumberSlider } from 'components/CommonComponents/FormComponents/NumberSlider';
 
 interface IDispatchProps {
   saveStoryProgress:(payload:IStoryProgress) => void;
@@ -29,31 +28,50 @@ export const SettingsFormView = (props: IProps & IDispatchProps) => {
 
   return(
     <CollapsibleComponent header="App Settings and Game Progress">
-      <Checkbox 
-        title="Only show items/characters available. Avoid spoilers:"
-        value={props.storyProgress.OnlyShowAvailable}
-        toggleValue={toggleCheckbox.bind(this, 'OnlyShowAvailable')}
-      />
-            
-      <IncrementDecrementNumber 
-        title="Chapter:"
-        value={props.storyProgress ? props.storyProgress.Chapter : 1}
-        minimum={1}
-        maximum={10}
-        updateValue={updateValue.bind(this)}
-      />
+      <div className="row progress-update-row">
+        <div className='col-sm-5'>
+          <p>Only show items/characters available. Avoid spoilers: </p>
+        </div>
 
-      <Checkbox 
-        title="New Game Plus playthrough:"
-        value={props.storyProgress.NewGamePlus}
-        toggleValue={toggleCheckbox.bind(this, 'NewGamePlus')}
-      />
+        <Checkbox 
+          value={props.storyProgress.OnlyShowAvailable}
+          toggleValue={toggleCheckbox.bind(this, 'OnlyShowAvailable')}
+        />
+      </div>
+      <div className="row progress-update-row">
+        <div className='col-sm-5'>
+          <p>Chapter:</p>
+        </div>            
+        <NumberSlider 
+          selectedNumber={props.storyProgress ? props.storyProgress.Chapter : 1}
+          lowestNumber={1}
+          topNumber={10}
+          onClick={updateValue.bind(this)}
+        />
+      </div>
 
-      <Checkbox
-        title="DLC unlocked:"
-        value={props.storyProgress.DLCUnlocked}
-        toggleValue={toggleCheckbox.bind(this, 'DLCUnlocked')}
-      />
+      <div className="row progress-update-row">
+        <div className='col-sm-5'>
+          <p>New Game Plus playthrough:</p>
+        </div>
+
+        <Checkbox 
+          value={props.storyProgress.NewGamePlus}
+          toggleValue={toggleCheckbox.bind(this, 'NewGamePlus')}
+        />
+      </div>
+
+      <div className="row progress-update-row">
+        <div className='col-sm-5'>
+          <p>DLC unlocked:</p>
+        </div>
+
+        <Checkbox
+          value={props.storyProgress.DLCUnlocked}
+          toggleValue={toggleCheckbox.bind(this, 'DLCUnlocked')}
+        />
+      </div>
+
       <button
         type="button"
         className="btn button-color"
