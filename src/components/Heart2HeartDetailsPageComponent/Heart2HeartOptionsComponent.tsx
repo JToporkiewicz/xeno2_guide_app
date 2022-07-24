@@ -37,7 +37,7 @@ export const Heart2HeartOptions = (props:IProps) => {
   return <CollapsibleComponent header="Options and Rewards">
     {options['Option 1'] && <div className="h2h-options">
       {options['Option 1'] && Heart2HeartOptionDetails(options['Option 1'], 1)}
-      {options['Option 2'] && Heart2HeartOptionDetails(options['Option 2'], 1)}
+      {options['Option 2'] && Heart2HeartOptionDetails(options['Option 2'], 2)}
     </div>}
     {options['All'] && <div className="h2h-all-rewards">
       <b>Rewards for all options: </b>
