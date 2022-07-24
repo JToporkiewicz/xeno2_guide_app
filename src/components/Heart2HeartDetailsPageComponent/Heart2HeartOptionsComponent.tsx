@@ -1,8 +1,8 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
-import { IHeart2Heart } from 'interfaces'
+import { IHeart2HeartState } from 'reduxState/interfaces/reduxState'
 
 interface IProps {
-  heart2Heart: IHeart2Heart
+  heart2Heart: IHeart2HeartState
 }
 
 const Heart2HeartOptionDetails = (option:any, index: number) => {

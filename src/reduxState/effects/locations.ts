@@ -3,6 +3,7 @@ import { combineEpics, Epic, ofType } from 'redux-observable';
 import {
   fetchAllMinorLocations,
   LocationActions,
+  setDependentMajorAreas,
   setMajorAreas,
   setMinorLocations
 } from 'reduxState/actions/locations';
@@ -10,6 +11,7 @@ import { mergeMap, from, concat, of, EMPTY } from 'rxjs';
 import { callWithLoader$ } from '.';
 import client from 'api-client';
 import { ILocations, IMajorAreas } from 'interfaces';
+import { getLocations } from 'reduxState/selectors';
 
 const fetchAllMajorAreasEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -24,14 +26,17 @@ const fetchAllMajorAreasEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
-const fetchAllMinorLocationsEffect:Epic<AnyAction, AnyAction> = (action$) =>
+const fetchAllMinorLocationsEffect:Epic<AnyAction, AnyAction> = (action$, state$) =>
   action$.pipe(
     ofType(LocationActions.FetchAllMinorLocations),
     mergeMap(() => callWithLoader$(
       'Fetching minor locations',
       from(client.resource('location').find())
         .pipe(mergeMap((minorLocations:ILocations[]) =>
-          of(setMinorLocations(minorLocations))
+          concat(
+            of(setMinorLocations(minorLocations)),
+            of(setDependentMajorAreas(getLocations(state$.value)))
+          )
         ))
     ))
   )

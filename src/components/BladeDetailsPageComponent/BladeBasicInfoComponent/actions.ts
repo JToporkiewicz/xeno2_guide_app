@@ -8,7 +8,7 @@ import {
 } from 'reduxState/actions/quests';
 import {
   updateHeart2HeartStatus,
-  saveHeart2HeartStatus
+  saveHeart2Hearts
 } from 'reduxState/actions/heart2Hearts';
 
 export default {
@@ -17,5 +17,5 @@ export default {
   updateQuestStatus,
   saveQuestStatus,
   updateHeart2HeartStatus,
-  saveHeart2HeartStatus
+  saveHeart2Hearts
 }

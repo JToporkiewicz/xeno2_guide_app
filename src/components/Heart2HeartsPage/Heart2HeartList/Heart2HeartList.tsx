@@ -1,17 +1,18 @@
 import { sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { IHeart2Heart } from 'interfaces'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import OrderBy from 'components/CommonComponents/OrderBy';
+import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
+import { IHeart2HeartState } from 'reduxState/interfaces/reduxState';
 
 interface IDispatchProps {
-  updateHeart2Hearts:(payload:IHeart2Heart) => void;
-  saveHeart2Hearts:(payload:IHeart2Heart[]) => void;
+  updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
+  saveHeart2Hearts:(payload:IUpdateH2HStatus[]) => void;
 }
 
 interface IProps {
-  heart2Hearts:IHeart2Heart[]
+  heart2Hearts:IHeart2HeartState[]
 }
 
 interface IOwnProps {
@@ -23,23 +24,25 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
 
-  const toUpdate = useRef([] as IHeart2Heart[]);
+  const toUpdate = useRef([] as IHeart2HeartState[]);
 
   useEffect(() => {
     return () => {
-      props.saveHeart2Hearts(toUpdate.current)
+      props.saveHeart2Hearts(toUpdate.current.map((h2h) =>
+        ({id: h2h.id, Viewed: h2h.Viewed}
+        )))
     } 
   }, [])
 
-  const orderOptions: {[key:string]: keyof IHeart2Heart} = {
+  const orderOptions: {[key:string]: keyof IHeart2HeartState} = {
     default: 'id',
     alphabetically: 'Title',
-    location: 'Location',
+    location: 'Area',
     available: 'Available',
     viewed: 'Viewed'
   }
 
-  const getOrderTypeColumn = (order: string): keyof IHeart2Heart => {
+  const getOrderTypeColumn = (order: string): keyof IHeart2HeartState => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -59,9 +62,10 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
           <div className="row">
             <b className="col-sm-1 order-title">Viewed</b>
             <b className="col-sm-2 order-title">Status</b>
+            <b className="col-sm-3 order-title">Location</b>
             <b className="order-title">Title</b>
           </div>
-          {props.heart2Hearts.filter((h2h:IHeart2Heart) => {
+          {props.heart2Hearts.filter((h2h:IHeart2HeartState) => {
             if (!props.characterName) return true
             return h2h.Who.includes(props.characterName) ||
               h2h.Who.includes('\'s Driver') && props.parentPage === 'driver'
@@ -69,7 +73,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
             const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
             const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
             return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
-          }).map((h2h:IHeart2Heart) => 
+          }).map((h2h:IHeart2HeartState) => 
             <div className="row text-list-entry" key={h2h.id}>
               <div
                 className="col-sm-1 text-list-status"
@@ -79,7 +83,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                   checked={h2h.Viewed}
                   onChange={() => h2h.Available && 
                     (
-                      props.updateHeart2Hearts({
+                      props.updateHeart2HeartStatus({
                         ...h2h,
                         Viewed: !h2h.Viewed
                       }
@@ -100,6 +104,11 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                 className="col-sm-2 text-list-status"
               >
                 {h2h.Available ? 'Available' : 'Unavailable'}
+              </div>
+              <div
+                className="col-sm-3 text-list-status"
+              >
+                {h2h.Area.split(' -> ')[0].replace('(', '')}
               </div>
               <Link
                 className="text-list-link"

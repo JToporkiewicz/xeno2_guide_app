@@ -1,10 +1,11 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { IHeart2Heart, IItem, IItemType } from 'interfaces'
-import { IBladeState, IQuestState } from 'reduxState/interfaces/reduxState'
+import { IItem, IItemType } from 'interfaces'
+import { IBladeState, IHeart2HeartState, IQuestState } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import path from 'path';
 import { LargeCheckbox } from 'components/CommonComponents/LargeCheckbox';
+import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
 
 interface IOwnProps {
   bladeDetails:IBladeState,
@@ -12,7 +13,7 @@ interface IOwnProps {
   item2?: IItem | undefined,
   itemType1?: IItemType | undefined,
   itemType2?: IItemType | undefined
-  heart2Heart?: IHeart2Heart | undefined,
+  heart2Heart?: IHeart2HeartState | undefined,
   quest?: IQuestState | undefined
 }
 
@@ -21,8 +22,8 @@ interface IDispatchProps {
   saveBladeStatus: (payload:IBladeState) => void;
   updateQuestStatus: (payload:IQuestState) => void;
   saveQuestStatus: (payload:IQuestState) => void;
-  updateHeart2HeartStatus: (payload:IHeart2Heart) => void;
-  saveHeart2HeartStatus: (payload:IHeart2Heart) => void;
+  updateHeart2HeartStatus: (payload:IUpdateH2HStatus) => void;
+  saveHeart2Hearts: (payload:IUpdateH2HStatus[]) => void;
 }
 
 export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) => {
@@ -58,7 +59,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
       }
 
       props.updateHeart2HeartStatus({
-        ...props.heart2Heart,
+        id: props.heart2Heart.id,
         Viewed: false
       })
     }
@@ -86,7 +87,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
       }
 
       props.updateHeart2HeartStatus({
-        ...props.heart2Heart,
+        id: props.heart2Heart.id,
         Viewed: !props.heart2Heart.Viewed
       })
     }
@@ -101,7 +102,10 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
         props.saveQuestStatus(questToUpdate.current);
       }
       if (h2hToUpdate.current) {
-        props.saveHeart2HeartStatus(h2hToUpdate.current);
+        props.saveHeart2Hearts([{
+          id: h2hToUpdate.current.id,
+          Viewed: h2hToUpdate.current.Viewed
+        }]);
       }
     }
   }, [])

@@ -1,17 +1,16 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { LargeCheckbox } from 'components/CommonComponents/LargeCheckbox';
-import { IHeart2Heart } from 'interfaces'
 import { useRef, useEffect } from 'react';
+import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
+import { IHeart2HeartState } from 'reduxState/interfaces/reduxState';
 
 interface IDispatchProps {
-  updateHeart2HeartStatus: (payload:IHeart2Heart) => void;
-  saveHeart2HeartStatus: (payload:IHeart2Heart) => void;
+  updateHeart2HeartStatus: (payload:IUpdateH2HStatus) => void;
+  saveHeart2Hearts: (payload:IUpdateH2HStatus[]) => void;
 }
 
 interface IProps {
-  heart2Heart: IHeart2Heart,
-  h2hLocation: string,
-  h2hArea: string
+  heart2Heart: IHeart2HeartState
 }
 
 export const Heart2HeartBasicInfoView = (props:IProps & IDispatchProps) => {
@@ -25,7 +24,7 @@ export const Heart2HeartBasicInfoView = (props:IProps & IDispatchProps) => {
       }
 
       props.updateHeart2HeartStatus({
-        ...props.heart2Heart,
+        id: props.heart2Heart.id,
         Viewed: !props.heart2Heart.Viewed
       })
     }
@@ -34,7 +33,10 @@ export const Heart2HeartBasicInfoView = (props:IProps & IDispatchProps) => {
   useEffect(() => {
     return () => {
       if (h2hToUpdate.current) {
-        props.saveHeart2HeartStatus(h2hToUpdate.current);
+        props.saveHeart2Hearts([{
+          id: h2hToUpdate.current.id,
+          Viewed: h2hToUpdate.current.Viewed
+        }]);
       }
     }
   }, [])
@@ -62,8 +64,8 @@ export const Heart2HeartBasicInfoView = (props:IProps & IDispatchProps) => {
       <div className='col-sm-4'>
         <div className='centered'>
           <b>Location:</b>
-          <p>{props.h2hLocation}</p>
-          <p>{props.h2hArea}</p>
+          <p>{props.heart2Heart.Location}</p>
+          <p>{props.heart2Heart.Area}</p>
         </div>
       </div>
     </div>

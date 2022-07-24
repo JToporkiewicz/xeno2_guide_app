@@ -1,7 +1,6 @@
 import {
   IDriverArtDetails,
   IDriverSkillNode,
-  IHeart2Heart,
   IAffinityChartNode,
   IQuest,
   IMercMission,
@@ -142,6 +141,17 @@ export interface IBladeState {
   show?:boolean
 }
 
+export interface IHeart2HeartState {
+  id:number,
+  Title:string,
+  Area:string,
+  Location:string,
+  Who:string,
+  Outcomes:string,
+  Available:boolean,
+  Viewed:boolean
+}
+
 export interface IQuestState extends IQuest {
   Steps: IQuestStep[],
   SubSteps: IQuestSubStep[]
@@ -158,7 +168,7 @@ export interface IXenobladeState {
   drivers: IDriverState[],
   blades: IBladeState[],
   fieldSkills: IFieldSkills[],
-  heart2hearts: IHeart2Heart[],
+  heart2hearts: IHeart2HeartState[],
   quests: IQuestState[],
   mercMissions: IMercMission[],
   monsters: IMonster[],

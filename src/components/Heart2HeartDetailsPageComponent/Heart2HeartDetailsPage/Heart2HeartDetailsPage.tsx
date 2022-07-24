@@ -1,5 +1,5 @@
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
-import { IHeart2Heart } from 'interfaces'
+import { IHeart2HeartState } from 'reduxState/interfaces/reduxState';
 import { Heart2HeartBasicInfo } from '../Heart2HeartBasicInfoComponent';
 import { Heart2HeartOptions } from '../Heart2HeartOptionsComponent';
 
@@ -8,9 +8,7 @@ interface IDispatchProps {
 }
 
 interface IProps {
-  heart2Heart: IHeart2Heart,
-  h2hLocation: string,
-  h2hArea: string
+  heart2Heart: IHeart2HeartState
 }
 
 export const Heart2HeartDetailsPageView = (props:IProps & IDispatchProps) => {
@@ -24,8 +22,6 @@ export const Heart2HeartDetailsPageView = (props:IProps & IDispatchProps) => {
       />
       <Heart2HeartBasicInfo
         heart2Heart={props.heart2Heart}
-        h2hLocation={props.h2hLocation}
-        h2hArea={props.h2hArea}
       />
       <Heart2HeartOptions
         heart2Heart={props.heart2Heart}

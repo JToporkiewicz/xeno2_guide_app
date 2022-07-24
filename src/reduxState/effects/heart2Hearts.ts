@@ -2,9 +2,9 @@ import { AnyAction } from 'redux'
 import { combineEpics, Epic, ofType } from 'redux-observable'
 import { mergeMap, from, of, EMPTY } from 'rxjs'
 import { callWithLoader$ } from '.'
-import { IHeart2Heart } from 'interfaces'
 import { Heart2HeartActions, setHeart2Hearts } from '../actions/heart2Hearts'
 import client from 'api-client';
+import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
 
 const fetchHeart2HeartsEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -30,28 +30,17 @@ const saveHeart2HeartsEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(Heart2HeartActions.SaveHeart2Hearts),
     mergeMap((action) => {
-      action.payload.map((heart2Heart:IHeart2Heart) => callWithLoader$(
+      action.payload.map((heart2Heart:IUpdateH2HStatus) => callWithLoader$(
         'Updating Heart 2 Hearts',
-        from(client.resource('heart2Heart').update(heart2Heart.id, heart2Heart))
+        from(client.resource('heart2Heart')
+          .update(heart2Heart.id, {Viewed: heart2Heart.Viewed}))
       ))
       return EMPTY
     })
   )
 
-const saveHeart2HeartStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
-  action$.pipe(
-    ofType(Heart2HeartActions.SaveHeart2HeartStatus),
-    mergeMap((action) => callWithLoader$(
-      'Updating Heart 2 Heart Status',
-      from(client.resource('heart2Heart')
-        .update(action.payload.id, { Viewed: action.payload.Viewed }))
-        .pipe(mergeMap(() => EMPTY))
-    ))
-  )
-
 export const effects = combineEpics(
   fetchHeart2HeartsEffect,
   fetchHeart2HeartEffect,
-  saveHeart2HeartsEffect,
-  saveHeart2HeartStatusEffect
+  saveHeart2HeartsEffect
 )
