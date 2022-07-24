@@ -26,6 +26,11 @@ select{
     cursor: pointer;
 }
 
+.centered {
+    margin: 0px auto;
+    width: fit-content;
+}
+
 .blockClick {
     cursor: not-allowed;
 }
@@ -787,4 +792,29 @@ img.increment-decrement-button {
     .col-md-7 {
         margin: 0px auto;
     }
+}
+
+// ------------- heart 2 heart -------------
+.h2h-options {
+    display: flex;
+    border-bottom: solid thin var(--main-color);
+
+    &:only-child {
+        border-bottom: none
+    }
+}
+
+.h2h-option-details {
+    width: 100%;
+    padding: 0px 10px;
+    margin-bottom: 10px;
+    border-right: solid thin var(--main-color);
+
+    &:last-child {
+        border-right: none;
+    }
+}
+
+.h2h-all-rewards {
+    margin-top: 10px;
 }

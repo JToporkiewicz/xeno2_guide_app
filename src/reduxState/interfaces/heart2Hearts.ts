@@ -1,4 +1,6 @@
-export const defaultHeart2HeartState = {
+import { IHeart2Heart } from 'interfaces';
+
+export const defaultHeart2HeartState: IHeart2Heart = {
   id: -1,
   Title: '',
   Location: -1,
