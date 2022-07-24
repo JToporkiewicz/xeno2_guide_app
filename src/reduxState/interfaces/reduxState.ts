@@ -2,7 +2,6 @@ import {
   IDriverArtDetails,
   IDriverSkillNode,
   IAffinityChartNode,
-  IQuest,
   IMercMission,
   IQuestStep,
   IQuestSubStep,
@@ -152,9 +151,20 @@ export interface IHeart2HeartState {
   Viewed:boolean
 }
 
-export interface IQuestState extends IQuest {
-  Steps: IQuestStep[],
-  SubSteps: IQuestSubStep[]
+export interface IQuestStepState extends IQuestStep {
+  SubSteps?: IQuestSubStep[]
+}
+
+export interface IQuestState {
+  id:number,
+  Name:string,
+  Type:string,
+  Client:string,
+  Location:string,
+  Rewards:string,
+  Available:boolean,
+  Status:string
+  Steps: IQuestStepState[]
 }
 
 export interface IItemState {

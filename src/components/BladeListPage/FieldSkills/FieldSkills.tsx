@@ -115,11 +115,13 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
                 <div className='col-sm-2 field-entry'>{skills.Name}</div>
                 <div className='col-sm-2 field-entry'>{skills.Type}</div>
                 <div className='col-sm-4 field-entry'>
-                  <IncrementDecrementNumber
-                    value={skills.CommonBladeContribution}
-                    minimum={0}
-                    updateValue={updateSkillLevelUnlocked.bind(this, skills.id)}
-                  />
+                  <div className='centered'>
+                    <IncrementDecrementNumber
+                      value={skills.CommonBladeContribution}
+                      minimum={0}
+                      updateValue={updateSkillLevelUnlocked.bind(this, skills.id)}
+                    />
+                  </div>
                 </div>
                 <div className='col-sm-3 field-entry'>{skills.TotalLevel}</div>
               </div>

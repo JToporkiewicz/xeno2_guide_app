@@ -5,6 +5,8 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
 import { IHeart2HeartState } from 'reduxState/interfaces/reduxState';
+import path from 'path';
+import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 
 interface IDispatchProps {
   updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
@@ -61,7 +63,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
           {props.characterName && `Heart 2 hearts in which ${props.characterName} participates:`}
           <div className="row">
             <b className="col-sm-1 order-title">Viewed</b>
-            <b className="col-sm-2 order-title">Status</b>
+            <b className="order-title-available">Available</b>
             <b className="col-sm-3 order-title">Location</b>
             <b className="order-title">Title</b>
           </div>
@@ -78,32 +80,36 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
               <div
                 className="col-sm-1 text-list-status"
               >
-                <input
-                  type='checkbox'
-                  checked={h2h.Viewed}
-                  onChange={() => h2h.Available && 
-                    (
+                <OptionsCheckbox
+                  hideAvailable={true}
+                  available={h2h.Available}
+                  unlocked={h2h.Viewed}
+                  onClick={(viewed) => {
+                    if (typeof viewed === 'boolean') {
                       props.updateHeart2HeartStatus({
                         ...h2h,
-                        Viewed: !h2h.Viewed
+                        Viewed: viewed
                       }
                       ),
-                      toUpdate.current = toUpdate.current.concat([{
-                        ...h2h,
-                        Viewed: !h2h.Viewed
-                      }])
-                    )
-
-                    
-                  }
-                  disabled={!h2h.Available}
-                  className={h2h.Available ? 'hoverPointer' : 'blockClick'}
+                      toUpdate.current = toUpdate.current
+                        .filter((updateH2H) => updateH2H.id !== h2h.id)
+                        .concat([{
+                          ...h2h,
+                          Viewed: viewed
+                        }])
+                    }}}
+                  size='small'
                 />
               </div>
               <div
-                className="col-sm-2 text-list-status"
+                className="col-sm-1 text-list-status"
               >
-                {h2h.Available ? 'Available' : 'Unavailable'}
+                <img 
+                  src={path.resolve(`images/helper/${h2h.Available ?
+                    'GreenCheckmark' : 'RedX'}.svg`)}
+                  alt={h2h.Title}
+                  className="availability-small-image"
+                />
               </div>
               <div
                 className="col-sm-3 text-list-status"

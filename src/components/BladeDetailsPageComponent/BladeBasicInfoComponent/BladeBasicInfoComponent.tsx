@@ -4,7 +4,7 @@ import { IItem, IItemType } from 'interfaces'
 import { IBladeState, IHeart2HeartState, IQuestState } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import path from 'path';
-import { LargeCheckbox } from 'components/CommonComponents/LargeCheckbox';
+import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
 
 interface IOwnProps {
@@ -167,7 +167,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
             }
           </>
           <div className="centered-button">
-            <LargeCheckbox
+            <OptionsCheckbox
               title='Unlocked: '
               available={props.bladeDetails.available}
               unlocked={props.bladeDetails.unlocked}
@@ -175,7 +175,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
             />
             {
               props.heart2Heart &&
-                <LargeCheckbox
+                <OptionsCheckbox
                   title='Heart 2 Heart: '
                   available={props.heart2Heart.Available && props.bladeDetails.unlocked}
                   unlocked={props.heart2Heart?.Viewed}
@@ -189,7 +189,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
             }
             {
               props.quest &&
-              <LargeCheckbox
+              <OptionsCheckbox
                 title='Blade Quest: '
                 available={props.quest.Available && props.bladeDetails.unlocked}
                 states={[

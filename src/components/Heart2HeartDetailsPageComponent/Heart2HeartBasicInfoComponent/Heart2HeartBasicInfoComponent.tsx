@@ -1,5 +1,5 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
-import { LargeCheckbox } from 'components/CommonComponents/LargeCheckbox';
+import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { useRef, useEffect } from 'react';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
 import { IHeart2HeartState } from 'reduxState/interfaces/reduxState';
@@ -44,7 +44,7 @@ export const Heart2HeartBasicInfoView = (props:IProps & IDispatchProps) => {
   return <CollapsibleComponent header="Heart 2 heart details">
     <div className='row'>
       <div className='col-sm-4'>
-        <LargeCheckbox
+        <OptionsCheckbox
           title='Viewed: '
           available={props.heart2Heart.Available}
           unlocked={props.heart2Heart.Viewed}

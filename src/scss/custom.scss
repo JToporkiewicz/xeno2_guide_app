@@ -88,6 +88,11 @@ select{
     color: var(--main-color);
 }
 
+.order-title-available {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
 .order-by-expand {
     border-left-color: var(--secondary-color);
     border-left-style: solid;
@@ -241,6 +246,7 @@ select{
     cursor: pointer;
 }
 
+.small-unlock-button,
 .large-unlock-button {
     position: relative;
     border: solid medium var(--main-color);
@@ -257,6 +263,22 @@ select{
         transform: translateY(-50%);
         width: 30px;
         height: 30px;
+    }
+}
+
+.small-unlock-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    margin: 0px;
+
+    .hover-options {
+        top: 15px;
+    }
+    
+    .unlock-button-image {
+        width: 12px;
+        height: 12px;
     }
 }
 
@@ -758,6 +780,7 @@ img.increment-decrement-button {
     box-shadow: 0px 0px 5px var(--grey-main-color);
     border-radius: 10px;
     background-color: var(--grey-main-color);
+    z-index: 10;
 
     .hover-version {
         margin: 0px;

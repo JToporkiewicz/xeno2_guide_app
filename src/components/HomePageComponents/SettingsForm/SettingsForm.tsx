@@ -2,6 +2,7 @@ import { IStoryProgress } from 'interfaces';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import Checkbox from 'components/CommonComponents/FormComponents/Checkbox';
 import { NumberSlider } from 'components/CommonComponents/FormComponents/NumberSlider';
+import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 
 interface IDispatchProps {
   saveStoryProgress:(payload:IStoryProgress) => void;
@@ -14,8 +15,8 @@ interface IProps {
 
 export const SettingsFormView = (props: IProps & IDispatchProps) => {
 
-  const toggleCheckbox = (settingKey:string, value:boolean) => {
-    props.setStoryProgress({...props.storyProgress, [settingKey]: !value})
+  const toggleCheckbox = (settingKey:string, value:boolean | string) => {
+    props.setStoryProgress({...props.storyProgress, [settingKey]: value})
   }
 
   const updateValue = (value:number) => {
@@ -32,10 +33,12 @@ export const SettingsFormView = (props: IProps & IDispatchProps) => {
         <div className='col-sm-5'>
           <p>Only show items/characters available. Avoid spoilers: </p>
         </div>
-
-        <Checkbox 
-          value={props.storyProgress.OnlyShowAvailable}
-          toggleValue={toggleCheckbox.bind(this, 'OnlyShowAvailable')}
+        <OptionsCheckbox
+          size='small'
+          hideAvailable={true}
+          available={true}
+          unlocked={props.storyProgress.OnlyShowAvailable}
+          onClick={toggleCheckbox.bind(this, 'OnlyShowAvailable')}
         />
       </div>
       <div className="row progress-update-row">
@@ -54,10 +57,12 @@ export const SettingsFormView = (props: IProps & IDispatchProps) => {
         <div className='col-sm-5'>
           <p>New Game Plus playthrough:</p>
         </div>
-
-        <Checkbox 
-          value={props.storyProgress.NewGamePlus}
-          toggleValue={toggleCheckbox.bind(this, 'NewGamePlus')}
+        <OptionsCheckbox
+          size='small'
+          hideAvailable={true}
+          available={true}
+          unlocked={props.storyProgress.NewGamePlus}
+          onClick={toggleCheckbox.bind(this, 'NewGamePlus')}
         />
       </div>
 
@@ -65,10 +70,12 @@ export const SettingsFormView = (props: IProps & IDispatchProps) => {
         <div className='col-sm-5'>
           <p>DLC unlocked:</p>
         </div>
-
-        <Checkbox
-          value={props.storyProgress.DLCUnlocked}
-          toggleValue={toggleCheckbox.bind(this, 'DLCUnlocked')}
+        <OptionsCheckbox
+          size='small'
+          hideAvailable={true}
+          available={true}
+          unlocked={props.storyProgress.DLCUnlocked}
+          onClick={toggleCheckbox.bind(this, 'DLCUnlocked')}
         />
       </div>
 

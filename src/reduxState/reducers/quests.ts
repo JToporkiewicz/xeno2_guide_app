@@ -11,8 +11,8 @@ export const questsReducer = createReducer<IQuestState[]>(
         .concat(
           quests.map((quest) => ({
             ...quest,
-            Steps: [],
-            SubSteps: []
+            Location: String(quest.Location),
+            Steps: []
           }))
         )
     }

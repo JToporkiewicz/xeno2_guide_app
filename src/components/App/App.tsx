@@ -13,6 +13,7 @@ import {
   Heart2HeartDetailsPage
 } from '../Heart2HeartDetailsPageComponent/Heart2HeartDetailsPage';
 import { ISelectedState } from 'reduxState/interfaces/reduxState';
+import { SideQuestPage } from 'components/SideQuestsPage';
 
 interface IDispatchProps {
   setSelected:(payload:ISelectedState) => void;
@@ -60,6 +61,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path="/blade/:slug" component={BladeDetailsPage} />
             <Route path="/heart2HeartList" component={Heart2HeartsListPage} />
             <Route path="/heart2Heart/:slug" component={Heart2HeartDetailsPage} />
+            <Route path="/sideQuestList" component={SideQuestPage} />
             <Route component={Default} />
           </Switch>
         </div>

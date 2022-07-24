@@ -8,21 +8,24 @@ interface States {
 }
 
 interface IProps {
-  title: string,
+  title?: string,
   available: boolean,
+  hideAvailable?:boolean,
   unlocked?: boolean,
   states?:States[],
   link?: ReactElement,
-  onClick:(payload:boolean | string) => void
+  onClick:(payload:boolean | string) => void,
+  size?:'large' | 'small'
 }
 
-const CheckboxOption = (props: {
+const Option = (props: {
   state:States,
   setStatesOpen:(isOpen:boolean) => void,
-  onClick:(payload:boolean | string) => void
+  onClick:(payload:boolean | string) => void,
+  size?:'large' | 'small'
 }) => {
   return <div
-    className='large-unlock-button hover-version'
+    className={`${props.size === 'small' ? 'small' : 'large'}-unlock-button hover-version`}
     onClick={() => {
       props.setStatesOpen(false)
       props.onClick(props.state.text)
@@ -40,7 +43,7 @@ const CheckboxOption = (props: {
   </div>
 }
 
-export const LargeCheckbox = (props:IProps) => {
+export const OptionsCheckbox = (props:IProps) => {
   const [statesOpen, setStatesOpen] = useState(false);
   const activeState = props.states?.find((option) => option.active);
 
@@ -51,10 +54,14 @@ export const LargeCheckbox = (props:IProps) => {
   }, [props.available])
 
   return <div className="details-unlock-section">
-    <b>{props.title}</b>
-    <br/>
+    {props.title &&
+      <>
+        <b>{props.title}</b>
+        <br/>
+      </>
+    }
     <div
-      className={`large-unlock-button${!props.available ?
+      className={`${props.size === 'small' ? 'small' : 'large'}-unlock-button${!props.available ?
         ' disabledButton' : ''}`}
       onClick={() => props.available ?
         props.states?.length ?
@@ -81,16 +88,19 @@ export const LargeCheckbox = (props:IProps) => {
         props.states && statesOpen &&
         <div className='hover-options'>
           {props.states.map((option) => {
-            return <CheckboxOption
+            return <Option
               state={option}
               setStatesOpen={setStatesOpen}
               onClick={props.onClick}
+              size={props.size}
             />
           })}
         </div>
       }
     </div>
     {props.link}
-    <div>Available: {props.available ? 'Yes' : 'No'}</div>
+    {!props.hideAvailable &&
+      <div>Available: {props.available ? 'Yes' : 'No'}</div>
+    }
   </div>
 }
