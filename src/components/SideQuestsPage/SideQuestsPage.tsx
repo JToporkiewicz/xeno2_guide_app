@@ -76,10 +76,10 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
           />
           <div className="row">
             <b className="column-narrow order-title">Status</b>
-            <b className="order-title-available">Available</b>
+            <b className="column-unrestricted order-title-available">Available</b>
             <b className="column-wide order-title">Type</b>
             <b className="column-wide order-title">Location</b>
-            <b className="order-title">Title</b>
+            <b className="column-unrestricted order-title">Title</b>
           </div>
           {props.quests.sort((h2hA, h2hB) => {
             const questAValue = h2hA[getOrderTypeColumn(orderType)]
