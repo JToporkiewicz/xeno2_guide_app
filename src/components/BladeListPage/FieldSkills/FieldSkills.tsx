@@ -5,6 +5,7 @@ import { IUpdateFieldSkillLevel } from 'reduxState/interfaces/fieldSkills';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import IncrementDecrementNumber
   from 'components/CommonComponents/FormComponents/IncrementDecrementNumber';
+import OrderBy from 'components/CommonComponents/OrderBy';
 
 interface IDispatchProps {
   fetchFieldSkills: () => void;
@@ -46,26 +47,6 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
     return orderOptions[order] || orderOptions.default
   }
 
-  const getSortIcon = (title: string) => {
-    return <img
-      src={`images/helper/${
-        title !== orderType ? 'SortBoth'
-          : isOrderAsc ? 'SortAscending' : 'SortDescending'
-      }.svg`}
-      alt={`sort${title}`}
-      className='sort-icon'
-      onClick={() => {
-        if (title === orderType) {
-          setIsOrderAsc(!isOrderAsc)
-        }
-        else {
-          setOrderType(title)
-          setIsOrderAsc(true)
-        }
-      }}
-    />
-  }
-
   useEffect(() => {
     if (props.fieldSkills.length === 0) {
       props.fetchFieldSkills();
@@ -80,26 +61,26 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
   return(
     <CollapsibleComponent header='Field Skill Levels'>
       <>
+        <OrderBy
+          id='field'
+          orderOptions={Object.keys(orderOptions)}
+          chosenOrder={orderType}
+          changeOrder={setOrderType}
+          sortOrderAsc={isOrderAsc}
+          changeSortOrderAsc={setIsOrderAsc.bind(this, !isOrderAsc)}  
+        />
         <div className='row field-title'>
-          <div className='col-sm-1'>
-            <b>Id</b>
-            {getSortIcon('default')}
-          </div>
-          <div className='col-sm-2'>
+          <div className='column-wide'>
             <b>Name</b>
-            {getSortIcon('name')}
           </div>
-          <div className='col-sm-2'>
+          <div className='column-medium'>
             <b>Type</b>
-            {getSortIcon('type')}
           </div>
-          <div className='col-sm-4'>
+          <div className='column-very-wide'>
             <b>Common Blade Contribution</b>
-            {getSortIcon('commonBlade')}
           </div>
-          <div className='col-sm-3'>
+          <div className='column-wide'>
             <b>Total Level</b>
-            {getSortIcon('total')}
           </div>
         </div>
         <div className='field-skills'>
@@ -110,11 +91,10 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
               return sortFunction(skillAValue, skillBValue, isOrderAsc)
             })
             .map((skills) =>
-              <div className='field-row' key={skills.Name}>
-                <div className='col-sm-1 field-entry'>{skills.id}</div>
-                <div className='col-sm-2 field-entry'>{skills.Name}</div>
-                <div className='col-sm-2 field-entry'>{skills.Type}</div>
-                <div className='col-sm-4 field-entry'>
+              <div className='row text-list-entry' key={skills.Name}>
+                <div className='column-wide text-list-status'>{skills.Name}</div>
+                <div className='column-medium text-list-status'>{skills.Type}</div>
+                <div className='column-very-wide text-list-status'>
                   <div className='centered'>
                     <IncrementDecrementNumber
                       value={skills.CommonBladeContribution}
@@ -123,7 +103,7 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
                     />
                   </div>
                 </div>
-                <div className='col-sm-3 field-entry'>{skills.TotalLevel}</div>
+                <div className='column-wide'>{skills.TotalLevel}</div>
               </div>
             )}
         </div>

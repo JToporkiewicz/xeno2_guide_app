@@ -36,7 +36,8 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
     alphabetically: 'Name',
     type: 'Type',
     available: 'Available',
-    status: 'Status'
+    status: 'Status',
+    location: 'Area'
   }
 
   const getOrderTypeColumn = (order: string): keyof IQuestState => {
@@ -74,9 +75,10 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
             changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}  
           />
           <div className="row">
-            <b className="col-sm-1 order-title">Status</b>
+            <b className="column-narrow order-title">Status</b>
             <b className="order-title-available">Available</b>
-            <b className="col-sm-3 order-title">Type</b>
+            <b className="column-wide order-title">Type</b>
+            <b className="column-wide order-title">Location</b>
             <b className="order-title">Title</b>
           </div>
           {props.quests.sort((h2hA, h2hB) => {
@@ -86,7 +88,7 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
           }).map((quest:IQuestState) => 
             <div className="row text-list-entry" key={quest.id}>
               <div
-                className="col-sm-1 text-list-status"
+                className="column-narrow text-list-status"
               >
                 <OptionsCheckbox
                   hideAvailable={true}
@@ -112,7 +114,7 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
                 />
               </div>
               <div
-                className="col-sm-1 text-list-status"
+                className="column-narrow text-list-status"
               >
                 <img 
                   src={path.resolve(`images/helper/${quest.Available ?
@@ -122,9 +124,14 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
                 />
               </div>
               <div
-                className="col-sm-3 text-list-status"
+                className="column-wide text-list-status"
               >
                 {quest.Type}
+              </div>
+              <div
+                className="column-wide text-list-status"
+              >
+                {quest.Area.split(' -> ')[0].replace('(', '')}
               </div>
               <Link
                 className="text-list-link"

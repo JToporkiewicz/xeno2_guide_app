@@ -160,6 +160,7 @@ export interface IQuestState {
   Name:string,
   Type:string,
   Client:string,
+  Area:string,
   Location:string,
   Rewards:string,
   Available:boolean,

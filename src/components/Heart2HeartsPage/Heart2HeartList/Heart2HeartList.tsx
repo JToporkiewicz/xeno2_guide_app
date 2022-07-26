@@ -62,10 +62,10 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
           />
           {props.characterName && `Heart 2 hearts in which ${props.characterName} participates:`}
           <div className="row">
-            <b className="col-sm-1 order-title">Viewed</b>
+            <b className="column-narrow order-title">Viewed</b>
             <b className="order-title-available">Available</b>
-            <b className="col-sm-3 order-title">Location</b>
-            <b className="order-title">Title</b>
+            <b className="column-wide order-title">Location</b>
+            <b className="column-wide order-title">Title</b>
           </div>
           {props.heart2Hearts.filter((h2h:IHeart2HeartState) => {
             if (!props.characterName) return true
@@ -78,7 +78,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
           }).map((h2h:IHeart2HeartState) => 
             <div className="row text-list-entry" key={h2h.id}>
               <div
-                className="col-sm-1 text-list-status"
+                className="column-narrow text-list-status"
               >
                 <OptionsCheckbox
                   hideAvailable={true}
@@ -102,7 +102,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                 />
               </div>
               <div
-                className="col-sm-1 text-list-status"
+                className="column-narrow text-list-status"
               >
                 <img 
                   src={path.resolve(`images/helper/${h2h.Available ?
@@ -112,7 +112,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                 />
               </div>
               <div
-                className="col-sm-3 text-list-status"
+                className="column-wide text-list-status"
               >
                 {h2h.Area.split(' -> ')[0].replace('(', '')}
               </div>

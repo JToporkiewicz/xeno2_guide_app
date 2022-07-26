@@ -4,9 +4,10 @@ import path from 'path';
 interface IProps {
   orderOptions: string[],
   chosenOrder: string,
-  changeOrder: (order:string) => void;
+  changeOrder: (order:string) => void,
   sortOrderAsc: boolean,
-  changeSortOrderAsc: () => void;
+  changeSortOrderAsc: () => void,
+  id?:string
 }
 
 const OrderBy = (props:IProps) => {
@@ -43,21 +44,31 @@ const OrderBy = (props:IProps) => {
       <div className="order-title">Sort order: </div>
       <div className="sort-section">
         <input
-          name='ascending'
+          name={(props.id || '') + 'ascending'}
           type='radio'
           checked={props.sortOrderAsc}
           onChange={() => props.changeSortOrderAsc()}
           className='sort-order'
         />
-        <label className='sort-order-label' htmlFor='ascending'>Ascending</label>
+        <label
+          className='sort-order-label'
+          htmlFor={(props.id || '') + 'ascending'}
+        >
+          Ascending
+        </label>
         <input
-          id='descending'
+          name={(props.id || '') + 'descending'}
           type='radio'
-          checked={!props.sortOrderAsc}
+          checked={props.sortOrderAsc === false}
           onChange={() => props.changeSortOrderAsc()}
           className='sort-order'
         />
-        <label className='sort-order-label' htmlFor='descending'>Descending</label>
+        <label
+          className='sort-order-label'
+          htmlFor={(props.id || '') + 'descending'}
+        >
+          Descending
+        </label>
       </div>
     </div>
   )

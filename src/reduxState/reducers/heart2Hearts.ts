@@ -4,6 +4,7 @@ import { Heart2HeartActions } from '../actions/heart2Hearts';
 import { IHeart2HeartState, IMajorLocations } from 'reduxState/interfaces/reduxState';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
 import { LocationActions } from 'reduxState/actions/locations';
+import { findAreaName, findLocationName } from 'helpers/commonReducers';
 
 export const heart2HeartReducer = createReducer<IHeart2HeartState[]>(
   [Heart2HeartActions.SetHeart2Hearts,
@@ -37,49 +38,14 @@ export const heart2HeartReducer = createReducer<IHeart2HeartState[]>(
     }],
   [LocationActions.SetMinorLocations,
     (state:IHeart2HeartState[], locations:ILocations[]) => {
-      const updatedH2h = state.map((h2h) => {
-        const foundLocation = locations.find((loc) => loc.id === Number(h2h.Location));
-        return {
-          ...h2h,
-          Location: foundLocation ? foundLocation.Location : 'Unknown',
-          Area: foundLocation ? String(foundLocation.MajorArea) : 'Unknown'
-        }    
-      })
+      const updatedH2h:IHeart2HeartState[] = findLocationName(state, locations);
       return state.filter((h2h) => !updatedH2h.map((updated)=> updated.id).includes(h2h.id))
         .concat(updatedH2h)
         .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)
     }],
   [LocationActions.SetDependentMajorAreas,
     (state:IHeart2HeartState[], areas:IMajorLocations[]) => {
-      const updatedH2h = state.map((h2h) => {
-        if (h2h.Area === 'Unknown') {
-          return h2h;
-        }
-        let foundArea:string = '';
-
-        areas.forEach((outer) => {
-          if (!foundArea) {
-            const found = outer.id === Number(h2h.Area);
-
-            if (found) {
-              foundArea = outer.Name
-            }
-            else {
-              const foundInner = outer.InnerMajorAreas
-                .find((inner) => inner.id === Number(h2h.Area))
-              
-              if (foundInner) {
-                foundArea = `(${outer.Name} -> ${foundInner.Name})`
-              }      
-            }
-          }
-        })
-
-        return {
-          ...h2h,
-          Area: foundArea
-        }
-      })
+      const updatedH2h:IHeart2HeartState[] = findAreaName(state, areas);
       return state.filter((h2h) => !updatedH2h.map((updated)=> updated.id).includes(h2h.id))
         .concat(updatedH2h)
         .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)

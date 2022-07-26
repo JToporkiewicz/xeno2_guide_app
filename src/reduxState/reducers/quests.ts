@@ -1,7 +1,9 @@
 import createReducer from 'redux-action-reducer';
-import { IQuest } from 'interfaces';
+import { ILocations, IQuest } from 'interfaces';
 import { QuestsActions } from '../actions/quests';
-import { IQuestState } from '../interfaces/reduxState';
+import { IMajorLocations, IQuestState } from '../interfaces/reduxState';
+import { LocationActions } from 'reduxState/actions/locations';
+import { findAreaName, findLocationName } from 'helpers/commonReducers';
 
 export const questsReducer = createReducer<IQuestState[]>(
   [QuestsActions.SetQuests,
@@ -11,10 +13,14 @@ export const questsReducer = createReducer<IQuestState[]>(
         .concat(
           quests.map((quest) => ({
             ...quest,
-            Location: String(quest.Location),
+            Area: questState.find((old) => old.id === quest.id)?.Area
+              || '',
+            Location: questState.find((old) => old.id === quest.id)?.Location
+              || String(quest.Location),
             Steps: []
           }))
         )
+        .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
     }
   ],
   [QuestsActions.UpdateQuestStatus,
@@ -23,5 +29,19 @@ export const questsReducer = createReducer<IQuestState[]>(
         .concat([newQuest]).sort((questA, questB) =>
           questA.id < questB.id ? -1 : 1
         )
-  ]
+  ],
+  [LocationActions.SetMinorLocations,
+    (state:IQuestState[], locations:ILocations[]) => {
+      const updatedQuests:IQuestState[] = findLocationName(state, locations);
+      return state.filter((quest) => !updatedQuests.map((updated)=> updated.id).includes(quest.id))
+        .concat(updatedQuests)
+        .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
+    }],
+  [LocationActions.SetDependentMajorAreas,
+    (state:IQuestState[], areas:IMajorLocations[]) => {
+      const updatedQuests:IQuestState[] = findAreaName(state, areas);
+      return state.filter((quest) => !updatedQuests.map((updated)=> updated.id).includes(quest.id))
+        .concat(updatedQuests)
+        .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
+    }]
 )([]);
