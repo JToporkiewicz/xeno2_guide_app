@@ -181,7 +181,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                   unlocked={props.heart2Heart?.Viewed}
                   onClick={updateH2HViewed}
                   link={
-                    <Link to={`/heart2heart/${props.heart2Heart.id}`}>
+                    <Link to={`/heart2Heart/${props.heart2Heart.id}`}>
                       {props.heart2Heart.Title}
                     </Link>
                   }

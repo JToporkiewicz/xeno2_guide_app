@@ -15,6 +15,16 @@ const fetchQuestsEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
+const fetchQuestEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(QuestsActions.FetchQuest),
+    mergeMap((action) => callWithLoader$(
+      'Fetching Quests',
+      from(client.resource('quest').get(action.payload))
+        .pipe(mergeMap((quests) => of(setQuests([quests]))))
+    ))
+  )
+
 const saveQuestStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(QuestsActions.SaveQuestStatus),
@@ -28,5 +38,6 @@ const saveQuestStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
 
 export const effects = combineEpics(
   fetchQuestsEffect,
+  fetchQuestEffect,
   saveQuestStatusEffect
 )

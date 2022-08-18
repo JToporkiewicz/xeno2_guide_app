@@ -20,7 +20,7 @@ export interface IQuest {
   Client:string,
   Location:number,
   Rewards:string,
-  Available:boolean,
+  Available:number,
   Status:string
 }
 

@@ -11,16 +11,20 @@ export const heart2HeartReducer = createReducer<IHeart2HeartState[]>(
     (h2hState: IHeart2HeartState[], heart2Hearts: IHeart2Heart[]) => {
       const h2hIds = heart2Hearts.map((h2h) => h2h.id);
       return h2hState.filter((old) => !h2hIds.includes(old.id))
-        .concat(heart2Hearts.map((h2h) => ({
-          id:h2h.id,
-          Title:h2h.Title,
-          Area: h2hState.find((old) => old.id === h2h.id)?.Area || '',
-          Location:h2hState.find((old) => old.id === h2h.id)?.Location || `${h2h.Location}`,
-          Who:h2h.Who,
-          Outcomes:h2h.Outcomes,
-          Available:h2h.Available,
-          Viewed:h2h.Viewed
-        })));
+        .concat(heart2Hearts.map((h2h) => {
+          const foundH2H = h2hState.find((old) => old.id === h2h.id);
+          return {
+            id:h2h.id,
+            Title:h2h.Title,
+            Area: foundH2H && foundH2H.Area !== 'Unknown' ? foundH2H.Area : '',
+            Location:foundH2H && foundH2H.Location !== 'Unknown' ? foundH2H.Location
+              : `${h2h.Location}`,
+            Who:h2h.Who,
+            Outcomes:h2h.Outcomes,
+            Available:h2h.Available,
+            Viewed:h2h.Viewed
+          }
+        }));
     }],
   [Heart2HeartActions.UpdateHeart2HeartStatus,
     (state:IHeart2HeartState[], heart2Heart: IUpdateH2HStatus) => {

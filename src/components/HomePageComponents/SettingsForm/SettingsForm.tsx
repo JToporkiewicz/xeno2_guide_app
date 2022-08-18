@@ -1,6 +1,5 @@
 import { IStoryProgress } from 'interfaces';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
-import Checkbox from 'components/CommonComponents/FormComponents/Checkbox';
 import { NumberSlider } from 'components/CommonComponents/FormComponents/NumberSlider';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 

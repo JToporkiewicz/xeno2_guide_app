@@ -11,14 +11,18 @@ export const questsReducer = createReducer<IQuestState[]>(
       const questIds = quests.map((q) => q.id);
       return questState.filter((old) => !questIds.includes(old.id))
         .concat(
-          quests.map((quest) => ({
-            ...quest,
-            Area: questState.find((old) => old.id === quest.id)?.Area
-              || '',
-            Location: questState.find((old) => old.id === quest.id)?.Location
-              || String(quest.Location),
-            Steps: []
-          }))
+          quests.map((quest) => {
+            const foundQuest = questState.find((old) => old.id === quest.id);
+            return {
+              ...quest,
+              Available: quest.Available === 1,
+              Area: foundQuest && foundQuest.Area !== 'Unknown' ? foundQuest.Area
+                : '',
+              Location: foundQuest && foundQuest.Location !== 'Unknown' ? foundQuest.Location
+                : String(quest.Location),
+              Steps: []
+            }
+          })
         )
         .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
     }

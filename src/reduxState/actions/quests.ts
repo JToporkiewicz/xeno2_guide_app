@@ -5,6 +5,7 @@ import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 export enum QuestsActions {
   FetchQuestPrerequisites = 'FETCH_QUEST_PREREQUISITES',
   FetchQuests = 'FETCH_QUESTS',
+  FetchQuest = 'FETCH_QUEST',
   SetQuests = 'SET_QUESTS',
   FetchQuestSteps = 'FETCH_QUEST_STEPS',
   FetchQuestSubSteps = 'FETCH_QUEST_SUBSTEPS',
@@ -14,12 +15,18 @@ export enum QuestsActions {
 
 export type ActionTypes =
 | IFluxAction<QuestsActions.FetchQuests>
+| IFluxPayloadAction<QuestsActions.FetchQuest, number>
 | IFluxPayloadAction<QuestsActions.SetQuests, IQuest[]>
 | IFluxPayloadAction<QuestsActions.UpdateQuestStatus, IQuestState>
 | IFluxPayloadAction<QuestsActions.SaveQuestStatus, IQuestState>;
 
 export const fetchQuests = ():ActionTypes => ({
   type: QuestsActions.FetchQuests
+});
+
+export const fetchQuest = (payload:number):ActionTypes => ({
+  type: QuestsActions.FetchQuest,
+  payload
 });
 
 export const setQuests = (payload:IQuest[]):ActionTypes => ({
