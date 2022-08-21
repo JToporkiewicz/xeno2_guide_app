@@ -88,7 +88,7 @@ export const questsReducer = createReducer<IQuestState[]>(
                 .filter((newSteps) => newSteps.Quest === quest.id)
                 .map((newStep) => {
                   const updatedSubSteps = Object.entries(subSteps)
-                    .find((step) => step[0] === String(quest.id))
+                    .find((step) => step[0] === String(newStep.id))
                   return {
                     ...newStep,
                     SubSteps: updatedSubSteps ? updatedSubSteps[1].sort((stepA, stepB) =>
