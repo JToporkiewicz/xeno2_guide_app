@@ -26,7 +26,7 @@ export const DevelopmentLevelView = (props: IProps & IDispatchProps) => {
       <>
         {props.locations.filter((area) => area.DevelopmentLevel !== -1)
           .map((area) => 
-            <div className="row progress-update-row">
+            <div className="row progress-update-row" key={'develop' + area.Name}>
               <div className='col-sm-5'>
                 <p>
                   {props.chapterUnlocked >= area.StoryProgress || !props.avoidSpoilers ?

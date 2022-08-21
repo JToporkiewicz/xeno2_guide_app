@@ -10,6 +10,9 @@ interface FindLocation {
 
 export const findLocationName = (state:FindLocation[], locations:ILocations[]):any => {
   const updatedState = state.map((quest) => {
+    if (Number.isNaN(Number(quest.Location))) {
+      return quest;
+    }
     const foundLocation = locations.find((loc) => loc.id === Number(quest.Location));
     return {
       ...quest,
@@ -22,6 +25,9 @@ export const findLocationName = (state:FindLocation[], locations:ILocations[]):a
 
 export const findAreaName = (state:FindLocation[], areas:IMajorLocations[]):any => {
   const updatedState = state.map((quest) => {
+    if (Number.isNaN(Number(quest.Area))) {
+      return quest;
+    }
     if (quest.Area === 'Unknown') {
       return quest;
     }
