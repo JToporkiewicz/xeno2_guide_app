@@ -1,6 +1,7 @@
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { IQuestState } from 'reduxState/interfaces/reduxState';
 import { SideQuestBasicInfo } from '../SideQuestBasicInfoComponent';
+import { SideQuestRewardsComponent } from '../SideQuestRewardsComponents';
 
 interface IDispatchProps {
   fetchQuest:(paylod:number) => void;
@@ -22,6 +23,11 @@ export const SideQuestDetailsPageView = (props:IProps & IDispatchProps) => {
       <SideQuestBasicInfo
         quest={props.quest}
       />
+      {props.quest.Rewards.length > 2 &&
+        <SideQuestRewardsComponent
+          quest={props.quest}
+        />
+      }
     </>
   }
 
