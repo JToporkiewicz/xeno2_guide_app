@@ -247,6 +247,7 @@ select{
 }
 
 .small-unlock-button,
+.medium-unlock-button,
 .large-unlock-button {
     position: relative;
     border: solid medium var(--main-color);
@@ -263,6 +264,22 @@ select{
         transform: translateY(-50%);
         width: 30px;
         height: 30px;
+    }
+}
+
+.medium-unlock-button {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px auto;
+
+    .hover-options {
+        top: 30px;
+    }
+    
+    .unlock-button-image {
+        width: 15px;
+        height: 15px;
     }
 }
 
@@ -851,4 +868,46 @@ img.increment-decrement-button {
 
 .h2h-all-rewards {
     margin-top: 10px;
+}
+
+// ------------- quest components -------------
+.questStep {
+    margin: 15px 10px;
+    border: medium solid var(--main-color);
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.questDetails {
+    display: flex;
+}
+
+.stepCompleted {
+    background: var(--main-color-o5);
+}
+
+.stepBasics,
+.stepDetails {
+    margin: auto 5px;
+}
+
+.stepBasics {
+    width: 50px;
+    .details-unlock-section {
+        margin: 0px;
+    }
+
+    p {
+        margin: auto 0px;
+    }
+}
+
+.stepDetails {
+    width: 90%;
+}
+
+.questRouteHeader {
+    width: inherit;
+    display: block;
+    text-align: center;
 }

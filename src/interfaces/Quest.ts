@@ -29,7 +29,7 @@ export interface IQuestStep {
   Quest:number,
   StepNumber:number,
   Description:string,
-  Completed:boolean
+  Completed:number
 }
 
 export interface IQuestSubStep {
@@ -41,5 +41,5 @@ export interface IQuestSubStep {
   DefeatMonster:number,
   CollectItem:number,
   Count:number,
-  CompletionProgress:boolean
+  CompletionProgress:number
 }

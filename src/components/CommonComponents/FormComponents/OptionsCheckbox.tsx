@@ -15,17 +15,17 @@ interface IProps {
   states?:States[],
   link?: ReactElement,
   onClick:(payload:boolean | string) => void,
-  size?:'large' | 'small'
+  size?:'large' | 'medium' | 'small'
 }
 
 const Option = (props: {
   state:States,
   setStatesOpen:(isOpen:boolean) => void,
   onClick:(payload:boolean | string) => void,
-  size?:'large' | 'small'
+  size?:'large' | 'medium' | 'small'
 }) => {
   return <div
-    className={`${props.size === 'small' ? 'small' : 'large'}-unlock-button hover-version`}
+    className={`${props.size || 'large'}-unlock-button hover-version`}
     onClick={() => {
       props.setStatesOpen(false)
       props.onClick(props.state.text)
@@ -38,7 +38,8 @@ const Option = (props: {
           alt={props.state.text}
           className="unlock-button-image"
         />
-        : <div />
+        : !Number.isNaN(parseInt(props.state.text)) ?
+          <b>{props.state.text}</b> : <div />
     }
   </div>
 }
@@ -61,7 +62,7 @@ export const OptionsCheckbox = (props:IProps) => {
       </>
     }
     <div
-      className={`${props.size === 'small' ? 'small' : 'large'}-unlock-button${!props.available ?
+      className={`${props.size || 'large'}-unlock-button${!props.available ?
         ' disabledButton' : ''}`}
       onClick={() => props.available ?
         props.states?.length ?
@@ -77,12 +78,14 @@ export const OptionsCheckbox = (props:IProps) => {
         />
       }
       {
-        activeState && activeState.imgName &&
+        activeState && activeState.imgName ?
           <img
             src={path.resolve(`images/helper/${activeState.imgName}.svg`)}
             alt={activeState.text}
             className="unlock-button-image"
           />
+          : !props.unlocked && activeState && !Number.isNaN(parseInt(activeState.text)) ?
+            <b>{activeState.text}</b> : <div />
       }
       {
         props.states && statesOpen &&
