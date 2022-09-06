@@ -6,6 +6,7 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
+import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
 
 interface IOwnProps {
   bladeDetails:IBladeState,
@@ -20,7 +21,7 @@ interface IOwnProps {
 interface IDispatchProps {
   updateBladeUnlocked: (payload:IBladeState) => void;
   saveBladeStatus: (payload:IBladeState) => void;
-  updateQuestStatus: (payload:IQuestState) => void;
+  updateQuestStatus: (payload:IUpdateQuestStatus) => void;
   saveQuestStatus: (payload:IQuestState) => void;
   updateHeart2HeartStatus: (payload:IUpdateH2HStatus) => void;
   saveHeart2Hearts: (payload:IUpdateH2HStatus[]) => void;
@@ -48,8 +49,8 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
       }
 
       props.updateQuestStatus({
-        ...props.quest,
-        Status: 'NOT STARTED'
+        questId: props.quest.id,
+        status: 'NOT STARTED'
       })
     }
     if(props.heart2Heart) {
@@ -73,8 +74,8 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
       }
 
       props.updateQuestStatus({
-        ...props.quest,
-        Status: status
+        questId: props.quest.id,
+        status
       })
     }
   }

@@ -13,6 +13,11 @@ export const defaultSideQuest: IQuestState = {
   Steps: []
 }
 
+export interface IUpdateQuestStatus {
+  questId: number,
+  status: string
+}
+
 export interface IUpdateQuestStepStatus {
   stepId: number,
   status: boolean

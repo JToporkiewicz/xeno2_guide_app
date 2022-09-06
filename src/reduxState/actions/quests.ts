@@ -1,5 +1,9 @@
 import { IQuest, IQuestStep, IQuestSubStep } from 'interfaces';
-import { IUpdateQuestStepStatus, IUpdateQuestSubStepStatus } from 'reduxState/interfaces/quest';
+import {
+  IUpdateQuestStepStatus,
+  IUpdateQuestSubStepStatus,
+  IUpdateQuestStatus
+} from 'reduxState/interfaces/quest';
 import { IQuestState } from '../interfaces/reduxState';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 
@@ -32,7 +36,7 @@ export type ActionTypes =
 | IFluxAction<QuestsActions.FetchQuestSubSteps>
 | IFluxPayloadAction<QuestsActions.FetchQuestSubStepsForQuest, number>
 | IFluxPayloadAction<QuestsActions.SetQuestSubSteps, IQuestSubStep[]>
-| IFluxPayloadAction<QuestsActions.UpdateQuestStatus, IQuestState>
+| IFluxPayloadAction<QuestsActions.UpdateQuestStatus, IUpdateQuestStatus>
 | IFluxPayloadAction<QuestsActions.SaveQuestStatus, IQuestState>
 | IFluxPayloadAction<QuestsActions.UpdateQuestStepStatus, IUpdateQuestStepStatus>
 | IFluxPayloadAction<QuestsActions.UpdateQuestSubStepStatus, IUpdateQuestSubStepStatus>
@@ -81,7 +85,7 @@ export const setQuestSubSteps = (payload:IQuestSubStep[]):ActionTypes => ({
   payload
 });
 
-export const updateQuestStatus = (payload:IQuestState) => ({
+export const updateQuestStatus = (payload:IUpdateQuestStatus) => ({
   type: QuestsActions.UpdateQuestStatus,
   payload
 });

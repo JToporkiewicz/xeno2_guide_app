@@ -4,7 +4,11 @@ import { QuestsActions } from '../actions/quests';
 import { IMajorLocations, IQuestState, IQuestStepState } from '../interfaces/reduxState';
 import { LocationActions } from 'reduxState/actions/locations';
 import { findAreaName, findLocationName } from 'helpers/commonReducers';
-import { IUpdateQuestStepStatus, IUpdateQuestSubStepStatus } from 'reduxState/interfaces/quest';
+import {
+  IUpdateQuestStatus,
+  IUpdateQuestStepStatus,
+  IUpdateQuestSubStepStatus
+} from 'reduxState/interfaces/quest';
 
 export const questsReducer = createReducer<IQuestState[]>(
   [QuestsActions.SetQuests,
@@ -106,12 +110,53 @@ export const questsReducer = createReducer<IQuestState[]>(
     }
   ],
   [QuestsActions.UpdateQuestStatus,
-    (state:IQuestState[], newQuest: IQuestState) =>
-      state.filter((quest) => quest.id !== newQuest.id)
-        .concat([newQuest]).sort((questA, questB) =>
+    (state:IQuestState[], update: IUpdateQuestStatus) => {
+      const foundQuest = state.find((quest) => quest.id === update.questId)
+      
+      if(!foundQuest) {
+        return state;
+      }
+      
+      return state.filter((quest) => quest.id !== foundQuest.id)
+        .concat({
+          ...foundQuest,
+          Steps: foundQuest.Steps.map((step) => {
+            if (update.status === 'NOT STARTED') {
+              return {
+                ...step,
+                Completed: false,
+                SubSteps: step.SubSteps?.map((sub) => ({
+                  ...sub,
+                  CompletionProgress: 0
+                }))
+              }
+            } else if (update.status === 'FINISHED') {
+              return {
+                ...step,
+                Completed: true,
+                SubSteps: step.SubSteps?.map((sub) => ({
+                  ...sub,
+                  CompletionProgress: sub.Count
+                }))
+              }
+            } else if (step.id === foundQuest.Steps.at(-1)?.id && step.Completed) {
+              return {
+                ...step,
+                Completed: false,
+                SubSteps: step.SubSteps?.map((sub) => ({
+                  ...sub,
+                  CompletionProgress: 0
+                }))
+              }
+            } else {
+              return step
+            }
+          }),
+          Status: update.status
+        }).sort((questA, questB) =>
           questA.id < questB.id ? -1 : 1
         )
-  ],
+    }],
   [LocationActions.SetMinorLocations,
     (state:IQuestState[], locations:ILocations[]) => {
       const updatedQuests:IQuestState[] = findLocationName(state, locations);
@@ -198,7 +243,8 @@ export const questsReducer = createReducer<IQuestState[]>(
         (sub) => sub.CompletionProgress !== sub.Count)
 
       const stepCompleted = foundSubStep.Count === update.progress &&
-        uncompletedSubSteps?.length === 1 && uncompletedSubSteps[0].id === update.substepId;
+        (uncompletedSubSteps === undefined
+        || uncompletedSubSteps?.length === 1 && uncompletedSubSteps[0].id === update.substepId);
 
       let lastStepInRoute;
       if (foundStep.Description.startsWith('Route A:')) {

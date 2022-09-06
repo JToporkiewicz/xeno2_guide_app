@@ -12,7 +12,11 @@ interface IDispatchProps {
   updateQuestSubStepStatus: (payload: IUpdateQuestSubStepStatus) => void
 }
 
-const QuestStep = (step: IQuestStepState, actions: IDispatchProps) => 
+const QuestStep = (
+  step: IQuestStepState,
+  questAvailable: boolean,
+  actions: IDispatchProps
+) => 
   <div
     className={`questStep${step.Completed ? ' stepCompleted' : ''}`}
   >
@@ -20,7 +24,7 @@ const QuestStep = (step: IQuestStepState, actions: IDispatchProps) =>
       <div className="stepBasics">
         <OptionsCheckbox
           hideAvailable={true}
-          available={true}
+          available={questAvailable}
           unlocked={step.Completed}
           onClick={() => actions.updateQuestStepStatus({
             stepId: step.id,
@@ -41,9 +45,9 @@ const QuestStep = (step: IQuestStepState, actions: IDispatchProps) =>
               <div className='questDetails'>
                 <OptionsCheckbox
                   hideAvailable={true}
-                  available={true}
+                  available={questAvailable}
                   unlocked={subStep.Count === 1 ?
-                    undefined : subStep.CompletionProgress === subStep.Count}
+                    subStep.CompletionProgress === subStep.Count : undefined}
                   states={subStep.Count === 1 ?
                     undefined : Array.from(Array(subStep.Count + 1).keys()).map((count) => (
                       {
@@ -80,15 +84,16 @@ const QuestStep = (step: IQuestStepState, actions: IDispatchProps) =>
 const QuestRoutes = (
   routeA: IQuestStepState[],
   routeB: IQuestStepState[],
+  questAvailable: boolean,
   actions: IDispatchProps) => 
   <div className='row'>
     <div className='col-sm-6'>
       <b className='questRouteHeader'>Route A:</b>
-      {routeA.map((stepA) => QuestStep(stepA, actions))}
+      {routeA.map((stepA) => QuestStep(stepA, questAvailable, actions))}
     </div>
     <div className='col-sm-6'>
       <b className='questRouteHeader'>Route B:</b>
-      {routeB.map((stepB) => QuestStep(stepB, actions))}
+      {routeB.map((stepB) => QuestStep(stepB, questAvailable, actions))}
     </div>
   </div>
 
@@ -120,23 +125,37 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
       Completed steps: {completedStepNumber} / {lastStepNumber}
       {allRoutes.map((step) =>
         <div key={`step${step.StepNumber}`}>
-          {QuestStep(step, {
-            updateQuestStepStatus: props.updateQuestStepStatus,
-            updateQuestSubStepStatus: props.updateQuestSubStepStatus
-          })}
-          {step.StepNumber === (routeA.at(0)?.StepNumber || 0) - 1
-          && step.StepNumber === (routeB.at(0)?.StepNumber || 0) - 1 ?
-            QuestRoutes(routeA, routeB, {
+          {QuestStep(
+            step,
+            props.quest.Available,
+            {
               updateQuestStepStatus: props.updateQuestStepStatus,
               updateQuestSubStepStatus: props.updateQuestSubStepStatus
-            }) : <div />
+            }
+          )}
+          {step.StepNumber === (routeA.at(0)?.StepNumber || 0) - 1
+          && step.StepNumber === (routeB.at(0)?.StepNumber || 0) - 1 ?
+            QuestRoutes(
+              routeA,
+              routeB,
+              props.quest.Available,
+              {
+                updateQuestStepStatus: props.updateQuestStepStatus,
+                updateQuestSubStepStatus: props.updateQuestSubStepStatus
+              }
+            ) : <div />
           }
         </div>
       )}
-      {allRoutes.length === 0 && QuestRoutes(routeA, routeB, {
-        updateQuestStepStatus: props.updateQuestStepStatus,
-        updateQuestSubStepStatus: props.updateQuestSubStepStatus
-      })}
+      {allRoutes.length === 0 && QuestRoutes(
+        routeA,
+        routeB,
+        props.quest.Available,
+        {
+          updateQuestStepStatus: props.updateQuestStepStatus,
+          updateQuestSubStepStatus: props.updateQuestSubStepStatus
+        }
+      )}
     </>
   </CollapsibleComponent>
 }

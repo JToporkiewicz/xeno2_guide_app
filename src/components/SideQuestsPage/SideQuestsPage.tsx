@@ -6,10 +6,11 @@ import { sortFunction } from 'helpers'
 import path from 'path'
 import { useState, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
 import { IQuestState } from 'reduxState/interfaces/reduxState'
 
 interface IDispatchProps {
-  updateQuestStatus: (payload:IQuestState) => void;
+  updateQuestStatus: (payload:IUpdateQuestStatus) => void;
   saveQuestStatus: (payload:IQuestState) => void;
 }
 
@@ -55,8 +56,8 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
         })
 
       props.updateQuestStatus({
-        ...foundQuest,
-        Status: status
+        questId,
+        status
       })
     }
   }
