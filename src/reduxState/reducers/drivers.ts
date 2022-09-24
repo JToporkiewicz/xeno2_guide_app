@@ -42,7 +42,7 @@ export const driversReducer = createReducer<IDriverState[]>(
           favItem2: driver.FavItem2,
           favItemType1: driver.FavItemType1,
           favItemType2: driver.FavItemType2,
-          ideaStats: driver.IdeaStats,
+          ideaStats: JSON.parse(driver.IdeaStats),
           show: false
         }
       })).sort((driverA, driverB) =>
@@ -264,7 +264,7 @@ export const driversReducer = createReducer<IDriverState[]>(
                 id: list.id,
                 name: list.Name,
                 weaponType: list.WeaponType,
-                effect: list.Effect,
+                effect: JSON.parse(list.Effect),
                 target: list.Target,
                 type: list.Type,
                 levelUnlocked: list.LevelUnlocked,

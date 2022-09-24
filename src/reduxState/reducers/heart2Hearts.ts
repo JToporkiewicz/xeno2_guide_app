@@ -19,8 +19,8 @@ export const heart2HeartReducer = createReducer<IHeart2HeartState[]>(
             Area: foundH2H && foundH2H.Area !== 'Unknown' ? foundH2H.Area : '',
             Location:foundH2H && foundH2H.Location !== 'Unknown' ? foundH2H.Location
               : `${h2h.Location}`,
-            Who:h2h.Who,
-            Outcomes:h2h.Outcomes,
+            Who:JSON.parse(h2h.Who),
+            Outcomes:JSON.parse(h2h.Outcomes),
             Available:h2h.Available,
             Viewed:h2h.Viewed
           }

@@ -1,7 +1,6 @@
 import {
   IDriverArtDetails,
   IDriverSkillNode,
-  IAffinityChartNode,
   IMercMission,
   IQuestSubStep,
   IStoryProgress,
@@ -80,11 +79,18 @@ export interface IDriverArtsState {
   id: number,
   name: string,
   weaponType: string,
-  effect: string,
+  effect: string[],
   target: string,
   type: string,
   levelUnlocked: number,
   nodes: IDriverArtNode[]
+}
+
+interface IDriverIdeaStats {
+  Bravery: number,
+  Truth: number,
+  Compassion: number,
+  Justice: number,
 }
 
 export interface IDriverState {
@@ -98,11 +104,17 @@ export interface IDriverState {
   favItem2:number,
   favItemType1:number,
   favItemType2:number,
-  ideaStats:string,
+  ideaStats:IDriverIdeaStats,
   show?:boolean
 }
 
-export interface IAffinityChartNodeState extends IAffinityChartNode {
+export interface IAffinityChartNodeState {
+  id:number,
+  Name:string,
+  SkillLevel:number,
+  Effect:string[],
+  Available:boolean,
+  Unlocked:boolean
   Tier: number
 }
 
@@ -139,13 +151,19 @@ export interface IBladeState {
   show?:boolean
 }
 
+interface IH2hOutcomes {
+  'Option 1'?: {[key:string]:any},
+  'Option 2'?: {[key:string]:any},
+  'All'?: {[key:string]:any}[],
+}
+
 export interface IHeart2HeartState {
   id:number,
   Title:string,
   Area:string,
   Location:string,
-  Who:string,
-  Outcomes:string,
+  Who:string[],
+  Outcomes:IH2hOutcomes,
   Available:boolean,
   Viewed:boolean
 }
@@ -166,7 +184,7 @@ export interface IQuestState {
   Client:string,
   Area:string,
   Location:string,
-  Rewards:string,
+  Rewards:string[],
   Available:boolean,
   Status:string
   Steps: IQuestStepState[]

@@ -18,7 +18,7 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
 
   useEffect(() => {
     if(props.driverDetails) {
-      setIdeas(JSON.parse(props.driverDetails.ideaStats));
+      setIdeas(props.driverDetails.ideaStats);
     }
   }, [props.driverDetails])
 

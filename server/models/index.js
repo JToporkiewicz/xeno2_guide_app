@@ -2,14 +2,14 @@ const dbConfig = require('../db.config.js');
 
 const Sequelize = require('sequelize');
 const sequelizeDB = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-    host: dbConfig.HOST,
-    dialect: dbConfig.dialect,
-    pool: {
-        max: dbConfig.pool.max,
-        min: dbConfig.pool.min,
-        acquire: dbConfig.pool.acquire,
-        idle: dbConfig.pool.idle
-    }
+  host: dbConfig.HOST,
+  dialect: dbConfig.dialect,
+  pool: {
+    max: dbConfig.pool.max,
+    min: dbConfig.pool.min,
+    acquire: dbConfig.pool.acquire,
+    idle: dbConfig.pool.idle
+  }
 });
 
 const db = {};
@@ -36,6 +36,7 @@ db.fieldSkill = require('./fieldSkill.model')(sequelizeDB, Sequelize);
 db.requirementsMM = require('./requirementsMM.model')(sequelizeDB, Sequelize);
 db.mercmission = require('./mercMission.model')(sequelizeDB, Sequelize);
 db.monster = require('./monster.model')(sequelizeDB, Sequelize);
+db.monsterType = require('./monsterType.model')(sequelizeDB, Sequelize);
 db.prerequisitesACN = require('./prerequisitesACN.model')(sequelizeDB, Sequelize);
 db.prerequisitesBlade = require('./prerequisitesBlade.model')(sequelizeDB, Sequelize);
 db.prerequisitesH2H = require('./prerequisitesH2H.model')(sequelizeDB, Sequelize);

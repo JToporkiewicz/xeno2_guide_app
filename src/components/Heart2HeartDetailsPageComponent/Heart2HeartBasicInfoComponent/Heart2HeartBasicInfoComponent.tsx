@@ -55,7 +55,7 @@ export const Heart2HeartBasicInfoView = (props:IProps & IDispatchProps) => {
         <div className='centered'>
           <b>Participants:</b>
           <ul>
-            {JSON.parse(props.heart2Heart.Who).map((who:string) => 
+            {props.heart2Heart.Who.map((who:string) => 
               <li key={who}>{who}</li>
             )}
           </ul>

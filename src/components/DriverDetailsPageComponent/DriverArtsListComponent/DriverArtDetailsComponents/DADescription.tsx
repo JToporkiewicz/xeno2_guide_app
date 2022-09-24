@@ -4,7 +4,7 @@ import path from 'path';
 interface IProps {
   target:string,
   type:string,
-  effect:string
+  effect:string[]
 }
 
 const DADescription = (props:IProps) => {
@@ -32,7 +32,7 @@ const DADescription = (props:IProps) => {
           <b>Type:</b> {props.type}<br/>
           <b>Effects:</b>
           <ul>
-            {Object.values(JSON.parse(props.effect)).map((effect:any) =>
+            {Object.values(props.effect).map((effect:any) =>
               <li key={effect}>{effect}</li>)
             }
           </ul>

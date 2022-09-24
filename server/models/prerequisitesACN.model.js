@@ -7,6 +7,7 @@ module.exports = (sequelize, Sequelize) => {
     OtherPrerequisiteName: { type: Sequelize.TEXT },
     OtherPrerequisiteDetail: { type: Sequelize.INTEGER },
     StoryProgress: { type: Sequelize.INTEGER },
+    DLCRequired: { type: Sequelize.BOOLEAN },
     Location: { type: Sequelize.INTEGER, references: {
       model: 'locations',
       key: 'id'
@@ -25,6 +26,10 @@ module.exports = (sequelize, Sequelize) => {
     } },
     MonsterTitle: { type: Sequelize.INTEGER, references: {
       model: 'monsters',
+      key: 'id'
+    } },
+    MonsterType: { type: Sequelize.INTEGER, references: {
+      model: 'monsterTypes',
       key: 'id'
     } },
     AffinityChartNode: { type: Sequelize.INTEGER, references: {

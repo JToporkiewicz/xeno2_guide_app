@@ -2,7 +2,8 @@ export interface IMonster {
   id:number,
   Name:string,
   Category:string,
-  Type:string,
+  Type:number,
+  IsDriver:boolean,
   LowestLevel:number,
   HighestLevel:number,
   Location:number,
@@ -11,4 +12,9 @@ export interface IMonster {
   Drops:string,
   Available:boolean,
   Beaten:boolean
+}
+
+export interface IMonsterType {
+  id:number,
+  MonsterType:string
 }

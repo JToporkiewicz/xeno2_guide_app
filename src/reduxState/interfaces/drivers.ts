@@ -26,7 +26,12 @@ export const defaultDriverState = {
   favItem2:0,
   favItemType1:0,
   favItemType2:0,
-  ideaStats:''
+  ideaStats: {
+    Bravery: 0,
+    Truth: 0,
+    Compassion: 0,
+    Justice: 0,  
+  }
 }
 
 export const defaultDriverArt = {

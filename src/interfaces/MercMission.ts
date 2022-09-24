@@ -6,6 +6,7 @@ export interface IMercMission {
   GiverLocation:number,
   Duration:string,
   Type:string,
+  Missable:boolean,
   Completed:boolean,
   Available:boolean
 }
@@ -19,6 +20,7 @@ export interface IPrerequisitesMM {
   BladeUnlocked:number,
   Quest:number,
   QuestStatus:string,
+  MercMissionCompleted:number,
   StoryProgress:number,
   DLCUnlocked:boolean,
   OtherPrerequisiteTitle:string,
@@ -28,11 +30,18 @@ export interface IPrerequisitesMM {
 
 export interface IRequirementsMM {
   id:number,
+  MissionId:number,
   Blade:number,
-  FieldSkill1:number,
-  FieldSkill1Level:number,
-  FieldSkill2:number,
-  FieldSkill2Level:number,
-  FieldSkill3:number,
-  FieldSkill3Level:number
+  FieldSkill:number,
+  FieldSkillLevel:number,
+  Element:string,
+  ElementLevel:number,
+  WeaponType:string,
+  WeaponLevel:number,
+  BladeGender:string,
+  BladeGenderLevel:number,
+  Humanoid:boolean,
+  HumanoidLevel:number,
+  Stats:string,
+  StatsLevel:number
 }

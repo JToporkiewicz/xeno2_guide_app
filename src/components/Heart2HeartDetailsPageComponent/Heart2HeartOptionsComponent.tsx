@@ -33,27 +33,29 @@ const Heart2HeartOptionDetails = (option:any, index: number) => {
 }
 
 export const Heart2HeartOptions = (props:IProps) => {
-  const options = JSON.parse(props.heart2Heart.Outcomes.replace('NULL', ''))
+  const options = props.heart2Heart.Outcomes;
   return <CollapsibleComponent header="Options and Rewards">
-    {options['Option 1'] && <div className="h2h-options">
-      {options['Option 1'] && Heart2HeartOptionDetails(options['Option 1'], 1)}
-      {options['Option 2'] && Heart2HeartOptionDetails(options['Option 2'], 2)}
-    </div>}
-    {options['All'] && <div className="h2h-all-rewards">
-      <b>Rewards for all options: </b>
-      <ul>
-        {options['All'].map((rewards:any) =>
-          Object.entries(rewards).map((details:any) =>
-            <li key={'rewardDetails' + details[1].length}>
-              {details[0]}:
-              <ul>
-                {Object.entries(details[1]).map((det) =>
-                  <li key={'rewardDetailsLength' + det[1]}>{det[0]}: {det[1]}</li>
-                )}
-              </ul>
-            </li>)
-        )}
-      </ul>
-    </div>}
+    <>
+      {options['Option 1'] && <div className="h2h-options">
+        {options['Option 1'] && Heart2HeartOptionDetails(options['Option 1'], 1)}
+        {options['Option 2'] && Heart2HeartOptionDetails(options['Option 2'], 2)}
+      </div>}
+      {options['All'] && <div className="h2h-all-rewards">
+        <b>Rewards for all options: </b>
+        <ul>
+          {options['All'].map((rewards:any) =>
+            Object.entries(rewards).map((details:any) =>
+              <li key={'rewardDetails' + details[1].length}>
+                {details[0]}:
+                <ul>
+                  {Object.entries(details[1]).map((det) =>
+                    <li key={'rewardDetailsLength' + det[1]}>{det[0]}: {det[1]}</li>
+                  )}
+                </ul>
+              </li>)
+          )}
+        </ul>
+      </div>}
+    </>
   </CollapsibleComponent>
 }

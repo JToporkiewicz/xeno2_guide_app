@@ -20,6 +20,7 @@ export const questsReducer = createReducer<IQuestState[]>(
             const foundQuest = questState.find((old) => old.id === quest.id);
             return {
               ...quest,
+              Rewards: JSON.parse(quest.Rewards),
               Available: quest.Available === 1,
               Area: foundQuest && foundQuest.Area !== 'Unknown' ? foundQuest.Area
                 : '',

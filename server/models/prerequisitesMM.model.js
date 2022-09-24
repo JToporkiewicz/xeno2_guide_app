@@ -19,6 +19,10 @@ module.exports = (sequelize, Sequelize) => {
       key: 'id'
     } },
     QuestStatus: { type: Sequelize.TEXT },
+    MercMissionCompleted: { type: Sequelize.INTEGER, references: {
+      model: 'mercMissions',
+      key: 'id'
+    } },
     StoryProgress: { type: Sequelize.INTEGER },
     DLCUnlocked: { type: Sequelize.BOOLEAN },
     OtherPrerequisiteTitle: { type: Sequelize.TEXT },

@@ -6,11 +6,14 @@ interface IOwnProps {
 }
 
 export const SideQuestRewardsComponent = (props:IOwnProps) => {
-  const rewardsList = JSON.parse(props.quest.Rewards);
-  const rewardsForAllRoutes = rewardsList.filter((point:string) =>
+  const rewardsForAllRoutes = props.quest.Rewards.filter((point:string) =>
     !point.startsWith('A:') && !point.startsWith('B:'));
-  const rewardsForRouteA:string = rewardsList.find((point:string) => point.startsWith('A:'));
-  const rewardsForRouteB:string = rewardsList.find((point:string) => point.startsWith('B:'));
+  const rewardsForRouteA:string|undefined = props.quest.Rewards.find(
+    (point:string) => point.startsWith('A:')
+  );
+  const rewardsForRouteB:string|undefined = props.quest.Rewards.find(
+    (point:string) => point.startsWith('B:')
+  );
   return <CollapsibleComponent header="Rewards">
     <div className='row'>
       <div className='col-sm-4'>

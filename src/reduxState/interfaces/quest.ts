@@ -7,7 +7,7 @@ export const defaultSideQuest: IQuestState = {
   Client:'',
   Area:'',
   Location:'',
-  Rewards:'',
+  Rewards:[],
   Available:false,
   Status:'',
   Steps: []

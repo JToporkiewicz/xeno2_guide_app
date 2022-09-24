@@ -119,7 +119,7 @@ export const bladesReducer = createReducer<IBladeState[]>(
                 id: parseInt(value[1]),
                 Name: '',
                 SkillLevel: 0,
-                Effect: '',
+                Effect: [],
                 Available: false,
                 Unlocked: false,
                 Tier: parseInt(value[0][value[0].length - 1])
@@ -176,6 +176,7 @@ export const bladesReducer = createReducer<IBladeState[]>(
               if (oldNode.id === node.id) {
                 foundNode = {
                   ...node,
+                  Effect: JSON.parse(node.Effect),
                   Tier: oldNode.Tier
                 };
                 return true;

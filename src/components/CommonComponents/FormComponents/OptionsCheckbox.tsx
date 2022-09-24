@@ -90,12 +90,13 @@ export const OptionsCheckbox = (props:IProps) => {
       {
         props.states && statesOpen &&
         <div className='hover-options'>
-          {props.states.map((option) => {
+          {props.states.map((option, index) => {
             return <Option
               state={option}
               setStatesOpen={setStatesOpen}
               onClick={props.onClick}
               size={props.size}
+              key={'option' + index}
             />
           })}
         </div>

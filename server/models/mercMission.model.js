@@ -12,6 +12,7 @@ module.exports = (sequelize, Sequelize) => {
     } },
     Duration: { type: Sequelize.TEXT },
     Type: { type: Sequelize.TEXT },
+    Missable: { type: Sequelize.BOOLEAN },
     Completed: { type: Sequelize.BOOLEAN },
     Available: { type: Sequelize.BOOLEAN }
   },

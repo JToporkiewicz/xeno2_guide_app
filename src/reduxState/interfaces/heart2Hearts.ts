@@ -5,8 +5,8 @@ export const defaultHeart2HeartState: IHeart2HeartState = {
   Title: '',
   Area: '',
   Location: '',
-  Who: '',
-  Outcomes: '',
+  Who: [],
+  Outcomes: {},
   Available: false,
   Viewed: false
 }

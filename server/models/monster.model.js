@@ -2,7 +2,11 @@ module.exports = (sequelize, Sequelize) => {
   const Monster = sequelize.define('monster', {
     Name: { type: Sequelize.TEXT },
     Category: { type: Sequelize.TEXT },
-    Type: { type: Sequelize.TEXT },
+    Type: { type: Sequelize.INTEGER, references: {
+      model: 'monsterTypes',
+      key: 'id'
+    } },
+    IsDriver: { type: Sequelize.BOOLEAN },
     LowestLevel: { type: Sequelize.INTEGER },
     HighestLevel: { type: Sequelize.INTEGER },
     Location: { type: Sequelize.INTEGER, references: {

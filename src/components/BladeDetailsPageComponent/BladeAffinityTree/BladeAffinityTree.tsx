@@ -35,7 +35,10 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
             .map((n) => ({...n, Unlocked: false}))))
       }
     }
-    props.setBladeSkillNode(updatingNodes)
+    props.setBladeSkillNode(updatingNodes.map((node) => ({
+      ...node,
+      Effect: JSON.stringify(node.Effect)
+    })))
     toUpdate.current = toUpdate.current
       .filter((node) => !updatingNodes.find((un) => un.id === node.id))
       .concat(updatingNodes)
@@ -67,7 +70,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
             <br/>
             <b>Effect:</b>
             <br/>
-            {n.Effect && JSON.parse(n.Effect).map((e:any, index:number) =>
+            {n.Effect && n.Effect.map((e:any, index:number) =>
               <div key={'effect ' + n.id + '->' + index}>{e}<br/></div>)
             }
           </div>
@@ -91,7 +94,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
           id: node.id,
           Name: node.Name,
           SkillLevel: node.SkillLevel,
-          Effect: node.Effect,
+          Effect: JSON.stringify(node.Effect),
           Available: node.Available,
           Unlocked: node.Unlocked
         })
