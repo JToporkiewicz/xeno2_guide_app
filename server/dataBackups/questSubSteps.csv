@@ -1,0 +1,616 @@
+"id";"QuestStep";"SubStepNumber";"Description";"CompleteSideQuest";"DefeatMonster";"CollectItem";"Count";"CompletionProgress"
+1;1;1;"Pyra or Mythra must be in the party in order to access excavation point. Excavating requires Earth Mastery Level 7 and Fortitude Level 6. Opening the Treasure Trove requires Lockpicking Level 6 and Ancient Wisdom Level 6.";0;0;0;1;0
+2;2;1;"Level 4 'Extra-Ancient Wisdom' is required to access the Morythan Slate. Completing the Merc Mission Adenine's Password will provide the correct password to access the Slate's information.";0;0;0;1;0
+3;3;1;"At this point the Merc Mission Adenine's Password in Argentum must be completed";0;0;0;1;0
+4;4;1;"At this point the quest Adenine's Password must be completed and code must be entered into the glowing tablet. The code is XE36E46S19A3. After the code is entered, all three Morythan Tablets will be removed from the item list.";0;0;0;1;0
+5;6;1;"Defeat a level 57 Vaido Sovereign";0;0;0;1;0
+6;6;2;"Defeat two level 56 Howl Sentries";0;0;0;2;0
+7;7;1;"Note: Costs 5,000 G";0;0;0;1;0
+8;9;1;"Note: Must send 90,000 Gold to complete the objective. Rex will then receive 3 Braised Cloud Sea Sharks";0;0;0;1;0
+9;15;1;"Defeat two Trent Krabbles";0;0;0;2;0
+10;16;1;"Defeat two Trent Krabbles";0;0;0;2;0
+11;16;2;"Defeat one Petra Crustip";0;0;0;1;0
+12;18;1;"Find Aft in Argentum. - Note: Crates at the north end of the Argentum Bazaar";0;0;0;1;0
+13;18;2;"Find Snikisniki in Argentum. - Note: Behind the Central Exchange";0;0;0;1;0
+14;18;3;"Find Talulu in Argentum. - Note: Inside barrel at Goldmouth Exit Dock";0;0;0;1;0
+15;20;1;"Note: Salvage Deck";0;0;0;1;0
+16;21;1;"Buy one Cinnopon Roll";0;0;0;1;0
+17;23;1;"Defeat one Sly Krabble";0;0;0;1;0
+18;27;1;"At the Forgotten Waste during low tide";0;0;0;1;0
+19;28;1;"Defeat two Vacuum Brogs";0;0;0;2;0
+20;30;1;"On the Treetop Path";0;0;0;1;0
+21;31;1;"Collect two Fancy Bolts in Argentum";0;0;0;2;0
+22;31;2;"Collect three Crimson Gears in Argentum";0;0;0;3;0
+23;31;3;"Collect four Mille-Feuille Rocks in Uraya";0;0;0;4;0
+24;34;1;"Gather three Cranberry Bells in Gormott";0;0;0;3;0
+25;34;2;"Gather three Panda Pansies in Gormott";0;0;0;3;0
+26;37;1;"The correct recipe is Mix 4. The other recipes produce pouch items which give an effect of +8% Party Gauge for 20 mins";0;0;0;1;0
+27;39;1;"In the daytime";0;0;0;1;0
+28;40;1;"Obtain three Rhinon Tails in Uraya";0;0;0;3;0
+29;40;2;"Obtain four pieces of Skwaror Rib-Eye Steak in Gormott";0;0;0;4;0
+30;41;1;"In the daytime - receive three Promotional Leaflets";0;0;0;1;0
+31;42;1;"Stick a leaflet to the notice board in the Central Exchange in Argentum";0;0;0;1;0
+32;42;2;"Stick a leaflet to the notice board in Torigoth, Gormott";0;0;0;1;0
+33;42;3;"Stick a leaflet to the notice board in Fonsa Myma, Uraya";0;0;0;1;0
+34;43;1;"In the daytime";0;0;0;1;0
+35;44;1;"Merc Mission ""On the Son's Trail!""";0;0;0;1;0
+36;44;2;"Mufafa's base price for the info is 4,000 G, discounted by 400G for each star of Argentum's Dev Level";0;0;0;1;0
+37;46;1;"Negotiation requires Nopon Wisdom Lv.2 and Keen Eye Lv.2";0;0;0;1;0
+38;47;1;"In the daytime";0;0;0;1;0
+39;48;1;"It requires the level 2 ""Ancient Wisdom"" field skill";0;0;0;1;0
+40;49;1;"It requires the quest The Nopon Murals completed, and it requires the level 3 ""Wind Mastery"" and level 2 ""Leaping"" field skills";0;0;0;1;0
+41;51;1;"Find a part that would fit in the round cavity on the statue in Noponya Shrine, Argentum, and insert in there. - Mysterious Part A, Mysterious Part B and Mysterious Part E from The Riddle on the Wall are needed";0;0;0;1;0
+42;51;2;"Find a part that would fit in the round square on the statue in Noponya Shrine, Argentum, and insert in there. - Mysterious Part C, Mysterious Part D and Mysterious Part F from The Riddle on the Wall are needed";0;0;0;1;0
+43;52;1;"Excavating the chest requires the level 4 'Earth Mastery' and level 3 'Keen Eye' field skills. The key item Nopopon's Journal will be obtained";0;0;0;1;0
+44;56;1;"Defeat two Pilum Tirkin";0;0;0;2;0
+45;56;2;"Defeat two Ankl Tirkin";0;0;0;2;0
+46;57;1;"The chest is atop a nearby lookout platform, and requires Level 4 Lockpicking and Level 3 Fortitude to open";0;0;0;1;0
+47;59;1;"Defeat one Tirkin King";0;0;0;1;0
+48;59;2;"Defeat two Pilum Tirkin";0;0;0;2;0
+49;59;3;"Defeat two Ankl Tirkin";0;0;0;2;0
+50;60;1;"Complete the merc mission Tirkin Kountess 4";0;0;0;1;0
+51;64;1;"Gianluca at Anangham 2 Dock in Mor Ardain or Quattor Street in Indol must be spoken to";0;0;0;1;0
+52;65;1;"The feather is guarded by 4 Shika Rhoguls. A fight can be avoided by having Boreas fetch the feather and passing a field skill check for ""Fleet of Foot"" Lv 2.";0;0;0;1;0
+54;70;1;"Defeat the Roiba Ignas";0;0;0;1;0
+55;75;1;"Mine on Isle of Sleeping Remains in Leftheria. - Northern mine requires Focus Lv 6 and Keen Eye Lv 2 to excavate a treasure chest with a small amount of gold";0;0;0;1;0
+56;75;2;"Mine on Isle of Sleeping Remains in Leftheria. - Southern mine requires Earth Mastery Lv 5 and Fortitude Lv 5 to excavate a treasure chest with a small amount of gold";0;0;0;1;0
+57;77;1;"Remove the seal of Earth from a land of verdant forest. - Located in Melnath's Shoulder in Gormott Province. It requires Level 2 Earth Mastery and Level 2 Superstrength";0;0;0;1;0
+58;77;2;"Remove the seal of Fire from a sweltering waste. - Located in Abandoned Excavation in Empire of Mor Ardain. It requires Level 4 Fire Mastery and Level 4 Superstrength";0;0;0;1;0
+59;77;3;"Remove the seal of Water from a watery land of eternal spring. - Located in Coraline Sanctum in Kingdom of Uraya. It requires Level 3 Water Mastery and Level 3 Superstrength";0;0;0;1;0
+60;77;4;"Remove the seal of Wind from a tiny country blessed by sea breeze. - Located in Godsford Isle in Leftherian Archipelago. It requires Level 7 Wind Mastery and Level 7 Superstrength";0;0;0;1;0
+61;78;1;"Zaman can only be seen at nighttime or early morning and Mythra and Zenobia must be in the party";0;0;0;1;0
+62;79;1;"Remove the seal of Light at Xataris Spring, Temperantia. - It requires Level 3 Light Mastery and Level 9 Superstrength";0;0;0;1;0
+63;79;2;"Remove the seal of Thunder at Xataris Spring, Temperantia. - It requires Level 9 Electric Mastery and Level 9 Superstrength";0;0;0;1;0
+64;79;3;"Remove the seal of Ice at Xataris Spring, Temperantia. - It requires Level 9 Ice Mastery and Level 9 Superstrength";0;0;0;1;0
+65;79;4;"Remove the seal of Darkness at Xataris Spring, Temperantia. - It requires Level 9 Dark Mastery and Level 9 Superstrength";0;0;0;1;0
+66;81;1;"After Thanatobeast Andraz is defeated, Thanatobeast Andraz must be battled again";0;0;0;1;0
+67;83;1;"Girogi will give information for 10,000 G. The player will receive the info item Morythan Tablet 1, and the level 4 ""Extra-Ancient Wisdom"" Field Skill is required to read it";0;0;0;1;0
+68;84;1;"Robodo will give Adenine the info item Morythan Tablet 2, and the level 4 ""Extra-Ancient Wisdom"" is required to read it";0;0;0;1;0
+69;85;1;"Arecilion will give Adenine the info item Morythan Tablet 3, and the level 4 ""Extra-Ancient Wisdom"" is required to read it";0;0;0;1;0
+70;86;1;"It will always result in failure, even if requirements for ""Prize open chest"" are met in full";0;0;0;1;0
+71;88;1;"It requires Superstrength Lv. 5 and Noponic Wisdom Lv. 5.";0;0;0;1;0
+72;91;1;"Obtain one Ether Bottle - It requires obtaining the Switch Parts 1 info item from the Informant at Goldmouth Flight Deck, then obtaining the item by salvaging at Port Anangham in the Empire of Mor Ardain. The info item can alternatively be obtained from the Three Parts Merc Mission.";0;0;0;1;0
+73;91;2;"Obtain one Key-Shaped Lever - It requires obtaining the Switch Parts 2 info item from the Informant at Garfont Village, then obtaining the item by salvaging at Goldmouth Flight Deck. The info item can alternatively be obtained from the Three Parts Merc Mission";0;0;0;1;0
+74;91;3;"Obtain one Filament Globe - It requires obtaining the Switch Parts 3 info item from the Informant at Fonsa Myma, then obtaining the item by approaching the salvage point at Torigoth Relay Base in Gormott Province and completing the quest Tirkin Suppression. The info item can alternatively be obtained from the Three Parts Merc Mission";0;0;0;1;0
+75;93;1;"It requires Lockpicking Lv. 5 and Ancient Wisdom Lv. 3";0;0;0;1;0
+76;101;1;"Talk to Lacie in the Entertainment District in Uraya";0;0;0;1;0
+77;101;2;"Talk to Celtie in the Commercial District in Uraya";0;0;0;1;0
+78;101;3;"Talk to Daffydd in Gwenith Paddies in Uraya";0;0;0;1;0
+79;107;1;"Defeat 2 Radys";0;0;0;2;0
+80;107;2;"Defeat Edin Drivers";0;0;0;1;0
+81;108;1;"Note: Skip Travel in the Old Factory is disabled until the end of the quest";0;0;0;1;0
+82;109;1;"Perun leaves the party";0;0;0;1;0
+83;110;1;"The first group of children includes Maqqa and is found at the Work Observation Tower, the Zohak Driver must be defeated";0;0;0;1;0
+84;110;2;"The second group of children includes Vend and is found at the Quality Control Tower, the Gardyll Driver must be defeated";0;0;0;1;0
+85;110;3;"The third group of children includes Wotawota and is found at the Nopon Workers' Quarters, the Rafut Driver must be defeated";0;0;0;1;0
+86;110;4;"The fourth group of children includes Siarmal and is found at the Ether Control Tower, the Brams Driver must be defeated";0;0;0;1;0
+87;111;1;"Defeat 3 Zohak";0;0;0;3;0
+88;111;2;"Defeat Gardykk";0;0;0;1;0
+89;111;3;"Defeat Vallent Drivers";0;0;0;1;0
+90;111;4;"Perun rejoins party";0;0;0;1;0
+91;112;1;"Defeat Lindwurm Cougar";0;0;0;1;0
+92;112;2;"Defeat Drake";0;0;0;1;0
+93;112;3;"Defeat Hind";0;0;0;1;0
+94;116;1;"Defeat 3 Lindwurm Krast";0;0;0;3;0
+95;116;2;"Defeat 1 Lindwurm Slider";0;0;0;1;0
+96;116;3;"Defeat 1 Vengeful Zadazan";0;0;0;1;0
+97;117;1;"Check the Suspicious hole once you have the Basement Key";0;0;0;1;0
+98;121;1;"In the central exchange on top of some stacked crates";0;0;0;1;0
+99;121;2;"On the Maelstrom ship after it has docked. Open the door on the deck which requires Lockpicking lv. 1 and Nopon Wisdom lv. 2";0;0;0;1;0
+100;121;3;"In the Gormott Province go to the Dewmist Crag. You have to first disperse some malign miasma which requires Dark Mastery lv. 5 and Ancient Wisdom lv. 2 to reach it";0;0;0;1;0
+101;121;4;"In the Kingdom of Uraya go to the Fonsa Myma Port and climb the ladder near the staircase leading down to the port. Then use the airflows that require Wind Mastery lv. 3, 5, and Leaping lv. 3";0;0;0;1;0
+102;121;5;"In the Kingdom of Uraya in the Land of the Beaten excavate a chest beneath the tree which requires Earth Mastery lv. 7 and Keen Eye lv. 5";0;0;0;1;0
+103;121;6;"In the Mor Ardain near the Old Industrial District find a chest behind some large boulders";0;0;0;1;0
+104;121;7;"In Temperantia go to the salvage point on the Dalnes Stone and salvage there until you obtain the doubloon. Higher quality cylinders will give a higher chance of obtaining it";0;0;0;1;0
+105;121;8;"In the Kingdom of Tantal in the Hall of Virtue enter the supply room which requires Lockpicking lv. 7 and Ancient Wisdom lv. 5 and open the silver chest";0;0;0;1;0
+106;121;9;"In the Kingdom of Tantal in Yolmunder's Crevasse excavate a chest in a pile of snow which requires Focus lv. 4 and Keen Eye lv. 4";0;0;0;1;0
+107;121;10;"In the Cliffs of Morytha in the Runo Cave-in use the airflow which requires Wind Mastery lv. 3 and Leaping lv. 2 and climb the vines to the left to get to a plateau";0;0;0;1;0
+108;121;11;"In the Land of Morytha in the Genome Center which requires you to climb the interior of the Fallen Skyscraper and run across Highway 8 to a rusted sign that can be pushed. It requires Earth Mastery lv. 8 and Superstrength lv. 5";0;0;0;1;0
+109;122;1;"Rex must be in the party";0;0;0;1;0
+110;124;1;"Kasandra, Kora, and Sheba must be in the party, and it requires Sheba's Eye for Beauty Lv3";0;0;0;1;0
+111;124;2;"The four girls Renate, Felina, Ohlala and Lee Soon are encountered";0;0;0;4;0
+112;126;1;"Merc Mission “Search for Tekuteku”";0;0;0;1;0
+113;126;2;"Merc Mission “Search for Alec”";0;0;0;1;0
+114;126;3;"Merc Mission “Search for Sarrac”";0;0;0;1;0
+115;128;1;"Kasandra, Kora, and Sheba must be in the party";0;0;0;1;0
+116;129;1;"Requires Brighid, Kasandra, Kora, Mòrag, Nim, Praxis, Sheba, and Theory to be in the party";0;0;0;1;0
+117;130;1;"Must talk to Lope and Moui and buy the Rumors of a Battleship from Turuni the Informant";0;0;0;1;0
+118;131;1;"Obtain 3 Bion Connectors";0;0;0;3;0
+119;133;1;"Cedwyn offers a Perfect Range Sensor";0;0;0;1;0
+120;134;1;"Defeat 3 Snooz Volff";0;0;0;3;0
+121;136;1;"Pick 4 Hustle Hyacinth in Gormott";0;0;0;4;0
+122;136;2;"Catch 7 Mint Fish in Gormott";0;0;0;7;0
+123;139;1;"Note: Repair fee is 3,000 G, Chain of Keys can be salvaged at Saets Chief's Residence";0;0;0;1;0
+124;141;1;"Speak to Natheus at Saets Lumber Co., Gormott and complete the mission 'Repair Torigoth's Crane'";0;0;0;1;0
+125;141;2;"Speak to Pettle at Saets Lumber Co., Gormott and complete the mission 'Crane Criminals'";0;0;0;1;0
+126;143;1;"Obtain 5 Winding Gears";0;0;0;5;0
+127;145;1;"Broken Crane 1 is obtained from Rahim atop the watchtower by Torigoth Arch";0;0;0;1;0
+128;145;2;"Broken Crane 2 is obtained from Poyopoyo at Kloom Farm";0;0;0;1;0
+129;145;3;"Broken Crane 3 is obtained from Welma on a balcony above Saets Chief's Residence";0;0;0;1;0
+130;146;1;"Cannot be completed between 12:00-19:00";0;0;0;1;0
+131;150;1;"Defeat 3 Nabadan Gogols";0;0;0;3;0
+132;152;1;"Obtain 7 Confusion Ivy";0;0;0;7;0
+133;155;1;"Obtain 3 Gormotti Walnut - One Muscle Branch can be traded for each one or purchased for 10,000 G";0;0;0;3;0
+134;160;1;"Obtain 3 Buoyweed";0;0;0;3;0
+135;162;1;"Get information from Helena at the Nocclia Timber Site in Gormott";0;0;0;1;0
+136;162;2;"Get information from Otto at the Nocclia Timber Site in Gormott";0;0;0;1;0
+137;162;3;"Get information from Pietre at the Nocclia Timber Site in Gormott";0;0;0;1;0
+138;165;1;"Defeat Hermit Tirkin";0;0;0;1;0
+139;165;2;"Defeat 2 Raine Tirkin";0;0;0;2;0
+140;172;1;"Get your hands on 10 Puzzletree Wood in Gormott Province.";0;0;0;10;0
+141;172;2;"Head to Dawnview Grotto in Gormott Province and get your hands on 5 Diamond Oak";0;0;0;1;0
+142;174;1;"Objective does not appear during low tide";0;0;0;1;0
+143;177;1;"Only between 5:00 and 7:00 a.m during high tide";0;0;0;1;0
+144;180;1;"Valid ingredients: Anchortails, Tree Crabs, Sunflower Rogues, Deer Wood, Vinegar Leaves, Wet Rat, Clarity Moss, Hexaflies";0;0;0;1;0
+145;189;1;"Defeat 4 Grambl Tirkin";0;0;0;4;0
+146;191;1;"Gather 2 Shepherd's Purses in Gormott";0;0;0;2;0
+147;191;2;"Gather 2 Dawn Hydrangeas in Gormott";0;0;0;2;0
+148;195;1;"After delivering the medicine, the party has the option of whether to tell Rhiannon about her parents - A route: 'Tell her', B route: 'Don't tell her'";0;0;0;1;0
+149;196;1;"Intel can be collected from Wold, Hanahana, Myron, Millie, and Nugby";0;0;0;1;0
+150;198;1;"Requires Keen Eye Lv. 1 and Fortitude Lv. 1";0;0;0;1;0
+151;198;2;"Alternatively, the party can ask Otto for advice, skipping this step";0;0;0;1;0
+152;200;1;"Location is accessible from Koorell Pool or following a tree branch just before Greatspine Boundary";0;0;0;1;0
+153;204;1;"Can only be completed between 7:00 and 11:59";0;0;0;1;0
+154;206;1;"Gather 10 Melosian Honey";0;0;0;10;0
+155;208;1;"Look for the Nopon suspected of illegally squatting in Torigoth, Gormott - Side quest ""No-Penny Nopon""";0;0;0;1;0
+156;208;2;"Resolve the dispute between Ardainian Soldier and Torigoth residents at Torigoth Base Entrance, Gormott - Side quest ""Diplomatic Tensions""";0;0;0;1;0
+157;208;3;"Resolve the discord between the Ardainian and Gormotti children at Tretl Windmill Plaza, Gormott - Side quest ""A Small War""";0;0;0;1;0
+158;208;4;"Speak to Feyla in Grodd Residential Zone, Gormott and get her supplies running again - Side quest ""The Missing Order""";0;0;0;1;0
+159;210;1;"The Morph Orb treasure can be found inside red and white troves in any Gormott Salvage Point, however it is a guaranteed drop from red troves found in the Torigoth Relay Base, Saets Chief's Residence and Lascham Island Salvage Points when using Silver or Golden Cylinders";0;0;0;1;0
+160;212;1;"Defeat Gryff and the others";0;0;0;1;0
+161;223;1;"Vocals Stamps are obtained as rewards for completing the missions Vocal Lesson 1, 2, 3, 4 and 5";0;0;0;1;0
+162;223;2;"Looks Stamps are obtained as rewards for completing the missions Looks Lesson 1, 2, 3, 4 and 5";0;0;0;1;0
+163;223;3;"Soul Stamps are obtained as rewards for completing the missions Soul Lesson 1, 2, 3, 4 and 5";0;0;0;1;0
+164;229;1;"Fans are earned as Ursula completes new missions and levels up her attributes. See Obtaining Fans for more details";0;0;0;1;0
+165;229;2;"Performance merc missions that generate large amounts of fans are unlocked at certain thresholds of collected stamps and fans. See Merc Missions for more details";0;0;0;1;0
+166;234;1;"Gather 5 Salty Soil";0;0;0;5;0
+167;234;2;"Gather 8 Gromrice";0;0;0;8;0
+168;234;3;"Gather 5 Ruby Mangosteen";0;0;0;5;0
+169;240;1;"Get Bitter Choclit in Fonsa Myma in Uraya";0;0;0;1;0
+170;240;2;"Develop Argentum, clear the Merc Mission Long-Awaited Work, then obtain a Fruity Rice Ball in Argentum";0;0;0;1;0
+171;244;1;"Look for the golden bracers in the Fief of Forgetfulness in Mor Ardain";0;0;0;1;0
+172;244;2;"Look for the golden bracers near the Ruins of Fountain Park, Uraya";0;0;0;1;0
+173;246;1;"Give one golden bracer to Noelle in Fonsa Myma in Uraya";0;0;0;1;0
+174;246;2;"Give one golden bracer to Antis in Alba Cavanich in Mor Ardain";0;0;0;1;0
+175;250;1;"Requires Keen Eye Lv. 1 and Fortitude Lv. 1";0;0;0;1;0
+176;251;1;"Requires Keen Eye Lv. 2 and Fortitude Lv. 2";0;0;0;1;0
+177;252;1;"Reducing the Rampaging Sauros' HP by at least 1% triggers an event";0;0;0;1;0
+178;259;1;"The Rampaging Sauros is now level 36";0;0;0;1;0
+179;266;1;"Note: The mission ""Ambush"" must be begun first";0;0;0;1;0
+180;267;1;"Note: The mission ""Ambush"" must be begun first";0;0;0;1;0
+181;267;2;"The crystal-hunters are Criminal Praxis and Thieving Waldemar";0;0;0;1;0
+182;269;1;"Lucky Dawn Bread costs 120 G, and can only be obtained from the shop in the early morning (5:00-6:59)";0;0;0;1;0
+183;272;1;"Arfon must be spoken to";0;0;0;1;0
+184;274;1;"This requires Fire Mastery Lv. 3 and Wind Mastery Lv. 3";0;0;0;1;0
+185;276;1;"Defeat Skom Tirkin";0;0;0;1;0
+186;276;2;"Defeat 2 Matchul Tirkin";0;0;0;2;0
+187;277;1;"Fighting the Tirkin in the area is not required";0;0;0;1;0
+188;281;1;"This requires Fire Mastery Lv. 3 and Wind Mastery Lv. 3";0;0;0;1;0
+189;283;1;"Defeat Skom Tirkin";0;0;0;1;0
+190;283;2;"Defeat 2 Matchul Tirkin";0;0;0;2;0
+191;283;3;"Defeat Bruis Tirkin";0;0;0;1;0
+192;283;4;"After the Tirkins are defeated, the same Tirkins are immediately fought again";0;0;0;1;0
+193;283;5;"After the second wave of Tirkins are defeated, the same Tirkins are immediately fought again";0;0;0;1;0
+194;287;1;"Defeat 3 Ardainian Soldiers";0;0;0;3;0
+195;288;1;"It requires Titan Weapon Wisdom Lv1 and Keen Eye Lv2";0;0;0;1;0
+196;289;1;"Salvage the Search Monitor in Mor Ardain.";0;0;0;1;0
+197;289;2;"Salvage the Delta Vessel in Argentum.";0;0;0;1;0
+198;290;1;"It requires Titan Weapon Wisdom Lv3";0;0;0;1;0
+199;292;1;"Defeat the Ship-Eating Taos on the starboard side of the battleship at Torigoth Relay Base";0;0;0;1;0
+200;292;2;"Defeat the Ship-Eating Taos on the port side of the battleship at Torigoth Relay Base";0;0;0;1;0
+201;296;1;"Numerous Ardainian Privates, Majors, Nippers, Cetuses and Citadels can be encountered throughout Hardhaigh Palace during this step, but it is not necessary to defeat them";0;0;0;1;0
+202;296;2;"Note: Skip Travel in the Hardhaigh Palace is disabled until the assassins are defeated";0;0;0;1;0
+203;297;1;"Defeat Brionac Ghost";0;0;0;1;0
+204;297;2;"Defeat Rados";0;0;0;1;0
+205;297;3;"Defeat Reys";0;0;0;1;0
+206;300;1;"Mastery of Thunder Lv.1 - Kingdom of Uraya (Garfont Village) - Uboon, it requires Electric Mastery Lv4 and Mastery of Thunder Lv1, Leftherian Archipelago (Fonsett Island) - Coocana, it requires Electric Mastery Lv5 and Mastery of Thunder Lv1";0;0;0;1;0
+207;300;2;"Mastery of Thunder Lv.2 - Gormott Province (Torigoth) - Charli, it requires Electric Mastery Lv3 and Mastery of Thunder Lv2, Empire of Mor Ardain (Hardhaigh Palace) - Millod, it requires Electric Mastery Lv6 and Mastery of Thunder Lv2";0;0;0;1;0
+208;300;3;"Mastery of Thunder Lv.3 - Kingdom of Tantal (Theoscaldia Palace) - Fortis, it requires Electric Mastery Lv2 and Mastery of Thunder Lv3, Leftherian Archipelago (Rigitte Waters) - Ookiooki, it requires Electric Mastery Lv7 and Mastery of Thunder Lv3";0;0;0;1;0
+209;300;4;"Mastery of Thunder Lv.4 - Argentum Trade Guild - Puzzling Machine, it requires Electric Mastery Lv10 and Mastery of Thunder Lv1, and then Electric Mastery Lv10 and Mastery of Thunder Lv4. The first field skill check requires Pyra, Nia, Tora, and Electra in the Party. The second field skill check can only be performed at night, and requires Pyra, Nia, Tora and Electra in the Party to interact";0;0;0;1;0
+210;302;1;"The entrance to Koorell Pool is to north of Nocclia Timber Site by jumping down behind Immovable Gonzalez. Alternatively the path to Verdant Plateau also branches off to Koorell Pool";0;0;0;1;0
+211;305;1;"""Try using 'Beam Barrage' Special of girl-type Ether Cannon-using Common Blade, meh!""";0;0;0;1;0
+212;305;2;"""Try using 'Assault Rush' Special of boy-type Knuckle Claws-using Common Blade, meh!""";0;0;0;1;0
+213;306;1;"""Try using 'Dual Fang' Special of doggy-type Twin Rings-using Common Blade, meh!""";0;0;0;1;0
+214;306;2;"""Try using 'Axe Throw' Special of boy-type Greataxe-using Common Blade, meh!""";0;0;0;1;0
+215;306;3;"""Try using 'Aerial Shield' Special of girl-type Shield Hammer-using Common Blade, meh!""";0;0;0;1;0
+216;307;1;"""Try using 'Flash Bomb' Special of girl-type Bitball-using Common Blade, meh!""";0;0;0;1;0
+217;307;2;"""Try using 'Beam Halberd' Special of giant-type Megalance-using Common Blade, meh!""";0;0;0;1;0
+218;307;3;"""Try using 'Multi-Raid' Special of boy-type Chroma Katana-using Common Blade, meh!""";0;0;0;1;0
+219;309;1;"Requires Earth Mastery Lv 1 and Keen Eye Lv 1 to obtain the Not-safe-for-work Folio.";0;0;0;1;0
+220;313;1;"The Washed-Up Titans info item must be purchased from the informant for 2,400 G";0;0;0;1;0
+221;314;1;"Rex obtains the Green Pollen Orb. It must be high tide for the Titan to appear";0;0;0;1;0
+222;317;1;"Merc Mission ""Shipbuilding Wood""";0;0;0;1;0
+223;317;2;"Merc Mission ""Craftsman's Skills""";0;0;0;1;0
+224;317;3;"Merc Mission ""Titan Shipbuilding""";0;0;0;1;0
+225;320;1;"Mysterious Part A is in the Hermit's Hollow. The cave entrance is south of Hushview Bridge - Keen Eye Lv2 and Ancient Wisdom Lv2 Field Skills are required to decipher the Torigoth Murals, Earth Mastery Lv5 and Fortitude Lv5 are required to unearth and Lockpicking Lv5 to open the Treasure Trove";0;0;0;1;0
+226;322;1;"The Mor Ardain Murals must be examined in Alba Cavanich before the excavation spot for Mysterious Part B will appear - Keen Eye Lv2 and Ancient Wisdom Lv2 Field Skills are required to decipher the Mor Ardain Murals, Earth Mastery Lv5 and Keen Eye Lv2 are required to unearth and Lockpicking Lv6 to open the Treasure Trove";0;0;0;1;0
+227;322;2;"The Tantalese Murals can be examined in Theosoir for a hint at Mysterious Part C - Keen Eye Lv3 and Ancient Wisdom Lv3 Field Skills are required to decipher the Tantalese Murals, Ice Mastery Lv4 and Fortitude Lv4 are required to unearth and Lockpicking Lv5 to open the Treasure Trove";0;0;0;1;0
+228;322;3;"The Indoline Murals can be examined in the Refugee Campground, or the Leftherian Murals near Corinne's House, for hints at Mysterious Part D - Keen Eye Lv3 and Ancient Wisdom Lv3 Field Skills are required to decipher the Indoline Murals and Leftherian Murals, Dark Mastery Lv4 and Ancient Wisdom Lv2 are required to disperse the Malign Miasma blocking the cave containing the Treasure Trove, Fortitude Lv3 and Keen Eye Lv3 are required to unearth and Lockpicking Lv6 to open the Treasure Trove";0;0;0;1;0
+229;322;4;"Relic-Holder Tyrannor must be defeated in the 7th Division for Mysterious Part F";0;0;0;1;0
+230;322;5;"After gathering every other part, Erebos must be defeated at Tretl Windmill Plaza in Gormott for Mysterious Part E";0;0;0;1;0
+231;325;1;"Defeat 3 Magno Blant";0;0;0;3;0
+232;326;1;"Defeat 3 Bodam Grebel";0;0;0;3;0
+233;327;1;"Defeat 4 Cheryz Medooz (Defeating Theory is optional)";0;0;0;4;0
+234;331;1;"Collect 5 Cubic Diamonds in Mor Ardain";0;0;0;5;0
+235;331;2;"Collect 12 Ambler Stigmas in Morytha";0;0;0;12;0
+236;331;3;"Purchase Genbu-Weave Cloth at Boldarde Textiles, Tantal";0;0;0;1;0
+237;335;1;"Requires Lv. 5 Forestry";0;0;0;1;0
+238;336;1;"The player must choose Kalukalu and Beltran in order to progress";0;0;0;1;0
+239;338;1;"Require Lv. 3 Ancient Wisdom";0;0;0;1;0
+240;343;1;"Following items must be placed in the charging device until the progress bar reaches 100 - Dynamo Turbine 1; Gold Condenser 1; Digital Filament 1; Screw Coil 2; 50 Volt Battery 30";0;0;0;1;0
+241;344;1;"Salvage at Ysheva Harbor in Leftheria";0;0;0;1;0
+242;344;2;"Salvage at the Forgotten Waste in Gormott";0;0;0;1;0
+243;344;3;"Salvage at the Suspended Pathway at the Old Factory in Mor Ardain";0;0;0;1;0
+244;344;4;"Salvage at Balquors Ruins at the Cliffs of Morytha";0;0;0;1;0
+245;345;1;"Note: The level 8 ""Fire Mastery"" and level 5 ""Ice Mastery"" field skills are required";0;0;0;1;0
+246;346;1;"Obtain 4 Amethyst Vanilla in Tantal";0;0;0;4;0
+247;348;1;"Hint: The location is in the Cleansing Spring, but can only be reached by riding a waterslide from Lake Varna and jumping at the end of the slide";0;0;0;1;0
+248;348;2;"The item Broken Knife will be obtained once the marked location is reached";0;0;0;1;0
+249;353;1;"Defeat 4 Naola Crustips";0;0;0;4;0
+250;356;1;"Defeat 3 Maasti Ignas";0;0;0;3;0
+251;359;1;"Defeat 3 Rood Ignas";0;0;0;3;0
+252;359;2;"Defeat 1 Odur Igna";0;0;0;1;0
+253;362;1;"Salvage in Gormott to obtain a Jungle Frame";0;0;0;1;0
+254;362;2;"Obtain a Pione Stone in Uraya";0;0;0;1;0
+255;362;3;"Defeat a Rip Volff in Uraya to obtain a Volff Fang";0;0;0;1;0
+256;365;1;"Offer 100 points worth of items - Juicy Samod 1; Lightly Fried Rice 1; Argentum Noodle Soup 20; Massive Mushroom Pie 1; Grilled Anchortail 1; Oyster Stir-Fry 1; Melodious Melon Parfait 10; Cinnopon Roll 1; Sparklesugar 1; Twinklejuice 5; Fizz Juice 5; Chunky Juice 5; Pomegranate Soup 1; Sour-Spark-on-a-Stick 1; Black Roast Coffee 1; Jenerossi Tea 1";0;0;0;100;0
+257;367;1;"Obtain 1 Silver Cylinder";0;0;0;1;0
+258;367;2;"Obtain 1 Zigzag Shaft";0;0;0;1;0
+259;367;3;"Obtain 2 Locust Springs";0;0;0;2;0
+260;368;1;"Source 4 Crustip Chitin in Uraya - They can be dropped by Krim Crustips near the Farlaine Wells";0;0;0;4;0
+261;368;2;"Source 6 Tricolor Rock in Uraya - They can be found from Collection Points throughout Uraya, particularly at the one on a ledge between the Stone Gate Ruins and Funnystone Highway";0;0;0;6;0
+262;375;1;"Hint: He is found in a tunnel near the Eight-Rock Skip";0;0;0;1;0
+263;376;1;"Defeat Ambushing Flamii";0;0;0;1;0
+264;376;2;"Defeat Punishing Flamii";0;0;0;1;0
+265;378;1;"Hint: Entrance to this area is north of the Farlaine Wells";0;0;0;1;0
+266;379;1;"Defeat 3 Spotted Parisax";0;0;0;3;0
+267;379;2;"Defeat 2 Lazy Parisax";0;0;0;2;0
+268;383;1;"Prepare 100 points worth of rations - Each recipe provides five rations towards the total, except for Dried Scented Salmon which provides seventy rations";0;0;0;100;0
+269;384;1;"This objective only appears if Dried Scented Salmon was prepared as part of the rations";0;0;0;1;0
+270;384;2;"When the leader is defeated, any remaining Ansels will flee; however, the five ansels are seemingly identical, making it difficult to identify the leader";0;0;0;1;0
+271;388;1;"Defeat Laplas Driver";0;0;0;1;0
+272;388;2;"Defeat Exacting Vorden";0;0;0;1;0
+273;388;3;"Defeat Maanus Driver";0;0;0;1;0
+274;389;1;"Note: Level 1 ""Keen Eye"" and ""Focus"" Field Skills are checked (only affect dialogue and do not need to pass to complete the quest)";0;0;0;1;0
+275;392;1;"Note: Level 2 ""Keen Eye"" and ""Focus"" Field Skills are checked (only affect dialogue and do not need to pass to complete the quest)";0;0;0;1;0
+276;394;1;"Defeat Whirlwind Yew";0;0;0;1;0
+277;394;2;"Defeat Lightning Zuo";0;0;0;1;0
+278;395;1;"Note: Level 3 ""Keen Eye"" and ""Focus"" Field Skills are checked (only affect dialogue and do not need to pass to complete the quest)";0;0;0;1;0
+279;396;1;"The three candidates must be interviewed with questions to gauge their personal motivations, strongest skills, and future prospects. Each candidate will give surface level answers and will give more insight if the player passes a character analysis test with the required field skills - Personal motivations: Level 2 ""Keen Eye"" and ""Focus""; Strongest skills: Level 3 ""Keen Eye"" and ""Focus""; Where they see themselves in five years: Level 4 ""Keen Eye"" and ""Focus""";0;0;0;3;0
+280;396;2;"Candidates - Alicia, an Ardainian from Mor Ardain; Popoh, a Nopon from Argentum; Zengrid, an Urayan from Fonsa Myma";0;0;0;1;0
+281;397;1;"A candidate must be selected to hire for the Merc Group";0;0;0;1;0
+282;399;1;"Merc Mission ""Gormotti Fugitive""";0;0;0;1;0
+283;401;1;"Defeat Patriotic Gavyth";0;0;0;1;0
+284;404;1;"Defeat Ambush Hassic and his men";0;0;0;1;0
+285;405;1;"Defeat Veteran Saffran and his companion";0;0;0;1;0
+286;407;1;"She only appears at the Raqura Aquagardens late at night";0;0;0;1;0
+287;409;1;"Roc must be engaged in the active party";0;0;0;1;0
+288;410;1;"Defeat 3 Spike Urchon";0;0;0;3;0
+289;415;1;"Defeat Invading Spike Urchon";0;0;0;1;0
+290;417;1;"The spy is Damida who can be found in Fusty Fungus Caves, it requires Fire Mastery Lv 3 and Wind Mastery Lv 2 Field Skills to open the way";0;0;0;1;0
+291;418;1;"Defeat Angry Durro";0;0;0;1;0
+292;418;2;"Defeat Ganaf Driver";0;0;0;1;0
+293;419;1;"Requires Beguiling Charms Lv1 from Floren";0;0;0;1;0
+294;420;1;"Collect 5 Olsteprinium flowers in Temperantia";0;0;0;5;0
+295;420;2;"Collect 5 Frozen Sapphires from Spirit Crucible Elpys";0;0;0;5;0
+296;420;3;"Collect 3 Amber Leaves in Mor Ardain";0;0;0;3;0
+297;420;4;"Collect 10 Ghost Dudleyas in Tantal";0;0;0;10;0
+298;423;1;"Obtain 5 pieces of Healing Teak";0;0;0;5;0
+299;426;1;"Defeat Angry Durro";0;0;0;1;0
+300;426;2;"Defeat Narb Driver";0;0;0;1;0
+301;426;3;"Defeat Ganaf Driver";0;0;0;1;0
+302;427;1;"Go extinguish the fires at Fonsa Myma Waters, Uraya";0;0;0;1;0
+303;427;2;"Go extinguish the fires at Fonsa Myma Waters, Uraya";0;0;0;1;0
+304;427;3;"Go extinguish the fires at Minnet Terrace, Uraya";0;0;0;1;0
+305;429;1;"Defeat Angry Durro";0;0;0;1;0
+306;429;2;"Defeat Angry Rvano";0;0;0;1;0
+307;429;3;"Defeat Ganaf Driver";0;0;0;1;0
+308;429;4;"Defeat Narb Driver";0;0;0;1;0
+309;430;1;"Azami must be in the party";0;0;0;1;0
+310;432;1;"Defeat Jaggra";0;0;0;1;0
+311;432;2;"Defeat Vanny";0;0;0;1;0
+312;433;1;"Level 7 Botany Field Skill is required to analyze the plants";0;0;0;1;0
+313;435;1;"Tolulu only appears from 5:00 to 7:00 AM. Level 2 Nopon Wisdom and Fortitude Field Skills are needed to negotiate with her";0;0;0;1;0
+314;439;1;"Defeat Weirdo Gillick";0;0;0;1;0
+315;439;2;"Defeat Lackey Errol";0;0;0;1;0
+316;439;3;"Defeat Lackey Neb";0;0;0;1;0
+317;448;1;"Requires Girls' Talk Lv. 5 Field Skill";0;0;0;1;0
+318;453;1;"Obtain 3 Sun-Dappled Curtains";0;0;0;3;0
+319;453;2;"Obtain 6 Crystal Camellia";0;0;0;6;0
+320;453;3;"Obtain 6 Maple Bite";0;0;0;6;0
+321;453;4;"Obtain 4 Rainbow Parfait";0;0;0;4;0
+322;456;1;"Defeat Mysterios Driver";0;0;0;1;0
+323;459;1;"It requires Passionate Soul Lv.1";0;0;0;1;0
+324;461;1;"It requires Kind Soul Lv.1";0;0;0;1;0
+325;463;1;"Defeat the Nenz Rodonya";0;0;0;1;0
+326;464;1;"It requires Justice-Loving Soul Lv.2";0;0;0;1;0
+327;466;1;"Collect 2 Titanic Craniums in Gormott";0;0;0;2;0
+328;466;2;"Collect 5 Ancient Chalices in Mor Ardain";0;0;0;5;0
+329;471;1;"It requires Justice-Loving Soul Lv.2";0;0;0;1;0
+330;472;1;"It requires Passionate Soul Lv.3";0;0;0;1;0
+331;474;1;"Defeat 3 Uhrl Volff terrorizing Theosoir in Tantal";0;0;0;3;0
+332;474;2;"Defeat 3 rampaging Noral Volff at Theosoir, Tantal";0;0;0;3;0
+333;474;3;"Defeat 3 rampaging Mirrl Volff at Theosoir, Tantal";0;0;0;3;0
+334;474;4;"Help all the citizens who were left behind in Theosoir, Tantal - These four unmarked citizens are the elder outside Anastatia's inn, the youth near Placks Patisserie, the woman through the doorway directly across from Placks Patisserie, and the kid on building next to Lectica Vegetables";0;0;0;1;0
+335;475;1;"Defeat the Donya Volff";0;0;0;1;0
+336;476;1;"Defeat Sandstream";0;0;0;1;0
+337;477;1;"Listen to Bennett at Fonsa Myma Gate, Uraya";0;0;0;1;0
+338;477;2;"Listen to Gamri at Fonsa Myma Port, Uraya";0;0;0;1;0
+339;477;3;"Listen to Rhidluk in Entertainment District, Uraya";0;0;0;1;0
+340;479;1;"Collect a Beautiful Shoot in the Leftherian Archipelago";0;0;0;1;0
+341;479;2;"Collect 2 Lemon Stones in the Leftherian Archipelago";0;0;0;2;0
+342;479;3;"Collect 4 Hide 'n' Creepers in the Leftherian Archipelago";0;0;0;4;0
+343;481;1;"Collect 3 Alban's Paintings";0;0;0;3;0
+344;484;1;"Note: Trial Neon Cookies, Trial Hot Cookies and Trial Blood Cookies can be made, and Trial Neon Cookies is required to continue the quest";0;0;0;1;0
+345;485;1;"Note: Trial Laughcaf Flan, Trial Romello Flan, Trial Flumbleflan and Trial Snipe Flan can be made, and the Trial Snipe Flan is required to continue the quest";0;0;0;1;0
+346;486;1;"Note: Trial Starlit Tart, Trial Starry Waffle, Trial Lovemerry Cake and Trial Glitterspud Cake can be made, and the Trial Lovemerry Cake is required to continue the quest";0;0;0;1;0
+347;489;1;"Get the Regiderian Tablet";0;0;0;1;0
+348;493;1;"Merc Mmission Pest Control 1";0;0;0;1;0
+349;493;2;"Merc Mmission Pest Control 2";0;0;0;1;0
+350;493;3;"Merc Mmission Pest Control 3";0;0;0;1;0
+351;497;1;"Defeat Vengeful Waldemar";0;0;0;1;0
+352;497;2;"Defeating the Spoot Driver and Grep Driver is optional";0;0;0;1;0
+353;498;1;"Talking to Jelved at this point unlocks the final choice in the quest. Not talking to Jelved before the next objective will default the results to the B route";0;0;0;1;0
+354;500;1;"Defeat 3 Gamen Grebel";0;0;0;3;0
+355;500;2;"Defeat 3 Dusky Riik";0;0;0;3;0
+356;503;1;"Collect 7 Shade Trout at Spirit Crucible Elpys";0;0;0;7;0
+357;503;2;"Get your hands on a Tarnish Apple at Spirit Crucible Elpys";0;0;0;1;0
+358;509;1;"Defeat 2 Brutal Aspid";0;0;0;2;0
+359;517;1;"Defeat Avarr Driver";0;0;0;1;0
+360;517;2;"Defeat Torst Driver";0;0;0;1;0
+361;517;3;"Defeat Firan Driver";0;0;0;1;0
+362;520;1;"Make 50 Whelzaman Cookies";0;0;0;50;0
+363;520;2;"Brabe will bake the cookies in batches of 10 when the ingredients are brought to her";0;0;0;1;0
+364;520;3;"The following ingredients are required for each batch of 10 cookies - Bright Fig x5, which can be found in the Kingdom of Uraya, including Collection Points at Cobalt Cliffs, Bluestep Ditch, Farlaine Central Pools, and Farlaine Wells.; Sparklesugar x2, which can be purchased at the Honeycomb Sweets run by Bonbon in the Argentum Trade Guild's Goldmouth.; Whisper Tomato x2, which  can be found in the Leftherian Archipelago, in particular the farm north of Corinne's House in Fonsett Village, or from the Collection Point on Isle of Terminomni.; Limdo Flamii Egg x1, which can be dropped by Limdo Flamiis in the Kingdom of Uraya, particularly in the Cleansing Spring, Lake Varna, Eight-Rock Skip and Fonsa Myma Waters.";0;0;0;1;0
+365;521;1;"Osqo at Aldomar Books";0;0;0;1;0
+366;521;2;"Marshy near Brad Flatforms";0;0;0;1;0
+367;521;3;"Menda at the small dock by the Commercial District";0;0;0;1;0
+368;521;4;"Mulba at the Mymoma Playhouse ticket counter";0;0;0;1;0
+369;521;5;"Reez by the Royal Guard Barracks";0;0;0;1;0
+370;521;6;"Cmin at the end of a dock at Fonsa Myma Port";0;0;0;1;0
+371;521;7;"Renle on a balcony above Torika Alley";0;0;0;1;0
+372;521;8;"Terry in Torika Alley (approaching her triggers Family vs. Fiends, which must be completed)";0;0;0;1;0
+373;521;9;"Jeline by the Uraya Merc Barracks (triggers Jeline and Shaun, which must be completed)";0;0;0;1;0
+374;521;10;"Jammie on Sevind Palace Plaza (triggers Boys and Bullies, which must be completed)";0;0;0;1;0
+375;523;1;"Defaet Torst Driver";0;0;0;1;0
+376;529;1;"Merc Mission ""Trial Run 1""";0;0;0;1;0
+377;530;1;"Gorg and Boreas must be in the party";0;0;0;1;0
+378;531;1;"Merc Mission ""Trial Run 2""";0;0;0;1;0
+379;532;1;"Gorg and Boreas must be in the party";0;0;0;1;0
+380;533;1;"Lend a hand at the distribution center in the Commercial District in Uraya";0;0;0;1;0
+381;533;2;"Lend a hand at the distribution center near Gwendle Repair Dock in Uraya";0;0;0;1;0
+382;533;3;"Lend a hand at the distribution center at Fonsa Myma Port in Uraya";0;0;0;1;0
+383;535;1;"Merc Mission ""Skillful Doctor"" must be completed, or the gathered information must be bought from the Mor Ardain informant";0;0;0;1;0
+384;539;1;"It requires Level 3 Fortitude and Level 7 Botany";0;0;0;1;0
+385;539;2;"It requires Level 4 Fortitude and Level 6 Botany";0;0;0;1;0
+386;539;3;"It requires Level 5 Fortitude and Level 5 Botany";0;0;0;1;0
+387;542;1;"Collect 3 Gloomwood Root at Spirit Crucible Elpys";0;0;0;3;0
+388;542;2;"Collect Cloud Sea Halite at the Cliffs of Morytha";0;0;0;1;0
+389;542;3;"Collect 3 vegetables that make you feel younger (Nopopomouli)";0;0;0;3;0
+390;544;1;"Collect 2 True Dragon Incense";0;0;0;2;0
+391;546;1;"Merc Mission ""Medicine Knowledge""";0;0;0;1;0
+392;547;1;"Smaia gives the party the Special Blade Medicine";0;0;0;1;0
+393;548;1;"Mythra is required";0;0;0;1;0
+394;549;1;"Investigate the footprints. Requires Keen Eye Lv. 6 and Focus Lv. 8 field skills";0;0;0;1;0
+395;550;1;"Investigate the grave. Requires Keen Eye Lv. 7 and Fortitude Lv. 7 field skills";0;0;0;1;0
+396;552;1;"Defeat 2 Woden Drivers ";0;0;0;2;0
+397;552;2;"Defeat Dilemma Scout";0;0;0;1;0
+398;553;1;"Defeat Blood-Crazed Stalker";0;0;0;1;0
+399;553;2;"Defeat Sakryfyce Igna";0;0;0;1;0
+400;553;3;"Defeat Vyktym Igna";0;0;0;1;0
+401;556;1;"Defeat 3 Indoline Skeems";0;0;0;3;0
+402;559;1;"Defeat 2 Indoline Avengers";0;0;0;2;0
+403;559;2;"Defeat an Indoline Falchion";0;0;0;1;0
+404;559;3;"Defeat a Vindictive Levalion";0;0;0;1;0
+405;560;1;"Defeat 2 Indoline Ganalles";0;0;0;2;0
+406;560;2;"Defeat an Indoline Avenger";0;0;0;1;0
+407;560;3;"Defeat a Bedeviled Vassail";0;0;0;1;0
+408;561;1;"Must talk to Periperi";0;0;0;1;0
+409;568;1;"""Cast light on the evidence left at the Old Industrial District in Mor Ardain."" - Requires Lv. 3 ""Nopon Wisdom"". Barrels' Destination is obtained if this objective is chosen";0;0;0;1;0
+410;568;2;"'Complete the Merc Mission ""Materials Stakeout"".'";0;0;0;1;0
+411;570;1;"Defeat Land Volff";0;0;0;1;0
+412;570;2;"Defeat 9 Noog Skeeters";0;0;0;9;0
+413;572;1;"Defeat 3 Noog Vangs";0;0;0;3;0
+414;574;1;"Merc Mission ""Smuggle the Scholar""";0;0;0;1;0
+415;576;1;"""At different times of day, check out the mural at the Shrine of Offering in Uraya to see if it's any different."" - Wind Mastery Lv2 and Leaping Lv2 Field Skills are required to access, and then Nopon Wisdom Lv3 and Keen Eye Lv2 to inspect";0;0;0;1;0
+416;576;2;"""At different times of day, check out the mural at the Shrine of Light in Uraya to see if it's any different."" - Water Mastery Lv2 and Fortitude Lv2 Field Skills are required to access, and Nopon Wisdom Lv3 and Keen Eye Lv2 to inspect";0;0;0;1;0
+417;576;3;"""At different times of day, check out the mural at the Shrine of Journeys in Uraya to see if it's any different."" - Water Mastery Lv2 and Fortitude Lv1 are required to access, and then Nopon Wisdom Lv3 and Keen Eye Lv1 to inspect";0;0;0;1;0
+418;578;1;"Earth Mastery Lv6 and Keen Eye Lv2 are required to open the Treasure Trove containing the Key to Something";0;0;0;1;0
+419;580;1;"His young siblings are Morca, Neel, and Zelen in Torigoth's Galad Residential Zone";0;0;0;1;0
+420;584;1;"This step requires Mòrag";0;0;0;1;0
+421;587;1;"Reaching Smùide Mountain requires Wind Mastery Lv.3 and Leaping Lv.2 field skills";0;0;0;1;0
+422;588;1;"This requires Keen Eye Lv.2 and Fortitude Lv.2 Field Skills";0;0;0;1;0
+423;589;1;"Defeat 2 Brionac Lyman";0;0;0;2;0
+424;591;1;"Defeat Mutinous Rhodri";0;0;0;1;0
+425;591;2;"Defeat 2 Brionac Lyman";0;0;0;2;0
+426;592;1;"Defeat Noog Skeeter";0;0;0;1;0
+427;594;1;"Defeat Noog Skeeter";0;0;0;1;0
+428;599;1;"The meeting only occurs from 00:00 to 5:00 AM. The key to the Control Room is located in Delizé's Infirmary";0;0;0;1;0
+429;600;1;"Merc Mission ""Brought to Justice 1""";0;0;0;1;0
+430;601;1;"Merc Mission ""Brought to Justice 2""";0;0;0;1;0
+431;602;1;"Merc Mission ""Brought to Justice 3""";0;0;0;1;0
+432;603;1;"Merc Mission ""Brought to Justice 4""";0;0;0;1;0
+433;609;1;"The investigation can only be done from 0:00 to 5:00 AM";0;0;0;1;0
+434;610;1;"Defeat Gale Rocke";0;0;0;1;0
+435;610;2;"Defeat Clean Driver";0;0;0;1;0
+436;610;3;"Defeat Silt Driver";0;0;0;1;0
+437;610;4;"Defeat Gale Rocke again";0;0;0;1;0
+438;610;5;"Defeat Clean Driver again";0;0;0;1;0
+439;610;6;"Defeat Silt Driver again";0;0;0;1;0
+440;610;7;"Defat Lether Bradly";0;0;0;1;0
+441;611;1;"""Get a reference book from an Argentum bookstore and read about the history of Dagas."" - After purchasing Brief History of Alrest from Reedirait Bookstore for 1,800 G, the quest Dagas's Past: Leftheria is received and must be completed";0;0;0;1;0
+442;611;2;"""Get a reference book from an Ardainian bookstore and read about the history of Dagas."" - After purchasing History of Gormott from Haskefell Books for 2,500 G, the quest Dagas's Past: Gormott is received and must be completed";0;0;0;1;0
+443;611;3;"""Get a reference book from a Tantal bookstore and read about the history of Dagas."" - After purchasing the Lost People's Tablet from Biblio Paulio for 1,000 G, the quest Dagas's Past: Tantal is received and must be completed";0;0;0;1;0
+444;611;4;"""Get a reference book from an Urayan bookstore and read about the history of Dagas."" - After the quests Dagas's Past: Leftheria, Gormott and Tantal are completed, Aldomar Books sells The Mystery Continent for 4,200 G. After it is purchased, the quest Dagas's Past: Folktales is received and must be completed.";0;0;0;1;0
+445;612;1;"Merc Mission ""The Beast of Regideria""";0;0;0;1;0
+446;614;1;"After this step, Dagas’ Affinity Chart changes";0;0;0;1;0
+447;615;1;"Defeat Arrogant Behemoth";0;0;0;1;0
+448;617;1;"""Look for the Nopon who likes high places in the Old Factory in Mor Ardain.""";0;0;0;1;0
+449;617;2;"""Look for the Nopon who likes sweltering places in the Old Factory at Mor Ardain.""";0;0;0;1;0
+450;617;3;"""Look for the Nopon who likes strong smells in the Old Factory at Mor Ardain.""";0;0;0;1;0
+451;617;4;"""Look for the Nopon who likes clammy attics in the Old Factory at Mor Ardain.""";0;0;0;1;0
+452;620;1;"Defeat 3 Brionac Yuzes";0;0;0;3;0
+453;621;1;"Defeat Brionac Grynd";0;0;0;1;0
+454;621;2;"Defeat 2 Brionac Psychis";0;0;0;2;0
+455;621;3;"Defeat Brionac Aliente";0;0;0;1;0
+456;623;1;"""Defeat Rebel Wiggins at Ayvill Shopping District in Mor Ardain."" - The quest Defeat Wiggins must be completed";0;0;0;1;0
+457;623;2;"""Defeat Turncoat Bhianc by the Old Factory in Mor Ardain."" - The quest Defeat Bhianc must be completed.";0;0;0;1;0
+458;623;3;"""Defeat Mutineer Arrodh by the Cargo Transportation Zone in Mor Ardain."" - The quest Defeat Arrodh must be completed";0;0;0;1;0
+459;625;1;"Merc Mission ""Find Akatsuki""";0;0;0;1;0
+460;627;1;"The Proof of Akatsuki's Fall item is obtained after the fight.";0;0;0;1;0
+461;630;1;"Defeat Mutineer Arrodh";0;0;0;1;0
+462;632;1;"Defeat Turncoat Bhianc";0;0;0;1;0
+463;634;1;"Defeat Rebel Wiggins";0;0;0;1;0
+464;636;1;"The Baked Redfish dish is required to finish the quest";0;0;0;1;0
+465;640;1;"""On the roofs of Admar Storage Zone, Mor Ardain, ask Enzozo about Mimin.""";0;0;0;1;0
+466;640;2;"""On the roofs of Admar Storage Zone, Mor Ardain, ask Zonori about Mimin.""";0;0;0;1;0
+467;641;1;"Defeat the Gluttonous Pterix";0;0;0;1;0
+468;642;1;"The location can be reached via Dewmist Crag";0;0;0;1;0
+469;643;1;"Defeat the Ravenous Arachno";0;0;0;1;0
+470;645;1;"Defeat the Voracious Aspar";0;0;0;1;0
+471;647;1;"Obtain 5 bits of Rosary Moss";0;0;0;5;0
+472;650;1;"Aegaeon must be in the party";0;0;0;1;0
+473;652;1;"Defeat Mirage Driver";0;0;0;1;0
+474;652;2;"Defeat Azure Driver";0;0;0;1;0
+475;653;1;"Defeat Brionac Tanga. It is accompanied by several Brionac Neslis and a Brionac Caboi.";0;0;0;1;0
+476;655;1;"Defeat Brionac Head";0;0;0;1;0
+477;655;2;"Defeat 2 Brionac Neslis";0;0;0;2;0
+478;660;1;"Defeat Lavian Driver";0;0;0;1;0
+479;660;2;"Defeat Krug Driver";0;0;0;1;0
+480;660;3;"Defeat Mount Driver";0;0;0;1;0
+481;662;1;"Bonono can be found on the Roadway to 7th Perimeter";0;0;0;1;0
+482;663;1;"Defeat Kyamel Sovereigns";0;0;0;1;0
+483;665;1;"Find Alulu near the Mizar, Elevator #20";0;0;0;1;0
+484;666;1;"Defeat Skriim Sovereign";0;0;0;1;0
+485;669;1;"Defeat Irving the Watchman";0;0;0;1;0
+486;673;1;"Requires Azami in the party and lv. 3 Clairvoyant Eye and lv. 10 Focus";0;0;0;1;0
+487;674;1;"""Save the soldiers by defeating the enemies at the Titan Weapon Dig Site in Temperantia."" - Defeat 5 Sentynel Drivers";0;0;0;1;0
+488;674;2;"""Defeat Turbulent Keaton at the Titan Weapon Dig Site in Temperantia.""";0;0;0;1;0
+489;674;3;"""Defeat Crafty Zofka at the Titan Weapon Dig Site in Temperantia.""";0;0;0;1;0
+490;677;1;"Defeat 5 Svarm Appix";0;0;0;5;0
+491;677;2;"Defeat 1 Svarm Nest";0;0;0;1;0
+492;679;1;"To reach Sarrac you must open a door near the Thermal Exhaust Fork which requires Fortitude Lv. 2 and Superstrength Lv. 3 Field Skills";0;0;0;1;0
+493;680;1;"Obtain 3 Fused Valves - Collecting the valves requires opening the office which needs Fortitude Lv. 2 and Superstrength Lv. 3 Field Skills again.";0;0;0;3;0
+494;680;2;"One of the valves requires defeating a Brish Aspar.";0;0;0;1;0
+495;683;1;"Defeat the Glaring Aspar";0;0;0;1;0
+496;685;1;"Obtain 4 Black Steel Circlers - The four circlers require Ancient Wisdom lv. 2, 3, and 4 to examine";0;0;0;4;0
+497;690;1;" Defeat Hired Driver";0;0;0;1;0
+498;691;1;"Pnaddio must be spoken to on the upper level of the rooms in the Indoline Sanctum.";0;0;0;1;0
+499;691;2;"Thiedoro must be spoken to at Seoris Plaza.";0;0;0;1;0
+500;691;3;"Tennelini must be spoken to at the entrance of the Indoline Sanctum.";0;0;0;1;0
+501;691;4;"Varshabore must be spoken to in the center of the Indoline Sanctum.";0;0;0;1;0
+502;691;5;"Bisattro must be spoken to by the stairs leading to the Audience Chamber in the Indoline Sanctum.";0;0;0;1;0
+503;697;1;"Defeat 3 Amman Balgas";0;0;0;3;0
+504;699;1;"Items include a variety of minerals, fish, plants, and mechanical items found in Temperantia - Common items give 5 progress; Rare items give 5 progress; Legendary items give 5 progress";0;0;0;1;0
+505;701;1;"These 10 items can be found on the southern coast of Temperantia";0;0;0;10;0
+506;703;1;"Defeat 4 Idle Rodonya";0;0;0;4;0
+507;706;1;"Examine the snow mounds which requires Fire Mastery Lv. 3 and Wind Mastery Lv. 3 to reveal the turtle underneath the snow";0;0;0;1;0
+508;711;1;"Defeat the Jairo Griffox";0;0;0;1;0
+509;717;1;"Excavate in three separate locations. The excavation point near Great Pillar Passage requires Focus Lv 5 and Fortitude Lv 4. The excavation point near Yolmunder's Crevasse requires Earth Mastery Lv 7 and Keen Eye Lv 4. The excavation point on the Pillar City Ruins requires Focus Lv 4 and Keen Eye Lv 3";0;0;0;3;0
+510;719;1;"Requires Earth Mastery Lv. 4 and Superstrength Lv. 5";0;0;0;1;0
+511;721;1;"Defeat the Enraged Gogol - You only need to deplete half of the Gogol's HP";0;0;0;1;0
+512;724;1;"Speak to Yarmos at the top of the Theositi Temple Ruins";0;0;0;1;0
+513;724;2;"Speak to Tallia near the Platini Deli in the Elmos Square";0;0;0;1;0
+514;724;3;"Speak to Gerba near the Theosoir Main Gate";0;0;0;1;0
+515;725;1;"Requires Keen Eye Lv. 2 and Focus Lv. 4";0;0;0;1;0
+516;727;1;"Defeat the Indignant Gogol";0;0;0;1;0
+517;728;1;"Defeat the Enraged Gogol";0;0;0;1;0
+518;729;1;"Defeat the Offended Gogol's group";0;0;0;1;0
+519;734;1;"""Give him the offering"" - It can be a Soft Sea Cucumber (Gormott Icthyology), a Juicy Ray Fin (Manda Moramoras in Uraya, requiring Crystal Sleet weather), or a Benign Cricket (Leftheria Entomology).";0;0;0;1;0
+520;734;2;"""Threaten him"" - It requires Ice Mastery Level 9 and Focus Level 3";0;0;0;1;0
+521;735;1;"Creating the Ice Bridge from Lumos Pillar requires Ice Mastery 6 and Focus 5";0;0;0;1;0
+522;736;1;"It requires Fire Mastery 3 and Focus 5.";0;0;0;1;0
+523;737;1;"Defeat all Sarta Garlus";0;0;0;1;0
+524;741;1;"A chest must be excavated in the eastern corner of the Litharia Snowfield. This requires Earth Mastery Lv. 4 and Keen Eye Lv. 4";0;0;0;1;0
+525;742;1;"This is Ekurt at Elmos Square in Theosoir";0;0;0;1;0
+526;743;1;"Defeat 3 Ripbik Ellook";0;0;0;3;0
+527;745;1;"""Adorn an altar with the Hammershead. Try a high-quality cylinder in certain weather in Temperantia.""";0;0;0;1;0
+528;745;2;"""Adorn an altar with the Golden Sunstone. It was on the Cliffs of Morytha once, but it's likely sunk to the bottom now...""";0;0;0;1;0
+529;745;3;"""Adorn an altar with the Calamity Puzzle. The Nopon of Argentum seem to have it now, and may be willing to negotiate.""";0;0;0;1;0
+530;745;4;"""Adorn an altar with an Orbital Skyreader. You may be able to get one if you salvage in Spirit Crucible Elpys.""";0;0;0;1;0
+531;747;1;"Defeat 2 Herridot Laias";0;0;0;2;0
+532;750;1;"Defeat 2 Harridot Laias";0;0;0;2;0
+533;753;1;"Defeat 2 Herridot Laias";0;0;0;2;0
+534;753;2;"Defeat 1 King Laia";0;0;0;1;0
+535;754;1;"Merc Mission ""Herald Search""";0;0;0;1;0
+536;758;1;"Defeat 11 Aura Garlus";0;0;0;11;0
+537;760;1;"Defeat Aurora Garlus";0;0;0;1;0
+538;760;2;"Defeat 2 Aura Garlus";0;0;0;2;0
+539;762;1;"Merc Mission ""Finch's Big News""";0;0;0;1;0
+540;764;1;"""Defeat 3 Rebellious Soldiers in the Hall of Virtue in Tantal.""";0;0;0;3;0
+541;764;2;"""Defeat 2 Rebellious Soldiers in the Puresnow Passage in Tantal.""";0;0;0;2;0
+542;764;3;"""Defeat 4 Rebellious Soldiers in the Hall of Honor in Tantal.""";0;0;0;4;0
+543;766;1;"Defeat 4 Moks Elucas";0;0;0;4;0
+544;768;1;"Reid is on Merclibay Islet";0;0;0;1;0
+545;770;1;"""Gather 14 Energy Aubergines.""";0;0;0;14;0
+546;770;2;"""Collect five Border Sapphires.""";0;0;0;5;0
+547;770;3;"""Find two Angel Engines.""";0;0;0;2;0
+548;773;1;"Note: The level 2 ""Keen Eye"", level 3 ""Focus"", level 4 ""Forestry"" and level 4 ""Botany"" field skills are required";0;0;0;1;0
+549;774;1;"Defeat Gegl Quadwing - The item Red Collar will be obtained after killing it";0;0;0;1;0
+550;779;1;"The 10 Pinfins can be found at a Collection Point near Baldotas Isle with the help of a Blade's ""Ichthyology"" field skill.";0;0;0;10;0
+551;781;1;"The village is near Coralline Sanctum";0;0;0;1;0
+552;782;1;"This Phonex is Jix in the Commercial District in Fonsa Myma";0;0;0;1;0
+553;783;1;"The 10 Cobalt Eels can be found at a Collection Point just behind Tardy Gate with the help of Nim's ""Ichthyology"" field skill";0;0;0;10;0
+554;785;1;"The village is in Aegishammer";0;0;0;1;0
+555;787;1;"The 10 Trippy Catfish can be found at a collection point south of the Ardainian Garrison on the beach with the help of Nim's ""Ichthyology"" field skill";0;0;0;10;0
+556;788;1;"A level 97 Gefillon Behemoth may be sitting on the objective, but it is possible to aggro the Behemoth then runaway to the top of the near by cliff and then go to the objective before the Behemoth respawns";0;0;0;1;0
+557;790;1;"Defeat the Vacillus Antol";0;0;0;1;0
+558;791;1;"Defeat the Demon Mamongath";0;0;0;1;0
+559;793;1;"""Complete the Merc Mission ""Catch a Crook.""""";0;0;0;1;0
+560;793;2;"""Complete the Merc Mission ""Guard the Field.""""";0;0;0;1;0
+561;793;3;"""Complete the Merc Mission ""Extract a Confession.""""";0;0;0;1;0
+562;795;1;"Defeat Cloud Sea Tyrant Nero";0;0;0;1;0
+563;800;1;"Lutie must be spoken to";0;0;0;1;0
+564;804;1;"""Search for the barrel in Sauros's Bed, Gormott."" - This requires the Nopon Wisdom Lv. 2 and Keen Eye Lv. 3 Field Skills";0;0;0;1;0
+565;804;2;"""Search for the barrel around the Leaning Tower of Dorrick, Temperantia."" - This requires the Nopon Wisdom Lv. 3 and Keen Eye Lv. 2 Field Skills";0;0;0;1;0
+566;804;3;"""Search for the barrel in Wonder Spring Plaza Ruins, Spirit Crucible Elpys."" - This requires the Nopon Wisdom Lv. 3 and Keen Eye Lv. 3 Field Skills";0;0;0;1;0
+567;804;4;"""Search for the barrel in Balquors Ruins, Cliffs of Morytha."" - This requires the Nopon Wisdom Lv. 2 and Keen Eye Lv. 4 Field Skills";0;0;0;1;0
+568;806;1;"Merc Mission ""Black Nopon Search""";0;0;0;1;0
+569;808;1;"The Altaer Drivers can simply be run past";0;0;0;1;0
+570;812;1;"Requires Pyra, Mythra, Nia, Poppi, Brighid, Pandoria, and Mòrag, one of whom must be asked for her opinion of the location";0;0;0;1;0
+571;813;1;"Defeat 1 Jealous Gogol";0;0;0;1;0
+572;813;2;"Defeat 1 Imbalanced Gogol";0;0;0;1;0
+573;814;1;"Requires Pyra, Mythra, Nia, Poppi, Brighid, Pandoria, and Mòrag, one of whom must be chosen to watch Len's proposal";0;0;0;1;0
+574;818;1;"""Go and search for the boss at Chansagh Wastes in Mor Ardain.""";0;0;0;1;0
+575;818;2;"""Go and search for the boss at the Storage Warehouse in Mor Ardain.""";0;0;0;1;0
+576;821;1;"Defeat the Jang Quadwings";0;0;0;1;0
+577;824;1;"Pay 300,500G";0;0;0;1;0
+578;825;1;"Pay 2,000G";0;0;0;1;0
+579;828;1;"""Collect 100 pieces of wood from various places and deliver it to Mark near Verde Carpentry Workshop in Leftheria.""";0;0;0;100;0
+580;828;2;"""Collect 100 pieces of ore from various places and deliver it to Kirk near Verde Carpentry Workshop in Leftheria.""";0;0;0;100;0
+581;828;3;"""Collect 100 pieces of decorations from various places and deliver them to Kazuna near Verde Carpentry Workshop in Leftheria.""";0;0;0;100;0
+582;831;1;"""Complete the quest ‘Language Teacher’.""";0;0;0;1;0
+583;831;2;"""Complete the quest ‘Science Teacher’.""";0;0;0;1;0
+584;831;3;"""Complete the quest ‘History Teacher’.""";0;0;0;1;0
+585;837;1;"Note: The chests that are salvaged during this step are not kept or accessed. Only the collectibles that are hauled up can be collected, and only during the battle";0;0;0;1;0
+586;838;1;"Defeat Quietus Aspid";0;0;0;1;0
+587;840;1;"Tortor from Argentum Trade Guild can be invited to continue the quest";0;0;0;1;0
+588;840;2;"Alternatively Alisdeigh at the Kingdom of Uraya's Garfont Village may be invited if The Nopon Murals, The Riddle on the Wall and Uncover the Truth have been completed, in which case the second and third objectives can be ignored";0;0;0;1;0
+589;843;1;"Alisdeigh from Kingdom of Uraya's Garfont Village may be invited if The Nopon Murals, The Riddle on the Wall and Uncover the Truth have been completed";0;0;0;1;0
+590;844;1;"7,500 G must be given to Lidello in Gormott Province and he will become the language teacher";0;0;0;1;0
+591;844;2;"Alternatively, 7,500 G must be given to Lapupu outside of the Library Philosofia in Theosoir in the Kingdom of Tantal, who will become the language teacher";0;0;0;1;0
+592;844;3;"Another option requires to complete Writer's Assistant. After finishing the quest, Mesulia at Anastatia's in Theosoir must be spoken to, and she requires no Gold to be hired";0;0;0;1;0
+593;845;1;"Quiqui from Fonsa Myma must be invited to finish the quest";0;0;0;1;0
+594;845;2;"Smaia from Alba Cavanich can also be invited after completing the quest A Secret Cure, by talking to her assistant in Alba Cavanich, then proceeding to find her at the Canyon of Husks where she will request to find her a Colla Carrot at Subterranean Lake Galantia.";0;0;0;1;0
+595;846;1;"Defeat Pelagic Vincent - Requires Electra, Zenobia, and Herald in the party";0;0;0;1;0
+596;847;1;"Defeat Pelagic Vincent - can be avoided by completing Merc Missions ""Electra's Strategy""";0;0;0;1;0
+597;847;2;"Defeat Telluric Desiree - can be avoided by completing Merc Mission ""Zenobia's Strategy""";0;0;0;1;0
+598;847;3;"Defeat Celestial Bailey";0;0;0;1;0
+599;848;1;"Caephon will only appear if all three Blades are active";0;0;0;1;0
+600;850;1;"Defeat Dross Ignas";0;0;0;1;0
+601;850;2;"Defeat Larm Ignas";0;0;0;1;0
+602;850;3;"Defeat Scram Ignas";0;0;0;1;0
+603;851;1;"Defeat Gigalid Igna";0;0;0;1;0
+604;851;2;"Defeat Trauv Igna";0;0;0;1;0
+605;851;3;"Defeat Riot Ignas";0;0;0;1;0
+606;853;1;"Obtain 100 points worth of items - Snipe Pea 5; Neon Grape 5; Oil Branch 5; Hill Firefly 5; Horsecrab 5; Millewire Pine 10; Frozen Flan 10; Bonito Sailfish 10; Beelze Mosquito 10; Ancient Star Compass 5; Lucky Telefactor 5; Stratospheric Hoop 10";0;0;0;100;0
+607;854;1;"This objective is added if the party has any Linka Honey when delivering items to Dibidi";0;0;0;1;0
+608;854;2;"Progress meter advances by 15 for each Linka Honey delivered, requiring a total of 7 honeys to fulfill her request";0;0;0;7;0
+609;856;1;"Defeat 3 Garasha Sovereign";0;0;0;3;0
+610;858;1;"Defeat 2 Stopper Sovereigns - Access Code 1 and 2 are obtained";0;0;0;2;0
+611;860;1;"Requires Mental Arithmetic Lv3";0;0;0;1;0
+612;862;1;"Defeat the Nameless Sentinel";0;0;0;1;0
+613;863;1;"Only three Blade Bots are fought";0;0;0;1;0
+614;864;1;"Defeat the group of Blade Bots";0;0;0;1;0
+615;867;1;"Defeat the group of Blade Bots";0;0;0;1;0
+616;870;1;"Defeat 4 Dagra Guldo";0;0;0;4;0

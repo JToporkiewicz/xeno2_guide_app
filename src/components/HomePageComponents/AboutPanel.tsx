@@ -29,10 +29,11 @@ const AboutPanel = () => {
           <li><a href="https://xenoblade.fandom.com/wiki/Xenoblade_Chronicles_2">
             Xenoblade 2 Fandom Wiki</a></li>
           <li>
-            <a href="https://docs.google.com/spreadsheets/d
-              /1EG0UpsgjhISr6_isiUpiWMU9qcXj6t8wWB0_LAiH1yE
-              /edit?fbclid=IwAR3TemckeBvK0vfS1vGr3NgjnT5cx7
-              t7CkYVpZA4FPsWaQhNDDUu1sqN86k#gid=970837341"
+            <a
+              href={'https://docs.google.com/spreadsheets/d/1EG0UpsgjhISr6'+
+              '_isiUpiWMU9qcXj6t8wWB0_LAiH1yE/edit?fbclid=IwAR3TemckeBvK0vf'+
+              'S1vGr3NgjnT5cx7t7CkYVpZA4FPsWaQhNDDUu1sqN86k#gid=970837341'}
+              target="_blank"
             >
               fan created Xenoblade Chronicles 2 Info Sheet
             </a>

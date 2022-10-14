@@ -1,0 +1,1889 @@
+"id";"RequiredBy";"OtherPrerequisiteName";"OtherPrerequisiteDetail";"StoryProgress";"DLCRequired";"Location";"Heart2HeartTitle";"SideQuest";"MercMissionTitle";"MonsterTitle";"MonsterType";"AffinityChartNode";"PouchItemType";"PouchItem";"Progress"
+1;2;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+2;3;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+3;4;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+4;5;"Merc Mission";1;0;0;14;0;0;1;0;0;0;0;0;0
+5;7;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
+6;8;"Heart-to-heart";1;0;0;22;1;0;0;0;0;0;0;0;0
+7;9;"Finish an enemy - Mechanical";5;0;0;442;0;0;0;8;0;0;0;0;0
+9;12;"Finish an enemy - Normal";4;0;0;151;0;0;0;2;0;0;0;0;0
+10;13;"Finish an enemy - Normal";5;0;0;263;0;0;0;3;0;0;0;0;0
+11;14;"Finish an enemy - Normal";4;0;0;406;0;0;0;4;0;0;0;0;0
+12;15;"Finish an enemy - Unique";1;0;0;391;0;0;0;5;0;0;0;0;0
+13;17;"Use a move";5;0;0;0;0;0;0;0;0;16;0;0;0
+14;18;"Use a move";6;0;0;0;0;0;0;0;0;16;0;0;0
+15;19;"Use a move";7;0;0;0;0;0;0;0;0;16;0;0;0
+16;20;"Use a move";8;0;0;0;0;0;0;0;0;16;0;0;0
+17;21;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+18;22;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+19;23;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+20;24;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+21;25;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+22;27;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+23;28;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+24;29;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+25;30;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+26;32;"Engage in combat";10;0;0;0;0;0;0;0;0;0;0;0;0
+27;33;"Engage in combat";11;0;0;0;0;0;0;0;0;0;0;0;0
+28;34;"Engage in combat";12;0;0;0;0;0;0;0;0;0;0;0;0
+29;35;"Use pouch item";2;0;0;0;0;0;0;0;0;0;6;0;0
+30;37;"Finish an enemy - Normal";4;0;0;376;0;0;0;6;0;0;0;0;0
+31;38;"Finish an enemy - Normal";4;0;0;466;0;0;0;7;0;0;0;0;0
+32;40;"Gather pouch items - Currently held items count towards the required total";20;0;0;0;0;0;0;0;0;0;6;0;0
+33;41;"Gather pouch items - Currently held items count towards the required total";30;0;0;0;0;0;0;0;0;0;6;0;0
+34;43;"Merc Mission";1;0;0;14;0;0;2;0;0;0;0;0;0
+35;44;"Merc Mission";1;0;0;14;0;0;3;0;0;0;0;0;0
+36;45;"Merc Mission";1;0;0;14;0;0;4;0;0;0;0;0;0
+37;46;"Side-quest";1;0;0;15;0;1;0;0;0;0;0;0;0
+38;48;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+39;49;"Trust";1600;0;0;0;0;0;0;0;0;0;0;0;0
+40;50;"Trust";4600;0;0;0;0;0;0;0;0;0;0;0;0
+41;51;"Trust";10600;0;0;0;0;0;0;0;0;0;0;0;0
+42;53;"Finish an enemy - Normal (Feris)";6;0;0;0;0;0;0;0;31;0;0;0;0
+43;54;"Use a move";11;0;0;0;0;0;0;0;0;52;0;0;0
+44;55;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+45;56;"Finish an enemy - Normal (Vay Taos)";4;0;0;0;0;0;0;941;0;0;0;0;0
+46;58;"Use a move";7;0;0;0;0;0;0;0;0;57;0;0;0
+47;59;"Finish an enemy - Normal (Bafoo Crustip)";5;0;0;0;0;0;0;272;0;0;0;0;0
+48;60;"Use a move";9;0;0;0;0;0;0;0;0;57;0;0;0
+49;61;"Use a move";10;0;0;0;0;0;0;0;0;57;0;0;0
+50;63;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+51;64;"Use a move";6;0;0;0;0;0;0;0;0;62;0;0;0
+52;65;"Finish an enemy - Normal";4;0;0;0;0;0;0;940;0;0;0;0;0
+53;66;"Use a move";8;0;0;0;0;0;0;0;0;62;0;0;0
+54;67;"Use a Blade Art";3;0;0;0;0;0;0;0;0;0;0;0;0
+55;68;"Help an incapacitated ally";10;0;0;0;0;0;0;0;0;0;0;0;0
+56;69;"Heart-to-heart";1;0;0;0;7;0;0;0;0;0;0;0;0
+57;70;"Use a Blade Art";7;0;0;0;0;0;0;0;0;0;0;0;0
+58;71;"Swap Blades during battle - Previous instances count toward total";4000;0;0;0;0;0;0;0;0;0;0;0;0
+59;72;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+60;73;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+61;74;"Deal a critical hit";7;0;0;0;0;0;0;0;0;0;0;0;0
+62;75;"Heart-to-heart";1;0;0;0;48;0;0;0;0;0;0;0;0
+63;76;"Driver combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+64;78;"Deal a critical hit";5;0;0;0;0;0;0;0;0;0;0;0;0
+65;79;"Walk - Previous instances count toward total";80000;0;0;0;0;0;0;0;0;0;0;0;0
+66;80;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+67;81;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+68;83;"Discover an area - Previous instances count toward total";12;0;0;0;0;0;0;0;0;0;0;0;0
+69;84;"Collect stuff - Previous instances count toward total";25;0;0;0;0;0;0;0;0;0;0;0;0
+70;86;"Use pouch item";4;0;0;0;0;0;0;0;0;0;0;15;0
+71;87;"Button challenge during a battle - Previous instances count toward total";100;0;0;0;0;0;0;0;0;0;0;0;0
+72;89;"Make food - Previous instances count toward total";10;0;0;0;0;0;0;0;0;0;0;0;0
+73;90;"Make food - Previous instances count toward total";50;0;0;0;0;0;0;0;0;0;0;0;0
+74;92;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+75;93;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+76;94;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+77;95;"Trust";8800;0;0;0;0;0;0;0;0;0;0;0;0
+78;97;"Use a move";10;0;0;0;0;0;0;0;0;96;0;0;0
+79;98;"Finish an enemy - Normal (Novl Ories)";4;0;0;0;0;0;0;705;0;0;0;0;0
+80;99;"Finish an enemy - Normal (Valt Ropl)";4;0;0;0;0;0;0;828;0;0;0;0;0
+81;100;"Finish an enemy - Unique (Crimson Derrick)";1;0;0;0;0;0;0;944;0;0;0;0;0
+82;102;"Finish an enemy - Normal (Nyol Flamii)";5;0;0;0;0;0;0;424;0;0;0;0;0
+83;103;"Finish an enemy - Normal (Peng)";5;0;0;0;0;0;0;0;61;0;0;0;0
+84;104;"Use a move";9;0;0;0;0;0;0;0;0;101;0;0;0
+85;105;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+86;107;"Finish an enemy - Normal (Buma Hiln)";5;0;0;0;0;0;0;514;0;0;0;0;0
+87;108;"Use a move";6;0;0;0;0;0;0;0;0;106;0;0;0
+88;109;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+89;110;"Finish an enemy - Unique (Perplexed Stoyan)";1;0;0;0;0;0;0;846;0;0;0;0;0
+90;112;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+91;113;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+92;114;"Deal a critical hit";8;0;0;0;0;0;0;0;0;0;0;0;0
+93;115;"Heart-to-heart (Mythra vs Brighid)";1;0;0;0;0;0;0;0;0;0;0;0;0
+94;117;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+95;118;"Deal a critical hit";7;0;0;0;0;0;0;0;0;0;0;0;0
+96;119;"Help an incapacitated ally";20;0;0;0;0;0;0;0;0;0;0;0;0
+97;120;"Raise Affinity in combat";100;0;0;0;0;0;0;0;0;0;0;0;0
+98;121;"Deal a critical hit";3;0;0;0;0;0;0;0;0;0;0;0;0
+99;122;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+100;123;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+101;124;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+102;125;"Walk - Previous instances count toward total";400000;0;0;0;0;0;0;0;0;0;0;0;0
+103;127;"Go shopping - Previous instances count toward total";50;0;0;0;0;0;0;0;0;0;0;0;0
+104;128;"Go shopping - Previous instances count toward total";100;0;0;0;0;0;0;0;0;0;0;0;0
+105;129;"Talk to people - Previous instances count toward total";20;0;0;0;0;0;0;0;0;0;0;0;0
+106;130;"Use pouch item (Mythra's favourite - Dessert)";4;0;0;0;0;0;0;0;0;0;0;0;0
+107;131;"Use pouch item (Mythra's favourite - Art)";2;0;0;0;0;0;0;0;0;0;0;0;0
+108;133;"Talk to people - Previous instances count toward total";50;0;0;0;0;0;0;0;0;0;0;0;0
+109;134;"Talk to people - Previous instances count toward total";100;0;0;0;0;0;0;0;0;0;0;0;0
+110;136;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+111;137;"Trust";1600;0;0;0;0;0;0;0;0;0;0;0;0
+112;138;"Trust";4600;0;0;0;0;0;0;0;0;0;0;0;0
+113;139;"Trust";10600;0;0;0;0;0;0;0;0;0;0;0;0
+114;141;"Finish an enemy - Normal (Volff)";6;0;0;0;0;0;0;0;90;0;0;0;0
+115;142;"Use a move";11;0;0;0;0;0;0;0;0;140;0;0;0
+116;143;"Finish an enemy - Normal (Fuvor Aligo)";4;0;0;0;0;0;0;14;0;0;0;0;0
+117;144;"Finish an enemy - Unique (Praetorian Medea)";1;0;0;0;0;0;0;579;0;0;0;0;0
+118;146;"Finish an enemy - Normal (Volff)";6;0;0;0;0;0;0;0;90;0;0;0;0
+119;147;"Finish an enemy - Normal (Fabel Bufa)";4;0;0;0;0;0;0;242;0;0;0;0;0
+120;148;"Use a move";9;0;0;0;0;0;0;0;0;145;0;0;0
+121;149;"Finish an enemy - Unique (Machine-Gun Julio)";1;0;0;0;0;0;0;40;0;0;0;0;0
+122;151;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+123;152;"Use a move";6;0;0;0;0;0;0;0;0;150;0;0;0
+124;153;"Finish an enemy - Normal (Grad Gogol)";4;0;0;0;0;0;0;463;0;0;0;0;0
+125;154;"Use a move";8;0;0;0;0;0;0;0;0;150;0;0;0
+126;156;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+127;157;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+128;158;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+129;159;"Quest (Any)";100;0;0;0;0;0;0;0;0;0;0;0;0
+130;160;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+131;161;"Use pouch item (Dromarch's favourite - Meat)";4;0;0;0;0;0;0;0;0;0;0;0;0
+132;162;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+133;163;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+134;164;"Stay at an inn - Previous instances cound toward total";50;0;0;0;0;0;0;0;0;0;0;0;0
+135;166;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+136;167;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+137;168;"Heart-to-heart (Unforgiving Terrain)";1;0;0;0;0;0;0;0;0;0;0;0;0
+138;169;"Engage in combat";100;0;0;0;0;0;0;0;0;0;0;0;0
+139;171;"Finish an enemy - Normal (Karlin Skwaror)";5;0;0;0;0;0;0;859;0;0;0;0;0
+140;172;"Finish an enemy - Normal (Kustal Sovereign)";5;0;0;0;0;0;0;888;0;0;0;0;0
+141;174;"Gather item from Collectibles list - Flower type";25;0;0;0;0;0;0;0;0;0;0;0;0
+142;175;"Gather item from Collectibles list - Previous instances count toward total";250;0;0;0;0;0;0;0;0;0;0;0;0
+143;176;"Gather item from Collectibles list - Mechanical type";5;0;0;0;0;0;0;0;0;0;0;0;0
+144;177;"Gather item from Collectibles list - Mechanical type";20;0;0;0;0;0;0;0;0;0;0;0;0
+145;178;"Gather item through salvaging - Treasure type";7;0;0;0;0;0;0;0;0;0;0;0;0
+146;180;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+147;181;"Trust";1600;0;0;0;0;0;0;0;0;0;0;0;0
+148;182;"Trust";4600;0;0;0;0;0;0;0;0;0;0;0;0
+149;183;"Trust";10600;0;0;0;0;0;0;0;0;0;0;0;0
+150;185;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+151;186;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+152;187;"Use a move";12;0;0;0;0;0;0;0;0;184;0;0;0
+153;188;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+154;190;"Use a move";7;0;0;0;0;0;0;0;0;189;0;0;0
+155;191;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+156;192;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+157;193;"Collect an HP Potion - Previous instances count toward total";500;0;0;0;0;0;0;0;0;0;0;0;0
+158;195;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+159;196;"Use a move";6;0;0;0;0;0;0;0;0;194;0;0;0
+160;197;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+161;198;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+162;200;"Use pouch item (Poppi Alpha's fav - Instrument)";2;0;0;0;0;0;0;0;0;0;0;0;0
+163;201;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+164;202;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+165;203;"Deal a critical hit - Previous instances count toward total";200000;0;0;0;0;0;0;0;0;0;0;0;0
+166;204;"Block an attack";2;0;0;0;0;0;0;0;0;0;0;0;0
+167;205;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+168;206;"Heart-to-heart (Poppi's Remodel?)";1;0;0;0;0;0;0;0;0;0;0;0;0
+169;207;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+170;208;"Receive a certain amount of damage";80000;0;0;0;0;0;0;0;0;0;0;0;0
+171;209;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+172;210;"Salvage - Previous instances count toward total";20;0;0;0;0;0;0;0;0;0;0;0;0
+173;211;"Tiger! Tiger! score";20000;0;0;0;0;0;0;0;0;0;0;0;0
+174;212;"Tiger! Tiger! score";50000;0;0;0;0;0;0;0;0;0;0;0;0
+175;213;"Trade items at an exchange";50;0;0;0;0;0;0;0;0;0;0;0;0
+176;215;"Use pouch item (Poppi Alpha's fav - Instrument)";2;0;0;0;0;0;0;0;0;0;0;0;0
+177;216;"Jump - Previous instances count toward total";300;0;0;0;0;0;0;0;0;0;0;0;0
+178;218;"Speak to a Nopon";20;0;0;0;0;0;0;0;0;0;0;0;0
+179;219;"Speak to a Nopon";40;0;0;0;0;0;0;0;0;0;0;0;0
+180;221;"Use pouch item (Poppi Alpha's fav - Staple Foods)";4;0;0;0;0;0;0;0;0;0;0;0;0
+181;222;"Use pouch item (Poppi Alpha's fav - Drinks)";4;0;0;0;0;0;0;0;0;0;0;0;0
+182;224;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+183;225;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+184;226;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+185;227;"Trust";8800;0;0;0;0;0;0;0;0;0;0;0;0
+186;229;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+187;230;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+188;231;"Use a move";12;0;0;0;0;0;0;0;0;228;0;0;0
+189;232;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+190;234;"Use pouch item (Poppi QT's fav - Art)";2;0;0;0;0;0;0;0;0;0;0;0;0
+191;235;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+192;236;"Use a move";9;0;0;0;0;0;0;0;0;233;0;0;0
+193;237;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+194;239;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+195;240;"Use a move";6;0;0;0;0;0;0;0;0;238;0;0;0
+196;241;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+197;242;"Use a move";8;0;0;0;0;0;0;0;0;238;0;0;0
+198;244;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+199;245;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+200;246;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+201;247;"Block an attack - Previous instances count toward total";250;0;0;0;0;0;0;0;0;0;0;0;0
+202;248;"Evade an attack";3;0;0;0;0;0;0;0;0;0;0;0;0
+203;249;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+204;250;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+205;251;"Heart-to-heart (Growing Up)";1;0;0;0;0;0;0;0;0;0;0;0;0
+206;252;"Make money from Item exchanges - Previous instances count toward total";160000;0;0;0;0;0;0;0;0;0;0;0;0
+207;253;"Gather item from Collectibles list - Vegetable type";5;0;0;0;0;0;0;0;0;0;0;0;0
+208;254;"Use a Blade Art";5;0;0;0;0;0;0;0;0;0;0;0;0
+209;255;"Use a Blade Art";6;0;0;0;0;0;0;0;0;0;0;0;0
+210;256;"Use a Blade Art";7;0;0;0;0;0;0;0;0;0;0;0;0
+211;257;"Salvage - Previous instances count toward total";25;0;0;0;0;0;0;0;0;0;0;0;0
+212;259;"Open Treasure troves - Previous instances count toward total";100;0;0;0;0;0;0;0;0;0;0;0;0
+213;260;"Open Treasure troves - Previous instances count toward total";300;0;0;0;0;0;0;0;0;0;0;0;0
+214;262;"Use pouch item (Poppi QT's fav - Vegetables)";4;0;0;0;0;0;0;0;0;0;0;0;0
+215;263;"Use pouch item (Poppi QT's fav - Dessert)";4;0;0;0;0;0;0;0;0;0;0;0;0
+216;265;"Gather item from Collectibles list - Vegetable type";25;0;0;0;0;0;0;0;0;0;0;0;0
+217;266;"Gather item from Collectibles list - Vegetable type";30;0;0;0;0;0;0;0;0;0;0;0;0
+218;268;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+219;269;"Trust";1100;0;0;0;0;0;0;0;0;0;0;0;0
+220;270;"Trust";3300;0;0;0;0;0;0;0;0;0;0;0;0
+221;271;"Trust";7800;0;0;0;0;0;0;0;0;0;0;0;0
+222;273;"Use a move";10;0;0;0;0;0;0;0;0;272;0;0;0
+223;274;"Deal a certain amount of total damage";7000;0;0;0;0;0;0;0;0;0;0;0;0
+224;275;"Finish an enemy - Normal (Blade Bot)";4;0;0;0;0;0;0;154;0;0;0;0;0
+225;276;"Use a move";13;0;0;0;0;0;0;0;0;272;0;0;0
+226;278;"Finish an enemy - Mechanical (eg. Dajan Sovereigns - Land of Morytha)";5;0;0;0;0;0;0;8;0;0;0;0;0
+227;279;"Use a move";8;0;0;0;0;0;0;0;0;277;0;0;0
+228;280;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+229;281;"Finish an enemy - Unique (Haywire Radclyffe)";1;0;0;0;0;0;0;904;0;0;0;0;0
+230;283;"Deal a certain amount of total damage";6000;0;0;0;0;0;0;0;0;0;0;0;0
+231;284;"Finish an enemy - Mechanical (eg. Dajan Sovereigns - Land of Morytha)";5;0;0;0;0;0;0;8;0;0;0;0;0
+232;285;"Use a move";7;0;0;0;0;0;0;0;0;282;0;0;0
+233;286;"Deal a certain amount of total damage";9999999;0;0;0;0;0;0;0;0;0;0;0;0
+234;288;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+235;289;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+236;290;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+237;291;"Finish with a blade combo - Previous instances count toward total";600;0;0;0;0;0;0;0;0;0;0;0;0
+238;293;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+239;294;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+240;295;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+241;296;"Driver combo finisher";250;0;0;0;0;0;0;0;0;0;0;0;0
+242;298;"Use a Blade Art";5;0;0;0;0;0;0;0;0;0;0;0;0
+243;299;"Use a Blade Art";6;0;0;0;0;0;0;0;0;0;0;0;0
+244;300;"Heart-to-heart (Quantum Technochampion Pi)";1;0;0;0;0;0;0;0;0;0;0;0;0
+245;301;"Chain attack";200;0;0;0;0;0;0;0;0;0;0;0;0
+246;303;"Use pouch item (Poppi QT Alpha's fav - Textile)";2;0;0;0;0;0;0;0;0;0;0;0;0
+247;304;"Use pouch item (Poppi QT Alpha's fav - Cosmetics)";2;0;0;0;0;0;0;0;0;0;0;0;0
+248;306;"Gather item from Collectibles list - Mechanical type";25;0;0;0;0;0;0;0;0;0;0;0;0
+249;307;"Gather item through salvaging - Treasure type";10;0;0;0;0;0;0;0;0;0;0;0;0
+250;309;"Gather item through salvaging - Treasure type";25;0;0;0;0;0;0;0;0;0;0;0;0
+251;310;"Gather item through salvaging - Treasure type";30;0;0;0;0;0;0;0;0;0;0;0;0
+252;312;"Increase Merc level";2;0;0;0;0;0;0;0;0;0;0;0;0
+253;313;"Increase Merc level";3;0;0;0;0;0;0;0;0;0;0;0;0
+254;314;"Increase Merc level";4;0;0;0;0;0;0;0;0;0;0;0;0
+255;315;"Increase Merc level";5;0;0;0;0;0;0;0;0;0;0;0;0
+256;317;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+257;318;"Deal a certain amount of total damage";2400;0;0;0;0;0;0;0;0;0;0;0;0
+258;319;"Use a move";12;0;0;0;0;0;0;0;0;316;0;0;0
+259;320;"Use pouch item - Any";33;0;0;0;0;0;0;0;0;0;0;0;0
+260;322;"Use a move";7;0;0;0;0;0;0;0;0;321;0;0;0
+261;323;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+262;324;"Deal a certain amount of total damage";4800;0;0;0;0;0;0;0;0;0;0;0;0
+263;325;"Use a move";10;0;0;0;0;0;0;0;0;321;0;0;0
+264;327;"Use a move";5;0;0;0;0;0;0;0;0;326;0;0;0
+265;328;"Finish an enemy - Normal (Piranhax)";5;0;0;0;0;0;0;0;63;0;0;0;0
+266;329;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+267;330;"Finish an enemy - Normal (Bagoan Sovereign)";5;0;0;0;0;0;0;876;0;0;0;0;0
+268;331;"Deal a certain amount of total damage";200;0;0;0;0;0;0;0;0;0;0;0;0
+269;332;"Use pouch item (Roc's fav - Seafood)";4;0;0;0;0;0;0;0;0;0;0;0;0
+270;333;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+271;334;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+272;335;"Resonate with a Core Crystal - Previous instances count toward total";50;0;0;0;0;0;0;0;0;0;0;0;0
+273;337;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+274;338;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+275;339;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+276;340;"Merc Mission - (Any) Previous instances count toward total";160;0;0;0;0;0;0;0;0;0;0;0;0
+277;341;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+278;342;"Chain attack";2;0;0;0;0;0;0;0;0;0;0;0;0
+279;343;"Chain attack";4;0;0;0;0;0;0;0;0;0;0;0;0
+280;344;"Heart-to-heart (Life Goes On)";1;0;0;0;0;0;0;0;0;0;0;0;0
+281;345;"Sell items - Previous instances count toward total";100;0;0;0;0;0;0;0;0;0;0;0;0
+282;347;"Finish an enemy - Normal (Illumi Skeeter)";5;0;0;0;0;0;0;849;0;0;0;0;0
+283;348;"Finish an enemy - Normal (Indoline Star)";5;0;0;0;0;0;0;7;0;0;0;0;0
+284;351;"Gather item from Collectibles list - Insect type";25;0;0;0;0;0;0;0;0;0;0;0;0
+285;352;"Gather item from Collectibles list - Insect type";30;0;0;0;0;0;0;0;0;0;0;0;0
+286;354;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+287;355;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+288;356;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+289;357;"Trust";8800;0;0;0;0;0;0;0;0;0;0;0;0
+290;359;"Deal a certain amount of total damage";800;0;0;0;0;0;0;0;0;0;0;0;0
+291;360;"Finish an enemy - Normal (Brogen Feris)";6;0;0;0;0;0;0;415;0;0;0;0;0
+292;361;"Use a move";12;0;0;0;0;0;0;0;0;358;0;0;0
+293;362;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+294;364;"Use a move";7;0;0;0;0;0;0;0;0;363;0;0;0
+295;365;"Deal a certain amount of total damage";2400;0;0;0;0;0;0;0;0;0;0;0;0
+296;366;"Finish an enemy - Normal (Heidl Taos)";4;0;0;0;0;0;0;938;0;0;0;0;0
+297;367;"Use a move";10;0;0;0;0;0;0;0;0;363;0;0;0
+298;369;"Finish an enemy - Normal (Mayn)";5;0;0;0;0;0;0;412;0;0;0;0;0
+299;370;"Use a move";6;0;0;0;0;0;0;0;0;368;0;0;0
+300;371;"Deal a certain amount of total damage";4800;0;0;0;0;0;0;0;0;0;0;0;0
+301;372;"Finish an enemy - Unique (Epicurean Ligia)";1;0;0;0;0;0;0;673;0;0;0;0;0
+302;374;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+303;375;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+304;376;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+305;377;"Acquire money";300000;0;0;0;0;0;0;0;0;0;0;0;0
+306;378;"Evade an attack";3;0;0;0;0;0;0;0;0;0;0;0;0
+307;379;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+308;380;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+309;381;"Heart-to-heart (Mythra vs Brighid)";1;0;0;0;0;0;0;0;0;0;0;0;0
+310;382;"Development Level - Each area";3;6;0;0;0;0;0;0;0;0;0;0;0
+311;384;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+312;385;"Use pouch item (Brighid's fav - Cosmetics)";2;0;0;0;0;0;0;0;0;0;0;0;0
+313;386;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+314;387;"Spend money - Previous instances count toward total";1500000;0;0;0;0;0;0;0;0;0;0;0;0
+315;389;"Finish an enemy - Normal (Hool Arachno)";5;0;0;0;0;0;0;47;0;0;0;0;0
+316;390;"Finish an enemy - Normal (Spirit Lexos)";4;0;0;0;0;0;0;638;0;0;0;0;0
+317;391;"Use a Blade Art";3;0;0;0;0;0;0;0;0;0;0;0;0
+318;392;"Use pouch item (Brighid's fav - Desserts)";4;0;0;0;0;0;0;0;0;0;0;0;0
+319;393;"Discover an area - Previous instances count toward total";140;0;0;0;0;0;0;0;0;0;0;0;0
+320;394;"Gather item from Collectibles list - Ore type";5;0;0;0;0;0;0;0;0;0;0;0;0
+321;395;"Gather item from Collectibles list - Ore type";25;0;0;0;0;0;0;0;0;0;0;0;0
+322;396;"Gather item from Collectibles list - Ore type";30;0;0;0;0;0;0;0;0;0;0;0;0
+323;398;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+324;399;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+325;400;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+326;401;"Trust";8800;0;0;0;0;0;0;0;0;0;0;0;0
+327;403;"Deal a certain amount of total damage";800;0;0;0;0;0;0;0;0;0;0;0;0
+328;404;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+329;405;"Use a move";12;0;0;0;0;0;0;0;0;402;0;0;0
+330;406;"Finish an enemy - Unique (Peerless Beaufort)";1;0;0;0;0;0;0;286;0;0;0;0;0
+331;408;"Use a move";7;0;0;0;0;0;0;0;0;407;0;0;0
+332;409;"Deal a certain amount of total damage";2400;0;0;0;0;0;0;0;0;0;0;0;0
+333;410;"Finish an enemy - Normal (Mabluk Aspar)";4;0;0;0;0;0;0;129;0;0;0;0;0
+334;411;"Use a move";10;0;0;0;0;0;0;0;0;407;0;0;0
+335;413;"Finish an enemy - Normal (Volff)";6;0;0;0;0;0;0;0;90;0;0;0;0
+336;414;"Use a move";6;0;0;0;0;0;0;0;0;412;0;0;0
+337;415;"Deal a certain amount of total damage";4800;0;0;0;0;0;0;0;0;0;0;0;0
+338;416;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+339;418;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+340;419;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+341;420;"Swim - Previous instances count toward total";1000;0;0;0;0;0;0;0;0;0;0;0;0
+342;421;"Finish an enemy - Any";250;0;0;0;0;0;0;0;0;0;0;0;0
+343;423;"Use pouch item (Pandoria's fav - Meat type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+344;424;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+345;425;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+346;426;"Evade an attack";250;0;0;0;0;0;0;0;0;0;0;0;0
+347;427;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+348;428;"Use a Blade Art";5;0;0;0;0;0;0;0;0;0;0;0;0
+349;429;"Use a Blade Art";6;0;0;0;0;0;0;0;0;0;0;0;0
+350;430;"Heart-to-heart (What's in a Name?)";1;0;0;0;0;0;0;0;0;0;0;0;0
+351;431;"Discover a secret area - Previous instances count toward total";12;0;0;0;0;0;0;0;0;0;0;0;0
+352;433;"Finish an enemy - Normal (Linka Skeet)";5;0;0;0;0;0;0;850;0;0;0;0;0
+353;434;"Finish an enemy - Normal (Indoline Sentinel)";4;0;0;0;0;0;0;571;0;0;0;0;0
+354;435;"Use a Blade Art";3;0;0;0;0;0;0;0;0;0;0;0;0
+355;436;"Open Treasure troves";50;0;0;0;0;0;0;0;0;0;0;0;0
+356;437;"Open Treasure troves";200;0;0;0;0;0;0;0;0;0;0;0;0
+357;439;"Gather item from Collectibles list - Fish type";25;0;0;0;0;0;0;0;0;0;0;0;0
+358;440;"Gather item from Collectibles list - Fish type";30;0;0;0;0;0;0;0;0;0;0;0;0
+359;442;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+360;443;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+361;444;"Trust";3300;0;0;0;0;0;0;0;0;0;0;0;0
+362;445;"Trust";7800;0;0;0;0;0;0;0;0;0;0;0;0
+363;447;"Heal HP using Specials";40000;0;0;0;0;0;0;0;0;0;0;0;0
+364;448;"Use a move";11;0;0;0;0;0;0;0;0;446;0;0;0
+365;449;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+366;450;"Heal HP using Specials";400000;0;0;0;0;0;0;0;0;0;0;0;0
+367;452;"Finish an enemy - Normal (Moist Upa)";5;0;0;0;0;0;0;1011;0;0;0;0;0
+368;453;"Heal HP using Specials";80000;0;0;0;0;0;0;0;0;0;0;0;0
+369;454;"Use a move";9;0;0;0;0;0;0;0;0;451;0;0;0
+370;455;"Finish an enemy - Normal (Kustal Sovereign)";5;0;0;0;0;0;0;888;0;0;0;0;0
+371;457;"Use a move";5;0;0;0;0;0;0;0;0;456;0;0;0
+372;458;"Finish an enemy - Normal (Dusky Riik)";5;0;0;0;0;0;0;813;0;0;0;0;0
+373;459;"Heal HP using Specials";160000;0;0;0;0;0;0;0;0;0;0;0;0
+374;460;"Use a move";8;0;0;0;0;0;0;0;0;456;0;0;0
+375;461;"Raise Affinity in combat";3;0;0;0;0;0;0;0;0;0;0;0;0
+376;462;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+377;463;"Heart-to-heart (Tending to Turters)";1;0;0;0;0;0;0;0;0;0;0;0;0
+378;464;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+379;465;"Sell items and earn money";400000;0;0;0;0;0;0;0;0;0;0;0;0
+380;467;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+381;468;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+382;469;"Heart-to-heart (Little Rex)";1;0;0;0;0;0;0;0;0;0;0;0;0
+383;470;"Fall from a high place";250;0;0;0;0;0;0;0;0;0;0;0;0
+384;471;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+385;472;"Chain attack";2;0;0;0;0;0;0;0;0;0;0;0;0
+386;473;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+387;474;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+388;475;"Acquire money";600000;0;0;0;0;0;0;0;0;0;0;0;0
+389;477;"Use pouch item (Nia's fav - Seafood)";4;0;0;0;0;0;0;0;0;0;0;0;0
+390;478;"Use pouch item (Nia's fav - Vegetable)";4;0;0;0;0;0;0;0;0;0;0;0;0
+391;480;"Gather item from Collectibles list - Tree type";25;0;0;0;0;0;0;0;0;0;0;0;0
+392;481;"Gather item from Collectibles list - Tree type";30;0;0;0;0;0;0;0;0;0;0;0;0
+393;483;"Engage in combat - alongside Pyra or Mythra";10;0;0;0;0;0;0;0;0;0;0;0;0
+394;484;"Engage in combat - alongside Pyra or Mythra";15;0;0;0;0;0;0;0;0;0;0;0;0
+395;486;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+396;487;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+397;488;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+398;489;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+399;491;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+400;492;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+401;493;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+402;494;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+403;496;"Finish an enemy - Normal (Fresh Rodonya)";6;0;0;0;0;0;0;819;0;0;0;0;0
+404;497;"Use a move";8;0;0;0;0;0;0;0;0;495;0;0;0
+405;498;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+406;499;"Use a move";10;0;0;0;0;0;0;0;0;495;0;0;0
+407;501;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+408;502;"Use a move";6;0;0;0;0;0;0;0;0;500;0;0;0
+409;503;"Finish an enemy - Normal (Heidl Taos)";4;0;0;0;0;0;0;938;0;0;0;0;0
+410;504;"Finish an enemy - Unique (Machine-Gun Julio)";1;0;0;0;0;0;0;40;0;0;0;0;0
+411;506;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+412;507;"Development Level - Mor Ardain";5;4;0;188;0;0;0;0;0;0;0;0;0
+413;508;"Heart-to-heart (At the Seat of Power)";1;0;0;0;0;0;0;0;0;0;0;0;0
+414;509;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+415;511;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+416;512;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+417;513;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+418;514;"Evade an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+419;515;"Block an attack";2;0;0;0;0;0;0;0;0;0;0;0;0
+420;516;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+421;517;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+422;518;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+423;519;"Block an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+424;521;"Finish an enemy - Normal (Moist Upa)";5;0;0;0;0;0;0;1011;0;0;0;0;0
+425;522;"Finish an enemy - Normal (Bagoan Sovereign)";5;0;0;0;0;0;0;876;0;0;0;0;0
+426;523;"Gather item from Collectibles list - Insect type";20;0;0;0;0;0;0;0;0;0;0;0;0
+427;524;"Gather item from Collectibles list - Insect type";25;0;0;0;0;0;0;0;0;0;0;0;0
+428;525;"Gather item from Collectibles list - Insect type";30;0;0;0;0;0;0;0;0;0;0;0;0
+429;527;"Use pouch item (Aegaeon's fav - Staple Foods)";4;0;0;0;0;0;0;0;0;0;0;0;0
+430;528;"Use pouch item (Aegaeon's fav - Art)";2;0;0;0;0;0;0;0;0;0;0;0;0
+431;530;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+432;531;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+433;532;"Merc Mission (Allies of Justice 6)";1;0;0;0;0;0;0;0;0;0;0;0;0
+434;533;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+435;535;"Finish an enemy - Normal (Volff)";6;0;0;0;0;0;0;0;90;0;0;0;0
+436;536;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+437;537;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+438;538;"Finish an enemy - Unique (Glamorous Alfred)";1;0;0;0;0;0;0;58;0;0;0;0;0
+439;540;"Use a move";7;0;0;0;0;0;0;0;0;539;0;0;0
+440;541;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+441;542;"Use a move";9;0;0;0;0;0;0;0;0;539;0;0;0
+442;543;"Use a move";10;0;0;0;0;0;0;0;0;539;0;0;0
+443;545;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+444;546;"Use pouch item (Godfrey's fav - Meat type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+445;547;"Talk with Godfrey in Uraya";1;0;0;0;0;0;0;0;0;0;0;0;0
+446;548;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+447;550;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+448;551;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+449;552;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+450;553;"Block an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+451;555;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+452;556;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+453;557;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+454;558;"Heart-to-heart (Servant of Justice)";1;0;0;0;0;0;0;0;0;0;0;0;0
+455;559;"Deal a certain amount of total damage";200;0;0;0;0;0;0;0;0;0;0;0;0
+456;560;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+457;561;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+458;562;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+459;563;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+460;565;"Merc Mission (Allies of Justice 1)";1;0;0;0;0;0;0;0;0;0;0;0;0
+461;566;"Merc Mission (Allies of Justice 2)";1;0;0;0;0;0;0;0;0;0;0;0;0
+462;568;"Merc Mission (Allies of Justice 3)";1;0;0;0;0;0;0;0;0;0;0;0;0
+463;569;"Merc Mission (Allies of Justice 4)";1;0;0;0;0;0;0;0;0;0;0;0;0
+464;571;"Merc Mission (Allies of Justice 5)";1;0;0;0;0;0;0;0;0;0;0;0;0
+465;572;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+466;574;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+467;575;"Heart-to-heart (The Kindness of Blades)";1;0;0;0;0;0;0;0;0;0;0;0;0
+468;576;"Side-quest (Tender-Hearted Beast)";1;0;0;0;0;0;0;0;0;0;0;0;0
+469;577;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+470;579;"Finish an enemy - Unique (Supercharged Alfonso)";1;0;0;0;0;0;0;434;0;0;0;0;0
+471;580;"Finish an enemy - Unique (Any in Leftheria)";2;0;0;0;0;0;0;0;0;0;0;0;0
+472;581;"Finish an enemy - Unique (Any in Cliffs of Morytha)";2;0;0;0;0;0;0;0;0;0;0;0;0
+473;582;"Finish an enemy - Unique (Any in Land of Morytha)";2;0;0;0;0;0;0;0;0;0;0;0;0
+474;584;"Finish an enemy - Normal (Poison Brog)";4;0;0;0;0;0;0;235;0;0;0;0;0
+475;585;"Finish an enemy - Normal (Nyol Flamii)";5;0;0;0;0;0;0;424;0;0;0;0;0
+476;586;"Finish an enemy - Normal (Mabluk Aspar)";4;0;0;0;0;0;0;129;0;0;0;0;0
+477;587;"Finish an enemy - Any";40;0;0;0;0;0;0;0;0;0;0;0;0
+478;589;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+479;590;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+480;591;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+481;592;"Finish with a blade combo";3;0;0;0;0;0;0;0;0;0;0;0;0
+482;593;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+483;594;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+484;595;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+485;596;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+486;597;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+487;599;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+488;600;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+489;601;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+490;602;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+491;604;"Deal a critical hit";5;0;0;0;0;0;0;0;0;0;0;0;0
+492;605;"Deal a critical hit";7;0;0;0;0;0;0;0;0;0;0;0;0
+493;606;"Deal a critical hit";8;0;0;0;0;0;0;0;0;0;0;0;0
+494;607;"Deal a critical hit";10;0;0;0;0;0;0;0;0;0;0;0;0
+495;609;"Use pouch item (Wulfric's fav - Staple Foods type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+496;610;"Merc Mission - (Any)";2;0;0;0;0;0;0;0;0;0;0;0;0
+497;611;"Use pouch item (Wulfric's fav - seafood type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+498;612;"Speak to an Ardanian";20;0;0;0;0;0;0;0;0;0;0;0;0
+499;614;"Finish an enemy - Normal (Bobbile Brog)";4;0;0;0;0;0;0;229;0;0;0;0;0
+500;615;"Speak to a Gromotti";10;0;0;0;0;0;0;0;0;0;0;0;0
+501;616;"Merc Mission - (Any)";4;0;0;0;0;0;0;0;0;0;0;0;0
+502;617;"Finish an enemy - Normal (Goldol Anlood)";4;0;0;0;0;0;0;29;0;0;0;0;0
+503;619;"Use pouch item (Wulfric's fav - Literature type)";2;0;0;0;0;0;0;0;0;0;0;0;0
+504;620;"Use pouch item (Wulfric's fav - Board Games type)";2;0;0;0;0;0;0;0;0;0;0;0;0
+505;621;"Speak to a Tantalese person";15;0;0;0;0;0;0;0;0;0;0;0;0
+506;622;"Merc Mission - (Any)";6;0;0;0;0;0;0;0;0;0;0;0;0
+507;624;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+508;625;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+509;626;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+510;627;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+511;629;"Use pouch item (Perceval's fav - Drinks type)";5;0;0;0;0;0;0;0;0;0;0;0;0
+512;630;"Side-quest (Failure and Success)";1;0;0;0;0;0;0;0;0;0;0;0;0
+513;631;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+514;632;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+515;634;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+516;635;"Finish an enemy - Normal (Zeld Rodonya)";5;0;0;0;0;0;0;822;0;0;0;0;0
+517;636;"Use a move";9;0;0;0;0;0;0;0;0;633;0;0;0
+518;637;"Finish an enemy - Unique (Evileye Mambor)";1;0;0;0;0;0;0;133;0;0;0;0;0
+519;639;"Finish an enemy - Normal (Water Hiln)";5;0;0;0;0;0;0;515;0;0;0;0;0
+520;640;"Use a move";6;0;0;0;0;0;0;0;0;638;0;0;0
+521;641;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+522;642;"Heart-to-heart (Poetic License)";1;0;0;0;0;0;0;0;0;0;0;0;0
+523;644;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
+524;645;"Finish an enemy - Any";20;0;0;0;0;0;0;0;0;0;0;0;0
+525;646;"Finish an enemy - Any";30;0;0;0;0;0;0;0;0;0;0;0;0
+526;647;"Finish an enemy - Any";40;0;0;0;0;0;0;0;0;0;0;0;0
+527;649;"Collect an HP Potion";10;0;0;0;0;0;0;0;0;0;0;0;0
+528;650;"Collect an HP Potion";15;0;0;0;0;0;0;0;0;0;0;0;0
+529;651;"Collect an HP Potion";20;0;0;0;0;0;0;0;0;0;0;0;0
+530;652;"Collect an HP Potion";30;0;0;0;0;0;0;0;0;0;0;0;0
+531;653;"Finish an enemy - Any";5;0;0;0;0;0;0;0;0;0;0;0;0
+532;654;"Finish an enemy - Normal (Igna)";6;0;0;0;0;0;0;0;44;0;0;0;0
+533;655;"Finish an enemy - Normal (Igna)";6;0;0;0;0;0;0;0;44;0;0;0;0
+534;656;"Finish an enemy - Normal (Tirkin)";4;0;0;0;0;0;0;0;85;0;0;0;0
+535;657;"Finish an enemy - Normal (Indoline Loyalist)";5;0;0;0;0;0;0;570;0;0;0;0;0
+536;659;"Finish an enemy - Normal (Fabel Bufa)";4;0;0;0;0;0;0;242;0;0;0;0;0
+537;660;"Finish an enemy - Normal (Phoebus Sovereign)";5;0;0;0;0;0;0;891;0;0;0;0;0
+538;661;"Use pouch item (Perceval's fav - Drinks type)";2;0;0;0;0;0;0;0;0;0;0;0;0
+539;662;"Use pouch item (Perceval's fav - Instruments type)";2;0;0;0;0;0;0;0;0;0;0;0;0
+540;663;"Use pouch item (Perceval's fav - Art type)";2;0;0;0;0;0;0;0;0;0;0;0;0
+541;665;"Go to location - Nopon Pioneers' Spring";1;0;0;223;0;0;0;0;0;0;0;0;0
+542;666;"Go to location - Lost Capital Judicium";1;0;0;288;0;0;0;0;0;0;0;0;0
+543;668;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+544;669;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+545;670;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+546;671;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+547;673;"Use a move";10;0;0;0;0;0;0;0;0;672;0;0;0
+548;674;"Finish an enemy - Normal (Spanner Bunnit)";5;0;0;0;0;0;0;257;0;0;0;0;0
+549;675;"Use a move";12;0;0;0;0;0;0;0;0;672;0;0;0
+550;676;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+551;678;"Finish an enemy - Normal (Flanck Lysaat)";5;0;0;0;0;0;0;664;0;0;0;0;0
+552;679;"Use a move";8;0;0;0;0;0;0;0;0;677;0;0;0
+553;680;"Finish an enemy - Normal (Riveral Ansel)";5;0;0;0;0;0;0;636;0;0;0;0;0
+554;681;"Use a move";10;0;0;0;0;0;0;0;0;677;0;0;0
+555;683;"Use a move";5;0;0;0;0;0;0;0;0;682;0;0;0
+556;684;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+557;685;"Use a move";7;0;0;0;0;0;0;0;0;682;0;0;0
+558;686;"Side-quest (The Ties that Bind)";1;0;0;0;0;0;0;0;0;0;0;0;0
+559;688;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+560;689;"Finish an enemy - Normal (Armor Scorpox)";4;0;0;0;0;0;0;836;0;0;0;0;0
+561;690;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+562;691;"Finish an enemy - Normal (Phoebus Sovereign)";5;0;0;0;0;0;0;891;0;0;0;0;0
+563;692;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+564;693;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+565;694;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+566;695;"Finish an enemy - Normal (Margot Sovereign)";4;0;0;0;0;0;0;889;0;0;0;0;0
+567;696;"Finish an enemy - Normal (Gerolf Sovereign)";4;0;0;0;0;0;0;885;0;0;0;0;0
+568;698;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
+569;699;"Finish an enemy - Any";20;0;0;0;0;0;0;0;0;0;0;0;0
+570;700;"Finish an enemy - Any";30;0;0;0;0;0;0;0;0;0;0;0;0
+571;701;"Finish an enemy - Any";40;0;0;0;0;0;0;0;0;0;0;0;0
+572;703;"Heart-to-heart (Vale's Weakness)";1;0;0;0;0;0;0;0;0;0;0;0;0
+573;704;"Finish an enemy - Normal (Phoebus Sovereign)";5;0;0;0;0;0;0;891;0;0;0;0;0
+574;705;"Talk to old lady at Future Crafts in Fonsett Village";1;0;0;370;0;0;0;0;0;0;0;0;0
+575;706;"Make fabric (Previous instances count towards total)";10;0;0;370;0;0;0;0;0;0;0;0;0
+576;707;"Make fabric (Previous instances count towards total)";50;0;0;370;0;0;0;0;0;0;0;0;0
+577;709;"Speak to women";30;0;0;0;0;0;0;0;0;0;0;0;0
+578;710;"Speak to women";50;0;0;0;0;0;0;0;0;0;0;0;0
+579;712;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+580;713;"Get some ore at the quarry in Uraya";1;0;0;174;0;0;0;0;0;0;0;0;0
+581;714;"Mine in every area";8;0;0;0;0;0;0;0;0;0;0;0;0
+582;715;"Side-quest (Precious Yearnings)";1;0;0;0;0;0;0;0;0;0;0;0;0
+583;717;"Use a move";10;0;0;0;0;0;0;0;0;716;0;0;0
+584;718;"Finish an enemy - Normal (Brazay Rhana)";4;0;0;0;0;0;0;231;0;0;0;0;0
+585;719;"Use a move";12;0;0;0;0;0;0;0;0;716;0;0;0
+586;720;"Finish an enemy - Unique (Rapturous Scandia)";1;0;0;0;0;0;0;945;0;0;0;0;0
+587;722;"Use a move";7;0;0;0;0;0;0;0;0;721;0;0;0
+588;723;"Finish an enemy - Normal (Arachno)";5;0;0;0;0;0;0;0;6;0;0;0;0
+589;724;"Finish an enemy - Normal (Seveeto Laia)";4;0;0;0;0;0;0;621;0;0;0;0;0
+590;725;"Finish an enemy - Unique (Holy Lancer Efrain)";1;0;0;0;0;0;0;687;0;0;0;0;0
+591;727;"Finish an enemy - Normal (Crawler Caterpille)";4;0;0;0;0;0;0;265;0;0;0;0;0
+592;728;"Use a move";6;0;0;0;0;0;0;0;0;726;0;0;0
+593;729;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+594;730;"Finish an enemy - Unique (Glamorous Alfred)";1;0;0;0;0;0;0;58;0;0;0;0;0
+595;731;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+596;732;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+597;733;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+598;734;"Chain attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+599;735;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+600;737;"Chain attack";2;0;0;0;0;0;0;0;0;0;0;0;0
+601;738;"Chain attack";4;0;0;0;0;0;0;0;0;0;0;0;0
+602;739;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+603;740;"Chain attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+604;742;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+605;743;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+606;744;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+607;745;"Driver combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+608;746;"Listen to what Agate wants do to at the inn in Uraya";1;0;0;0;0;0;0;0;0;0;0;0;0
+609;747;"Obtain ore and get it appraised at a jeweler";4;0;0;0;0;0;0;0;0;0;0;0;0
+610;748;"Obtain ore and get it appraised at a jeweler";8;0;0;0;0;0;0;0;0;0;0;0;0
+611;750;"Collect ore";25;0;0;0;0;0;0;0;0;0;0;0;0
+612;751;"Collect ore";27;0;0;0;0;0;0;0;0;0;0;0;0
+613;753;"Collect stuff";7;0;0;0;0;0;0;0;0;0;0;0;0
+614;754;"Heart-to-heart (Impassioned Thoughts)";1;0;0;0;0;0;0;0;0;0;0;0;0
+615;756;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+616;757;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+617;758;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+618;759;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+619;761;"Use a move";10;0;0;0;0;0;0;0;0;760;0;0;0
+620;762;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+621;763;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+622;764;"Use a move";13;0;0;0;0;0;0;0;0;760;0;0;0
+623;766;"Use a move";7;0;0;0;0;0;0;0;0;765;0;0;0
+624;767;"Finish an enemy - Normal (Biban Flamii)";5;0;0;0;0;0;0;420;0;0;0;0;0
+625;768;"Chain attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+626;769;"Finish an enemy - Unique (Ravenwing Skull)";1;0;0;0;0;0;0;10;0;0;0;0;0
+627;771;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+628;772;"Use a move";6;0;0;0;0;0;0;0;0;770;0;0;0
+629;773;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+630;774;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+631;775;"Help an incapacitated ally";3;0;0;0;0;0;0;0;0;0;0;0;0
+632;776;"Help an incapacitated ally";2;0;0;0;0;0;0;0;0;0;0;0;0
+633;777;"Get a Blade as an ally";15;0;0;0;0;0;0;0;0;0;0;0;0
+634;778;"Help an incapacitated ally";5;0;0;0;0;0;0;0;0;0;0;0;0
+635;779;"Get a Blade as an ally";30;0;0;0;0;0;0;0;0;0;0;0;0
+636;781;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+637;782;"Use pouch item (Gorg's fav - Literature)";2;0;0;0;0;0;0;0;0;0;0;0;0
+638;783;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+639;784;"Block an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+640;786;"Finish an enemy - Normal (Mordow Blant)";4;0;0;0;0;0;0;2;0;0;0;0;0
+641;787;"Finish an enemy - Normal (Aubam Medooz)";5;0;0;0;0;0;0;689;0;0;0;0;0
+642;788;"Finish an enemy - Normal (Eanl Blant)";4;0;0;0;0;0;0;4;0;0;0;0;0
+643;789;"Finish an enemy - Normal (Spirit Lexos)";4;0;0;0;0;0;0;638;0;0;0;0;0
+644;790;"Collect owner bonuses";1;0;0;0;0;0;0;0;0;0;0;0;0
+645;791;"Collect owner bonuses";3;0;0;0;0;0;0;0;0;0;0;0;0
+646;792;"Collect owner bonuses";5;0;0;0;0;0;0;0;0;0;0;0;0
+647;794;"Heart-to-heart (Sweet Strategy)";1;0;0;0;0;0;0;0;0;0;0;0;0
+648;795;"Merc Mission - (Any)";4;0;0;0;0;0;0;0;0;0;0;0;0
+649;796;"Side-quest (Follow Your Passion)";1;0;0;0;0;0;0;0;0;0;0;0;0
+650;797;"Make desserts (Previous instances count towards total)";10;0;0;0;0;0;0;0;0;0;0;0;0
+651;798;"Make desserts (Previous instances count towards total)";50;0;0;0;0;0;0;0;0;0;0;0;0
+652;800;"Go to Goldmouth Warehouse in Argentum and fill the food stash with cooked food";100;0;0;15;0;0;0;0;0;0;0;0;0
+653;801;"Go to Goldmouth Warehouse in Argentum and fill the food stash with desserts";100;0;0;15;0;0;0;0;0;0;0;0;0
+654;802;"Go to Goldmouth Warehouse in Argentum and fill the food stash with plant-based food";100;0;0;15;0;0;0;0;0;0;0;0;0
+655;803;"Go to Goldmouth Warehouse in Argentum and fill the food stash with interesting drinks";100;0;0;15;0;0;0;0;0;0;0;0;0
+656;805;"Use pouch item (Staple Foods type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+657;806;"Use pouch item (Staple Foods type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+658;807;"Use pouch item (Staple Foods type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+659;808;"Use pouch item (Staple Foods type)";5;0;0;0;0;0;0;0;0;0;0;0;0
+660;810;"Use pouch item (Seafood type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+661;811;"Use pouch item (Seafood type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+662;812;"Use pouch item (Seafood type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+663;813;"Use pouch item (Seafood type)";5;0;0;0;0;0;0;0;0;0;0;0;0
+664;815;"Use pouch item (Sweets type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+665;816;"Use pouch item (Sweets type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+666;817;"Use pouch item (Sweets type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+667;818;"Use pouch item (Sweets type)";5;0;0;0;0;0;0;0;0;0;0;0;0
+668;819;"Use pouch item (Drinks type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+669;820;"Use pouch item (Drinks type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+670;821;"Use pouch item (Drinks type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+671;822;"Use pouch item (Drinks type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+672;823;"Use pouch item (Drinks type)";5;0;0;0;0;0;0;0;0;0;0;0;0
+673;825;"Use pouch item (Vegetables type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+674;826;"Use pouch item (Vegetables type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+675;827;"Use pouch item (Vegetables type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+676;828;"Use pouch item (Vegetables type)";5;0;0;0;0;0;0;0;0;0;0;0;0
+677;830;"Use pouch item (Meat type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+678;831;"Use pouch item (Meat type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+679;832;"Use pouch item (Meat type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+680;833;"Use pouch item (Meat type)";5;0;0;0;0;0;0;0;0;0;0;0;0
+681;835;"Speak to a Nopon";50;0;0;0;0;0;0;0;0;0;0;0;0
+682;836;"Side-quest (Hero of the Nopon)";1;0;0;0;0;0;0;0;0;0;0;0;0
+683;838;"Heart-to-heart (Boreas the Gourmand)";1;0;0;0;0;0;0;0;0;0;0;0;0
+684;839;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+685;841;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+686;842;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+687;844;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+688;845;"Trust";800;0;0;0;0;0;0;0;0;0;0;0;0
+689;846;"Heart-to-heart (Blue Blood)";1;0;0;0;0;0;0;0;0;0;0;0;0
+690;847;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+691;849;"Use a move";20;0;0;0;0;0;0;0;0;848;0;0;0
+692;850;"Driver combo";15;0;0;0;0;0;0;0;0;0;0;0;0
+693;851;"Finish an enemy - Normal (Hool Arachno)";5;0;0;0;0;0;0;47;0;0;0;0;0
+694;852;"Use a move";26;0;0;0;0;0;0;0;0;848;0;0;0
+695;854;"Finish an enemy - Normal (Prom Piranhax)";5;0;0;0;0;0;0;760;0;0;0;0;0
+696;855;"Finish an enemy - Insect (eg. Mayn Elucas)";5;0;0;0;0;0;0;412;0;0;0;0;0
+697;856;"Use a move";19;0;0;0;0;0;0;0;0;853;0;0;0
+698;857;"Finish an enemy - Insect (eg. Sinon Scorpox)";0;0;0;0;0;0;0;838;0;0;0;0;0
+699;859;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+700;860;"Use a move";12;0;0;0;0;0;0;0;0;858;0;0;0
+701;861;"Finish an enemy - Insect (eg. Hool Arachnos)";5;0;0;0;0;0;0;43;0;0;0;0;0
+702;862;"Use a move";16;0;0;0;0;0;0;0;0;858;0;0;0
+703;863;"Raise Affinity in combat";3;0;0;0;0;0;0;0;0;0;0;0;0
+704;864;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+705;865;"Raise Affinity in combat";10;0;0;0;0;0;0;0;0;0;0;0;0
+706;866;"Raise Affinity in combat";12;0;0;0;0;0;0;0;0;0;0;0;0
+707;867;"Raise Affinity in combat";15;0;0;0;0;0;0;0;0;0;0;0;0
+708;869;"Gather item from Collectibles list - Insects type (Currently held items count toward total)";20;0;0;0;0;0;0;0;0;0;0;0;0
+709;870;"Gather item from Collectibles list - Insects type (Currently held items count toward total)";30;0;0;0;0;0;0;0;0;0;0;0;0
+710;871;"Gather item from Collectibles list - Insects type (Currently held items count toward total)";40;0;0;0;0;0;0;0;0;0;0;0;0
+711;872;"Gather item from Collectibles list - Insects type (Currently held items count toward total)";50;0;0;0;0;0;0;0;0;0;0;0;0
+712;874;"Acquire money";60000;0;0;0;0;0;0;0;0;0;0;0;0
+713;875;"Acquire money";120000;0;0;0;0;0;0;0;0;0;0;0;0
+714;876;"Acquire money";180000;0;0;0;0;0;0;0;0;0;0;0;0
+715;877;"Acquire money";240000;0;0;0;0;0;0;0;0;0;0;0;0
+716;879;"Gather pouch items - Dagas' fav Art type (Currently held items count towards the required total)";10;0;0;0;0;0;0;0;0;0;0;0;0
+717;880;"Gather pouch items - Dagas' fav Art type (Currently held items count towards the required total)";15;0;0;0;0;0;0;0;0;0;0;0;0
+718;881;"Gather pouch items - Dagas' fav Art type (Currently held items count towards the required total)";30;0;0;0;0;0;0;0;0;0;0;0;0
+719;882;"Side-quest (Lost Kingdom)";1;0;0;0;0;0;0;0;0;0;0;0;0
+720;884;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+721;885;"Trust";1100;0;0;0;0;0;0;0;0;0;0;0;0
+722;886;"Trust";3300;0;0;0;0;0;0;0;0;0;0;0;0
+723;887;"Trust";7800;0;0;0;0;0;0;0;0;0;0;0;0
+724;889;"Use a move";10;0;0;0;0;0;0;0;0;888;0;0;0
+725;890;"Use a move";11;0;0;0;0;0;0;0;0;888;0;0;0
+726;891;"Use a move";12;0;0;0;0;0;0;0;0;888;0;0;0
+727;892;"Use a move";13;0;0;0;0;0;0;0;0;888;0;0;0
+728;894;"Use a move";7;0;0;0;0;0;0;0;0;893;0;0;0
+729;895;"Use a move";8;0;0;0;0;0;0;0;0;893;0;0;0
+730;896;"Use a move";9;0;0;0;0;0;0;0;0;893;0;0;0
+731;897;"Use a move";10;0;0;0;0;0;0;0;0;893;0;0;0
+732;899;"Use a move";5;0;0;0;0;0;0;0;0;898;0;0;0
+733;900;"Use a move";6;0;0;0;0;0;0;0;0;898;0;0;0
+734;901;"Use a move";7;0;0;0;0;0;0;0;0;898;0;0;0
+735;902;"Use a move";8;0;0;0;0;0;0;0;0;898;0;0;0
+736;904;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+737;905;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+738;906;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+739;907;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+740;909;"Gather item from Collectibles list - Insect type (Currently held items count toward total)";60;0;0;0;0;0;0;0;0;0;0;0;0
+741;910;"Gather item from Collectibles list - Insect type (Currently held items count toward total)";70;0;0;0;0;0;0;0;0;0;0;0;0
+742;911;"Gather item from Collectibles list - Insect type (Currently held items count toward total)";80;0;0;0;0;0;0;0;0;0;0;0;0
+743;912;"Gather item from Collectibles list - Insect type (Currently held items count toward total)";100;0;0;0;0;0;0;0;0;0;0;0;0
+744;914;"Help an incapacitated ally";5;0;0;0;0;0;0;0;0;0;0;0;0
+745;915;"Finish an enemy - Any";20;0;0;0;0;0;0;0;0;0;0;0;0
+746;916;"Help an incapacitated ally";10;0;0;0;0;0;0;0;0;0;0;0;0
+747;917;"Finish an enemy - Any";40;0;0;0;0;0;0;0;0;0;0;0;0
+748;919;"Use pouch item (Dagas' fav - Seafood type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+749;920;"Gather item through salvaging - Treasure type";10;0;0;0;0;0;0;0;0;0;0;0;0
+750;922;"Collect ore";25;0;0;0;0;0;0;0;0;0;0;0;0
+751;923;"Collect ore";30;0;0;0;0;0;0;0;0;0;0;0;0
+752;925;"Gather item from Collectibles list - Mechanical type";25;0;0;0;0;0;0;0;0;0;0;0;0
+753;926;"Gather item through salvaging - Treasure type";7;0;0;0;0;0;0;0;0;0;0;0;0
+754;928;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+755;929;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+756;930;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+757;931;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+758;933;"Finish an enemy - Normal (Bunnit - Leftheria)";6;0;0;0;0;0;0;0;22;0;0;0;0
+759;934;"Finish an enemy - Normal (Magnl Caterpile)";5;0;0;0;0;0;0;268;0;0;0;0;0
+760;935;"Finish an enemy - Normal (Dirid Ansel)";5;0;0;0;0;0;0;35;0;0;0;0;0
+761;936;"Finish an enemy - Unique (Vampire Bride Marion)";1;0;0;0;0;0;0;730;0;0;0;0;0
+762;938;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+763;939;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+764;940;"Use a move";9;0;0;0;0;0;0;0;0;937;0;0;0
+765;941;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+766;943;"Use a move";5;0;0;0;0;0;0;0;0;942;0;0;0
+767;944;"Finish an enemy - Normal (Bunnit - Tantal)";6;0;0;0;0;0;0;0;22;0;0;0;0
+768;945;"Finish an enemy - Normal (Vashar Caterpile)";5;0;0;0;0;0;0;269;0;0;0;0;0
+769;946;"Use a move";8;0;0;0;0;0;0;0;0;942;0;0;0
+770;948;"Chain attack";2;0;0;0;0;0;0;0;0;0;0;0;0
+771;949;"Use pouch item (Kasandra's fav - Art category)";2;0;0;0;0;0;0;0;0;0;0;0;0
+772;950;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+773;951;"Chain attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+774;953;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+775;954;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+776;955;"Heart-to-heart (Forward-Looking Woman)";1;0;0;0;0;0;0;0;0;0;0;0;0
+777;956;"Go to location - View of a Lost Time";1;0;0;0;0;0;0;0;0;0;0;0;0
+778;957;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+779;958;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+780;959;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+781;960;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+782;961;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+783;963;"Use pouch item (Kasandra's fav - Staple Foods)";4;0;0;0;0;0;0;0;0;0;0;0;0
+784;964;"Speak to a Nopon";40;0;0;0;0;0;0;0;0;0;0;0;0
+785;966;"Gather item from Collectibles list - Vegetable type";25;0;0;0;0;0;0;0;0;0;0;0;0
+786;967;"Gather item from Collectibles list - Vegetable type";30;0;0;0;0;0;0;0;0;0;0;0;0
+787;969;"Get hit by a critical attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+788;970;"Side-quest (Our Daily Bread)";1;0;0;0;0;0;0;0;0;0;0;0;0
+789;972;"Trust";50;0;0;0;0;0;0;0;0;0;0;0;0
+790;973;"Trust";500;0;0;0;0;0;0;0;0;0;0;0;0
+791;974;"Trust";1500;0;0;0;0;0;0;0;0;0;0;0;0
+792;975;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+793;977;"Finish an enemy - Insect (eg. Mayn Elucas - Leftheria)";5;0;0;0;0;0;0;412;0;0;0;0;0
+794;978;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+795;979;"Use a move";12;0;0;0;0;0;0;0;0;976;0;0;0
+796;980;"Finish an enemy - Unique (Soul-Eater Stanley)";1;0;0;0;0;0;0;498;0;0;0;0;0
+797;982;"Use a move";7;0;0;0;0;0;0;0;0;981;0;0;0
+798;983;"Finish an enemy - Insect (eg. Hool Arachnos - Tantal)";5;0;0;0;0;0;0;43;0;0;0;0;0
+799;984;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+800;985;"Side-quest (Theory and Praxis)";1;0;0;0;0;0;0;0;0;0;0;0;0
+801;987;"Finish an enemy - Normal (Genni Pagul)";5;0;0;0;0;0;0;708;0;0;0;0;0
+802;988;"Use a move";6;0;0;0;0;0;0;0;0;986;0;0;0
+803;989;"Side-quest (Blade-Sharp Memory)";1;0;0;0;0;0;0;0;0;0;0;0;0
+804;990;"Heart-to-heart (Rough Diamond)";1;0;0;0;0;0;0;0;0;0;0;0;0
+805;992;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+806;993;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+807;994;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+808;995;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+809;997;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+810;998;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+811;999;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+812;1000;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+813;1001;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+814;1002;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+815;1003;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+816;1004;"Use pouch item (Praxis's fav - Dessert)";4;0;0;0;0;0;0;0;0;0;0;0;0
+817;1005;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+818;1007;"Speak to women";20;0;0;0;0;0;0;0;0;0;0;0;0
+819;1008;"Speak to women";30;0;0;0;0;0;0;0;0;0;0;0;0
+820;1010;"Finish an enemy - Normal (Fresh Rodonya)";5;0;0;0;0;0;0;819;0;0;0;0;0
+821;1011;"Finish an enemy - Normal (Bagoan Sovereign)";5;0;0;0;0;0;0;876;0;0;0;0;0
+822;1013;"Gather item from Collectibles list - Mechanical type";20;0;0;0;0;0;0;0;0;0;0;0;0
+823;1014;"Gather item from Collectibles list - Mechanical type";25;0;0;0;0;0;0;0;0;0;0;0;0
+824;1016;"Trust";50;0;0;0;0;0;0;0;0;0;0;0;0
+825;1017;"Heart-to-heart (Rough Diamond)";1;0;0;0;0;0;0;0;0;0;0;0;0
+826;1018;"Heart-to-heart (Sisterly Love)";1;0;0;0;0;0;0;0;0;0;0;0;0
+827;1019;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+828;1021;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+829;1022;"Use a move";11;0;0;0;0;0;0;0;0;1020;0;0;0
+830;1023;"Finish an enemy - Normal (Indoline Star)";4;0;0;0;0;0;0;7;0;0;0;0;0
+831;1024;"Use a move";13;0;0;0;0;0;0;0;0;1020;0;0;0
+832;1026;"Finish an enemy - Normal (Gamen Grebel)";5;0;0;0;0;0;0;484;0;0;0;0;0
+833;1027;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+834;1028;"Use a move";9;0;0;0;0;0;0;0;0;1025;0;0;0
+835;1029;"Finish an enemy - Unique (Impassable Edgar)";1;0;0;0;0;0;0;453;0;0;0;0;0
+836;1031;"Use a move";5;0;0;0;0;0;0;0;0;1030;0;0;0
+837;1032;"Walk a lot";10000;0;0;0;0;0;0;0;0;0;0;0;0
+838;1033;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+839;1034;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+840;1036;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+841;1037;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+842;1038;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+843;1039;"Evade an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+844;1040;"Deal a certain amount of total damage";4000;0;0;0;0;0;0;0;0;0;0;0;0
+845;1041;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+846;1042;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+847;1043;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+848;1044;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+849;1045;"Use pouch item (Theory's fav - Board Games)";2;0;0;0;0;0;0;0;0;0;0;0;0
+850;1046;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+851;1047;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+852;1048;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+853;1049;"Block an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+854;1051;"Finish an enemy - Normal (Dusky Riik)";5;0;0;0;0;0;0;813;0;0;0;0;0
+855;1052;"Finish an enemy - Normal (Kustal Sovereign)";5;0;0;0;0;0;0;888;0;0;0;0;0
+856;1054;"Use pouch item (Theory's fav - Vegetables)";4;0;0;0;0;0;0;0;0;0;0;0;0
+857;1055;"Use pouch item (Theory's fav - Vegetables)";4;0;0;0;0;0;0;0;0;0;0;0;0
+858;1057;"Speak to a Nopon";30;0;0;0;0;0;0;0;0;0;0;0;0
+859;1058;"Use pouch item (Theory's fav - Board Games)";2;0;0;0;0;0;0;0;0;0;0;0;0
+860;1060;"Do a few small deeds";3;0;0;0;0;0;0;0;0;0;0;0;0
+861;1061;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+862;1062;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+863;1063;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+864;1065;"Finish an enemy - Normal (Karlin Skwaror)";5;0;0;0;0;0;0;859;0;0;0;0;0
+865;1066;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+866;1067;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+867;1068;"Finish an enemy - Unique (Runaway Train Bool)";1;0;0;0;0;0;0;454;0;0;0;0;0
+868;1070;"Use a move";7;0;0;0;0;0;0;0;0;1069;0;0;0
+869;1071;"Finish an enemy - Normal (Acenia Flier)";5;0;0;0;0;0;0;428;0;0;0;0;0
+870;1072;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+871;1073;"Use a move";10;0;0;0;0;0;0;0;0;1069;0;0;0
+872;1075;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+873;1076;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+874;1077;"Use a move";7;0;0;0;0;0;0;0;0;1074;0;0;0
+875;1078;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+876;1080;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+877;1081;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+878;1082;"Collect Heavy Round Shields - Currently held items count towards required total";2;0;0;0;0;0;0;0;0;0;0;0;0
+879;1083;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+880;1085;"Finish an enemy - Normal (Prom Piranhax)";5;0;0;0;0;0;0;760;0;0;0;0;0
+881;1086;"Use pouch item (Perun's fav - Seafood category)";4;0;0;0;0;0;0;0;0;0;0;0;0
+882;1087;"Finish an enemy - Normal (Lun Scorpox)";5;0;0;0;0;0;0;837;0;0;0;0;0
+883;1088;"Finish an enemy - Unique (Malicious Dimitri)";1;0;0;0;0;0;0;497;0;0;0;0;0
+884;1089;"Block an attack";3;0;0;0;0;0;0;0;0;0;0;0;0
+885;1090;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+886;1091;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+887;1092;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+888;1093;"Block an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+889;1095;"Finish an enemy - Normal (Selmo Grady)";5;0;0;0;0;0;0;479;0;0;0;0;0
+890;1096;"Finish an enemy - Normal (Bagoan Sovereign)";5;0;0;0;0;0;0;876;0;0;0;0;0
+891;1098;"Heart-to-heart (Indomitable Will)";1;0;0;0;0;0;0;0;0;0;0;0;0
+892;1099;"Go to location - Way of the Practitioner";1;0;0;0;0;0;0;0;0;0;0;0;0
+893;1101;"Use a move in a Merc Mission";5;0;0;0;0;0;0;0;0;0;0;0;0
+894;1102;"Side-quest (Eternal Spirit)";1;0;0;0;0;0;0;0;0;0;0;0;0
+895;1104;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+896;1105;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+897;1106;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+898;1107;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+899;1109;"Finish an enemy - Normal (Bunnit - Uraya)";6;0;0;0;0;0;0;0;22;0;0;0;0
+900;1110;"Use a move";11;0;0;0;0;0;0;0;0;1108;0;0;0
+901;1111;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+902;1112;"Side-quest (Girl Power-Off)";1;0;0;0;0;0;0;0;0;0;0;0;0
+903;1114;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+904;1115;"Finish an enemy - Normal (Uluran Grady)";5;0;0;0;0;0;0;480;0;0;0;0;0
+905;1116;"Use a move";9;0;0;0;0;0;0;0;0;1113;0;0;0
+906;1117;"Side-quest (Girl Power-Off)";1;0;0;0;0;0;0;0;0;0;0;0;0
+907;1119;"Use a move";5;0;0;0;0;0;0;0;0;1118;0;0;0
+908;1120;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+909;1121;"Finish an enemy - Normal (Mabluk Aspar)";4;0;0;0;0;0;0;129;0;0;0;0;0
+910;1122;"Side-quest (Girl Power-Off)";1;0;0;0;0;0;0;0;0;0;0;0;0
+911;1124;"Finish an enemy - Normal (Igna - Uraya)";6;0;0;0;0;0;0;0;44;0;0;0;0
+912;1125;"Finish an enemy - Normal (Tirkin - Leftheria)";6;0;0;0;0;0;0;0;85;0;0;0;0
+913;1126;"Finish an enemy - Normal (Lindwurm - Leftheria)";5;0;0;0;0;0;0;0;51;0;0;0;0
+914;1127;"Finish an enemy - Normal (Indoline Loyalist)";5;0;0;0;0;0;0;570;0;0;0;0;0
+915;1129;"Walk a lot";5000;0;0;0;0;0;0;0;0;0;0;0;0
+916;1130;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+917;1131;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+918;1132;"Driver combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+919;1133;"Collect an HP Potion";5;0;0;0;0;0;0;0;0;0;0;0;0
+920;1134;"Collect an HP Potion";10;0;0;0;0;0;0;0;0;0;0;0;0
+921;1135;"Collect an HP Potion";15;0;0;0;0;0;0;0;0;0;0;0;0
+922;1136;"Collect an HP Potion";20;0;0;0;0;0;0;0;0;0;0;0;0
+923;1137;"Collect an HP Potion";30;0;0;0;0;0;0;0;0;0;0;0;0
+924;1139;"Talk to people - Previous instances count toward total";50;0;0;0;0;0;0;0;0;0;0;0;0
+925;1140;"Talk to people - Previous instances count toward total";100;0;0;0;0;0;0;0;0;0;0;0;0
+926;1141;"Talk to people - Previous instances count toward total";150;0;0;0;0;0;0;0;0;0;0;0;0
+927;1142;"Talk to people - Previous instances count toward total";200;0;0;0;0;0;0;0;0;0;0;0;0
+928;1144;"Heart-to-heart (Girl Power)";1;0;0;0;0;0;0;0;0;0;0;0;0
+929;1145;"Finish an enemy - Normal (Linka Skeet)";5;0;0;0;0;0;0;850;0;0;0;0;0
+930;1147;"Collect stuff";7;0;0;0;0;0;0;0;0;0;0;0;0
+931;1148;"Collect stuff";10;0;0;0;0;0;0;0;0;0;0;0;0
+932;1150;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+933;1151;"Merc Mission (Surveillance)";1;0;0;0;0;0;0;0;0;0;0;0;0
+934;1151;"Side-quest (All's Fair)";1;0;0;0;0;0;0;0;0;0;0;0;0
+935;1152;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+936;1153;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+937;1155;"Use a move";10;0;0;0;0;0;0;0;0;1154;0;0;0
+938;1156;"Finish an enemy - Normal (Aybam Medooz)";5;0;0;0;0;0;0;689;0;0;0;0;0
+939;1157;"Finish an enemy - Flying (eg. Heidl Taos - Cliffs of Morytha)";10;0;0;0;0;0;0;938;0;0;0;0;0
+940;1158;"Finish an enemy - Unique (Perplexed Stoyan)";1;0;0;0;0;0;0;846;0;0;0;0;0
+941;1160;"Use a move";5;0;0;0;0;0;0;0;0;1159;0;0;0
+942;1161;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+943;1162;"Finish an enemy - Normal (Pactusk Brog)";4;0;0;0;0;0;0;234;0;0;0;0;0
+944;1163;"Finish an enemy - Unique (Parasite Aplacus)";1;0;0;0;0;0;0;729;0;0;0;0;0
+945;1165;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+946;1166;"Finish an enemy - Normal (Buma Hiln)";5;0;0;0;0;0;0;514;0;0;0;0;0
+947;1167;"Use a move";7;0;0;0;0;0;0;0;0;1164;0;0;0
+948;1168;"Finish an enemy - Normal (Riveral Ansel)";5;0;0;0;0;0;0;636;0;0;0;0;0
+949;1170;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+950;1171;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+951;1172;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+952;1173;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+953;1175;"Collect an HP Potion";10;0;0;0;0;0;0;0;0;0;0;0;0
+954;1176;"Collect an HP Potion";15;0;0;0;0;0;0;0;0;0;0;0;0
+955;1177;"Collect an HP Potion";20;0;0;0;0;0;0;0;0;0;0;0;0
+956;1178;"Collect an HP Potion";30;0;0;0;0;0;0;0;0;0;0;0;0
+957;1180;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+958;1181;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+959;1182;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+960;1183;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+961;1185;"Go to location - Raqura Aquagardens";1;0;0;0;0;0;0;0;0;0;0;0;0
+962;1186;"Heart-to-heart (A Love Too Deep)";1;0;0;0;0;0;0;0;0;0;0;0;0
+963;1187;"Gather item from Collectibles list - Flower type";5;0;0;0;0;0;0;0;0;0;0;0;0
+964;1188;"Gather item from Collectibles list - Flower type";25;0;0;0;0;0;0;0;0;0;0;0;0
+965;1189;"Gather item from Collectibles list - Flower type";27;0;0;0;0;0;0;0;0;0;0;0;0
+966;1191;"Use pouch item (Azami's fav - Cosmetics)";2;0;0;0;0;0;0;0;0;0;0;0;0
+967;1192;"Use pouch item (Azami's fav - Vegetables)";4;0;0;0;0;0;0;0;0;0;0;0;0
+968;1194;"Heart-to-heart (Not Quite Comfortable Yet)";1;0;0;0;0;0;0;0;0;0;0;0;0
+969;1194;"Side-quest (Bearing Her Soul)";1;0;0;0;0;0;0;0;0;0;0;0;0
+970;1195;"Take lessons in the Merc Missions, raise all levels to two or more, and hold a concert";2;0;0;0;0;0;0;0;0;0;0;0;0
+971;1196;"Take lessons in the Merc Missions, raise all levels to four or more, and hold a concert";4;0;0;0;0;0;0;0;0;0;0;0;0
+972;1197;"Take lessons in the Merc Missions, gain at least 5,000 fans, and succeed with your concert";5000;0;0;0;0;0;0;0;0;0;0;0;0
+973;1199;"Use a move";10;0;0;0;0;0;0;0;0;1198;0;0;0
+974;1200;"Finish an enemy - Normal (Genni Pagul)";5;0;0;0;0;0;0;708;0;0;0;0;0
+975;1201;"Finish an enemy - Normal (Rippl Medooz)";4;0;0;0;0;0;0;693;0;0;0;0;0
+976;1202;"Finish an enemy - Any";40;0;0;0;0;0;0;0;0;0;0;0;0
+977;1204;"Finish an enemy - Normal (Doryu Riik)";4;0;0;0;0;0;0;811;0;0;0;0;0
+978;1205;"Finish an enemy - Normal (Garnia Camill)";4;0;0;0;0;0;0;263;0;0;0;0;0
+979;1206;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+980;1207;"Use pouch item (Ursula's fav - Cosmetics)";2;0;0;0;0;0;0;0;0;0;0;0;0
+981;1209;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+982;1210;"Use a move";6;0;0;0;0;0;0;0;0;1208;0;0;0
+983;1211;"Finish an enemy - Normal (Moist Upa)";5;0;0;0;0;0;0;1011;0;0;0;0;0
+984;1212;"Finish an enemy - Normal (Kustal Sovereign)";5;0;0;0;0;0;0;888;0;0;0;0;0
+985;1214;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+986;1215;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+987;1216;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+988;1217;"Block an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+989;1219;"Collect an HP Potion";10;0;0;0;0;0;0;0;0;0;0;0;0
+990;1220;"Collect an HP Potion";15;0;0;0;0;0;0;0;0;0;0;0;0
+991;1221;"Collect an HP Potion";20;0;0;0;0;0;0;0;0;0;0;0;0
+992;1222;"Collect an HP Potion";30;0;0;0;0;0;0;0;0;0;0;0;0
+993;1224;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+994;1225;"Use pouch item (Ursula's fav - Desserts)";4;0;0;0;0;0;0;0;0;0;0;0;0
+995;1226;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+996;1227;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+997;1228;"Heart-to-heart (Not Quite Comfortable Yet)";1;0;0;0;0;0;0;0;0;0;0;0;0
+998;1229;"Use pouch items (Instrument)";1;0;0;0;0;0;0;0;0;0;0;0;0
+999;1230;"Use pouch items (Instrument)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1000;1231;"Use pouch items (Instrument)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1001;1232;"Use pouch items (Instrument)";6;0;0;0;0;0;0;0;0;0;0;0;0
+1002;1234;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1003;1235;"Gather item from Collectibles list - Fish type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1004;1237;"Go to location - Airborne Throne";1;0;0;0;0;0;0;0;0;0;0;0;0
+1005;1238;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1006;1240;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1007;1241;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1008;1242;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1009;1243;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1010;1245;"Use a move";10;0;0;0;0;0;0;0;0;1244;0;0;0
+1011;1246;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1012;1247;"Finish an enemy - Normal (Margot Sovereign)";4;0;0;0;0;0;0;889;0;0;0;0;0
+1013;1248;"Finish an enemy - Unique (Haywire Kustal)";1;0;0;0;0;0;0;902;0;0;0;0;0
+1014;1250;"Use a move";7;0;0;0;0;0;0;0;0;1249;0;0;0
+1015;1251;"Finish an enemy - Normal (Mayn Eluca)";5;0;0;0;0;0;0;412;0;0;0;0;0
+1016;1252;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1017;1253;"Finish an enemy - Unique (Rapturous Scandia)";1;0;0;0;0;0;0;945;0;0;0;0;0
+1018;1255;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1019;1256;"Use a move";6;0;0;0;0;0;0;0;0;1254;0;0;0
+1020;1257;"Finish an enemy - Normal (Spirit Lexos)";4;0;0;0;0;0;0;638;0;0;0;0;0
+1021;1258;"Use a move";8;0;0;0;0;0;0;0;0;1254;0;0;0
+1022;1260;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1023;1261;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1024;1262;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1025;1263;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+1026;1265;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1027;1266;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+1028;1267;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+1029;1268;"Block an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+1030;1269;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+1031;1270;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+1032;1271;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+1033;1272;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+1034;1273;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+1035;1275;"Side-quest (Newt Recruits)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1036;1276;"Use pouch item (Newt's fav - Meat)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1037;1277;"Gather item from Collectibles list - Mechanical type";5;0;0;0;0;0;0;0;0;0;0;0;0
+1038;1278;"Gather item through salvaging - Treasure type";7;0;0;0;0;0;0;0;0;0;0;0;0
+1039;1279;"Gather item from Collectibles list - Mechanical type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1040;1281;"Heart-to-heart (Mad About Titan Weapons)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1041;1282;"Gather item through salvaging - Treasure type";10;0;0;0;0;0;0;0;0;0;0;0;0
+1042;1284;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1043;1285;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1044;1286;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1045;1287;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1046;1289;"Use a move";10;0;0;0;0;0;0;0;0;1288;0;0;0
+1047;1290;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1048;1291;"Use a move";12;0;0;0;0;0;0;0;0;1288;0;0;0
+1049;1292;"Finish an enemy - Unique (Haywire Phoebus)";1;0;0;0;0;0;0;903;0;0;0;0;0
+1050;1294;"Use a move";7;0;0;0;0;0;0;0;0;1293;0;0;0
+1051;1295;"Finish an enemy - Normal (Lindwurm Sollmeyer)";4;0;0;0;0;0;0;647;0;0;0;0;0
+1052;1296;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1053;1297;"Use a move";10;0;0;0;0;0;0;0;0;1293;0;0;0
+1054;1299;"Use a move";5;0;0;0;0;0;0;0;0;1298;0;0;0
+1055;1300;"Finish an enemy - Normal (Uluran Grady)";5;0;0;0;0;0;0;480;0;0;0;0;0
+1056;1301;"Finish an enemy - Mechanical (eg. Dajan Sovereigns - Land of Morytha)";5;0;0;0;0;0;0;8;0;0;0;0;0
+1057;1302;"Finish an enemy - Unique (Peerless Beaufort)";1;0;0;0;0;0;0;286;0;0;0;0;0
+1058;1304;"Engage in combat";10;0;0;0;0;0;0;0;0;0;0;0;0
+1059;1305;"Use pouch item (Nim's fav - Seafood)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1060;1306;"Engage in combat";12;0;0;0;0;0;0;0;0;0;0;0;0
+1061;1307;"Engage in combat";12;0;0;0;0;0;0;0;0;0;0;0;0
+1062;1309;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1063;1310;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1064;1311;"Heart-to-heart (Nim-Speak)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1065;1312;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+1066;1313;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+1067;1314;"Finish an enemy - Normal (Mailoo Garaffa)";4;0;0;0;0;0;0;433;0;0;0;0;0
+1068;1315;"Finish an enemy - Normal (Olphen Jagron)";4;0;0;0;0;0;0;584;0;0;0;0;0
+1069;1316;"Finish an enemy - Animal (eg. Dusky Riik - Spirit Crusible Elpys)";32000;0;0;0;0;0;0;813;0;0;0;0;0
+1070;1317;"Finish an enemy - Normal (Riveral Ansel)";5;0;0;0;0;0;0;636;0;0;0;0;0
+1071;1319;"Finish an enemy - Normal (Vallum Ageshu)";5;0;0;0;0;0;0;9;0;0;0;0;0
+1072;1320;"Finish an enemy - Normal (Goldol Anlood)";4;0;0;0;0;0;0;29;0;0;0;0;0
+1073;1322;"Gather item from Collectibles list - Fish type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1074;1323;"Gather item from Collectibles list - Fish type";27;0;0;0;0;0;0;0;0;0;0;0;0
+1075;1325;"Start side-quest (A Phonex Tale)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1076;1326;"Side-quest (A Phonex Tale)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1077;1328;"Save 200,000G in piggy bank in Argentum";200000;0;0;0;0;0;0;0;0;0;0;0;0
+1078;1329;"Save 400,000G in piggy bank in Argentum";400000;0;0;0;0;0;0;0;0;0;0;0;0
+1079;1330;"Save 600,000G in piggy bank in Argentum";600000;0;0;0;0;0;0;0;0;0;0;0;0
+1080;1331;"Save 1,000,000G in piggy bank in Argentum";1000000;0;0;0;0;0;0;0;0;0;0;0;0
+1081;1333;"Engage in combat - alongside female Blade";5;0;0;0;0;0;0;0;0;0;0;0;0
+1082;1334;"Blade combo";4;0;0;0;0;0;0;0;0;0;0;0;0
+1083;1335;"Use a move";12;0;0;0;0;0;0;0;0;1332;0;0;0
+1084;1336;"Engage in combat - alongside female Blade";7;0;0;0;0;0;0;0;0;0;0;0;0
+1085;1338;"Use a move";7;0;0;0;0;0;0;0;0;1337;0;0;0
+1086;1339;"Engage in combat - alongside female Blade";6;0;0;0;0;0;0;0;0;0;0;0;0
+1087;1340;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1088;1341;"Use a move";10;0;0;0;0;0;0;0;0;1337;0;0;0
+1089;1343;"Finish an enemy - Normal (Brogen Feris)";5;0;0;0;0;0;0;415;0;0;0;0;0
+1090;1344;"Use a move";6;0;0;0;0;0;0;0;0;1342;0;0;0
+1091;1345;"Engage in combat - alongside female Blade";7;0;0;0;0;0;0;0;0;0;0;0;0
+1092;1346;"Side-quest (Fool's Gold)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1093;1347;"Spend money - Previous instances count toward total";750000;0;0;0;0;0;0;0;0;0;0;0;0
+1094;1348;"Spend money - Previous instances count toward total";1000000;0;0;0;0;0;0;0;0;0;0;0;0
+1095;1349;"Spend money - Previous instances count toward total";1500000;0;0;0;0;0;0;0;0;0;0;0;0
+1096;1350;"Spend money - Previous instances count toward total";2000000;0;0;0;0;0;0;0;0;0;0;0;0
+1097;1351;"Spend money - Previous instances count toward total";2500000;0;0;0;0;0;0;0;0;0;0;0;0
+1098;1353;"Sell items - Previous instances count toward total";40000;0;0;0;0;0;0;0;0;0;0;0;0
+1099;1354;"Sell items - Previous instances count toward total";120000;0;0;0;0;0;0;0;0;0;0;0;0
+1100;1355;"Sell items - Previous instances count toward total";240000;0;0;0;0;0;0;0;0;0;0;0;0
+1101;1356;"Sell items - Previous instances count toward total";400000;0;0;0;0;0;0;0;0;0;0;0;0
+1102;1358;"Gather pouch items - (Gormotti Honeytea) Currently held items count towards the required total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1103;1359;"Gather pouch items - (Jenerossi Tea) Currently held items count towards the required total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1104;1360;"Gather pouch items - (Indoline Tea) Currently held items count towards the required total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1105;1361;"Gather pouch items - (Armu Milk Earl Grey) Currently held items count towards the required total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1106;1363;"Speak to women";30;0;0;0;0;0;0;0;0;0;0;0;0
+1107;1364;"Speak to women";40;0;0;0;0;0;0;0;0;0;0;0;0
+1108;1366;"Heart-to-heart (Sheba's Dream)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1109;1367;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1110;1369;"Resonate with a Core Crystal and awaken a female Blade";7;0;0;0;0;0;0;0;0;0;0;0;0
+1111;1370;"Resonate with a Core Crystal and awaken a female Blade";12;0;0;0;0;0;0;0;0;0;0;0;0
+1112;1372;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1113;1373;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1114;1374;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1115;1375;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1116;1377;"Collect an HP Potion";10;0;0;0;0;0;0;0;0;0;0;0;0
+1117;1378;"Use a move";11;0;0;0;0;0;0;0;0;1376;0;0;0
+1118;1379;"Use a move";12;0;0;0;0;0;0;0;0;1376;0;0;0
+1119;1380;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1120;1382;"Use a move";7;0;0;0;0;0;0;0;0;1381;0;0;0
+1121;1383;"Collect an HP Potion";15;0;0;0;0;0;0;0;0;0;0;0;0
+1122;1384;"Finish an enemy - Normal (Clabor Rodonya)";5;0;0;0;0;0;0;818;0;0;0;0;0
+1123;1385;"Use a move";10;0;0;0;0;0;0;0;0;1381;0;0;0
+1124;1387;"Use a move";5;0;0;0;0;0;0;0;0;1386;0;0;0
+1125;1388;"Finish an enemy - Normal (Ruchik Kapiba)";5;0;0;0;0;0;0;6;0;0;0;0;0
+1126;1389;"Collect an HP Potion";20;0;0;0;0;0;0;0;0;0;0;0;0
+1127;1390;"Finish an enemy - Unique (Crimson Derrick)";1;0;0;0;0;0;0;944;0;0;0;0;0
+1128;1392;"Swim";250;0;0;0;0;0;0;0;0;0;0;0;0
+1129;1393;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1130;1394;"Heart-to-heart (Reunion)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1131;1395;"Collect an HP Potion";30;0;0;0;0;0;0;0;0;0;0;0;0
+1132;1397;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+1133;1398;"Chain attack";4;0;0;0;0;0;0;0;0;0;0;0;0
+1134;1399;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1135;1400;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+1136;1401;"Raise Affinity in combat";3;0;0;0;0;0;0;0;0;0;0;0;0
+1137;1402;"Chain attack";2;0;0;0;0;0;0;0;0;0;0;0;0
+1138;1403;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+1139;1404;"Chain attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1140;1405;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1141;1406;"Gather item from Collectibles list - Tree type";5;0;0;0;0;0;0;0;0;0;0;0;0
+1142;1407;"Gather item from Collectibles list - Tree type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1143;1408;"Gather item from Collectibles list - Tree type";27;0;0;0;0;0;0;0;0;0;0;0;0
+1144;1410;"Speak to an Ardanian";30;0;0;0;0;0;0;0;0;0;0;0;0
+1145;1411;"Speak to an Ardanian";40;0;0;0;0;0;0;0;0;0;0;0;0
+1146;1413;"Make dumplings - Previous instances count towards total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1147;1414;"Make dumplings - Previous instances count towards total";25;0;0;0;0;0;0;0;0;0;0;0;0
+1148;1415;"Make dumplings - Previous instances count towards total";50;0;0;0;0;0;0;0;0;0;0;0;0
+1149;1416;"Make dumplings - Previous instances count towards total";100;0;0;0;0;0;0;0;0;0;0;0;0
+1150;1418;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1151;1419;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1152;1420;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1153;1421;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1154;1423;"Use a move";10;0;0;0;0;0;0;0;0;1422;0;0;0
+1155;1424;"Use a move";11;0;0;0;0;0;0;0;0;1422;0;0;0
+1156;1425;"Use a move";12;0;0;0;0;0;0;0;0;1422;0;0;0
+1157;1426;"Side-quest (Go for it, Electra!)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1158;1428;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
+1159;1429;"Finish an enemy - Normal (Moskel Rhogul)";5;0;0;0;0;0;0;805;0;0;0;0;0
+1160;1430;"Finish an enemy - Mechanical (eg. Dajan Sovereigns - Land of Morytha)";5;0;0;0;0;0;0;8;0;0;0;0;0
+1161;1431;"Side-quest (Go for it, Electra!)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1162;1433;"Use pouch item (Electra's fav - Instrument type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1163;1434;"Finish an enemy - Any";20;0;0;0;0;0;0;0;0;0;0;0;0
+1164;1435;"Finish an enemy - Any";30;0;0;0;0;0;0;0;0;0;0;0;0
+1165;1436;"Side-quest (Go for it, Electra!)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1166;1438;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1167;1439;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+1168;1440;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+1169;1441;"Heart-to-heart (Self-Confidence)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1170;1442;"Deal a certain amount of total damage";200;0;0;0;0;0;0;0;0;0;0;0;0
+1171;1443;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+1172;1444;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+1173;1445;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+1174;1446;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+1175;1448;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1176;1449;"Block an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+1177;1450;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+1178;1451;"Block an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+1179;1453;"Finish an enemy - Normal (Tomlok Anlood)";4;0;0;0;0;0;0;32;0;0;0;0;0
+1180;1454;"Use pouch item (Electra's fav - Instrument type)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1181;1455;"Finish an enemy - Normal (Trilut Grebel)";5;0;0;0;0;0;0;485;0;0;0;0;0
+1182;1456;"Use pouch item (Electra's fav - Instrument type)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1183;1457;"Use pouch item (Electra's fav - Meat type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1184;1458;"Use pouch item (Electra's fav - Meat type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1185;1459;"Use pouch item (Electra's fav - Meat type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1186;1461;"Speak to townsfolk in each region and take the Lord of Thunder Training";2;0;0;0;0;0;0;0;0;0;0;0;0
+1187;1462;"Speak to townsfolk in each region and take the Lord of Thunder Training";4;0;0;0;0;0;0;0;0;0;0;0;0
+1188;1463;"Speak to townsfolk in each region and take the Lord of Thunder Training";6;0;0;0;0;0;0;0;0;0;0;0;0
+1189;1464;"Speak to townsfolk in each region and take the Lord of Thunder Training";7;0;0;0;0;0;0;0;0;0;0;0;0
+1190;1516;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1191;1517;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1192;1518;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1193;1519;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1194;1521;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1195;1522;"Use a move";11;0;0;0;0;0;0;0;0;1520;0;0;0
+1196;1523;"Finish an enemy - Flying (eg. Heidl Taos - Cliffs of Morytha)";5;0;0;0;0;0;0;938;0;0;0;0;0
+1197;1524;"Use a move";13;0;0;0;0;0;0;0;0;1520;0;0;0
+1198;1526;"Use pouch item (Finch's fav - Vegetables)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1199;1527;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1200;1528;"Use a move";9;0;0;0;0;0;0;0;0;1525;0;0;0
+1201;1529;"Finish an enemy - Unique (Atrocious Hermes)";1;0;0;0;0;0;0;561;0;0;0;0;0
+1202;1531;"Use a move - ????";5;0;0;0;0;0;0;0;0;0;0;0;0
+1203;1532;"Finish an enemy - Normal (Garnia Camill)";4;0;0;0;0;0;0;263;0;0;0;0;0
+1204;1533;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1205;1534;"Finish an enemy - Unique (Praetorian Argus)";1;0;0;0;0;0;0;578;0;0;0;0;0
+1206;1536;"Use pouch item (Finch's fav - Cosmetics)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1207;1537;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1208;1538;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1209;1539;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1210;1540;"Evade an attack";3;0;0;0;0;0;0;0;0;0;0;0;0
+1211;1541;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1212;1542;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+1213;1543;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+1214;1544;"Evade an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+1215;1545;"Use a Blade Art";3;0;0;0;0;0;0;0;0;0;0;0;0
+1216;1546;"Use a Blade Art";5;0;0;0;0;0;0;0;0;0;0;0;0
+1217;1547;"Use a Blade Art";6;0;0;0;0;0;0;0;0;0;0;0;0
+1218;1548;"Use a Blade Art";7;0;0;0;0;0;0;0;0;0;0;0;0
+1219;1549;"Use a Blade Art";8;0;0;0;0;0;0;0;0;0;0;0;0
+1220;1551;"Gather item from Collectibles list - Insect type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1221;1552;"Gather item from Collectibles list - Insect type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1222;1554;"Go to location - Dawnview Grotto";1;0;0;0;0;0;0;0;0;0;0;0;0
+1223;1555;"Go to location - Subterranean Lake";1;0;0;0;0;0;0;0;0;0;0;0;0
+1224;1557;"Heart-to-heart (Bird's-Eye View)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1225;1558;"Side-quest (Birds of a Feather)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1226;1560;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1227;1561;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1228;1562;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1229;1563;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1230;1565;"Use a move";10;0;0;0;0;0;0;0;0;1564;0;0;0
+1231;1566;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1232;1567;"Use pouch item (Floren's fav - Desserts)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1233;1568;"Heart-to-heart (Desolate Land)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1234;1570;"Use a move";7;0;0;0;0;0;0;0;0;1569;0;0;0
+1235;1571;"Chain attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1236;1572;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1237;1573;"Use a move";10;0;0;0;0;0;0;0;0;1569;0;0;0
+1238;1575;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1239;1576;"Use pouch item (Floren's fav - Art)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1240;1577;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1241;1578;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+1242;1580;"Raise Affinity in combat";2;0;0;0;0;0;0;0;0;0;0;0;0
+1243;1581;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+1244;1582;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+1245;1583;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+1246;1585;"Gather item from Collectibles list - Vegetable type";20;0;0;0;0;0;0;0;0;0;0;0;0
+1247;1586;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+1248;1587;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+1249;1588;"Evade an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+1250;1589;"Collect an HP Potion";3;0;0;0;0;0;0;0;0;0;0;0;0
+1251;1590;"Collect an HP Potion";10;0;0;0;0;0;0;0;0;0;0;0;0
+1252;1591;"Collect an HP Potion";15;0;0;0;0;0;0;0;0;0;0;0;0
+1253;1592;"Collect an HP Potion";20;0;0;0;0;0;0;0;0;0;0;0;0
+1254;1593;"Help an incapacitated ally";5;0;0;0;0;0;0;0;0;0;0;0;0
+1255;1595;"Gather item from Collectibles list - Flower type";20;0;0;0;0;0;0;0;0;0;0;0;0
+1256;1596;"Gather item from Collectibles list - Flower type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1257;1597;"Gather item from Collectibles list - Flower type";27;0;0;0;0;0;0;0;0;0;0;0;0
+1258;1598;"Gather item from Collectibles list - Flower type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1259;1600;"Finish an enemy - Normal (Mogen Hox)";5;0;0;0;0;0;0;516;0;0;0;0;0
+1260;1601;"Finish an enemy - Normal (Radclyffe Sovereign)";5;0;0;0;0;0;0;893;0;0;0;0;0
+1261;1603;"Speak to townsfolk and use Beguiling Charms to obtain items";2;0;0;0;0;0;0;0;0;0;0;0;0
+1262;1604;"Speak to townsfolk and use Beguiling Charms to obtain items";4;0;0;0;0;0;0;0;0;0;0;0;0
+1263;1605;"Speak to townsfolk and use Beguiling Charms to obtain items";7;0;0;0;0;0;0;0;0;0;0;0;0
+1264;1606;"Side-quest (Nature Boy)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1265;1608;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1266;1609;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1267;1610;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1268;1611;"Side-quest (Artificial Intelligence)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1269;1613;"Finish an enemy - Normal (Wood Bunnit)";5;0;0;0;0;0;0;258;0;0;0;0;0
+1270;1614;"Use a move";11;0;0;0;0;0;0;0;0;1612;0;0;0
+1271;1615;"Use a move";12;0;0;0;0;0;0;0;0;1612;0;0;0
+1272;1616;"Use a move";13;0;0;0;0;0;0;0;0;1612;0;0;0
+1273;1618;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1274;1619;"Use a move";8;0;0;0;0;0;0;0;0;1617;0;0;0
+1275;1620;"Use a move";9;0;0;0;0;0;0;0;0;1617;0;0;0
+1276;1621;"Finish an enemy - Any";40;0;0;0;0;0;0;0;0;0;0;0;0
+1277;1623;"Use a move";5;0;0;0;0;0;0;0;0;1622;0;0;0
+1278;1624;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1279;1625;"Use a move";7;0;0;0;0;0;0;0;0;1622;0;0;0
+1280;1626;"Finish an enemy - Normal (Gerolf Sovereign)";4;0;0;0;0;0;0;885;0;0;0;0;0
+1281;1628;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1282;1629;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1283;1630;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1284;1631;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1285;1632;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+1286;1633;"Use pouch item (KOS-MOS's fav - Board Games)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1287;1634;"Heart-to-heart (Daybreak)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1288;1635;"Raise Affinity in combat";6;0;0;0;0;0;0;0;0;0;0;0;0
+1289;1636;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+1290;1638;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1291;1639;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1292;1640;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1293;1641;"Driver combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1294;1643;"Finish an enemy - Normal (Spanner Bunnit)";5;0;0;0;0;0;0;257;0;0;0;0;0
+1295;1644;"Finish an enemy - Normal (Gerolf Sovereign)";4;0;0;0;0;0;0;885;0;0;0;0;0
+1296;1646;"Collect stuff";7;0;0;0;0;0;0;0;0;0;0;0;0
+1297;1647;"Collect stuff";7;0;0;0;0;0;0;0;0;0;0;0;0
+1298;1649;"Use a Special";11;0;0;0;0;0;0;0;0;0;0;0;0
+1299;1650;"Use a Special";15;0;0;0;0;0;0;0;0;0;0;0;0
+1300;1652;"Heart-to-heart (Atonement)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1301;1653;"Use a Special";11;0;0;0;0;0;0;0;0;0;0;0;0
+1302;1654;"Use a Special";12;0;0;0;0;0;0;0;0;0;0;0;0
+1303;1655;"Use a Special";20;0;0;0;0;0;0;0;0;0;0;0;0
+1304;1657;"Use a move";10;0;0;0;0;0;0;0;0;1656;0;0;0
+1305;1658;"Use a move";11;0;0;0;0;0;0;0;0;1656;0;0;0
+1306;1659;"Use a move";12;0;0;0;0;0;0;0;0;1656;0;0;0
+1307;1660;"Side-quest (The Calm and the Storm)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1308;1662;"Use a move";7;0;0;0;0;0;0;0;0;1661;0;0;0
+1309;1663;"Use a move";8;0;0;0;0;0;0;0;0;1661;0;0;0
+1310;1664;"Use a move";9;0;0;0;0;0;0;0;0;1661;0;0;0
+1311;1665;"Side-quest (The Calm and the Storm)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1312;1667;"Use a move";5;0;0;0;0;0;0;0;0;1666;0;0;0
+1313;1668;"Use a move";6;0;0;0;0;0;0;0;0;1666;0;0;0
+1314;1669;"Use a move";7;0;0;0;0;0;0;0;0;1666;0;0;0
+1315;1670;"Side-quest (The Calm and the Storm)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1316;1672;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+1317;1673;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+1318;1674;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+1319;1675;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+1320;1676;"Finish an enemy - Any";5;0;0;0;0;0;0;0;0;0;0;0;0
+1321;1677;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
+1322;1678;"Finish an enemy - Any";20;0;0;0;0;0;0;0;0;0;0;0;0
+1323;1679;"Finish an enemy - Any";30;0;0;0;0;0;0;0;0;0;0;0;0
+1324;1680;"Finish an enemy - Any";40;0;0;0;0;0;0;0;0;0;0;0;0
+1325;1681;"Evade an attack";3;0;0;0;0;0;0;0;0;0;0;0;0
+1326;1682;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1327;1683;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+1328;1684;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+1329;1685;"Evade an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+1330;1687;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1331;1688;"Finish an enemy - Normal (Familion Sovereign or Sting Runner)";4;0;0;0;0;0;0;881;0;0;0;0;0
+1332;1690;"Use pouch item (Herald's fav - Drinks)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1333;1691;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1334;1693;"Use a Special";10;0;0;0;0;0;0;0;0;0;0;0;0
+1335;1694;"Use a Special";11;0;0;0;0;0;0;0;0;0;0;0;0
+1336;1695;"Use a Special";12;0;0;0;0;0;0;0;0;0;0;0;0
+1337;1696;"Side-quest (The Calm and the Storm)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1338;1698;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1339;1699;"Go to location - Elmos Square";1;0;0;0;0;0;0;0;0;0;0;0;0
+1340;1700;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1341;1701;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1342;1703;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1343;1704;"Use a move";11;0;0;0;0;0;0;0;0;1702;0;0;0
+1344;1705;"Use a move";12;0;0;0;0;0;0;0;0;1702;0;0;0
+1345;1706;"Finish an enemy - Unique (Epicurean Ligia)";1;0;0;0;0;0;0;673;0;0;0;0;0
+1346;1708;"Use a move";7;0;0;0;0;0;0;0;0;1707;0;0;0
+1347;1709;"Finish an enemy - Normal (Brazay Rhana)";4;0;0;0;0;0;0;231;0;0;0;0;0
+1348;1710;"Collect an HP Potion";20;0;0;0;0;0;0;0;0;0;0;0;0
+1349;1711;"Use a move";10;0;0;0;0;0;0;0;0;1707;0;0;0
+1350;1713;"Use a move";5;0;0;0;0;0;0;0;0;1712;0;0;0
+1351;1714;"Collect an HP Potion";15;0;0;0;0;0;0;0;0;0;0;0;0
+1352;1715;"Finish an enemy - Normal (Dusky Riik)";5;0;0;0;0;0;0;813;0;0;0;0;0
+1353;1716;"Collect an HP Potion";30;0;0;0;0;0;0;0;0;0;0;0;0
+1354;1718;"Finish an enemy - Normal (Smart Aligo)";4;0;0;0;0;0;0;18;0;0;0;0;0
+1355;1719;"Use pouch item (Dahlia's fav - Cosmetics)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1356;1720;"Finish an enemy - Normal (Lun Scorpox)";5;0;0;0;0;0;0;837;0;0;0;0;0
+1357;1721;"Finish an enemy - Normal (Indoline Star)";4;0;0;0;0;0;0;7;0;0;0;0;0
+1358;1722;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+1359;1723;"Gather pouch items - Art (Currently held items count towards the required total)";20;0;0;0;0;0;0;0;0;0;0;0;0
+1360;1724;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1361;1725;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1362;1726;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1363;1728;"Collect an HP Potion";10;0;0;0;0;0;0;0;0;0;0;0;0
+1364;1729;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1365;1730;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1366;1731;"Heart-to-heart (The Purest Beauty?)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1367;1732;"Gather item from Collectibles list - Tree type";5;0;0;0;0;0;0;0;0;0;0;0;0
+1368;1733;"Gather item from Collectibles list - Tree type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1369;1734;"Gather item from Collectibles list - Tree type";27;0;0;0;0;0;0;0;0;0;0;0;0
+1370;1736;"Finish an enemy - Normal (Doryu Riik)";4;0;0;0;0;0;0;811;0;0;0;0;0
+1371;1737;"Finish an enemy - Normal (Seveeto Laia)";4;0;0;0;0;0;0;621;0;0;0;0;0
+1372;1738;"Side-quest (Fly in the Ointment)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1373;1739;"Make an item using Icecraft (Argentum) - Previous instances count towards total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1374;1740;"Make an item using Icecraft (Argentum) - Previous instances count towards total";50;0;0;0;0;0;0;0;0;0;0;0;0
+1375;1742;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1376;1743;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1377;1744;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1378;1745;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1379;1747;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1380;1748;"Use a move";11;0;0;0;0;0;0;0;0;1746;0;0;0
+1381;1749;"Chain attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1382;1750;"Use a move";13;0;0;0;0;0;0;0;0;1746;0;0;0
+1383;1752;"Use a move";7;0;0;0;0;0;0;0;0;1751;0;0;0
+1384;1753;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1385;1754;"Finish an enemy - Normal (Trilut Grebel)";5;0;0;0;0;0;0;485;0;0;0;0;0
+1386;1755;"Use a move";10;0;0;0;0;0;0;0;0;1751;0;0;0
+1387;1757;"Finish an enemy - Normal (Tomlok Anlood)";5;0;0;0;0;0;0;32;0;0;0;0;0
+1388;1758;"Use a move";6;0;0;0;0;0;0;0;0;1756;0;0;0
+1389;1759;"Use a move";7;0;0;0;0;0;0;0;0;1756;0;0;0
+1390;1760;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1391;1762;"Use pouch item (Board Games type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1392;1763;"Evade an attack";7;0;0;0;0;0;0;0;0;0;0;0;0
+1393;1764;"Use pouch item (Ardanian Arms Album)";3;0;0;0;0;0;0;0;0;0;0;0;0
+1394;1765;"Use pouch item (Board Games type)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1395;1767;"Use pouch item (The Alrestogony)";3;0;0;0;0;0;0;0;0;0;0;0;0
+1396;1768;"Heart-to-heart (The Literary Life)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1397;1769;"Evade an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+1398;1770;"Use pouch item (Akhos's fav - Seafood)";3;0;0;0;0;0;0;0;0;0;0;0;0
+1399;1772;"Evade an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1400;1773;"Use pouch item (The Millenarian Titan)";3;0;0;0;0;0;0;0;0;0;0;0;0
+1401;1774;"Use pouch item (Board Games type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1402;1775;"Raise Affinity in combat";7;0;0;0;0;0;0;0;0;0;0;0;0
+1403;1777;"Finish an enemy - Normal (Chituk Rapchor)";5;0;0;0;0;0;0;857;0;0;0;0;0
+1404;1778;"Finish an enemy - Normal (Familion Sovereign or Sting Runner)";4;0;0;0;0;0;0;881;0;0;0;0;0
+1405;1780;"Gather item from Collectibles list - Vegetable type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1406;1781;"Gather item from Collectibles list - Vegetable type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1407;1783;"Use pouch item (Akhos's fav - Staple Foods)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1408;1784;"Use pouch item (Akhos's fav - Staple Foods)";6;0;0;0;0;0;0;0;0;0;0;0;0
+1409;1786;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1410;1787;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1411;1788;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1412;1789;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1413;1791;"Use a move";10;0;0;0;0;0;0;0;0;1790;0;0;0
+1414;1792;"Engage in combat - alongside Blade who carries a Shield Hammer";6;0;0;0;0;0;0;0;0;0;0;0;0
+1415;1793;"Engage in combat - alongside Blade who carries a Megalance";7;0;0;0;0;0;0;0;0;0;0;0;0
+1416;1794;"Use a move";13;0;0;0;0;0;0;0;0;1790;0;0;0
+1417;1796;"Use a move";7;0;0;0;0;0;0;0;0;1795;0;0;0
+1418;1797;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1419;1798;"Use a move";9;0;0;0;0;0;0;0;0;1795;0;0;0
+1420;1799;"Blade combo";3;0;0;0;0;0;0;0;0;0;0;0;0
+1421;1801;"Use a move";5;0;0;0;0;0;0;0;0;1800;0;0;0
+1422;1802;"Engage in combat - alongside Blade who carries a Greataxe";6;0;0;0;0;0;0;0;0;0;0;0;0
+1423;1803;"Engage in combat - alongside Blade who carries a Chroma Katana";7;0;0;0;0;0;0;0;0;0;0;0;0
+1424;1804;"Use a move";8;0;0;0;0;0;0;0;0;1800;0;0;0
+1425;1805;"Blade combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+1426;1806;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1427;1807;"Deal a certain amount of total damage";2400;0;0;0;0;0;0;0;0;0;0;0;0
+1428;1808;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1429;1809;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+1430;1811;"Block an attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1431;1812;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1432;1813;"Block an attack";9;0;0;0;0;0;0;0;0;0;0;0;0
+1433;1814;"Driver combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1434;1816;"Finish an enemy - Normal (Dalya Armu)";5;0;0;0;0;0;0;117;0;0;0;0;0
+1435;1817;"Finish an enemy - Any";20;0;0;0;0;0;0;0;0;0;0;0;0
+1436;1818;"Heart-to-heart (Patroka's Predilections)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1437;1819;"Finish an enemy - Unique (Evileye Mambor)";1;0;0;0;0;0;0;133;0;0;0;0;0
+1438;1821;"Finish an enemy - Normal (Ruchik Kapiba)";5;0;0;0;0;0;0;6;0;0;0;0;0
+1439;1822;"Finish an enemy - Normal (Radclyffe Sovereign or Nula Scout)";5;0;0;0;0;0;0;893;0;0;0;0;0
+1440;1824;"Collect stuff";5;0;0;0;0;0;0;0;0;0;0;0;0
+1441;1825;"Collect stuff";7;0;0;0;0;0;0;0;0;0;0;0;0
+1442;1827;"Use pouch item (Patroka's fav - Vegetables)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1443;1828;"Use pouch item (Patroka's fav - Desserts)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1444;1830;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1445;1831;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1446;1832;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1447;1833;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1448;1835;"Engage in combat - alongside female Blade";5;0;0;0;0;0;0;0;0;0;0;0;0
+1449;1836;"Use a move";11;0;0;0;0;0;0;0;0;1834;0;0;0
+1450;1837;"Finish an enemy - Normal (Margot Sovereign)";4;0;0;0;0;0;0;889;0;0;0;0;0
+1451;1838;"Use a move";13;0;0;0;0;0;0;0;0;1834;0;0;0
+1452;1840;"Use a move";7;0;0;0;0;0;0;0;0;1839;0;0;0
+1453;1841;"Engage in combat - alongside female Blade";6;0;0;0;0;0;0;0;0;0;0;0;0
+1454;1842;"Finish an enemy - Normal (Riveral Ansel)";5;0;0;0;0;0;0;636;0;0;0;0;0
+1455;1843;"Driver combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1456;1845;"Finish an enemy - Normal (Phoebus Sovereign)";5;0;0;0;0;0;0;891;0;0;0;0;0
+1457;1846;"Use a move";6;0;0;0;0;0;0;0;0;1844;0;0;0
+1458;1847;"Engage in combat - alongside female Blade";7;0;0;0;0;0;0;0;0;0;0;0;0
+1459;1848;"Finish an enemy - Unique (Mk. VI Margot)";1;0;0;0;0;0;0;907;0;0;0;0;0
+1460;1849;"Resonate with a Core Crystal";3;0;0;0;0;0;0;0;0;0;0;0;0
+1461;1850;"Resonate with a Core Crystal and awaken a female Blade";5;0;0;0;0;0;0;0;0;0;0;0;0
+1462;1851;"Speak to women";30;0;0;0;0;0;0;0;0;0;0;0;0
+1463;1852;"Resonate with a Core Crystal";7;0;0;0;0;0;0;0;0;0;0;0;0
+1464;1853;"Resonate with a Core Crystal and awaken a female Blade";12;0;0;0;0;0;0;0;0;0;0;0;0
+1465;1855;"Resonate with a Core Crystal";5;0;0;0;0;0;0;0;0;0;0;0;0
+1466;1856;"Resonate with a Core Crystal and awaken a female Blade";7;0;0;0;0;0;0;0;0;0;0;0;0
+1467;1857;"Speak to women";40;0;0;0;0;0;0;0;0;0;0;0;0
+1468;1858;"Resonate with a Core Crystal";10;0;0;0;0;0;0;0;0;0;0;0;0
+1469;1860;"Speak to women";20;0;0;0;0;0;0;0;0;0;0;0;0
+1470;1861;"Heart-to-heart (A Thespian's Life)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1471;1862;"Resonate with a Core Crystal and awaken a female Blade";10;0;0;0;0;0;0;0;0;0;0;0;0
+1472;1863;"Speak to women";50;0;0;0;0;0;0;0;0;0;0;0;0
+1473;1865;"Finish an enemy - Normal (Valt Ropl)";4;0;0;0;0;0;0;828;0;0;0;0;0
+1474;1866;"Finish an enemy - Normal (Margot Sovereign)";4;0;0;0;0;0;0;889;0;0;0;0;0
+1475;1868;"Gather item from Collectibles list - Mechanical type";20;0;0;0;0;0;0;0;0;0;0;0;0
+1476;1869;"Gather item from Collectibles list - Mechanical type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1477;1871;"Gather item through salvaging - Treasure type";7;0;0;0;0;0;0;0;0;0;0;0;0
+1478;1872;"Gather item through salvaging - Treasure type";10;0;0;0;0;0;0;0;0;0;0;0;0
+1479;1874;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1480;1875;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1481;1876;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1482;1877;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1483;1879;"Gather item from Collectibles list - Seafood type (Currently held items count towards required total)";20;0;0;0;0;0;0;0;0;0;0;0;0
+1484;1880;"Gather item from Collectibles list - Seafood type (Currently held items count towards required total)";30;0;0;0;0;0;0;0;0;0;0;0;0
+1485;1881;"Gather item from Collectibles list - Seafood type (Currently held items count towards required total)";40;0;0;0;0;0;0;0;0;0;0;0;0
+1486;1882;"Gather item from Collectibles list - Seafood type (Currently held items count towards required total)";50;0;0;0;0;0;0;0;0;0;0;0;0
+1487;1884;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1488;1885;"Blade combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1489;1886;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1490;1887;"Blade combo finisher";3;0;0;0;0;0;0;0;0;0;0;0;0
+1491;1889;"Finish an enemy - Normal (Tomlok Anlood)";4;0;0;0;0;0;0;32;0;0;0;0;0
+1492;1890;"Finish an enemy - Normal (Chituk Rapchor)";5;0;0;0;0;0;0;857;0;0;0;0;0
+1493;1891;"Finish an enemy - Normal (Sinon Scorpox)";5;0;0;0;0;0;0;838;0;0;0;0;0
+1494;1892;"Finish an enemy - Unique (Ravenwing Skull)";1;0;0;0;0;0;0;10;0;0;0;0;0
+1495;1894;"Use pouch item (Grilled Anchortail)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1496;1895;"Use pouch item (Bullybelly Carpaccio)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1497;1896;"Use pouch item (Braised Cloud Sea Shark)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1498;1897;"Use pouch item (Whitebait-Samod Hotpot)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1499;1898;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+1500;1899;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1501;1900;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1502;1901;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1503;1902;"Driver combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1504;1904;"Gather item from Collectibles list - Fish type";20;0;0;0;0;0;0;0;0;0;0;0;0
+1505;1905;"Use a Blade Art";6;0;0;0;0;0;0;0;0;0;0;0;0
+1506;1906;"Heart-to-heart (Free as a Bird)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1507;1907;"Use a Blade Art";7;0;0;0;0;0;0;0;0;0;0;0;0
+1508;1909;"Finish an enemy - Normal (Glorious Totem)";4;0;0;0;0;0;0;950;0;0;0;0;0
+1509;1910;"Finish an enemy - Normal (Blade Bot)";4;0;0;0;0;0;0;154;0;0;0;0;0
+1510;1912;"Use pouch item (Obrona's fav - Staple Foods)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1511;1913;"Use pouch item (Obrona's fav - Staple Foods)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1512;1914;"Gather item from Collectibles list - Fish type";5;0;0;0;0;0;0;0;0;0;0;0;0
+1513;1915;"Gather item from Collectibles list - Fish type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1514;1916;"Gather item from Collectibles list - Fish type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1515;1918;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1516;1919;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1517;1920;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1518;1921;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1519;1923;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1520;1924;"Use a move";11;0;0;0;0;0;0;0;0;1922;0;0;0
+1521;1925;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1522;1926;"Use a move";13;0;0;0;0;0;0;0;0;1922;0;0;0
+1523;1928;"Use a move";7;0;0;0;0;0;0;0;0;1927;0;0;0
+1524;1929;"Use a move";8;0;0;0;0;0;0;0;0;1927;0;0;0
+1525;1930;"Finish an enemy - Normal (Heidl Taos)";4;0;0;0;0;0;0;938;0;0;0;0;0
+1526;1931;"Chain attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1527;1933;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1528;1934;"Use a move";6;0;0;0;0;0;0;0;0;1932;0;0;0
+1529;1935;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1530;1936;"Use a move";8;0;0;0;0;0;0;0;0;1932;0;0;0
+1531;1938;"Engage in combat - alongside Blade who carries a Megalance";5;0;0;0;0;0;0;0;0;0;0;0;0
+1532;1939;"Engage in combat - alongside Blade who carries a Greataxe";6;0;0;0;0;0;0;0;0;0;0;0;0
+1533;1940;"Engage in combat - alongside Blade who carries a Shield Hammer";7;0;0;0;0;0;0;0;0;0;0;0;0
+1534;1941;"Engage in combat - alongside Blade who carries a Chroma Katana";7;0;0;0;0;0;0;0;0;0;0;0;0
+1535;1942;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+1536;1943;"Engage in combat - alongside Blade who carries a Chroma Katana";5;0;0;0;0;0;0;0;0;0;0;0;0
+1537;1944;"Heart-to-heart (Class of His Own)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1538;1945;"Engage in combat - alongside Blade who carries a Greataxe";7;0;0;0;0;0;0;0;0;0;0;0;0
+1539;1946;"Engage in combat - alongside Blade who carries a Shield Hammer";7;0;0;0;0;0;0;0;0;0;0;0;0
+1540;1948;"Engage in combat - alongside Blade who carries a Shield Hammer";5;0;0;0;0;0;0;0;0;0;0;0;0
+1541;1949;"Engage in combat - alongside Blade who carries a Chroma Katana";6;0;0;0;0;0;0;0;0;0;0;0;0
+1542;1950;"Engage in combat - alongside Blade who carries a Megalance";7;0;0;0;0;0;0;0;0;0;0;0;0
+1543;1951;"Engage in combat - alongside Blade who carries a Greataxe";7;0;0;0;0;0;0;0;0;0;0;0;0
+1544;1953;"Finish an enemy - Normal (Segel Ansel)";5;0;0;0;0;0;0;38;0;0;0;0;0
+1545;1954;"Finish an enemy - Normal (Vay Taos)";4;0;0;0;0;0;0;941;0;0;0;0;0
+1546;1956;"Gather item from Collectibles list - Ore type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1547;1957;"Gather item from Collectibles list - Ore type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1548;1959;"Merc Mission - (Any)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1549;1960;"Merc Mission - (Any)";8;0;0;0;0;0;0;0;0;0;0;0;0
+1550;1962;"Gather pouch items - Meat type (Currently held items count towards the required total)";20;0;0;0;0;0;0;0;0;0;0;0;0
+1551;1963;"Gather pouch items - Meat type (Currently held items count towards the required total)";30;0;0;0;0;0;0;0;0;0;0;0;0
+1552;1964;"Gather pouch items - Meat type (Currently held items count towards the required total)";40;0;0;0;0;0;0;0;0;0;0;0;0
+1553;1965;"Gather pouch items - Meat type (Currently held items count towards the required total)";50;0;0;0;0;0;0;0;0;0;0;0;0
+1554;1967;"Use a move";10;0;0;0;0;0;0;0;0;1966;0;0;0
+1555;1968;"Use pouch item (Meat & Lentil Skewer)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1556;1969;"Use a move";12;0;0;0;0;0;0;0;0;1966;0;0;0
+1557;1970;"Use pouch item (Estral Quotelettas)";6;0;0;0;0;0;0;0;0;0;0;0;0
+1558;1972;"Use pouch item (Mustard Kordeth)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1559;1973;"Use a move";8;0;0;0;0;0;0;0;0;1971;0;0;0
+1560;1974;"Use pouch item (Albacon Frystack)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1561;1975;"Use a move";10;0;0;0;0;0;0;0;0;1971;0;0;0
+1562;1977;"Use a move";5;0;0;0;0;0;0;0;0;1976;0;0;0
+1563;1978;"Use pouch item (Mixed Meat Platter)";6;0;0;0;0;0;0;0;0;0;0;0;0
+1564;1979;"Use a move";7;0;0;0;0;0;0;0;0;1976;0;0;0
+1565;1980;"Use pouch item (Glarna Stir-Fry)";8;0;0;0;0;0;0;0;0;0;0;0;0
+1566;1982;"Deal a certain amount of damage in one hit";800;0;0;0;0;0;0;0;0;0;0;0;0
+1567;1983;"Deal a certain amount of damage in one hit";2400;0;0;0;0;0;0;0;0;0;0;0;0
+1568;1984;"Deal a certain amount of damage in one hit";4800;0;0;0;0;0;0;0;0;0;0;0;0
+1569;1985;"Deal a certain amount of damage in one hit";8000;0;0;0;0;0;0;0;0;0;0;0;0
+1570;1986;"Driver combo";2;0;0;0;0;0;0;0;0;0;0;0;0
+1571;1987;"Driver combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1572;1988;"Driver combo";7;0;0;0;0;0;0;0;0;0;0;0;0
+1573;1989;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1574;1990;"Driver combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1575;1991;"Deal a certain amount of total damage";200;0;0;0;0;0;0;0;0;0;0;0;0
+1576;1992;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+1577;1993;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+1578;1994;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+1579;1995;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+1580;1997;"Finish an enemy - Unique (Dalya Armu)";1;0;0;0;0;0;0;117;0;0;0;0;0
+1581;1998;"Finish an enemy - Normal (Clabor Rodonya)";5;0;0;0;0;0;0;818;0;0;0;0;0
+1582;2000;"Heart-to-heart (Muscle Power)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1583;2001;"Speak to a Nopon";50;0;0;0;0;0;0;0;0;0;0;0;0
+1584;2003;"Gather item from Collectibles list - Flower type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1585;2004;"Gather item from Collectibles list - Flower type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1586;2006;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1587;2007;"Trust";1300;0;0;0;0;0;0;0;0;0;0;0;0
+1588;2008;"Trust";3800;0;0;0;0;0;0;0;0;0;0;0;0
+1589;2009;"Trust";9800;0;0;0;0;0;0;0;0;0;0;0;0
+1590;2011;"Use a move";10;0;0;0;0;0;0;0;0;2010;0;0;0
+1591;2012;"Finish an enemy - Normal (Yurem Puffot)";5;0;0;0;0;0;0;778;0;0;0;0;0
+1592;2013;"Driver combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1593;2014;"Finish an enemy - Any";40;0;0;0;0;0;0;0;0;0;0;0;0
+1594;2016;"Use a move";7;0;0;0;0;0;0;0;0;2015;0;0;0
+1595;2017;"Use a move";8;0;0;0;0;0;0;0;0;2015;0;0;0
+1596;2018;"Blade combo";10;0;0;0;0;0;0;0;0;0;0;0;0
+1597;2019;"Finish an enemy - Unique (Machine-Gun Julio)";1;0;0;0;0;0;0;40;0;0;0;0;0
+1598;2021;"Use a move";5;0;0;0;0;0;0;0;0;2020;0;0;0
+1599;2022;"Driver combo";6;0;0;0;0;0;0;0;0;0;0;0;0
+1600;2023;"Use a move";7;0;0;0;0;0;0;0;0;2020;0;0;0
+1601;2024;"Blade combo";12;0;0;0;0;0;0;0;0;0;0;0;0
+1602;2026;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+1603;2027;"Deal a certain amount of total damage";16000;0;0;0;0;0;0;0;0;0;0;0;0
+1604;2028;"Deal a certain amount of total damage";32000;0;0;0;0;0;0;0;0;0;0;0;0
+1605;2029;"Deal a certain amount of total damage";48000;0;0;0;0;0;0;0;0;0;0;0;0
+1606;2030;"Deal a certain amount of total damage";200;0;0;0;0;0;0;0;0;0;0;0;0
+1607;2031;"Deal a certain amount of total damage";800;0;0;0;0;0;0;0;0;0;0;0;0
+1608;2032;"Deal a certain amount of total damage";2400;0;0;0;0;0;0;0;0;0;0;0;0
+1609;2033;"Deal a certain amount of total damage";4800;0;0;0;0;0;0;0;0;0;0;0;0
+1610;2034;"Deal a certain amount of total damage";8000;0;0;0;0;0;0;0;0;0;0;0;0
+1611;2036;"Attack from behind";10;0;0;0;0;0;0;0;0;0;0;0;0
+1612;2037;"Heart-to-heart (Lone Wolf)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1613;2038;"Attack from behind";20;0;0;0;0;0;0;0;0;0;0;0;0
+1614;2039;"Attack from behind";30;0;0;0;0;0;0;0;0;0;0;0;0
+1615;2041;"Finish an enemy - Unique (Smart Aligo)";1;0;0;0;0;0;0;18;0;0;0;0;0
+1616;2042;"Finish an enemy - Normal (Rippl Medooz)";5;0;0;0;0;0;0;693;0;0;0;0;0
+1617;2044;"Use pouch item (Sever's fav - Meat type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1618;2045;"Use pouch item (Sever's fav - Meat type)";4;0;0;0;0;0;0;0;0;0;0;0;0
+1619;2047;"Gather item from Collectibles list - Insect type";25;0;0;0;0;0;0;0;0;0;0;0;0
+1620;2048;"Gather item from Collectibles list - Insect type";10;0;0;0;0;0;0;0;0;0;0;0;0
+1621;2050;"Trust";500;0;0;0;0;0;0;0;0;0;0;0;0
+1622;2051;"Trust";2000;0;0;0;0;0;0;0;0;0;0;0;0
+1623;2052;"Trust";5000;0;0;0;0;0;0;0;0;0;0;0;0
+1624;2053;"Side-quest (Lingering Resentment)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1625;2055;"Use a move";15;0;0;0;0;0;0;0;0;2054;0;0;0
+1626;2056;"Finish an enemy - Unique (Slasher Buffon)";1;0;0;0;0;0;0;33;0;0;0;0;0
+1627;2057;"Use a move";25;0;0;0;0;0;0;0;0;2054;0;0;0
+1628;2058;"Chain attack";50;0;0;0;0;0;0;0;0;0;0;0;0
+1629;2060;"Finish an enemy - Unique (Nitpicking Beru)";1;0;0;0;0;0;0;344;0;0;0;0;0
+1630;2061;"Use a move";15;0;0;0;0;0;0;0;0;2059;0;0;0
+1631;2062;"Use a move";30;0;0;0;0;0;0;0;0;2059;0;0;0
+1632;2063;"Deal a certain amount of total damage";3000000;0;0;0;0;0;0;0;0;0;0;0;0
+1633;2065;"Use a move";5;0;0;0;0;0;0;0;0;2064;0;0;0
+1634;2066;"Deal a certain amount of damage in one hit";6000;0;0;0;0;0;0;0;0;0;0;0;0
+1635;2067;"Use a move";10;0;0;0;0;0;0;0;0;2064;0;0;0
+1636;2068;"Finish an enemy - Unique (Soothsayer Gerald)";1;0;0;0;0;0;0;411;0;0;0;0;0
+1637;2069;"Finish an enemy - Normal (Night Ruga Quadwing)";3;0;0;0;0;0;0;785;0;0;0;0;0
+1638;2070;"Finish an enemy - Normal (Prom Piranhax)";4;0;0;0;0;0;0;760;0;0;0;0;0
+1639;2071;"Finish an enemy - Normal (Nant Buloofo)";3;0;0;0;0;0;0;244;0;0;0;0;0
+1640;2072;"Finish an enemy - Normal (Bolc Vang)";4;0;0;0;0;0;0;1032;0;0;0;0;0
+1641;2073;"Finish an enemy - Normal (Gerolf Sovereign)";2;0;0;0;0;0;0;885;0;0;0;0;0
+1642;2075;"Finish an enemy - Normal (Meldl Skwaror)";4;0;0;0;0;0;0;862;0;0;0;0;0
+1643;2076;"Finish an enemy - Normal (Gulnid Aspid)";2;0;0;0;0;0;0;136;0;0;0;0;0
+1644;2077;"Finish an enemy - Normal (Radyo Marrin)";2;0;0;0;0;0;0;682;0;0;0;0;0
+1645;2078;"Finish an enemy - Normal (Sting Runner)";2;0;0;0;0;0;0;894;0;0;0;0;0
+1646;2080;"Finish an enemy - Normal (Meson Griffox)";3;0;0;0;0;0;0;489;0;0;0;0;0
+1647;2081;"Finish an enemy - Normal (Froga Gyanna)";3;0;0;0;0;0;0;509;0;0;0;0;0
+1648;2082;"Finish an enemy - Normal (Mabluk Aspar)";3;0;0;0;0;0;0;129;0;0;0;0;0
+1649;2083;"Finish an enemy - Normal (Belgio Sovereign)";4;0;0;0;0;0;0;877;0;0;0;0;0
+1650;2085;"Finish an enemy - Any";5;0;0;0;0;0;0;0;0;0;0;0;0
+1651;2086;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
+1652;2087;"Finish an enemy - Any";20;0;0;0;0;0;0;0;0;0;0;0;0
+1653;2088;"Finish an enemy - Any";30;0;0;0;0;0;0;0;0;0;0;0;0
+1654;2090;"Salvage - Previous instances count toward total";100;0;0;0;0;0;0;0;0;0;0;0;0
+1655;2091;"Salvage - Previous instances count toward total";150;0;0;0;0;0;0;0;0;0;0;0;0
+1656;2093;"Fall from a high place";305;0;0;0;0;0;0;0;0;0;0;0;0
+1657;2094;"Jump";6000;0;0;0;0;0;0;0;0;0;0;0;0
+1658;2096;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1659;2097;"Trust";1500;0;0;0;0;0;0;0;0;0;0;0;0
+1660;2098;"Trust";3000;0;0;0;0;0;0;0;0;0;0;0;0
+1661;2099;"Trust";5000;0;0;0;0;0;0;0;0;0;0;0;0
+1662;2101;"Use a move";15;0;0;0;0;0;0;0;0;2100;0;0;0
+1663;2102;"Chain attack";20;0;0;0;0;0;0;0;0;0;0;0;0
+1664;2103;"Use a move";25;0;0;0;0;0;0;0;0;2100;0;0;0
+1665;2104;"Chain attack";40;0;0;0;0;0;0;0;0;0;0;0;0
+1666;2106;"Use a move";10;0;0;0;0;0;0;0;0;2105;0;0;0
+1667;2107;"Deal a certain amount of total damage";100000;0;0;0;0;0;0;0;0;0;0;0;0
+1668;2108;"Use a move";20;0;0;0;0;0;0;0;0;2105;0;0;0
+1669;2109;"Deal a certain amount of total damage";5000000;0;0;0;0;0;0;0;0;0;0;0;0
+1670;2111;"Use a move";5;0;0;0;0;0;0;0;0;2110;0;0;0
+1671;2112;"Blade combo";5;0;0;0;0;0;0;0;0;0;0;0;0
+1672;2113;"Use a move";15;0;0;0;0;0;0;0;0;2110;0;0;0
+1673;2114;"Blade combo";15;0;0;0;0;0;0;0;0;0;0;0;0
+1674;2116;"Raise Affinity in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+1675;2117;"Heart-to-heart (Any) - Previous instances count towards total";20;0;0;0;0;0;0;0;0;0;0;0;0
+1676;2118;"Raise Affinity in combat";20;0;0;0;0;0;0;0;0;0;0;0;0
+1677;2119;"Heart-to-heart (Any) - Previous instances count towards total";70;0;0;0;0;0;0;0;0;0;0;0;0
+1678;2120;"Overkill a monster in a Chain Attack";1;0;0;0;0;0;0;0;0;0;0;0;0
+1679;2121;"Overkill a monster in a Chain Attack";5;0;0;0;0;0;0;0;0;0;0;0;0
+1680;2122;"Overkill a monster in a Chain Attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+1681;2123;"Overkill a monster in a Chain Attack";15;0;0;0;0;0;0;0;0;0;0;0;0
+1682;2124;"Overkill a monster in a Chain Attack";20;0;0;0;0;0;0;0;0;0;0;0;0
+1683;2126;"Receive a certain amount of damage";10000;0;0;0;0;0;0;0;0;0;0;0;0
+1684;2127;"Receive a certain amount of damage";50000;0;0;0;0;0;0;0;0;0;0;0;0
+1685;2128;"Receive a certain amount of damage";150000;0;0;0;0;0;0;0;0;0;0;0;0
+1686;2129;"Receive a certain amount of damage";400000;0;0;0;0;0;0;0;0;0;0;0;0
+1687;2131;"Gather item from Collectibles list - Insect type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1688;2132;"Gather item from Collectibles list - Insect type";75;0;0;0;0;0;0;0;0;0;0;0;0
+1689;2134;"Tiger! Tiger! stage";4;0;0;0;0;0;0;0;0;0;0;0;0
+1690;2135;"Tiger! Tiger! stage";5;0;0;0;0;0;0;0;0;0;0;0;0
+1691;2137;"Finish an enemy - Normal (Levma Bunnit)";4;0;0;0;0;0;0;250;0;0;0;0;0
+1692;2138;"Finish an enemy - Unique (Muscley Damian)";1;0;0;0;0;0;0;245;0;0;0;0;0
+1693;2139;"Finish an enemy - Unique (Mk. VI Gerolf)";1;0;0;0;0;0;0;906;0;0;0;0;0
+1694;2140;"Finish an enemy - Unique (Immovable Gonzalez)";1;0;0;0;0;0;0;468;0;0;0;0;0
+1695;2142;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1696;2143;"Trust";700;0;0;0;0;0;0;0;0;0;0;0;0
+1697;2144;"Trust";2000;0;0;0;0;0;0;0;0;0;0;0;0
+1698;2145;"Trust";4000;0;0;0;0;0;0;0;0;0;0;0;0
+1699;2147;"Use a move";15;0;0;0;0;0;0;0;0;2146;0;0;0
+1700;2148;"Finish an enemy - Any";30;0;0;0;0;0;0;0;0;0;0;0;0
+1701;2149;"Use a move";25;0;0;0;0;0;0;0;0;2146;0;0;0
+1702;2150;"Challenge Battle (Mk. VIII)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1703;2152;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
+1704;2153;"Use a move";15;0;0;0;0;0;0;0;0;2151;0;0;0
+1705;2154;"Use a move";20;0;0;0;0;0;0;0;0;2151;0;0;0
+1706;2155;"Challenge Battle (9th Imp. Armored Div.)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1707;2157;"Use a move";5;0;0;0;0;0;0;0;0;2156;0;0;0
+1708;2158;"Use a move";10;0;0;0;0;0;0;0;0;2156;0;0;0
+1709;2159;"Finish an enemy - Any";100;0;0;0;0;0;0;0;0;0;0;0;0
+1710;2160;"Challenge Battle (Call the Exterminators)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1711;2162;"Evade an attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+1712;2163;"Block an attack";50;0;0;0;0;0;0;0;0;0;0;0;0
+1713;2164;"Evade an attack";30;0;0;0;0;0;0;0;0;0;0;0;0
+1714;2165;"Block an attack";100;0;0;0;0;0;0;0;0;0;0;0;0
+1715;2166;"Collect Ether Cubes during a single Challenge Battle";1000;0;0;0;0;0;0;0;0;0;0;0;0
+1716;2167;"Challenge Battle (Think of the Soldiers)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1717;2168;"Collect Ether Cubes during a single Challenge Battle";1800;0;0;0;0;0;0;0;0;0;0;0;0
+1718;2169;"Challenge Battle (Torna's Finest)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1719;2170;"Collect Ether Cubes during a single Challenge Battle";3600;0;0;0;0;0;0;0;0;0;0;0;0
+1720;2172;"Challenge Battle (Any)";10;0;1;0;0;0;0;0;0;0;0;0;0
+1721;2173;"Attack from behind";30;0;0;0;0;0;0;0;0;0;0;0;0
+1722;2174;"Challenge Battle (Any)";30;0;1;0;0;0;0;0;0;0;0;0;0
+1723;2175;"Attack from behind";100;0;0;0;0;0;0;0;0;0;0;0;0
+1724;2176;"Gather item from Collectibles list - Mechanical type";10;0;0;0;0;0;0;0;0;0;0;0;0
+1725;2177;"Gather item from Collectibles list - Mechanical type";20;0;0;0;0;0;0;0;0;0;0;0;0
+1726;2178;"Gather item from Collectibles list - Mechanical type";40;0;0;0;0;0;0;0;0;0;0;0;0
+1727;2179;"Button challenge during a battle";10;0;0;0;0;0;0;0;0;0;0;0;0
+1728;2180;"Help an incapacitated ally";20;0;0;0;0;0;0;0;0;0;0;0;0
+1729;2181;"Swap Blades during battle";100;0;0;0;0;0;0;0;0;0;0;0;0
+1730;2182;"Gather item through salvaging - Treasure type";5;0;0;0;0;0;0;0;0;0;0;0;0
+1731;2183;"Gather item through salvaging - Treasure type";10;0;0;0;0;0;0;0;0;0;0;0;0
+1732;2184;"Gather item through salvaging - Treasure type";20;0;0;0;0;0;0;0;0;0;0;0;0
+1733;2186;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1734;2187;"Trust";700;0;0;0;0;0;0;0;0;0;0;0;0
+1735;2188;"Trust";2000;0;0;0;0;0;0;0;0;0;0;0;0
+1736;2189;"Trust";4000;0;0;0;0;0;0;0;0;0;0;0;0
+1737;2191;"Challenge Battle (Bewitching Dance)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1738;2192;"Use a move";20;0;0;0;0;0;0;0;0;2190;0;0;0
+1739;2193;"Use a move";25;0;0;0;0;0;0;0;0;2190;0;0;0
+1740;2194;"Challenge Battle (Reinventing the Gogol)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1741;2196;"Use a move";10;0;0;0;0;0;0;0;0;2195;0;0;0
+1742;2197;"Use a move";15;0;0;0;0;0;0;0;0;2195;0;0;0
+1743;2198;"Challenge Battle (Fiercest Faction)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1744;2199;"Challenge Battle (Serious Showdown)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1745;2201;"Use a move";5;0;0;0;0;0;0;0;0;2200;0;0;0
+1746;2202;"Challenge Battle (Temperantian Standoff)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1747;2203;"Use a move";10;0;0;0;0;0;0;0;0;2200;0;0;0
+1748;2204;"Challenge Battle (Attack the Aspar)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1749;2205;"Challenge Battle (Pest Control)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1750;2206;"Use a Blade Art";20;0;0;0;0;0;0;0;0;0;0;0;0
+1751;2207;"Challenge Battle (Any) - Previous instances count towards total";5;0;1;0;0;0;0;0;0;0;0;0;0
+1752;2208;"Use a Blade Art";40;0;0;0;0;0;0;0;0;0;0;0;0
+1753;2209;"Challenge Battle (Any) - Previous instances count towards total";10;0;1;0;0;0;0;0;0;0;0;0;0
+1754;2211;"Collect Ether Cubes - Previous instances count towards total";4000;0;0;0;0;0;0;0;0;0;0;0;0
+1755;2212;"Collect Ether Cubes - Previous instances count towards total";11000;0;0;0;0;0;0;0;0;0;0;0;0
+1756;2213;"Collect Ether Cubes - Previous instances count towards total";21000;0;0;0;0;0;0;0;0;0;0;0;0
+1757;2214;"Collect Ether Cubes - Previous instances count towards total";34000;0;0;0;0;0;0;0;0;0;0;0;0
+1758;2216;"Receive a certain amount of damage";5000;0;0;0;0;0;0;0;0;0;0;0;0
+1759;2217;"Collect an HP Potion";20;0;0;0;0;0;0;0;0;0;0;0;0
+1760;2218;"Receive a certain amount of damage";50000;0;0;0;0;0;0;0;0;0;0;0;0
+1761;2219;"Collect an HP Potion";100;0;0;0;0;0;0;0;0;0;0;0;0
+1762;2220;"Use pouch item (Cloud Sea Crab Sticks)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1763;2221;"Use pouch item (Bagna Oyster Roll)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1764;2222;"Use pouch item (Fiora's fav - Seafood type)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1765;2223;"Walk a lot";50000;0;0;0;0;0;0;0;0;0;0;0;0
+1766;2224;"Swim";100;0;0;0;0;0;0;0;0;0;0;0;0
+1767;2225;"Walk a lot";10000;0;0;0;0;0;0;0;0;0;0;0;0
+1768;2226;"Gather item from Collectibles list (Fusty Funguses) - Currently held items count towards total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1769;2227;"Gather item from Collectibles list (Nopopomouli) - Currently held items count towards total";5;0;0;0;0;0;0;0;0;0;0;0;0
+1770;2228;"Use pouch item (Honey au Lait)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1771;2230;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1772;2231;"Trust";700;0;0;0;0;0;0;0;0;0;0;0;0
+1773;2232;"Trust";2000;0;0;0;0;0;0;0;0;0;0;0;0
+1774;2233;"Trust";4000;0;0;0;0;0;0;0;0;0;0;0;0
+1775;2235;"Use a move";5;0;0;0;0;0;0;0;0;2234;0;0;0
+1776;2236;"Use a move";10;0;0;0;0;0;0;0;0;2234;0;0;0
+1777;2237;"Use a move";20;0;0;0;0;0;0;0;0;2234;0;0;0
+1778;2238;"Use a move";30;0;0;0;0;0;0;0;0;2234;0;0;0
+1779;2240;"Use a move";2;0;0;0;0;0;0;0;0;2239;0;0;0
+1780;2241;"Use a move";5;0;0;0;0;0;0;0;0;2239;0;0;0
+1781;2242;"Use a move";10;0;0;0;0;0;0;0;0;2239;0;0;0
+1782;2243;"Use a move";15;0;0;0;0;0;0;0;0;2239;0;0;0
+1783;2245;"Use a move";2;0;0;0;0;0;0;0;0;2244;0;0;0
+1784;2246;"Use a move";3;0;0;0;0;0;0;0;0;2244;0;0;0
+1785;2247;"Use a move";6;0;0;0;0;0;0;0;0;2244;0;0;0
+1786;2248;"Use a move";10;0;0;0;0;0;0;0;0;2244;0;0;0
+1787;2250;"Finish an enemy - Any";5;0;0;0;0;0;0;0;0;0;0;0;0
+1788;2251;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
+1789;2252;"Finish an enemy - Any";15;0;0;0;0;0;0;0;0;0;0;0;0
+1790;2253;"Finish an enemy - Any";20;0;0;0;0;0;0;0;0;0;0;0;0
+1791;2255;"Engage in combat";5;0;0;0;0;0;0;0;0;0;0;0;0
+1792;2256;"Engage in combat - alongside Pyra or Mythra";10;0;0;0;0;0;0;0;0;0;0;0;0
+1793;2257;"Engage in combat - alongside Pyra or Mythra";15;0;0;0;0;0;0;0;0;0;0;0;0
+1794;2258;"Engage in combat - alongside Pyra or Mythra";20;0;0;0;0;0;0;0;0;0;0;0;0
+1795;2260;"Receive a certain amount of damage";10000;0;0;0;0;0;0;0;0;0;0;0;0
+1796;2261;"Raise Affinity in combat";10;0;0;0;0;0;0;0;0;0;0;0;0
+1797;2262;"Get hit by a critical attack";30;0;0;0;0;0;0;0;0;0;0;0;0
+1798;2263;"Chain attack";10;0;0;0;0;0;0;0;0;0;0;0;0
+1799;2264;"Talk with Lenka in Galad Residential Zone, Gormott ((Requires Nia and Pyra.)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1800;2265;"Talk with Rami in Admar Storage Zone, Mor Ardain (Requires Mòrag and Pyra.) ";1;0;0;0;0;0;0;0;0;0;0;0;0
+1801;2266;"Talk with Nascion in Fonsett Village's residential area, Leftheria (Requires Mythra.)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1802;2267;"Talk with Elvira in Theosoir's Residential Area, Tantal (Requires Zeke and Pyra.)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1803;2268;"Side-quest (Bright Spark)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1804;2270;"Gather item from Collectibles list - Vegetable type";10;0;0;0;0;0;0;0;0;0;0;0;0
+1805;2271;"Gather item from Collectibles list - Vegetable type";30;0;0;0;0;0;0;0;0;0;0;0;0
+1806;2273;"Use pouch item (Meatball Pot-au-Feu)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1807;2274;"Use pouch item (Acqua Pearl Pazza)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1808;2275;"Use pouch item (Addam's Supercakes)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1809;2276;"Use pouch item (Sunshine Pie)";2;0;0;0;0;0;0;0;0;0;0;0;0
+1810;2278;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1811;2279;"Trust";700;0;0;0;0;0;0;0;0;0;0;0;0
+1812;2280;"Trust";2000;0;0;0;0;0;0;0;0;0;0;0;0
+1813;2281;"Trust";4000;0;0;0;0;0;0;0;0;0;0;0;0
+1814;2283;"Finish an enemy - Normal (Nomad Rhinon)";2;0;0;0;0;0;0;791;0;0;0;0;0
+1815;2284;"Finish an enemy - Normal (Flow Bunnit)";2;0;0;0;0;0;0;248;0;0;0;0;0
+1816;2285;"Finish an enemy - Normal (Grad Gogol)";2;0;0;0;0;0;0;463;0;0;0;0;0
+1817;2286;"Finish an enemy - Normal (Organl Griffox)";2;0;0;0;0;0;0;490;0;0;0;0;0
+1818;2288;"Finish an enemy - Normal (Bobbile Brog)";2;0;0;0;0;0;0;229;0;0;0;0;0
+1819;2289;"Finish an enemy - Normal (Sloam Runner)";2;0;0;0;0;0;0;866;0;0;0;0;0
+1820;2290;"Finish an enemy - Normal (Vint Griffox)";2;0;0;0;0;0;0;491;0;0;0;0;0
+1821;2291;"Finish an enemy - Normal (Berserker Mammut)";2;0;0;0;0;0;0;676;0;0;0;0;0
+1822;2293;"Finish an enemy - Normal (Massido Ardun)";2;0;0;0;0;0;0;105;0;0;0;0;0
+1823;2294;"Finish an enemy - Normal (Segel Ansel)";2;0;0;0;0;0;0;38;0;0;0;0;0
+1824;2295;"Finish an enemy - Normal (Bland Upa)";2;0;0;0;0;0;0;1009;0;0;0;0;0
+1825;2296;"Side-quest (Corvin's Approach)";1;0;0;0;0;0;0;0;0;0;0;0;0
+1826;2298;"Finish an enemy - Normal (River Bunnit)";2;0;0;0;0;0;0;253;0;0;0;0;0
+1827;2299;"Finish an enemy - Normal (Buma Hiln)";2;0;0;0;0;0;0;514;0;0;0;0;0
+1828;2300;"Gather item from Collectibles list (Broom Icicles) - Previous instances count toward total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1829;2301;"Finish an enemy - Normal (Tempest Pterix)";2;0;0;0;0;0;0;774;0;0;0;0;0
+1830;2303;"Finish an enemy - Normal (Nuruba Upa)";2;0;0;0;0;0;0;1012;0;0;0;0;0
+1831;2304;"Gather item from Collectibles list (Stream Navy) - Previous instances count toward total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1832;2305;"Finish an enemy - Normal (Arno Kapiba)";2;0;0;0;0;0;0;588;0;0;0;0;0
+1833;2306;"Finish an enemy - Normal (Sarabashi Ropl)";2;0;0;0;0;0;0;827;0;0;0;0;0
+1834;2308;"Gather item from Collectibles list (Rainbow Bugs) - Previous instances count toward total";3;0;0;0;0;0;0;0;0;0;0;0;0
+1835;2309;"Finish an enemy - Normal (Yurem Puffot)";2;0;0;0;0;0;0;778;0;0;0;0;0
+1836;2310;"Finish an enemy - Normal (Klim Anlood)";2;0;0;0;0;0;0;30;0;0;0;0;0
+1837;2311;"Finish an enemy - Normal (Growsa Aspar)";2;0;0;0;0;0;0;128;0;0;0;0;0
+1838;2313;"Talk with Elaria near Waypoint Market, Uraya";1;0;0;0;0;0;0;0;0;0;0;0;0
+1839;2314;"Talk with Kitson near Messet Point, Leftherian Archipelago";1;0;0;0;0;0;0;0;0;0;0;0;0
+1840;2315;"Talk with Phyllistrata near Theospiti Temple Ruins, Tantal";1;0;0;0;0;0;0;0;0;0;0;0;0
+1841;2316;"Talk with 8th Decade Sergeant near Hardhaigh Palace, Mor Ardain";1;0;0;0;0;0;0;0;0;0;0;0;0
+1842;2317;"Gather item from Collectibles list (Blue Ladybirds) - Previous instances count toward total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1843;2318;"Gather item from Collectibles list (Killi-Killi Killifish) - Previous instances count toward total";3;0;0;0;0;0;0;0;0;0;0;0;0
+1844;2319;"Gather item from Collectibles list (Nitrotoluite) - Previous instances count toward total";5;0;0;0;0;0;0;0;0;0;0;0;0
+1845;2321;"Gather item from Collectibles list (Emerald Snow) - Previous instances count toward total";5;0;0;0;0;0;0;0;0;0;0;0;0
+1846;2322;"Gather item from Collectibles list (Sand Salmon) - Previous instances count toward total";10;0;0;0;0;0;0;0;0;0;0;0;0
+1847;2324;"Trust";100;0;0;0;0;0;0;0;0;0;0;0;0
+1848;2325;"Trust";700;0;0;0;0;0;0;0;0;0;0;0;0
+1849;2326;"Trust";2000;0;0;0;0;0;0;0;0;0;0;0;0
+1850;2327;"Trust";4000;0;0;0;0;0;0;0;0;0;0;0;0
+1851;2329;"Use a move";5;0;0;0;0;0;0;0;0;2328;0;0;0
+1852;2330;"Use a move";10;0;0;0;0;0;0;0;0;2328;0;0;0
+1853;2331;"Use a move";20;0;0;0;0;0;0;0;0;2328;0;0;0
+1854;2332;"Use a move";30;0;0;0;0;0;0;0;0;2328;0;0;0
+1855;2334;"Use a move";2;0;0;0;0;0;0;0;0;2333;0;0;0
+1856;2335;"Use a move";5;0;0;0;0;0;0;0;0;2333;0;0;0
+1857;2336;"Use a move";10;0;0;0;0;0;0;0;0;2333;0;0;0
+1858;2337;"Use a move";15;0;0;0;0;0;0;0;0;2333;0;0;0
+1859;2339;"Use a move";2;0;0;0;0;0;0;0;0;2338;0;0;0
+1860;2340;"Use a move";3;0;0;0;0;0;0;0;0;2338;0;0;0
+1861;2341;"Use a move";6;0;0;0;0;0;0;0;0;2338;0;0;0
+1862;2342;"Use a move";10;0;0;0;0;0;0;0;0;2338;0;0;0
+1863;2344;"Challenge Battle (Grazing Flock)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1864;2345;"Challenge Battle (Darkening Skies)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1865;2346;"Challenge Battle (Dread Contagion)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1866;2347;"Challenge Battle (Humanoid Alliance)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1867;2349;"Challenge Battle (Think of the Soldiers)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1868;2350;"Challenge Battle (Sacred Wood)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1869;2351;"Challenge Battle (Chickenheart Challenge)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1870;2352;"Challenge Battle (9th Imp. Armored Div.)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1871;2354;"Challenge Battle (Bewitching Dance)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1872;2355;"Challenge Battle (Panic at the Seaside)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1873;2356;"Challenge Battle (Serious Showdown)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1874;2357;"Challenge Battle (Cloud King's Revenge)";1;0;1;0;0;0;0;0;0;0;0;0;0
+1875;2358;"Go to location - Masrah Spring";1;0;0;0;0;0;0;0;0;0;0;0;0
+1876;2359;"Go to location - Ruins of Fountain Park";1;0;0;0;0;0;0;0;0;0;0;0;0
+1877;2360;"Go to location - Ancient Wall";1;0;0;0;0;0;0;0;0;0;0;0;0
+1878;2361;"Go to location - Vault of Heroes";1;0;0;0;0;0;0;0;0;0;0;0;0
+1879;2362;"Go to location - 7th Perim. Skyport";1;0;0;0;0;0;0;0;0;0;0;0;0
+1880;2363;"Finish an enemy - Normal (Sandl Rapchor)";2;0;0;0;0;0;0;864;0;0;0;0;0
+1881;2364;"Finish an enemy - Normal (Sprack Parisax)";2;0;0;0;0;0;0;725;0;0;0;0;0
+1882;2365;"Finish an enemy - Normal (Zaguin Hox)";2;0;0;0;0;0;0;517;0;0;0;0;0
+1883;2366;"Finish an enemy - Normal (Lun Scorpox)";2;0;0;0;0;0;0;837;0;0;0;0;0
+1884;2367;"Finish an enemy - Normal (Riveral Ansel)";2;0;0;0;0;0;0;636;0;0;0;0;0
+1885;2368;"Gather item from Collectibles list (Clarity Moss) - Currently held items count towards the required total";4;0;0;0;0;0;0;0;0;0;0;0;0
+1886;2369;"Gather item from Collectibles list (Dragon Incense) - Currently held items count towards the required total";4;0;0;0;0;0;0;0;0;0;0;0;0
+1887;2370;"Gather item from Collectibles list (Glory Angler) - Currently held items count towards the required total";4;0;0;0;0;0;0;0;0;0;0;0;0
+1888;2371;"Gather item from Collectibles list (Addam's Tear) - Currently held items count towards the required total";4;0;0;0;0;0;0;0;0;0;0;0;0
+1889;2372;"Gather item from Collectibles list (Robotic Placoderm) - Currently held items count towards the required total";4;0;0;0;0;0;0;0;0;0;0;0;0

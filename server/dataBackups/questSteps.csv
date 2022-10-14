@@ -1,0 +1,872 @@
+"id";"Quest";"StepNumber";"Description";"Completed"
+1;1;1;"Look for the stone tablet near Aegishammer in Temperantia.";0
+2;1;2;"Solve the mystery of the glowing stone tablet in Goldmouth Warehouse in Argentum.";0
+3;1;3;"In the old tomes she's been studying, Adenine has found coordinates for a location. Go there and check it out!";0
+4;1;4;"Solve the mystery of the glowing stone tablet in Goldmouth Warehouse in Argentum.";0
+5;1;5;"Investigate the Data Processing Room at the World Tree.";0
+6;1;6;"Defeat the enemies in the Data Processing Room at the World Tree.";0
+7;2;1;"Buy an Abyss Vest at Shynini's Accessories";0
+8;2;2;"Talk to Melolo at the Central Exchange";0
+9;2;3;"Speak with Max the courier";0
+10;2;4;"Speak with Rurui, who's waiting on the Salvage Deck";0
+11;2;5;"Salvage at the Salvage Point on the Salvage Deck";0
+12;2;6;"Report back to Rurui, who's waiting on the Salvage Deck";0
+13;2;7;"Head to the third floor and buy food supplies at Fishy Fishy";0
+14;3;1;"Head to Goldmouth Return Port in Argentum and defend the cargo from the Trent Krabble";0
+15;3;2;"Defeat the additional Trent Krabbles that appreared at Goldmouth Return Port in Argentum (2)";0
+16;3;3;"Defeat the additional Trent Krabbles and Petra Crustip that appeared at Goldmouth Return Port in Argentum";0
+17;3;4;"Report to Ysolde at the Central Exchange in Argentum";0
+18;4;1;"Achieve all objectives";0
+19;4;2;"Report to Aft in Bower Lounge in Argentum";0
+20;5;1;"Search for Limuli, who's somewhere in Argentum";0
+21;5;2;"Get you hands on a Cinnopon Roll at Honeycomb Sweets in Argentum";0
+22;5;3;"Deliver the Cinnopon Roll to Limuli on the Salvage Deck in Argentum";0
+23;5;4;"Haul up that Sly Krabble at the Salvage Deck, Argentum to retrieve Limuli's Keepsake Necklace";0
+24;5;5;"Deliver the Keepsake Necklace to Limuli Salvage Deck in Argentum";0
+25;5;6;"Report back to Gegebi at Bower Lounge in Argentum";0
+26;6;1;"Collect some food in Argentum and bring it to Panpan (100)";0
+27;6;2;"Head to Gormott and rejoin Panpan";0
+28;6;3;"Defeat the Vacuum Brogs at the Forgotten Waste in Gormott";0
+29;6;4;"Speak with Panpan at the Forgotten Waste in Gormott";0
+30;6;5;"Search for Panpan, who has made an emergency landing somewhere in Gormott";0
+31;6;6;"Complete all objectives";0
+32;6;7;"Report back to Panpan on the Treetop Path in Gormott";0
+33;6;8;"Speak with Panpan at Goldmouth Flight Deck in Argentum";0
+34;7;1;"Complete all objectives";0
+35;7;2;"Make Serenade at Rumbletum Canteen in Argentum";0
+36;7;3;"Give Falala the Serenade at Rumbletum Canteen in Argentum";0
+37;7;4;"Try making Serenade again at Rumbletum Canteen in Argentum";0
+38;7;5;"Give Falala the Serenade at Rumbletum Canteen in Argentum";0
+39;7;6;"Speak with Falala at Rumbletum Canteen in Argentum";0
+40;7;7;"Complete all objectives";0
+41;7;8;"Deliver the ingredients you collected to Falala at Rumbletum Canteen in Argentum";0
+42;7;9;"Complete all objectives";0
+43;7;10;"Report back to Falala at Rumbletum Canteen in Argentum";0
+44;7;11;"Complete the Merc Mission ""On the Son's Trail!"""" or receive information from the Mumufa Informants""";0
+45;7;12;"Go to Fonsa Myma in Uraya and meet the Nopon who may or may not be Solala";0
+46;7;13;"Chase after Solala, who ran off somewhere in Fonsa Myma in Uraya";0
+47;7;14;"Go to Rumbletum Canteen in Argentum to meet Falala";0
+48;8;1;"Pay a visit to Rododo by Goldmouth Flight Deck in Argentum";0
+49;8;2;"Open the door to Goldmouth Rooftop in Argentum and poke around inside";0
+50;8;3;"Go ask Rododo about the statue. He's by Goldmouth Flight Deck in Argentum";0
+51;8;4;"Multiple objectives";0
+52;8;5;"Explore the coordinates in the vicinity of Old Valantia in Garfont";0
+53;8;6;"Go show Nopopon's Journal to Rododo at Goldmouth Flight Deck in Argentum";0
+54;8;7;"Rododo went to Noponya Shire in Argentum. Follow him and discover the truth about Argentum's prosperity";0
+55;9;1;"Go to Daram Isle, Leftherian Archipelago, to find the Nopon Trade Guild ID";0
+56;9;2;"Defeat the Tirkin at Daram Isle, Leftherian Archipelago";0
+57;9;3;"Obtain the Nopon Trade Guild ID on Daram Isle, Leftherian Archipelago";0
+58;9;4;"Go to Goldmouth Wheelhouse, Argentum, and give the Nopon Trade ID to Noganga";0
+59;9;5;"Defeat the Tirkin King and his men at Goldmouth Flight Deck in Argentum";0
+60;9;6;"With the help of the mercenaries, gather info on the whereabouts of the Tirkin Kountess";0
+61;9;7;"Go to Tirkinlandia, Tantal, to meet Omulette";0
+62;9;8;"Head to Rumbletum Canteen, Argentum";0
+63;10;1;"Go to Boreas's food stash at Goldmouth Warehouse, Argentum";0
+64;10;2;"Search for the owner of the statue ""borrowed"""" by Boreas""";0
+65;10;3;"Get a Shimmering Feather from Ansel Hatchery in the Leftherian Archipelago";0
+66;10;4;"Go to Rumbletum Canteen in Argentum";0
+67;10;5;"Get Niall's Underwear at Hardhaigh Palace in Mor Ardain";0
+68;10;6;"Speak to Yumyum the Burglar at Nharil Central Plaza, Mor Ardain";0
+69;10;7;"Obtain the Bloomshroom from the Bastion of Varrac, Temperantia";0
+70;10;8;"Defeat the Roiba Ignas at the Bastion of Varrac, Temperantia";0
+71;10;9;"Obtain the Bloomshroom from the Bastion of Varrac, Temperantia";0
+72;10;10;"Obtain the Bloomshroom from the treasure trove in the Bastion of Varrac, Temperantia";0
+73;10;11;"Have Rumtumtum cook with the Bloomshroom at Rumbletum Canteen, Argentum";0
+74;11;1;"Head to the Isle of Sleeping Remains in Leftheria";0
+75;11;2;"Multiple objectives";0
+76;12;1;"Go to the library in Elmos Square, Tantal, to get more information about the legendary monster";0
+77;12;2;"Multiple objectives";0
+78;12;3;"Report to Zaman at Anastasia's, Tantal";0
+79;12;4;"Multiple objectives";0
+80;12;5;"Stand before the sealstones at Xataris Spring in Temperantia";0
+81;12;6;"At Xataris Spring, in Temperantia, defeat Thanatobeast Andraz";0
+82;13;1;"Send Adenine on a Merc Mission to further find password clues";0
+83;13;2;"Get information about the password from Girogi at Fonsa Myma in Uraya";0
+84;13;3;"Have Robodo show you this ancient text to get information about the password near Goldmouth Flight Deck, Argentum";0
+85;13;4;"Get information about the password from Arecilion in front of the Library Philosofia in Tantal";0
+86;14;1;"Open the blue chest near Niranira in Bana's Bedroom";0
+87;14;2;"Report back to Niranira in Bana's Bedroom in Argentum";0
+88;14;3;"Talk to Bana in room near flight deck";0
+89;14;4;"Flatter then threaten Bana to learn how to open his secret stash";0
+90;14;5;"Report back to Niranira in Bana's Bedroom in Argentum";0
+91;14;6;"Complete all objectives";0
+92;14;7;"Report back to Niranira in Bana's Bedroom in Argentum";0
+93;14;8;"Examine the small treasure trove in Bana's Bedroom in Argentum";0
+94;14;9;"Give the letters to Niranira in Bana's Bedroom in Argentum";0
+95;15;1;"Talk to Silas near the Goldmouth Flight Deck in Argentum";0
+96;15;2;"Ask around for more information on the first floor of Argentum";0
+97;15;3;"Report to Silas near Goldmouth Flight Deck in Argentum";0
+98;15;4;"Complete the Merc Mission ""Child Disappearance""";0
+99;15;5;"Talk to Perun at Fonsa Myma Port in Uraya";0
+100;15;6;"Talk to Darryth in Commercial District of Uraya";0
+101;15;7;"Multiple objectives";0
+102;15;8;"Search for the Children in the area around Lake Varna in Uraya";0
+103;15;9;"Defeat the Tronk Aligo at Lake Varna in Uraya.";0
+104;15;10;"Talk to Dianna in the Commercial District in Uraya";0
+105;15;11;"Search for Martal's parents in Theosoir in Tantal";0
+106;15;12;"Head to Genbu Port in Tantal at dawn";0
+107;15;13;"Defeat the Drivers in Genbu Port in Tantal";0
+108;15;14;"Gather information at Port Anangham in Mor Ardain";0
+109;15;15;"Head to the old factory in Mor Ardain";0
+110;15;16;"Rescue the captured children from the old factory in Mor Ardain";0
+111;15;17;"Join up with Perun at the Artificial Blade Adjustment room in the old factory in Mor Ardain";0
+112;15;18;"Head to Bulge Harbor in Mor Ardain";0
+113;16;1;"Collect Flutterheart Grass at the Sealed Quarry in Tantal";0
+114;16;2;"Make the Love Source at the Fiercest Fire in Argentum";0
+115;17;1;"Go to Island Base Lindwurm in the Leftherian Archipelago";0
+116;17;2;"Defeat Zadazan and company in Island Base Lindwurm in the Leftherian Archipelago";0
+117;17;3;"Go to the basement of Island Base Lindwurm in the Leftherian Archipelago";0
+118;17;4;"Follow Don Dondon to Island Base Lindwurm in the Leftherian Archipelago";0
+119;17;5;"Defeat Don Dondon on Island Base Lindwurm in the Leftherian Archipelago";0
+120;17;6;"Go and check on Bana in Argentum";0
+121;18;1;"Collect the 11 Nopon Doubloons hidden all over Alrest";0
+122;18;2;"Deliver the 11 Nopon Doubloons to Nunui at Goldmouth Viewpoint in Argentum";0
+123;18;3;"Repay the million G loan to Nunui at Goldmouth Viewpoint in Argentum";0
+124;19;1;"Head for the hot spring behind Jakolo's Inn in Mor Ardain";0
+125;19;2;"Head for the Geothermal Plant Lobby in Mor Ardain and get the details from whoever's there";0
+126;19;3;"Multiple objectives";0
+127;19;4;"Speak with Amir at the Geothermal Plant Lobby in Mor Ardain";0
+128;19;5;"Speak with Felina by Jakolo's Inn in Mor Ardain";0
+129;19;6;"Head for the Nopon Pioneers' Spring in Mor Ardain";0
+130;20;1;"Ask around in Torigoth to see if you can gather information about Nia";0
+131;21;1;"Purchase Bion Connectors or obtain them by salvaging";0
+132;22;1;"Defeat the Juppen Krabble on Lascham Island";0
+133;22;2;"Report back to Cedwyn, who's waiting in Torigoth";0
+134;23;1;"Defeat the Snooz Volff on Garanti Plain in Gormott";0
+135;23;2;"Speak with Tunini on Garanti Plain in Gormott";0
+136;24;1;"Achieve all objectives";0
+137;24;2;"Deliver the pie ingredients to Twaina in Gormott's Grodd Residential Zone";0
+138;24;3;"Ask Glyn in Gormott's Torigoth Market to fix Twaina's stove";0
+139;24;4;"Pay the repair fees to Glyn in Gormott's Torigoth Market, or find a Chain of Keys for him";0
+140;24;5;"Return to Twaina in Gormott's Grodd Residential Zone";0
+141;25;1;"Achieve all objectives";0
+142;25;2;"Report back to Eyvan at Saets Lumber Co. in Gormott and let him know that the case is closed";0
+143;26;1;"Gather Winding Gears in Gormott";0
+144;26;2;"Give the Winding Gears to Natheus at Saets Lumber Co. in Gormott";0
+145;27;1;"Obtain information on the arrival of the criminals who broke the crane in Torigoth in Gormott";0
+146;27;2;"Two Tirkin-like shadows have been spotted in a giant tree close to Torigoth. Head over and check it out";0
+147;27;3;"At nighttime, defeat the Infallible Tirkin and the Resourceful Tirkin at the giant tree close to Torigoth";0
+148;27;4;"Report back to Pettle at Saets Lumber Co. in Gormott with what you've learned about the culprits";0
+149;28;1;"Look for Pawli around the Waytree in Gormott";0
+150;28;2;"Defeat the Nabadan Gogols near the Waytree in Gormott and help Pawli";0
+151;28;3;"Speak to Pawli by the Waytree";0
+152;28;4;"Gather Confusion Ivy in Gormott";0
+153;28;5;"Report back to Pawli, who's waiting for you by the Waytree";0
+154;28;6;"Go to Torigoth Market in Gormott and report back to Siorge";0
+155;28;7;"Get the Gormotti Walnut from Mokumoku in the Nopon Camp in Gormott";0
+156;28;8;"Go to Torigoth Market in Gormott and report back to Siorge";0
+157;29;1;"Buy one of each item sold at Llysiau Greens in Torigoth Market, Gormott";0
+158;29;2;"Buy the Llysiau Deeds at Llysiau Greens in Torigoth Market, Gormott";0
+159;29;3;"Report back to Bowery in Torigoth Market, Gormott";0
+160;30;1;"Report back to Bowery in Torigoth Market, Gormott";0
+161;30;2;"Give the gathered Buoyweed to Sulya by Coolley Lake in Gormott";0
+162;31;1;"Achieve all objectives";0
+163;31;2;"Confer with Tucker, now arrived at the Nocclia Timber Site in Gormott";0
+164;31;3;"Investigate the little hut by the waterfall close to Siegle Fell in Gormott";0
+165;31;4;"Defeat the Hermit Tirkin by the waterfall close to Siegle Fell in Gormott";0
+166;31;5;"Report back to Tucker at the Nocclia Timber Site in Gormott";0
+167;31;6;"Ask Rheena, at the Torigoth Market in Gormott, to craft you an accessory";0
+168;32;1;"The Tiger! Tiger! cabinet is at Tora's House, so head on over!";0
+169;32;2;"Play Tiger! Tiger! and win Bipopo his coveted Tank Mod III";0
+170;32;3;"Give the Tank Mod III to Bipopo at Tora's house in Gormott";0
+171;32;4;"Head to Bipopo's house in Argentum";0
+172;33;1;"Achieve all objectives";0
+173;33;2;"Report back to Umon at Umon's Shipyard in Gormott Province";0
+174;33;3;"Return to Torigoth in Gormott and rest at Coedwig Inn until the tide is high";0
+175;33;4;"Head to the Masrah Spring area in Gormott Province at high tide and bring back the wayward Titan";0
+176;33;5;"Report back to Umon at Umon's Shipyard in Gormott Province";0
+177;34;1;"Capture a Snow-White Rhino close by Seigle Fell in Gormott";0
+178;34;2;"Bring the Snow-White Rhino to Eluned in Grodd Residential Zone in Gormott";0
+179;34;3;"Talk to Eluned near Garagorm's Arch in Gormott";0
+180;35;1;"Scrounge up some promising fertilizer ingredients and bring them to Nomon at Kloom Farm in Gormott";0
+181;35;2;"Stay at Coedwig Inn in Torigoth, Gormott";0
+182;35;3;"Visit Kloom Farm in Gormott and ask Nomon how the vegetables are doing";0
+183;35;4;"Search the surrounding area to find out why vegetables aren't growing well at Kloom Farm in Gormott";0
+184;35;5;"Stop the dirty water flowing from Torigoth Relay Base in Gormott";0
+185;35;6;"Report back to Nomon at Kloom Farm in Gormott";0
+186;35;7;"Scrounge up some promising fertilizer ingredients and bring them to Nomon at Kloom Farm in Gormott";0
+187;35;8;"Stay at Coedwig Inn in Torigoth, Gormott";0
+188;35;9;"Visit Kloom Farm in Gormott and ask Nomon how the vegetables are doing";0
+189;36;1;"Save the young couple being attacked by Grambl Tirkin at Melnath's Shoulder in Gormott";0
+190;36;2;"Speak with Rhiannon at Melnath's Shoulder in Gormott";0
+191;36;3;"Achieve all objectives";0
+192;36;4;"Visit the apothecary Nils in Torigoth in Gormott to fetch the medicine";0
+193;36;5;"Go to meet Rhiannon's parents in the Grodd Residential Zone in Gormott";0
+194;36;6;"Collect the medicine from Nils in Torigoth in Gormott";0
+195;36;7;"Deliver the medicine to Rhiannon at Melnath's Shoulder in Gormott";0
+196;37;1;"Ask around and see what information you can scrounge up about the young thief in the vicinity of the Torigoth port";0
+197;37;2;"Go to Nocclia Timber Site in Gormott and ask Otto about the boy";0
+198;37;3;"Search for footprints the boy may have left behind at Nocclia Timber Site in Gormott";0
+199;37;4;"Follow the boy's footsteps, which lead away from Nocclia Timber Site, and try to determine his whereabouts";0
+200;38;1;"Make your way to below where Cherlie is at Varnax's Plunge in Gormott";0
+201;38;2;"Catch up with Cherlie at Varnax's Plunge in Gromott";0
+202;38;3;"Catch up with Cherlie at the top of Varnax's Plunge in Gromott";0
+203;38;4;"In the morning, defeat the Kallas Skwaror that is trying to get the Healing Herb on Verdant Plateau in Gormott";0
+204;38;5;"In the morning, pick a Healing Herb on Verdant Plateau in Gormott";0
+205;38;6;"Report back to Capher in front of Varnax's Plunge in Gormott";0
+206;39;1;"Gather Melosian Honey from Honeypot Grotto";0
+207;39;2;"Deliver Melosian Honey to Moui";0
+208;39;3;"Achieve all objectives";0
+209;39;4;"Report back to Militia Chief Moui, who is waiting in front of Saets Chief's Residence in Gormott";0
+210;40;1;"""Do some salvaging at Torigoth Relay Base in Gormott and get a Morph Orb""";0
+211;40;2;"Give the Morph Orb to Petir in Tretl Windwill Plaza in Gormott";0
+212;41;1;"Get Gryff and the others outside of Torigoth Relay Base in Gormott to calm down";0
+213;41;2;"Persuade Gryff and the others outside of Torigoth Relay Base";0
+214;42;1;"Develop Gormott, then complete the Merc Mission Turf War Protection and obtain Attas's Noodle Soup";0
+215;42;2;"Give the Ruska Noodle Soup to Shatoto in Galad Residential Zone in Gormott";0
+216;43;1;"Go to the Nopon Camp in Garanti Plain in Gormott to check on Mopopo";0
+217;43;2;"Deliver the goods to Feyla in Grodd Residential Zone in Gormott and explain the situation";0
+218;44;1;"Talk to Tipitapi in Rumbletum Canteen in Argentum";0
+219;44;2;"Raise all vocal, look and soul levels to two or more by taking the lessons offered in the mercenary missions";0
+220;44;3;"Report to Tipitapi in Rumbletum Canteen in Argentum";0
+221;44;4;"Talk to Ursula at Lemour Inn in Argentum";0
+222;44;5;"Talk to Tipitapi in Rumbletum Canteen in Argentum";0
+223;44;6;"Raise all vocal, look and soul levels to four or more by taking the lessons offered in the merc missions";0
+224;44;7;"Report to Tipitapi in Rumbletum Canteen in Argentum";0
+225;44;8;"Talk to Ursula at Mymoma Playhouse in Uraya";0
+226;44;9;"Get Champ's Churros at Fonsa Myma's Entertainment District in Uraya";0
+227;44;10;"Give the Champ's Churros to Ursula at Mymoma Playhouse in Uraya";0
+228;44;11;"Talk to Tipitapi at Mymoma Playhouse in Uraya";0
+229;44;12;"Take part in singing activities from the mercenary missions and collect at least 5,000 fans";0
+230;44;13;"Report to Tipitapi at Mymoma Playhouse in Uraya";0
+231;44;14;"Talk to Ursula at Jakolo's Inn in Mor Ardain";0
+232;44;15;"Talk to Kiara at Abble's Fountain in Gormott Province";0
+233;44;16;"Take Kiara to join Ursula at Nharil Central Plaza in Mor Ardain";0
+234;45;1;"Achieve all objectives";0
+235;45;2;"Take the ingredients to Vess in Torigoth Market in Gormott";0
+236;45;3;"Go to Vess's house in Tretl Windmill Plaza in Gormott";0
+237;45;4;"Talk to Dward at Saets Lumber Co. in Gormott Province";0
+238;45;5;"Get Gormotti Firewood from Saets Lumber Co. in Gormott";0
+239;45;6;"Give the Gormotti Firewood to Vess in Tretl Windmill Plaza in Gormott";0
+240;45;7;"Achieve all objectives";0
+241;45;8;"Give Bitter Choclit and a Fruity Rice Ball to Mabon in Tretl Windmill Plaza in Gormott";0
+242;45;9;"Give a Fruity Rice Ball to Vess in Tretl Windmill Plaza in Gormott";0
+243;45;10;"Report back to Mabon in Tretl Windmill Plaza in Gormott";0
+244;45;11;"Achieve all objectives";0
+245;45;12;"Report back to Mabon in Tretl Windmill Plaza in Gormott";0
+246;45;13;"Achieve all objectives";0
+247;45;14;"Report to Mabon in Tretl Windmill Plaza in Gormott";0
+248;45;15;"Find Vess in Tretl Windmill Plaza in Gormott";0
+249;46;1;"Search for the missing group by Varnax's Plunge in Gormott";0
+250;46;2;"Follow the footsteps that lead from close to Varnax's Plunge in Gormott";0
+251;46;3;"Keep following the footsteps that lead from close to Varnax's Plunge in Gormott";0
+252;46;4;"Face off against the giant reptile that emerged from the Sauros's Bed in Gormott";0
+253;46;5;"Route A: Defeat the giant reptile at the Sauros's Bed in Gormott";0
+254;46;6;"Route A: Report back to Ashe at Torigoth Relay Base in Gormott";0
+255;46;5;"Route B: Report back to Ashe at Torigoth Relay Base in Gormott";0
+256;46;6;"Route B: Speak with Tishk at Beraf Industry Ward in Mor Ardain";0
+257;46;7;"Route B: Obtain a Benoît Nut at Turbine Tower in Mor Ardain";0
+258;46;8;"Route B: Place the Benoît Nut outside the Sauros's Bed in Gormott";0
+259;46;9;"Route B: Defeat the weakened giant reptile at the Sauros's Bed in Gormott";0
+260;46;10;"Route B: Report back to Ashe at Torigoth Relay Base in Gormott";0
+261;47;1;"At Obra Street in Gormott, defeat the crystal-hunting Blades";0
+262;47;2;"In Torigoth Relay Base, Gormott, speak to Iannus";0
+263;47;3;"Complete the Merc Mission ""False Rumor""""""";0
+264;47;4;"Report to Iannus at Torigoth Relay Base, Gormott";0
+265;47;5;"Dispatch a squad to complete the Merc Mission ""Ambush""""""";0
+266;47;6;"Go to Valdorm's Mound, in Mor Ardain";0
+267;47;7;"At Valdorm's Mound, in Mor Ardain, defeat the crystal-hunters";0
+268;47;8;"Report to Iannus at Torigoth Relay Base, Gormott";0
+269;48;1;"Buy the Lucky Dawn Bread at Tilly Bakery in Gormott";0
+270;48;2;"Head to the fountain at Tretl Windmill Plaza, Gormott";0
+271;48;3;"Hear what the owner of Tilly Bakery in Gormott has to say";0
+272;48;4;"Call on Otto at Saets Lumber Co., Gormott";0
+273;48;5;"Search for Otto, who headed to Nocclia Timber Site, Gormott";0
+274;48;6;"Use Field Skills to destroy the toppled tree at Hushview Bridge, Gormott";0
+275;48;7;"Hear out Kupon at Hushview Bridge, Gormott";0
+276;48;8;"Find Otto, who was taken to Tirkin Turf in Gormott";0
+277;48;9;"Help Otto at the Tirkin Turf in Gormott";0
+278;48;10;"Head to Saets Lumber Co. in Gormott";0
+279;48;11;"Speak to Attas at Tretl Windmill Plaza, Gormott";0
+280;48;12;"Look for Kupon at Hushview Bridge, Gormott";0
+281;48;13;"Use Field Skills to destroy the toppled tree at Hushview Bridge, Gormott";0
+282;48;14;"Hear out Kupon at Hushview Bridge, Gormott";0
+283;48;15;"Get back the stolen goods from Tirkin Turf in Gormott";0
+284;48;16;"Recover the stolen goods from Tirkin Turf in Gormott";0
+285;48;17;"Hand over the stolen goods to Kupon at Hushview Bridge in Gormott";0
+286;48;18;"Report to Attas at the Tilly Bakery in Tretl Windmill Plaza, Gormott";0
+287;49;1;"Take on the Ardainian soldiers in a mock battle at Torigoth Relay Base, Gormott";0
+288;49;2;"Check the broken parts of the Titan weapon at Torigoth Relay Base, Gormott";0
+289;49;3;"Multiple objectives";0
+290;49;4;"Repair the Titan weapon at Torigoth Relay Base, Gormott";0
+291;49;5;"Report to Grand Marshal Robalt in Battle Command in Gormott";0
+292;49;6;"Multiple objectives";0
+293;49;7;"Report to Grand Marshal Robalt in Battle Command in Gormott";0
+294;49;8;"Go to Hardhaigh Gate, in Mor Ardain";0
+295;49;9;"At Nharil Central Plaza, Mor Ardain, speak to Navarre";0
+296;49;10;"Look for Niall around Hardhaigh Palace, Mor Ardain";0
+297;49;11;"At Jarlin, Wing Area #1, in Mor Ardain, defeat the assassins";0
+298;49;12;"In Jarlin, Wing Area #1, Mor Ardain, speak to Niall";0
+299;50;1;"Catch up with Electra somewhere in Gormott";0
+300;50;2;"Speak to people in each region to raise Electra's Lord of Thunder power to level five";0
+301;50;3;"Look for the youth who Electra shocked in Torigoth in Gormott";0
+302;50;4;"Search for Izzi who was heading for Koorell Pool in Gormott";0
+303;50;5;"Defeat the Nanda Arachno at Koorell Pool in Gormott";0
+304;50;6;"Escort Izzi to Torigoth Market in Gormott";0
+305;51;1;"Multiple objectives";0
+306;51;2;"Multiple objectives";0
+307;51;3;"Multiple objectives";0
+308;51;4;"Go to Bulge Harbor, in Old Factory area of Mor Ardain, meh!";0
+309;51;5;"Try to dig up thing hidden beneath Saffronia tree at Gwenith Paddies in Uraya, meh!";0
+310;51;6;"Report back to Grampypon Soosoo, who wait at Bulge Harbor, in Old Factory area of Mor Ardain, meh!";0
+311;51;7;"Defeat Maxos Arachno in Mor Ardain, meh!";0
+312;51;8;"Report back to Grampypon Soosoo, who wait at Bulge Harbor, in Old Factory area of Mor Ardain, meh!";0
+313;52;1;"Gather information about Titans in Torigoth";0
+314;52;2;"Look for a washed-up Titan by Torigoth Flower Patch in Gormott";0
+315;52;3;"Defeat the Titan-Hunter Lexos that has been attacking Titans by Torigoth Flower Patch in Gormott";0
+316;52;4;"Report back to Umon at Grodd Residential Zone in Gormott";0
+317;52;5;"Build a ship by completing the necessary Merc Missions";0
+318;52;6;"Report back to Umon at Grodd Residential Zone in Gormott";0
+319;52;7;"Speak with Umon, who headed back to Umon's Shipyard in Gormott";0
+320;53;1;"Go to the location written on the mural and get your hands on the treasure";0
+321;53;2;"You obtained a mysterious part. Report back to Erebos";0
+322;53;3;"Find the remaining four parts, which are hidden all over Alrest, then report back to Erebos";0
+323;54;1;"Defeat three Revenge Tirkin in the Tirkin Turf in Gormott";0
+324;54;2;"Report to Saclich at Torigoth Relay Base, Gormott";0
+325;55;1;"Defeat the Magno Blant around Sternum Arch, Uraya";0
+326;56;1;"Defeat the Bodom Grebel at Underground River Lavi, Spirit Crucible Elpys";0
+327;57;1;"Defeat the Cherys Medooz at Lud Cloudway, Leftherian Archipelago";0
+328;58;1;"Go and speak with Tatazo at Tora's House in Gormott";0
+329;58;2;"Collect ten Golden Cogs in Temperantia";0
+330;58;3;"Report back to Tatazo at Tora's House in Gormott";0
+331;58;4;"The following objectives may be completed in any order";0
+332;58;5;"Report back to Lila at Tora's House in Gormott";0
+333;58;6;"Speak with Tatazo at Tora's House in Gormott";0
+334;58;7;"Speak with Fleecyflossy at Goldmouth Flight Deck in Argentum";0
+335;58;8;"Decode the information on the blackboard at Goldmouth Flight Deck in Argentum";0
+336;58;9;"Speak with Fleecyflossy at Goldmouth Flight Deck in Argentum";0
+337;58;10;"Speak with Fleecyflossy at Goldmouth Flight Deck in Argentum";0
+338;58;11;"Decode the information on the blackboard at Goldmouth Flight Deck in Argentum";0
+339;58;12;"Speak with Fleecyflossy at Goldmouth Flight Deck in Argentum";0
+340;58;13;"Defeat the Torl Marrin at Goldmouth Flight Deck in Argentum";0
+341;58;14;"Report back to Fleecyflossy at Goldmouth Flight Deck in Argentum";0
+342;58;15;"Report back to Tatazo at Tora's House in Gormott";0
+343;58;16;"Put energy into the charging device at Tora's House in Gormott";0
+344;59;1;"Complete all objectives";0
+345;60;1;"Rescue Therida on Declessa Altar Hill in Tantal";0
+346;60;2;"Collect Amethyst Vanilla in Tantal";0
+347;60;3;"Deliver the Amethyst Vanilla to Llonya on Declessa Alter Hill in Tantal";0
+348;61;1;"Go to the location marked on the map in Uraya";0
+349;61;2;"Search for the owner of the broken knife in Uraya";0
+350;61;3;"Defeat Erebos at Bluestep Ditch in Uraya";0
+351;61;4;"Talk to Erebos in Bluestep Ditch in Uraya";0
+352;62;1;"Head to the Greatmaw Rapids in Uraya";0
+353;62;2;"Defeat the Naola Crustips at the Greatmaw Rapids in Uraya";0
+354;62;3;"Talk to Jelved at the Greatmaw Rapids in Uraya";0
+355;62;4;"Talk to Geross at Garfont in Uraya";0
+356;63;1;"Defeat the Maasti Ignas at Farlaine Central Pools in Uraya";0
+357;63;2;"Speak with Ragi at Farlaine Central Pools in Uraya";0
+358;63;3;"Find Dororo somewhere around Badfella's Cave Fort in Uraya";0
+359;63;4;"Defeat the Rood Ignas near Badfella's Cave Fort in Uraya";0
+360;63;5;"Speak with Dororo around Badfella's Cave Fort in Uraya";0
+361;63;6;"Report to Ragi at Failaine Central Pools in Uraya";0
+362;64;1;"Achieve all objectives";0
+363;64;2;"Take the gathered materials to Chulev in Waypoint Market, Uraya";0
+364;65;1;"Find Budada, who has gone missing somewhere in Uraya";0
+365;65;2;"Make an offering of food to the Nopon statue";0
+366;66;1;"Speak to Seesaw in Torika Alley in Uraya";0
+367;66;2;"Get a Booster Cylinder made by Seesaw. He's in Torika Alley in Uraya";0
+368;67;1;"Complete all objectives";0
+369;67;2;"Speak to Dobran in the Commercial District in Uraya";0
+370;68;1;"Speak with Yew at Garfont in Uraya";0
+371;68;2;"Accept the Merc Mission called ""First Mission"""" in the Merc Group menu""";0
+372;68;3;"Wait until the Merc Mission is finished";0
+373;68;4;"Collect the reward for the Merc Mission from the Merc Group menu";0
+374;68;5;"Report back to Yew at the Mercenary HQ in Garfont, Uraya";0
+375;69;1;"Chase after Guztin, who is headed toward Garfont in Uraya";0
+376;69;2;"Defeat the Flamii threatening Guztin in the caves leading to Garfont in Uraya";0
+377;69;3;"Speak to Guztin in the caves leading to Garfont in Uraya";0
+378;69;4;"Head for the Dragon's Stomach in Uraya";0
+379;69;5;"Defeat the Parisax in the Dragon's Stomach in Uraya";0
+380;69;6;"Speak with Guztin in Garfont, Uraya";0
+381;69;7;"Speak with Pilolo at Fonsa Myma Port in Uraya";0
+382;70;1;"See what Zuo at Mercenary HQ in Uraya has to say";0
+383;70;2;"Prepare some rations at the Plaza of Reprieve in Uraya";0
+384;70;3;"Defeat the leader of the Dobus Ansels at the Plaza of Reprieve in Uraya";0
+385;70;4;"Report back to Zuo at Mercenary HQ in Uraya";0
+386;70;5;"Report back to Yew at Mercenary HQ in Uraya";0
+387;71;1;"Speak with Vorden at the training ground in Uraya";0
+388;71;2;"Spar with Vorden and the others at the training ground in Uraya";0
+389;71;3;"Speak with Vorden at the training ground in Uraya";0
+390;71;4;"Speak with Jugger at the training ground in Uraya";0
+391;71;5;"Spar with Jugger and Blade at the training ground in Uraya";0
+392;71;6;"Speak with Jugger at the training ground in Uraya";0
+393;71;7;"Speak with Yew at the training ground in Uraya";0
+394;71;8;"Spar with Yew and Zuo at the training ground in Uraya";0
+395;71;9;"Speak with Yew at the training ground in Uraya";0
+396;72;1;"Speak with Yew at the training ground in Uraya";0
+397;72;2;"Speak with Yew at the training ground in Uraya";0
+398;73;1;"Go meet the client late at night in the Raqura Aquagardens in Uraya";0
+399;73;2;"Complete the Merc Mission ""Gormotti Fugitive""""""";0
+400;73;3;"Search for Gavyth in Torigoth, Gormott";0
+401;73;4;"Defeat Patriotic Gavyth in Torigoth, Gormott";0
+402;73;5;"Speak with the captain of the Titan Warship at Torigoth Relay Base in Gormott";0
+403;73;6;"Search for the Ardainian soldier with the Jeweled Signet aboard the Titan battleship in Gormott";0
+404;73;7;"Defeat Ambush Hassic and his men on the Bridge of the Titan Warship in Gormott";0
+405;73;8;"Defeat Veteran Saffran and his companion on the Bridge of the Titan Warship in Gormott";0
+406;73;9;"Retrieve the Jeweled Signet from inside the Titan Warship in Gormott";0
+407;73;10;"Deliver the Jeweled Signet to Raqura at the Raqura Aquagardens in Uraya";0
+408;73;11;"Report back to Yew at Mercenary HQ in Uraya";0
+409;73;12;"Visit Vandham's grave at Olethro Ruins in Uraya";0
+410;74;1;"Defeat Spike Urchon in Uraya";0
+411;74;2;"Head to the campsite by the Cobalt Cliffs in Uraya";0
+412;74;3;"Speak with Juddit at the campsite by the Cobalt Cliffs in Uraya";0
+413;74;4;"Speak to Damida at the campsite by the Cobalt Cliffs in Uraya";0
+414;74;5;"Report back to Raloo at Waypoint Market in Garfont";0
+415;74;6;"Defeat the Invading Spike Urchon at Bluestep Ditch";0
+416;74;7;"Report back to Raloo at Waypoint Market in Garfont again";0
+417;74;8;"Search for the spy who raided the weapon cache in Garfont, Uraya";0
+418;75;1;"At Uraya's Gwenith Paddies, defeat Angry Durro and his lackey";0
+419;76;1;"In Grodd Residential Zone, Gormott, speak to Cedwyn";0
+420;76;2;"Multiple objectives";0
+421;76;3;"Report to Cedwyn at Grodd Residential Zone, Gormott";0
+422;76;4;"Speak to Elgo at Saets Lumber Co. in Gormott during the day";0
+423;76;5;"Obtain five pieces of Healing Teak in Gormott";0
+424;76;6;"Report to Elgo at Saets Lumber Co. in Gormott";0
+425;76;7;"Use the medicine on the Saffronia tree at Gwenith Paddies in Uraya";0
+426;76;8;"Defeat Angry Durro's group at Gwenith Paddies in Uraya";0
+427;76;9;"Multiple objectives";0
+428;76;10;"Go to Blossomshade Cliff, Uraya";0
+429;76;11;"Defeat Angry Durro, Angry Rvano and Drivers at Blossomshade Cliff, Uraya";0
+430;77;1;"Go to Great Blowhole, Uraya";0
+431;77;2;"Go to the land adjacent to Coralline Sanctum, Uraya";0
+432;77;3;"Defeat the mercenaries attacking you in Uraya";0
+433;77;4;"Investigate the boxes full of plants in Uraya";0
+434;77;5;"Go to the hut at Blossomshade Cliff, Uraya";0
+435;77;6;"Speak to the Nopon servant at Blossomshade Cliff, Uraya";0
+436;77;7;"Knock on the door of the hut at Blossomshade Cliff, Uraya";0
+437;77;8;"Go to the deep levels of the Ether Mine in Mor Ardain";0
+438;77;9;"Meet the mercenary in the deep levels of the Ether Mine in Mor Ardain";0
+439;77;10;"Defeat the mercenaries who attacked you in the Ether Mine in Mor Ardain";0
+440;77;11;"Put a stop to the huge machine in the Ether Mine in Mor Ardain";0
+441;77;12;"Go to the Mine Elevator in Mor Ardain";0
+442;78;1;"Look for a new type of ore at the Old Quarry, Uraya";0
+443;78;2;"Meet Misimisi the jeweler at Argentum Trade Guild";0
+444;78;3;"Search each region for new types of mineral and have Misimisi appraise them for you";0
+445;78;4;"Search for a new mineral in a Titan in a land which is yet unexplored by others";0
+446;78;5;"Investigate the cliffs in the Womb Hollow in the Land of Morytha";0
+447;78;6;"Have Misimisi appraise your mineral at Goldmouth Flight Deck, Argentum";0
+448;79;1;"Go to the Argentum Bazaar and search for Lhagen";0
+449;79;2;"Speak with the nearby hat shops, or find a Blade with the ability to make a hat";0
+450;79;3;"Route A: Talk to Lhagen with Vale in the party (requires Weaving Lv.1 field skill). - Have Vale make the hat at Meske's house in Leftheria";0
+451;79;3;"Route B: Talk to Hatatat near Honeycomb Sweets - Ask Lhagen in the Argentum Bazaar about her vision for the hat";0
+452;79;4;"Route B: Talk to Hatatat near Honeycomb Sweets - Tell Hatatat in the Argentum Bazaar about Lhagen's vision for the hat";0
+453;79;5;"Route B: Talk to Hatatat near Honeycomb Sweets - Gather all the materials Hatatat needs to make the hat";0
+454;79;6;"Route B: Talk to Hatatat near Honeycomb Sweets - Give the materials to Hatatat in the Argentum Bazaar";0
+455;79;7;"Deliver the hat to Lhagen at the Argentum Bazaar";0
+456;80;1;"Defeat the Mysterious Driver who appeared in Fonsa Myma in Uraya";0
+457;80;2;"Investigate Harghal near the Chairman's Room in Argentum";0
+458;80;3;"Ask Krujah about Harghal in Rumbletum Canteen in Argentum";0
+459;80;4;"Ask Krujah what happened between her and Harghal. Krujah's in Rumbletum Canteen in Argentum";0
+460;80;5;"Ask Adella about Harghal. Adella's in the lower area slum in the Admar Storage Zone in Mor Ardain";0
+461;80;6;"Ask Adella what went on with her and Harghal. Adella's in the lower area slum in Mor Ardain's Admar Storage Zone";0
+462;80;7;"Find Harghal in the Old City of Teddim in Mor Ardain";0
+463;80;8;"Defeat the Nenz Rodonya in the Old City of Teddim in Mor Ardain";0
+464;80;9;"Question Jaruru in the Old City of Teddim in Mor Ardain";0
+465;80;10;"Speak to Tuvarri in Port Anangham in Mor Ardain";0
+466;80;11;"Multiple objectives";0
+467;80;12;"Get info about smuggling from Tuvarri in Port Anangham in Mor Ardain";0
+468;80;13;"Head to Genbu Port in Tantal";0
+469;80;14;"Get info from Ransenion in Theosoir in Tantal";0
+470;80;15;"Head to the Old Gelgemos Gate in Tantal";0
+471;80;16;"Question Harghal about smuggling in the Old Gelgemos Gate in Tantal";0
+472;80;17;"Question Harghal again about smuggling in the Old Gelgemos Gate in Tantal";0
+473;80;18;"Head to Theosoir in Tantal";0
+474;80;19;"Multiple objectives";0
+475;80;20;"Defeat the Donya Volff in Theosoir in Tantal";0
+476;80;21;"Defeat Sandstream in Theosoir in Tantal";0
+477;81;1;"Multiple objectives";0
+478;81;2;"Aim for the Isle of Terminomni in the Leftherian Archipelago";0
+479;81;3;"Multiple objectives";0
+480;81;4;"Return to the Isle of Terminomni in the Leftherian Archipelago";0
+481;81;5;"Collect three of Alban's Paintings on the Isle of Terminomni in the Leftherian Archipelago";0
+482;81;6;"Report to Alban at Fonsa Myma Port, Uraya";0
+483;81;7;"Go to the shop in Uraya Commercial District";0
+484;81;8;"Make some delicious cookies at the shop in Uraya Commercial District";0
+485;81;9;"Make some delicious flan at the shop in Uraya Commercial District";0
+486;81;10;"Make some delicious cake at the shop in Uraya Commercial District";0
+487;82;1;"Head to Dalnes Stone in Blackday Peninsula, Temperantia";0
+488;82;2;"Investigate Dalnes Stone in Temperantia";0
+489;82;3;"Get evidence of a small kingdom by salvaging in Temperantia";0
+490;83;1;"Obtain the Thunder Crystal from the Old Quarry, Uraya";0
+491;83;2;"Go to Garagorm's Arch, in Gormott";0
+492;83;3;"Investigate the lance that was thrown by someone at Garagorm's Arch, Gormott";0
+493;83;4;"Multiple objectives";0
+494;83;5;"Go to Nharil Central Plaza, in Mor Ardain";0
+495;83;6;"Investigate the lance that Theory threw at Nharil Central Plaza, Mor Ardain";0
+496;83;7;"Go to Lost Capital Judicium, Temperantia";0
+497;83;8;"At Lost Capital Judicium in Temperantia, defeat Vengeful Waldemar and cronies";0
+498;84;1;"Talk to Nicc at the training ground in Garfont";0
+499;84;2;"Meet up with Corden at Grave Robbers' Haunt in Spirit Crucible Elpys";0
+500;84;3;"Multiple objectives";0
+501;84;4;"Report back to Corden at Grave Robbers' Haunt in Spirit Crucible Elpys";0
+502;84;5;"See how you can help Nicc at Grave Robbers' Haunt in Spirit Crucible Elpys";0
+503;84;6;"Multiple objectives";0
+504;84;7;"Deliver the ingredients you've collected to Nicc at Grave Robbers' Haunt in Spirit Crucible Elpys";0
+505;84;8;"Receive a mission from Corden at Grave Robbers' Haunt in Spirit Crucible Elpys";0
+506;84;9;"Obtain a Shining Stalactite at Spirit Crucible Elpys";0
+507;84;10;"Bring the Shining Stalactite to Corden at Grave Robbers' Haunt in Spirit Crucible Elpys";0
+508;84;11;"Go help Corden and the others in the Chamber of Pillars on the lowest level of Spirit Crucible Elpys";0
+509;84;12;"Defeat two Brutal Aspid in the Chamber of Pillars on the lowest level of Spirit Crucible Elpys";0
+510;84;13;"Search for survivors in Spirit Crucible Elpys";0
+511;84;14;"Return to Mercenary HQ in Uraya";0
+512;84;15;"Route A: Nicc should stay in Garfont";0
+513;84;15;"Route B: Let them do as they wish";0
+514;85;1;"Speak to the boys in Uraya Commercial District";0
+515;85;2;"Approach Vaio and Veero in Uraya's Torika Alley";0
+516;85;3;"Approach Vaio and Veero's father at Fonsa Myma Port, Uraya";0
+517;85;4;"Defeat the Drivers at Fonsa Myma Port, Uraya";0
+518;85;5;"In Fonsa Myma Port, Uraya, speak to Volette";0
+519;85;6;"In Commercial District, Uraya, speak to Brabe";0
+520;85;7;"Gather ingredients from various regions and make Whelzaman Cookies";0
+521;85;8;"Distribute Whelzaman Cookies to the children in Fonsa Myma, Uraya";0
+522;85;9;"Approach Vaio and Veero in Uraya Commercial District";0
+523;86;1;"Defeat the Torst Driver in Torika Alley, Uraya";0
+524;86;2;"Speak to Terry in Torika Alley, Uraya";0
+525;87;1;"Search for Shaun in Land of the Beaten in Uraya";0
+526;87;2;"Report back to Jeline in the Uraya Merc Barracks";0
+527;88;1;"Find Jankie somewhere near Loska's Gap in Uraya";0
+528;88;2;"Return Jammie's Mud Balls to Jammie by Sevind Palace Plaza in Uraya";0
+529;89;1;"Complete the Merc Mission ""Trial Run 1""""""";0
+530;89;2;"Report back to Jennifora in Fonsa Myma's Commercial District in Uraya";0
+531;89;3;"Complete the Merc Mission ""Trial Run 2""""""";0
+532;89;4;"Report back to Jennifora in Fonsa Myma's Commercial District in Uraya";0
+533;90;1;"Multiple Objectives";0
+534;90;2;"Report back to Julion in the Commercial District in Uraya";0
+535;91;1;"Get the mercs to gather information about capable doctors";0
+536;91;2;"Visit the doctor, taking into account the gathered information";0
+537;91;3;"Go and meet Smaia, who went to the Ardainian Garrison in Temperantia";0
+538;91;4;"Go and meet Smaia, who headed to Toxbloom Spring in Temperantia";0
+539;91;5;"Collect Wraithwood Root in Temperantia";0
+540;91;6;"Speak to Smaia at Toxbloom Spring in Temperantia";0
+541;91;7;"Speak with Smaia, who returned to Admar Storage Zone in Mor Ardain";0
+542;91;8;"Multiple objectives";0
+543;91;9;"Deliver the ingredients to Smaia at Admar Storage Zone in Mor Ardain";0
+544;91;10;"Collect True Dragon Incense in the Dragon's Stomach in Uraya";0
+545;91;11;"Speak with Smaia at Admar Storage Zone in Mor Ardain";0
+546;91;12;"Take on the ""Medicine Knowledge"""" Merc Mission to help Smaia make medicine""";0
+547;91;13;"Speak with Smaia at Admar Storage Zone in Mor Ardain";0
+548;91;14;"Speak with Iona in the Entertainment District in Uraya";0
+549;92;1;"Search for signs of the mercenaries by the Aegishammer in Temperantia";0
+550;92;2;"Follow the footprints you discovered by the Aegishammer in Temperantia";0
+551;92;3;"Follow the footprints you discovered by the Malignant Gorge in Temperantia";0
+552;92;4;"Defeat the mercs you've tracked to near The Great Archway in Temperantia";0
+553;92;5;"Defeat the Blood-Crazed Stalker on the Desta Plains in Temperantia";0
+554;92;6;"Speak with Geoffili at the Malignant Gorge in Temperantia";0
+555;92;7;"Report back to Matteo at the Royal Guard Barracks in Uraya";0
+556;93;1;"Defeat the Indoline survivors at the Olethro Ruins in Uraya";0
+557;93;2;"Speak with the defeated warrior monks at Uraya's Olethro Ruins and extract information from them";0
+558;93;3;"Head for the place where the Indoline survivors are gathering forces, in Mor Ardain's Chansagh Wastes";0
+559;93;4;"Defeat the Indoline survivors at the Chansagh Wastes in Mor Ardain";0
+560;93;5;"Defeat the Indoline survivors at the Chansagh Wastes in Mor Ardain";0
+561;94;1;"Go to Port Anangham to gather information";0
+562;94;2;"Go to the elevator that leads to Mor Ardain's capital and search for the yellow barrels";0
+563;94;3;"Go to Ayvill Shopping District in Mor Ardain and speak with the owner of the recycling shop";0
+564;94;4;"Go shopping at Belchett Recycling and ask for information";0
+565;94;5;"Go shopping at Belchett Recycling and ask for even more detailed information";0
+566;94;6;"Go to the Turbine Tower in Mor Ardain and speak with Timell";0
+567;94;7;"Go to the Old Industrial District in Mor Ardain and search for the green barrels";0
+568;94;8;"Complete one of the following objectives";0
+569;94;9;"Return to Jakolo's Inn";0
+570;95;1;"Defeat the Land Volff and Noog Skeeters in the Cargo Transportation Zone in Mor Ardain";0
+571;95;2;"Report back to Pidede at Port Anangham in Mor Ardain";0
+572;96;1;"Get Whitescale Antenna by defeating Noog Vangs at the Thermal Exhaust Fork in Mor Ardain";0
+573;96;2;"Deliver the Whitescale Antennae to Joblin at Hardhaigh Palace, Mor Ardain";0
+574;97;1;"Complete the Merc Mission ""Smuggle the Scholar""""""";0
+575;97;2;"Talk to Alisdeigh near Waypoint Market in Uraya";0
+576;97;3;"Multiple objectives";0
+577;97;4;"Report back to Alisdeigh near the Waypoint Market in Uraya";0
+578;97;5;"Check the roots of Yurna the Elderwood at Farlaine Central Pools in Uraya";0
+579;97;6;"Report back to Alisdeigh near the Waypoint Market in Uraya";0
+580;98;1;"Deliver the presents to Jac's siblings at Galad Residential Zone in Gormott";0
+581;98;2;"Report back to Jac at Ayvill Shopping District in Mor Ardain";0
+582;98;3;"It seems that Jac isn't around. Hear what Yachik has to say";0
+583;98;4;"Head toward the crime scene at Smùide Hot Spring in Mor Ardain";0
+584;98;5;"Gather information at the crime scene at Smùide Hot Spring in Mor Ardain";0
+585;98;6;"Speak with Stulc at Hardhaigh Palace in Mor Ardain";0
+586;98;7;"Report back to Jac at Smùide Hot Spring in Mor Ardain";0
+587;98;8;"Speak with Hamish at Smùide Mountain in Mor Ardain";0
+588;98;9;"Follow the criminal's tracks in Mor Ardain";0
+589;98;10;"Defeat the two Brionac Lyman";0
+590;98;11;"Head towards the old underground warehouse at Admar Storage Zone in Mor Ardain";0
+591;98;12;"Defeat Mutinous Rhodri and the two Brionac Lyman";0
+592;99;1;"Route A: (the Top Secret Papers info has not been obtained yet) Defeat the Noog Skeeter and get the sensitive documents";0
+593;99;2;"Route A: Report to Alistair at the entrance to Hardhaigh Palace in Mor Ardain";0
+594;99;1;"Route B: (the Top Secret Papers info has been obtained) Defeat the Noog Skeeter near the Great Heat Extraction Duct in Mor Ardain and retrieve the sensitive documents";0
+595;99;2;"Route B: Report to Alistair at the entrance to Hardhaigh Palace in Mor Ardain";0
+596;100;1;"In the backstreets of Nharil Central Plaza, Mor Ardain, speak to Ellenora";0
+597;100;2;"Gather info about the nefarious goings-on in Alba Cavanich";0
+598;100;3;"Head to Ellenora's house, located deep in the backstreets of Nharil Central Plaza, Mor Ardain";0
+599;100;4;"Head to the meeting in the Old City of Teddim, Mor Ardain, late at night";0
+600;100;5;"Complete the Merc Mission ""Brought to Justice 1""""""";0
+601;100;6;"Complete the Merc Mission ""Brought to Justice 2""""""";0
+602;100;7;"Complete the Merc Mission ""Brought to Justice 3""""""";0
+603;100;8;"Complete the Merc Mission ""Brought to Justice 4""""""";0
+604;100;9;"Head to Jakolo's Inn, Mor Ardain";0
+605;100;10;"Head to Ellenora's house, in the backstreets of Nharil Central Plaza, Mor Ardain";0
+606;100;11;"Check Ellenora's corpse in the backstreets of Nharil Central Plaza, Mor Ardain";0
+607;100;12;"Gather info about the Bloody Lobsters in the Merc Mission ""Unjust Organization""""""";0
+608;100;13;"In the Chairman's Room, Argentum talk to Pupunin";0
+609;100;14;"Investigate Pupunin's den late at night on the Salvage Deck in Argentum";0
+610;100;15;"Defeat the Bloody Lobsters on the Salvage Deck in Argentum";0
+611;101;1;"Multiple objectives";0
+612;101;2;"Order the mercs to acquire info about the monster who destroyed the country of Regideria";0
+613;101;3;"Talk to Carchal who is the Ardainian Garrison in Temperantia";0
+614;101;4;"Head to the hill near the Ardainian Garrison in Temperantia in the early morning";0
+615;101;5;"Defeat the Arrogant Behemoth that appeared near the Cloud Sea in Temperantia";0
+616;102;1;"Talk to Edgar at the Saets Chief's Residence in Gormott";0
+617;103;1;"Achieve all objectives";0
+618;103;2;"Report back to Toutour who is waiting distraught in Port Anangham in Mor Ardain";0
+619;104;1;"Investigate the Brionac base inside the Mine No. 2 Entrance in Mor Ardain";0
+620;104;2;"Defeat the Brionac rebels attacking you at Mine No. 2 Entrance in Mor Ardain";0
+621;104;3;"Defeat the Brionac rebels attacking you at Mine No. 2 Entrance in Mor Ardain";0
+622;104;4;"Return to Senator Stulc at Hardhaigh Palace in Mor Ardain";0
+623;104;5;"Multiple objectives";0
+624;104;6;"Report back to Senator Stulc at Hardhaigh Palace in Mor Ardain";0
+625;104;7;"Get information about Akatsuki as part of a Merc Mission";0
+626;104;8;"Investigate near the Bellyfull Canteen in Mor Ardain";0
+627;104;9;"Defeat Akatsuki and his Driver";0
+628;104;10;"Report back to Senator Stulc at Hardhaigh Palace in Mor Ardain";0
+629;105;1;"Head to the Cargo Transportation Zone in Mor Ardain";0
+630;105;2;"Defeat Mutineer Arrodh at the Cargo Transportation Zone, Mor Ardain";0
+631;106;1;"Head to the roof entrance of the Old Industrial District in Mor Ardain";0
+632;106;2;"Defeat Turncoat Bhianc at the roof entrance of the Old Industrial District, Mor Ardain";0
+633;107;1;"Head to the roof of Ayvill Shopping District in Mor Ardain";0
+634;107;2;"Defeat Rebel Wiggins at Ayvill Shopping District, Mor Ardain";0
+635;108;1;"See what's going on at the Bellyfull Canteen in Mor Ardain late at night";0
+636;108;2;"Work together with the Fire Dragons at the Bellyfull Canteen in Mor Ardain to create a brand-new fish dish";0
+637;109;1;"Gather data about an apocalypse cult in Alba Cavanich in Mor Ardain";0
+638;109;2;"Report to Mamumu in Nharil Central Plaza in Mor Ardain";0
+639;109;3;"Head to the roofs in the Admar Storage Zone in Mor Ardain in the middle of the night";0
+640;109;4;"Multiple objectives";0
+641;109;5;"Defeat the Gluttonous Pterix on the roofs in the Admar Storage Zone in Mor Ardain";0
+642;109;6;"Investigate the ceremony occurring in the Wrecc Marshland in Gormott";0
+643;109;7;"Defeat the Ravenous Arachno in the Wrecc Marshland";0
+644;109;8;"Investigate the ceremony occurring in the Vault of Heroes in the Spirit Crucible Elpys";0
+645;109;9;"Defeat the Voracious Aspar in the Vault of Heroes in Spirit Crucible Elpys";0
+646;109;10;"Report to Mamumu in Nharil Central Plaza in Mor Ardain";0
+647;110;1;"Collect five bits of Rosary Moss at the World Tree";0
+648;110;2;"Deliver the Rosary Moss to Farraw at Ayvil Shopping District in Mor Ardain";0
+649;110;3;"Go and speak with Senator Stulc at Hardhaigh Palace in Mor Ardain";0
+650;110;4;"Senator Stulc isn't around. Jac is nearby, so see what he has to say";0
+651;110;5;"Head to Port Anangham in Mor Ardain";0
+652;110;6;"Defeat the Unidentified Merc";0
+653;110;7;"Defeat the enemies that come to Midorl Bridge in Mor Ardain";0
+654;110;8;"Strike deep into Brionac Occupied Zone in Mor Ardain crushing the last remnants of Brionac";0
+655;110;9;"Defeat the Brionac agents";0
+656;110;10;"Report back to Jac in Port Anagham in Mor Ardain";0
+657;110;11;"Gather information about Senator Stulc at Torika Alley in Uraya";0
+658;110;12;"Head to the Great Stairway in Uraya";0
+659;110;13;"Follow Zadazan";0
+660;110;14;"Defeat the Drivers";0
+661;110;15;"Report back to Jac at Hardhaigh Palace in Mor Ardain";0
+662;111;1;"Search for Bonono who is lost on the World Tree";0
+663;111;2;"Help Bonono who is surrounded by Kyamel Sovereigns on the World Tree";0
+664;111;3;"Talk to Bonono who you helped at the World Tree";0
+665;111;4;"Search for another lost Nopon on the World Tree";0
+666;111;5;"Help the Nopon taken by the Skriim Sovereign on the World Tree";0
+667;111;6;"Talk to the Nopon you rescued on the World Tree";0
+668;111;7;"Report to Aki in Port Anangham in Mor Ardain";0
+669;112;1;"Convince Irving at Bathein Watchtower in Mor Ardain";0
+670;112;2;"Talk to Irving at Bathein Watchtower in Mor Ardain";0
+671;112;3;"Report back to Maddock at Hardhaigh Dock, Lv. 2 in Mor Ardain";0
+672;112;4;"Go check on Irving at the Titan Weapon Dig Site in Temperantia";0
+673;112;5;"Check the area surrounding the Titan Weapon Dig Site in Temperantia";0
+674;112;6;"Multiple objectives";0
+675;112;7;"Report back to Maddock at the Ardainian Garrison in Temperantia";0
+676;113;1;"Find Alec in the Geothermal Mining Plant in Mor Ardain";0
+677;113;2;"Defeat the Svarm Appix in the Geothermal Mining Plant in Mor Ardain";0
+678;113;3;"Speak to Alec in the Geothermal Mining Plant in Mor Ardain";0
+679;114;1;"Head for the Pipe Maintenance Office area in Mor Ardain and look for Sarrac";0
+680;114;2;"Collect Fused Valves in the Pipe Maintenance Office in Mor Ardain";0
+681;114;3;"Deliver the Fused Valves to Sarrac in the Pipe Maintenance Office area in Mor Ardain";0
+682;115;1;"Find Tekuteku in the Geothermal Mining Plant in Mor Ardain";0
+683;115;2;"Defeat the Glaring Aspar threatening Tekuteku at the Geothermal Mining Plant in Mor Ardain";0
+684;115;3;"Speak to Tekuteku in the Geothermal Mining Plant in Mor Ardain";0
+685;116;1;"Find the Black Steel Circlers in Temperantia";0
+686;116;2;"Hand over the Black Steel Circlers to Ismet at the Ardainian Garrison, Temperantia";0
+687;117;1;"Go talk to Henny, Roni, Serge and Beqqa";0
+688;117;2;"Go back to talk to Mellica";0
+689;117;3;"Find Albina on the west side of Seoris Plaza";0
+690;117;4;"Defeat Hired Driver on Seoris Plaza";0
+691;118;1;"Hear what the monks have to say in Indol";0
+692;118;2;"Report to Mololo in Quattor Street in Indol";0
+693;118;3;"Deliver the Platinum Music Box to Malusio at Goetuis Port, Indol";0
+694;118;4;"Take Malusio to see Mololo in Quattor Street in Indol";0
+695;119;1;"Ask around in Indol to see if you can find information about shady figures plotting an assassination attempt";0
+696;119;2;"Take a break at Indol's Elnatauro Inn and see if you can make heads or tails of the information you gathered";0
+697;120;1;"Meet up with Snififi on Overlook Hill in Temperantia";0
+698;120;2;"Go meet Snififi at the Ardainian Garrison in Temperantia";0
+699;120;3;"Collect all the various items in Temperantia and bring them to Snififi";0
+700;120;4;"Speak to the soldier at the Ardainian Garrison in Temperantia";0
+701;120;5;"Collect Metal Brooches in Temperantia";0
+702;120;6;"Report back to Snififi at the Ardainian Garrison in Temperantia";0
+703;121;1;"Suppress the Idle Rodonya in the Argan Iceblooms";0
+704;121;2;"Report to Cannadea in Elmos Square";0
+705;122;1;"Look for the Carved Stone Turtle by the Amphoret Pillar in Tantal";0
+706;122;2;"Look for the Carved Stone Turtle that the Graaz Pippito took at Amphoret Pillar in Tantal";0
+707;122;3;"Give the Carved Stone Turtle to Lucarion by the Theosoir Rear Gate in Tantal";0
+708;123;1;"Obtain Flowers of Ice at the Argan Iceblooms in Tantal";0
+709;123;2;"Deliver the Flowers of Ice to Mesulia at the Argan Iceblooms in Tantal";0
+710;123;3;"Go and meet Melusia at Anastatia's in Tantal";0
+711;123;4;"Wipe out the Jairo Griffox by Lumos Pedestal in Tantal";0
+712;123;5;"Report back to Melusia at Anastatia's in Tantal";0
+713;123;6;"Obtain the Storied Band at the base of Amphoret Pillar in Tantal";0
+714;123;7;"Report back to Melusia at Anastatia's in Tantal";0
+715;124;1;"Excavate stone tablet fragments in the Genbu Drifts area in Tantal";0
+716;124;2;"Return to the front of Biblio Paulio in Tantal and assemble the tablet's fragments";0
+717;125;1;"Go to the table at Anastatia's in Tantal to start Kora and Mythra's Girl Power contest";0
+718;126;1;"Go and help at the scene of the incident, Zalmor's Crevice, Tantal";0
+719;126;2;"Break the huge rock at Zalmor's Crevice, Tantal";0
+720;126;3;"Approach the Gogol at Zalmor's Crevice, Tantal";0
+721;126;4;"Defeat the Enraged Gogol at the snow drifts near Zalmor's Crevice, Tantal";0
+722;126;5;"Look for the escaped Gogol around Genbu Drifts, Tantal";0
+723;126;6;"Report to Evart at Theospiti Temple Ruins, Tantal";0
+724;126;7;"Speak to the townsfolk around Elmos Square, Tantal";0
+725;126;8;"Investigate the whereabouts of the Gogol at the Three-Vein Crossroads in Tantal";0
+726;126;9;"Find the Gogol headed for Sacred Ice Caverns in Tantal";0
+727;126;10;"Defeat the Indignant Gogol near the Sacred Ice Caverns in Tantal";0
+728;126;11;"Defeat the Enraged Gogol near the Sacred Ice Caverns in Tantal";0
+729;126;12;"Defeat the Offended Gogol's group near the Sacred Ice Caverns in Tantal";0
+730;126;13;"Report to Evart at Theospiti Temple Ruins, Tantal";0
+731;127;1;"Gather Information about Kastina at Theosoir, Tantal";0
+732;127;2;"Look for Kastina, who was said to have gone towards the forest behind Old Gelgemos Gate, Tantal";0
+733;127;3;"Investigate the snow mounds in the forest behind Old Gelgemos Gate, Tantal";0
+734;127;4;"Make an offering to the Nopon Sage in the forest behind Old Gelgemos Gate, Tantal";0
+735;127;5;"Go to Pillar City Ruins, Tantal";0
+736;127;6;"Warm up Kastina, who's frozen at Pillar City Ruins in Tantal";0
+737;127;7;"Defeat all Sarta Garlus at Pillar City Ruins, Tantal";0
+738;127;8;"Report to Celliara at Anastatia's, Tantal";0
+739;128;1;"Rescue Humhum from somewhere near the Tamie Pillars in Tantal";0
+740;128;2;"Go to Mylak at the Sealed Quarry in Tantal";0
+741;129;1;"Go to the spot marked in the Dead Man's Message that you found at Fable Rock in Tantal";0
+742;129;2;"Meet the person mentioned in the Salvager's Diary";0
+743;130;1;"Obtain Ellook Horn by defeating Ripbik Ellook in Tantal";0
+744;130;2;"Have Barhanen make you an accessory in Theosoir, Tantal's capital city";0
+745;131;1;"Multiple objectives";0
+746;131;2;"Report back to Eulogimenos at Theoscaldia Palace in Tantal";0
+747;132;1;"Defeat the Herridot Laias at the Amphoret Pillar in Tantal";0
+748;132;2;"Report to Eulogimenos in Royal Audience Hall in Tantal";0
+749;132;3;"Hear what Queen Raqura has to say in Fonsa Myma Port in Uraya";0
+750;132;4;"Defeat the Herridot Laias in the Windpipe Deeps in Uraya";0
+751;132;5;"Report to Queen Raqura in Fonsa Myma Port in Uraya";0
+752;132;6;"Head to Xataris Spring in Temperantia";0
+753;132;7;"Defeat the Laias near Xataris Spring in Temperantia";0
+754;132;8;"Find Herald in the Merc Mission 'Herald Search'";0
+755;132;9;"Head to the Bone Road in Spirit Crucible Elpys";0
+756;132;10;"Stop Herald Unbound on the Bone Road in Spirit Crucible Elpys";0
+757;133;1;"Head for the Memorial Ruins in Tantal";0
+758;133;2;"Clear out the Aura Garlus standing guard at the entrance to the Genbu Crown in Tantal";0
+759;133;3;"Head for the Genbu Crown in Tantal";0
+760;133;4;"Defeat the Aurora Garlus in the Genbu Crown in Tantal";0
+761;133;5;"Report back to Marcel at Theoscaldia Palace in Tantal";0
+762;134;1;"Complete the Merc Mission ""Finch's Big News""""""";0
+763;134;2;"Head to the Hall of Virtue in Tantal";0
+764;134;3;"Multiple objectives";0
+765;134;4;"Report to Eulogimenos at the Royal Audience Hall in Tantal";0
+766;135;1;"Help the Blade under attack";0
+767;135;2;"Check that the Blade isn't hurt";0
+768;135;3;"Search for a boy named Reid who fell into the Cloud Sea";0
+769;135;4;"Let Olua know that Reid is fine";0
+770;136;1;"Multiple Objectives";0
+771;136;2;"Report that you have all the items to Sokoko on Merto Island in Leftheria";0
+772;136;3;"Go and collect the reward from Sokoko's client at the Cargo Transportation Zone in Mor Ardain";0
+773;137;1;"Look for clues around the site of the Village Guardian in Leftheria";0
+774;137;2;"Defeat the Gegl Quadwing at Godsford in Leftheria";0
+775;137;3;"Talk to Dragand near the Vilage Guardian in Letheria";0
+776;138;1;"Visit the Phonex Village in Ysheva Harbor, Leftheria";0
+777;138;2;"Speak to the Phonex in the Phonex village in Ysheva Harbor, Leftheria";0
+778;138;3;"Speak to Mix in Fonsett Residential Area, Leftheria";0
+779;138;4;"Collect Pinfins in Leftheria";0
+780;138;5;"Speak with Gox at Ysheva Harbor, Leftheria";0
+781;138;6;"Look for the Phonex village in Uraya";0
+782;138;7;"Look for a Phonex outside its village, somewhere in Uraya";0
+783;138;8;"Collect Cobalt Eels in Uraya";0
+784;138;9;"Speak with one of the Phonexes at Crown of Sanctuary, Uraya";0
+785;138;10;"Look for a Phonex village in Temperantia";0
+786;138;11;"Look for a Phonex outside its village, somewhere in Temperantia";0
+787;138;12;"Collect Trippy Catfish in Temperantia";0
+788;138;13;"Speak with one of the Phonexes in Aegishammer, Temperantia";0
+789;138;14;"Go to Ruined Chapel of Danafas, Temperantia";0
+790;138;15;"Defeat the Vacillus Antol at the Ruined Chapel of Danafas, Temperantia";0
+791;138;16;"Defeat the Demon Mamongath at Isle of Urchon, Leftheria";0
+792;138;17;"Visit the Phonex Village in Ysheva Harbor, Leftheria";0
+793;139;1;"Multiple objectives";0
+794;139;2;"Report back to Strath near Corrine's House in Leftheria";0
+795;139;3;"Defeat Cloud Sea Tyrant Nero by Corrine's House in Leftheria";0
+796;139;4;"Speak with Strath near Corrine's House in Leftheria";0
+797;140;1;"Head to the island merchant's house in Admar Storage Zone, Mor Ardain";0
+798;140;2;"Give 10,000G to Badile in Admar Storage Zone, Mor Ardain";0
+799;140;3;"Head to Argentum to gather information";0
+800;140;4;"Gather information at Central Exchange, Argentum";0
+801;140;5;"Obtain the Pretty Seashell through salvaging at Goldmouth Flight Deck, Argentum";0
+802;140;6;"Give the Pretty Seashell to Lutie at the Central Exchange, Argentum";0
+803;140;7;"Infiltrate the Maelstrom at Goldmouth Flight Deck, Argentum";0
+804;140;8;"Complete all objectives";0
+805;140;9;"Hear what the black-haired Nopon have to say on the Maelstrom in Argentum";0
+806;140;10;"Send out mercenaries to determine Saisai's location";0
+807;140;11;"Look for the black-haired Nopon at Ayvill Shopping District, Mor Ardain";0
+808;140;12;"Pursue Saisai";0
+809;141;1;"Get a Posystone from Pippito's Haunt, Tantal";0
+810;141;2;"Give the Posystone to Len at Rigitte Harbor, Leftheria";0
+811;141;3;"Go to Baldotas Isle in Leftheria to check out the area";0
+812;141;4;"Go to Godsford Isle in Leftheria to check out the area";0
+813;141;5;"Take out all the enemies that are in the way of the proposal on Godsford Isle in Leftheria";0
+814;141;6;"Speak with Len at Godsford Isle in Leftheria";0
+815;142;1;"Go and speak with Max at the Argentum Bazaar";0
+816;142;2;"Go to Grodd Residential Zone in Gormott and ask Huw about the handling fees";0
+817;142;3;"Search for the boss Nopon at Port Anangham in Mor Ardain";0
+818;142;4;"Multiple objectives";0
+819;142;5;"Report back to Kebubu at Port Anangham in Mor Ardain and tell him that the boss was nowhere to be found";0
+820;142;6;"Go to Rigitte Harbor in Leftheria and ask Sholto about the handling fees";0
+821;142;7;"Defeat the Jang Quadwings at Rigitte Harbor in Leftheria";0
+822;142;8;"Speak with Sholto at Rigitte Harbor in Leftheria";0
+823;142;9;"Go consult with Max at the Argentum Bazaar";0
+824;142;10;"Route A: Go and buy a ship from Pookapoo on Goldmouth Flight Deck at the Argentum Trade Guild";0
+825;142;10;"Route B: Complete 'Umon Bounces Back', then go and borrow a ship from Umon in Gormott";0
+826;142;11;"Route B: Report back to Max at the Argentum Bazaar";0
+827;143;1;"See what Mason the carpenter near Verde Carpentry Workshop in Leftheria has to say";0
+828;143;2;"Multiple objectives";0
+829;143;3;"Report back to Mason near Verde Carpentry Workshop in Letheria";0
+830;143;4;"Speak to Willas near Verde Carpentry Workshop in Leftheria";0
+831;143;5;"Multiple objectives";0
+832;143;6;"Report back to Willas near Verde Carpentry Workshop in Leftheria";0
+833;143;7;"Talk to Mark near Verde Carpentry Workshop in Leftheria";0
+834;143;8;"Talk to Kazuna near Verde Carpentry Workshop in Leftheria";0
+835;143;9;"Talk to Kirk near Verde Carpentry Workshop in Leftheria";0
+836;143;10;"Head toward the Salvage Point at Messet Point in Leftheria";0
+837;143;11;"Salvage at Messet Point in Leftheria";0
+838;143;12;"Defeat Quietus Aspid at Messet Point in Leftheria";0
+839;143;13;"Report back to Willas near Verde Carpentry Workshop, Leftheria";0
+840;144;1;"Route A: Find a history teacher in one of Alrest's regions and recruit them";0
+841;144;2;"Route A: Salvage the Ancient Salvaging Suit";0
+842;144;3;"Route A: Report back to Tortor at Bower Lounge, Argentum";0
+843;144;1;"Route B: Find a history teacher in one of Alrest's regions and recruit them";0
+844;145;1;"Find a reading and writing teacher some where in Alrest";0
+845;146;1;"Find a math and science teacher some where in Alrest's regions and recruit them";0
+846;147;1;"Defeat Pelagic Vincent on Merclibay Islet in Leftheria";0
+847;147;2;"Defeat the monsters on Merclibay Islet in Leftheria";0
+848;147;3;"Report back to Caephon at Rigitte Harbor in Leftheria";0
+849;148;1;"Go to Ysheva Harbor in the Leftherian Archipelago and look for Nascion and Raimond";0
+850;148;2;"Go to the Isle of Urchon in the Leftherian Archipelago";0
+851;148;3;"Give chase to the Gigalid Igna that ran in the direction of the Lud Cloudway in the Leftherian Archipelago";0
+852;148;4;"Return to Fonsett Village in the Leftherian Archipelago and speak with Lettina";0
+853;149;1;"Gather up items from around the Cliffs of Morytha and take them to Dibidi near the Cliffs of Morytha Entry";0
+854;149;2;"Route B: Gather up Linka Honey from around the Cliffs of Morytha and take it to Bidibi near the Cliffs of Morytha Entry";0
+855;149;3;"Talk to Dibidi near the Cliffs of Morytha Entry";0
+856;150;1;"Defeat three Garasha Sovereign on Highway 8";0
+857;150;2;"Retrieve the goods found in the Evacuation Center";0
+858;151;1;"Defeat the Stopper Sovereigns in the Land of Morytha to obtain the codes";0
+859;151;2;"Input the code at the ancient tablets within the Wall Power Control Room in the Land of Morytha";0
+860;151;3;"Input the code at the Data Processing Room in the World Tree";0
+861;151;4;"Investigate the area of Lv. 3, Alioth in the World Tree";0
+862;151;5;"Defeat the Nameless Sentinel by Lv. 3, Alioth inside the World Tree";0
+863;152;1;"Defeat the group of Blade Bots at the edge of the 7th Perimeter Skyport at the World Tree";0
+864;152;2;"Defeat the group of Blade Bots at the edge of the 7th Perimeter Skyport at the World Tree";0
+865;152;3;"Have an audience with Eulogimenos in the Royal Audience Hall in Tantal";0
+866;152;4;"Head to the Throne room in Mor Ardain";0
+867;152;5;"Defeat the group of Blade Bots at Hardhaigh Dock, Lv. 2 in Mor Ardain";0
+868;152;6;"Have an audience with Niall in the Throne room in Mor Ardain";0
+869;152;7;"Head to the Fallen Skyscraper in the Land of Morytha";0
+870;152;8;"Defeat the herd of Dagra Guldo at the Fallen Skyscraper in the Land of Morytha";0
+871;152;9;"Head to Astelle's room in Theoscaldia Palace in Tantal";0

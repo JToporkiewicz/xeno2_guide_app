@@ -1,0 +1,490 @@
+"id";"Location";"MajorArea";"Type";"StoryProgress"
+1;"Ancient Ship, Deck";1;"Landmarks";1
+2;"Point of Awakening";1;"Landmarks";1
+3;"Ship Bridge, Mid-Deck";1;"Landmarks";1
+4;"System Control Room";1;"Landmarks";1
+5;"Engine Room";1;"Locations";1
+6;"Entrance";1;"Locations";1
+7;"Fuel Tank #1";1;"Locations";1
+8;"Fuel Tank #2";1;"Locations";1
+9;"Hold #1";1;"Locations";1
+10;"Hold #2";1;"Locations";1
+11;"Loading Bay";1;"Locations";1
+12;"Ship Helm";1;"Locations";1
+13;"Goldmouth Return Port";16;"Landmarks";1
+14;"Central Exchange";16;"Landmarks";1
+15;"Goldmouth Warehouse";16;"Landmarks";1
+16;"Lemour Inn";16;"Landmarks";1
+17;"Goldmouth Flight Deck";16;"Landmarks";2
+18;"Goldmouth Wheelhouse";16;"Landmarks";2
+19;"Bana's Bedroom";16;"Landmarks";7
+20;"Noponya Shrine";16;"Landmarks";4
+21;"Salvage Deck";16;"Locations";1
+22;"Argentum Bazaar";16;"Locations";1
+23;"Chairman's Room";16;"Locations";1
+24;"Goldmouth Exit Dock";16;"Locations";1
+25;"Maelstrom";16;"Locations";1
+26;"Rumbletum Canteen";16;"Locations";1
+27;"Bower Lounge";16;"Locations";1
+28;"Goldmouth Res. Dist.";16;"Locations";2
+29;"Goldmouth Viewpoint";16;"Locations";2
+30;"Goldmouth Rooftop";16;"Locations";4
+31;"Salvage Deck";16;"Salvage Points";1
+32;"Maelstrom";16;"Salvage Points";1
+33;"Goldmouth Flight Deck";16;"Salvage Points";2
+34;"Torigoth Arch";17;"Landmarks";2
+35;"Abble's Fountain";17;"Landmarks";2
+36;"Garagorm's Arch";17;"Landmarks";2
+37;"Torigoth Base Entrance";17;"Landmarks";2
+38;"Connecting Bridge";17;"Landmarks";2
+39;"Tora's House";17;"Landmarks";2
+40;"Treetop Path";17;"Landmarks";2
+41;"Saets Lumber Co.";17;"Locations";2
+42;"Torigoth Market";17;"Locations";2
+43;"Tretl Windmill Plaza";17;"Locations";2
+44;"Obra Street";17;"Locations";2
+45;"Saets Chief's Residence";17;"Locations";2
+46;"Mor Ardain Consulate";17;"Locations";2
+47;"Kloom Farm";17;"Locations";2
+48;"Torigoth Relay Base";17;"Locations";2
+49;"Galad Residential Zone";17;"Locations";2
+50;"Grodd Residential Zone";17;"Locations";2
+51;"Forgotten Waste";18;"Landmarks";2
+52;"Old Ghostwood Road";18;"Landmarks";2
+53;"Dewmist Crag";18;"Locations";2
+54;"Wrecc Marshland";18;"Locations";2
+55;"Trailblazers' Bridge";18;"Locations";2
+56;"Masrah Spring";18;"Locations";2
+57;"Outlook Knoll";19;"Landmarks";2
+58;"Lyta Oasis";19;"Landmarks";2
+59;"Boulderbore Gate";19;"Landmarks";3
+60;"Lascham Island";19;"Landmarks";2
+61;"Waytree";19;"Landmarks";2
+62;"Varnax's Plunge";19;"Landmarks";2
+63;"Traveler's Resting Tree";19;"Landmarks";2
+64;"Nocclia Timber Site";19;"Landmarks";2
+65;"Zeno's Deadbole";19;"Landmarks";2
+66;"Torigoth Flower Patch";19;"Landmarks";2
+67;"Dawnview Grotto";19;"Secret Areas/Viewpoints";3
+68;"Clear Sky Beak";19;"Secret Areas/Viewpoints";2
+69;"Cape Singbreeze";19;"Locations";2
+70;"Seigle Fell";19;"Locations";2
+71;"Restful Waters";19;"Locations";2
+72;"Garanti Plain";19;"Locations";2
+73;"Brigands' Hideout";19;"Locations";3
+74;"Twin Trunks Hill";19;"Locations";2
+75;"Tirkin Turf";19;"Locations";2
+76;"Verdant Plateau";19;"Locations";2
+77;"Nopon Camp";19;"Locations";2
+78;"Sauros's Bed";19;"Locations";2
+79;"Spraywater Caverns";19;"Locations";2
+80;"Hushview Bridge";19;"Locations";2
+81;"Plains of Evening Calm";19;"Locations";2
+82;"Nocclia Woods";19;"Locations";2
+83;"Hermit's Hollow";19;"Locations";2
+84;"Koorell Pool";19;"Locations";2
+85;"Honeypot Grotto";19;"Locations";2
+86;"Coolley Lake";19;"Locations";2
+87;"Greatspine Boundary";20;"Landmarks";2
+88;"Umon's Shipyard";20;"Landmarks";2
+89;"Melnath's Shoulder";20;"Locations";2
+90;"Ballast Disposal Chute";21;"Landmarks";2
+91;"Port-side Walkway";21;"Landmarks";2
+92;"Mid-ship Walkway Door";21;"Landmarks";2
+93;"Armory";21;"Landmarks";2
+94;"Bridge";21;"Landmarks";2
+95;"Starboard Balcony";21;"Landmarks";2
+96;"Cloud Tank Chamber";21;"Locations";2
+97;"Engine Room";21;"Locations";2
+98;"Solitary Block #1";21;"Locations";2
+99;"Olno's Mess Hall";21;"Locations";2
+100;"Kitchen";21;"Locations";2
+101;"Solitary Block #2";21;"Locations";2
+102;"Living Quarters";21;"Locations";2
+103;"Sickbay";21;"Locations";2
+104;"Armory, 2nd Floor";21;"Locations";2
+105;"Hangar";21;"Locations";2
+106;"Port Deck";21;"Locations";2
+107;"Starboard Deck";21;"Locations";2
+108;"Guardroom";21;"Locations";2
+109;"Battle Command";21;"Locations";2
+110;"Hangar Passage";21;"Locations";2
+111;"Port Balcony";21;"Locations";2
+112;"Saets Chief's Residence";17;"Salvage Points";2
+113;"Grodd Residential Zone";17;"Salvage Points";2
+114;"Torigoth Relay Base";17;"Salvage Points";2
+115;"Torigoth Flower Patch";19;"Salvage Points";2
+116;"Lascham Island";19;"Salvage Points";2
+117;"Near Lascham Island";19;"Salvage Points";2
+118;"Seigle Fell";19;"Salvage Points";2
+119;"Melnath's Shoulder";20;"Salvage Points";2
+120;"Umon's Shipyard";20;"Salvage Points";2
+121;"Near Port Deck";21;"Salvage Points";2
+122;"Maelstrom Deck";4;"Landmarks";1
+123;"Maelstrom Interior";4;"Landmarks";1
+124;"Garfont Town Gate";22;"Landmarks";3
+125;"Garfont Rear Gate";22;"Landmarks";3
+126;"Mercenary HQ";22;"Landmarks";3
+127;"Shrine of Light";22;"Locations";3
+128;"Shrine of Journeys";22;"Locations";3
+129;"Training Ground";22;"Locations";3
+130;"Plaza of Reprieve";22;"Locations";3
+131;"Waypoint Market";22;"Locations";3
+132;"Shrine of Offering";22;"Locations";3
+133;"Fusty Fungus Caves";22;"Locations";3
+134;"Old Valantia";22;"Locations";3
+135;"Fonsa Myma Gate";23;"Landmarks";3
+136;"Mymoma Playhouse";23;"Landmarks";3
+137;"Holy Gate of Fontana";23;"Landmarks";3
+138;"Fonsa Myma Port";23;"Landmarks";3
+139;"Gwenith Paddies";23;"Locations";3
+140;"Gwendle Repair Dock";23;"Locations";3
+141;"Torika Alley";23;"Locations";3
+142;"Entertainment District";23;"Locations";3
+143;"Commercial District";23;"Locations";3
+144;"Uraya Merc Barracks";23;"Locations";3
+145;"Sevind Palace Plaza";23;"Locations";3
+146;"Royal Guard Barracks";23;"Locations";3
+147;"Blossomshade Cliff";23;"Locations";3
+148;"Greatmaw Rapids";24;"Landmarks";3
+149;"Gullet Pass";24;"Landmarks";3
+150;"Cataracts of Rujah";24;"Landmarks";3
+151;"Sternum Arch";24;"Landmarks";3
+152;"Soulcrown Summit";24;"Landmarks";3
+153;"Dragon's Whiskers";24;"Landmarks";3
+154;"Windpipe Deeps";24;"Secret Areas";3
+155;"Acid Gullet";24;"Locations";3
+156;"Jebbas Cavern";24;"Locations";3
+157;"Dragon's Stomach";24;"Locations";4
+158;"Cleansing Spring";24;"Locations";3
+159;"Jebbas Outlook";24;"Locations";3
+160;"Lake Varna";24;"Locations";3
+161;"Great Blowhole";24;"Locations";3
+162;"Cobalt Cliffs";25;"Landmarks";3
+163;"Eight-Rock Skip";25;"Landmarks";3
+164;"Yurna the Elderwood";25;"Landmarks";3
+165;"Tardy Gate";25;"Landmarks";3
+166;"Stone Gate Ruins";25;"Landmarks";3
+167;"Ruins of Fountain Park";25;"Landmarks";3
+168;"Crown of Sanctuary";25;"Landmarks";3
+169;"Raqura Aquagardens";25;"Secret Areas";3
+170;"Farlaine Wells";25;"Locations";3
+171;"Bluestep Ditch";25;"Locations";3
+172;"Farlaine Central Pools";25;"Locations";3
+173;"Minnet Terrace";25;"Locations";3
+174;"Old Quarry";25;"Locations";3
+175;"Pelza's Sluice";25;"Locations";3
+176;"Loska's Gap";25;"Locations";3
+177;"Drillbore Bridge";25;"Locations";3
+178;"Wyrmtears";25;"Locations";3
+179;"Badfella's Cave Fort";25;"Locations";3
+180;"Fonsa Myma Waters";25;"Locations";3
+181;"Funnystone Highway";25;"Locations";3
+182;"Coralline Sanctum";25;"Locations";3
+183;"Old Pilgrim's Road";25;"Locations";3
+184;"Land of the Beaten";25;"Locations";3
+185;"Olethro Playhouse";26;"Landmarks";3
+186;"Great Stairway";26;"Locations";3
+187;"Olethro Ruins";26;"Locations";3
+188;"Kedeigh Gate";27;"Landmarks";4
+189;"Jakolo's Inn";27;"Landmarks";4
+190;"Ayvill Shopping Dist., Roof";27;"Landmarks";4
+191;"Nharil Central Plaza";27;"Landmarks";4
+192;"Bathein Watchtower";27;"Landmarks";4
+193;"Smuide Hot Spring";27;"Locations";4
+194;"Smuide Mountain";27;"Locations";4
+195;"Beraf Industry Ward";27;"Locations";4
+196;"Admar Storage Zone";27;"Locations";4
+197;"Ayvill Shopping District";27;"Locations";4
+198;"Hardhaigh Gate";28;"Landmarks";4
+199;"Hardhaigh Dock, Lv. 2";28;"Landmarks";4
+200;"Hardhaigh Palace";28;"Locations";4
+201;"Grian, Wing Area #2";28;"Locations";4
+202;"Throne Room";28;"Locations";4
+203;"Jarlin, Wing Area #1";28;"Locations";4
+204;"Anangham #2 Dock";29;"Landmarks";4
+205;"Abandoned Excavation";29;"Landmarks";4
+206;"Fourth Ridge Entrance";29;"Landmarks";4
+207;"Hot Pipe District, 1F";29;"Landmarks";4
+208;"Fief of Forgetfulness";29;"Secret Areas/Viewpoints";4
+209;"Old Plumbing Entrance";29;"Secret Areas/Viewpoints";4
+210;"Port Anangham";29;"Locations";4
+211;"Eggle Jetty (Abandoned)";29;"Locations";4
+212;"Chansagh Wastes";29;"Locations";4
+213;"Cargo Transportation Zone";29;"Locations";4
+214;"Valdorm's Mound";29;"Locations";4
+215;"Pipe Maintenance Office";29;"Locations";4
+216;"Thermal Exhaust Fork";29;"Locations";4
+217;"Midorl Bridge";30;"Landmarks";4
+218;"Old Industrial District";30;"Landmarks";4
+219;"Mine Elevator";30;"Landmarks";4
+220;"Mine No. 2 Entrance";30;"Landmarks";4
+221;"Ruined Laborers' Bridge";30;"Landmarks";4
+222;"Geothermal Plant Lobby";30;"Landmarks";4
+223;"Nopon Pioneers' Spring";30;"Secret Areas/Viewpoints";4
+224;"Turbine Tower";30;"Locations";4
+225;"Jelidorend Highlands";30;"Locations";4
+226;"Geothermal Processor";30;"Locations";4
+227;"Storage Warehouse";30;"Locations";4
+228;"Heat Material Refinery";30;"Locations";4
+229;"Bellyfull Canteen";30;"Locations";4
+230;"Office Corridor";30;"Locations";4
+231;"Delize's Infirmary";30;"Locations";4
+232;"Junction Control Room";30;"Locations";4
+233;"Old Pipe Junction Corridor";30;"Locations";4
+234;"Great Heat Extraction Duct";30;"Locations";4
+235;"Old City of Teddim";30;"Locations";4
+236;"Brionac Occupied Zone";30;"Locations";4
+237;"Geothermal Mining Plant";30;"Locations";4
+238;"Factory Catwalk";31;"Landmarks";4
+239;"Industrial Zone, Upper Duct";31;"Landmarks";4
+240;"Production Admin Office";31;"Landmarks";4
+241;"Ether Refinery Corridor";31;"Landmarks";4
+242;"Main Ventilation Duct";31;"Landmarks";4
+243;"Central Corridor";31;"Landmarks";4
+244;"Bulge Harbor";31;"Landmarks";4
+245;"Suspended Pathway";31;"Secret Areas/Viewpoints";4
+246;"Old Factory Warehouse";31;"Locations";4
+247;"Disused Processing Plant";31;"Locations";4
+248;"Ether Separation Tanks";31;"Locations";4
+249;"Ether Control Tower";31;"Locations";4
+250;"Nopon Workers' Quarters";31;"Locations";4
+251;"Quality Control Tower";31;"Locations";4
+252;"Central Control Room";31;"Locations";4
+253;"Central Bulkhead";31;"Locations";4
+254;"Work Observation Tower";31;"Locations";4
+255;"Artificial Blade Adjustment";31;"Locations";4
+256;"Waste Incineration Line";31;"Locations";4
+257;"Heat Storage";31;"Locations";4
+258;"Niranira's Panic Room";31;"Locations";4
+259;"Jarlin, Wing Area #1";28;"Salvage Point";4
+260;"Port Anangham";29;"Salvage Point";4
+261;"Near Chansagh Wastes";29;"Salvage Point";4
+262;"Cargo Transpt. Zone";29;"Salvage Point";4
+263;"Fief of Forgetfulness";29;"Salvage Point";4
+264;"Old Factory Warehouse";31;"Salvage Point";4
+265;"Near Bulge Harbor";31;"Salvage Point";4
+266;"Battlescar Cove";32;"Landmarks";5
+267;"Bardina Plateau";32;"Locations";5
+268;"Overlook Hill";33;"Landmarks";5
+269;"Haggle's Swordtip";33;"Locations";5
+270;"Ancient Wall";33;"Landmarks";6
+271;"Toxbloom Spring";33;"Landmarks";6
+272;"Leaning Tower of Dorrick";33;"Landmarks";6
+273;"The Great Archway";33;"Landmarks";6
+274;"Ardainian Garrison";33;"Landmarks";6
+275;"Dalnes Stone";33;"Landmarks";6
+276;"Profaned Place";33;"Secret Areas/Viewpoints";6
+277;"Titan Weapon Remains";33;"Locations";5
+278;"Aegishammer";33;"Locations";6
+279;"Ruined Chapel of Danafas";33;"Locations";6
+280;"Bastion of Varrac";33;"Locations";6
+281;"Jagron's Citadel";33;"Locations";6
+282;"Malignant Gorge";33;"Locations";6
+283;"Desta Plains";33;"Locations";6
+284;"Xataris Spring";33;"Locations";6
+285;"Triedge Isle";33;"Locations";6
+286;"Blackday Peninsula";33;"Locations";6
+287;"Titan Weapon Dig Site";34;"Landmarks";6
+288;"Lost Capital Judicium";34;"Secret Areas/Viewpoints";6
+289;"Battlescar Cove";32;"Salvage Point";6
+290;"Dalnes Stone";33;"Salvage Point";6
+291;"Triedge Isle";33;"Salvage Point";6
+292;"Goetuis Wharf #1";35;"Landmarks";5
+293;"Goetuis Wharf #2";35;"Landmarks";5
+294;"Yannath Main Gate";35;"Landmarks";5
+295;"Fount of Holy Light";35;"Landmarks";5
+296;"Milama Viewpoint";35;"Landmarks";5
+297;"Goetuis Port";35;"Locations";5
+298;"Quattor Street";35;"Locations";5
+299;"Refugee Campground";35;"Locations";5
+300;"Poldis Circle";35;"Locations";5
+301;"Seoris Plaza West Gate";36;"Landmarks";5
+302;"Great Creation Cloister";36;"Landmarks";5
+303;"Seoris Plaza";36;"Locations";5
+304;"Indoline Sanctum";36;"Locations";5
+305;"Audience Chamber";36;"Locations";5
+306;"Praetor's Study";36;"Locations";5
+307;"Armory";37;"Landmarks";5
+308;"Hangar";37;"Locations";5
+309;"Olno's Mess Hall";37;"Locations";5
+310;"Solitary Block #2";37;"Locations";5
+311;"Kitchen";37;"Locations";5
+312;"Goetuis Wharf #1";35;"Salvage Point";5
+313;"Theosoir Main Gate";38;"Landmarks";6
+314;"Anastatia's";38;"Landmarks";6
+315;"Soprac Old Market";38;"Locations";6
+316;"Residential Area";38;"Locations";6
+317;"Elmos Square";38;"Locations";6
+318;"Theospiti Temple Ruins";38;"Locations";6
+319;"Library Philosofia";38;"Locations";6
+320;"Theoscaldia Palace";39;"Landmarks";6
+321;"Hall of Reception";39;"Landmarks";6
+322;"Hall of Virtue";39;"Landmarks";6
+323;"Puresnow Passage";39;"Landmarks";6
+324;"Royal Audience Hall";39;"Locations";6
+325;"Storage Room";39;"Locations";6
+326;"Hall of Plenty";39;"Locations";6
+327;"Silvergleam Terrace";39;"Locations";6
+328;"Reliquary of Tantal";39;"Locations";6
+329;"Hall of Honor";39;"Locations";6
+330;"Hall of Mystery";39;"Locations";6
+331;"Genbu Port";40;"Landmarks";6
+332;"Little Banerro Ruins";40;"Landmarks";6
+333;"Three-Vein Crossroads";40;"Landmarks";6
+334;"Sacred Ice Caverns";40;"Landmarks";6
+335;"Theosoir Rear Gate";40;"Landmarks";6
+336;"Hope's Horizon";40;"Landmarks";6
+337;"Gates of Ulcaria";40;"Landmarks";6
+338;"Airborne Throne";40;"Secret Area/Viewpoint";6
+339;"Litharia Snowfield";40;"Locations";6
+340;"Fable Rock";40;"Locations";6
+341;"Capital Approach";40;"Locations";6
+342;"Amphoret Pillar";40;"Locations";6
+343;"Twin Pillars";40;"Locations";6
+344;"Sekis Pillar";40;"Locations";6
+345;"Lumos Pillar";40;"Locations";6
+346;"Pillar City Ruins";40;"Locations";6
+347;"Sealed Quarry";40;"Locations";6
+348;"Great Pillar Passage";41;"Landmarks";6
+349;"Central Ether Boulder";41;"Landmarks";6
+350;"Tamie Pillars";41;"Landmarks";6
+351;"Sacred Grove";41;"Landmarks";6
+352;"Lumos Pedestal";41;"Landmarks";6
+353;"Pippito's Haunt";41;"Locations";6
+354;"Yolmunder's Crevasse";41;"Locations";6
+355;"Tirkinlandia";41;"Locations";6
+356;"Genbu Drifts";41;"Locations";6
+357;"Heimos's Crevasse";41;"Locations";6
+358;"Zalmor's Crevice";41;"Locations";6
+359;"Old Gelgemos Gate";41;"Locations";6
+360;"Declessa Altar Hill";41;"Locations";6
+361;"Argan Iceblooms";41;"Locations";6
+362;"Sanguinous Grotto";41;"Locations";6
+363;"Genbu Crown";42;"Landmarks";6
+364;"Memorial Ruins";42;"Landmarks";6
+365;"Fonsett Arch";43;"Landmarks";5
+366;"Corinne's House";43;"Landmarks";5
+367;"Village Guardian";43;"Landmarks";5
+368;"Azure Schoolhouse";43;"Landmarks";10
+369;"Messet Point";43;"Locations";5
+370;"Fonsett Residential Area";43;"Locations";5
+371;"Verde Carpentry Workshop";43;"Locations";5
+372;"Rex's Secret Base";43;"Locations";5
+373;"Old Man Caskel's Tree";43;"Locations";5
+374;"Oratory Knoll Cemetery";43;"Locations";5
+375;"Rigitte Harbor";44;"Landmarks";5
+376;"Baldotas Isle";44;"Landmarks";5
+377;"Daram Isle";44;"Landmarks";5
+378;"Isle of Sleeping Remains";44;"Landmarks";5
+379;"Merclibay Islet";44;"Locations";5
+380;"Daridan's Stack";44;"Locations";5
+381;"Little Garden of Tradition";44;"Locations";5
+382;"Orl Cloudway: Rigitte";45;"Landmarks";5
+383;"Orl Cloudway: Fonsett";45;"Landmarks";5
+384;"Lud Cloudway: Rigitte";45;"Landmarks";5
+385;"Lud Cloudway: Fonsett";45;"Landmarks";5
+386;"Godsford Isle";46;"Landmarks";5
+387;"Ysheva Harbor";46;"Landmarks";5
+388;"Ansel Hatchery";46;"Locations";5
+389;"Isle of Terminomni";46;"Locations";5
+390;"Merto Island";46;"Locations";5
+391;"Isle of Urchon";46;"Locations";5
+392;"Island Base Lindwurm";46;"Locations";5
+393;"Red Room";46;"Locations";5
+394;"Messet Point";43;"Salvage Points";5
+395;"Near Rigitte Harbor";44;"Salvage Points";5
+396;"Daram Isle";44;"Salvage Points";5
+397;"Daridan's Stack";44;"Salvage Points";5
+398;"Godsford Isle";46;"Salvage Points";5
+399;"Isle of Urchon";46;"Salvage Points";5
+400;"Ansel Hatchery";46;"Salvage Points";5
+401;"Spirit Crucible Entrance";47;"Landmarks";7
+402;"Bone Road";47;"Landmarks";7
+403;"Canyon of Husks";47;"Locations";7
+404;"Underground River Lavi";47;"Locations";7
+405;"Grave Robbers' Haunt";47;"Locations";7
+406;"Wonder Spring Plaza Ruins";48;"Landmarks";7
+407;"Elpys Great Hall";48;"Landmarks";7
+408;"Cenotaph Bridge";48;"Landmarks";7
+409;"Middle Worm-Ridden Cave";48;"Landmarks";7
+410;"Subterranean Lake Galantia";48;"Secret Area/Viewpoint";7
+411;"Helical Cloister";48;"Locations";7
+412;"Penitents' Spring";48;"Locations";7
+413;"Chamber of Offering";48;"Locations";7
+414;"Stele of Judgment";49;"Landmarks";7
+415;"Portal of the Hero";49;"Landmarks";7
+416;"Chamber of Pillars";49;"Locations";7
+417;"Vault of Heroes";49;"Locations";7
+418;"Canyon of Husks";47;"Salvage Points";7
+419;"Portal of the Hero";49;"Salvage Points";7
+420;"Cliffs of Morytha Inlet";50;"Landmarks";7
+421;"Balquors Ruins";50;"Landmarks";7
+422;"Runo Cave-in";50;"Secret Area/Viewpoint";7
+423;"Chehn Slope";50;"Locations";7
+424;"Morytha Falls";50;"Locations";7
+425;"Idora Cave";50;"Locations";7
+426;"Linka Hive";50;"Locations";7
+427;"Path of the Believer";50;"Locations";7
+428;"Fallen-Down Pilgrim's Way";50;"Locations";7
+429;"Jubilee Gate";51;"Landmarks";7
+430;"Way of the Practitioner";51;"Secret Area/Viewpoint";7
+431;"Cape O-uru";51;"Locations";7
+432;"Gotrock Oracle Ruins";51;"Locations";7
+433;"Hallowed Godswood Shrine";51;"Locations";7
+434;"Near Morytha Falls";50;"Landmarks";7
+435;"Near Jubilee Gate";51;"Secret Area/Viewpoint";7
+436;"Balquors Ruins";50;"Locations";8
+437;"Ancient People's Driftland";52;"Landmarks";8
+438;"Fallen Skyscraper";52;"Landmarks";8
+439;"Great Wall Tunnel No. 8";52;"Landmarks";8
+440;"View of a Lost Time";52;"Secret Area/Viewpoint";8
+441;"Genome Center";52;"Locations";8
+442;"Highway 8";52;"Locations";8
+443;"Blocked Road";52;"Locations";8
+444;"Collapsed Roadway";52;"Locations";8
+445;"Evacuation Center";52;"Locations";8
+446;"Wastes of Hubris";52;"Locations";8
+447;"Wall Power Control Room";52;"Locations";8
+448;"7th Division";52;"Locations";8
+449;"Womb Hollow";53;"Landmarks";8
+450;"Central Pathway";53;"Landmarks";8
+451;"Womb Center";53;"Locations";8
+452;"Megaflote Base";54;"Landmarks";8
+453;"World Tree Root";54;"Locations";8
+454;"World Tree";54;"Locations";8
+455;"Benetnash, Elevator #6";55;"Landmarks";8
+456;"Lv. 2, Mizar: Lower Deck";55;"Landmarks";8
+457;"Mizar, Elevator #8";55;"Landmarks";8
+458;"Lv. 2, Mizar: Central Deck";55;"Landmarks";8
+459;"Sky Bridge";55;"Landmarks";8
+460;"Lv. 2, Mizar: Mid Floor";55;"Locations";8
+461;"Waste Store";55;"Locations";8
+462;"Nuclear Dump Facility";55;"Locations";8
+463;"Control Room";55;"Locations";8
+464;"Data Processing Room";55;"Locations";8
+465;"Mizar, Elevator #20";55;"Locations";8
+466;"7th Perimeter Center Floor";56;"Landmarks";8
+467;"Mizar, Elevator #5";56;"Landmarks";8
+468;"7th Perimeter Skyport";56;"Landmarks";9
+469;"Lv. 3, Alioth";56;"Landmarks";9
+470;"7th Perimeter Entrance";56;"Secret Area/Viewpoint";8
+471;"Roadway to 7th Perimeter";56;"Locations";8
+472;"Mizar Thoroughfare";56;"Locations";8
+473;"7th Perimeter Defense Post";56;"Locations";8
+474;"Skywalk";56;"Locations";9
+475;"Alioth, Elevator #3";56;"Locations";9
+476;"Megrez Gateway";57;"Landmarks";9
+477;"Lv. 4, Megrez";57;"Locations";9
+478;"Megrez, Elevator #1";57;"Locations";9
+479;"7th Perimeter Skyport";56;"Salvage Points";9
+480;"By 7th Perim. Skyport";56;"Salvage Points";9
+481;"Rhadamanthus Portal";58;"Landmarks";10
+482;"Hill Overlooking Elysium";58;"Landmarks";10
+483;"Old Temple";58;"Landmarks";10
+484;"Elysium";58;"Locations";10
+485;"Architect's Room";59;"Landmarks";10
+486;"Storage Area Entrance";59;"Landmarks";10
+487;"Aion Hangar Entrance";59;"Landmarks";10
+488;"Colossus Hangar";59;"Locations";10
+489;"Aion Hangar";59;"Locations";10
