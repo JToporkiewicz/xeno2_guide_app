@@ -140,3 +140,5 @@
 139;"Meatball Pot-au-Feu";8;"Pyra's Cooking";39;90;"";"{""Effects"": [""-4.0% HP physical dmg taken""], ""Trust"":  12, ""Duration"": ""00:20:00""}"
 140;"Mixed Meat Platter";8;"Volty Butchers";143;135;"";"{""Effects"": [""-4.0% physical dmg taken""], ""Trust"":  12, ""Duration"": ""00:20:00""}"
 141;"The Millenarian Titan";6;"Reedirait Bookstore";22;540;"";"{""Effects"": [""+ 12.0% dmg dealt by Specials""], ""Trust"":  12, ""Duration"": ""02:00:00""}"
+142;"Snowbaby Potato Salad";12;"Corcaja Greengrocers";370;1260;"Nia";"{""Effects"": [""+13% HP recovery"",""-5% physical dmg taken"",""+15% Party Gauge gain""], ""Trust"":  18, ""Duration"": ""01:10:00""}"
+143;"Sneak-Thief King";2;"Nopox Hobby Store";22;540;"Nia";"{""Effects"": [""+ 14.0% Blade Arts effect""], ""Trust"":  12, ""Duration"": ""02:00:00""}"
