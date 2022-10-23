@@ -5,14 +5,14 @@ const updateH2H = {
         DECLARE current_chapter INT;
 
         SELECT sp.Chapter INTO current_chapter
-        FROM xenoblade2_guide.storyprogresses as sp
+        FROM xenoblade2_guide.storyProgresses as sp
         WHERE sp.id = 1;
 
         DROP temporary TABLE IF EXISTS xenoblade2_guide._availableH2H;
 
         CREATE temporary TABLE xenoblade2_guide._availableH2H
         SELECT RequiredBy as id
-        FROM xenoblade2_guide.prerequisitesh2hs as preH2H
+        FROM xenoblade2_guide.prerequisitesH2Hs as preH2H
         WHERE (preH2H.StoryProgress <= current_chapter
             OR preH2H.StoryProgress IS NULL)
         AND (preH2H.NewGamePlus <= (
@@ -34,7 +34,7 @@ const updateH2H = {
         AND (preH2H.BladeAffinityChartNode IS NULL
             OR preH2H.BladeAffinityChartNode IN (
                 SELECT ACN.id
-                FROM xenoblade2_guide.affinitychartnodes as ACN
+                FROM xenoblade2_guide.affinityChartNodes as ACN
                 WHERE ACN.Available = 1
             ))
         AND (preH2H.Quest IS NULL
@@ -44,7 +44,7 @@ const updateH2H = {
                 WHERE quest.Available = 1
             ));
 
-        UPDATE xenoblade2_guide.heart2hearts
+        UPDATE xenoblade2_guide.heart2Hearts
         SET Available = 1
         WHERE id IN (
             SELECT id
@@ -52,10 +52,10 @@ const updateH2H = {
         )
         OR id NOT IN (
             SELECT preH2H.RequiredBy as id
-            FROM xenoblade2_guide.prerequisitesh2hs as preH2H
+            FROM xenoblade2_guide.prerequisitesH2Hs as preH2H
         );
 
-        UPDATE xenoblade2_guide.heart2hearts
+        UPDATE xenoblade2_guide.heart2Hearts
         SET Available = 0, Viewed = 0
         WHERE id NOT IN (
             SELECT id
@@ -63,7 +63,7 @@ const updateH2H = {
         )
         AND id IN (
             SELECT preH2H.RequiredBy as id
-            FROM xenoblade2_guide.prerequisitesh2hs as preH2H
+            FROM xenoblade2_guide.prerequisitesH2Hs as preH2H
         );
 
     END`
@@ -73,19 +73,19 @@ const updateH2HRelatedACN = {
   name: 'updateH2HRelatedACN',
   query: `CREATE PROCEDURE updateH2HRelatedACN()
     BEGIN
-        UPDATE xenoblade2_guide.prerequisitesacns as preACN
+        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
         SET preACN.Progress = 1
         WHERE preACN.Heart2HeartTitle IN (
             SELECT h2h.id
-            FROM xenoblade2_guide.heart2hearts as h2h
+            FROM xenoblade2_guide.heart2Hearts as h2h
             WHERE h2h.Viewed > 0
         ) AND preACN.Heart2HeartTitle IS NOT NULL;
 
-        UPDATE xenoblade2_guide.prerequisitesacns as preACN
+        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
         SET preACN.Progress = 0
         WHERE preACN.Heart2HeartTitle NOT IN (
             SELECT h2h.id
-            FROM xenoblade2_guide.heart2hearts as h2h
+            FROM xenoblade2_guide.heart2Hearts as h2h
             WHERE h2h.Viewed > 0
         ) AND preACN.Heart2HeartTitle IS NOT NULL;
 

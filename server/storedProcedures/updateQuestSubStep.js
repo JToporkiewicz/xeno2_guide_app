@@ -11,18 +11,18 @@ const updateCompleteQuestSubStepManually = {
         DECLARE previousStep INT;
 
         SELECT qss.QuestStep, qss.SubStepNumber INTO questStepId, questSubStepOrder
-        FROM xenoblade2_guide.questsubsteps as qss
+        FROM xenoblade2_guide.questSubSteps as qss
         WHERE qss.id = questSubStepId;
 
         SELECT MAX(id) INTO previousStep
-        FROM xenoblade2_guide.questsubsteps as qss
+        FROM xenoblade2_guide.questSubSteps as qss
         WHERE qss.QuestStep = questStepId
         AND qss.id < questSubStepId
         AND qss.SubStepNumber < questSubStepOrder;
 
         IF previousStep IS NOT NULL THEN
             CALL updateCompleteQuestSubStepManually (previousStep);
-            UPDATE xenoblade2_guide.questsubsteps as qss
+            UPDATE xenoblade2_guide.questSubSteps as qss
             SET qss.CompletionProgress = qss.Count
             WHERE qss.id = previousStep;    
         END IF;
@@ -32,7 +32,7 @@ const updateCompleteQuestSubStepManually = {
         WHERE qss.QuestStep = questStepId;
 
         IF questSubStepId = lastQuestSubStep THEN
-            UPDATE xenoblade2_guide.queststeps as qs
+            UPDATE xenoblade2_guide.questSteps as qs
             SET qs.Completed = 1
             WHERE qs.id = questStepId;
 

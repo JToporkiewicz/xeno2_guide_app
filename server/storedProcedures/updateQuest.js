@@ -5,14 +5,14 @@ const updateQuest = {
         DECLARE current_chapter INT;
 
         SELECT sp.Chapter INTO current_chapter
-        FROM xenoblade2_guide.storyprogresses as sp
+        FROM xenoblade2_guide.storyProgresses as sp
         WHERE sp.id = 1;
 
         DROP temporary TABLE IF EXISTS xenoblade2_guide._availableQuest;
 
         CREATE temporary TABLE xenoblade2_guide._availableQuest
         SELECT preQuest.RequiredBy as id
-        FROM xenoblade2_guide.prerequisitesquests as preQuest
+        FROM xenoblade2_guide.prerequisitesQuests as preQuest
         WHERE (preQuest.Location IN (
             SELECT loc.id
             FROM xenoblade2_guide.locations as loc
@@ -22,22 +22,22 @@ const updateQuest = {
             OR preQuest.StoryProgress IS NULL)
         AND (preQuest.NewGamePlus <= (
             SELECT sp.NewGamePlus
-            FROM xenoblade2_guide.storyprogresses as sp
+            FROM xenoblade2_guide.storyProgresses as sp
             WHERE sp.id = 1
         ) OR preQuest.NewGamePlus IS NULL)
         AND (preQuest.DLCUnlocked <= (
             SELECT sp.DLCUnlocked
-            FROM xenoblade2_guide.storyprogresses as sp
+            FROM xenoblade2_guide.storyProgresses as sp
             WHERE sp.id = 1
         ) OR preQuest.DLCUnlocked IS NULL)
         AND (preQuest.MercMission IN (
             SELECT mm.id
-            FROM xenoblade2_guide.mercmissions as mm
+            FROM xenoblade2_guide.mercMissions as mm
             WHERE mm.Available = 1
         ) OR preQuest.MercMission IS NULL)
         AND (preQuest.Heart2Heart IN (
             SELECT h2h.id
-            FROM xenoblade2_guide.heart2hearts as h2h
+            FROM xenoblade2_guide.heart2Hearts as h2h
             WHERE h2h.Available = 1
         ) OR preQuest.Heart2Heart IS NULL)
         AND (preQuest.BladeUnlocked IN (
@@ -64,7 +64,7 @@ const updateQuest = {
         )
         OR id NOT IN (
             SELECT preQuest.RequiredBy as id
-            FROM xenoblade2_guide.prerequisitesquests as preQuest
+            FROM xenoblade2_guide.prerequisitesQuests as preQuest
         );
 
         UPDATE xenoblade2_guide.quests
@@ -75,7 +75,7 @@ const updateQuest = {
         )
         AND id IN (
             SELECT preQuest.RequiredBy as id
-            FROM xenoblade2_guide.prerequisitesquests as preQuest
+            FROM xenoblade2_guide.prerequisitesQuests as preQuest
         );
 
     END`
@@ -85,7 +85,7 @@ const updateQuestRelatedACN = {
   name: 'updateQuestRelatedACN',
   query: `CREATE PROCEDURE updateQuestRelatedACN()
     BEGIN
-        UPDATE xenoblade2_guide.prerequisitesacns as preACN
+        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
         SET preACN.Progress = 1
         WHERE preACN.SideQuest IN (
             SELECT quest.id
@@ -93,7 +93,7 @@ const updateQuestRelatedACN = {
             WHERE quest.Status = 'FINISHED'
         ) AND preACN.SideQuest IS NOT NULL;
 
-        UPDATE xenoblade2_guide.prerequisitesacns as preACN
+        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
         SET preACN.Progress = 0
         WHERE preACN.SideQuest NOT IN (
             SELECT quest.id
@@ -113,10 +113,10 @@ const updateUndoQuestCompletion = {
         DECLARE lastQuestStep INT;
 
         SELECT MAX(qs.id) INTO lastQuestStep
-        FROM xenoblade2_guide.queststeps as qs
+        FROM xenoblade2_guide.questSteps as qs
         WHERE qs.Quest = questId;
 
-        UPDATE xenoblade2_guide.queststeps as qs
+        UPDATE xenoblade2_guide.questSteps as qs
         SET qs.Completed = 0
         WHERE qs.id = lastQuestStep;
 
@@ -131,15 +131,15 @@ const updateClearQuestCompletion = {
         IN questId INT
     )
     BEGIN
-        UPDATE xenoblade2_guide.queststeps as qs
+        UPDATE xenoblade2_guide.questSteps as qs
         SET qs.Completed = 0
         WHERE qs.Quest = questId;
 
-        UPDATE xenoblade2_guide.questsubsteps as qss
+        UPDATE xenoblade2_guide.questSubSteps as qss
         SET qss.CompletionProgress = 0
         WHERE qss.QuestStep IN (
             SELECT qs.id
-            FROM xenoblade2_guide.queststeps as qs
+            FROM xenoblade2_guide.questSteps as qs
             WHERE qs.Quest = questId
         );
     END`
@@ -152,15 +152,15 @@ const updateCompleteQuestManually = {
         IN questId INT
     )
     BEGIN
-        UPDATE xenoblade2_guide.queststeps as qs
+        UPDATE xenoblade2_guide.questSteps as qs
         SET qs.Completed = 1
         WHERE qs.Quest = questId;
 
-        UPDATE xenoblade2_guide.questsubsteps as qss
+        UPDATE xenoblade2_guide.questSubSteps as qss
         SET qss.CompletionProgress = qss.Count
         WHERE qss.QuestStep IN (
             SELECT qs.id
-            FROM xenoblade2_guide.queststeps as qs
+            FROM xenoblade2_guide.questSteps as qs
             WHERE qs.Quest = questId
         );
     END`

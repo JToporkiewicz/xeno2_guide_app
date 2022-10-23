@@ -6,24 +6,24 @@ const updateBlade = {
         DECLARE current_chapter INT;
 
         SELECT sp.Chapter INTO current_chapter
-        FROM xenoblade2_guide.storyprogresses as sp
+        FROM xenoblade2_guide.storyProgresses as sp
         WHERE sp.id = 1;
 
         DROP temporary TABLE IF EXISTS xenoblade2_guide._availableBlade;
 
         CREATE temporary TABLE xenoblade2_guide._availableBlade
         SELECT preBlade.RequiredBy as id
-        FROM xenoblade2_guide.prerequisitesblades as preBlade
+        FROM xenoblade2_guide.prerequisitesBlades as preBlade
         WHERE (preBlade.StoryProgress <= current_chapter
             OR preBlade.StoryProgress IS NULL)
         AND (preBlade.NewGamePlus <= (
             SELECT sp.NewGamePlus
-            FROM xenoblade2_guide.storyprogresses as sp
+            FROM xenoblade2_guide.storyProgresses as sp
             WHERE sp.id = 1
         ) OR preBlade.NewGamePlus IS NULL)
         AND (preBlade.DLCUnlocked <= (
             SELECT sp.DLCUnlocked
-            FROM xenoblade2_guide.storyprogresses as sp
+            FROM xenoblade2_guide.storyProgresses as sp
             WHERE sp.id = 1
         ) OR preBlade.DLCUnlocked IS NULL)
         AND (preBlade.SideQuest IN (
@@ -33,7 +33,7 @@ const updateBlade = {
         ) OR preBlade.SideQuest IS NULL)
         AND (preBlade.MercMission IN (
             SELECT mm.id
-            FROM xenoblade2_guide.mercmissions as mm
+            FROM xenoblade2_guide.mercMissions as mm
             WHERE mm.Available = 1
         ) OR preBlade.MercMission IS NULL)
         AND (preBlade.Monster IN (
@@ -60,7 +60,7 @@ const updateBlade = {
         )
         OR id NOT IN (
             SELECT preBlade.RequiredBy as id
-            FROM xenoblade2_guide.prerequisitesblades as preBlade
+            FROM xenoblade2_guide.prerequisitesBlades as preBlade
         );
 
         UPDATE xenoblade2_guide.blades
@@ -71,7 +71,7 @@ const updateBlade = {
         )
         AND id IN (
             SELECT preBlade.RequiredBy as id
-            FROM xenoblade2_guide.prerequisitesblades as preBlade
+            FROM xenoblade2_guide.prerequisitesBlades as preBlade
         );
 
     END`
