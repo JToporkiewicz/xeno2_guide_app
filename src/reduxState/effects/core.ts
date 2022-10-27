@@ -2,7 +2,7 @@ import { AnyAction } from 'redux'
 import { Epic, ofType, combineEpics } from 'redux-observable'
 import { mergeMap, from, of, concat, switchMap } from 'rxjs'
 import { callWithLoader$ } from '.'
-import { CoreActions, fetchStoryProgress, setStoryProgress } from '../actions/core'
+import { CoreActions, fetchStoryProgress, resetState, setStoryProgress } from '../actions/core'
 import client from 'api-client';
 import { fetchAllBlades } from '../actions/blades'
 import { fetchAllDrivers } from '../actions/drivers'
@@ -30,7 +30,10 @@ const saveStoryProgressEffect:Epic<AnyAction, AnyAction> = (action$) =>
       'Updating story progress',
       from(client.resource('storyProgress').update(1, action.payload))
         .pipe(
-          mergeMap(() => of(setStoryProgress(action.payload)))
+          mergeMap(() => concat(
+            of(setStoryProgress(action.payload)),
+            of(resetState())
+          ))
         )
     ))
   )

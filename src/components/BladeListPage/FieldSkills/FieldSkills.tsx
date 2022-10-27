@@ -83,7 +83,7 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
             <b>Total Level</b>
           </div>
         </div>
-        <div className='field-skills'>
+        <div className='field-skills table-outline'>
           {props.fieldSkills
             .sort((skillA, skillB) => {
               const skillAValue = skillA[getOrderTypeColumn(orderType)]

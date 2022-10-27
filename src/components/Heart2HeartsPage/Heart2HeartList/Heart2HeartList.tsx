@@ -67,63 +67,65 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
             <b className="column-wide order-title">Location</b>
             <b className="column-wide order-title">Title</b>
           </div>
-          {props.heart2Hearts.filter((h2h:IHeart2HeartState) => {
-            if (!props.characterName) return true
-            return h2h.Who.includes(props.characterName) ||
-              h2h.Who.includes('\'s Driver') && props.parentPage === 'driver'
-          }).sort((h2hA, h2hB) => {
-            const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
-            const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
-            return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
-          }).map((h2h:IHeart2HeartState) => 
-            <div className="row text-list-entry" key={h2h.id}>
-              <div
-                className="column-narrow text-list-status"
-              >
-                <OptionsCheckbox
-                  hideAvailable={true}
-                  available={h2h.Available}
-                  unlocked={h2h.Viewed}
-                  onClick={(viewed) => {
-                    if (typeof viewed === 'boolean') {
-                      props.updateHeart2HeartStatus({
-                        ...h2h,
-                        Viewed: viewed
-                      }
-                      ),
-                      toUpdate.current = toUpdate.current
-                        .filter((updateH2H) => updateH2H.id !== h2h.id)
-                        .concat([{
+          <div className='table-outline'>
+            {props.heart2Hearts.filter((h2h:IHeart2HeartState) => {
+              if (!props.characterName) return true
+              return h2h.Who.includes(props.characterName) ||
+                h2h.Who.includes('\'s Driver') && props.parentPage === 'driver'
+            }).sort((h2hA, h2hB) => {
+              const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
+              const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
+              return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
+            }).map((h2h:IHeart2HeartState) => 
+              <div className="row text-list-entry" key={h2h.id}>
+                <div
+                  className="column-narrow text-list-status"
+                >
+                  <OptionsCheckbox
+                    hideAvailable={true}
+                    available={h2h.Available}
+                    unlocked={h2h.Viewed}
+                    onClick={(viewed) => {
+                      if (typeof viewed === 'boolean') {
+                        props.updateHeart2HeartStatus({
                           ...h2h,
                           Viewed: viewed
-                        }])
-                    }}}
-                  size='small'
-                />
+                        }
+                        ),
+                        toUpdate.current = toUpdate.current
+                          .filter((updateH2H) => updateH2H.id !== h2h.id)
+                          .concat([{
+                            ...h2h,
+                            Viewed: viewed
+                          }])
+                      }}}
+                    size='small'
+                  />
+                </div>
+                <div
+                  className="column-narrow text-list-status"
+                >
+                  <img 
+                    src={path.resolve(`images/helper/${h2h.Available ?
+                      'GreenCheckmark' : 'RedX'}.svg`)}
+                    alt={h2h.Title}
+                    className="availability-small-image"
+                  />
+                </div>
+                <div
+                  className="column-wide text-list-status"
+                >
+                  {h2h.Area.split(' -> ')[0].replace('(', '')}
+                </div>
+                <Link
+                  className="text-list-link"
+                  to={`/heart2Heart/${h2h.id}`}
+                >
+                  {h2h.Title}
+                </Link>
               </div>
-              <div
-                className="column-narrow text-list-status"
-              >
-                <img 
-                  src={path.resolve(`images/helper/${h2h.Available ?
-                    'GreenCheckmark' : 'RedX'}.svg`)}
-                  alt={h2h.Title}
-                  className="availability-small-image"
-                />
-              </div>
-              <div
-                className="column-wide text-list-status"
-              >
-                {h2h.Area.split(' -> ')[0].replace('(', '')}
-              </div>
-              <Link
-                className="text-list-link"
-                to={`/heart2Heart/${h2h.id}`}
-              >
-                {h2h.Title}
-              </Link>
-            </div>
-          )}
+            )}
+          </div>
         </>
       }
     </CollapsibleComponent>

@@ -369,12 +369,16 @@ select{
 
 // ------------- text list -------------
 
-.text-list-entry {
+.table-outline {
+    border: solid medium var(--secondary-color);
     border-radius: 5px;
-    border-width: medium;
-    border-style: solid;
+    margin-top: 5px;
+}
+
+.text-list-entry {
     border-color: var(--secondary-color);
-    margin: 5px !important;
+    margin: 0px !important;
+    border-bottom: solid thin var(--secondary-color);
 }
 
 .text-list-status {
@@ -456,7 +460,7 @@ select{
 .art-description {
     border-style: solid;
     border-color:skyblue;
-    border-radius: 10px;
+    border-radius: 5px;
     border-width: thin;
     padding: 5px;
     background: aliceblue;

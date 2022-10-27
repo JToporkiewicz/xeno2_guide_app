@@ -1,9 +1,11 @@
-import { getQuests } from 'reduxState/selectors';
+import { getQuests, getStoryProgress } from 'reduxState/selectors';
 import { createSelector } from 'reselect';
 
 export default createSelector(
   getQuests,
-  (quests) => ({
-    quests
+  getStoryProgress,
+  (quests, storyProgress) => ({
+    quests,
+    storyProgress
   })
 )
