@@ -6,7 +6,7 @@ import {
   setMercMissionRequirements,
   setMercMissions
 } from 'reduxState/actions/mercMissions';
-import { concat, from, mergeMap, of } from 'rxjs';
+import { concat, EMPTY, from, mergeMap, of } from 'rxjs';
 import { callWithLoader$ } from '.';
 import client from 'api-client';
 import { IMercMission, IRequirementsMM } from 'interfaces';
@@ -41,7 +41,20 @@ const fetchAllMercMissionRequirementsEffect:Epic<AnyAction, AnyAction> = (action
     ))
   )
 
+const saveMercMissionStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(MercMissionsActions.SaveMercMissionStatus),
+    mergeMap((action) => callWithLoader$(
+      'Saving merc mission status',
+      from(client.resource('mercMission').update(
+        action.payload.id,
+        {Completed: action.payload.completed}))
+        .pipe(mergeMap(() => EMPTY))
+    ))
+  )
+
 export const effects = combineEpics(
   fetchAllMercMissionsEffect,
-  fetchAllMercMissionRequirementsEffect
+  fetchAllMercMissionRequirementsEffect,
+  saveMercMissionStatusEffect
 )

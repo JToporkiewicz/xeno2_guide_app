@@ -2,7 +2,7 @@ import { ILocations, IMajorAreas, IMercMission } from 'interfaces';
 import createReducer from 'redux-action-reducer';
 import { LocationActions } from 'reduxState/actions/locations';
 import { MercMissionsActions } from 'reduxState/actions/mercMissions';
-import { IMMReqUpdate } from 'reduxState/interfaces/mercMission';
+import { IMMReqUpdate, IUpdateMMStatus } from 'reduxState/interfaces/mercMission';
 import { IMercMissionState, IRequirement } from 'reduxState/interfaces/reduxState';
 
 export const mercMissionsReducer = createReducer<IMercMissionState[]>(
@@ -117,5 +117,18 @@ export const mercMissionsReducer = createReducer<IMercMissionState[]>(
           Requirements: mappedReqs
         }
       })
+    }],
+  [MercMissionsActions.UpdateMercMissionStatus,
+    (state:IMercMissionState[], updateMM:IUpdateMMStatus) => {
+      const foundMM = state.find((mm) => mm.id === updateMM.id);
+      if (!foundMM) {
+        return state;
+      }
+      return state.filter((old) => old.id !== updateMM.id)
+        .concat({
+          ...foundMM,
+          Completed: updateMM.completed
+        })
+        .sort((mmA, mmB) => mmA.id < mmB.id ? -1 : 1);
     }]
 )([]);

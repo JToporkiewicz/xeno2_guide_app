@@ -6,3 +6,8 @@ export interface IMMReqUpdate {
   blades: IBladeState[],
   fieldSkills: IFieldSkills[]
 }
+
+export interface IUpdateMMStatus {
+  id: number,
+  completed: boolean
+}

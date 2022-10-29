@@ -86,9 +86,9 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
           </div>
           <div className='table-outline'>
             {props.quests.sort((h2hA, h2hB) => {
-              const questAValue = h2hA[getOrderTypeColumn(orderType)]
-              const questBValue = h2hB[getOrderTypeColumn(orderType)]
-              return sortFunction(questAValue, questBValue, sortOrderAsc)
+              const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
+              const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
+              return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
             }).map((quest:IQuestState) => 
               <div className="row text-list-entry" key={quest.id}>
                 <div
