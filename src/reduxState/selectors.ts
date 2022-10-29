@@ -11,3 +11,4 @@ export const getItemTypes = (state:IXenobladeState) => state.items.itemTypes;
 export const getQuests = (state:IXenobladeState) => state.quests;
 export const getFieldSkills = (state:IXenobladeState) => state.fieldSkills;
 export const getLocations = (state:IXenobladeState) => state.locations;
+export const getMercMissions = (state:IXenobladeState) => state.mercMissions;

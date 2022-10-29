@@ -10,6 +10,7 @@ import { fetchHeart2Hearts } from '../actions/heart2Hearts'
 import { fetchQuests } from '../actions/quests'
 import { fetchFieldSkills } from '../actions/fieldSkills'
 import { fetchAllMajorAreas } from 'reduxState/actions/locations'
+import { fetchAllMercMissions } from 'reduxState/actions/mercMissions'
 
 const fetchStoryProgressEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -49,7 +50,8 @@ const resetStateEffect:Epic<AnyAction, AnyAction> = (action$) =>
         of(fetchHeart2Hearts()),
         of(fetchQuests()),
         of(fetchFieldSkills()),
-        of(fetchAllMajorAreas())
+        of(fetchAllMercMissions()),
+        of(fetchAllMajorAreas()),
       )
     )
   )

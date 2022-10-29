@@ -11,6 +11,7 @@ import { effects as itemEffects } from './items';
 import { effects as questEffects } from './quests';
 import { effects as fieldSkillEffects } from './fieldSkills';
 import { effects as locationEffects } from './locations';
+import { effects as mercMissionEffects } from './mercMissions';
 import { getDrivers } from '../selectors';
 
 export const callWithLoader$ = <T extends Action>(loaderState:string, action$:Observable<T>) =>
@@ -40,5 +41,6 @@ export const effects = combineEpics(
   heart2HeartEffects,
   itemEffects,
   questEffects,
-  locationEffects
+  locationEffects,
+  mercMissionEffects
 )

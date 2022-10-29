@@ -1,7 +1,6 @@
 import {
   IDriverArtDetails,
   IDriverSkillNode,
-  IMercMission,
   IQuestSubStep,
   IStoryProgress,
   IItem,
@@ -195,6 +194,28 @@ export interface IItemState {
   itemTypes: IItemType[]
 }
 
+export interface IRequirement {
+  area: string,
+  requirement: string,
+  requirementCount?: number,
+  available?:boolean,
+  completed?:boolean
+}
+
+export interface IMercMissionState {
+  id:number,
+  Name:string,
+  MissionNation:string,
+  Giver:string,
+  GiverLocation:string,
+  Duration:string,
+  Type:string,
+  Missable:boolean,
+  Completed:boolean,
+  Available:boolean
+  Requirements: IRequirement[]
+}
+
 export interface IXenobladeState {
   core: ICoreState,
   locations: IMajorLocations[],
@@ -203,7 +224,7 @@ export interface IXenobladeState {
   fieldSkills: IFieldSkills[],
   heart2hearts: IHeart2HeartState[],
   quests: IQuestState[],
-  mercMissions: IMercMission[],
+  mercMissions: IMercMissionState[],
   monsters: IMonster[],
   items: IItemState
 }

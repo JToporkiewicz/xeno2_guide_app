@@ -17,6 +17,7 @@ import { SideQuestPage } from 'components/SideQuestsPage';
 import {
   SideQuestDetailsPage
 } from 'components/SideQuestDetailsPageComponents/SideQuestDetailsPage';
+import { MercMissionListPage } from 'components/MercMissionListPage';
 
 interface IDispatchProps {
   setSelected:(payload:ISelectedState) => void;
@@ -66,6 +67,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path="/heart2Heart/:slug" component={Heart2HeartDetailsPage} />
             <Route path="/sideQuestList" component={SideQuestPage} />
             <Route path="/sideQuest/:slug" component={SideQuestDetailsPage} />
+            <Route path="/mercMissionList" component={MercMissionListPage} />
             <Route component={Default} />
           </Switch>
         </div>
