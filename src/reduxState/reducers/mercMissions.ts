@@ -114,7 +114,8 @@ export const mercMissionsReducer = createReducer<IMercMissionState[]>(
         })
         return {
           ...mm,
-          Requirements: mappedReqs
+          Requirements: mappedReqs.length === 0 ?
+            mm.Requirements : mappedReqs
         }
       })
     }],

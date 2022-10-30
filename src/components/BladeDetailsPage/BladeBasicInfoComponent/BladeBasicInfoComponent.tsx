@@ -28,9 +28,9 @@ interface IDispatchProps {
 }
 
 export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) => {
-  const bladeToUpdate = useRef(props.bladeDetails.id !== 0 ? props.bladeDetails : undefined);
-  const questToUpdate = useRef(props.quest);
-  const h2hToUpdate = useRef(props.heart2Heart);
+  const bladeToUpdate = useRef(undefined as IBladeState | undefined);
+  const questToUpdate = useRef(undefined as IQuestState | undefined);
+  const h2hToUpdate = useRef(undefined as IHeart2HeartState | undefined);
 
   const updateBladeUnlocked = () => {
     bladeToUpdate.current = {

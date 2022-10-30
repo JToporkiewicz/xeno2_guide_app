@@ -14,7 +14,7 @@ interface IProps {
 }
 
 export const SideQuestBasicInfoView = (props:IProps & IDispatchProps) => {
-  const questToUpdate = useRef(props.quest.id !== 0 ? props.quest : undefined);
+  const questToUpdate = useRef(undefined as IQuestState | undefined);
 
   const updateQuestCompleted = (status:string | boolean) => {
     if(props.quest && typeof status === 'string') {

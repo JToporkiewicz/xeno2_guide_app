@@ -10,7 +10,9 @@ export enum MercMissionsActions {
   FetchAllMercMissionRequirements = 'FETCH_ALL_MERC_MISSION_REQUIREMENTS',
   SetMercMissionRequirements = 'SET_MERC_MISSION_REQUIREMENTS',
   UpdateMercMissionStatus = 'UPDATE_MERC_MISSION_STATUS',
-  SaveMercMissionStatus = 'SAVE_MERC_MISSION_STATUS'
+  SaveMercMissionStatus = 'SAVE_MERC_MISSION_STATUS',
+  FetchMercMission = 'FETCH_MERC_MISSION',
+  FetchMercMissionRequirements = 'FETCH_MERC_MISSION_REQUIREMENTS'
 }
 
 export type ActionTypes =
@@ -19,7 +21,9 @@ export type ActionTypes =
   | IFluxAction<MercMissionsActions.FetchAllMercMissionRequirements>
   | IFluxPayloadAction<MercMissionsActions.SetMercMissionRequirements, IMMReqUpdate>
   | IFluxPayloadAction<MercMissionsActions.UpdateMercMissionStatus, IUpdateMMStatus>
-  | IFluxPayloadAction<MercMissionsActions.SaveMercMissionStatus, IUpdateMMStatus>;
+  | IFluxPayloadAction<MercMissionsActions.SaveMercMissionStatus, IUpdateMMStatus>
+  | IFluxPayloadAction<MercMissionsActions.FetchMercMission, string>
+  | IFluxPayloadAction<MercMissionsActions.FetchMercMissionRequirements, string>;
 
 export const fetchAllMercMissions = ():ActionTypes => ({
   type: MercMissionsActions.FetchAllMercMissions
@@ -46,5 +50,15 @@ export const updateMercMissionStatus = (payload:IUpdateMMStatus):ActionTypes => 
 
 export const saveMercMissionStatus = (payload:IUpdateMMStatus):ActionTypes => ({
   type: MercMissionsActions.SaveMercMissionStatus,
+  payload
+});
+
+export const fetchMercMission = (payload:string):ActionTypes => ({
+  type: MercMissionsActions.FetchMercMission,
+  payload
+});
+
+export const fetchMercMissionRequirements = (payload:string):ActionTypes => ({
+  type: MercMissionsActions.FetchMercMissionRequirements,
   payload
 });

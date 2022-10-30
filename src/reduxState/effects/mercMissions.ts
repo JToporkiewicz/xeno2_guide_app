@@ -2,6 +2,7 @@ import { AnyAction } from 'redux';
 import { combineEpics, Epic, ofType } from 'redux-observable';
 import {
   fetchAllMercMissionRequirements,
+  fetchMercMissionRequirements,
   MercMissionsActions,
   setMercMissionRequirements,
   setMercMissions
@@ -25,12 +26,41 @@ const fetchAllMercMissionsEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ))
   )
 
+const fetchMercMissionEffect:Epic<AnyAction, AnyAction> = (action$) =>
+  action$.pipe(
+    ofType(MercMissionsActions.FetchMercMission),
+    mergeMap((action) => callWithLoader$(
+      'Fetching merc missions',
+      from(client.resource('mercMission').get(action.payload))
+        .pipe(mergeMap((mercMission:IMercMission) => concat(
+          of(setMercMissions([mercMission])),
+          of(fetchMercMissionRequirements(action.payload))
+        )))
+    ))
+  )
+
 const fetchAllMercMissionRequirementsEffect:Epic<AnyAction, AnyAction> = (action$, state$) =>
   action$.pipe(
     ofType(MercMissionsActions.FetchAllMercMissionRequirements),
     mergeMap(() => callWithLoader$(
       'Fetching merc mission requirements',
       from(client.resource('requirementsMM').find())
+        .pipe(mergeMap((mmReqs:IRequirementsMM[]) => concat(
+          of(setMercMissionRequirements({
+            requirements: mmReqs,
+            blades: getBlades(state$.value),
+            fieldSkills: getFieldSkills(state$.value)
+          }))
+        )))
+    ))
+  )
+
+const fetchMercMissionRequirementsEffect:Epic<AnyAction, AnyAction> = (action$, state$) =>
+  action$.pipe(
+    ofType(MercMissionsActions.FetchMercMissionRequirements),
+    mergeMap((action) => callWithLoader$(
+      'Fetching merc mission requirements',
+      from(client.resource('requirementsMM').find({MissionId: action.payload}))
         .pipe(mergeMap((mmReqs:IRequirementsMM[]) => concat(
           of(setMercMissionRequirements({
             requirements: mmReqs,
@@ -56,5 +86,7 @@ const saveMercMissionStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
 export const effects = combineEpics(
   fetchAllMercMissionsEffect,
   fetchAllMercMissionRequirementsEffect,
-  saveMercMissionStatusEffect
+  saveMercMissionStatusEffect,
+  fetchMercMissionEffect,
+  fetchMercMissionRequirementsEffect
 )

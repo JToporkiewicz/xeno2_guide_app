@@ -824,6 +824,14 @@ img.increment-decrement-button {
     margin: 5px 15px;
 }
 
+.checkbox-inline {
+    margin-bottom: 5px;
+    .details-unlock-section {
+        margin: -3px 5px;
+        display: inline-block;
+    }
+}
+
 .hover-options {
     position: absolute;
     left: -3px;

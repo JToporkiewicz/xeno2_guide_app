@@ -14,7 +14,7 @@ interface IProps {
 }
 
 export const Heart2HeartBasicInfoView = (props:IProps & IDispatchProps) => {
-  const h2hToUpdate = useRef(props.heart2Heart.id !== -1 ? props.heart2Heart : undefined);
+  const h2hToUpdate = useRef(undefined as IHeart2HeartState | undefined);
 
   const updateH2HViewed = () => {
     if(props.heart2Heart) {
