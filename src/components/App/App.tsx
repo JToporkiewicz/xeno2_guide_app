@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react';
-import HomePage from '../HomePageComponents/HomePage';
+import HomePage from '../HomePage';
 import { DriversListPage } from '../DriverListPage';
 import { Route, Switch, useLocation } from 'react-router-dom';
 import { Navigation } from '../CommonComponents/Navigation';
-import { DriverDetailsPage } from '../DriverDetailsPageComponent/DriverDetailsPage';
+import { DriverDetailsPage } from '../DriverDetailsPage';
 import Default from '../Default';
 import { Loader } from '../CommonComponents/Loader';
-import { Heart2HeartsListPage } from '../Heart2HeartsPage/Heart2HeartsListPage';
+import { Heart2HeartsListPage } from '../Heart2HeartsPage';
 import { BladeListPage } from '../BladeListPage';
-import { BladeDetailsPage } from '../BladeDetailsPageComponent/BladeDetailsPage';
+import { BladeDetailsPage } from '../BladeDetailsPage';
 import {
   Heart2HeartDetailsPage
-} from '../Heart2HeartDetailsPageComponent/Heart2HeartDetailsPage';
+} from '../Heart2HeartDetailsPage';
 import { ISelectedState } from 'reduxState/interfaces/reduxState';
 import { SideQuestPage } from 'components/SideQuestsPage';
 import {
   SideQuestDetailsPage
-} from 'components/SideQuestDetailsPageComponents/SideQuestDetailsPage';
+} from 'components/SideQuestDetailsPage';
 import { MercMissionListPage } from 'components/MercMissionListPage';
 
 interface IDispatchProps {
@@ -68,6 +68,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path="/sideQuestList" component={SideQuestPage} />
             <Route path="/sideQuest/:slug" component={SideQuestDetailsPage} />
             <Route path="/mercMissionList" component={MercMissionListPage} />
+            <Route path="/mercMission/:slug" component={Default} />
             <Route component={Default} />
           </Switch>
         </div>

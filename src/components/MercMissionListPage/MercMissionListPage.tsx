@@ -127,7 +127,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
                 </div>
                 <Link
                   className="text-list-link"
-                  to={`/heart2Heart/${mm.id}`}
+                  to={`/mercMission/${mm.id}`}
                 >
                   {mm.Name}
                 </Link>
