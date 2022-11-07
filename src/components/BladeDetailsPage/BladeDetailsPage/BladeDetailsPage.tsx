@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { IItem, IItemType } from 'interfaces'
+import { IItem, IItemType, IStoryProgress } from 'interfaces'
 import { IBladeState, IHeart2HeartState, IQuestState } from 'reduxState/interfaces/reduxState'
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { BladeAffinityTree } from '../BladeAffinityTree'
@@ -18,7 +18,8 @@ interface IProps {
   itemType1?: IItemType,
   itemType2?: IItemType,
   heart2Heart?: IHeart2HeartState,
-  quest?: IQuestState
+  quest?: IQuestState,
+  storyProgress: IStoryProgress
 }
 
 export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {

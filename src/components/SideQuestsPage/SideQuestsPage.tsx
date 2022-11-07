@@ -13,6 +13,7 @@ import { IQuestState } from 'reduxState/interfaces/reduxState'
 interface IDispatchProps {
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
   saveQuestStatus: (payload:IQuestState) => void;
+  fetchQuests: () => void;
 }
 
 interface IProps {
@@ -65,7 +66,7 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
   }
 
   return <>
-    <HeaderContainer title="Quests"/>
+    <HeaderContainer title="Quests" refreshData={props.fetchQuests}/>
     <CollapsibleComponent header="Quests">
       {props.quests.length === 0 ?
         <>No heart 2 hearts found.</>
@@ -135,10 +136,11 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
                 <div
                   className="column-wide text-list-status"
                 >
-                  {quest.Area.split(' -> ')[0].replace('(', '')}
+                  {!props.storyProgress.OnlyShowAvailable || quest.Available ?
+                    quest.Area.split(' -> ')[0].replace('(', '') : '????'}
                 </div>
                 {
-                  props.storyProgress.OnlyShowAvailable && !quest.Available?
+                  props.storyProgress.OnlyShowAvailable && !quest.Available ?
                     <div className='text-list-link'>????</div>
                     : 
                     <Link

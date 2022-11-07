@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { IItem, IItemType } from 'interfaces'
+import { IItem, IItemType, IStoryProgress } from 'interfaces'
 import { IBladeState, IHeart2HeartState, IQuestState } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import path from 'path';
@@ -15,7 +15,8 @@ interface IOwnProps {
   itemType1?: IItemType | undefined,
   itemType2?: IItemType | undefined
   heart2Heart?: IHeart2HeartState | undefined,
-  quest?: IQuestState | undefined
+  quest?: IQuestState | undefined,
+  storyProgress: IStoryProgress
 }
 
 interface IDispatchProps {
@@ -182,9 +183,11 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                   unlocked={props.heart2Heart?.Viewed}
                   onClick={updateH2HViewed}
                   link={
-                    <Link to={`/heart2Heart/${props.heart2Heart.id}`}>
-                      {props.heart2Heart.Title}
-                    </Link>
+                    !props.storyProgress.OnlyShowAvailable || props.heart2Heart.Available ?
+                      <Link to={`/heart2Heart/${props.heart2Heart.id}`}>
+                        {props.heart2Heart.Title}
+                      </Link>
+                      : <div>????</div>
                   }
                 />
             }
@@ -211,9 +214,11 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                 ]}
                 onClick={updateQuestCompleted}
                 link={
-                  <Link to={`/quest/${props.quest?.id}`}>
-                    {props.quest?.Name}
-                  </Link>
+                  !props.storyProgress.OnlyShowAvailable || props.quest.Available ?
+                    <Link to={`/quest/${props.quest?.id}`}>
+                      {props.quest?.Name}
+                    </Link>
+                    : <div>????</div>
                 }
               />
             }

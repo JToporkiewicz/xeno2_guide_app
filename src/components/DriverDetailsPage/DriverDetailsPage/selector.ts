@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import { defaultDriverState } from 'reduxState/interfaces/drivers';
 import {
   getDrivers,
+  getHeart2Heart,
   getItems,
   getItemTypes,
   getSelected,
@@ -14,7 +15,8 @@ export default createSelector(
   getSelected,
   getItems,
   getItemTypes,
-  (drivers, storyProgress, selected, items, itemTypes) => {
+  getHeart2Heart,
+  (drivers, storyProgress, selected, items, itemTypes, heart2Hearts) => {
     const foundDriver = drivers.find((driver) =>
       driver.id === selected.id && selected.area === 'driver')
     if (foundDriver) {
@@ -24,12 +26,14 @@ export default createSelector(
         item2: items.find((item) => item.id === foundDriver.favItem2),
         itemType1: itemTypes.find((itemType) => itemType.id === foundDriver.favItemType1),
         itemType2: itemTypes.find((itemType) => itemType.id === foundDriver.favItemType2),
-        storyProgress
+        storyProgress,
+        heart2Hearts
       }
     }
     return {
       driverDetails: defaultDriverState,
-      storyProgress
+      storyProgress,
+      heart2Hearts: []
     }
   }
 )

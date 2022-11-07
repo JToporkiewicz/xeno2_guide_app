@@ -7,19 +7,22 @@ import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
 import { IHeart2HeartState } from 'reduxState/interfaces/reduxState';
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
+import { IStoryProgress } from 'interfaces';
 
 interface IDispatchProps {
   updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
   saveHeart2Hearts:(payload:IUpdateH2HStatus[]) => void;
 }
 
-interface IProps {
-  heart2Hearts:IHeart2HeartState[]
-}
-
 interface IOwnProps {
   parentPage: string;
+  heart2Hearts:IHeart2HeartState[];
+  location?:string;
   characterName?: string;
+}
+
+interface IProps {
+  storyProgress: IStoryProgress;
 }
 
 export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) => {
@@ -27,6 +30,20 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
 
   const toUpdate = useRef([] as IHeart2HeartState[]);
+
+  const orderOptions: {[key:string]: keyof IHeart2HeartState} = 
+    props.location ? {
+      default: 'id',
+      alphabetically: 'Title',
+      available: 'Available',
+      viewed: 'Viewed'
+    } : {
+      default: 'id',
+      alphabetically: 'Title',
+      location: 'Area',
+      available: 'Available',
+      viewed: 'Viewed'
+    }
 
   useEffect(() => {
     return () => {
@@ -36,22 +53,15 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
     } 
   }, [])
 
-  const orderOptions: {[key:string]: keyof IHeart2HeartState} = {
-    default: 'id',
-    alphabetically: 'Title',
-    location: 'Area',
-    available: 'Available',
-    viewed: 'Viewed'
-  }
 
   const getOrderTypeColumn = (order: string): keyof IHeart2HeartState => {
     return orderOptions[order] || orderOptions.default
   }
 
   return (
-    <CollapsibleComponent header={'Heart 2 Hearts'}>
+    <CollapsibleComponent header={props.location || 'Heart 2 Hearts'}>
       {props.heart2Hearts.length === 0 ?
-        <>No heart 2 hearts found.</>
+        <>No available heart 2 hearts found.</>
         : <>
           <OrderBy
             orderOptions={Object.keys(orderOptions)}
@@ -64,15 +74,11 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
           <div className="row">
             <b className="column-narrow order-title">Viewed</b>
             <b className="column-unrestricted order-title-available">Available</b>
-            <b className="column-wide order-title">Location</b>
+            {props.location === undefined && <b className="column-wide order-title">Location</b>}
             <b className="column-wide order-title">Title</b>
           </div>
           <div className='table-outline'>
-            {props.heart2Hearts.filter((h2h:IHeart2HeartState) => {
-              if (!props.characterName) return true
-              return h2h.Who.includes(props.characterName) ||
-                h2h.Who.includes('\'s Driver') && props.parentPage === 'driver'
-            }).sort((h2hA, h2hB) => {
+            {props.heart2Hearts.sort((h2hA, h2hB) => {
               const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
               const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
               return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
@@ -112,17 +118,26 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                     className="availability-small-image"
                   />
                 </div>
-                <div
-                  className="column-wide text-list-status"
-                >
-                  {h2h.Area.split(' -> ')[0].replace('(', '')}
-                </div>
-                <Link
-                  className="text-list-link"
-                  to={`/heart2Heart/${h2h.id}`}
-                >
-                  {h2h.Title}
-                </Link>
+                {
+                  props.location === undefined && 
+                  <div
+                    className="column-wide text-list-status"
+                  >
+                    {(!props.storyProgress.OnlyShowAvailable || h2h.Available) ?
+                      h2h.Area.split(' -> ')[0].replace('(', '') : '????'}
+                  </div>
+                }
+                {
+                  (!props.storyProgress.OnlyShowAvailable || h2h.Available) ? 
+                    <Link
+                      className="text-list-link"
+                      to={`/heart2Heart/${h2h.id}`}
+                    >
+                      {h2h.Title}
+                    </Link>
+                    : <div className='text-list-link'>????</div>
+                }
+
               </div>
             )}
           </div>

@@ -1,6 +1,7 @@
-import { updateQuestStatus, saveQuestStatus } from 'reduxState/actions/quests';
+import { updateQuestStatus, saveQuestStatus, fetchQuests } from 'reduxState/actions/quests';
 
 export default {
   updateQuestStatus,
-  saveQuestStatus
+  saveQuestStatus,
+  fetchQuests
 }

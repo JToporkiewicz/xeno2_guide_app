@@ -6,7 +6,8 @@ import {
 import {
   updateShowBlade,
   updateBladeUnlocked,
-  saveBladeStatus
+  saveBladeStatus,
+  fetchAllBlades
 } from 'reduxState/actions/blades';
 
 export default {
@@ -15,5 +16,6 @@ export default {
   hideLoader,
   updateShowBlade,
   updateBladeUnlocked,
-  saveBladeStatus
+  saveBladeStatus,
+  fetchAllBlades
 }

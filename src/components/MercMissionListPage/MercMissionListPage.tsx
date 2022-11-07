@@ -18,6 +18,7 @@ interface IProps {
 interface IDispatchProps {
   updateMercMissionStatus: (input:IUpdateMMStatus) => void;
   saveMercMissionStatus: (input:IUpdateMMStatus) => void;
+  fetchAllMercMissions: () => void;
 }
 
 export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
@@ -48,7 +49,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
   }
 
   return <>
-    <HeaderContainer title="Merc Missions" />
+    <HeaderContainer title="Merc Missions" refreshData={props.fetchAllMercMissions} />
     <CollapsibleComponent header="Merc Missions">
       {props.mercMissions.length === 0 ?
         <>No merc missions found.</>
@@ -123,14 +124,18 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
                 <div
                   className="column-wide text-list-status"
                 >
-                  {mm.MissionNation}
+                  {!props.storyProgress.OnlyShowAvailable || mm.Available ?
+                    mm.MissionNation : '????'}
                 </div>
-                <Link
-                  className="text-list-link"
-                  to={`/mercMission/${mm.id}`}
-                >
-                  {mm.Name}
-                </Link>
+                {!props.storyProgress.OnlyShowAvailable || mm.Available ?
+                  <Link
+                    className="text-list-link"
+                    to={`/mercMission/${mm.id}`}
+                  >
+                    {mm.Name}
+                  </Link>
+                  : <div className='text-list-link'>????</div>
+                }
               </div>
             )}
           </div>

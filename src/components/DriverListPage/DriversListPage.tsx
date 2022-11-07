@@ -14,6 +14,7 @@ interface IDispatchProps {
   showLoader: (payload:string) => void;
   hideLoader: (payload:string) => void;
   updateShowDriver: (payload:IUpdateShow) => void;
+  fetchAllDrivers: () => void;
 }
 
 interface IProps {
@@ -147,7 +148,7 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
           />
           : undefined
       }
-      <HeaderContainer title="Drivers"/>
+      <HeaderContainer title="Drivers" refreshData={props.fetchAllDrivers}/>
       <CharacterPanelContainer
         title="Drivers"
         orderOptions={Object.keys(orderOptions)}

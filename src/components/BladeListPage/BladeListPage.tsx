@@ -20,6 +20,7 @@ interface IDispatchProps {
   updateShowBlade: (payload:IUpdateShow) => void;
   updateBladeUnlocked: (payload:IBladeState) => void;
   saveBladeStatus: (payload:IBladeState) => void;
+  fetchAllBlades: () => void;
 }
 
 interface IProps {
@@ -154,7 +155,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
           />
           : undefined
       }
-      <HeaderContainer title="Blades" />
+      <HeaderContainer title="Blades" refreshData={props.fetchAllBlades} />
       <CharacterPanelContainer
         title="Blades"
         orderOptions={Object.keys(orderOptions)}

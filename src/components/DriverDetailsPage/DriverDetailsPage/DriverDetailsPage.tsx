@@ -4,7 +4,7 @@ import { DriverArtsListComponent } from '../DriverArtsListComponent';
 import { IItem, IItemType, IStoryProgress } from 'interfaces';
 import { Heart2HeartList } from 'components/Heart2HeartsPage/Heart2HeartList';
 import { DriverSkillsComponent } from '../DriverSkillsComponents';
-import { IDriverState } from 'reduxState/interfaces/reduxState';
+import { IDriverState, IHeart2HeartState } from 'reduxState/interfaces/reduxState';
 import { useEffect } from 'react';
 
 interface IDispatchProps {
@@ -20,6 +20,7 @@ interface IProps {
   item2?: IItem | undefined;
   itemType1?: IItemType | undefined;
   itemType2?: IItemType | undefined;
+  heart2Hearts: IHeart2HeartState[]
 }
 
 export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {
@@ -66,6 +67,11 @@ export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {
         <Heart2HeartList
           characterName={props.driverDetails.name}
           parentPage={'driver'}
+          heart2Hearts={props.heart2Hearts.filter((h2h:IHeart2HeartState) => {
+            if (!props.driverDetails) return true
+            return h2h.Who.includes(props.driverDetails.name) ||
+              h2h.Who.includes('\'s Driver')
+          })}
         />
       </>
     )

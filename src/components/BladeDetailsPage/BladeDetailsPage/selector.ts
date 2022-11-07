@@ -6,8 +6,10 @@ import {
   getItems,
   getItemTypes,
   getQuests,
-  getSelected
+  getSelected,
+  getStoryProgress
 } from 'reduxState/selectors';
+import { defaultStoryProgress } from 'interfaces';
 
 export default createSelector(
   getBlades,
@@ -16,7 +18,8 @@ export default createSelector(
   getSelected,
   getHeart2Heart,
   getQuests,
-  (blades, items, itemTypes, selected, heart2Hearts, quests) => {
+  getStoryProgress,
+  (blades, items, itemTypes, selected, heart2Hearts, quests, storyProgress) => {
     const foundBlade = blades.find((blade) =>
       blade.id === selected.id && selected.area === 'blade')
     if (foundBlade) {
@@ -27,11 +30,13 @@ export default createSelector(
         itemType1: itemTypes.find((item) => item.id === foundBlade.favItemType1),
         itemType2: itemTypes.find((item) => item.id === foundBlade.favItemType2),
         heart2Heart: heart2Hearts.find((h2h) => h2h.id === foundBlade.heart2heartId),
-        quest: quests.find((q) => q.id === foundBlade.bladeQuestId)
+        quest: quests.find((q) => q.id === foundBlade.bladeQuestId),
+        storyProgress
       }
     }
     return {
-      bladeDetails: defaultBladeState
+      bladeDetails: defaultBladeState,
+      storyProgress: defaultStoryProgress
     }
   }
 )
