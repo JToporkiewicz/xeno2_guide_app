@@ -3,6 +3,7 @@ import {
   getBlades,
   getDrivers,
   getHeart2Heart,
+  getLocations,
   getQuests,
   getStoryProgress
 } from 'reduxState/selectors';
@@ -14,7 +15,8 @@ export default createSelector(
   getBlades,
   getHeart2Heart,
   getQuests,
-  (progress, drivers, blades, heart2Hearts, quests) => ({
+  getLocations,
+  (progress, drivers, blades, heart2Hearts, quests, locations) => ({
     driverArts: drivers.reduce((arts: IProgressList, driver) => {
       const showDriver = driver.chapterUnlocked <= progress.Chapter
         || !progress.OnlyShowAvailable;
@@ -95,11 +97,19 @@ export default createSelector(
         unlocked: (quest.Status === 'FINISHED' ? 1 : 0) + (types[quest.Type]?.unlocked || 0)
       }
     }), {}),
-    h2hUnlocked: {
-      'Heart2Hearts Viewed': {
-        total: heart2Hearts.length,
-        unlocked: heart2Hearts.filter((heart2Heart) => heart2Heart.Viewed).length
+    h2hUnlocked: heart2Hearts.reduce((types: IProgressList, h2h) => {
+      const h2hArea = h2h.Area.split(' -> ')[0].replace('(', '');
+      const showH2h = !progress.OnlyShowAvailable || h2h.Available &&
+        (locations.find((loc) => loc.Name === h2hArea)?.StoryProgress || 10) <=
+        progress.Chapter
+      const title = showH2h ? h2hArea : 'Unavailable Heart2Hearts'
+      return {
+        ...types,
+        [title]: {
+          total: 1 + (types[title]?.total || 0),
+          unlocked: (h2h.Viewed ? 1 : 0) + (types[title]?.unlocked || 0)
+        }
       }
-    },
+    }, {})
   })
 )

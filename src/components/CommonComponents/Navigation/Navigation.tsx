@@ -56,6 +56,7 @@ export const NavigationView = (props:IOwnProps & IDispatchProps) => {
     { link: '/heart2HeartList', title: 'Heart 2 Hearts' },
     { link: '/sideQuestList', title: 'Side Quests' },
     { link: '/mercMissionList', title: 'Merc Missions' },
+    { link: '/monsterList', title: 'Monsters' },
   ]
   return (
     <div className={props.openNavigation ? 'open-navigation' : 'closed-navigation'}>

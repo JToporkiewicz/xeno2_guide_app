@@ -74,7 +74,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
           <div className="row">
             <b className="column-narrow order-title">Viewed</b>
             <b className="column-unrestricted order-title-available">Available</b>
-            {props.location === undefined && <b className="column-wide order-title">Location</b>}
+            <b className="column-wide order-title">Location</b>
             <b className="column-wide order-title">Title</b>
           </div>
           <div className='table-outline'>
@@ -118,17 +118,17 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                     className="availability-small-image"
                   />
                 </div>
+                <div
+                  className="column-wide text-list-status"
+                >
+                  {!props.storyProgress.OnlyShowAvailable || h2h.Available ?
+                    props.location === undefined ?
+                      h2h.Area.split(' -> ')[0].replace('(', '') : 
+                      h2h.Area.split(' -> ')[1].replace(')', '') 
+                    : '????'}
+                </div>
                 {
-                  props.location === undefined && 
-                  <div
-                    className="column-wide text-list-status"
-                  >
-                    {(!props.storyProgress.OnlyShowAvailable || h2h.Available) ?
-                      h2h.Area.split(' -> ')[0].replace('(', '') : '????'}
-                  </div>
-                }
-                {
-                  (!props.storyProgress.OnlyShowAvailable || h2h.Available) ? 
+                  !props.storyProgress.OnlyShowAvailable || h2h.Available ? 
                     <Link
                       className="text-list-link"
                       to={`/heart2Heart/${h2h.id}`}

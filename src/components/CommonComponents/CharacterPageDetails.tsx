@@ -19,7 +19,7 @@ interface IProps {
 
 export const CharacterPageDetails = (props: IProps) => 
   <div className="character-progress-details">
-    <div className="character-details-background" />
+    <div className="character-details-background" onClick={() => props.onClose(0)}/>
     <div className="character-details-layout">
       <img
         className="close-details character-progress-close"
