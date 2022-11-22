@@ -16,7 +16,6 @@ interface IOwnProps {
 }
 
 export const MercMissionListView = (props: IOwnProps) => {
-  // TO DO : import monsters data
   // TO DO : create monsters list page
   // TO DO : create monsters details page
   // TO DO : import prerequisites data (for all)

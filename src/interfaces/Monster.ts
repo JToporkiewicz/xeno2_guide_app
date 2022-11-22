@@ -14,6 +14,13 @@ export interface IMonster {
   Beaten:boolean
 }
 
+export interface IMonsterDrops {
+  Name: string;
+  Type: string;
+  Rarity: string;
+  Rate: string;
+}
+
 export interface IMonsterType {
   id:number,
   MonsterType:string

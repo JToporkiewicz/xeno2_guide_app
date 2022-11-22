@@ -7,7 +7,6 @@ import {
   IItemType
 } from 'interfaces';
 import { IFieldSkills } from 'interfaces/FieldSkills';
-import { IMonster } from 'interfaces/Monster';
 
 export interface IUpdateShow {
   id: number,
@@ -216,6 +215,30 @@ export interface IMercMissionState {
   Requirements: IRequirement[]
 }
 
+interface IMonsterDrops {
+  name: string;
+  type: string;
+  rarity: string;
+  dropRate: string;
+}
+
+export interface IMonsterState {
+  id:number,
+  Name:string,
+  Category:string,
+  Type:string,
+  IsDriver:boolean,
+  LowestLevel:number,
+  HighestLevel:number,
+  Location:string,
+  Area:string,
+  DLCRequired:boolean,
+  SpawnCondition:string,
+  Drops: IMonsterDrops[],
+  Available:boolean,
+  Beaten:boolean
+}
+
 export interface IXenobladeState {
   core: ICoreState,
   locations: IMajorLocations[],
@@ -225,6 +248,6 @@ export interface IXenobladeState {
   heart2hearts: IHeart2HeartState[],
   quests: IQuestState[],
   mercMissions: IMercMissionState[],
-  monsters: IMonster[],
+  monsters: IMonsterState[],
   items: IItemState
 }

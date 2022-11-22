@@ -11,6 +11,7 @@ import { fetchQuests } from '../actions/quests'
 import { fetchFieldSkills } from '../actions/fieldSkills'
 import { fetchAllMajorAreas } from 'reduxState/actions/locations'
 import { fetchAllMercMissions } from 'reduxState/actions/mercMissions'
+import { fetchAllMonsters } from 'reduxState/actions/monsters'
 
 const fetchStoryProgressEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -51,6 +52,7 @@ const resetStateEffect:Epic<AnyAction, AnyAction> = (action$) =>
         of(fetchQuests()),
         of(fetchFieldSkills()),
         of(fetchAllMercMissions()),
+        of(fetchAllMonsters()),
         of(fetchAllMajorAreas()),
       )
     )
