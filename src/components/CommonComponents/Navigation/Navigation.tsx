@@ -53,8 +53,8 @@ export const NavigationView = (props:IOwnProps & IDispatchProps) => {
     { link: '/', title: 'Home' },
     { link: '/driversList', title: 'Drivers' },
     { link: '/bladeList', title: 'Blades' },
-    { link: '/heart2HeartList', title: 'Heart 2 Hearts' },
     { link: '/sideQuestList', title: 'Side Quests' },
+    { link: '/heart2HeartList', title: 'Heart 2 Hearts' },
     { link: '/mercMissionList', title: 'Merc Missions' },
     { link: '/monsterList', title: 'Monsters' },
   ]

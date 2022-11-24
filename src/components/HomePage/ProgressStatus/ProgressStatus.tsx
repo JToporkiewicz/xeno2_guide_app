@@ -15,7 +15,9 @@ interface IProps {
   bladesUnlocked: IProgressList,
   bladeAffinitySkills: IProgressList,
   questsFinished: IProgressList,
-  h2hUnlocked: IProgressList
+  h2hUnlocked: IProgressList,
+  mercMissionCompleted: IProgressList,
+  monstersBeaten: IProgressList
 }
 
 export const ProgressStatusView = (props: IProps) => 
@@ -54,6 +56,16 @@ export const ProgressStatusView = (props: IProps) =>
       <ProgressStatusDetails
         list={props.h2hUnlocked}
         listTitle="Heart2hearts Viewed:"
+      />
+      <b>Merc Missions:</b>
+      <ProgressStatusDetails
+        list={props.mercMissionCompleted}
+        listTitle="Merc Missions Completed:"
+      />
+      <b>Monsters:</b>
+      <ProgressStatusDetails
+        list={props.monstersBeaten}
+        listTitle="Unique Monsters Beaten:"
       />
     </>
   </CollapsibleComponent>

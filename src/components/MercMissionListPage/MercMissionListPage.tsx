@@ -105,12 +105,12 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
             />
       }
       {(props.locations.find((loc) =>
-        loc.Name === 'Kingom of Tental')?.StoryProgress || 10) <=
+        loc.Name === 'Kingdom of Tental')?.StoryProgress || 10) <=
             props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable ?
         <MercMissionListView
-          location='Kingom of Tental'
+          location='Kingdom of Tental'
           mercMissions={props.mercMissions.filter((mm) =>
-            mm.MissionNation === 'Kingom of Tental')}
+            mm.MissionNation === 'Kingdom of Tental')}
           storyProgress={props.storyProgress}
           updateMMStatus={updateMMStatus}
         /> : <MercMissionListView

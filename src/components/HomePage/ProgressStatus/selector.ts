@@ -4,6 +4,8 @@ import {
   getDrivers,
   getHeart2Heart,
   getLocations,
+  getMercMissions,
+  getMonsters,
   getQuests,
   getStoryProgress
 } from 'reduxState/selectors';
@@ -16,7 +18,9 @@ export default createSelector(
   getHeart2Heart,
   getQuests,
   getLocations,
-  (progress, drivers, blades, heart2Hearts, quests, locations) => ({
+  getMercMissions,
+  getMonsters,
+  (progress, drivers, blades, heart2Hearts, quests, locations, mercMissions, monsters) => ({
     driverArts: drivers.reduce((arts: IProgressList, driver) => {
       const showDriver = driver.chapterUnlocked <= progress.Chapter
         || !progress.OnlyShowAvailable;
@@ -110,6 +114,36 @@ export default createSelector(
           unlocked: (h2h.Viewed ? 1 : 0) + (types[title]?.unlocked || 0)
         }
       }
-    }, {})
+    }, {}),
+    mercMissionCompleted: mercMissions.reduce((types: IProgressList, mm) => {
+      const showH2h = !progress.OnlyShowAvailable || mm.Available &&
+      (locations.find((loc) => loc.Name === mm.MissionNation)?.StoryProgress || 10) <=
+      progress.Chapter
+      const title = showH2h ? mm.MissionNation : 'Unavailable Merc Missions'
+      return {
+        ...types,
+        [title]: {
+          total: 1 + (types[title]?.total || 0),
+          unlocked: (mm.Completed ? 1 : 0) + (types[title]?.unlocked || 0)
+        }
+      }}, {}),
+    monstersBeaten: monsters.reduce((types: IProgressList, mon) => {
+      if (mon.Category !== 'Unique') {
+        return types;
+      }
+
+      const monArea = mon.Area.split(' -> ')[0].replace('(', '');
+      const showH2h = !progress.OnlyShowAvailable || mon.Available &&
+        (locations.find((loc) => loc.Name === monArea)?.StoryProgress || 10) <=
+        progress.Chapter
+      const title = showH2h ? monArea : 'Unavailable Monsters'
+
+      return {
+        ...types,
+        [title]: {
+          total: 1 + (types[title]?.total || 0),
+          unlocked: (mon.Beaten ? 1 : 0) + (types[title]?.unlocked || 0)
+        }
+      }}, {})
   })
 )
