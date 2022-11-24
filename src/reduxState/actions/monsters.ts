@@ -42,7 +42,7 @@ export const updateMonsterStatus = (payload:IUpdateMonster):ActionTypes => ({
   payload
 });
 
-export const setMonsterStatus = (payload:IUpdateMonster):ActionTypes => ({
+export const saveMonsterStatus = (payload:IUpdateMonster):ActionTypes => ({
   type: MonstersActions.SaveMonsterStatus,
   payload
 });

@@ -10,7 +10,7 @@ export const monstersReducer = createReducer<IMonsterState[]>(
   [MonstersActions.SetMonsters, (state: IMonsterState[], payload:IMonster[]) => {
     const foundMonsters = payload.map((mon) => mon.id);
 
-    return state.filter((oldMon) => foundMonsters.includes(oldMon.id))
+    return state.filter((oldMon) => !foundMonsters.includes(oldMon.id))
       .concat(payload.map((mon) => {
         const foundMon: IMonsterState | undefined = state.find((old) => old.id === mon.id);
         return {
