@@ -4,6 +4,7 @@ import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 
 export enum MonstersActions {
   FetchAllMonsters = 'FETCH_ALL_MONSTERS',
+  FetchMonster = 'FETCH_MONSTER',
   SetMonsters = 'SET_MONSTERS',
   FetchMonsterTypes = 'FETCH_MONSTER_TYPES',
   SetMonsterTypes = 'SET_MONSTER_TYPES',
@@ -13,6 +14,7 @@ export enum MonstersActions {
 
 export type ActionTypes =
   | IFluxAction<MonstersActions.FetchAllMonsters>
+  | IFluxPayloadAction<MonstersActions.FetchMonster, number>
   | IFluxPayloadAction<MonstersActions.SetMonsters, IMonster[]>
   | IFluxAction<MonstersActions.FetchMonsterTypes>
   | IFluxPayloadAction<MonstersActions.SetMonsterTypes, IMonsterType[]>
@@ -22,6 +24,11 @@ export type ActionTypes =
 export const fetchAllMonsters = ():ActionTypes => ({
   type: MonstersActions.FetchAllMonsters
 });
+
+export const fetchMonster = (payload: number) => ({
+  type: MonstersActions.FetchMonster,
+  payload
+})
 
 export const setMonsters = (payload:IMonster[]):ActionTypes => ({
   type: MonstersActions.SetMonsters,

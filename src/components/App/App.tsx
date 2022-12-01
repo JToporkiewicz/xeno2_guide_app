@@ -20,6 +20,7 @@ import {
 import { MercMissionListPage } from 'components/MercMissionListPage';
 import { MercMissionDetailsPage } from 'components/MercMissionDetailsPage';
 import { MonsterListPage } from 'components/MonsterListPage';
+import { MonsterDetailsPage } from 'components/MonsterDetailsPage';
 
 interface IDispatchProps {
   setSelected:(payload:ISelectedState) => void;
@@ -72,6 +73,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path="/mercMissionList" component={MercMissionListPage} />
             <Route path="/mercMission/:slug" component={MercMissionDetailsPage} />
             <Route path="/monsterList" component={MonsterListPage} />
+            <Route path="/monster/:slug" component={MonsterDetailsPage} />
             <Route component={Default} />
           </Switch>
         </div>

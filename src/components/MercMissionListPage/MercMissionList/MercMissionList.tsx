@@ -16,8 +16,6 @@ interface IOwnProps {
 }
 
 export const MercMissionListView = (props: IOwnProps) => {
-  // TO DO : create monsters list page
-  // TO DO : create monsters details page
   // TO DO : import prerequisites data (for all)
   // TO DO : design a panel for showing prerequisites for all data types
   const [orderType, setOrderType] = useState('default');

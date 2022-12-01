@@ -46,7 +46,12 @@ export const MonsterListView = (props: IOwnProps) => {
           changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
         />
         <div className='row'>
-          <b className='column-narrow order-title'>Beaten</b>
+          {props.monsterCategory === 'Unique' ?
+            <b className='column-narrow order-title'>Beaten</b>
+            : <b className='available-column column-unrestricted order-title-available'>
+              Available
+            </b>
+          }
           <b className='column-very-narrow order-title-available'>DLC</b>
           <b className="column-medium order-title-available">Type</b>
           <b className="level-column column-narrow order-title-available">Level</b>
@@ -60,19 +65,29 @@ export const MonsterListView = (props: IOwnProps) => {
             return sortFunction(monAValue, monBValue, sortOrderAsc)
           }).map((mon:IMonsterState) =>
             <div className="row text-list-entry" key={mon.id}>
-              <div className='column-narrow text-list-status'>
-                <OptionsCheckbox
-                  hideAvailable={true}
-                  available={mon.Available}
-                  unlocked={mon.Beaten}
-                  onClick={(completed) => {
-                    if (typeof completed === 'boolean') {
-                      props.updateMonStatus(mon.id, completed)
-                    }
-                  }}
-                  size='small'
-                />
-              </div>
+              {props.monsterCategory === 'Unique' ?
+                <div className='column-narrow text-list-status'>
+                  <OptionsCheckbox
+                    hideAvailable={true}
+                    available={mon.Available}
+                    unlocked={mon.Beaten}
+                    onClick={(completed) => {
+                      if (typeof completed === 'boolean') {
+                        props.updateMonStatus(mon.id, completed)
+                      }
+                    }}
+                    size='small'
+                  />
+                </div>
+                : <div className='column-narrow available-column text-list-status'>
+                  <img
+                    src={path.resolve(`images/helper/${mon.Available ?
+                      'GreenCheckmark' : 'RedX'}.svg`)}
+                    alt={mon.Name}
+                    className="availability-small-image"
+                  />
+                </div>
+              }
               <div className='column-very-narrow text-list-status'>
                 <img
                   src={path.resolve(`images/helper/${mon.DLCRequired ?

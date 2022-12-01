@@ -215,7 +215,7 @@ export interface IMercMissionState {
   Requirements: IRequirement[]
 }
 
-interface IMonsterDrops {
+export interface IMonsterDrops {
   name: string;
   type: string;
   rarity: string;
