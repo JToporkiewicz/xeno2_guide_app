@@ -369,6 +369,11 @@ select{
 
 // ------------- text list -------------
 
+.data-table {
+    width: fit-content;
+    margin-left: 10px;
+}
+
 .table-outline {
     border: solid medium var(--secondary-color);
     border-radius: 5px;
@@ -379,6 +384,10 @@ select{
     border-color: var(--secondary-color);
     margin: 0px !important;
     border-bottom: solid thin var(--secondary-color);
+
+    &:last-of-type {
+        border-bottom: none;
+    }
 }
 
 .text-list-status {
@@ -388,7 +397,7 @@ select{
 }
 
 .text-list-link {
-    padding-left: 15px
+    padding: 0px 15px;
 }
 
 .column-unrestricted {

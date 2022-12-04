@@ -69,43 +69,45 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
           sortOrderAsc={isOrderAsc}
           changeSortOrderAsc={setIsOrderAsc.bind(this, !isOrderAsc)}  
         />
-        <div className='row field-title'>
-          <div className='column-wide'>
-            <b>Name</b>
+        <div className='data-table'>
+          <div className='row field-title'>
+            <div className='column-wide'>
+              <b>Name</b>
+            </div>
+            <div className='column-medium'>
+              <b>Type</b>
+            </div>
+            <div className='column-very-wide'>
+              <b>Common Blade Contribution</b>
+            </div>
+            <div className='column-wide'>
+              <b>Total Level</b>
+            </div>
           </div>
-          <div className='column-medium'>
-            <b>Type</b>
-          </div>
-          <div className='column-very-wide'>
-            <b>Common Blade Contribution</b>
-          </div>
-          <div className='column-wide'>
-            <b>Total Level</b>
-          </div>
-        </div>
-        <div className='field-skills table-outline'>
-          {props.fieldSkills
-            .sort((skillA, skillB) => {
-              const skillAValue = skillA[getOrderTypeColumn(orderType)]
-              const skillBValue = skillB[getOrderTypeColumn(orderType)]
-              return sortFunction(skillAValue, skillBValue, isOrderAsc)
-            })
-            .map((skills) =>
-              <div className='row text-list-entry' key={skills.Name}>
-                <div className='column-wide text-list-status'>{skills.Name}</div>
-                <div className='column-medium text-list-status'>{skills.Type}</div>
-                <div className='column-very-wide text-list-status'>
-                  <div className='centered'>
-                    <IncrementDecrementNumber
-                      value={skills.CommonBladeContribution}
-                      minimum={0}
-                      updateValue={updateSkillLevelUnlocked.bind(this, skills.id)}
-                    />
+          <div className='field-skills table-outline'>
+            {props.fieldSkills
+              .sort((skillA, skillB) => {
+                const skillAValue = skillA[getOrderTypeColumn(orderType)]
+                const skillBValue = skillB[getOrderTypeColumn(orderType)]
+                return sortFunction(skillAValue, skillBValue, isOrderAsc)
+              })
+              .map((skills) =>
+                <div className='row text-list-entry' key={skills.Name}>
+                  <div className='column-wide text-list-status'>{skills.Name}</div>
+                  <div className='column-medium text-list-status'>{skills.Type}</div>
+                  <div className='column-very-wide text-list-status'>
+                    <div className='centered'>
+                      <IncrementDecrementNumber
+                        value={skills.CommonBladeContribution}
+                        minimum={0}
+                        updateValue={updateSkillLevelUnlocked.bind(this, skills.id)}
+                      />
+                    </div>
                   </div>
+                  <div className='column-wide'>{skills.TotalLevel}</div>
                 </div>
-                <div className='column-wide'>{skills.TotalLevel}</div>
-              </div>
-            )}
+              )}
+          </div>
         </div>
       </>
     </CollapsibleComponent>

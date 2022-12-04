@@ -46,67 +46,69 @@ export const MercMissionListView = (props: IOwnProps) => {
           sortOrderAsc={sortOrderAsc}
           changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
         />
-        <div className='row'>
-          <b className='column-narrow order-title'>Done</b>
-          <b className='column-unrestricted order-title-available'>Available</b>
-          <b className="column-unrestricted order-title-available">Missable</b>
-          <b className="column-medium order-title">Type</b>
-          <b className="column-unrestricted order-title">Name</b>
-        </div>
-        <div className='table-outline'>
-          {props.mercMissions.sort((mmA, mmB) => {
-            const mmAValue = mmA[getOrderTypeColumn(orderType)]
-            const mmBValue = mmB[getOrderTypeColumn(orderType)]
-            return sortFunction(mmAValue, mmBValue, sortOrderAsc)
-          }).map((mm:IMercMissionState) =>
-            <div className="row text-list-entry" key={mm.id}>
-              <div className='column-narrow text-list-status'>
-                <OptionsCheckbox
-                  hideAvailable={true}
-                  available={mm.Available}
-                  unlocked={mm.Completed}
-                  onClick={(completed) => {
-                    if (typeof completed === 'boolean') {
-                      props.updateMMStatus(mm.id, completed)
-                    }
-                  }}
-                  size='small'
-                />
-              </div>
-              <div className='column-narrow text-list-status'>
-                <img
-                  src={path.resolve(`images/helper/${mm.Available ?
-                    'GreenCheckmark' : 'RedX'}.svg`)}
-                  alt={mm.Name}
-                  className="availability-small-image"
-                />
-              </div>
-              <div
-                className="column-narrow text-list-status"
-              >
-                <img
-                  src={path.resolve(`images/helper/${mm.Missable ?
-                    'GreenCheckmark' : 'RedX'}.svg`)}
-                  alt={mm.Name+'Missability'}
-                  className="availability-small-image"
-                />
-              </div>
-              <div
-                className="column-medium text-list-status"
-              >
-                {mm.Type}
-              </div>
-              {!props.storyProgress.OnlyShowAvailable || mm.Available ?
-                <Link
-                  className="text-list-link"
-                  to={`/mercMission/${mm.id}`}
+        <div className='data-table'>
+          <div className='row'>
+            <b className='column-narrow order-title'>Done</b>
+            <b className='column-unrestricted order-title-available'>Available</b>
+            <b className="column-unrestricted order-title-available">Missable</b>
+            <b className="column-medium order-title">Type</b>
+            <b className="column-unrestricted order-title">Name</b>
+          </div>
+          <div className='table-outline'>
+            {props.mercMissions.sort((mmA, mmB) => {
+              const mmAValue = mmA[getOrderTypeColumn(orderType)]
+              const mmBValue = mmB[getOrderTypeColumn(orderType)]
+              return sortFunction(mmAValue, mmBValue, sortOrderAsc)
+            }).map((mm:IMercMissionState) =>
+              <div className="row text-list-entry" key={mm.id}>
+                <div className='column-narrow text-list-status'>
+                  <OptionsCheckbox
+                    hideAvailable={true}
+                    available={mm.Available}
+                    unlocked={mm.Completed}
+                    onClick={(completed) => {
+                      if (typeof completed === 'boolean') {
+                        props.updateMMStatus(mm.id, completed)
+                      }
+                    }}
+                    size='small'
+                  />
+                </div>
+                <div className='column-narrow text-list-status'>
+                  <img
+                    src={path.resolve(`images/helper/${mm.Available ?
+                      'GreenCheckmark' : 'RedX'}.svg`)}
+                    alt={mm.Name}
+                    className="availability-small-image"
+                  />
+                </div>
+                <div
+                  className="column-narrow text-list-status"
                 >
-                  {mm.Name}
-                </Link>
-                : <div className='text-list-link'>????</div>
-              }
-            </div>
-          )}
+                  <img
+                    src={path.resolve(`images/helper/${mm.Missable ?
+                      'GreenCheckmark' : 'RedX'}.svg`)}
+                    alt={mm.Name+'Missability'}
+                    className="availability-small-image"
+                  />
+                </div>
+                <div
+                  className="column-medium text-list-status"
+                >
+                  {mm.Type}
+                </div>
+                {!props.storyProgress.OnlyShowAvailable || mm.Available ?
+                  <Link
+                    className="text-list-link"
+                    to={`/mercMission/${mm.id}`}
+                  >
+                    {mm.Name}
+                  </Link>
+                  : <div className='text-list-link'>????</div>
+                }
+              </div>
+            )}
+          </div>
         </div>
       </>
     }

@@ -45,84 +45,85 @@ export const MonsterListView = (props: IOwnProps) => {
           sortOrderAsc={sortOrderAsc}
           changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
         />
-        <div className='row'>
-          {props.monsterCategory === 'Unique' ?
-            <b className='column-narrow order-title'>Beaten</b>
-            : <b className='available-column column-unrestricted order-title-available'>
-              Available
-            </b>
-          }
-          <b className='column-very-narrow order-title-available'>DLC</b>
-          <b className="column-medium order-title-available">Type</b>
-          <b className="level-column column-narrow order-title-available">Level</b>
-          <b className="column-medium order-title">Location</b>
-          <b className="column-unrestricted order-title">Name</b>
-        </div>
-        <div className='table-outline'>
-          {props.monsters.sort((monA, monB) => {
-            const monAValue = monA[getOrderTypeColumn(orderType)]
-            const monBValue = monB[getOrderTypeColumn(orderType)]
-            return sortFunction(monAValue, monBValue, sortOrderAsc)
-          }).map((mon:IMonsterState) =>
-            <div className="row text-list-entry" key={mon.id}>
-              {props.monsterCategory === 'Unique' ?
-                <div className='column-narrow text-list-status'>
-                  <OptionsCheckbox
-                    hideAvailable={true}
-                    available={mon.Available}
-                    unlocked={mon.Beaten}
-                    onClick={(completed) => {
-                      if (typeof completed === 'boolean') {
-                        props.updateMonStatus(mon.id, completed)
-                      }
-                    }}
-                    size='small'
-                  />
-                </div>
-                : <div className='column-narrow available-column text-list-status'>
+        <div className='data-table'>
+          <div className='row'>
+            {props.monsterCategory === 'Unique' ?
+              <b className='column-narrow order-title'>Beaten</b>
+              : <b className='available-column column-unrestricted order-title-available'>
+                Available
+              </b>
+            }
+            <b className='column-very-narrow order-title-available'>DLC</b>
+            <b className="column-medium order-title-available">Type</b>
+            <b className="level-column column-narrow order-title-available">Level</b>
+            <b className="column-medium order-title">Location</b>
+            <b className="column-unrestricted order-title">Name</b>
+          </div>
+          <div className='table-outline'>
+            {props.monsters.sort((monA, monB) => {
+              const monAValue = monA[getOrderTypeColumn(orderType)]
+              const monBValue = monB[getOrderTypeColumn(orderType)]
+              return sortFunction(monAValue, monBValue, sortOrderAsc)
+            }).map((mon:IMonsterState) =>
+              <div className="row text-list-entry" key={mon.id}>
+                {props.monsterCategory === 'Unique' ?
+                  <div className='column-narrow text-list-status'>
+                    <OptionsCheckbox
+                      hideAvailable={true}
+                      available={mon.Available}
+                      unlocked={mon.Beaten}
+                      onClick={(completed) => {
+                        if (typeof completed === 'boolean') {
+                          props.updateMonStatus(mon.id, completed)
+                        }
+                      }}
+                      size='small'
+                    />
+                  </div>
+                  : <div className='column-narrow available-column text-list-status'>
+                    <img
+                      src={path.resolve(`images/helper/${mon.Available ?
+                        'GreenCheckmark' : 'RedX'}.svg`)}
+                      alt={mon.Name}
+                      className="availability-small-image"
+                    />
+                  </div>
+                }
+                <div className='column-very-narrow text-list-status'>
                   <img
-                    src={path.resolve(`images/helper/${mon.Available ?
+                    src={path.resolve(`images/helper/${mon.DLCRequired ?
                       'GreenCheckmark' : 'RedX'}.svg`)}
                     alt={mon.Name}
                     className="availability-small-image"
                   />
                 </div>
-              }
-              <div className='column-very-narrow text-list-status'>
-                <img
-                  src={path.resolve(`images/helper/${mon.DLCRequired ?
-                    'GreenCheckmark' : 'RedX'}.svg`)}
-                  alt={mon.Name}
-                  className="availability-small-image"
-                />
-              </div>
-              <div
-                className="column-medium text-list-status"
-              >
-                {mon.Type}
-              </div>
-              <div className='level-column column-narrow text-list-status'>
-                {mon.LowestLevel}{mon.HighestLevel ? ` - ${mon.HighestLevel}` : ''}
-              </div>
-              <div
-                className="column-medium text-list-status"
-              >
-                {!props.storyProgress.OnlyShowAvailable || mon.Available ?
-                  mon.Area.split(' -> ')[0].replace('(', '') : '????'}
-              </div>
-              {!props.storyProgress.OnlyShowAvailable || mon.Available ?
-                <Link
-                  className="text-list-link"
-                  to={`/monster/${mon.id}`}
+                <div
+                  className="column-medium text-list-status"
                 >
-                  {mon.Name}
-                </Link>
-                : <div className='text-list-link'>????</div>
-              }
-            </div>
-          )}
+                  {mon.Type}
+                </div>
+                <div className='level-column column-narrow text-list-status'>
+                  {mon.LowestLevel}{mon.HighestLevel ? ` - ${mon.HighestLevel}` : ''}
+                </div>
+                <div
+                  className="column-medium text-list-status"
+                >
+                  {!props.storyProgress.OnlyShowAvailable || mon.Available ?
+                    mon.Area.split(' -> ')[0].replace('(', '') : '????'}
+                </div>
+                {!props.storyProgress.OnlyShowAvailable || mon.Available ?
+                  <Link
+                    className="text-list-link"
+                    to={`/monster/${mon.id}`}
+                  >
+                    {mon.Name}
+                  </Link>
+                  : <div className='text-list-link'>????</div>
+                }
+              </div>
+            )}
+          </div>
         </div>
-
       </>}
   </CollapsibleComponent>
 }
