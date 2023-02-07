@@ -29,12 +29,12 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
       updatingNodes = updatingNodes.concat(foundNode ? {...foundNode, unlocked: true} : []);
     } else {
       updatingNodes = updatingNodes.concat(foundNode ? [{...foundNode, unlocked: false}].concat(
-        props.affinityChart[branch].nodes.filter((n) => n.tier > foundNode.tier)
+        props.affinityChart[branch].nodes.filter((n) => n.tier > foundNode.tier && n.unlocked)
           .map((n) => ({ ...n, unlocked: false }))
       ) : []);
       if (branch === 0) {
         updatingNodes = updatingNodes.concat(...props.affinityChart
-          .map((b) => [...b.nodes.filter((n) => n.tier >= tier)]
+          .map((b) => [...b.nodes.filter((n) => n.tier >= tier && n.unlocked)]
             .map((n) => ({...n, unlocked: false}))))
       }
     }
