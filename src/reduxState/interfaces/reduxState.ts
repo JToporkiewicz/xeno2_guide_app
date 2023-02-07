@@ -107,24 +107,18 @@ export interface IDriverState {
 }
 
 export interface IAffinityChartNodeState {
-  id:number,
-  Name:string,
-  SkillLevel:number,
-  Effect:string[],
-  Available:boolean,
-  Unlocked:boolean
-  Tier: number
+  nodeId:number,
+  skillLevel:number,
+  effect:string[],
+  available:boolean,
+  unlocked:boolean
+  tier: number
 }
 
 export interface IAffinityChartBranchState {
-  id: number,
+  branchId: number,
   branchName: string,
   nodes: IAffinityChartNodeState[]
-}
-
-export interface IAffinityChartState {
-  id: number,
-  branches: IAffinityChartBranchState[]
 }
 
 export interface IBladeState {
@@ -139,7 +133,7 @@ export interface IBladeState {
   source: string,
   heart2heartId: number,
   bladeQuestId: number,
-  affinityChart: IAffinityChartState,
+  affinityChart: IAffinityChartBranchState[],
   favItem1:number,
   favItem2:number,
   favItemType1:number,

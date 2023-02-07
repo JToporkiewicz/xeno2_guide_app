@@ -1,22 +1,16 @@
 export const defaultBladeAffinityNode = {
-  id:0,
-  Name:'',
-  SkillLevel:0,
-  Effect:'',
-  Available:false,
-  Unlocked:false,
-  Tier: 0
+  nodeId:0,
+  skillLevel:0,
+  effect:'',
+  available:false,
+  unlocked:false,
+  tier: 0
 }
 
 export const defaultBladeAffinityBranch = {
-  id: 0,
+  branchId: 0,
   branchName: '',
   nodes: []
-}
-
-export const defaultBladeAffinityChart = {
-  id: 0,
-  branches: []
 }
 
 export const defaultBladeState = {
@@ -31,7 +25,7 @@ export const defaultBladeState = {
   source: '',
   heart2heartId: 0,
   bladeQuestId: 0,
-  affinityChart: defaultBladeAffinityChart,
+  affinityChart: [],
   favItem1:0,
   favItem2:0,
   favItemType1:0,
@@ -39,4 +33,9 @@ export const defaultBladeState = {
   unlocked: false,
   available: false,
   show:false
+}
+
+export interface IUpdateBladeUnlocked {
+  unlocked?: number[],
+  locked?: number[]
 }

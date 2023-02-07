@@ -4,10 +4,10 @@ import UnlockOverlay from '../UnavailableDataComponents/Overlays/UnlockOverlay'
 
 interface IOwnProps {
   nodes: {
-    Unlocked: boolean,
-    Available?:boolean,
-    id: number,
-    Tier: number,
+    unlocked: boolean,
+    available?:boolean,
+    nodeId: number,
+    tier: number,
     Body:ReactElement
   }[],
   availableTier: number,
@@ -23,21 +23,21 @@ export const BranchDetails = (props: IOwnProps) => {
         {props.nodes?.map((node, index) => 
           <div key={'details ' + index} className="branch-details-node-area">
             {
-              props.minOneNode && node.Tier === 1 ?
+              props.minOneNode && node.tier === 1 ?
                 <div/>
                 : 
-                node.Unlocked ?
+                node.unlocked ?
                   <LockOverlay
-                    id={node.id}
-                    updateGameState={() => props.updateNode(node.Tier, false)} />
+                    id={node.nodeId}
+                    updateGameState={() => props.updateNode(node.tier, false)} />
                   : <UnlockOverlay
-                    id={node.id}
-                    updateGameState={() => props.updateNode(node.Tier, true)} />
+                    id={node.nodeId}
+                    updateGameState={() => props.updateNode(node.tier, true)} />
             }
             
-            {node.Available === false || node.Tier > props.availableTier ?
+            {node.available === false || node.tier > props.availableTier ?
               <div className="unavailable"/> : null }
-            <div className={`branch-details-node ${node.Unlocked ? 'unlocked' : ''}`}>
+            <div className={`branch-details-node ${node.unlocked ? 'unlocked' : ''}`}>
               {node.Body}
             </div>
           </div>

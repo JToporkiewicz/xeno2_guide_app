@@ -35,7 +35,7 @@ export default createSelector(
         }
       }}, {}),
     driverSkills: drivers.reduce((skills: IProgressList, driver) => {
-      const showDriver = driver.chapterUnlocked <= progress.Chapter
+      const showDriver: boolean = driver.chapterUnlocked <= progress.Chapter
         || !progress.OnlyShowAvailable;
       return {
         ...skills,
@@ -83,13 +83,13 @@ export default createSelector(
       return {
         ...arts,
         [showBlade ? blade.name : 'Unavailable Blades']: {
-          total: blade.affinityChart.branches
+          total: blade.affinityChart
             .reduce((branchTotal, branch) => branch.nodes.length + branchTotal, 0)
               + (!showBlade && arts['Unavailable Blades'] ?
                 arts['Unavailable Blades']?.total : 0),
-          unlocked: blade.affinityChart.branches
+          unlocked: blade.affinityChart
             .reduce((branchTotal, branch) => branch.nodes
-              .filter((node) => node.Unlocked).length + branchTotal, 0)
+              .filter((node) => node.unlocked).length + branchTotal, 0)
               + (!showBlade && arts['Unavailable Blades'] ?
                 arts['Unavailable Blades']?.unlocked : 0)
         }

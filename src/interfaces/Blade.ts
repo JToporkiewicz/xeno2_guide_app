@@ -1,3 +1,5 @@
+import { IAffinityChartBranch } from './AffinityChart'
+
 export interface IBlade {
   id:number,
   Name:string,
@@ -10,7 +12,7 @@ export interface IBlade {
   Source:string,
   Heart2Heart:number,
   BladeQuest:number,
-  AffinityChart:number,
+  AffinityChart:IAffinityChartBranch[],
   FavItem1:number,
   FavItem2:number,
   FavItemType1:number,

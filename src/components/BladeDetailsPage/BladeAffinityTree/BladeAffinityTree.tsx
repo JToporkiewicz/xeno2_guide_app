@@ -1,12 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { IAffinityChartNode } from 'interfaces/AffinityChart';
-import { IAffinityChartNodeState, IAffinityChartState } from 'reduxState/interfaces/reduxState'
+import {
+  IAffinityChartBranchState,
+  IAffinityChartNodeState
+} from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import { BranchDetails } from 'components/CommonComponents/BranchDetails';
 import { TreeBranch } from 'components/CommonComponents/TreeBranch';
 
 interface IOwnProps {
-  affinityChart: IAffinityChartState
+  affinityChart: IAffinityChartBranchState[]
 }
 
 interface IDispatchProps {
@@ -21,57 +24,54 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
 
   const unlockNode = (branch: number, tier: number, unlocked: boolean) => {
     let updatingNodes = [] as IAffinityChartNodeState[];
-    const foundNode = props.affinityChart.branches[branch].nodes.find((n) => n.Tier === tier);
+    const foundNode = props.affinityChart[branch].nodes.find((n) => n.tier === tier);
     if (unlocked) {
-      updatingNodes = updatingNodes.concat(foundNode ? {...foundNode, Unlocked: true} : []);
+      updatingNodes = updatingNodes.concat(foundNode ? {...foundNode, unlocked: true} : []);
     } else {
-      updatingNodes = updatingNodes.concat(foundNode ? [{...foundNode, Unlocked: false}].concat(
-        props.affinityChart.branches[branch].nodes.filter((n) => n.Tier > foundNode.Tier)
-          .map((n) => ({ ...n, Unlocked: false }))
+      updatingNodes = updatingNodes.concat(foundNode ? [{...foundNode, unlocked: false}].concat(
+        props.affinityChart[branch].nodes.filter((n) => n.tier > foundNode.tier)
+          .map((n) => ({ ...n, unlocked: false }))
       ) : []);
       if (branch === 0) {
-        updatingNodes = updatingNodes.concat(...props.affinityChart.branches
-          .map((b) => [...b.nodes.filter((n) => n.Tier >= tier)]
-            .map((n) => ({...n, Unlocked: false}))))
+        updatingNodes = updatingNodes.concat(...props.affinityChart
+          .map((b) => [...b.nodes.filter((n) => n.tier >= tier)]
+            .map((n) => ({...n, unlocked: false}))))
       }
     }
-    props.setBladeSkillNode(updatingNodes.map((node) => ({
-      ...node,
-      Effect: JSON.stringify(node.Effect)
-    })))
+    props.setBladeSkillNode(updatingNodes)
     toUpdate.current = toUpdate.current
-      .filter((node) => !updatingNodes.find((un) => un.id === node.id))
+      .filter((node) => !updatingNodes.find((un) => un.nodeId === node.nodeId))
       .concat(updatingNodes)
   }
 
   const getBranchDetails = () => {
-    const selectedDetails = props.affinityChart.branches[selectedBranch];
+    const selectedDetails = props.affinityChart[selectedBranch];
     const unlockedAffinity =
-      props.affinityChart.branches[0]?.nodes.find((n) => !n.Unlocked)?.Tier || 6;
+      props.affinityChart[0]?.nodes.find((n) => !n.unlocked)?.tier || 6;
     const unlockedBranchTier =
-      selectedDetails?.nodes.find((n) => !n.Unlocked)?.Tier || 6;
+      selectedDetails?.nodes.find((n) => !n.unlocked)?.tier || 6;
     return <>
       <hr />
-      <h2>{props.affinityChart.branches[selectedBranch]?.branchName || ''}</h2>
+      <h2>{props.affinityChart[selectedBranch]?.branchName || ''}</h2>
       <BranchDetails
         availableTier={selectedDetails?.branchName === 'Affinity' ?
           unlockedAffinity
           : unlockedAffinity > unlockedBranchTier ?
             unlockedBranchTier : unlockedAffinity - 1}
         nodes={selectedDetails?.nodes.map((n) => ({
-          id: n.id,
-          Unlocked: n.Unlocked,
-          Available: n.Available,
-          Tier: n.Tier,
+          nodeId: n.nodeId,
+          unlocked: n.unlocked,
+          available: n.available,
+          tier: n.tier,
           Body: <div
-            key={'nodeDetails ' + n.id}
+            key={'nodeDetails ' + n.nodeId}
           >
-            <b>Level:</b> {n.SkillLevel} | <b>Tier:</b> {n.Tier}
+            <b>Level:</b> {n.skillLevel} | <b>Tier:</b> {n.tier}
             <br/>
             <b>Effect:</b>
             <br/>
-            {n.Effect && n.Effect.map((e:any, index:number) =>
-              <div key={'effect ' + n.id + '->' + index}>{e}<br/></div>)
+            {n.effect && n.effect.map((e:any, index:number) =>
+              <div key={'effect ' + n.nodeId + '->' + index}>{e}<br/></div>)
             }
           </div>
         }))}
@@ -82,21 +82,21 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
   }
 
   useEffect(() => {
-    if (props.affinityChart.branches[0] !== undefined) {
+    if (props.affinityChart[0] !== undefined) {
       setSelectedBranch(-1);
     }
-  }, [props.affinityChart.branches.length])
+  }, [props.affinityChart.length])
 
   useEffect(() => {
     return () => {
       toUpdate.current.forEach((node:IAffinityChartNodeState) =>
         props.saveBladeSkillNode({
-          id: node.id,
-          Name: node.Name,
-          SkillLevel: node.SkillLevel,
-          Effect: JSON.stringify(node.Effect),
-          Available: node.Available,
-          Unlocked: node.Unlocked
+          nodeId: node.nodeId,
+          skillLevel: node.skillLevel,
+          effect: node.effect,
+          available: node.available,
+          unlocked: node.unlocked,
+          tier: node.tier
         })
       )
       setTimeout(props.fetchFieldSkills, 1000)
@@ -109,21 +109,21 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
     >
       <div className="tree-wrapper">
         <div className="tree-area">
-          {props.affinityChart.branches.map((b, index) => {
+          {props.affinityChart.map((b, index) => {
             const unlockedAffinity =
-              props.affinityChart.branches[0].nodes.find((n) => !n.Unlocked)?.Tier || 6;
+              props.affinityChart[0].nodes.find((n) => !n.unlocked)?.tier || 6;
             const unlockedBranchTier =
-              b.nodes.find((n) => !n.Unlocked || !n.Available)?.Tier || 6;
+              b.nodes.find((n) => !n.unlocked || !n.available)?.tier || 6;
             return <TreeBranch
               key={'branch ' + index}
               index={index}
-              treeBranchesCount={props.affinityChart.branches.length}
+              treeBranchesCount={props.affinityChart.length}
               nodesPerBranch={5}
               branchName={b.branchName}
               nodes={b.nodes.map((node) => ({
-                tier: node.Tier,
-                unlocked: node.Unlocked,
-                available: node.Available
+                tier: node.tier,
+                unlocked: node.unlocked,
+                available: node.available
               }))}
               availableTier={index === 0 ?
                 unlockedAffinity

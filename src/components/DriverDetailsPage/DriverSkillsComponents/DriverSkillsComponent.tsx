@@ -175,9 +175,9 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
                 availableTier={unlockedTier1 + unlockedTier2 >= 5 ? 3 : unlockedTier1 >= 2 ? 2 : 1}
                 nodes={[
                   {
-                    id: props.tree.tier1[selectedBranch].id,
-                    Unlocked: props.tree.tier1[selectedBranch].Unlocked,
-                    Tier: 1,
+                    nodeId: props.tree.tier1[selectedBranch].id,
+                    unlocked: props.tree.tier1[selectedBranch].Unlocked,
+                    tier: 1,
                     Body:
                       <>
                         <b>{props.tree.tier1[selectedBranch].Name}</b>
@@ -188,9 +188,9 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
                       </>
                   },
                   {
-                    id: props.tree.tier2[selectedBranch].id,
-                    Unlocked: props.tree.tier2[selectedBranch].Unlocked,
-                    Tier: 2,
+                    nodeId: props.tree.tier2[selectedBranch].id,
+                    unlocked: props.tree.tier2[selectedBranch].Unlocked,
+                    tier: 2,
                     Body:
                       <>
                         <b>{props.tree.tier2[selectedBranch].Name}</b>
@@ -201,9 +201,9 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
                       </>
                   },
                   {
-                    id: props.tree.tier3[selectedBranch].id,
-                    Unlocked: props.tree.tier3[selectedBranch].Unlocked,
-                    Tier: 3,
+                    nodeId: props.tree.tier3[selectedBranch].id,
+                    unlocked: props.tree.tier3[selectedBranch].Unlocked,
+                    tier: 3,
                     Body:
                       <>
                         <b>{props.tree.tier3[selectedBranch].Name}</b>

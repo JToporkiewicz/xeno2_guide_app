@@ -1,7 +1,7 @@
 import { sortFunction } from 'helpers';
 import { ReactChild, useEffect, useRef, useState } from 'react'
 import { IStoryProgress } from 'interfaces';
-import { defaultBladeState } from 'reduxState/interfaces/blades';
+import { defaultBladeState, IUpdateBladeUnlocked } from 'reduxState/interfaces/blades';
 import { IBladeState, IUpdateShow } from 'reduxState/interfaces/reduxState';
 import { CharacterPageDetails } from 'components/CommonComponents/CharacterPageDetails';
 import CharacterPanelContainer
@@ -19,7 +19,7 @@ interface IDispatchProps {
   hideLoader: (payload:string) => void;
   updateShowBlade: (payload:IUpdateShow) => void;
   updateBladeUnlocked: (payload:IBladeState) => void;
-  saveBladeStatus: (payload:IBladeState) => void;
+  saveBladeStatus: (payload:IUpdateBladeUnlocked) => void;
   fetchAllBlades: () => void;
 }
 
@@ -82,13 +82,13 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             return sortFunction(bladeAValue, bladeBValue, sortOrderAsc)
           })
           .reduce((bladeList, blade) => {
-            const progress = Math.round(blade.affinityChart.branches
+            const progress = Math.round(blade.affinityChart
               .reduce((skillsTotal, branch) =>
                 skillsTotal +
-                  (branch.nodes.find((node) => !node.Unlocked)?.SkillLevel
+                  (branch.nodes.find((node) => !node.unlocked)?.skillLevel
                     || branch.nodes.length + 1) - 1, 0)
-                    / blade.affinityChart.branches.reduce((skillsTotal, branch) =>
-                      skillsTotal + (branch.nodes.length || -1) + 1, 0) * 10000) / 100
+                    / blade.affinityChart.reduce((skillsTotal, branch) =>
+                      skillsTotal + branch.nodes.length, 0) * 10000) / 100
             const group = blade[getOrderTypeColumn(orderType)];
             const groupName = orderType === 'availability' && typeof group === 'boolean' ?
               group ? 'Available' : 'Unavailable' : String(group);
@@ -124,9 +124,14 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
 
   useEffect(() => {
     return () => {
-      toUpdateBlades.current.forEach((blade:IBladeState) =>
-        props.saveBladeStatus(blade)
-      )
+      if (toUpdateBlades.current) {
+        props.saveBladeStatus({
+          unlocked: toUpdateBlades.current
+            .filter((blade) => blade.unlocked).map((blade) => blade.id),
+          locked: toUpdateBlades.current
+            .filter((blade) => !blade.unlocked).map((blade) => blade.id)
+        })
+      }
     }
   }, [])
 
@@ -142,12 +147,12 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             availability={`Available: ${selectedBlade.available ? 'Yes' : 'No'}`}
             list={[{
               label: 'Skills: ',
-              unlocked: selectedBlade.affinityChart.branches
+              unlocked: selectedBlade.affinityChart
                 .reduce((skillsTotal, branch) =>
-                  skillsTotal + (branch.nodes.find((node) => !node.Unlocked)?.SkillLevel
+                  skillsTotal + (branch.nodes.find((node) => !node.unlocked)?.skillLevel
                     || branch.nodes.length + 1) - 1, 0),
-              total: selectedBlade.affinityChart.branches.reduce((skillsTotal, branch) =>
-                skillsTotal + (branch.nodes.length || -1) + 1, 0)
+              total: selectedBlade.affinityChart.reduce((skillsTotal, branch) =>
+                skillsTotal + branch.nodes.length, 0)
             }]}
             onClose={setSelectedBlade.bind(this, defaultBladeState)}
             unlockButton

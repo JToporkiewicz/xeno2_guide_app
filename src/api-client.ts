@@ -60,6 +60,15 @@ class ApiClient {
     this.url = 'http://localhost:' + url
   }
 
+  async callAPI (api: string, method: string, body?: unknown) {
+    return await fetch(this.url + api,
+      Object.assign({
+        method,
+        body: JSON.stringify(body),
+        headers: {'Content-Type': 'application/json'}
+      }))
+  }
+
   /** Returns a single resource **/
   resource (name:string) {
     return new Resource(this.url, name)

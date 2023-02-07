@@ -7,6 +7,7 @@ import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
 import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
+import { IUpdateBladeUnlocked } from 'reduxState/interfaces/blades'
 
 interface IOwnProps {
   bladeDetails:IBladeState,
@@ -21,7 +22,7 @@ interface IOwnProps {
 
 interface IDispatchProps {
   updateBladeUnlocked: (payload:IBladeState) => void;
-  saveBladeStatus: (payload:IBladeState) => void;
+  saveBladeStatus: (payload:IUpdateBladeUnlocked) => void;
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
   saveQuestStatus: (payload:IQuestState) => void;
   updateHeart2HeartStatus: (payload:IUpdateH2HStatus) => void;
@@ -98,7 +99,9 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
   useEffect(() => {
     return () => {
       if (bladeToUpdate.current) {
-        props.saveBladeStatus(bladeToUpdate.current);
+        props.saveBladeStatus({
+          [bladeToUpdate.current.unlocked ? 'unlocked' : 'locked']: [bladeToUpdate.current.id]
+        });
       }
       if (questToUpdate.current) {
         props.saveQuestStatus(questToUpdate.current);
