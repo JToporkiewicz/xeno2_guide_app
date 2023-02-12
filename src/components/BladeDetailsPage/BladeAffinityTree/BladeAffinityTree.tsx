@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { IAffinityChartNode } from 'interfaces/AffinityChart';
 import {
   IAffinityChartBranchState,
-  IAffinityChartNodeState
+  IAffinityChartNodeState,
+  IUpdateUnlocked
 } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import { BranchDetails } from 'components/CommonComponents/BranchDetails';
@@ -14,7 +15,7 @@ interface IOwnProps {
 
 interface IDispatchProps {
   setBladeSkillNode: (node: IAffinityChartNode[]) => void;
-  saveBladeSkillNode: (node: IAffinityChartNode) => void;
+  saveBladeSkillNode: (node: IUpdateUnlocked) => void;
   fetchFieldSkills: () => void;
 }
 
@@ -34,7 +35,9 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
       ) : []);
       if (branch === 0) {
         updatingNodes = updatingNodes.concat(...props.affinityChart
-          .map((b) => [...b.nodes.filter((n) => n.tier >= tier && n.unlocked)]
+          .map((b) => [...b.nodes.filter((n) => n.tier >= tier
+            && n.unlocked
+            && n.nodeId !== foundNode?.nodeId)]
             .map((n) => ({...n, unlocked: false}))))
       }
     }
@@ -89,16 +92,14 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
 
   useEffect(() => {
     return () => {
-      toUpdate.current.forEach((node:IAffinityChartNodeState) =>
-        props.saveBladeSkillNode({
-          nodeId: node.nodeId,
-          skillLevel: node.skillLevel,
-          effect: node.effect,
-          available: node.available,
-          unlocked: node.unlocked,
-          tier: node.tier
-        })
-      )
+      props.saveBladeSkillNode({
+        unlocked: toUpdate.current
+          .filter((node) => node.unlocked)
+          .map((node) => node.nodeId),
+        locked: toUpdate.current
+          .filter((node) => !node.unlocked)
+          .map((node) => node.nodeId),
+      })
       setTimeout(props.fetchFieldSkills, 1000)
     }
   }, [])

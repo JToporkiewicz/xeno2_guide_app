@@ -81,5 +81,40 @@ module.exports = function() {
     res.status(200).send()
   })
 
+  router.put('/updateACNStatus', async function(req, res) {
+    try {
+      if (req.body.unlocked && req.body.unlocked.length > 0) {
+        await sequelize.query(`
+          UPDATE xenoblade2_guide.affinityChartNodes
+          SET Unlocked = 1
+          WHERE id IN (${req.body.unlocked.join(', ')})
+        `)
+      }
+      if (req.body.locked && req.body.locked.length > 0) {
+        await sequelize.query(`
+          UPDATE xenoblade2_guide.affinityChartNodes
+          SET Unlocked = 0
+          WHERE id IN (${req.body.locked.join(', ')})`)
+      }
+      
+      for (let i of (req.body.unlocked || []).concat(req.body.locked || [])) {
+        await sequelize.query('CALL updateBranchACN (:skillId)', {
+          replacements: {skillId: i}
+        })
+        await sequelize.query('CALL updateFieldSkill (:skillId)', {
+          replacements: {skillId: i}
+        })
+      }
+      await sequelize.query('CALL updateH2H ()');
+      await sequelize.query('CALL updateQuest ()');
+      await sequelize.query('CALL updateACN ()');
+      await sequelize.query('CALL updateACNUnlocked ()');
+    } catch (err) {
+      return res.status(400).json({err: err.message})
+    }
+
+    res.status(200).send()
+  })
+
   return router
 }

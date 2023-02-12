@@ -34,8 +34,3 @@ export const defaultBladeState = {
   available: false,
   show:false
 }
-
-export interface IUpdateBladeUnlocked {
-  unlocked?: number[],
-  locked?: number[]
-}

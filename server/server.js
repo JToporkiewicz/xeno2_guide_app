@@ -15,8 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 const db = require('./models');
 const restRouter = require('./routers/defaultRouter');
 const storyProgressRestRouter = require('./routers/storyProgressRestRouter');
-const affinityChartRouter = require('./routers/affinityChartRouter')
-const affinityChartNodesRouter = require('./routers/affinityChartNodesRouter')
 const bladesRouter = require('./routers/bladesRouter');
 const heart2HeartRouter = require('./routers/heart2HeartRouter');
 const mercMissionRouter = require('./routers/mercMissionRouter');
@@ -41,7 +39,6 @@ app.get('/', (req, res) => {
 })
 
 // Implement routes
-app.use('/affinityChartNode', affinityChartNodesRouter(db.affinityChartNode, sequelize))
 app.use('/blade', bladesRouter())
 app.use('/driver', restRouter(db.driver))
 app.use('/driverArtDetails', restRouter(db.driverArtDetail))

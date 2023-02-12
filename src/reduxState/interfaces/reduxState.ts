@@ -23,6 +23,11 @@ export const defaultSelected = {
   area: ''
 }
 
+export interface IUpdateUnlocked {
+  unlocked?: number[],
+  locked?: number[]
+}
+
 export interface ICoreState {
   storyProgress: IStoryProgress,
   loaderState: string[],

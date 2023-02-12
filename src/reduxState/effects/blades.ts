@@ -1,15 +1,19 @@
 import { AnyAction } from 'redux';
 import { combineEpics, Epic, ofType } from 'redux-observable';
-import { from, mergeMap, of, concat } from 'rxjs';
+import { from, mergeMap, of, concat, filter } from 'rxjs';
 import { callWithLoader$ } from '.';
 import {
   BladeActions,
   setBlade,
 } from '../actions/blades';
-import client from 'api-client';
 import { IBlade } from 'interfaces';
 import { fetchAllMercMissionRequirements } from 'reduxState/actions/mercMissions';
-import { getAllBlades, getBladeById, updateBladesUnlocked } from 'services/blades';
+import {
+  getAllBlades,
+  getBladeById,
+  updateACNUnlocked,
+  updateBladesUnlocked
+} from 'services/blades';
 
 const fetchAllBladesEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -38,9 +42,10 @@ const fetchBladeEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(BladeActions.SaveBladeSkillNode),
+    filter((action) => action.payload.unlocked.length || action.payload.locked.length),
     mergeMap((action) => callWithLoader$(
-      'Saving blade skill node - ' + action.payload.nodeId,
-      from(client.resource('affinityChartNode').update(action.payload.nodeId, action.payload))
+      'Saving blade skill node',
+      from(updateACNUnlocked(action.payload))
         .pipe(mergeMap(() => of(fetchAllMercMissionRequirements())))
     ))
   )
@@ -48,6 +53,7 @@ const saveBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveBladeStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(BladeActions.SaveBladeStatus),
+    filter((action) => action.payload.unlocked.length || action.payload.locked.length),
     mergeMap((action) => callWithLoader$(
       'Saving blade status',
       from(updateBladesUnlocked(action.payload))

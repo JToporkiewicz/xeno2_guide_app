@@ -1,13 +1,17 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { IItem, IItemType, IStoryProgress } from 'interfaces'
-import { IBladeState, IHeart2HeartState, IQuestState } from 'reduxState/interfaces/reduxState'
+import {
+  IBladeState,
+  IHeart2HeartState,
+  IQuestState,
+  IUpdateUnlocked
+} from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
 import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
-import { IUpdateBladeUnlocked } from 'reduxState/interfaces/blades'
 
 interface IOwnProps {
   bladeDetails:IBladeState,
@@ -22,7 +26,7 @@ interface IOwnProps {
 
 interface IDispatchProps {
   updateBladeUnlocked: (payload:IBladeState) => void;
-  saveBladeStatus: (payload:IUpdateBladeUnlocked) => void;
+  saveBladeStatus: (payload:IUpdateUnlocked) => void;
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
   saveQuestStatus: (payload:IQuestState) => void;
   updateHeart2HeartStatus: (payload:IUpdateH2HStatus) => void;

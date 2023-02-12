@@ -1,8 +1,8 @@
 import { sortFunction } from 'helpers';
 import { ReactChild, useEffect, useRef, useState } from 'react'
 import { IStoryProgress } from 'interfaces';
-import { defaultBladeState, IUpdateBladeUnlocked } from 'reduxState/interfaces/blades';
-import { IBladeState, IUpdateShow } from 'reduxState/interfaces/reduxState';
+import { defaultBladeState } from 'reduxState/interfaces/blades';
+import { IBladeState, IUpdateShow, IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 import { CharacterPageDetails } from 'components/CommonComponents/CharacterPageDetails';
 import CharacterPanelContainer
   from 'components/CommonComponents/Containers/CharacterPanelsContainer';
@@ -19,7 +19,7 @@ interface IDispatchProps {
   hideLoader: (payload:string) => void;
   updateShowBlade: (payload:IUpdateShow) => void;
   updateBladeUnlocked: (payload:IBladeState) => void;
-  saveBladeStatus: (payload:IUpdateBladeUnlocked) => void;
+  saveBladeStatus: (payload:IUpdateUnlocked) => void;
   fetchAllBlades: () => void;
 }
 
