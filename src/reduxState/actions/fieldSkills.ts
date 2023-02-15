@@ -13,7 +13,7 @@ export type ActionTypes =
   | IFluxAction<FieldSkillsActions.FetchFieldSkills>
   | IFluxPayloadAction<FieldSkillsActions.SetFieldSkills, IFieldSkills[]>
   | IFluxPayloadAction<FieldSkillsActions.UpdateFieldSkillLevelUnlocked, IUpdateFieldSkillLevel>
-  | IFluxPayloadAction<FieldSkillsActions.SaveFieldSkillLevelUnlocked, IUpdateFieldSkillLevel>;
+  | IFluxPayloadAction<FieldSkillsActions.SaveFieldSkillLevelUnlocked, IUpdateFieldSkillLevel[]>;
 
 export const fetchFieldSkills = ():ActionTypes => ({
   type: FieldSkillsActions.FetchFieldSkills
@@ -29,7 +29,7 @@ export const updateFieldSkillLevelUnlocked = (payload:IUpdateFieldSkillLevel):Ac
   payload
 });
 
-export const saveFieldSkillLevelUnlocked = (payload:IUpdateFieldSkillLevel):ActionTypes => ({
+export const saveFieldSkillLevelUnlocked = (payload:IUpdateFieldSkillLevel[]):ActionTypes => ({
   type: FieldSkillsActions.SaveFieldSkillLevelUnlocked, 
   payload
 });

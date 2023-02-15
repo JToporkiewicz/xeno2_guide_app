@@ -2,16 +2,16 @@ import { AnyAction } from 'redux'
 import { combineEpics, Epic, ofType } from 'redux-observable'
 import { mergeMap, from, of } from 'rxjs'
 import { callWithLoader$ } from '.'
-import client from 'api-client';
 import { FieldSkillsActions, setFieldSkills } from '../actions/fieldSkills'
 import { fetchAllMercMissionRequirements } from 'reduxState/actions/mercMissions';
+import { getFieldSkills, updateSkills } from 'services/fieldSkills';
 
 const fetchFieldSkillsEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(FieldSkillsActions.FetchFieldSkills),
     mergeMap(() => callWithLoader$(
       'Fetching Field Skills',
-      from(client.resource('fieldSkill').find())
+      from(getFieldSkills())
         .pipe(mergeMap((fieldSkills) => of(setFieldSkills(fieldSkills))))
     ))
   )
@@ -21,11 +21,7 @@ const saveFieldSkillLevelUnlockedEffect:Epic<AnyAction, AnyAction> = (action$) =
     ofType(FieldSkillsActions.SaveFieldSkillLevelUnlocked),
     mergeMap((action) => callWithLoader$(
       'Updating Field Skills',
-      from(client.resource('fieldSkill')
-        .update(
-          action.payload.id,
-          { CommonBladeContribution: action.payload.CommonBladeContribution }
-        ))
+      from(updateSkills(action.payload))
         .pipe(mergeMap(() => of(fetchAllMercMissionRequirements())))
     ))
   )

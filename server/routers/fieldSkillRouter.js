@@ -6,26 +6,27 @@ const Router = express.Router
 module.exports = function(Model, sequelize) {
   const router = Router()
   
-  router.put('/:id', async function(req, res) {
-    const resource = await Model.findOne({ where: { id: req.params.id } })
-    await resource.update(req.body)
+  router.put('/updateCommonBladeContribution', async function(req, res) {
     try {
-      await sequelize.query('CALL updateFieldSkillCommon (:skillId)',{
-        replacements: {skillId: req.params.id}
-      });
+      if (req.body && req.body.length) {
+        await req.body.forEach(async (skill) => {
+          await sequelize.query(`
+            UPDATE xenoblade2_guide.fieldSkills
+            SET CommonBladeContribution = ${skill.CommonBladeContribution}
+            WHERE id = ${skill.id}`)
+          await sequelize.query('CALL updateFieldSkillCommon (:skillId)',{
+            replacements: {skillId: skill.id}
+          })
+        })
+      }
     } catch (err) {
       return res.status(400).json({err: err.message})
     }
-    await resource.reload()
-    res.send(resource)
+      
+    res.status(200).send()
   })
 
-  router.get('/:id', async function(req, res) {
-    const resource = await Model.findOne({ where: { id: req.params.id } })
-    res.send(resource)
-  })
-
-  router.get('/', async function(req, res) {
+  router.get('/getFieldSkills', async function(req, res) {
     const resources = await Model.findAll({ where: req.query })
     res.send(resources)
   })

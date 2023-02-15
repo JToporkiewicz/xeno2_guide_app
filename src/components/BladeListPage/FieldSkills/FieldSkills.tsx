@@ -10,7 +10,7 @@ import OrderBy from 'components/CommonComponents/OrderBy';
 interface IDispatchProps {
   fetchFieldSkills: () => void;
   updateFieldSkillLevelUnlocked: (payload:IUpdateFieldSkillLevel) => void;
-  saveFieldSkillLevelUnlocked: (payload:IUpdateFieldSkillLevel) => void;
+  saveFieldSkillLevelUnlocked: (payload:IUpdateFieldSkillLevel[]) => void;
 }
 
 interface IProps {
@@ -52,9 +52,9 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
       props.fetchFieldSkills();
     }
     return () => {
-      toUpdateFieldSkills.current.forEach((skill: IUpdateFieldSkillLevel) =>
-        props.saveFieldSkillLevelUnlocked(skill)
-      )
+      if (toUpdateFieldSkills.current.length) {
+        props.saveFieldSkillLevelUnlocked(toUpdateFieldSkills.current)
+      }
     }
   }, [])
 
