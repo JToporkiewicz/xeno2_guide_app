@@ -16,6 +16,7 @@ const db = require('./models');
 const restRouter = require('./routers/defaultRouter');
 const storyProgressRestRouter = require('./routers/storyProgressRestRouter');
 const bladesRouter = require('./routers/bladesRouter');
+const driversRouter = require('./routers/driversRouter');
 const heart2HeartRouter = require('./routers/heart2HeartRouter');
 const mercMissionRouter = require('./routers/mercMissionRouter');
 const questRouter = require('./routers/questRouter');
@@ -40,11 +41,7 @@ app.get('/', (req, res) => {
 
 // Implement routes
 app.use('/blade', bladesRouter())
-app.use('/driver', restRouter(db.driver))
-app.use('/driverArtDetails', restRouter(db.driverArtDetail))
-app.use('/driverArt', restRouter(db.driverArt))
-app.use('/driverSkillNode', restRouter(db.driverSkillNode))
-app.use('/driverSkillTree', restRouter(db.driverSkillTree))
+app.use('/driver', driversRouter())
 app.use('/fieldSkill', fieldSkillRouter(db.fieldSkill, sequelize))
 app.use('/heart2Heart', heart2HeartRouter(db.heart2Heart, sequelize))
 app.use('/item', restRouter(db.item))

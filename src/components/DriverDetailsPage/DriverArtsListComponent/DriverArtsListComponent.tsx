@@ -1,27 +1,28 @@
-import { useState, useEffect, ReactChild } from 'react';
+import { useState, useEffect, ReactChild, useRef } from 'react';
 import {
   IDriverArtUpdateLevelUnlocked,
-  IDriverArtUpdateData
+  IUpdateArtLevel
 } from 'reduxState/interfaces/drivers';
-import { IDriverArtsState } from 'reduxState/interfaces/reduxState';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import ClosedUnlinkedImagePanel
   from 'components/CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
 import DADetails from './DriverArtDetailsComponents/DADetails';
+import { IDriverArts } from 'interfaces';
 
 interface IDispatchProps {
-  saveDriverArtLevel: (payload: IDriverArtUpdateData) => void,
+  saveDriverArtLevel: (payload: IUpdateArtLevel[]) => void,
   updateDriverArtLevelUnlocked: (payload: IDriverArtUpdateLevelUnlocked) => void
 }
 
 interface IProps {
   driverId:number;
-  driverArts: IDriverArtsState[];
+  driverArts: IDriverArts[];
 }
 
 export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
   const [uniqueWeapons, setUniqueWeapons] = useState([] as string[]);
   const [focused, setFocused] = useState('');
+  const toUpdate = useRef([] as IUpdateArtLevel[]);
 
   useEffect(() => {
     if(props.driverArts.length > 0){
@@ -31,11 +32,20 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
     }
   }, [props.driverArts])
 
+  useEffect(() => {
+    return () => {
+      if (toUpdate.current) {
+        props.saveDriverArtLevel(toUpdate.current)
+      }
+    }
+  }, [])
+
   const updateArtLevel = (artId:number, newLevel:number) => {
     const artList = props.driverArts
       .find((artList) => artList.id === artId);
     if (artList) {
-      props.saveDriverArtLevel({artId, newLevel});
+      toUpdate.current = toUpdate.current.filter((art) => art.id !== artId)
+        .concat({id: artId, levelUnlocked: newLevel})
       props.updateDriverArtLevelUnlocked({
         driverId: props.driverId,
         artId: artList.id,

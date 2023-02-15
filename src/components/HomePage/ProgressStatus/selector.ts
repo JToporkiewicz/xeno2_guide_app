@@ -45,9 +45,9 @@ export default createSelector(
             + driver.skillTree.tier3.length
             + (!showDriver && skills['Unavailable Drivers'] ?
               skills['Unavailable Drivers']?.total : 0),
-          unlocked: driver.skillTree.tier1.filter((node) => node.Unlocked).length
-            + driver.skillTree.tier2.filter((node) => node.Unlocked).length
-            + driver.skillTree.tier3.filter((node) => node.Unlocked).length
+          unlocked: driver.skillTree.tier1.filter((node) => node.unlocked).length
+            + driver.skillTree.tier2.filter((node) => node.unlocked).length
+            + driver.skillTree.tier3.filter((node) => node.unlocked).length
             + (!showDriver && skills['Unavailable Drivers'] ?
               skills['Unavailable Drivers']?.unlocked : 0)
         }
@@ -64,9 +64,9 @@ export default createSelector(
               + driver.hiddenSkillTree.tier3.length
               + (!showDriver && skills['Unavailable Drivers'] ?
                 skills['Unavailable Drivers']?.total : 0),
-            unlocked: driver.hiddenSkillTree.tier1.filter((node) => node.Unlocked).length
-              + driver.hiddenSkillTree.tier2.filter((node) => node.Unlocked).length
-              + driver.hiddenSkillTree.tier3.filter((node) => node.Unlocked).length
+            unlocked: driver.hiddenSkillTree.tier1.filter((node) => node.unlocked).length
+              + driver.hiddenSkillTree.tier2.filter((node) => node.unlocked).length
+              + driver.hiddenSkillTree.tier3.filter((node) => node.unlocked).length
               + (!showDriver && skills['Unavailable Drivers'] ?
                 skills['Unavailable Drivers']?.unlocked : 0)
           }

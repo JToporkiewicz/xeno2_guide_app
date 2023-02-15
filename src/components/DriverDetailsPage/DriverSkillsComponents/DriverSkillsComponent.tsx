@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
-import { IDriverSkillNode } from 'interfaces';
+import { IDriverSkillNode, IDriverSkillTree } from 'interfaces';
 import { IDriverSkillNodeUpdate } from 'reduxState/interfaces/drivers';
-import { ISkillTreeState } from 'reduxState/interfaces/reduxState';
 import { BranchDetails } from 'components/CommonComponents/BranchDetails';
 import { TreeBranch } from 'components/CommonComponents/TreeBranch';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import DriverSkillTreeTierStatus from './TreeComponents/DriverSkillTreeTierStatus';
+import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 
 interface IDispatchProps {
-  setDriverSkillNode: (payload:IDriverSkillNode[]) => void;
-  saveDriverSkillNode: (payload:IDriverSkillNodeUpdate) => void;
+  setDriverSkillNode: (payload:IDriverSkillNodeUpdate) => void;
+  saveDriverSkillNode: (payload:IUpdateUnlocked) => void;
 }
 
 interface IOwnProps {
-  tree: ISkillTreeState;
+  tree: IDriverSkillTree;
   hiddenTree?:boolean;
 }
 
@@ -36,11 +36,11 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
       }
     } else {
       const newUnlockedTier1 = tier === 1 ? props.tree.tier1.filter((node:IDriverSkillNode) =>
-        node.Unlocked).length - 1 : props.tree.tier1.filter((node:IDriverSkillNode) =>
-        node.Unlocked).length;
+        node.unlocked).length - 1 : props.tree.tier1.filter((node:IDriverSkillNode) =>
+        node.unlocked).length;
       const newUnlockedTier2 = tier < 3 ? props.tree.tier2.filter((node:IDriverSkillNode) =>
-        node.Unlocked).length - 1 : props.tree.tier2.filter((node:IDriverSkillNode) =>
-        node.Unlocked).length;
+        node.unlocked).length - 1 : props.tree.tier2.filter((node:IDriverSkillNode) =>
+        node.unlocked).length;
       switch(tier) {
       // @ts-ignore
       case 1:
@@ -72,12 +72,14 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
         })))
       }
     }
-    const nodesIds = nodes.map((nodeDetails) => nodeDetails.node.id);
-    props.setDriverSkillNode(nodes.map((nodeDetails) => ({
-      ...nodeDetails.node,
-      Unlocked: unlock
-    })))
-    toUpdate.current = toUpdate.current.filter((node) => !nodesIds.includes(node.id))
+    const nodesIds = nodes.map((nodeDetails) => nodeDetails.node.nodeId);
+    props.setDriverSkillNode({
+      treeId: props.tree.treeId,
+      nodes: nodes.map((nodeDetails) => ({
+        ...nodeDetails.node,
+        unlocked: unlock
+      }))})
+    toUpdate.current = toUpdate.current.filter((node) => !nodesIds.includes(node.nodeId))
       .concat(nodes.map((nodeDetails) => nodeDetails.node))
   }
 
@@ -85,9 +87,9 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
     if(props.tree.treeId !== 0){
       toUpdate.current = props.tree.tier1.concat(props.tree.tier2).concat(props.tree.tier3);
       let unlocked1 = props.tree.tier1.filter((node:IDriverSkillNode) =>
-        node.Unlocked).length;
+        node.unlocked).length;
       let unlocked2 = props.tree.tier2.filter((node:IDriverSkillNode) =>
-        node.Unlocked).length;
+        node.unlocked).length;
       setUnlockedLevel1(unlocked1);
       setUnlockedLevel2(unlocked2);
     }
@@ -95,35 +97,40 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
 
   useEffect(() => {
     return () => {
-      toUpdate.current.forEach((node:IDriverSkillNode) => 
-        props.saveDriverSkillNode({nodeId: node.id, node})
-      )
+      if (toUpdate.current.length) {
+        props.saveDriverSkillNode({
+          unlocked: toUpdate.current.filter((node) => node.unlocked && node.nodeId)
+            .map((node) => node.nodeId),
+          locked: toUpdate.current.filter((node) => !node.unlocked && node.nodeId)
+            .map((node) => node.nodeId),
+        })
+      }
     } 
   }, [])
 
   const getTreeTierNodes = () => [
     {
-      id:-1,
-      Name:'Tier 1',
-      Effect:'',
-      SP:0,
-      Unlocked:true,
+      nodeId:-1,
+      name:'Tier 1',
+      effect:'',
+      sp:0,
+      unlocked:true,
       Tier: 1
     },
     {
-      id:-1,
-      Name:'Tier 2',
-      Effect:'',
-      SP:0,
-      Unlocked:unlockedTier1 >= 2,
+      nodeId:-1,
+      name:'Tier 2',
+      effect:'',
+      sp:0,
+      unlocked:unlockedTier1 >= 2,
       Tier: 2
     },
     {
-      id:-1,
-      Name:'Tier 3',
-      Effect:'',
-      SP:0,
-      Unlocked:unlockedTier1 + unlockedTier2 >= 5,
+      nodeId:-1,
+      name:'Tier 3',
+      effect:'',
+      sp:0,
+      unlocked:unlockedTier1 + unlockedTier2 >= 5,
       Tier: 3
     },
   ]
@@ -150,9 +157,9 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
                   nodesPerBranch={3}
                   nodes={b.map((node) => ({
                     tier: node.Tier,
-                    unlocked: node.Unlocked
+                    unlocked: node.unlocked
                   }))}
-                  branchName={b[0].Name === 'Tier 1' ? 'Tree tier' : ''}
+                  branchName={b[0].name === 'Tier 1' ? 'Tree tier' : ''}
                   availableTier={unlockedTreeTier}
                   setSelectedBranch={setSelectedBranch.bind(this, index - 1)}
                 />
@@ -175,42 +182,42 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
                 availableTier={unlockedTier1 + unlockedTier2 >= 5 ? 3 : unlockedTier1 >= 2 ? 2 : 1}
                 nodes={[
                   {
-                    nodeId: props.tree.tier1[selectedBranch].id,
-                    unlocked: props.tree.tier1[selectedBranch].Unlocked,
+                    nodeId: props.tree.tier1[selectedBranch].nodeId,
+                    unlocked: props.tree.tier1[selectedBranch].unlocked,
                     tier: 1,
                     Body:
                       <>
-                        <b>{props.tree.tier1[selectedBranch].Name}</b>
+                        <b>{props.tree.tier1[selectedBranch].name}</b>
                         <br />
-                        {props.tree.tier1[selectedBranch].Effect}
+                        {props.tree.tier1[selectedBranch].effect}
                         <br />
-                        <b>SP: </b>{props.tree.tier1[selectedBranch].SP}
+                        <b>sp: </b>{props.tree.tier1[selectedBranch].sp}
                       </>
                   },
                   {
-                    nodeId: props.tree.tier2[selectedBranch].id,
-                    unlocked: props.tree.tier2[selectedBranch].Unlocked,
+                    nodeId: props.tree.tier2[selectedBranch].nodeId,
+                    unlocked: props.tree.tier2[selectedBranch].unlocked,
                     tier: 2,
                     Body:
                       <>
-                        <b>{props.tree.tier2[selectedBranch].Name}</b>
+                        <b>{props.tree.tier2[selectedBranch].name}</b>
                         <br />
-                        {props.tree.tier2[selectedBranch].Effect}
+                        {props.tree.tier2[selectedBranch].effect}
                         <br />
-                        <b>SP: </b>{props.tree.tier2[selectedBranch].SP}
+                        <b>sp: </b>{props.tree.tier2[selectedBranch].sp}
                       </>
                   },
                   {
-                    nodeId: props.tree.tier3[selectedBranch].id,
-                    unlocked: props.tree.tier3[selectedBranch].Unlocked,
+                    nodeId: props.tree.tier3[selectedBranch].nodeId,
+                    unlocked: props.tree.tier3[selectedBranch].unlocked,
                     tier: 3,
                     Body:
                       <>
-                        <b>{props.tree.tier3[selectedBranch].Name}</b>
+                        <b>{props.tree.tier3[selectedBranch].name}</b>
                         <br />
-                        {props.tree.tier3[selectedBranch].Effect}
+                        {props.tree.tier3[selectedBranch].effect}
                         <br />
-                        <b>SP: </b>{props.tree.tier3[selectedBranch].SP}
+                        <b>sp: </b>{props.tree.tier3[selectedBranch].sp}
                       </>
                   }
                 ]}

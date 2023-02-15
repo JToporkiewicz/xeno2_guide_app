@@ -3,12 +3,12 @@ import { DALevels } from './DALevels';
 import DADescription from './DADescription';
 import InnerCollapsibleComponent
   from 'components/CommonComponents/Containers/InnerCollapsibleComponent';
-import { IDriverArtsState } from 'reduxState/interfaces/reduxState';
+import { IDriverArts } from 'interfaces';
 
 interface IProps {
   weapon:string,
   clearArt:() => void,
-  weaponArts:IDriverArtsState[],
+  weaponArts:IDriverArts[],
   updateArtLevel:(artId:number, level:number) => void
 }
 

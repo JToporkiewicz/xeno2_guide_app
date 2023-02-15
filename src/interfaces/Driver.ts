@@ -1,98 +1,54 @@
-export interface IDriver {
-  id:number,
-  Name:string,
-  ChapterUnlocked:number,
-  DriverSkillTree:number,
-  HiddenSkillTree:number,
-  Heart2Hearts:string,
-  FavItem1:number,
-  FavItem2:number,
-  FavItemType1:number,
-  FavItemType2:number,
-  IdeaStats:string
-}
-
-export const defaultDriver = {
-  id:0,
-  Name:'',
-  ChapterUnlocked:0,
-  DriverSkillTree:0,
-  HiddenSkillTree:0,
-  Heart2Hearts:'',
-  FavItem1:0,
-  FavItem2:0,
-  FavItemType1:0,
-  FavItemType2:0,
-  IdeaStats:''
-}
-
 export interface IDriverArtDetails {
-  id:number,
-  SP:number,
-  Damage:number,
-  EffectPotency:string,
-  Recharge:string
+  sp:number,
+  damage:number,
+  effectPotency:string,
+  recharge:string,
+  level: number
 }
 
 export interface IDriverArts {
   id:number,
-  Name:string,
-  Driver:number,
-  WeaponType:string,
-  Effect:string,
-  Target:string,
-  Type:string,
-  LevelUnlocked:number,
-  Level1:number,
-  Level2:number,
-  Level3:number,
-  Level4:number,
-  Level5:number,
-  Level5MaxAffinity:number
+  name:string,
+  weaponType:string,
+  effect:string[],
+  target:string,
+  type:string,
+  levelUnlocked:number,
+  nodes: IDriverArtDetails[]
 }
 
 export interface IDriverSkillNode {
-  id:number,
-  Name:string,
-  Effect:string,
-  SP:number,
-  Unlocked:boolean
+  nodeId:number,
+  name:string,
+  effect:string,
+  sp:number,
+  unlocked:boolean
 }
 
 export interface IDriverSkillTree {
-  id:number,
-  Tier1Branch1:number,
-  Tier1Branch2:number,
-  Tier1Branch3:number,
-  Tier1Branch4:number,
-  Tier1Branch5:number,
-  Tier2Branch1:number,
-  Tier2Branch2:number,
-  Tier2Branch3:number,
-  Tier2Branch4:number,
-  Tier2Branch5:number,
-  Tier3Branch1:number,
-  Tier3Branch2:number,
-  Tier3Branch3:number,
-  Tier3Branch4:number,
-  Tier3Branch5:number
+  treeId:number,
+  tier1: IDriverSkillNode[],
+  tier2: IDriverSkillNode[],
+  tier3: IDriverSkillNode[],
 }
 
-export const defaultDriverSkillTree = {
-  id:0,
-  Tier1Branch1:0,
-  Tier1Branch2:0,
-  Tier1Branch3:0,
-  Tier1Branch4:0,
-  Tier1Branch5:0,
-  Tier2Branch1:0,
-  Tier2Branch2:0,
-  Tier2Branch3:0,
-  Tier2Branch4:0,
-  Tier2Branch5:0,
-  Tier3Branch1:0,
-  Tier3Branch2:0,
-  Tier3Branch3:0,
-  Tier3Branch4:0,
-  Tier3Branch5:0
+interface IDriverIdeaStats {
+  Bravery: number,
+  Truth: number,
+  Compassion: number,
+  Justice: number,
+}
+
+export interface IDriver {
+  id:number,
+  name:string,
+  chapterUnlocked:number,
+  skillTree:IDriverSkillTree,
+  hiddenSkillTree:IDriverSkillTree,
+  favItem1:number,
+  favItem2:number,
+  favItemType1:number,
+  favItemType2:number,
+  ideaStats:IDriverIdeaStats,
+  arts: IDriverArts[]
 }

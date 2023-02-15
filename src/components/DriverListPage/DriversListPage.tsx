@@ -67,12 +67,12 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
           .map((driver) => {
             const progress=Math.round((driver.arts
               .reduce((artTotal, art) => artTotal + art.levelUnlocked, 0)
-              + driver.skillTree.tier1.filter((node) => node.Unlocked).length
-              + driver.skillTree.tier2.filter((node) => node.Unlocked).length
-              + driver.skillTree.tier3.filter((node) => node.Unlocked).length
-              + driver.hiddenSkillTree.tier1.filter((node) => node.Unlocked).length
-              + driver.hiddenSkillTree.tier2.filter((node) => node.Unlocked).length
-              + driver.hiddenSkillTree.tier3.filter((node) => node.Unlocked).length
+              + driver.skillTree.tier1.filter((node) => node.unlocked).length
+              + driver.skillTree.tier2.filter((node) => node.unlocked).length
+              + driver.skillTree.tier3.filter((node) => node.unlocked).length
+              + driver.hiddenSkillTree.tier1.filter((node) => node.unlocked).length
+              + driver.hiddenSkillTree.tier2.filter((node) => node.unlocked).length
+              + driver.hiddenSkillTree.tier3.filter((node) => node.unlocked).length
             )/(driver.arts.length * 6
               + driver.skillTree.tier1.length
               + driver.skillTree.tier2.length
@@ -126,9 +126,9 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
               },
               {
                 label: 'Skills: ',
-                unlocked: selectedDriver.skillTree.tier1.filter((node) => node.Unlocked).length
-                  + selectedDriver.skillTree.tier2.filter((node) => node.Unlocked).length
-                  + selectedDriver.skillTree.tier3.filter((node) => node.Unlocked).length,
+                unlocked: selectedDriver.skillTree.tier1.filter((node) => node.unlocked).length
+                  + selectedDriver.skillTree.tier2.filter((node) => node.unlocked).length
+                  + selectedDriver.skillTree.tier3.filter((node) => node.unlocked).length,
                 total: selectedDriver.skillTree.tier1.length
                   + selectedDriver.skillTree.tier2.length
                   + selectedDriver.skillTree.tier3.length
@@ -136,9 +136,9 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
               {
                 label: 'Hidden Skills: ',
                 unlocked: selectedDriver.hiddenSkillTree.tier1
-                  .filter((node) => node.Unlocked).length
-                  + selectedDriver.hiddenSkillTree.tier2.filter((node) => node.Unlocked).length
-                  + selectedDriver.hiddenSkillTree.tier3.filter((node) => node.Unlocked).length,
+                  .filter((node) => node.unlocked).length
+                  + selectedDriver.hiddenSkillTree.tier2.filter((node) => node.unlocked).length
+                  + selectedDriver.hiddenSkillTree.tier3.filter((node) => node.unlocked).length,
                 total: selectedDriver.hiddenSkillTree.tier1.length
                   + selectedDriver.hiddenSkillTree.tier2.length
                   + selectedDriver.hiddenSkillTree.tier3.length

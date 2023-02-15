@@ -15,24 +15,24 @@ const DriverSkillNode = (props:IProps) => {
     && (props.tier === 2 && (props.unlockedNodes !== undefined && props.unlockedNodes < 2)
     || props.tier === 3 && (props.unlockedNodes !== undefined && props.unlockedNodes < 5));
   return (
-    <div className="col-sm-4 driver-skill-node-container" key={props.node.id}>
+    <div className="col-sm-4 driver-skill-node-container" key={props.node.nodeId}>
       <div className='driver-skill-node'>
         {
-          props.node.Unlocked ?
+          props.node.unlocked ?
             <LockOverlay
-              id={props.node.id}
+              id={props.node.nodeId}
               updateGameState={() => props.updateSkillNodes(props.column, props.tier, false)} />
             : <UnlockOverlay
-              id={props.node.id}
+              id={props.node.nodeId}
               updateGameState={() => props.updateSkillNodes(props.column, props.tier, true)} />
         }
         {unavailable ? <div className="unavailable"/> : null }
-        <div className={`driver-skill-node-details ${props.node.Unlocked ? 'unlocked' : ''}`}>
-          <b>{props.node.Name}</b>
+        <div className={`driver-skill-node-details ${props.node.unlocked ? 'unlocked' : ''}`}>
+          <b>{props.node.name}</b>
           <br />
-          {props.node.Effect}
+          {props.node.effect}
           <br />
-          <b>SP: </b>{props.node.SP}
+          <b>SP: </b>{props.node.sp}
         </div>
       </div>
       {props.tier !== 3 ? <div className="driver-skill-node-separator" /> : null}

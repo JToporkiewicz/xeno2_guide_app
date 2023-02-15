@@ -1,10 +1,9 @@
 import {
-  IDriverArtDetails,
-  IDriverSkillNode,
   IQuestSubStep,
   IStoryProgress,
   IItem,
-  IItemType
+  IItemType,
+  IDriver
 } from 'interfaces';
 import { IFieldSkills } from 'interfaces/FieldSkills';
 
@@ -56,59 +55,8 @@ export interface IMajorLocations {
   InnerMajorAreas: IInnerMajorArea[]
 }
 
-export interface ISkillTreeState {
-  treeId: number,
-  tier1: IDriverSkillNode[],
-  tier2: IDriverSkillNode[],
-  tier3: IDriverSkillNode[]
-}
-
-export interface IDriverArtNode extends IDriverArtDetails {
-  Level: number
-}
-
-export const defaultArtState = {
-  id: 0,
-  name: '',
-  weaponType: '',
-  effect: '',
-  target: '',
-  type: '',
-  levelUnlocked: 0,
-  nodes: [] as IDriverArtNode[]
-}
-
-export interface IDriverArtsState {
-  id: number,
-  name: string,
-  weaponType: string,
-  effect: string[],
-  target: string,
-  type: string,
-  levelUnlocked: number,
-  nodes: IDriverArtNode[]
-}
-
-interface IDriverIdeaStats {
-  Bravery: number,
-  Truth: number,
-  Compassion: number,
-  Justice: number,
-}
-
-export interface IDriverState {
-  id: number,
-  name: string,
-  chapterUnlocked:number,
-  arts: IDriverArtsState[],
-  skillTree: ISkillTreeState,
-  hiddenSkillTree: ISkillTreeState,
-  favItem1:number,
-  favItem2:number,
-  favItemType1:number,
-  favItemType2:number,
-  ideaStats:IDriverIdeaStats,
-  show?:boolean
+export interface IDriverState extends IDriver {
+  show: boolean
 }
 
 export interface IAffinityChartNodeState {

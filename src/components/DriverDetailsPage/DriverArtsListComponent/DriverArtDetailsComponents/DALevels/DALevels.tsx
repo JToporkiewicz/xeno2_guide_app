@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
 import UnlockOverlay from 'components/UnavailableDataComponents/Overlays/UnlockOverlay';
 import LockOverlay from 'components/UnavailableDataComponents/Overlays/LockOverlay';
-import {
-  IDriverArtNode,
-  IDriverArtsState
-} from 'reduxState/interfaces/reduxState';
 import path from 'path';
+import { IDriverArtDetails, IDriverArts } from 'interfaces';
 
 const getImage = (artName:string) => {
   try {
@@ -26,12 +23,12 @@ const getImage = (artName:string) => {
 }
 
 interface IOwnProps {
-  art:IDriverArtsState,
+  art:IDriverArts,
   updateArtLevel:(artId:number, level:number) => void
 }
 
 export const DALevelsView = (props:IOwnProps) => {
-  const [driverArtDetails, setDADetails] = useState([] as IDriverArtNode[]);
+  const [driverArtDetails, setDADetails] = useState([] as IDriverArtDetails[]);
   const [totalSP, setSP] = useState(0);
   const [remainingSP, setRemainingSP] = useState(0);
 
@@ -41,13 +38,13 @@ export const DALevelsView = (props:IOwnProps) => {
   }, [props.art]);
 
   useEffect(() => {
-    if(driverArtDetails[0]?.id !== undefined){
+    if(driverArtDetails[0] !== undefined){
       let SP = 0;
       let remainingSP = 0;
       for(let i = 0; i < driverArtDetails.length; i++){
-        SP = SP + driverArtDetails[i].SP
+        SP = SP + driverArtDetails[i].sp
         if(i >= props.art.levelUnlocked){
-          remainingSP = remainingSP + driverArtDetails[i].SP
+          remainingSP = remainingSP + driverArtDetails[i].sp
         }
       }
       setSP(SP);
@@ -75,9 +72,9 @@ export const DALevelsView = (props:IOwnProps) => {
                     />
                     : <div/>}
                   <b>Level {key < 5 ? key+1 : '5 Max Affinity'}</b><br/>
-                  {`Dmg: ${level.Damage}`}<br/>
-                  {level.EffectPotency !== '' ? <>{`Effect: ${level.EffectPotency}`}<br/></> : ''}
-                  {`Recharge: ${level.Recharge}`}
+                  {`Dmg: ${level.damage}`}<br/>
+                  {level.effectPotency !== '' ? <>{`Effect: ${level.effectPotency}`}<br/></> : ''}
+                  {`Recharge: ${level.recharge}`}
                 </div>
                 
               </div>
@@ -92,7 +89,7 @@ export const DALevelsView = (props:IOwnProps) => {
                     alt="lock"
                     className="centered-lock"
                   />
-                  Cost: {level.SP}SP
+                  Cost: {level.sp}SP
                 </div>
               </div>
           )

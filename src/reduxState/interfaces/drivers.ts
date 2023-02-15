@@ -7,14 +7,6 @@ export const defaultSkillTree = {
   tier3: [] as IDriverSkillNode[]
 }
 
-export const defaultSkillNode:IDriverSkillNode = {
-  id: 0,
-  Name:'',
-  Effect:'',
-  SP:0,
-  Unlocked:false
-}
-
 export const defaultDriverState = {
   id:0,
   name:'',
@@ -31,47 +23,22 @@ export const defaultDriverState = {
     Truth: 0,
     Compassion: 0,
     Justice: 0,  
-  }
-}
-
-export const defaultDriverArt = {
-  id: 0,
-  name: '',
-  weaponType: '',
-  effect: '',
-  target: '',
-  type: '',
-  levelUnlocked: 0,
-  nodes: []
-}
-
-export const defaultDriverArtNode = {
-  id:0,
-  SP:-1,
-  Damage:0,
-  EffectPotency:'',
-  Recharge:'',
-  Level: 0
+  },
+  show: false
 }
 
 export interface IDriverSkillNodeUpdate {
-  nodeId: number,
-  node: IDriverSkillNode
+  treeId: number,
+  nodes: { nodeId: number, unlocked: boolean }[]
+}
+
+export interface IUpdateArtLevel {
+  levelUnlocked: number,
+  id: number
 }
 
 export interface IDriverArtUpdateLevelUnlocked {
   driverId:number,
   artId:number,
   levelUnlocked:number
-}
-
-export interface IDriverArtNodeRequest {
-  artId: number,
-  artNode: number,
-  artNodeLevel: number
-}
-
-export interface IDriverArtUpdateData {
-  artId: number,
-  newLevel: number
 }
