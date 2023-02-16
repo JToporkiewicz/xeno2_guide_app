@@ -43,7 +43,7 @@ app.get('/', (req, res) => {
 app.use('/blade', bladesRouter())
 app.use('/driver', driversRouter())
 app.use('/fieldSkill', fieldSkillRouter(db.fieldSkill, sequelize))
-app.use('/heart2Heart', heart2HeartRouter(db.heart2Heart, sequelize))
+app.use('/heart2Heart', heart2HeartRouter())
 app.use('/item', restRouter(db.item))
 app.use('/itemType', restRouter(db.itemType))
 app.use('/location', restRouter(db.location))

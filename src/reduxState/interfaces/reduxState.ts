@@ -3,7 +3,8 @@ import {
   IStoryProgress,
   IItem,
   IItemType,
-  IDriver
+  IDriver,
+  IHeart2Heart
 } from 'interfaces';
 import { IFieldSkills } from 'interfaces/FieldSkills';
 
@@ -96,23 +97,6 @@ export interface IBladeState {
   show?:boolean
 }
 
-interface IH2hOutcomes {
-  'Option 1'?: {[key:string]:any},
-  'Option 2'?: {[key:string]:any},
-  'All'?: {[key:string]:any}[],
-}
-
-export interface IHeart2HeartState {
-  id:number,
-  Title:string,
-  Area:string,
-  Location:string,
-  Who:string[],
-  Outcomes:IH2hOutcomes,
-  Available:boolean,
-  Viewed:boolean
-}
-
 export interface IQuestStepState {
   id:number,
   Quest:number,
@@ -192,7 +176,7 @@ export interface IXenobladeState {
   drivers: IDriverState[],
   blades: IBladeState[],
   fieldSkills: IFieldSkills[],
-  heart2hearts: IHeart2HeartState[],
+  heart2hearts: IHeart2Heart[],
   quests: IQuestState[],
   mercMissions: IMercMissionState[],
   monsters: IMonsterState[],

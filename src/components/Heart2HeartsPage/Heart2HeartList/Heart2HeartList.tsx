@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
-import { IHeart2HeartState } from 'reduxState/interfaces/reduxState';
+import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
-import { IStoryProgress } from 'interfaces';
+import { IHeart2Heart, IStoryProgress } from 'interfaces';
 
 interface IDispatchProps {
   updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
-  saveHeart2Hearts:(payload:IUpdateH2HStatus[]) => void;
+  saveHeart2Hearts:(payload:IUpdateUnlocked) => void;
 }
 
 interface IOwnProps {
   parentPage: string;
-  heart2Hearts:IHeart2HeartState[];
+  heart2Hearts:IHeart2Heart[];
   location?:string;
   characterName?: string;
 }
@@ -29,9 +29,9 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
 
-  const toUpdate = useRef([] as IHeart2HeartState[]);
+  const toUpdate = useRef([] as IHeart2Heart[]);
 
-  const orderOptions: {[key:string]: keyof IHeart2HeartState} = 
+  const orderOptions: {[key:string]: keyof IHeart2Heart} = 
     props.location ? {
       default: 'id',
       alphabetically: 'Title',
@@ -47,14 +47,15 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
 
   useEffect(() => {
     return () => {
-      props.saveHeart2Hearts(toUpdate.current.map((h2h) =>
-        ({id: h2h.id, Viewed: h2h.Viewed}
-        )))
+      props.saveHeart2Hearts({
+        unlocked: toUpdate.current.filter((h) => h.Viewed).map((h) => h.id),
+        locked: toUpdate.current.filter((h) => !h.Viewed).map((h) => h.id)
+      })
     } 
   }, [])
 
 
-  const getOrderTypeColumn = (order: string): keyof IHeart2HeartState => {
+  const getOrderTypeColumn = (order: string): keyof IHeart2Heart => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -83,7 +84,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                 const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
                 const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
                 return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
-              }).map((h2h:IHeart2HeartState) => 
+              }).map((h2h:IHeart2Heart) => 
                 <div className="row text-list-entry" key={h2h.id}>
                   <div
                     className="column-narrow text-list-status"

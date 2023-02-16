@@ -1,5 +1,6 @@
 import { IHeart2Heart } from 'interfaces';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
+import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 
 export enum Heart2HeartActions {
@@ -15,7 +16,7 @@ export type ActionTypes =
 | IFluxAction<Heart2HeartActions.FetchHeart2Hearts>
 | IFluxPayloadAction<Heart2HeartActions.FetchHeart2Heart, number>
 | IFluxPayloadAction<Heart2HeartActions.SetHeart2Hearts, IHeart2Heart[]>
-| IFluxPayloadAction<Heart2HeartActions.SaveHeart2Hearts, IUpdateH2HStatus[]>
+| IFluxPayloadAction<Heart2HeartActions.SaveHeart2Hearts, IUpdateUnlocked>
 | IFluxPayloadAction<Heart2HeartActions.UpdateHeart2HeartStatus, IUpdateH2HStatus>;
 
 
@@ -33,7 +34,7 @@ export const setHeart2Hearts = (payload:IHeart2Heart[]):ActionTypes => ({
   payload
 });
 
-export const saveHeart2Hearts = (payload:IUpdateH2HStatus[]):ActionTypes => ({
+export const saveHeart2Hearts = (payload:IUpdateUnlocked):ActionTypes => ({
   type: Heart2HeartActions.SaveHeart2Hearts,
   payload
 });

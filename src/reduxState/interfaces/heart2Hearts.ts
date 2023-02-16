@@ -1,6 +1,6 @@
-import { IHeart2HeartState } from './reduxState';
+import { IHeart2Heart } from 'interfaces'
 
-export const defaultHeart2HeartState: IHeart2HeartState = {
+export const defaultHeart2HeartState: IHeart2Heart = {
   id: -1,
   Title: '',
   Area: '',

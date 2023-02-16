@@ -1,9 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { IItem, IItemType, IStoryProgress } from 'interfaces'
+import { IHeart2Heart, IItem, IItemType, IStoryProgress } from 'interfaces'
 import {
   IBladeState,
-  IHeart2HeartState,
   IQuestState,
   IUpdateUnlocked
 } from 'reduxState/interfaces/reduxState'
@@ -19,7 +18,7 @@ interface IOwnProps {
   item2?: IItem | undefined,
   itemType1?: IItemType | undefined,
   itemType2?: IItemType | undefined
-  heart2Heart?: IHeart2HeartState | undefined,
+  heart2Heart?: IHeart2Heart | undefined,
   quest?: IQuestState | undefined,
   storyProgress: IStoryProgress
 }
@@ -30,13 +29,13 @@ interface IDispatchProps {
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
   saveQuestStatus: (payload:IQuestState) => void;
   updateHeart2HeartStatus: (payload:IUpdateH2HStatus) => void;
-  saveHeart2Hearts: (payload:IUpdateH2HStatus[]) => void;
+  saveHeart2Hearts: (payload:IUpdateUnlocked) => void;
 }
 
 export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) => {
   const bladeToUpdate = useRef(undefined as IBladeState | undefined);
   const questToUpdate = useRef(undefined as IQuestState | undefined);
-  const h2hToUpdate = useRef(undefined as IHeart2HeartState | undefined);
+  const h2hToUpdate = useRef(undefined as IHeart2Heart | undefined);
 
   const updateBladeUnlocked = () => {
     bladeToUpdate.current = {
@@ -111,10 +110,9 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
         props.saveQuestStatus(questToUpdate.current);
       }
       if (h2hToUpdate.current) {
-        props.saveHeart2Hearts([{
-          id: h2hToUpdate.current.id,
-          Viewed: h2hToUpdate.current.Viewed
-        }]);
+        props.saveHeart2Hearts({
+          [h2hToUpdate.current.Viewed ? 'unlocked' : 'locked']: [h2hToUpdate.current.id]
+        });
       }
     }
   }, [])

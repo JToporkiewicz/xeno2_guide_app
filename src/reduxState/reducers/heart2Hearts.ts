@@ -1,33 +1,19 @@
 import createReducer from 'redux-action-reducer';
-import { IHeart2Heart, ILocations } from 'interfaces';
+import { IHeart2Heart } from 'interfaces';
 import { Heart2HeartActions } from '../actions/heart2Hearts';
-import { IHeart2HeartState, IMajorLocations } from 'reduxState/interfaces/reduxState';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
-import { LocationActions } from 'reduxState/actions/locations';
-import { findAreaName, findLocationName } from 'helpers/commonReducers';
 
-export const heart2HeartReducer = createReducer<IHeart2HeartState[]>(
+export const heart2HeartReducer = createReducer<IHeart2Heart[]>(
   [Heart2HeartActions.SetHeart2Hearts,
-    (h2hState: IHeart2HeartState[], heart2Hearts: IHeart2Heart[]) => {
-      const h2hIds = heart2Hearts.map((h2h) => h2h.id);
-      return h2hState.filter((old) => !h2hIds.includes(old.id))
-        .concat(heart2Hearts.map((h2h) => {
-          const foundH2H = h2hState.find((old) => old.id === h2h.id);
-          return {
-            id:h2h.id,
-            Title:h2h.Title,
-            Area: foundH2H && foundH2H.Area !== 'Unknown' ? foundH2H.Area : '',
-            Location:foundH2H && foundH2H.Location !== 'Unknown' ? foundH2H.Location
-              : `${h2h.Location}`,
-            Who:JSON.parse(h2h.Who),
-            Outcomes:JSON.parse(h2h.Outcomes),
-            Available:h2h.Available,
-            Viewed:h2h.Viewed
-          }
-        }));
+    (state: IHeart2Heart[], heart2Hearts: IHeart2Heart[]) => {
+      const h2hIds = heart2Hearts.map((h) => h.id);
+
+      return state.filter((old) => h2hIds.includes(old.id))
+        .concat(heart2Hearts)
+        .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)
     }],
   [Heart2HeartActions.UpdateHeart2HeartStatus,
-    (state:IHeart2HeartState[], heart2Heart: IUpdateH2HStatus) => {
+    (state:IHeart2Heart[], heart2Heart: IUpdateH2HStatus) => {
       const foundH2h = state.find((h2h) => h2h.id === heart2Heart.id)
 
       if (!foundH2h) {
@@ -38,20 +24,6 @@ export const heart2HeartReducer = createReducer<IHeart2HeartState[]>(
           ...foundH2h,
           Viewed: heart2Heart.Viewed
         })
-        .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)
-    }],
-  [LocationActions.SetMinorLocations,
-    (state:IHeart2HeartState[], locations:ILocations[]) => {
-      const updatedH2h:IHeart2HeartState[] = findLocationName(state, locations);
-      return state.filter((h2h) => !updatedH2h.map((updated)=> updated.id).includes(h2h.id))
-        .concat(updatedH2h)
-        .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)
-    }],
-  [LocationActions.SetDependentMajorAreas,
-    (state:IHeart2HeartState[], areas:IMajorLocations[]) => {
-      const updatedH2h:IHeart2HeartState[] = findAreaName(state, areas);
-      return state.filter((h2h) => !updatedH2h.map((updated)=> updated.id).includes(h2h.id))
-        .concat(updatedH2h)
         .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)
     }]
 )([]);
