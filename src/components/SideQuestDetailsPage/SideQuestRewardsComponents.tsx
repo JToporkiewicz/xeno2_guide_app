@@ -1,8 +1,8 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
-import { IQuestState } from 'reduxState/interfaces/reduxState'
+import { IQuest } from 'interfaces';
 
 interface IOwnProps {
-  quest: IQuestState
+  quest: IQuest
 }
 
 export const SideQuestRewardsComponent = (props:IOwnProps) => {

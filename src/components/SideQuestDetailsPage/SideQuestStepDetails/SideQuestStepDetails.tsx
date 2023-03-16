@@ -1,21 +1,32 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox'
-import { IUpdateQuestStepStatus, IUpdateQuestSubStepStatus } from 'reduxState/interfaces/quest'
-import { IQuestState, IQuestStepState } from 'reduxState/interfaces/reduxState'
+import { IQuest, IQuestStep, IQuestSubStep } from 'interfaces'
+import { useEffect, useRef } from 'react'
+import {
+  ISaveQuestStepStatus,
+  ISaveQuestSubStepStatus,
+  IUpdateQuestStepStatus,
+  IUpdateQuestSubStepStatus
+} from 'reduxState/interfaces/quest'
 
 interface IProps {
-  quest: IQuestState
+  quest: IQuest
 }
 
-interface IDispatchProps {
+interface IInnerDispatchProps {
   updateQuestStepStatus: (payload: IUpdateQuestStepStatus) => void,
-  updateQuestSubStepStatus: (payload: IUpdateQuestSubStepStatus) => void
+  updateQuestSubStepStatus: (payload: IUpdateQuestSubStepStatus) => void,
+}
+
+interface IDispatchProps extends IInnerDispatchProps {
+  saveQuestStepStatus: (payload: ISaveQuestStepStatus) => void,
+  saveQuestSubStepStatus: (payload: ISaveQuestSubStepStatus) => void
 }
 
 const QuestStep = (
-  step: IQuestStepState,
+  step: IQuestStep,
   questAvailable: boolean,
-  actions: IDispatchProps
+  actions: IInnerDispatchProps
 ) => 
   <div
     className={`questStep${step.Completed ? ' stepCompleted' : ''}`}
@@ -82,10 +93,10 @@ const QuestStep = (
   </div>
 
 const QuestRoutes = (
-  routeA: IQuestStepState[],
-  routeB: IQuestStepState[],
+  routeA: IQuestStep[],
+  routeB: IQuestStep[],
   questAvailable: boolean,
-  actions: IDispatchProps) => 
+  actions: IInnerDispatchProps) => 
   <div className='row'>
     <div className='col-sm-6'>
       <b className='questRouteHeader'>Route A:</b>
@@ -98,6 +109,13 @@ const QuestRoutes = (
   </div>
 
 export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
+  const saveSteps = useRef(false);
+  const currentStep = useRef(undefined as undefined |
+    {stepId: number, startedRoute: string });
+
+  const saveSubSteps = useRef(false);
+  const currentSubStep = useRef(undefined as undefined |
+    { stepId: number, subSteps: IQuestSubStep[], startedRoute: string })
 
   const routeA = props.quest.Steps
     .filter((step) => step.Description.startsWith('Route A:'))
@@ -120,6 +138,66 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
     .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1)
     .at(-1)?.StepNumber || 0;
 
+  useEffect(() => {
+    return () => {
+      if (saveSteps.current) {
+        props.saveQuestStepStatus({
+          lastCompletedStep: currentStep.current?.stepId || 0,
+          questId: props.quest.id,
+          startedRoute: currentStep.current?.startedRoute || 'Route A'
+        })
+      }
+      if (saveSubSteps.current) {
+        props.saveQuestSubStepStatus({
+          stepId: currentSubStep.current?.stepId || 0,
+          questId: props.quest.id,
+          subSteps: currentSubStep.current?.subSteps
+            .map((ss) => ({ subStepId: ss.id, progress: ss.CompletionProgress || 0})) || [],
+          startedRoute: currentSubStep.current?.startedRoute || 'Route A'
+        })
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (props.quest.Steps && saveSteps.current) {
+      currentStep.current ={
+        stepId: props.quest.Steps.filter((steps) => steps.Completed)
+          .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1)
+          .at(-1)?.id || 0,
+        startedRoute: props.quest.Steps.find((step) =>
+          step.Description.startsWith('Route ') && step.Completed
+        )?.Description.slice(0, 8) || 'Route A'
+      };
+    } else if (props.quest.Steps && saveSubSteps.current) {
+      const stepWithSubStep = props.quest.Steps
+        .filter((steps) => steps.SubSteps && steps.SubSteps.filter((sub) => sub.CompletionProgress))
+        .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1)
+        .at(-1);
+      currentSubStep.current = {
+        stepId: stepWithSubStep?.id || 0,
+        subSteps: stepWithSubStep?.SubSteps || [],
+        startedRoute: props.quest.Steps.find((step) =>
+          step.Description.startsWith('Route ') && step.Completed
+        )?.Description.slice(0, 8) || 'Route A'
+      }
+    }
+  }, [props.quest.Steps.map((step) => step.Completed),
+    props.quest.Steps.map((step) => step.SubSteps?.filter((sub) =>
+      sub.CompletionProgress))])
+
+  const updateStep = (payload: IUpdateQuestStepStatus) => {
+    props.updateQuestStepStatus(payload)
+    saveSteps.current = true
+    saveSubSteps.current = false
+  }
+
+  const updateSubStep = (payload: IUpdateQuestSubStepStatus) => {
+    props.updateQuestSubStepStatus(payload)
+    saveSteps.current = false
+    saveSubSteps.current = true
+  }
+
   return <CollapsibleComponent header="Quest Steps">
     <>
       Completed steps: {completedStepNumber} / {lastStepNumber}
@@ -129,8 +207,8 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
             step,
             props.quest.Available,
             {
-              updateQuestStepStatus: props.updateQuestStepStatus,
-              updateQuestSubStepStatus: props.updateQuestSubStepStatus
+              updateQuestStepStatus: updateStep,
+              updateQuestSubStepStatus: updateSubStep
             }
           )}
           {step.StepNumber === (routeA.at(0)?.StepNumber || 0) - 1
@@ -140,8 +218,8 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
               routeB,
               props.quest.Available,
               {
-                updateQuestStepStatus: props.updateQuestStepStatus,
-                updateQuestSubStepStatus: props.updateQuestSubStepStatus
+                updateQuestStepStatus: updateStep,
+                updateQuestSubStepStatus: updateSubStep
               }
             ) : <div />
           }
@@ -152,8 +230,8 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
         routeB,
         props.quest.Available,
         {
-          updateQuestStepStatus: props.updateQuestStepStatus,
-          updateQuestSubStepStatus: props.updateQuestSubStepStatus
+          updateQuestStepStatus: updateStep,
+          updateQuestSubStepStatus: updateSubStep
         }
       )}
     </>

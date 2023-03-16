@@ -2,15 +2,14 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { sortFunction } from 'helpers';
-import { IStoryProgress } from 'interfaces';
+import { IQuest, IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IQuestState } from 'reduxState/interfaces/reduxState';
 
 interface IOwnProps {
   questType: string,
-  quests: IQuestState[],
+  quests: IQuest[],
   storyProgress: IStoryProgress,
   updateQuestStatus: (questId: number, status: string | boolean) => void
 }
@@ -19,7 +18,7 @@ export const SideQuestsList = (props: IOwnProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
 
-  const orderOptions: {[key:string]: keyof IQuestState} = {
+  const orderOptions: {[key:string]: keyof IQuest} = {
     default: 'id',
     alphabetically: 'Name',
     type: 'Type',
@@ -28,7 +27,7 @@ export const SideQuestsList = (props: IOwnProps) => {
     location: 'Area'
   }
 
-  const getOrderTypeColumn = (order: string): keyof IQuestState => {
+  const getOrderTypeColumn = (order: string): keyof IQuest => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -56,7 +55,7 @@ export const SideQuestsList = (props: IOwnProps) => {
               const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
               const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
               return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
-            }).map((quest:IQuestState) =>
+            }).map((quest:IQuest) =>
               <div className="row text-list-entry" key={quest.id}>
                 <div
                   className="column-narrow text-list-status"

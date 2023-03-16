@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { IHeart2Heart, IItem, IItemType, IStoryProgress } from 'interfaces'
-import { IBladeState, IQuestState } from 'reduxState/interfaces/reduxState'
+import { IHeart2Heart, IItem, IItemType, IQuest, IStoryProgress } from 'interfaces'
+import { IBladeState } from 'reduxState/interfaces/reduxState'
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { BladeAffinityTree } from '../BladeAffinityTree'
 import { BladeBasicInfoComponent } from '../BladeBasicInfoComponent'
@@ -18,7 +18,7 @@ interface IProps {
   itemType1?: IItemType,
   itemType2?: IItemType,
   heart2Heart?: IHeart2Heart,
-  quest?: IQuestState,
+  quest?: IQuest,
   storyProgress: IStoryProgress
 }
 

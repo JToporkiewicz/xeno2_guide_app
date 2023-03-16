@@ -1,10 +1,11 @@
-import { IQuest, IQuestStep, IQuestSubStep } from 'interfaces';
+import { IQuest } from 'interfaces';
 import {
   IUpdateQuestStepStatus,
   IUpdateQuestSubStepStatus,
-  IUpdateQuestStatus
+  IUpdateQuestStatus,
+  ISaveQuestStepStatus,
+  ISaveQuestSubStepStatus
 } from 'reduxState/interfaces/quest';
-import { IQuestState } from '../interfaces/reduxState';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 
 export enum QuestsActions {
@@ -12,12 +13,6 @@ export enum QuestsActions {
   FetchQuests = 'FETCH_QUESTS',
   FetchQuest = 'FETCH_QUEST',
   SetQuests = 'SET_QUESTS',
-  FetchQuestSteps = 'FETCH_QUEST_STEPS',
-  FetchQuestStepsForQuest = 'FETCH_QUEST_STEPS_FOR_QUEST',
-  SetQuestSteps = 'SET_QUEST_STEPS',
-  FetchQuestSubSteps = 'FETCH_QUEST_SUBSTEPS',
-  FetchQuestSubStepsForQuest = 'FETCH_QUEST_SUB_STEPS_FOR_QUEST',
-  SetQuestSubSteps = 'SET_QUEST_SUBSTEPS',
   UpdateQuestStatus = 'UPDATE_QUEST_STATUS',
   SaveQuestStatus = 'SAVE_QUEST_STATUS',
   UpdateQuestStepStatus = 'UPDATE_QUEST_STEP_STATUS',
@@ -30,18 +25,12 @@ export type ActionTypes =
 | IFluxAction<QuestsActions.FetchQuests>
 | IFluxPayloadAction<QuestsActions.FetchQuest, number>
 | IFluxPayloadAction<QuestsActions.SetQuests, IQuest[]>
-| IFluxAction<QuestsActions.FetchQuestSteps>
-| IFluxPayloadAction<QuestsActions.FetchQuestStepsForQuest, number>
-| IFluxPayloadAction<QuestsActions.SetQuestSteps, IQuestStep[]>
-| IFluxAction<QuestsActions.FetchQuestSubSteps>
-| IFluxPayloadAction<QuestsActions.FetchQuestSubStepsForQuest, number>
-| IFluxPayloadAction<QuestsActions.SetQuestSubSteps, IQuestSubStep[]>
 | IFluxPayloadAction<QuestsActions.UpdateQuestStatus, IUpdateQuestStatus>
-| IFluxPayloadAction<QuestsActions.SaveQuestStatus, IQuestState>
+| IFluxPayloadAction<QuestsActions.SaveQuestStatus, IUpdateQuestStatus[]>
 | IFluxPayloadAction<QuestsActions.UpdateQuestStepStatus, IUpdateQuestStepStatus>
 | IFluxPayloadAction<QuestsActions.UpdateQuestSubStepStatus, IUpdateQuestSubStepStatus>
-| IFluxPayloadAction<QuestsActions.SaveQuestStepStatus, IUpdateQuestStepStatus>
-| IFluxPayloadAction<QuestsActions.SaveQuestSubStepStatus, IUpdateQuestSubStepStatus>;
+| IFluxPayloadAction<QuestsActions.SaveQuestStepStatus, ISaveQuestStepStatus>
+| IFluxPayloadAction<QuestsActions.SaveQuestSubStepStatus, ISaveQuestSubStepStatus>;
 
 export const fetchQuests = ():ActionTypes => ({
   type: QuestsActions.FetchQuests
@@ -57,40 +46,12 @@ export const setQuests = (payload:IQuest[]):ActionTypes => ({
   payload
 });
 
-export const fetchQuestSteps = ():ActionTypes => ({
-  type: QuestsActions.FetchQuestSteps
-});
-
-export const fetchQuestStepsForQuest = (payload:number):ActionTypes => ({
-  type: QuestsActions.FetchQuestStepsForQuest,
-  payload
-});
-
-export const setQuestSteps = (payload:IQuestStep[]):ActionTypes => ({
-  type: QuestsActions.SetQuestSteps,
-  payload
-});
-
-export const fetchQuestSubSteps = ():ActionTypes => ({
-  type: QuestsActions.FetchQuestSubSteps
-});
-
-export const fetchQuestSubStepsForQuest = (payload:number):ActionTypes => ({
-  type: QuestsActions.FetchQuestSubStepsForQuest,
-  payload
-});
-
-export const setQuestSubSteps = (payload:IQuestSubStep[]):ActionTypes => ({
-  type: QuestsActions.SetQuestSubSteps,
-  payload
-});
-
 export const updateQuestStatus = (payload:IUpdateQuestStatus) => ({
   type: QuestsActions.UpdateQuestStatus,
   payload
 });
 
-export const saveQuestStatus = (payload:IQuestState) => ({
+export const saveQuestStatus = (payload:IUpdateQuestStatus[]) => ({
   type: QuestsActions.SaveQuestStatus,
   payload
 });
@@ -100,7 +61,7 @@ export const updateQuestStepStatus = (payload:IUpdateQuestStepStatus) => ({
   payload
 });
 
-export const saveQuestStepStatus = (payload:IUpdateQuestStepStatus) => ({
+export const saveQuestStepStatus = (payload:ISaveQuestStepStatus) => ({
   type: QuestsActions.SaveQuestStepStatus,
   payload
 });
@@ -110,7 +71,7 @@ export const updateQuestSubStepStatus = (payload:IUpdateQuestSubStepStatus) => (
   payload
 });
 
-export const saveQuestSubStepStatus = (payload:IUpdateQuestSubStepStatus) => ({
-  type: QuestsActions.UpdateQuestSubStepStatus,
+export const saveQuestSubStepStatus = (payload:ISaveQuestSubStepStatus) => ({
+  type: QuestsActions.SaveQuestSubStepStatus,
   payload
 });

@@ -1,11 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { IHeart2Heart, IItem, IItemType, IStoryProgress } from 'interfaces'
-import {
-  IBladeState,
-  IQuestState,
-  IUpdateUnlocked
-} from 'reduxState/interfaces/reduxState'
+import { IHeart2Heart, IItem, IItemType, IQuest, IStoryProgress } from 'interfaces'
+import { IBladeState, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
@@ -19,7 +15,7 @@ interface IOwnProps {
   itemType1?: IItemType | undefined,
   itemType2?: IItemType | undefined
   heart2Heart?: IHeart2Heart | undefined,
-  quest?: IQuestState | undefined,
+  quest?: IQuest | undefined,
   storyProgress: IStoryProgress
 }
 
@@ -27,14 +23,14 @@ interface IDispatchProps {
   updateBladeUnlocked: (payload:IBladeState) => void;
   saveBladeStatus: (payload:IUpdateUnlocked) => void;
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
-  saveQuestStatus: (payload:IQuestState) => void;
+  saveQuestStatus: (payload:IUpdateQuestStatus[]) => void;
   updateHeart2HeartStatus: (payload:IUpdateH2HStatus) => void;
   saveHeart2Hearts: (payload:IUpdateUnlocked) => void;
 }
 
 export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) => {
   const bladeToUpdate = useRef(undefined as IBladeState | undefined);
-  const questToUpdate = useRef(undefined as IQuestState | undefined);
+  const questToUpdate = useRef(undefined as IQuest | undefined);
   const h2hToUpdate = useRef(undefined as IHeart2Heart | undefined);
 
   const updateBladeUnlocked = () => {
@@ -107,7 +103,10 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
         });
       }
       if (questToUpdate.current) {
-        props.saveQuestStatus(questToUpdate.current);
+        props.saveQuestStatus([{
+          questId: questToUpdate.current.id,
+          status: questToUpdate.current.Status
+        }]);
       }
       if (h2hToUpdate.current) {
         props.saveHeart2Hearts({

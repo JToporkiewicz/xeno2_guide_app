@@ -149,12 +149,14 @@ const updateClearQuestCompletion = {
 const updateCompleteQuestManually = {
   name: 'updateCompleteQuestManually',
   query: `CREATE PROCEDURE updateCompleteQuestManually(
-        IN questId INT
+        IN questId INT,
+        IN startedRoute VARCHAR(9)
     )
     BEGIN
         UPDATE xenoblade2_guide.questSteps as qs
         SET qs.Completed = 1
-        WHERE qs.Quest = questId;
+        WHERE qs.Quest = questId
+          AND Description NOT LIKE 'Route %' OR Description LIKE startedRoute;
 
         UPDATE xenoblade2_guide.questSubSteps as qss
         SET qss.CompletionProgress = qss.Count
@@ -162,8 +164,87 @@ const updateCompleteQuestManually = {
             SELECT qs.id
             FROM xenoblade2_guide.questSteps as qs
             WHERE qs.Quest = questId
+              AND qs.Description NOT LIKE 'Route %'
+              OR qs.Description LIKE startedRoute
         );
     END`
+}
+
+const updateStepCompletion = {
+  name: 'updateStepCompletion',
+  query: `CREATE PROCEDURE updateStepCompletion(
+    IN lastDoneStepId INT,
+    IN questId INT,
+    IN startedRoute VARCHAR(9)
+  )
+  BEGIN
+    DROP temporary TABLE IF EXISTS xenoblade2_guide._finishedSteps;
+    DROP temporary TABLE IF EXISTS xenoblade2_guide._notDoneSteps;
+
+    CREATE temporary TABLE xenoblade2_guide._finishedSteps
+    SELECT qs.id as id
+    FROM xenoblade2_guide.questSteps as qs
+    WHERE qs.Quest = questId AND qs.id < lastDoneStepId AND CASE
+      WHEN Description
+        NOT LIKE 'Route %'
+        THEN true
+      WHEN (SELECT updateId.Description
+        FROM xenoblade2_guide.questSteps as updateId
+        WHERE id = lastDoneStepId
+      ) NOT LIKE 'Route %'
+        AND lastDoneStepId > id
+        AND Description LIKE startedRoute
+        THEN true
+      WHEN
+        (SELECT updateId.Description
+          FROM xenoblade2_guide.questSteps as updateId
+          WHERE id = lastDoneStepId
+        )
+        LIKE 'Route A:%' AND Description NOT LIKE 'Route B:%'
+        THEN true
+      WHEN
+        (SELECT updateId.Description
+          FROM xenoblade2_guide.questSteps as updateId
+          WHERE id = lastDoneStepId
+        )
+        LIKE 'Route B:%' AND Description NOT LIKE 'Route A:%'
+        THEN true
+      ELSE false
+    END;
+
+    CREATE temporary TABLE xenoblade2_guide._notDoneSteps
+    SELECT qs.id as id
+    FROM xenoblade2_guide.questSteps as qs
+    WHERE qs.Quest = questId AND qs.id NOT IN (
+        SELECT id
+        FROM xenoblade2_guide._finishedSteps)
+        AND qs.id != lastDoneStepId;
+
+    UPDATE xenoblade2_guide.questSteps as qs
+    SET qs.Completed = 1
+    WHERE qs.id IN (
+        SELECT id
+        FROM xenoblade2_guide._finishedSteps);
+
+    UPDATE xenoblade2_guide.questSubSteps as qss
+    SET qss.CompletionProgress = qss.Count
+    WHERE qss.QuestStep IN (
+        SELECT id
+        FROM xenoblade2_guide._finishedSteps);
+
+    UPDATE xenoblade2_guide.questSteps as qs
+    SET qs.Completed = 0
+    WHERE qs.id IN (
+        SELECT id
+        FROM xenoblade2_guide._notDoneSteps);
+
+    UPDATE xenoblade2_guide.questSubSteps as qss
+    SET qss.CompletionProgress = 0
+    WHERE qss.QuestStep IN (
+        SELECT id
+        FROM xenoblade2_guide._notDoneSteps);
+
+  END`
 }
 
 
@@ -172,7 +253,8 @@ const update_quest_procedures = [
   updateQuestRelatedACN,
   updateUndoQuestCompletion,
   updateClearQuestCompletion,
-  updateCompleteQuestManually
+  updateCompleteQuestManually,
+  updateStepCompletion
 ]
 
 module.exports = update_quest_procedures

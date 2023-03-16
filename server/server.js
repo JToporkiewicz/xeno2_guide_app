@@ -20,8 +20,6 @@ const driversRouter = require('./routers/driversRouter');
 const heart2HeartRouter = require('./routers/heart2HeartRouter');
 const mercMissionRouter = require('./routers/mercMissionRouter');
 const questRouter = require('./routers/questRouter');
-const questStepRouter = require('./routers/questStepRouter');
-const questSubStepRouter = require('./routers/questSubStepRouter');
 const fieldSkillRouter = require('./routers/fieldSkillRouter');
 const monsterRouter = require('./routers/monsterRouter');
 
@@ -57,9 +55,7 @@ app.use('/prerequisitesH2H', restRouter(db.prerequisitesH2H))
 app.use('/prerequisitesMM', restRouter(db.prerequisitesMM))
 app.use('/prerequisitesQuest', restRouter(db.prerequisitesQuest))
 app.use('/requirementsMM', restRouter(db.requirementsMM))
-app.use('/quest', questRouter(db.quest, sequelize))
-app.use('/questStep', questStepRouter(db.questStep, sequelize))
-app.use('/questSubStep', questSubStepRouter(db.questSubStep, sequelize))
+app.use('/quest', questRouter())
 app.use('/storyProgress', storyProgressRestRouter(db.storyProgress, sequelize))
 
 app.use(function (err, req, res, next) {

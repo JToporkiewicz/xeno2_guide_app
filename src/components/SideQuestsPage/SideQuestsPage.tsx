@@ -1,29 +1,29 @@
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
-import { IStoryProgress } from 'interfaces'
+import { IQuest, IStoryProgress } from 'interfaces'
 import { useRef, useEffect } from 'react'
 import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
-import { IQuestState } from 'reduxState/interfaces/reduxState'
 import { SideQuestsList } from './SideQuestsList/SideQuestsList'
 
 interface IDispatchProps {
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
-  saveQuestStatus: (payload:IQuestState) => void;
+  saveQuestStatus: (payload:IUpdateQuestStatus[]) => void;
   fetchQuests: () => void;
 }
 
 interface IProps {
-  quests: IQuestState[],
+  quests: IQuest[],
   storyProgress: IStoryProgress
 }
 
 export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
-  const toUpdate = useRef([] as IQuestState[]);
+  const toUpdate = useRef([] as IQuest[]);
 
   useEffect(() => {
     return () => {
-      toUpdate.current.map((quest) =>
-        props.saveQuestStatus(quest)
-      )
+      props.saveQuestStatus(toUpdate.current.map((quest) => ({
+        questId: quest.id,
+        status: quest.Status
+      })))
     }
   }, [])
 

@@ -1,20 +1,20 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
+import { IQuest } from 'interfaces';
 import { useRef, useEffect } from 'react';
 import { IUpdateQuestStatus } from 'reduxState/interfaces/quest';
-import { IQuestState } from 'reduxState/interfaces/reduxState';
 
 interface IDispatchProps {
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
-  saveQuestStatus: (payload:IQuestState) => void;
+  saveQuestStatus: (payload:IUpdateQuestStatus[]) => void;
 }
 
 interface IProps {
-  quest: IQuestState
+  quest: IQuest
 }
 
 export const SideQuestBasicInfoView = (props:IProps & IDispatchProps) => {
-  const questToUpdate = useRef(undefined as IQuestState | undefined);
+  const questToUpdate = useRef(undefined as IQuest | undefined);
 
   const updateQuestCompleted = (status:string | boolean) => {
     if(props.quest && typeof status === 'string') {
@@ -33,7 +33,10 @@ export const SideQuestBasicInfoView = (props:IProps & IDispatchProps) => {
   useEffect(() => {
     return () => {
       if (questToUpdate.current) {
-        props.saveQuestStatus(questToUpdate.current);
+        props.saveQuestStatus([{
+          questId: questToUpdate.current.id,
+          status: questToUpdate.current.Status
+        }]);
       }
     }
   }, [])

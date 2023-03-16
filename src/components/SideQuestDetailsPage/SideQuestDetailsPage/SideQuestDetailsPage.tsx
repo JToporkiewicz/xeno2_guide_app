@@ -1,5 +1,5 @@
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
-import { IQuestState } from 'reduxState/interfaces/reduxState';
+import { IQuest } from 'interfaces';
 import { SideQuestBasicInfo } from '../SideQuestBasicInfoComponent';
 import { SideQuestRewardsComponent } from '../SideQuestRewardsComponents';
 import { SideQuestStepDetails } from '../SideQuestStepDetails';
@@ -9,7 +9,7 @@ interface IDispatchProps {
 }
 
 interface IProps {
-  quest: IQuestState
+  quest: IQuest
 }
 
 export const SideQuestDetailsPageView = (props:IProps & IDispatchProps) => {

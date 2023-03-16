@@ -1,6 +1,6 @@
-import { IQuestState } from './reduxState';
+import { IQuest } from 'interfaces'
 
-export const defaultSideQuest: IQuestState = {
+export const defaultSideQuest: IQuest = {
   id:0,
   Name:'',
   Type:'',
@@ -23,8 +23,24 @@ export interface IUpdateQuestStepStatus {
   status: boolean
 }
 
+export interface ISaveQuestStepStatus {
+  lastCompletedStep: number,
+  questId: number,
+  startedRoute: string
+}
+
 export interface IUpdateQuestSubStepStatus {
   stepId: number,
   substepId: number,
   progress: number
+}
+
+export interface ISaveQuestSubStepStatus {
+  subSteps: {
+    subStepId: number,
+    progress: number,
+  }[],
+  stepId: number,
+  questId: number,
+  startedRoute: string
 }

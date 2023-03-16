@@ -1,127 +1,59 @@
 import createReducer from 'redux-action-reducer';
-import { ILocations, IQuest, IQuestStep, IQuestSubStep } from 'interfaces';
+import { IQuest, IQuestStep } from 'interfaces';
 import { QuestsActions } from '../actions/quests';
-import { IMajorLocations, IQuestState, IQuestStepState } from '../interfaces/reduxState';
-import { LocationActions } from 'reduxState/actions/locations';
-import { findAreaName, findLocationName } from 'helpers/commonReducers';
 import {
   IUpdateQuestStatus,
   IUpdateQuestStepStatus,
   IUpdateQuestSubStepStatus
 } from 'reduxState/interfaces/quest';
 
-export const questsReducer = createReducer<IQuestState[]>(
+export const questsReducer = createReducer<IQuest[]>(
   [QuestsActions.SetQuests,
-    (questState: IQuestState[], quests: IQuest[]) => {
+    (questState: IQuest[], quests: IQuest[]) => {
       const questIds = quests.map((q) => q.id);
       return questState.filter((old) => !questIds.includes(old.id))
-        .concat(
-          quests.map((quest) => {
-            const foundQuest = questState.find((old) => old.id === quest.id);
-            return {
-              ...quest,
-              Rewards: JSON.parse(quest.Rewards),
-              Available: quest.Available === 1,
-              Area: foundQuest && foundQuest.Area !== 'Unknown' ? foundQuest.Area
-                : '',
-              Location: foundQuest && foundQuest.Location !== 'Unknown' ? foundQuest.Location
-                : String(quest.Location),
-              Steps: []
-            }
-          })
-        )
-        .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
-    }
-  ],
-  [QuestsActions.SetQuestSteps,
-    (questState: IQuestState[], questStep: IQuestStep[]) => {
-      const steps = questStep.reduce((group, step) => ({
-        ...group,
-        [step.Quest]: (group[step.Quest] || []).concat({
-          ...step,
-          Completed: step.Completed > 0,
-          SubSteps: []
-        })
-      }), {} as {[id:number]: IQuestStepState[]});
-
-      const questsToUpdate = questState.filter((quest) =>
-        Object.keys(steps).includes(String(quest.id)));
-
-      return questState.filter((old) => !questsToUpdate.map((quest) => quest.id).includes(old.id))
-        .concat(
-          questsToUpdate.map((quest) => {
-            const updatedSteps = Object.entries(steps).find((step) => step[0] === String(quest.id))
-            return {
-              ...quest,
-              Steps: updatedSteps ? updatedSteps[1].sort((stepA, stepB) =>
-                stepA.StepNumber < stepB.StepNumber ? -1 :
-                  stepA.StepNumber > stepB.StepNumber ? 1 : 0) : []
-            }})
-        )
-        .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
-    }
-  ],
-  [QuestsActions.SetQuestSubSteps,
-    (questState: IQuestState[], questSubStep: IQuestSubStep[]) => {
-      const subSteps = questSubStep.reduce((group, subStep) => ({
-        ...group,
-        [subStep.QuestStep]: (group[subStep.QuestStep] || []).concat({
-          ...subStep
-        })
-      }), {} as {[id:number]: IQuestSubStep[]});
-
-      let questStepsToUpdate: IQuestStepState[] = [];
-
-      const questsToUpdate = questState.filter((quest) =>
-        quest.Steps.filter((step) => {
-          const toUpdate = Object.keys(subSteps).includes(String(step.id));
-
-          if (toUpdate) {
-            questStepsToUpdate = questStepsToUpdate.filter((updateStep) =>
-              updateStep.id !== step.id)
-              .concat(step);
-          }
-
-          return toUpdate;
-        }).length > 0);
-
-      return questState.filter((old) => !questsToUpdate.map((quest) => quest.id).includes(old.id))
-        .concat(
-          questsToUpdate.map((quest) => ({
-            ...quest,
-            Steps: quest.Steps.filter((oldStep) =>
-              !questStepsToUpdate.map((newStep) => newStep.id).includes(oldStep.id))
-              .concat(questStepsToUpdate
-                .filter((newSteps) => newSteps.Quest === quest.id)
-                .map((newStep) => {
-                  const updatedSubSteps = Object.entries(subSteps)
-                    .find((step) => step[0] === String(newStep.id))
-                  return {
-                    ...newStep,
-                    SubSteps: updatedSubSteps ? updatedSubSteps[1].sort((stepA, stepB) =>
-                      stepA.SubStepNumber < stepB.SubStepNumber ? -1 :
-                        stepA.SubStepNumber > stepB.SubStepNumber ? 1 : 0) : []
-                  }}))
-              .sort((stepA, stepB) =>
-                stepA.StepNumber < stepB.StepNumber ? -1 :
-                  stepA.StepNumber > stepB.StepNumber ? 1 : 0)
-          })
-          ))
+        .concat(quests)
         .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
     }
   ],
   [QuestsActions.UpdateQuestStatus,
-    (state:IQuestState[], update: IUpdateQuestStatus) => {
+    (state:IQuest[], update: IUpdateQuestStatus) => {
       const foundQuest = state.find((quest) => quest.id === update.questId)
       
       if(!foundQuest) {
         return state;
       }
-      
+      const startedRoute = foundQuest.Steps.find((step) => step.Description.startsWith('Route ')
+        && step.Completed)
+
+      let lastStepInRoute: IQuestStep | undefined;
+      if (!foundQuest.Steps.at(-1)?.Description.startsWith('Route ')) {
+        lastStepInRoute = foundQuest.Steps.at(-1)
+      }
+      if (startedRoute?.Description.slice(0, 8) === 'Route A:') {
+        lastStepInRoute = foundQuest.Steps
+          .filter((step) => !step.Description.startsWith('Route B:'))
+          .sort((stepA, stepB) =>
+            stepA.StepNumber < stepB.StepNumber ? -1 :
+              stepA.StepNumber > stepB.StepNumber ? 1 : 0)
+          .at(-1)
+      } else if (startedRoute?.Description.slice(0, 8) === 'Route B:') {
+        lastStepInRoute = foundQuest.Steps
+          .filter((step) => !step.Description.startsWith('Route A:'))
+          .sort((stepA, stepB) =>
+            stepA.StepNumber < stepB.StepNumber ? -1 :
+              stepA.StepNumber > stepB.StepNumber ? 1 : 0)
+          .at(-1)
+      } else {
+        lastStepInRoute = foundQuest.Steps.at(-1)
+      }
+  
       return state.filter((quest) => quest.id !== foundQuest.id)
         .concat({
           ...foundQuest,
           Steps: foundQuest.Steps.map((step) => {
+            const inRoute = !step.Description.startsWith('Route ')
+            || step.Description.startsWith(startedRoute?.Description.slice(0, 8) || 'Route A');
             if (update.status === 'NOT STARTED') {
               return {
                 ...step,
@@ -131,7 +63,7 @@ export const questsReducer = createReducer<IQuestState[]>(
                   CompletionProgress: 0
                 }))
               }
-            } else if (update.status === 'FINISHED') {
+            } else if (update.status === 'FINISHED' && inRoute) {
               return {
                 ...step,
                 Completed: true,
@@ -140,7 +72,7 @@ export const questsReducer = createReducer<IQuestState[]>(
                   CompletionProgress: sub.Count
                 }))
               }
-            } else if (step.id === foundQuest.Steps.at(-1)?.id && step.Completed) {
+            } else if (step.id === lastStepInRoute?.id && step.Completed) {
               return {
                 ...step,
                 Completed: false,
@@ -158,34 +90,34 @@ export const questsReducer = createReducer<IQuestState[]>(
           questA.id < questB.id ? -1 : 1
         )
     }],
-  [LocationActions.SetMinorLocations,
-    (state:IQuestState[], locations:ILocations[]) => {
-      const updatedQuests:IQuestState[] = findLocationName(state, locations);
-      return state.filter((quest) => !updatedQuests.map((updated)=> updated.id).includes(quest.id))
-        .concat(updatedQuests)
-        .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
-    }],
-  [LocationActions.SetDependentMajorAreas,
-    (state:IQuestState[], areas:IMajorLocations[]) => {
-      const updatedQuests:IQuestState[] = findAreaName(state, areas);
-      return state.filter((quest) => !updatedQuests.map((updated)=> updated.id).includes(quest.id))
-        .concat(updatedQuests)
-        .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
-    }],
   [QuestsActions.UpdateQuestStepStatus,
-    (state:IQuestState[], update:IUpdateQuestStepStatus) => {
+    (state:IQuest[], update:IUpdateQuestStepStatus) => {
       const foundQuest = state.find((quest) =>
         quest.Steps.map((step) => step.id).includes(update.stepId))
+
+      const foundStep = foundQuest?.Steps.find((step) => step.id === update.stepId)
       
-      if(!foundQuest) {
+      if(!foundQuest || !foundStep) {
         return state;
       }
+
+      const startedRoute = foundQuest.Steps.find((step) => step.Description.startsWith('Route ')
+        && step.Completed)
 
       return state.filter((quest) => quest.id !== foundQuest.id)
         .concat({
           ...foundQuest,
           Steps: foundQuest.Steps.map((step) => {
-            if (update.status && !step.Completed && step.id <= update.stepId) {
+            const inRoute = !step.Description.startsWith('Route ')
+              || !foundStep.Description.startsWith('Route ')
+                && foundStep.id > step.id
+                && step.Description.startsWith(startedRoute?.Description.slice(0, 8) || 'Route A')
+              || foundStep.Description.startsWith('Route A')
+                && step.Description.startsWith('Route A')
+              || foundStep.Description.startsWith('Route B')
+              && step.Description.startsWith('Route B')
+            if (update.status && update.stepId === step.id 
+              || step.id < update.stepId && inRoute) {
               return {
                 ...step,
                 Completed: true,
@@ -196,7 +128,8 @@ export const questsReducer = createReducer<IQuestState[]>(
                   substepA.SubStepNumber < substepB.SubStepNumber ? -1 :
                     substepA.SubStepNumber > substepB.SubStepNumber ? 1 : 0)
               }
-            } if (!update.status && step.Completed && step.id >= update.stepId) {
+            } if (!update.status && update.stepId === step.id
+              || step.id > update.stepId || !inRoute) {
               return {
                 ...step,
                 Completed: false,
@@ -219,24 +152,16 @@ export const questsReducer = createReducer<IQuestState[]>(
         }).sort((questA, questB) => questA.id < questB.id ? -1 : 1);
     }],
   [QuestsActions.UpdateQuestSubStepStatus,
-    (state:IQuestState[], update:IUpdateQuestSubStepStatus) => {
+    (state:IQuest[], update:IUpdateQuestSubStepStatus) => {
       const foundQuest = state.find((quest) =>
         quest.Steps.map((step) => step.id).includes(update.stepId))
+
+      const foundStep = foundQuest?.Steps.find((step) => step.id === update.stepId);
       
-      if(!foundQuest) {
-        return state;
-      }
-
-      const foundStep = foundQuest.Steps.find((step) => step.id === update.stepId);
-
-      if(!foundStep) {
-        return state;
-      }
-
-      const foundSubStep = foundStep.SubSteps?.find(
+      const foundSubStep = foundStep?.SubSteps?.find(
         (substep) => substep.id === update.substepId);
 
-      if(!foundSubStep) {
+      if(!foundQuest  || !foundStep || !foundSubStep) {
         return state;
       }
 
@@ -244,7 +169,7 @@ export const questsReducer = createReducer<IQuestState[]>(
         (sub) => sub.CompletionProgress !== sub.Count)
 
       const stepCompleted = foundSubStep.Count === update.progress &&
-        (uncompletedSubSteps === undefined
+        (uncompletedSubSteps === undefined || uncompletedSubSteps.length === 0
         || uncompletedSubSteps?.length === 1 && uncompletedSubSteps[0].id === update.substepId);
 
       let lastStepInRoute;
@@ -265,12 +190,23 @@ export const questsReducer = createReducer<IQuestState[]>(
       } else {
         lastStepInRoute = foundQuest.Steps.at(-1)
       }
+      const startedRoute = foundQuest.Steps.find((step) => step.Description.startsWith('Route ')
+        && step.Completed)
 
       return state.filter((quest) => quest.id !== foundQuest.id)
         .concat({
           ...foundQuest,
           Steps: foundQuest.Steps.map((step) => {
-            if (step.id < foundStep.id && update.progress > 0) {
+            const inRoute = !step.Description.startsWith('Route ')
+              || !foundStep.Description.startsWith('Route ')
+                && foundStep.id > step.id
+                && step.Description.startsWith(startedRoute?.Description.slice(0, 8) || 'Route A')
+              || foundStep.Description.startsWith('Route A')
+                && step.Description.startsWith('Route A')
+              || foundStep.Description.startsWith('Route B')
+              && step.Description.startsWith('Route B')
+
+            if (inRoute && step.id < foundStep.id && update.progress > 0) {
               return {
                 ...step,
                 SubSteps: step.SubSteps?.map((sub) => ({
@@ -279,7 +215,7 @@ export const questsReducer = createReducer<IQuestState[]>(
                 })),
                 Completed: true
               }
-            } else if (step.id > foundStep.id && update.progress !== foundSubStep.Count) {
+            } else if (step.id > foundStep.id || !inRoute) {
               return {
                 ...step,
                 SubSteps: step.SubSteps?.map((sub) => ({

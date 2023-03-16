@@ -13,25 +13,6 @@ export interface IPrerequisitesQuests {
   OtherPrerequisiteDetail:string
 }
 
-export interface IQuest {
-  id:number,
-  Name:string,
-  Type:string,
-  Client:string,
-  Location:number,
-  Rewards:string,
-  Available:number,
-  Status:string
-}
-
-export interface IQuestStep {
-  id:number,
-  Quest:number,
-  StepNumber:number,
-  Description:string,
-  Completed:number
-}
-
 export interface IQuestSubStep {
   id:number,
   QuestStep:number,
@@ -42,4 +23,26 @@ export interface IQuestSubStep {
   CollectItem:number,
   Count:number,
   CompletionProgress:number
+}
+
+export interface IQuestStep {
+  id:number,
+  Quest:number,
+  StepNumber:number,
+  Description:string,
+  Completed: boolean,
+  SubSteps?: IQuestSubStep[]
+}
+
+export interface IQuest {
+  id:number,
+  Name:string,
+  Type:string,
+  Client:string,
+  Area:string,
+  Location:string,
+  Rewards:string[],
+  Available:boolean,
+  Status:string
+  Steps: IQuestStep[]
 }

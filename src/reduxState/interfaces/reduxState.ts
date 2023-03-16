@@ -1,10 +1,10 @@
 import {
-  IQuestSubStep,
   IStoryProgress,
   IItem,
   IItemType,
   IDriver,
-  IHeart2Heart
+  IHeart2Heart,
+  IQuest
 } from 'interfaces';
 import { IFieldSkills } from 'interfaces/FieldSkills';
 
@@ -97,28 +97,6 @@ export interface IBladeState {
   show?:boolean
 }
 
-export interface IQuestStepState {
-  id:number,
-  Quest:number,
-  StepNumber:number,
-  Description:string,
-  Completed: boolean,
-  SubSteps?: IQuestSubStep[]
-}
-
-export interface IQuestState {
-  id:number,
-  Name:string,
-  Type:string,
-  Client:string,
-  Area:string,
-  Location:string,
-  Rewards:string[],
-  Available:boolean,
-  Status:string
-  Steps: IQuestStepState[]
-}
-
 export interface IItemState {
   items: IItem[],
   itemTypes: IItemType[]
@@ -177,7 +155,7 @@ export interface IXenobladeState {
   blades: IBladeState[],
   fieldSkills: IFieldSkills[],
   heart2hearts: IHeart2Heart[],
-  quests: IQuestState[],
+  quests: IQuest[],
   mercMissions: IMercMissionState[],
   monsters: IMonsterState[],
   items: IItemState
