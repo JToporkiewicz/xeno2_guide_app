@@ -2,15 +2,14 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { sortFunction } from 'helpers';
-import { IStoryProgress } from 'interfaces'
+import { IMercMission, IStoryProgress } from 'interfaces'
 import path from 'path';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IMercMissionState } from 'reduxState/interfaces/reduxState'
 
 interface IOwnProps {
   location: string;
-  mercMissions: IMercMissionState[],
+  mercMissions: IMercMission[],
   storyProgress: IStoryProgress,
   updateMMStatus: (mmId: number, completed: boolean) => void;
 }
@@ -21,7 +20,7 @@ export const MercMissionListView = (props: IOwnProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
 
-  const orderOptions: {[key:string]: keyof IMercMissionState} = {
+  const orderOptions: {[key:string]: keyof IMercMission} = {
     default: 'id',
     alphabetically: 'Name',
     location: 'MissionNation',
@@ -31,7 +30,7 @@ export const MercMissionListView = (props: IOwnProps) => {
     missable: 'Missable'
   }
 
-  const getOrderTypeColumn = (order: string): keyof IMercMissionState => {
+  const getOrderTypeColumn = (order: string): keyof IMercMission => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -59,7 +58,7 @@ export const MercMissionListView = (props: IOwnProps) => {
               const mmAValue = mmA[getOrderTypeColumn(orderType)]
               const mmBValue = mmB[getOrderTypeColumn(orderType)]
               return sortFunction(mmAValue, mmBValue, sortOrderAsc)
-            }).map((mm:IMercMissionState) =>
+            }).map((mm:IMercMission) =>
               <div className="row text-list-entry" key={mm.id}>
                 <div className='column-narrow text-list-status'>
                   <OptionsCheckbox

@@ -1,24 +1,25 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox'
+import { IMercMission } from 'interfaces'
 import path from 'path'
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission'
-import { IMercMissionState } from 'reduxState/interfaces/reduxState'
+import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 
 interface IProps {
-  mercMission: IMercMissionState
+  mercMission: IMercMission
 }
 
 interface IDispatchProps {
   updateMercMissionStatus: (input:IUpdateMMStatus) => void;
-  saveMercMissionStatus: (input:IUpdateMMStatus) => void;
+  saveMercMissionStatus: (input:IUpdateUnlocked) => void;
   fetchMercMission: (input: string) => void;
 }
 
 export const MercMissionDetailsPageView = (props:IProps & IDispatchProps) => {
-  const mmToUpdate = useRef(undefined as IMercMissionState | undefined);
+  const mmToUpdate = useRef(undefined as IMercMission | undefined);
 
   const updateMMCompleted = () => {
     if(props.mercMission) {
@@ -38,12 +39,11 @@ export const MercMissionDetailsPageView = (props:IProps & IDispatchProps) => {
     return () => {
       if(mmToUpdate.current) {
         props.saveMercMissionStatus({
-          id: mmToUpdate.current.id,
-          completed: mmToUpdate.current.Completed
+          [mmToUpdate.current.Completed ? 'unlocked' : 'locked']: [mmToUpdate.current.id]
         })
       }
     }
-  })
+  }, [])
   return <>
     <HeaderContainer
       title={props.mercMission.Name}

@@ -1,7 +1,6 @@
-import { IFieldSkills, IRequirementsMM } from 'interfaces';
-import { IBladeState, IMercMissionState } from './reduxState';
+import { IMercMission } from 'interfaces';
 
-export const defaultMercMission:IMercMissionState = {
+export const defaultMercMission:IMercMission = {
   id: -1,
   Name: '',
   MissionNation: '',
@@ -13,12 +12,6 @@ export const defaultMercMission:IMercMissionState = {
   Completed: false,
   Available: false,
   Requirements: []
-}
-
-export interface IMMReqUpdate {
-  requirements: IRequirementsMM[],
-  blades: IBladeState[],
-  fieldSkills: IFieldSkills[]
 }
 
 export interface IUpdateMMStatus {

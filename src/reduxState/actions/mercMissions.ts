@@ -1,5 +1,6 @@
 import { IMercMission } from 'interfaces';
-import { IMMReqUpdate, IUpdateMMStatus } from 'reduxState/interfaces/mercMission';
+import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission';
+import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 
 export enum MercMissionsActions {
@@ -18,12 +19,9 @@ export enum MercMissionsActions {
 export type ActionTypes =
   | IFluxAction<MercMissionsActions.FetchAllMercMissions>
   | IFluxPayloadAction<MercMissionsActions.SetMercMissions, IMercMission[]>
-  | IFluxAction<MercMissionsActions.FetchAllMercMissionRequirements>
-  | IFluxPayloadAction<MercMissionsActions.SetMercMissionRequirements, IMMReqUpdate>
   | IFluxPayloadAction<MercMissionsActions.UpdateMercMissionStatus, IUpdateMMStatus>
-  | IFluxPayloadAction<MercMissionsActions.SaveMercMissionStatus, IUpdateMMStatus>
-  | IFluxPayloadAction<MercMissionsActions.FetchMercMission, string>
-  | IFluxPayloadAction<MercMissionsActions.FetchMercMissionRequirements, string>;
+  | IFluxPayloadAction<MercMissionsActions.SaveMercMissionStatus, IUpdateUnlocked>
+  | IFluxPayloadAction<MercMissionsActions.FetchMercMission, string>;
 
 export const fetchAllMercMissions = ():ActionTypes => ({
   type: MercMissionsActions.FetchAllMercMissions
@@ -34,31 +32,17 @@ export const setMercMissions = (payload:IMercMission[]):ActionTypes => ({
   payload
 });
 
-export const fetchAllMercMissionRequirements = ():ActionTypes => ({
-  type: MercMissionsActions.FetchAllMercMissionRequirements
-});
-
-export const setMercMissionRequirements = (payload:IMMReqUpdate):ActionTypes => ({
-  type: MercMissionsActions.SetMercMissionRequirements,
-  payload
-});
-
 export const updateMercMissionStatus = (payload:IUpdateMMStatus):ActionTypes => ({
   type: MercMissionsActions.UpdateMercMissionStatus,
   payload
 });
 
-export const saveMercMissionStatus = (payload:IUpdateMMStatus):ActionTypes => ({
+export const saveMercMissionStatus = (payload:IUpdateUnlocked):ActionTypes => ({
   type: MercMissionsActions.SaveMercMissionStatus,
   payload
 });
 
 export const fetchMercMission = (payload:string):ActionTypes => ({
   type: MercMissionsActions.FetchMercMission,
-  payload
-});
-
-export const fetchMercMissionRequirements = (payload:string):ActionTypes => ({
-  type: MercMissionsActions.FetchMercMissionRequirements,
   payload
 });

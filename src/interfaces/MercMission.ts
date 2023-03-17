@@ -1,16 +1,3 @@
-export interface IMercMission {
-  id:number,
-  Name:string,
-  MissionNation:number,
-  Giver:string,
-  GiverLocation:number,
-  Duration:string,
-  Type:string,
-  Missable:boolean,
-  Completed:boolean,
-  Available:boolean
-}
-
 export interface IPrerequisitesMM {
   id:number,
   RequiredBy:number,
@@ -28,20 +15,24 @@ export interface IPrerequisitesMM {
   Progress:string
 }
 
-export interface IRequirementsMM {
+export interface IRequirement {
+  area: string,
+  requirement: string,
+  requirementCount?: number,
+  available?:boolean,
+  completed?:boolean
+}
+
+export interface IMercMission {
   id:number,
-  MissionId:number,
-  Blade:number,
-  FieldSkill:number,
-  FieldSkillLevel:number,
-  Element:string,
-  ElementLevel:number,
-  WeaponType:string,
-  WeaponLevel:number,
-  BladeGender:string,
-  BladeGenderLevel:number,
-  Humanoid:boolean,
-  HumanoidLevel:number,
-  Stats:string,
-  StatsLevel:number
+  Name:string,
+  MissionNation:string,
+  Giver:string,
+  GiverLocation:string,
+  Duration:string,
+  Type:string,
+  Missable:boolean,
+  Completed:boolean,
+  Available:boolean
+  Requirements: IRequirement[]
 }

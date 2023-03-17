@@ -4,7 +4,8 @@ import {
   IItemType,
   IDriver,
   IHeart2Heart,
-  IQuest
+  IQuest,
+  IMercMission
 } from 'interfaces';
 import { IFieldSkills } from 'interfaces/FieldSkills';
 
@@ -102,28 +103,6 @@ export interface IItemState {
   itemTypes: IItemType[]
 }
 
-export interface IRequirement {
-  area: string,
-  requirement: string,
-  requirementCount?: number,
-  available?:boolean,
-  completed?:boolean
-}
-
-export interface IMercMissionState {
-  id:number,
-  Name:string,
-  MissionNation:string,
-  Giver:string,
-  GiverLocation:string,
-  Duration:string,
-  Type:string,
-  Missable:boolean,
-  Completed:boolean,
-  Available:boolean
-  Requirements: IRequirement[]
-}
-
 export interface IMonsterDrops {
   name: string;
   type: string;
@@ -156,7 +135,7 @@ export interface IXenobladeState {
   fieldSkills: IFieldSkills[],
   heart2hearts: IHeart2Heart[],
   quests: IQuest[],
-  mercMissions: IMercMissionState[],
+  mercMissions: IMercMission[],
   monsters: IMonsterState[],
   items: IItemState
 }

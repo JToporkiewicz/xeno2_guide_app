@@ -1,19 +1,19 @@
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
-import { IStoryProgress } from 'interfaces'
+import { IMercMission, IStoryProgress } from 'interfaces'
 import { useEffect, useRef } from 'react'
 import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission'
-import { IMercMissionState, IMajorLocations } from 'reduxState/interfaces/reduxState'
+import { IMajorLocations, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import { MercMissionListView } from './MercMissionList/MercMissionList'
 
 interface IProps {
-  mercMissions: IMercMissionState[],
+  mercMissions: IMercMission[],
   storyProgress: IStoryProgress,
   locations: IMajorLocations[];
 }
 
 interface IDispatchProps {
   updateMercMissionStatus: (input:IUpdateMMStatus) => void;
-  saveMercMissionStatus: (input:IUpdateMMStatus) => void;
+  saveMercMissionStatus: (input:IUpdateUnlocked) => void;
   fetchAllMercMissions: () => void;
 }
 
@@ -22,9 +22,12 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
 
   useEffect(() => {
     return () => {
-      toUpdate.current.map((mm) =>
-        props.saveMercMissionStatus(mm)
-      )
+      if(toUpdate.current.length) {
+        props.saveMercMissionStatus({
+          'unlocked': toUpdate.current.filter((mm) => mm.completed).map((mm) => mm.id),
+          'locked': toUpdate.current.filter((mm) => !mm.completed).map((mm) => mm.id)
+        })
+      }
     }
   }, [])
 

@@ -1,13 +1,12 @@
 import { AnyAction } from 'redux';
 import { combineEpics, Epic, ofType } from 'redux-observable';
-import { from, mergeMap, of, concat, filter } from 'rxjs';
+import { from, mergeMap, of, concat, filter, EMPTY } from 'rxjs';
 import { callWithLoader$ } from '.';
 import {
   BladeActions,
   setBlade,
 } from '../actions/blades';
 import { IBlade } from 'interfaces';
-import { fetchAllMercMissionRequirements } from 'reduxState/actions/mercMissions';
 import {
   getAllBlades,
   getBladeById,
@@ -46,7 +45,7 @@ const saveBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
     mergeMap((action) => callWithLoader$(
       'Saving blade skill node',
       from(updateACNUnlocked(action.payload))
-        .pipe(mergeMap(() => of(fetchAllMercMissionRequirements())))
+        .pipe(mergeMap(() => EMPTY))
     ))
   )
 
@@ -57,7 +56,7 @@ const saveBladeStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
     mergeMap((action) => callWithLoader$(
       'Saving blade status',
       from(updateBladesUnlocked(action.payload))
-        .pipe(mergeMap(() => of(fetchAllMercMissionRequirements())))
+        .pipe(mergeMap(() => EMPTY))
     ))
   )
 
