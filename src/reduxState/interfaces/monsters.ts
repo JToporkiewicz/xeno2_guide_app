@@ -1,11 +1,11 @@
-import { IMonsterState } from './reduxState';
+import { IMonster } from 'interfaces';
 
 export interface IUpdateMonster {
   id: number;
   beaten: boolean;
 }
 
-export const defaultMonster: IMonsterState = {
+export const defaultMonster: IMonster = {
   id:-1,
   Name:'',
   Category:'',

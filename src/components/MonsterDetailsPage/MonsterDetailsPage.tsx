@@ -1,24 +1,25 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
+import { IMonster, IMonsterDrops } from 'interfaces';
 import path from 'path';
 import { useEffect, useRef } from 'react';
 import { IUpdateMonster } from 'reduxState/interfaces/monsters';
-import { IMonsterDrops, IMonsterState } from 'reduxState/interfaces/reduxState';
+import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 
 interface IProps {
-  monster: IMonsterState
+  monster: IMonster
 }
 
 interface IDispatchProps {
   updateMonsterStatus: (input:IUpdateMonster) => void;
-  saveMonsterStatus: (input:IUpdateMonster) => void;
+  saveMonsterStatus: (input:IUpdateUnlocked) => void;
   fetchMonster: (input: number) => void;
 }
 
 export const MonsterDetailsPageView = (props:IProps & IDispatchProps) => {
   const {monster} = props;
-  const monToUpdate = useRef(undefined as IMonsterState | undefined);
+  const monToUpdate = useRef(undefined as IMonster | undefined);
 
   const updateMonCompleted = () => {
     if (monster) {
@@ -38,12 +39,11 @@ export const MonsterDetailsPageView = (props:IProps & IDispatchProps) => {
     return () => {
       if (monToUpdate.current) {
         props.saveMonsterStatus({
-          id: monToUpdate.current.id,
-          beaten: monToUpdate.current.Beaten
+          [monToUpdate.current.Beaten ? 'unlocked' : 'locked']: [monToUpdate.current.id]
         })
       }
     }
-  })
+  }, [])
 
   return <>
     <HeaderContainer

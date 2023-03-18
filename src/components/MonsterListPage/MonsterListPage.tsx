@@ -1,19 +1,19 @@
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer';
-import { IStoryProgress } from 'interfaces';
+import { IMonster, IStoryProgress } from 'interfaces';
 import { useEffect, useRef } from 'react';
 import { IUpdateMonster } from 'reduxState/interfaces/monsters';
-import { IMajorLocations, IMonsterState } from 'reduxState/interfaces/reduxState'
+import { IMajorLocations, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import { MonsterListView } from './MonsterList/MonsterList';
 
 interface IProps {
-  monsters: IMonsterState[];
+  monsters: IMonster[];
   storyProgress: IStoryProgress;
   locations: IMajorLocations[];
 }
 
 interface IDispatchProps {
   updateMonsterStatus: (input:IUpdateMonster) => void;
-  saveMonsterStatus: (input:IUpdateMonster) => void;
+  saveMonsterStatus: (input:IUpdateUnlocked) => void;
   fetchAllMonsters: () => void;
 }
 
@@ -22,9 +22,12 @@ export const MonsterListPageView = (props: IProps & IDispatchProps) => {
 
   useEffect(() => {
     return () => {
-      toUpdate.current.map((mon) =>
-        props.saveMonsterStatus(mon)
-      )
+      if (toUpdate.current.length) {
+        props.saveMonsterStatus({
+          unlocked: toUpdate.current.filter((mon) => mon.beaten).map((mon) => mon.id),
+          locked: toUpdate.current.filter((mon) => !mon.beaten).map((mon) => mon.id)
+        })
+      }
     }
   }, [])
 

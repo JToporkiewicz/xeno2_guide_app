@@ -2,16 +2,15 @@ import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/Opti
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { sortFunction } from 'helpers';
-import { IStoryProgress } from 'interfaces';
+import { IMonster, IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { IMonsterState } from 'reduxState/interfaces/reduxState';
 import './MonsterList.scss';
 
 interface IOwnProps {
     monsterCategory: string;
-    monsters: IMonsterState[];
+    monsters: IMonster[];
     storyProgress: IStoryProgress;
     updateMonStatus: (monId: number, beaten: boolean) => void;
 }
@@ -20,7 +19,7 @@ export const MonsterListView = (props: IOwnProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
   
-  const orderOptions: {[key:string]: keyof IMonsterState} = {
+  const orderOptions: {[key:string]: keyof IMonster} = {
     default: 'id',
     alphabetically: 'Name',
     type: 'Type',
@@ -30,7 +29,7 @@ export const MonsterListView = (props: IOwnProps) => {
     beaten: 'Beaten'
   }
 
-  const getOrderTypeColumn = (order: string): keyof IMonsterState => {
+  const getOrderTypeColumn = (order: string): keyof IMonster => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -64,7 +63,7 @@ export const MonsterListView = (props: IOwnProps) => {
               const monAValue = monA[getOrderTypeColumn(orderType)]
               const monBValue = monB[getOrderTypeColumn(orderType)]
               return sortFunction(monAValue, monBValue, sortOrderAsc)
-            }).map((mon:IMonsterState) =>
+            }).map((mon:IMonster) =>
               <div className="row text-list-entry" key={mon.id}>
                 {props.monsterCategory === 'Unique' ?
                   <div className='column-narrow text-list-status'>

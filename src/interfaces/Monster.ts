@@ -1,27 +1,23 @@
+export interface IMonsterDrops {
+  name: string;
+  type: string;
+  rarity: string;
+  dropRate: string;
+}
+
 export interface IMonster {
   id:number,
   Name:string,
   Category:string,
-  Type:number,
+  Type:string,
   IsDriver:boolean,
   LowestLevel:number,
   HighestLevel:number,
-  Location:number,
+  Location:string,
+  Area:string,
   DLCRequired:boolean,
   SpawnCondition:string,
-  Drops:string,
+  Drops: IMonsterDrops[],
   Available:boolean,
   Beaten:boolean
-}
-
-export interface IMonsterDrops {
-  Name: string;
-  Type: string;
-  Rarity: string;
-  Rate: string;
-}
-
-export interface IMonsterType {
-  id:number,
-  MonsterType:string
 }
