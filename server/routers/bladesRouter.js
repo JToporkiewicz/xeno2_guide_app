@@ -166,7 +166,7 @@ module.exports = function() {
           area: 'Other',
           requirement: `${pre.Location ?
             `${pre.maLocated} -> ${pre.maName} -> ${pre.LocName}: ` : ''}${pre.OtherDetails}`,
-          available:pre.LocStory ? pre.LocStory >= storyProgress[0].Chapter : undefined,
+          available:pre.LocStory ? storyProgress[0].Chapter >= pre.LocStory : undefined,
         })
       }
 

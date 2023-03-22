@@ -4,6 +4,8 @@ import { IBladeState } from 'reduxState/interfaces/reduxState'
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { BladeAffinityTree } from '../BladeAffinityTree'
 import { BladeBasicInfoComponent } from '../BladeBasicInfoComponent'
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
+import { RequirementList } from 'components/CommonComponents/RequirementList'
 
 interface IDispatchProps {
   fetchItem: (payload:number) => void,
@@ -49,6 +51,12 @@ export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
           refreshDataId={props.bladeDetails.id}
         />
         <BladeBasicInfoComponent {...props} />
+        {props.bladeDetails.prerequisites ?
+          <CollapsibleComponent header='Prerequisites'>
+            <RequirementList requirements={props.bladeDetails.prerequisites} />
+          </CollapsibleComponent>
+          : ''
+        }
         <BladeAffinityTree affinityChart={props.bladeDetails.affinityChart}/>
       </>
     )
