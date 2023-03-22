@@ -31,11 +31,6 @@ const updateBlade = {
             FROM xenoblade2_guide.quests as quest
             WHERE quest.Available = 1
         ) OR preBlade.SideQuest IS NULL)
-        AND (preBlade.MercMission IN (
-            SELECT mm.id
-            FROM xenoblade2_guide.mercMissions as mm
-            WHERE mm.Available = 1
-        ) OR preBlade.MercMission IS NULL)
         AND (preBlade.Monster IN (
             SELECT mon.id
             FROM xenoblade2_guide.monsters as mon

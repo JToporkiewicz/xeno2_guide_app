@@ -1,3 +1,5 @@
+import { IRequirement } from './common'
+
 export interface IPrerequisitesMM {
   id:number,
   RequiredBy:number,
@@ -13,14 +15,6 @@ export interface IPrerequisitesMM {
   OtherPrerequisiteTitle:string,
   OtherPrerequisiteDetails:string,
   Progress:string
-}
-
-export interface IRequirement {
-  area: string,
-  requirement: string,
-  requirementCount?: number,
-  available?:boolean,
-  completed?:boolean
 }
 
 export interface IMercMission {

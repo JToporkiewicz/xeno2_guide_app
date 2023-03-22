@@ -62,6 +62,7 @@ module.exports = function() {
           MissionId: r.MissionId,
           area: 'Blade',
           requirement: r.BladeName || 'Unknown',
+          reqId: r.Blade,
           available: r.BladeAvailable === 1,
           completed: r.BladeUnlocked === 1
         })

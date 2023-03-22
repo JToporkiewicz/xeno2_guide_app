@@ -8,7 +8,7 @@ export const heart2HeartReducer = createReducer<IHeart2Heart[]>(
     (state: IHeart2Heart[], heart2Hearts: IHeart2Heart[]) => {
       const h2hIds = heart2Hearts.map((h) => h.id);
 
-      return state.filter((old) => h2hIds.includes(old.id))
+      return state.filter((old) => !h2hIds.includes(old.id))
         .concat(heart2Hearts)
         .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)
     }],

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import path from 'path';
+import { RequirementList } from './RequirementList';
+import { IRequirement } from 'interfaces/common';
 
 interface IProps {
   area: string,
@@ -14,7 +16,8 @@ interface IProps {
   }[],
   onClose:(input:any) => any,
   unlockButton?:boolean,
-  onUnlock?:() => any
+  onUnlock?:() => any,
+  preReqs?:IRequirement[]
 }
 
 export const CharacterPageDetails = (props: IProps) => 
@@ -59,7 +62,14 @@ export const CharacterPageDetails = (props: IProps) =>
               <p>{Math.round(list.unlocked / list.total * 10000)/100}%</p>
             </div>
           </div>
-        )}      
+        )}
+        <br />
+        {props.preReqs &&
+          <div className='no-marker'>
+            <h5><b>Prerequisites</b></h5>
+            <RequirementList requirements={props.preReqs}/>
+          </div>
+        }
       </div>
       <div className="centered-button">
         {props.unlockButton &&

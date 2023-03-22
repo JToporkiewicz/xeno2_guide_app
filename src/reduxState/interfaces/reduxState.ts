@@ -8,6 +8,7 @@ import {
   IMercMission,
   IMonster
 } from 'interfaces';
+import { IRequirement } from 'interfaces/common';
 import { IFieldSkills } from 'interfaces/FieldSkills';
 
 export interface IUpdateShow {
@@ -96,6 +97,7 @@ export interface IBladeState {
   favItemType2:number,
   unlocked: boolean,
   available: boolean,
+  prerequisites?: IRequirement[],
   show?:boolean
 }
 

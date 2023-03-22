@@ -86,8 +86,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             const progress = Math.round(blade.affinityChart
               .reduce((skillsTotal, branch) =>
                 skillsTotal +
-                  (branch.nodes.find((node) => !node.unlocked)?.skillLevel
-                    || branch.nodes.length + 1) - 1, 0)
+                  branch.nodes.filter((node) => node.unlocked).length, 0)
                     / blade.affinityChart.reduce((skillsTotal, branch) =>
                       skillsTotal + branch.nodes.length, 0) * 10000) / 100
             const group = blade[getOrderTypeColumn(orderType)];
@@ -150,14 +149,14 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
               label: 'Skills: ',
               unlocked: selectedBlade.affinityChart
                 .reduce((skillsTotal, branch) =>
-                  skillsTotal + (branch.nodes.find((node) => !node.unlocked)?.skillLevel
-                    || branch.nodes.length + 1) - 1, 0),
+                  skillsTotal + branch.nodes.filter((node) => node.unlocked).length, 0),
               total: selectedBlade.affinityChart.reduce((skillsTotal, branch) =>
                 skillsTotal + branch.nodes.length, 0)
             }]}
             onClose={setSelectedBlade.bind(this, defaultBladeState)}
             unlockButton
             onUnlock={updateBladeAvailability.bind(this, selectedBlade)}
+            preReqs={selectedBlade.prerequisites}
           />
           : undefined
       }

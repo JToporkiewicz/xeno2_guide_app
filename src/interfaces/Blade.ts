@@ -1,4 +1,5 @@
 import { IAffinityChartBranch } from './AffinityChart'
+import { IRequirement } from './common'
 
 export interface IBlade {
   id:number,
@@ -18,18 +19,6 @@ export interface IBlade {
   FavItemType1:number,
   FavItemType2:number,
   Unlocked:boolean,
-  Available:boolean
-}
-
-export interface IPrerequisitesBlade {
-  id:number,
-  RequiredBy:number,
-  StoryProgress:number,
-  NewGamePlus:boolean,
-  DLCUnlocked:boolean,
-  SideQuest:number,
-  MercMission:number,
-  Monster:number,
-  Location:number,
-  OtherDetails:string
+  Available:boolean,
+  Prerequisites?: IRequirement[]
 }

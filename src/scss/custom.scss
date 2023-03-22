@@ -431,6 +431,31 @@ select{
     min-width: 250px;
 }
 
+.no-marker {
+    ul {
+        list-style-type: none;
+        li {
+            border-bottom-style: solid;
+            border-bottom-color:var(--secondary-color);
+            border-bottom-width: thin;
+            margin-left: -35px;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .col-sm-6 {
+                height: fit-content;
+                margin: auto 0;
+                  margin-top: auto;
+                  margin-right: 0px;
+                  margin-bottom: auto;
+                  margin-left: 0px;
+              }
+            }
+        }
+    }
+
 // -------------  container body -------------
 
 .container-contents {

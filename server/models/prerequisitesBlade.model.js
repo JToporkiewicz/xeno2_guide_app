@@ -11,10 +11,6 @@ module.exports = (sequelize, Sequelize) => {
       model: 'quests',
       key: 'id'
     } },
-    MercMission: { type: Sequelize.INTEGER, references: {
-      model: 'mercMissions',
-      key: 'id'
-    } },
     Monster: { type: Sequelize.INTEGER, references: {
       model: 'monsters',
       key: 'id'

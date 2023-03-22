@@ -20,10 +20,12 @@ export const SideQuestsPageView = (props:IProps & IDispatchProps) => {
 
   useEffect(() => {
     return () => {
-      props.saveQuestStatus(toUpdate.current.map((quest) => ({
-        questId: quest.id,
-        status: quest.Status
-      })))
+      if (toUpdate.current.length) {
+        props.saveQuestStatus(toUpdate.current.map((quest) => ({
+          questId: quest.id,
+          status: quest.Status
+        })))
+      }
     }
   }, [])
 

@@ -31,6 +31,7 @@ export const bladesReducer = createReducer<IBladeState[]>(
         favItemType2: blade.FavItemType2,
         unlocked: blade.Unlocked,
         available: blade.Available,
+        prerequisites: blade.Prerequisites,
         show: false
       }))).sort((bladeA, bladeB) =>
         bladeA.id < bladeB.id ? -1 : 1

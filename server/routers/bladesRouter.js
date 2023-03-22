@@ -86,6 +86,96 @@ module.exports = function() {
     return mappedCharts;
   }
 
+  const getBladePrerequisites = async function(id = '') {
+    const preRequisites = await sequelize.query(`
+      SELECT
+        pre.*,
+        q.Name as QuestName,
+        q.Available as QuestAvailable,
+        q.Status as QuestStatus,
+        mon.Name as MonName,
+        mon.Available as MonAvailable,
+        loc.Location as LocName,
+        loc.StoryProgress as LocStory,
+        ma.Name as maName,
+        ma.Located as maLocated
+        FROM xenoblade2_guide.prerequisitesBlades as pre
+          LEFT JOIN xenoblade2_guide.quests as q
+            ON pre.SideQuest = q.id
+          LEFT JOIN xenoblade2_guide.monsters as mon
+            ON pre.Monster = mon.id
+          LEFT JOIN xenoblade2_guide.locations as loc
+            ON pre.Location = loc.id
+          LEFT JOIN xenoblade2_guide.majorAreas as ma
+            ON loc.MajorArea = ma.id
+      ${id ? `WHERE RequiredBy = ${id}` : ''}
+    `, { type: Sequelize.QueryTypes.SELECT })
+
+    const storyProgress = await sequelize.query(
+      'SELECT * FROM xenoblade2_guide.storyProgresses',
+      { type: Sequelize.QueryTypes.SELECT })
+
+    const mappedPreReq = preRequisites.reduce((list, pre) => {
+      const reqs = [];
+
+      if (pre.StoryProgress) {
+        reqs.push({
+          area: 'Story Progress',
+          requirement: 'Chapter ' + pre.StoryProgress,
+          completed:storyProgress[0].Chapter >= pre.StoryProgress       
+        })
+      }
+
+      if (pre.NewGamePlus) {
+        reqs.push({
+          area: 'New Game Plus',
+          requirement: pre.NewGamePlus,
+          completed: storyProgress[0].NewGamePlus
+        })
+      }
+
+      if (pre.DLCUnlocked) {
+        reqs.push({
+          area: 'DLC Unlocked',
+          requirement: pre.DLCUnlocked,
+          completed: storyProgress[0].DLCUnlocked
+        })
+      }
+
+      if (pre.SideQuest) {
+        reqs.push({
+          area: 'Quest',
+          requirement: pre.QuestName,
+          reqId: pre.SideQuest,
+          available: pre.QuestAvailable,
+          completed: pre.QuestStatus === 'FINISHED'
+        })
+      }
+
+      if (pre.Monster) {
+        reqs.push({
+          area: 'Monster',
+          requirement: pre.MonName,
+          reqId: pre.Monster,
+          available: pre.MonAvailable
+        })
+      }
+
+      if (pre.OtherDetails) {
+        reqs.push({
+          area: 'Other',
+          requirement: `${pre.Location ?
+            `${pre.maLocated} -> ${pre.maName} -> ${pre.LocName}: ` : ''}${pre.OtherDetails}`,
+          available:pre.LocStory ? pre.LocStory >= storyProgress[0].Chapter : undefined,
+        })
+      }
+
+      return {...list, [pre.RequiredBy]: reqs}
+    }, {})
+
+    return mappedPreReq;
+  }
+
   router.get('/fetchAllBlades', async function (_, res) {
 
     const blades = await sequelize.query(
@@ -93,6 +183,8 @@ module.exports = function() {
       { type: Sequelize.QueryTypes.SELECT })
     
     const charts = await getAffinityCharts()
+
+    const preReqs = await getBladePrerequisites()
 
     const mappedBlades = blades.map((b) => ({
       ...b,
@@ -102,7 +194,8 @@ module.exports = function() {
         branchId: key,
         branchName: branch.branchName,
         nodes: branch.nodes
-      }))
+      })),
+      Prerequisites: preReqs[b.id] || undefined
     }))
 
     res.send(mappedBlades)
@@ -121,6 +214,8 @@ module.exports = function() {
 
     const chart = await getAffinityCharts(blade[0].AffinityChart)
 
+    const preReqs = await getBladePrerequisites(req.query.id)
+
     const mappedBlade = {
       ...blade[0],
       Unlocked: blade[0].Unlocked === 1,
@@ -129,7 +224,8 @@ module.exports = function() {
         branchId: key,
         branchName: branch.branchName,
         nodes: branch.nodes
-      }))
+      })),
+      Prerequisites: preReqs[blade[0].id] || undefined
     }
 
     res.send(mappedBlade)

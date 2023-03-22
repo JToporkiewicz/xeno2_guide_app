@@ -1,10 +1,10 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox'
+import { RequirementList } from 'components/CommonComponents/RequirementList'
 import { IMercMission } from 'interfaces'
 import path from 'path'
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission'
 import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 
@@ -104,42 +104,7 @@ export const MercMissionDetailsPageView = (props:IProps & IDispatchProps) => {
       </div>
     </CollapsibleComponent>
     <CollapsibleComponent header='Requirements'>
-      <ul>
-        {props.mercMission.Requirements.map((req) =>
-          <li>
-            <div className='row'>
-              <div className='col-sm-5'>
-                <b>
-                  {req.area === 'Blade' || req.area === 'Field Skills' ?
-                    <Link to={'/bladeList'}>{req.area}
-                    </Link> : req.area
-                  }
-                : </b>{req.requirement}
-              </div>
-              {req.requirementCount &&
-                <div className='col-sm-2'>
-                  Number: {req.requirementCount}
-                </div>
-              }
-              {req.available !== undefined &&
-              <div className='col-sm-2'>Available:
-                <img 
-                  src={path.resolve(`images/helper/${req.available ?
-                    'GreenCheckmark' : 'RedX'}.svg`)}
-                  alt={'Available'}
-                  className="availability-small-image inline-image"
-                />
-              </div>}
-              {req.completed !== undefined &&
-              <div className='col-sm-3'>Achieved:<img 
-                src={path.resolve(`images/helper/${req.completed ?
-                  'GreenCheckmark' : 'RedX'}.svg`)}
-                alt={'Completed'}
-                className="availability-small-image inline-image"
-              /></div>}
-            </div></li>
-        )}
-      </ul>
+      <RequirementList requirements={props.mercMission.Requirements} />
     </CollapsibleComponent>
   </>
 }
