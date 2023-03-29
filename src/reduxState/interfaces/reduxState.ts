@@ -28,7 +28,11 @@ export const defaultSelected = {
 
 export interface IUpdateUnlocked {
   unlocked?: number[],
-  locked?: number[]
+  locked?: number[],
+  partial?: {
+    id: number | undefined,
+    progress: number | undefined
+  }[]
 }
 
 export interface ICoreState {
@@ -69,7 +73,8 @@ export interface IAffinityChartNodeState {
   effect:string[],
   available:boolean,
   unlocked:boolean
-  tier: number
+  tier: number,
+  preReqs?: IRequirement[]
 }
 
 export interface IAffinityChartBranchState {

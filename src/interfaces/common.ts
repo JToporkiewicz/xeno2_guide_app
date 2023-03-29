@@ -10,15 +10,21 @@ export enum RequirementArea {
   'New Game Plus' = 'New Game Plus',
   'DLC Unlocked' = 'DLC Unlocked',
   Quest = 'Quest',
+  Heart2Heart = 'Heart-to-heart',
+  SideQuest = 'Side-quest',
+  StartSideQuest = 'Start side-quest',
+  MercMission = 'Merc Mission',
   Monster = 'Monster',
   Other = 'Other'
 }
 
 export interface IRequirement {
-  area: RequirementArea,
+  area: RequirementArea | string,
   requirement: string,
+  id?:number,
   reqId?: number,
   requirementCount?: number,
   available?:boolean,
+  progress?:number,
   completed?:boolean
 }

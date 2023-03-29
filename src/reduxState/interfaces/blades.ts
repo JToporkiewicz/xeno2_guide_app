@@ -34,3 +34,11 @@ export const defaultBladeState = {
   available: false,
   show:false
 }
+
+export interface IUpdateACNReqProgress {
+  bladeId: number,
+  branchId: number,
+  nodeId: number,
+  id: number,
+  progress: number
+}

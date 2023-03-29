@@ -7,6 +7,7 @@ import {
   IBladeState,
   IUpdateShow
 } from '../interfaces/reduxState';
+import { IUpdateACNReqProgress } from 'reduxState/interfaces/blades';
 
 export const bladesReducer = createReducer<IBladeState[]>(
   [BladeActions.SetBlade, (bladeState:IBladeState[], blades:IBlade[]) => {
@@ -62,6 +63,7 @@ export const bladesReducer = createReducer<IBladeState[]>(
 
     bladeNodes.forEach((node) => {
       let nodeFound = false;
+      let highestNode = node.unlocked ? node.nodeId : node.nodeId - 1;
       bladeState.some((blade) => {
         if (nodeFound) {
           return true;
@@ -93,10 +95,23 @@ export const bladesReducer = createReducer<IBladeState[]>(
                   oldBranch.branchId !== foundBranch.branchId)
                 .concat([{
                   ...foundBranch,
-                  nodes: foundBranch.nodes.filter((oldNode) => oldNode.nodeId !== foundNode?.nodeId)
-                    .concat(foundNode).sort((nodeA, nodeB) =>
-                      nodeA.nodeId < nodeB.nodeId ? -1 : 1
-                    )
+                  nodes: foundBranch.nodes.map((n) => {
+                    if (n.nodeId < (foundNode?.nodeId || -1)) {
+                      return n;
+                    } else if (n.nodeId === foundNode?.nodeId) {
+                      return foundNode
+                    } else {
+                      highestNode = highestNode + 1 === n.nodeId &&
+                        (n.preReqs?.filter((oldP) => !oldP.completed)?.length || 0) === 0
+                        ? n.nodeId : highestNode
+                      return {
+                        ...n,
+                        unlocked: highestNode === n.nodeId
+                      }
+                    }
+                  }).sort((nodeA, nodeB) =>
+                    nodeA.nodeId < nodeB.nodeId ? -1 : 1
+                  )
                 }]).sort((branchA, branchB) =>
                   branchA.branchId < branchB.branchId ? -1 : 1
                 )
@@ -113,6 +128,69 @@ export const bladesReducer = createReducer<IBladeState[]>(
     return bladeState
       .filter((blade) =>!updatedBlades.map((update) => update.id).includes(blade.id))
       .concat(updatedBlades).sort((bladeA, bladeB) =>
+        bladeA.id < bladeB.id ? -1 : 1
+      )
+  }],
+  [BladeActions.UpdateACNReqStatus, (bladeState:IBladeState[], progress: IUpdateACNReqProgress) => {
+    const foundBlade = bladeState.find((b) => b.id === progress.bladeId);
+
+    const foundBranch = foundBlade?.affinityChart.find((a) => a.branchId === progress.branchId);
+
+    const foundNode = foundBranch?.nodes.find((n) => n.nodeId === progress.nodeId);
+
+    const foundPre = foundNode?.preReqs?.find((pre) => pre.id === progress.id)
+
+    if (!foundBlade || !foundBranch || !foundNode || !foundPre) {
+      return bladeState;
+    }
+
+    let lastActiveId = 0
+
+    return bladeState.filter((old) => old.id !== progress.bladeId)
+      .concat({
+        ...foundBlade,
+        affinityChart: foundBlade.affinityChart
+          .filter((oldA) => oldA.branchId !== progress.branchId)
+          .concat({
+            ...foundBranch,
+            nodes: foundBranch.nodes.map((n) => {
+              if (n.tier < foundNode.tier) {
+                if (n.unlocked) {
+                  lastActiveId = n.nodeId
+                }
+                return n;
+              } else if (n.tier === foundNode.tier) {
+                lastActiveId = lastActiveId + 1 === foundNode.nodeId &&
+                  (n.preReqs?.filter((oldP) => oldP.id !== progress.id
+                    && !oldP.completed
+                    || oldP.id === progress.id
+                    && oldP.requirementCount !== progress.progress)?.length|| 0) === 0 ?
+                  foundNode.nodeId : lastActiveId
+                return {
+                  ...n,
+                  unlocked: lastActiveId === foundNode.nodeId,
+                  preReqs: n.preReqs?.filter((oldP) => oldP.id !== progress.id)
+                    .concat({
+                      ...foundPre,
+                      progress: progress.progress,
+                      completed: foundPre.requirementCount === progress.progress
+                    })
+                }
+              } else {
+                lastActiveId = lastActiveId + 1 === n.nodeId &&
+                  (n.preReqs?.filter((oldP) =>!oldP.completed)?.length || 0) === 0
+                  ? n.nodeId : lastActiveId
+                return {
+                  ...n,
+                  unlocked: lastActiveId === n.nodeId
+                }
+              }
+            })
+          })
+          .sort((branchA, branchB) =>
+            branchA.branchId < branchB.branchId ? -1 : 1
+          )
+      }).sort((bladeA, bladeB) =>
         bladeA.id < bladeB.id ? -1 : 1
       )
   }]

@@ -67,6 +67,13 @@ const updateACN = {
         );
 
         UPDATE xenoblade2_guide.affinityChartNodes
+        SET Unlocked = 1
+        WHERE id NOT IN (
+            SELECT preACN.RequiredBy as id
+            FROM xenoblade2_guide.prerequisitesACNs as preACN
+        ) AND SkillLevel = 1;
+
+        UPDATE xenoblade2_guide.affinityChartNodes
         SET Available = 0, Unlocked = 0
         WHERE id NOT IN (
             SELECT id

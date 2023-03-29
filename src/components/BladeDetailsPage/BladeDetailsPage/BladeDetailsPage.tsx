@@ -57,7 +57,10 @@ export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
           </CollapsibleComponent>
           : ''
         }
-        <BladeAffinityTree affinityChart={props.bladeDetails.affinityChart}/>
+        <BladeAffinityTree
+          affinityChart={props.bladeDetails.affinityChart}
+          bladeId={props.bladeDetails.id}
+        />
       </>
     )
   }

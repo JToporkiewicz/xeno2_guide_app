@@ -12,7 +12,8 @@ interface IOwnProps {
   }[],
   availableTier: number,
   updateNode: (tier: number, unlock:boolean) => void,
-  minOneNode?:boolean
+  minOneNode?:boolean,
+  onMouseEnter?:(index:number) => void
 }
 
 export const BranchDetails = (props: IOwnProps) => {
@@ -21,7 +22,11 @@ export const BranchDetails = (props: IOwnProps) => {
       <div className="branch-details-track" />
       <div className="branch-details-area">
         {props.nodes?.map((node, index) => 
-          <div key={'details ' + index} className="branch-details-node-area">
+          <div
+            key={'details ' + index}
+            className="branch-details-node-area"
+            onMouseEnter={() => props.onMouseEnter ? props.onMouseEnter(index) : undefined}
+          >
             {
               props.minOneNode && node.tier === 1 ?
                 <div/>

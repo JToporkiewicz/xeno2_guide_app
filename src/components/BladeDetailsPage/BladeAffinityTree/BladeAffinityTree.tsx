@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react';
+import { isEqual } from 'lodash';
 import { IAffinityChartNode } from 'interfaces/AffinityChart';
 import {
   IAffinityChartBranchState,
@@ -8,26 +9,39 @@ import {
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import { BranchDetails } from 'components/CommonComponents/BranchDetails';
 import { TreeBranch } from 'components/CommonComponents/TreeBranch';
+import { RequirementList } from 'components/CommonComponents/RequirementList';
+import { IUpdateACNReqProgress } from 'reduxState/interfaces/blades';
 
 interface IOwnProps {
-  affinityChart: IAffinityChartBranchState[]
+  affinityChart: IAffinityChartBranchState[],
+  bladeId: number
 }
 
 interface IDispatchProps {
   setBladeSkillNode: (node: IAffinityChartNode[]) => void;
   saveBladeSkillNode: (node: IUpdateUnlocked) => void;
   fetchFieldSkills: () => void;
+  updateACNReqStatus: (progress: IUpdateACNReqProgress) => void;
 }
 
 export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
   const [selectedBranch, setSelectedBranch] = useState(-1);
-  const toUpdate = useRef([] as IAffinityChartNodeState[]);
+  const [selectedNode, setSelectedNode] = useState(-1);
+  const currentTree = useRef(props.affinityChart);
 
   const unlockNode = (branch: number, tier: number, unlocked: boolean) => {
     let updatingNodes = [] as IAffinityChartNodeState[];
     const foundNode = props.affinityChart[branch].nodes.find((n) => n.tier === tier);
     if (unlocked) {
-      updatingNodes = updatingNodes.concat(foundNode ? {...foundNode, unlocked: true} : []);
+      updatingNodes = updatingNodes.concat(foundNode ? {
+        ...foundNode,
+        unlocked: true,
+        preReqs: foundNode.preReqs?.map((pre) => ({
+          ...pre,
+          completed: pre.completed !== undefined ? true : undefined,
+          progress: pre.progress !== undefined ? pre.requirementCount : undefined 
+        }))
+      } : []);
     } else {
       updatingNodes = updatingNodes.concat(foundNode ? [{...foundNode, unlocked: false}].concat(
         props.affinityChart[branch].nodes.filter((n) => n.tier > foundNode.tier && n.unlocked)
@@ -42,9 +56,6 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
       }
     }
     props.setBladeSkillNode(updatingNodes)
-    toUpdate.current = toUpdate.current
-      .filter((node) => !updatingNodes.find((un) => un.nodeId === node.nodeId))
-      .concat(updatingNodes)
   }
 
   const getBranchDetails = () => {
@@ -80,6 +91,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
         }))}
         updateNode={unlockNode.bind(this, selectedBranch)}
         minOneNode={selectedBranch === 0}
+        onMouseEnter={setSelectedNode}
       />
     </>
   }
@@ -91,16 +103,41 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
   }, [props.affinityChart.length])
 
   useEffect(() => {
+    currentTree.current = props.affinityChart
+  }, [props.affinityChart])
+
+  useEffect(() => {
     return () => {
-      props.saveBladeSkillNode({
-        unlocked: toUpdate.current
-          .filter((node) => node.unlocked)
-          .map((node) => node.nodeId),
-        locked: toUpdate.current
-          .filter((node) => !node.unlocked)
-          .map((node) => node.nodeId),
-      })
-      setTimeout(props.fetchFieldSkills, 1000)
+      if (!isEqual(props.affinityChart, currentTree.current)) {
+        const flattenedTree = props.affinityChart.reduce((list, t) =>
+          list.concat(t.nodes), [] as IAffinityChartNodeState[])
+        const update = currentTree.current
+          .reduce((list, t) => list.concat(t.nodes), [] as IAffinityChartNodeState[])
+          .filter((node) => !flattenedTree.some((newN) => isEqual(newN, node)))
+        if (update.length) {
+          props.saveBladeSkillNode({
+            unlocked: update
+              .filter((node) => node.unlocked)
+              .map((node) => node.nodeId),
+            locked: update
+              .filter((node) => !node.unlocked)
+              .map((node) => node.nodeId),
+            partial: update
+              .filter((node) => !node.unlocked && node.preReqs !== undefined)
+              .reduce((list, node) => {
+                const reqs = (node.preReqs || [])?.filter((pre) => pre.progress !== undefined)
+                  .map((pre) => ({
+                    id: pre.id,
+                    progress: pre.progress
+                  }));
+
+                return list.concat(reqs)
+              }, [] as {id: number | undefined, progress: number | undefined }[])
+          })
+          setTimeout(props.fetchFieldSkills, 1000)
+
+        }
+      }
     }
   }, [])
 
@@ -130,7 +167,10 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
                 unlockedAffinity
                 : unlockedAffinity > unlockedBranchTier ?
                   unlockedBranchTier : unlockedAffinity - 1}
-              setSelectedBranch={setSelectedBranch.bind(this, index)}
+              setSelectedBranch={((i:number) => {
+                setSelectedBranch(i)
+                setSelectedNode(-1)
+              }).bind(this, index)}
             />
           })}
         </div>
@@ -138,6 +178,23 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
       {
         selectedBranch !== -1 ? 
           getBranchDetails()
+          : <div />
+      }
+      {
+        selectedNode !== -1 ?
+          <div className='requirements-container'>
+            Requirements for level {selectedNode + 1}:
+            <RequirementList
+              requirements={props.affinityChart[selectedBranch]?.nodes[selectedNode].preReqs || []}
+              updateReqProgress={(index, progress) => props.updateACNReqStatus({
+                bladeId: props.bladeId,
+                branchId:props.affinityChart[selectedBranch]?.branchId || -1,
+                nodeId: props.affinityChart[selectedBranch]?.nodes[selectedNode].nodeId || -1,
+                id: index,
+                progress: progress
+              })}
+            />
+          </div>
           : <div />
       }
     </CollapsibleComponent>

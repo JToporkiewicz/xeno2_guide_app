@@ -1,10 +1,13 @@
+import { IRequirement } from './common'
+
 export interface IAffinityChartNode {
   nodeId: number,
   skillLevel: number,
   effect: string[],
   available: boolean,
   unlocked: boolean,
-  tier: number
+  tier: number,
+  preReqs?: IRequirement[]
 }
 
 export interface IAffinityChartBranch {
