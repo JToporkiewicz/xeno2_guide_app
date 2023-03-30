@@ -8,6 +8,176 @@ const Sequelize = require('sequelize');
 module.exports = function() {
   const router = Router()
 
+  const getQuestPrerequirements = async function(id = '') {
+    const questPres = await sequelize.query(`
+    SELECT
+      pre.*,
+      loc.Location as LocName,
+      ma.Name as MAName,
+      ma.Located as MALocated,
+      loc.StoryProgress as LocStory,
+      mm.Name as MMName,
+      mm.Available as MMAvailable,
+      mm.Completed as MMCompleted,
+      h2h.Title as H2hTitle,
+      h2h.Available as H2hAvailable,
+      h2h.Viewed as H2hViewed,
+      b.Name as BladeName,
+      b.Available as BladeAvailable,
+      b.Unlocked as BladeUnlocked,
+      acn.Name as ACNName,
+      acn.SkillLevel as ACNLevel,
+      acn.Available as ACNAvailable,
+      acn.Unlocked as ACNUnlocked,
+      b2.Name as ACNBlade,
+      b2.id as ACNBladeId,
+      q.Name as QuestName,
+      q.Available as QuestAvailable,
+      q.Status as QuestStatus
+      FROM xenoblade2_guide.prerequisitesQuests as pre
+      LEFT JOIN xenoblade2_guide.locations as loc
+        ON loc.id = pre.Location
+      LEFT JOIN xenoblade2_guide.majorAreas as ma
+        ON loc.MajorArea = ma.id
+      LEFT JOIN xenoblade2_guide.mercMissions as mm
+        ON mm.id = pre.MercMission
+      LEFT JOIN xenoblade2_guide.heart2Hearts as h2h
+        ON h2h.id = pre.Heart2Heart
+      LEFT JOIN xenoblade2_guide.blades as b
+        ON b.id = pre.BladeUnlocked
+      LEFT JOIN xenoblade2_guide.affinityChartNodes as acn
+        ON acn.id = pre.BladeAffinityChartNode
+      LEFT JOIN xenoblade2_guide.affinityChartBranches as acb
+        ON acb.NodeAffinity1 = acn.id
+        OR acb.NodeAffinity2 = acn.id
+        OR acb.NodeAffinity3 = acn.id
+        OR acb.NodeAffinity4 = acn.id
+        OR acb.NodeAffinity5 = acn.id
+        AND acn.id IS NOT NULL
+      LEFT JOIN xenoblade2_guide.affinityCharts as ac
+        ON ac.AffinityBranch = acb.id
+        OR ac.BattleSkillBranch1 = acb.id
+        OR ac.BattleSkillBranch2 = acb.id
+        OR ac.BattleSkillBranch3 = acb.id
+        OR ac.BladeSpecialBranch1 = acb.id
+        OR ac.BladeSpecialBranch2 = acb.id
+        OR ac.BladeSpecialBranch3 = acb.id
+        OR ac.FieldSkillBranch1 = acb.id
+        OR ac.FieldSkillBranch2 = acb.id
+        OR ac.FieldSkillBranch3 = acb.id
+        AND acb.id IS NOT NULL
+      LEFT JOIN xenoblade2_guide.blades as b2
+        ON b2.AffinityChart = ac.id
+        AND ac.id IS NOT NULL
+      LEFT JOIN xenoblade2_guide.quests as q
+        ON q.id = pre.Quest
+      ${id ? `WHERE pre.RequiredBy = ${id}` : ''}`,
+    { type: Sequelize.QueryTypes.SELECT })
+
+    const storyProgress = await sequelize.query(
+      'SELECT * FROM xenoblade2_guide.storyProgresses',
+      { type: Sequelize.QueryTypes.SELECT })
+
+    const mappedPre = questPres.reduce((list, pre) => {
+      const reqs = [];
+
+      if (pre.StoryProgress) {
+        reqs.push({
+          area: 'Story Progress',
+          requirement: 'Chapter ' + pre.StoryProgress,
+          completed:storyProgress[0].Chapter >= pre.StoryProgress
+        })
+      }
+
+      if (pre.NewGamePlus) {
+        reqs.push({
+          area: 'New Game Plus',
+          requirement: pre.NewGamePlus === 1,
+          completed: storyProgress[0].NewGamePlus === 1
+        })
+      }
+
+      if (pre.DLCUnlocked) {
+        reqs.push({
+          area: 'DLC Unlocked',
+          requirement: pre.DLCUnlocked === 1,
+          completed: storyProgress[0].DLCUnlocked === 1
+        })
+      }
+
+      if (pre.Location) {
+        reqs.push({
+          area: 'Location',
+          requirement: `${pre.MALocated} -> ${pre.MAName} -> ${pre.LocName}`,
+          available:pre.LocStory ? storyProgress[0].Chapter >= pre.LocStory : undefined,
+        })
+      }
+
+      if (pre.MercMission) {
+        reqs.push({
+          area: 'Merc Mission',
+          requirement: pre.MMName,
+          available: pre.MMAvailable,
+          completed: pre.MMCompleted,
+          reqId: pre.MercMission
+        })
+      }
+
+      if (pre.Heart2Heart) {
+        reqs.push({
+          area: 'Heart-to-heart',
+          requirement: pre.H2hTitle,
+          available: pre.H2hAvailable,
+          completed: pre.H2hViewed,
+          reqId: pre.Heart2Heart
+        })
+      }
+
+      if (pre.BladeUnlocked) {
+        reqs.push({
+          area: 'Blade',
+          requirement: pre.BladeName,
+          available: pre.BladeAvailable,
+          completed: pre.BladeUnlocked,
+          reqId: pre.BladeUnlocked
+        })
+      }
+
+      if (pre.BladeAffinityChartNode) {
+        reqs.push({
+          area: 'Affinity Chart Node',
+          requirement: `${pre.ACNBlade}: ${pre.ACNName} Level ${pre.ACNLevel}`,
+          available: pre.ACNAvailable,
+          completed: pre.ACNUnlocked,
+          reqId: pre.ACNBladeId
+        })
+      }
+
+      if (pre.Quest) {
+        reqs.push({
+          area: 'Quest',
+          requirement: pre.QuestName,
+          available: pre.QuestAvailable,
+          reqId: pre.Quest
+        })
+      }
+
+      if (pre.OtherPrerequisiteDetail) {
+        reqs.push({
+          area: 'Other',
+          requirement: pre.OtherPrerequisiteDetail
+        })
+      }
+
+      return {
+        ...list,
+        [pre.RequiredBy]: (list[pre.RequiredBy] || []).concat(reqs)
+      }
+    }, {})
+
+    return mappedPre
+  }
+
   const getQuests = async function(id = '') {
     const quests = await sequelize.query(
       `SELECT
@@ -29,6 +199,8 @@ module.exports = function() {
       ${id ? `WHERE q.id = ${id}` : ''}`,
       { type: Sequelize.QueryTypes.SELECT })
 
+    const pres = await getQuestPrerequirements(id)
+
     const mappedQuests = quests.map((q) => ({
       id:q.id,
       Name:q.Name,
@@ -38,7 +210,8 @@ module.exports = function() {
       Location:q.Location,
       Rewards:JSON.parse(q.Rewards),
       Available:q.Available ? true : false,
-      Status:q.Status
+      Status:q.Status,
+      PreReqs: pres[q.id] || undefined
     }))
 
     return mappedQuests

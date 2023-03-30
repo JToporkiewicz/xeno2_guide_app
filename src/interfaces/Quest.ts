@@ -1,3 +1,5 @@
+import { IRequirement } from './common'
+
 export interface IPrerequisitesQuests {
   id:number,
   RequiredBy:number,
@@ -44,5 +46,6 @@ export interface IQuest {
   Rewards:string[],
   Available:boolean,
   Status:string
-  Steps: IQuestStep[]
+  Steps: IQuestStep[],
+  PreReqs?: IRequirement[]
 }

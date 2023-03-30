@@ -1,4 +1,6 @@
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
+import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { IQuest } from 'interfaces';
 import { SideQuestBasicInfo } from '../SideQuestBasicInfoComponent';
 import { SideQuestRewardsComponent } from '../SideQuestRewardsComponents';
@@ -24,6 +26,11 @@ export const SideQuestDetailsPageView = (props:IProps & IDispatchProps) => {
       <SideQuestBasicInfo
         quest={props.quest}
       />
+      {props.quest.PreReqs ?
+        <CollapsibleComponent header='Prerequisites'>
+          <RequirementList requirements={props.quest.PreReqs} />
+        </CollapsibleComponent> : ''
+      }
       <SideQuestStepDetails
         quest={props.quest}
       />

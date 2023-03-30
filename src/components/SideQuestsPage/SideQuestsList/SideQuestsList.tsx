@@ -1,6 +1,8 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
+import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import OrderBy from 'components/CommonComponents/OrderBy';
+import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { sortFunction } from 'helpers';
 import { IQuest, IStoryProgress } from 'interfaces';
 import path from 'path';
@@ -114,6 +116,11 @@ export const SideQuestsList = (props: IOwnProps) => {
                     >
                       {quest.Name}
                     </Link>
+                }
+                {quest.PreReqs &&
+                  <HoverContainer>
+                    <RequirementList requirements={quest.PreReqs} />
+                  </HoverContainer>
                 }
               </div>
             )}
