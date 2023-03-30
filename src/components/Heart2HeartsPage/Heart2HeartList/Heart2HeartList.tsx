@@ -8,6 +8,8 @@ import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { IHeart2Heart, IStoryProgress } from 'interfaces';
+import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
+import { RequirementList } from 'components/CommonComponents/RequirementList';
 
 interface IDispatchProps {
   updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
@@ -139,7 +141,13 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                       </Link>
                       : <div className='text-list-link'>????</div>
                   }
-
+                  {h2h.PreReqs &&
+                    <HoverContainer>
+                      <RequirementList
+                        requirements={h2h.PreReqs}
+                      />
+                    </HoverContainer>
+                  }
                 </div>
               )}
             </div>

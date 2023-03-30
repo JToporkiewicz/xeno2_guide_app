@@ -1,5 +1,6 @@
 export enum RequirementArea {
   Blade = 'Blade',
+  'Affinity Chart Node' = 'Affinity Chart Node',
   'Field Skills' = 'Field Skills',
   'Element Type' = 'Element Type',
   'Weapon Type' = 'Weapon Type',
@@ -9,12 +10,14 @@ export enum RequirementArea {
   'Story Progress' = 'Story Progress',
   'New Game Plus' = 'New Game Plus',
   'DLC Unlocked' = 'DLC Unlocked',
-  Quest = 'Quest',
   Heart2Heart = 'Heart-to-heart',
+  Quest = 'Quest',
   SideQuest = 'Side-quest',
   StartSideQuest = 'Start side-quest',
   MercMission = 'Merc Mission',
   Monster = 'Monster',
+  'Monster Type' = 'Monster Type',
+  Location = 'Location',
   Other = 'Other'
 }
 

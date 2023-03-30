@@ -1,3 +1,5 @@
+import { IRequirement } from './common'
+
 interface IH2hOutcomes {
   'Option 1'?: {[key:string]:any},
   'Option 2'?: {[key:string]:any},
@@ -12,7 +14,8 @@ export interface IHeart2Heart {
   Who:string[],
   Outcomes:IH2hOutcomes,
   Available:boolean,
-  Viewed:boolean
+  Viewed:boolean,
+  PreReqs?:IRequirement[]
 }
 
 export interface IPrerequisitesH2H {

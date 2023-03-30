@@ -13,6 +13,7 @@ export const RequirementList = (props: IProps) => {
   const mapArea = (req: IRequirement) => {
     switch (req.area) {
     case RequirementArea.Blade:
+    case RequirementArea['Affinity Chart Node']:
       return <div className='col-sm-6'>
         <b>
           {req.area}
@@ -22,6 +23,8 @@ export const RequirementList = (props: IProps) => {
         </Link>
       </div>
     case RequirementArea.Quest:
+    case RequirementArea.SideQuest:
+    case RequirementArea.StartSideQuest:
       return <div className='col-sm-6'>
         <b>
           {req.area}
@@ -57,16 +60,6 @@ export const RequirementList = (props: IProps) => {
           {req.requirement}
         </Link>
       </div>
-    case RequirementArea.SideQuest:
-    case RequirementArea.StartSideQuest:
-      return <div className='col-sm-6'>
-        <b>
-          {req.area}
-        </b>
-        : <Link to={`/sideQuest/${req.reqId}`}>
-          {req.requirement}
-        </Link>
-      </div>
     case RequirementArea.MercMission:
       return <div className='col-sm-6'>
         <b>
@@ -79,6 +72,11 @@ export const RequirementList = (props: IProps) => {
     case RequirementArea.Other:
       return <div className='col-sm-6'>
         {req.requirement}
+      </div>
+    case RequirementArea['New Game Plus']:
+    case RequirementArea['DLC Unlocked']:
+      return <div className='col-sm-6'>
+        {req.area}
       </div>
     default:
       return <div className='col-sm-6'>

@@ -466,6 +466,27 @@ select{
     margin-top: 15px;
 }
 
+
+
+.text-list-entry {
+    position: relative;
+    .hover-container {
+        display: none;
+    }
+    &:hover {
+        .hover-container {
+            display: block;
+            position: absolute;
+            border: thin solid var(--primary);
+            border-radius: 5px;
+            background: var(--very-light-blue);
+            z-index: 10;
+            top: 35px;
+            width: 100%;
+        }
+    }
+}
+
 .container-contents {
     padding: 15px;
     background-color: white;

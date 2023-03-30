@@ -1,4 +1,6 @@
+import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
+import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { IHeart2Heart } from 'interfaces';
 import { Heart2HeartBasicInfo } from '../Heart2HeartBasicInfoComponent';
 import { Heart2HeartOptions } from '../Heart2HeartOptionsComponent';
@@ -23,6 +25,11 @@ export const Heart2HeartDetailsPageView = (props:IProps & IDispatchProps) => {
       <Heart2HeartBasicInfo
         heart2Heart={props.heart2Heart}
       />
+      {props.heart2Heart.PreReqs ?
+        <CollapsibleComponent header='Prerequisites'>
+          <RequirementList requirements={props.heart2Heart.PreReqs} />
+        </CollapsibleComponent> :''
+      }
       <Heart2HeartOptions
         heart2Heart={props.heart2Heart}
       />
