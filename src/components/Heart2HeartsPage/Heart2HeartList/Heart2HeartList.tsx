@@ -75,7 +75,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
           />
           {props.characterName && `Heart 2 hearts in which ${props.characterName} participates:`}
           <div className='data-table'>
-            <div className="row">
+            <div className="row table-header">
               <b className="column-narrow order-title">Viewed</b>
               <b className="column-unrestricted order-title-available">Available</b>
               <b className="column-wide order-title">Location</b>

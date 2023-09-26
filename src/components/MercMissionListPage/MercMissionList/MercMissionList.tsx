@@ -1,20 +1,30 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
+import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import OrderBy from 'components/CommonComponents/OrderBy';
+import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { sortFunction } from 'helpers';
 import { IMercMission, IStoryProgress } from 'interfaces'
+import { RequirementArea } from 'interfaces/common';
 import path from 'path';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
+
+interface IDispatchProps {
+  setStoryProgress:(payload:IStoryProgress) => void;
+  updateDevelopmentLevel: (payload:IUpdateDevelopmentLevel) => void;
+}
 
 interface IOwnProps {
   location: string;
-  mercMissions: IMercMission[],
-  storyProgress: IStoryProgress,
+  mercMissions: IMercMission[];
+  storyProgress: React.MutableRefObject<IStoryProgress>;
+  updatedLocDevLevel: React.MutableRefObject<IUpdateDevelopmentLevel[]>;
   updateMMStatus: (mmId: number, completed: boolean) => void;
 }
 
-export const MercMissionListView = (props: IOwnProps) => {
+export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
   // TO DO : import prerequisites data (for all)
   // TO DO : design a panel for showing prerequisites for all data types
   const [orderType, setOrderType] = useState('default');
@@ -96,7 +106,7 @@ export const MercMissionListView = (props: IOwnProps) => {
                 >
                   {mm.Type}
                 </div>
-                {!props.storyProgress.OnlyShowAvailable || mm.Available ?
+                {!props.storyProgress.current.OnlyShowAvailable || mm.Available ?
                   <Link
                     className="text-list-link"
                     to={`/mercMission/${mm.id}`}
@@ -104,6 +114,37 @@ export const MercMissionListView = (props: IOwnProps) => {
                     {mm.Name}
                   </Link>
                   : <div className='text-list-link'>????</div>
+                }
+                {
+                  mm.Prerequisites &&
+                    <HoverContainer>
+                      <RequirementList
+                        requirements={mm.Prerequisites}
+                        updateReqProgress={(id, progress, area) => {
+                          if (area === RequirementArea['Merc Level']) {
+                            props.setStoryProgress({
+                              ...props.storyProgress.current,
+                              MercLevel: progress
+                            });
+                            props.storyProgress.current = {
+                              ...props.storyProgress.current,
+                              MercLevel: progress
+                            };
+                          }
+
+                          else if (area === RequirementArea['Nation Dev Level']) {
+                            props.updateDevelopmentLevel({
+                              id,
+                              level: progress
+                            })
+                            props.updatedLocDevLevel.current = props.updatedLocDevLevel.current
+                              .filter((loc) => loc.id !== id)
+                              .concat({ id, level: progress })
+                              .sort((idA, idB) => idA.id < idB.id ? -1 : 1)
+                          }
+                        }}
+                      />
+                    </HoverContainer>
                 }
               </div>
             )}

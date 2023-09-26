@@ -12,7 +12,15 @@ const loaderState = createReducer<string[], string>(
   [CoreActions.ResetLoader, () => []]
 )([]);
 const storyProgress = createReducer<IStoryProgress>(
-  [CoreActions.SetStoryProgress, (_:IStoryProgress, storyProgress: IStoryProgress) => storyProgress]
+  [CoreActions.SetStoryProgress, (_:IStoryProgress, storyProgress: IStoryProgress) => {
+    if (storyProgress.Chapter < 4) {
+      return {
+        ...storyProgress,
+        MercLevel: 1
+      }
+    }
+    return storyProgress;
+  }]
 )(defaultStoryProgress);
 const selected = createReducer<ISelectedState>(
   [CoreActions.SetSelected, (_:ISelectedState, selected: ISelectedState) => selected],

@@ -14,7 +14,6 @@ import UnavailableImagePanel
 import { FieldSkills } from './FieldSkills';
 
 interface IDispatchProps {
-  saveStoryProgress: (payload:IStoryProgress) => void;
   showLoader: (payload:string) => void;
   hideLoader: (payload:string) => void;
   updateShowBlade: (payload:IUpdateShow) => void;

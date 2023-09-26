@@ -18,8 +18,8 @@ export const SettingsFormView = (props: IProps & IDispatchProps) => {
     props.setStoryProgress({...props.storyProgress, [settingKey]: value})
   }
 
-  const updateValue = (value:number) => {
-    props.setStoryProgress({...props.storyProgress, Chapter: value})
+  const updateValue = (type: string, value:number) => {
+    props.setStoryProgress({...props.storyProgress, [type]: value})
   }
 
   const saveChanges = () => {
@@ -48,9 +48,32 @@ export const SettingsFormView = (props: IProps & IDispatchProps) => {
           selectedNumber={props.storyProgress ? props.storyProgress.Chapter : 1}
           lowestNumber={1}
           topNumber={10}
-          onClick={updateValue.bind(this)}
+          onClick={updateValue.bind(this, 'Chapter')}
         />
       </div>
+      {props.storyProgress?.Chapter >= 4
+      || props.storyProgress.OnlyShowAvailable === false ?
+        <div className="row progress-update-row">
+          <div className='col-sm-5'>
+            <p>Mercenary Group Level:</p>
+          </div>
+          <NumberSlider 
+            selectedNumber={props.storyProgress ? props.storyProgress.MercLevel : 1}
+            lowestNumber={1}
+            topNumber={5}
+            onClick={updateValue.bind(this, 'MercLevel')}
+            disabled={props.storyProgress?.Chapter < 4}
+          />
+        </div>
+        :
+        <div className="row progress-update-row">
+          <div className='col-sm-5'>
+            ?????
+            <br/>
+            <br/>
+          </div>
+        </div>
+      }
 
       <div className="row progress-update-row">
         <div className='col-sm-5'>

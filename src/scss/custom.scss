@@ -176,6 +176,10 @@ select{
 
 .not-unlocked-character {
     filter: grayscale(100%);
+
+    &:hover {
+        cursor: not-allowed !important;
+    }
 }
 
 .fit-contents {
@@ -370,14 +374,28 @@ select{
 // ------------- text list -------------
 
 .data-table {
-    width: fit-content;
-    margin-left: 10px;
+    width: auto;
+    margin: 0px 10px;
+}
+
+.table-header {
+    min-width: 625px;
+}
+
+.monster-table {
+    min-width: 670px;
+}
+
+.monster-drops-table {
+    max-width: 850px;
+    min-width: 775px;
 }
 
 .table-outline {
     border: solid medium var(--secondary-color);
     border-radius: 5px;
     margin-top: 5px;
+    min-width: 625px;
 }
 
 .text-list-entry {
@@ -727,6 +745,10 @@ img.increment-decrement-button {
     background-color: var(--main-color);
     border-radius: 50%;
     padding: 3px;
+
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .setting-row {
@@ -930,10 +952,12 @@ img.increment-decrement-button {
     color: var(--main-color);
     padding: 0px 20px;
     text-align: center;
+    min-width: 830px;
 }
 
 .field-skills {
     text-align: center;
+    min-width: 800px;
 }
 
 // ------------- heart 2 heart -------------
@@ -962,6 +986,10 @@ img.increment-decrement-button {
 }
 
 // ------------- quest components -------------
+.quest-table {
+    min-width: 750px;
+}
+
 .questStep {
     margin: 15px 10px;
     border: medium solid var(--main-color);

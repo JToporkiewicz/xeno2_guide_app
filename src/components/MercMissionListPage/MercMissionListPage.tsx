@@ -3,7 +3,8 @@ import { IMercMission, IStoryProgress } from 'interfaces'
 import { useEffect, useRef } from 'react'
 import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission'
 import { IMajorLocations, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
-import { MercMissionListView } from './MercMissionList/MercMissionList'
+import { MercMissionList } from './MercMissionList'
+import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations'
 
 interface IProps {
   mercMissions: IMercMission[],
@@ -15,10 +16,29 @@ interface IDispatchProps {
   updateMercMissionStatus: (input:IUpdateMMStatus) => void;
   saveMercMissionStatus: (input:IUpdateUnlocked) => void;
   fetchAllMercMissions: () => void;
+  saveStoryProgress: (input:IStoryProgress) => void;
+  saveDevelopmentLevel: (payload:IUpdateDevelopmentLevel) => void;
 }
 
 export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
   const toUpdate = useRef([] as IUpdateMMStatus[]);
+  
+  const updatedProgress = useRef(props.storyProgress as IStoryProgress);
+  const updatedLocDevLevel = useRef([] as IUpdateDevelopmentLevel[])
+
+  useEffect(() => {
+    return () => {
+      if (updatedProgress.current !== props.storyProgress) {
+        props.saveStoryProgress(updatedProgress.current)
+      }
+      if (updatedLocDevLevel.current.length !== 0) {
+        updatedLocDevLevel.current.forEach((loc) =>
+          props.saveDevelopmentLevel(loc)
+        )
+      }
+    }
+  }, [])
+
 
   useEffect(() => {
     return () => {
@@ -47,79 +67,87 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
   return <>
     <HeaderContainer title="Merc Missions" refreshData={props.fetchAllMercMissions} />
     <>
-      <MercMissionListView
+      <MercMissionList
         location='Argentum Trade Guild'
         mercMissions={props.mercMissions.filter((mm) =>
           mm.MissionNation === 'Argentum Trade Guild')}
-        storyProgress={props.storyProgress}
+        storyProgress={updatedProgress}
+        updatedLocDevLevel={updatedLocDevLevel}
         updateMMStatus={updateMMStatus}
       />
       {((props.locations.find((loc) => loc.Name === 'Gormott Province')?.StoryProgress || 10) <=
             props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable) &&
-            <MercMissionListView
+            <MercMissionList
               location='Gormott Province'
               mercMissions={props.mercMissions.filter((mm) =>
                 mm.MissionNation === 'Gormott Province')}
-              storyProgress={props.storyProgress}
+              storyProgress={updatedProgress}
+              updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
             />
       }
       {((props.locations.find((loc) => loc.Name === 'Kingdom of Uraya')?.StoryProgress || 10) <=
             props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable) &&
-            <MercMissionListView
+            <MercMissionList
               location='Kingdom of Uraya'
               mercMissions={props.mercMissions.filter((mm) =>
                 mm.MissionNation === 'Kingdom of Uraya')}
-              storyProgress={props.storyProgress}
+              storyProgress={updatedProgress}
+              updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
             />
       }
       {((props.locations.find((loc) =>
         loc.Name === 'Empire of Mor Ardain')?.StoryProgress || 10) <=
             props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable) &&
-            <MercMissionListView
+            <MercMissionList
               location='Empire of Mor Ardain'
               mercMissions={props.mercMissions.filter((mm) =>
                 mm.MissionNation === 'Empire of Mor Ardain')}
-              storyProgress={props.storyProgress}
+              storyProgress={updatedProgress}
+              updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
             />
       }
       {((props.locations.find((loc) =>
         loc.Name === 'Leftherian Archipelago')?.StoryProgress || 10) <=
             props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable) &&
-            <MercMissionListView
+            <MercMissionList
               location='Leftherian Archipelago'
               mercMissions={props.mercMissions.filter((mm) =>
                 mm.MissionNation === 'Leftherian Archipelago')}
-              storyProgress={props.storyProgress}
+              storyProgress={updatedProgress}
+              updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
             />
       }
       {((props.locations.find((loc) =>
         loc.Name === 'Indoline Praetorium')?.StoryProgress || 10) <=
             props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable) &&
-            <MercMissionListView
+            <MercMissionList
               location='Indoline Praetorium'
               mercMissions={props.mercMissions.filter((mm) =>
                 mm.MissionNation === 'Indoline Praetorium')}
-              storyProgress={props.storyProgress}
+              storyProgress={updatedProgress}
+              updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
             />
       }
       {(props.locations.find((loc) =>
         loc.Name === 'Kingdom of Tental')?.StoryProgress || 10) <=
             props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable ?
-        <MercMissionListView
+        <MercMissionList
           location='Kingdom of Tental'
           mercMissions={props.mercMissions.filter((mm) =>
             mm.MissionNation === 'Kingdom of Tental')}
-          storyProgress={props.storyProgress}
+          storyProgress={updatedProgress}
+          updatedLocDevLevel={updatedLocDevLevel}
           updateMMStatus={updateMMStatus}
-        /> : <MercMissionListView
+        /> : <MercMissionList
           location='Unknown'
           mercMissions={[]}
-          storyProgress={props.storyProgress}
+          storyProgress={updatedProgress}
+          updatedLocDevLevel={updatedLocDevLevel}
           updateMMStatus={updateMMStatus}
         />
       }

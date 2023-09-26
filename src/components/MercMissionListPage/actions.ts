@@ -1,3 +1,5 @@
+import { saveStoryProgress } from 'reduxState/actions/core';
+import { saveDevelopmentLevel } from 'reduxState/actions/locations';
 import {
   updateMercMissionStatus,
   saveMercMissionStatus,
@@ -7,5 +9,7 @@ import {
 export default {
   updateMercMissionStatus,
   saveMercMissionStatus,
-  fetchAllMercMissions
+  fetchAllMercMissions,
+  saveStoryProgress,
+  saveDevelopmentLevel
 };

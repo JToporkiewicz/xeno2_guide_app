@@ -26,8 +26,7 @@ module.exports = (sequelize, Sequelize) => {
     StoryProgress: { type: Sequelize.INTEGER },
     DLCUnlocked: { type: Sequelize.BOOLEAN },
     OtherPrerequisiteTitle: { type: Sequelize.TEXT },
-    OtherPrerequisiteDetails: { type: Sequelize.TEXT },
-    Progress: { type: Sequelize.TEXT }
+    OtherPrerequisiteDetails: { type: Sequelize.TEXT }
   },
   {timestamps: false, createdAt: false, updatedAt: false}
   );

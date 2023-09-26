@@ -5,7 +5,8 @@ module.exports = (sequelize, Sequelize) => {
     NewGamePlus: { type: Sequelize.BOOLEAN },
     TimeOfDay: { type: Sequelize.TIME },
     AreaWeather: { type: Sequelize.TEXT },
-    DLCUnlocked: { type: Sequelize.BOOLEAN }
+    DLCUnlocked: { type: Sequelize.BOOLEAN },
+    MercLevel: { type: Sequelize.INTEGER }
   },
   {timestamps: false, createdAt: false, updatedAt: false}
   );

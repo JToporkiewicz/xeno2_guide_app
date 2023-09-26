@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface IProps {
   lowestNumber: number,
@@ -10,6 +10,10 @@ interface IProps {
 
 export const NumberSlider = (props:IProps) => {
   const [hoverNumber, setHoverNumber] = useState(props.selectedNumber)
+
+  useEffect(() => {
+    setHoverNumber(props.selectedNumber)
+  }, [props.selectedNumber])
 
   return <div className={`row number-slider ${props.disabled ? 'disabled' : ''}`}>
     <b>{props.lowestNumber}</b>

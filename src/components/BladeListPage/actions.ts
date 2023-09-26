@@ -1,5 +1,4 @@
 import {
-  saveStoryProgress,
   showLoader,
   hideLoader
 } from 'reduxState/actions/core';
@@ -12,7 +11,6 @@ import {
 import { fetchFieldSkills } from 'reduxState/actions/fieldSkills';
 
 export default {
-  saveStoryProgress,
   showLoader,
   hideLoader,
   updateShowBlade,

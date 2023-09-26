@@ -45,7 +45,7 @@ export const MonsterListView = (props: IOwnProps) => {
           changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
         />
         <div className='data-table'>
-          <div className='row'>
+          <div className='row table-header'>
             {props.monsterCategory === 'Unique' ?
               <b className='column-narrow order-title'>Beaten</b>
               : <b className='available-column column-unrestricted order-title-available'>
@@ -58,7 +58,7 @@ export const MonsterListView = (props: IOwnProps) => {
             <b className="column-medium order-title">Location</b>
             <b className="column-unrestricted order-title">Name</b>
           </div>
-          <div className='table-outline'>
+          <div className='table-outline monster-table'>
             {props.monsters.sort((monA, monB) => {
               const monAValue = monA[getOrderTypeColumn(orderType)]
               const monBValue = monB[getOrderTypeColumn(orderType)]

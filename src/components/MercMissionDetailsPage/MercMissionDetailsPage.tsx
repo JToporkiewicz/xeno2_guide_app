@@ -2,24 +2,47 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox'
 import { RequirementList } from 'components/CommonComponents/RequirementList'
-import { IMercMission } from 'interfaces'
+import { IMercMission, IStoryProgress } from 'interfaces'
+import { RequirementArea } from 'interfaces/common'
 import path from 'path'
 import { useEffect, useRef } from 'react'
+import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations'
 import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission'
 import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 
 interface IProps {
-  mercMission: IMercMission
+  mercMission: IMercMission;
+  storyProgress: IStoryProgress;
 }
 
 interface IDispatchProps {
   updateMercMissionStatus: (input:IUpdateMMStatus) => void;
   saveMercMissionStatus: (input:IUpdateUnlocked) => void;
   fetchMercMission: (input: string) => void;
+  setStoryProgress:(payload:IStoryProgress) => void;
+  updateDevelopmentLevel: (payload:IUpdateDevelopmentLevel) => void;
+  saveStoryProgress: (input:IStoryProgress) => void;
+  saveDevelopmentLevel: (payload:IUpdateDevelopmentLevel) => void;
 }
 
 export const MercMissionDetailsPageView = (props:IProps & IDispatchProps) => {
   const mmToUpdate = useRef(undefined as IMercMission | undefined);
+  const updatedLocDevLevel = useRef([] as IUpdateDevelopmentLevel[])
+  const updatedProgress = useRef(props.storyProgress as IStoryProgress);
+
+  useEffect(() => {
+    return () => {
+      if (updatedProgress.current !== props.storyProgress) {
+        props.saveStoryProgress(updatedProgress.current)
+      }
+      if (updatedLocDevLevel.current.length !== 0) {
+        updatedLocDevLevel.current.forEach((loc) =>
+          props.saveDevelopmentLevel(loc)
+        )
+      }
+    }
+  }, [])
+
 
   const updateMMCompleted = () => {
     if(props.mercMission) {
@@ -103,6 +126,36 @@ export const MercMissionDetailsPageView = (props:IProps & IDispatchProps) => {
         </div>
       </div>
     </CollapsibleComponent>
+    {props.mercMission.Prerequisites ?
+      <CollapsibleComponent header='Prerequisites'>
+        <RequirementList
+          requirements={props.mercMission.Prerequisites}
+          updateReqProgress={(id, progress, area) => {
+            if (area === RequirementArea['Merc Level']) {
+              props.setStoryProgress({
+                ...updatedProgress.current,
+                MercLevel: progress
+              });
+              updatedProgress.current = {
+                ...updatedProgress.current,
+                MercLevel: progress
+              };
+            }
+
+            else if (area === RequirementArea['Nation Dev Level']) {
+              props.updateDevelopmentLevel({
+                id,
+                level: progress
+              })
+              updatedLocDevLevel.current = updatedLocDevLevel.current
+                .filter((loc) => loc.id !== id)
+                .concat({ id, level: progress })
+                .sort((idA, idB) => idA.id < idB.id ? -1 : 1)
+            }
+          }}
+        />
+      </CollapsibleComponent> : ''
+    }
     <CollapsibleComponent header='Requirements'>
       <RequirementList requirements={props.mercMission.Requirements} />
     </CollapsibleComponent>

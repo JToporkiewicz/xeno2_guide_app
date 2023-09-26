@@ -114,13 +114,13 @@ export const MonsterDetailsPageView = (props:IProps & IDispatchProps) => {
     </CollapsibleComponent>
     <CollapsibleComponent header='Drops'>
       <div className='data-table'>
-        <div className='row'>
+        <div className='row monster-drops-table'>
           <b className='column-wide order-title'>Name</b>
           <b className='column-medium order-title'>Type</b>
           <b className='column-medium order-title'>Drop rate</b>
           <b className='column-wide order-title'>Rarity</b>
         </div>
-        <div className='table-outline'>
+        <div className='table-outline monster-drops-table'>
           {monster.Drops.map((drop: IMonsterDrops, id: number) =>
             <div className="row text-list-entry" key={id}>
               <div className='column-wide text-list-status'>

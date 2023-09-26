@@ -1,14 +1,21 @@
 import { IRequirement, RequirementArea } from 'interfaces/common'
 import path from 'path'
 import { Link } from 'react-router-dom'
-import IncrementDecrementNumber from './FormComponents/IncrementDecrementNumber'
+import IncrementDecrementNumber from '../FormComponents/IncrementDecrementNumber'
+import { IStoryProgress } from 'interfaces'
+import { IMajorLocations } from 'reduxState/interfaces/reduxState'
 
-interface IProps {
-    requirements: IRequirement[],
-    updateReqProgress?: (index: number, progress: number) => void
+interface IOwnProps {
+  requirements: IRequirement[],
+  updateReqProgress?: (index: number, progress: number, area?: string) => void
 }
 
-export const RequirementList = (props: IProps) => {
+interface IProps {
+  storyProgress: IStoryProgress,
+  locations: IMajorLocations[]
+}
+
+export const RequirementListComponent = (props: IProps & IOwnProps) => {
 
   const mapArea = (req: IRequirement) => {
     switch (req.area) {
@@ -78,30 +85,52 @@ export const RequirementList = (props: IProps) => {
       return <div className='col-sm-6'>
         {req.area}
       </div>
+    case RequirementArea['Nation Dev Level']:
+      const reqText = req.requirement.split(':')
+      return <div className='col-sm-6'>
+        <b>{reqText[0]}</b>: {reqText[1]}
+      </div>
     default:
       return <div className='col-sm-6'>
         <b>{req.area}</b>: {req.requirement}
       </div>
     }
   }
+
+  const getDisabledStatus = (req: IRequirement) => {
+    if ([String(RequirementArea['Nation Dev Level'])].includes(req.area)) {
+      const reqText = req.requirement.split(':')
+      const area = props.locations.find((loc) => loc.Name === reqText[0])
+      if (area !== undefined) {
+        return area.StoryProgress > props.storyProgress.Chapter
+      }
+    } else if (req.available !== undefined) {
+      return !req.available
+    }
+    return false
+  }
+
   return (
     <ul>
-      {props.requirements.length > 0 ? props.requirements.map((req) =>
-        <li>
+      {props.requirements.length > 0 ? props.requirements.map((req, index) =>
+        <li key={'req'+index}>
           <div className='row'>
             {mapArea(req)}
             {req.progress !== undefined ?
               <div className='col-sm-6'>
                 <div className='row'>
+                  <div className='col-sm-3'>
                   Progress:
-                  <div className='spaced-increment'>
+                  </div>
+                  <div className='col-sm-9 spaced-increment'>
                     <IncrementDecrementNumber
-                      disabled={req.available !== undefined ? !req.available : false}
-                      minimum={0}
+                      disabled={getDisabledStatus(req)}
+                      minimum={[String(RequirementArea['Merc Level'])]
+                        .includes(req.area) ? 1 : 0}
                       maximum={req.requirementCount}
                       value={req.progress}
                       updateValue={(progress) => props.updateReqProgress ?
-                        props.updateReqProgress(req.id || 0, progress) : undefined}
+                        props.updateReqProgress(req.id || 0, progress, req.area) : undefined}
                     />
                   </div>
                 </div>

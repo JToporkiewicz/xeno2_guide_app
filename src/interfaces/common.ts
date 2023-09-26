@@ -18,6 +18,8 @@ export enum RequirementArea {
   Monster = 'Monster',
   'Monster Type' = 'Monster Type',
   Location = 'Location',
+  'Nation Dev Level' = 'Nation Dev Level',
+  'Merc Level' = 'Merc Level',
   Other = 'Other'
 }
 

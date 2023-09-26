@@ -44,7 +44,7 @@ export const SideQuestsList = (props: IOwnProps) => {
           sortOrderAsc={sortOrderAsc}
           changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
         />
-        <div className='data-table'>
+        <div className='data-table table-header'>
           <div className="row">
             <b className="column-narrow order-title">Status</b>
             <b className="column-unrestricted order-title-available">Available</b>
@@ -52,7 +52,7 @@ export const SideQuestsList = (props: IOwnProps) => {
             <b className="column-wide order-title">Location</b>
             <b className="column-unrestricted order-title">Title</b>
           </div>
-          <div className='table-outline'>
+          <div className='table-outline quest-table'>
             {props.quests.sort((h2hA, h2hB) => {
               const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
               const h2hBValue = h2hB[getOrderTypeColumn(orderType)]

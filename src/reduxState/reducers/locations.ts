@@ -1,8 +1,9 @@
-import { ILocations, IMajorAreas } from 'interfaces';
+import { ILocations, IMajorAreas, IStoryProgress } from 'interfaces';
 import createReducer from 'redux-action-reducer';
 import { LocationActions } from 'reduxState/actions/locations';
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
 import { IInnerMajorArea, ILocationState, IMajorLocations } from '../interfaces/reduxState';
+import { CoreActions } from 'reduxState/actions/core';
 
 export const locationsReducer = createReducer<IMajorLocations[]>(
   [LocationActions.SetMajorAreas, (state:IMajorLocations[], majorAreas: IMajorAreas[]) => {
@@ -95,6 +96,19 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
           ...updateArea,
           DevelopmentLevel: update.level
         })
+        .sort((areaA, areaB) => areaA.id < areaB.id ? -1 : 1);
+    }],
+  [CoreActions.SetStoryProgress,
+    (state:IMajorLocations[], progress:IStoryProgress) => {
+      return state.map((area) => {
+        if (area.StoryProgress > progress.Chapter) {
+          return {
+            ...area,
+            DevelopmentLevel: 0
+          }
+        }
+        return area
+      })
         .sort((areaA, areaB) => areaA.id < areaB.id ? -1 : 1);
     }]
 )([]);

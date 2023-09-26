@@ -5,7 +5,8 @@ export interface IStoryProgress {
   NewGamePlus:boolean,
   TimeOfDay:Date,
   AreaWeather:string,
-  DLCUnlocked:boolean
+  DLCUnlocked:boolean,
+  MercLevel:number
 }
 
 export const defaultStoryProgress = {
@@ -15,5 +16,6 @@ export const defaultStoryProgress = {
   NewGamePlus: false,
   TimeOfDay: new Date(),
   AreaWeather: 'Fair',
-  DLCUnlocked: false
+  DLCUnlocked: false,
+  MercLevel: 1
 }

@@ -1,22 +1,5 @@
 import { IRequirement } from './common'
 
-export interface IPrerequisitesMM {
-  id:number,
-  RequiredBy:number,
-  Nation:number,
-  LocationDevLevel:number,
-  MercLevel:number,
-  BladeUnlocked:number,
-  Quest:number,
-  QuestStatus:string,
-  MercMissionCompleted:number,
-  StoryProgress:number,
-  DLCUnlocked:boolean,
-  OtherPrerequisiteTitle:string,
-  OtherPrerequisiteDetails:string,
-  Progress:string
-}
-
 export interface IMercMission {
   id:number,
   Name:string,
@@ -28,5 +11,6 @@ export interface IMercMission {
   Missable:boolean,
   Completed:boolean,
   Available:boolean
-  Requirements: IRequirement[]
+  Requirements: IRequirement[],
+  Prerequisites?: IRequirement[]
 }
