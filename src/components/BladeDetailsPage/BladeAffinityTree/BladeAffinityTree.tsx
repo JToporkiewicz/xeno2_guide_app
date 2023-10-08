@@ -90,7 +90,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
           </div>
         }))}
         updateNode={unlockNode.bind(this, selectedBranch)}
-        minOneNode={selectedBranch === 0}
+        firstaAlwaysUnlocked={selectedDetails?.nodes[0].preReqs === undefined}
         onMouseEnter={setSelectedNode}
       />
     </>

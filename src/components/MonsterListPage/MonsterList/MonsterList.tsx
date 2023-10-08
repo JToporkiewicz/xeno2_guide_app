@@ -1,7 +1,7 @@
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import OrderBy from 'components/CommonComponents/OrderBy';
-import { sortFunction } from 'helpers';
+import { separateMajorArea, sortFunction } from 'helpers';
 import { IMonster, IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
@@ -108,7 +108,7 @@ export const MonsterListView = (props: IOwnProps) => {
                   className="column-medium text-list-status"
                 >
                   {!props.storyProgress.OnlyShowAvailable || mon.Available ?
-                    mon.Area.split(' -> ')[0].replace('(', '') : '????'}
+                    separateMajorArea(mon.Area) : '????'}
                 </div>
                 {!props.storyProgress.OnlyShowAvailable || mon.Available ?
                   <Link

@@ -3,7 +3,7 @@ import { HoverContainer } from 'components/CommonComponents/Containers/HoverCont
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
-import { sortFunction } from 'helpers';
+import { separateMajorArea, sortFunction } from 'helpers';
 import { IQuest, IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
@@ -104,7 +104,7 @@ export const SideQuestsList = (props: IOwnProps) => {
                   className="column-wide text-list-status"
                 >
                   {!props.storyProgress.OnlyShowAvailable || quest.Available ?
-                    quest.Area.split(' -> ')[0].replace('(', '') : '????'}
+                    separateMajorArea(quest.Area) : '????'}
                 </div>
                 {
                   props.storyProgress.OnlyShowAvailable && !quest.Available ?

@@ -1,5 +1,6 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import { NumberSlider } from 'components/CommonComponents/FormComponents/NumberSlider';
+import { useEffect, useRef } from 'react';
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
 import { IMajorLocations } from 'reduxState/interfaces/reduxState'
 
@@ -15,12 +16,29 @@ interface IProps {
 }
 
 export const DevelopmentLevelView = (props: IProps & IDispatchProps) => {
+  const saved = useRef(false);
+  const locationsHistory = useRef(props.locations)
+
   const updateLevel = (id:number, level:number) => {
+    saved.current = false
     props.updateDevelopmentLevel({
       id,
       level
     })
-  } 
+  }
+
+  useEffect(() => {
+    return () => {
+      if (!saved.current) {
+        locationsHistory.current.filter((area) => area.DevelopmentLevel !== -1)
+          .map((area) => props.updateDevelopmentLevel({
+            id: area.id,
+            level: area.DevelopmentLevel
+          }))
+      }
+    }
+  }, [])
+
   return <>
     <CollapsibleComponent header="Development Level">
       <>
@@ -51,6 +69,8 @@ export const DevelopmentLevelView = (props: IProps & IDispatchProps) => {
                 id: area.id,
                 level: area.DevelopmentLevel
               }))
+            saved.current = true
+            locationsHistory.current = props.locations
           }}
         >
           Update Development Level

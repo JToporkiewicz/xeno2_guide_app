@@ -10,6 +10,8 @@ import {
   getStoryProgress
 } from 'reduxState/selectors';
 import { IProgressList } from './ProgressStatus';
+import { getACCompletion, getDACompletion, getDSCompletion } from 'helpers/completionPercentage';
+import { separateMajorArea } from 'helpers';
 
 export default createSelector(
   getStoryProgress,
@@ -24,30 +26,27 @@ export default createSelector(
     driverArts: drivers.reduce((arts: IProgressList, driver) => {
       const showDriver = driver.chapterUnlocked <= progress.Chapter
         || !progress.OnlyShowAvailable;
+      const artCompletion = getDACompletion(driver.arts)
       return {
         ...arts,
         [showDriver ? driver.name : 'Unavailable Drivers']: {
-          total: driver.arts.length * 6 + (!showDriver && arts['Unavailable Drivers'] ?
+          total: artCompletion.total + (!showDriver && arts['Unavailable Drivers'] ?
             arts['Unavailable Drivers']?.total : 0),
-          unlocked: driver.arts.reduce((artTotal, art) => artTotal + art.levelUnlocked, 0)
-            + (!showDriver && arts['Unavailable Drivers'] ?
-              arts['Unavailable Drivers']?.unlocked : 0)
+          unlocked: artCompletion.unlocked + (!showDriver && arts['Unavailable Drivers'] ?
+            arts['Unavailable Drivers']?.unlocked : 0)
         }
       }}, {}),
     driverSkills: drivers.reduce((skills: IProgressList, driver) => {
       const showDriver: boolean = driver.chapterUnlocked <= progress.Chapter
         || !progress.OnlyShowAvailable;
+      const skillTreeCompletion = getDSCompletion(driver.skillTree)
       return {
         ...skills,
         [showDriver ? driver.name : 'Unavailable Drivers']: {
-          total: driver.skillTree.tier1.length
-            + driver.skillTree.tier2.length
-            + driver.skillTree.tier3.length
+          total: skillTreeCompletion.total
             + (!showDriver && skills['Unavailable Drivers'] ?
               skills['Unavailable Drivers']?.total : 0),
-          unlocked: driver.skillTree.tier1.filter((node) => node.unlocked).length
-            + driver.skillTree.tier2.filter((node) => node.unlocked).length
-            + driver.skillTree.tier3.filter((node) => node.unlocked).length
+          unlocked: skillTreeCompletion.unlocked
             + (!showDriver && skills['Unavailable Drivers'] ?
               skills['Unavailable Drivers']?.unlocked : 0)
         }
@@ -56,17 +55,14 @@ export default createSelector(
       drivers.reduce((skills: IProgressList, driver) => {
         const showDriver = driver.chapterUnlocked <= progress.Chapter
           || !progress.OnlyShowAvailable;
+        const hiddenTreeCompletion = getDSCompletion(driver.hiddenSkillTree)
         return {
           ...skills,
           [showDriver ? driver.name : 'Unavailable Drivers']: {
-            total: driver.hiddenSkillTree.tier1.length
-              + driver.hiddenSkillTree.tier2.length
-              + driver.hiddenSkillTree.tier3.length
+            total: hiddenTreeCompletion.total
               + (!showDriver && skills['Unavailable Drivers'] ?
                 skills['Unavailable Drivers']?.total : 0),
-            unlocked: driver.hiddenSkillTree.tier1.filter((node) => node.unlocked).length
-              + driver.hiddenSkillTree.tier2.filter((node) => node.unlocked).length
-              + driver.hiddenSkillTree.tier3.filter((node) => node.unlocked).length
+            unlocked: hiddenTreeCompletion.unlocked
               + (!showDriver && skills['Unavailable Drivers'] ?
                 skills['Unavailable Drivers']?.unlocked : 0)
           }
@@ -80,16 +76,14 @@ export default createSelector(
     },
     bladeAffinitySkills: blades.reduce((arts: IProgressList, blade) => {
       const showBlade = blade.available || !progress.OnlyShowAvailable;
+      const acCompletion = getACCompletion(blade.affinityChart)
       return {
         ...arts,
         [showBlade ? blade.name : 'Unavailable Blades']: {
-          total: blade.affinityChart
-            .reduce((branchTotal, branch) => branch.nodes.length + branchTotal, 0)
+          total: acCompletion.total
               + (!showBlade && arts['Unavailable Blades'] ?
                 arts['Unavailable Blades']?.total : 0),
-          unlocked: blade.affinityChart
-            .reduce((branchTotal, branch) => branch.nodes
-              .filter((node) => node.unlocked).length + branchTotal, 0)
+          unlocked: acCompletion.unlocked
               + (!showBlade && arts['Unavailable Blades'] ?
                 arts['Unavailable Blades']?.unlocked : 0)
         }
@@ -102,7 +96,7 @@ export default createSelector(
       }
     }), {}),
     h2hUnlocked: heart2Hearts.reduce((types: IProgressList, h2h) => {
-      const h2hArea = h2h.Area.split(' -> ')[0].replace('(', '');
+      const h2hArea = separateMajorArea(h2h.Area);
       const showH2h = !progress.OnlyShowAvailable || h2h.Available &&
         (locations.find((loc) => loc.Name === h2hArea)?.StoryProgress || 10) <=
         progress.Chapter
@@ -132,7 +126,7 @@ export default createSelector(
         return types;
       }
 
-      const monArea = mon.Area.split(' -> ')[0].replace('(', '');
+      const monArea = separateMajorArea(mon.Area);
       const showH2h = !progress.OnlyShowAvailable || mon.Available &&
         (locations.find((loc) => loc.Name === monArea)?.StoryProgress || 10) <=
         progress.Chapter

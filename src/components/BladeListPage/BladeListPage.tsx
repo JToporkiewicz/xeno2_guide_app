@@ -12,6 +12,7 @@ import { ClosedLinkedImagePanel }
 import UnavailableImagePanel
   from 'components/UnavailableDataComponents/Images/UnavailableImagePanel';
 import { FieldSkills } from './FieldSkills';
+import { getACCompletion } from 'helpers/completionPercentage';
 
 interface IDispatchProps {
   showLoader: (payload:string) => void;
@@ -82,12 +83,9 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             return sortFunction(bladeAValue, bladeBValue, sortOrderAsc)
           })
           .reduce((bladeList, blade) => {
-            const progress = Math.round(blade.affinityChart
-              .reduce((skillsTotal, branch) =>
-                skillsTotal +
-                  branch.nodes.filter((node) => node.unlocked).length, 0)
-                    / blade.affinityChart.reduce((skillsTotal, branch) =>
-                      skillsTotal + branch.nodes.length, 0) * 10000) / 100
+            const acCompletion = getACCompletion(blade.affinityChart)
+            const progress = Math.round(acCompletion.unlocked
+                    / acCompletion.total * 10000) / 100
             const group = blade[getOrderTypeColumn(orderType)];
             const groupName = orderType === 'availability' && typeof group === 'boolean' ?
               group ? 'Available' : 'Unavailable' : String(group);
@@ -146,11 +144,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             availability={`Available: ${selectedBlade.available ? 'Yes' : 'No'}`}
             list={[{
               label: 'Skills: ',
-              unlocked: selectedBlade.affinityChart
-                .reduce((skillsTotal, branch) =>
-                  skillsTotal + branch.nodes.filter((node) => node.unlocked).length, 0),
-              total: selectedBlade.affinityChart.reduce((skillsTotal, branch) =>
-                skillsTotal + branch.nodes.length, 0)
+              ...getACCompletion(selectedBlade.affinityChart)
             }]}
             onClose={setSelectedBlade.bind(this, defaultBladeState)}
             unlockButton

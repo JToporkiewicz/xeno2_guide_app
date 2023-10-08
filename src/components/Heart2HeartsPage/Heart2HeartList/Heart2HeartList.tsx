@@ -1,4 +1,4 @@
-import { sortFunction } from 'helpers';
+import { separateMajorArea, separateMinorArea, sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
@@ -127,8 +127,8 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                   >
                     {!props.storyProgress.OnlyShowAvailable || h2h.Available ?
                       props.location === undefined ?
-                        h2h.Area.split(' -> ')[0].replace('(', '') : 
-                        h2h.Area.split(' -> ')[1].replace(')', '') 
+                        separateMajorArea(h2h.Area) : 
+                        separateMinorArea(h2h.Area) 
                       : '????'}
                   </div>
                   {

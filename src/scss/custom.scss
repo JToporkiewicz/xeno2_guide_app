@@ -176,6 +176,10 @@ select{
 
 .not-unlocked-character {
     filter: grayscale(100%);
+}
+
+.not-unlocked {
+    filter: grayscale(100%);
 
     &:hover {
         cursor: not-allowed !important;

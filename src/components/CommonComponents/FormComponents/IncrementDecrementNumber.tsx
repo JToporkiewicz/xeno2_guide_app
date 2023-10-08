@@ -15,7 +15,7 @@ const IncrementDecrementNumber = (props:IProps) => {
           src={path.resolve('images/helper/FormMinus.svg')}
           alt="-"
           className={`increment-decrement-button${props.disabled ?
-            ' not-unlocked-character' : ''}`}
+            ' not-unlocked' : ''}`}
           onClick={() => !props.disabled && props.updateValue(props.value - 1)}/>
         : <span className="increment-decrement-button" />}
 
@@ -39,7 +39,7 @@ const IncrementDecrementNumber = (props:IProps) => {
           src={path.resolve('images/helper/FormPlus.svg')}
           alt="+"
           className={`increment-decrement-button${props.disabled ?
-            ' not-unlocked-character' : ''}`}
+            ' not-unlocked' : ''}`}
           onClick={() => !props.disabled && props.updateValue(props.value + 1)}/>
         : <span className="increment-decrement-button" />}
     </div>

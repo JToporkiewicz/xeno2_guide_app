@@ -7,3 +7,7 @@ export const sortFunction = (valueA:any, valueB:any, isAscending:boolean) => {
   }
   return 0
 }
+
+export const separateMajorArea = (area: string) => area.split(' -> ')[0].replace('(', '')
+
+export const separateMinorArea = (area: string) => area.split(' -> ')[1].replace(')', '')

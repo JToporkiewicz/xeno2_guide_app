@@ -8,6 +8,7 @@ import { IDriverState, IUpdateShow } from 'reduxState/interfaces/reduxState';
 import { CharacterPageDetails } from '../CommonComponents/CharacterPageDetails';
 import { defaultDriverState } from 'reduxState/interfaces/drivers';
 import { sortFunction } from 'helpers';
+import { getDACompletion, getDSCompletion } from 'helpers/completionPercentage';
 
 interface IDispatchProps {
   saveStoryProgress: (payload:IStoryProgress) => void;
@@ -65,21 +66,15 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
             return sortFunction(driverAValue, driverBValue, sortOrderAsc)
           })
           .map((driver) => {
-            const progress=Math.round((driver.arts
-              .reduce((artTotal, art) => artTotal + art.levelUnlocked, 0)
-              + driver.skillTree.tier1.filter((node) => node.unlocked).length
-              + driver.skillTree.tier2.filter((node) => node.unlocked).length
-              + driver.skillTree.tier3.filter((node) => node.unlocked).length
-              + driver.hiddenSkillTree.tier1.filter((node) => node.unlocked).length
-              + driver.hiddenSkillTree.tier2.filter((node) => node.unlocked).length
-              + driver.hiddenSkillTree.tier3.filter((node) => node.unlocked).length
-            )/(driver.arts.length * 6
-              + driver.skillTree.tier1.length
-              + driver.skillTree.tier2.length
-              + driver.skillTree.tier3.length
-              + driver.hiddenSkillTree.tier1.length
-              + driver.hiddenSkillTree.tier2.length
-              + driver.hiddenSkillTree.tier3.length) * 10000) / 100
+            const artCompletion = getDACompletion(driver.arts)
+            const skillTreeCompletion = getDSCompletion(driver.skillTree)
+            const hiddenTreeCompletion = getDSCompletion(driver.hiddenSkillTree)
+            const progress=Math.round((artCompletion.unlocked
+              + skillTreeCompletion.unlocked
+              + hiddenTreeCompletion.unlocked
+            )/(artCompletion.total
+              + skillTreeCompletion.total
+              + hiddenTreeCompletion.total) * 10000) / 100
             return props.storyProgress.OnlyShowAvailable &&
               (driver.chapterUnlocked > props.storyProgress.Chapter && !driver.show) ? 
               <div className="col-sm-3" key={driver.name}>
@@ -120,28 +115,15 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
             list={[
               {
                 label: 'Arts: ',
-                unlocked: selectedDriver.arts
-                  .reduce((artTotal, art) => artTotal + art.levelUnlocked, 0),
-                total: selectedDriver.arts.length * 6
+                ...getDACompletion(selectedDriver.arts)
               },
               {
                 label: 'Skills: ',
-                unlocked: selectedDriver.skillTree.tier1.filter((node) => node.unlocked).length
-                  + selectedDriver.skillTree.tier2.filter((node) => node.unlocked).length
-                  + selectedDriver.skillTree.tier3.filter((node) => node.unlocked).length,
-                total: selectedDriver.skillTree.tier1.length
-                  + selectedDriver.skillTree.tier2.length
-                  + selectedDriver.skillTree.tier3.length
+                ...getDSCompletion(selectedDriver.skillTree)
               },
               {
                 label: 'Hidden Skills: ',
-                unlocked: selectedDriver.hiddenSkillTree.tier1
-                  .filter((node) => node.unlocked).length
-                  + selectedDriver.hiddenSkillTree.tier2.filter((node) => node.unlocked).length
-                  + selectedDriver.hiddenSkillTree.tier3.filter((node) => node.unlocked).length,
-                total: selectedDriver.hiddenSkillTree.tier1.length
-                  + selectedDriver.hiddenSkillTree.tier2.length
-                  + selectedDriver.hiddenSkillTree.tier3.length
+                ...getDSCompletion(selectedDriver.hiddenSkillTree)
               },
             ]}
             onClose={setSelectedDriver.bind(this, defaultDriverState)}

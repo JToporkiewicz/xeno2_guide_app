@@ -2,6 +2,7 @@ import { IHeart2Heart, IStoryProgress } from 'interfaces';
 import { IMajorLocations } from 'reduxState/interfaces/reduxState';
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import { Heart2HeartList } from './Heart2HeartList';
+import { separateMajorArea } from 'helpers';
 
 interface IDispatchProps {
   fetchHeart2Hearts: () => void;
@@ -21,7 +22,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
         parentPage='heart2HeartList'
         location='Argentum Trade Guild'
         heart2Hearts={props.heart2Hearts.filter((h2h) =>
-          h2h.Area.split(' -> ')[0].replace('(', '') === 'Argentum Trade Guild')}
+          separateMajorArea(h2h.Area) === 'Argentum Trade Guild')}
       />
       {((props.locations.find((loc) => loc.Name === 'Gormott Province')?.StoryProgress || 10) <=
         props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable)  &&
@@ -29,7 +30,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Gormott Province'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Gormott Province')}
+              separateMajorArea(h2h.Area) === 'Gormott Province')}
           />
       }
       {((props.locations.find((loc) => loc.Name === 'Kingdom of Uraya')?.StoryProgress || 10) <=
@@ -38,7 +39,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Kingdom of Uraya'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Kingdom of Uraya')}
+              separateMajorArea(h2h.Area) === 'Kingdom of Uraya')}
           />
       }
       {((props.locations.find((loc) => loc.Name === 'Empire of Mor Ardain')?.StoryProgress || 10) <=
@@ -47,7 +48,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Empire of Mor Ardain'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Empire of Mor Ardain')}
+              separateMajorArea(h2h.Area) === 'Empire of Mor Ardain')}
           />
       }
       {((props.locations.find((loc) =>
@@ -57,7 +58,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Leftherian Archipelago'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Leftherian Archipelago')}
+              separateMajorArea(h2h.Area) === 'Leftherian Archipelago')}
           />
       }
       {((props.locations.find((loc) =>
@@ -67,7 +68,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Temperantia'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Temperantia')}
+              separateMajorArea(h2h.Area) === 'Temperantia')}
           />
       }
       {((props.locations.find((loc) => loc.Name === 'Kingdom of Tental')?.StoryProgress || 10) <=
@@ -76,7 +77,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Kingdom of Tental'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Kingdom of Tental')}
+              separateMajorArea(h2h.Area) === 'Kingdom of Tental')}
           />
       }
       {((props.locations.find((loc) =>
@@ -86,7 +87,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Spirit Crucible Elpys'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Spirit Crucible Elpys')}
+              separateMajorArea(h2h.Area) === 'Spirit Crucible Elpys')}
           />
       }
       {((props.locations.find((loc) =>
@@ -96,7 +97,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Cliffs of Morytha'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Cliffs of Morytha')}
+              separateMajorArea(h2h.Area) === 'Cliffs of Morytha')}
           />
       }
       {((props.locations.find((loc) =>
@@ -106,7 +107,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='Land of Morytha'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'Land of Morytha')}
+              separateMajorArea(h2h.Area) === 'Land of Morytha')}
           />
       }
       {((props.locations.find((loc) =>
@@ -116,7 +117,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
             parentPage='heart2HeartList'
             location='World Tree'
             heart2Hearts={props.heart2Hearts.filter((h2h) =>
-              h2h.Area.split(' -> ')[0].replace('(', '') === 'World Tree')}
+              separateMajorArea(h2h.Area) === 'World Tree')}
           />
       }
       {(props.locations.find((loc) => loc.Name === 'First Low Orbit Station')?.StoryProgress || 10)
@@ -125,7 +126,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
           parentPage='heart2HeartList'
           location='First Low Orbit Station'
           heart2Hearts={props.heart2Hearts.filter((h2h) =>
-            h2h.Area.split(' -> ')[0].replace('(', '') === 'First Low Orbit Station')}
+            separateMajorArea(h2h.Area) === 'First Low Orbit Station')}
         />
         : <Heart2HeartList
           parentPage='heart2HeartList'

@@ -2,6 +2,7 @@ import { IStoryProgress } from 'interfaces';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { NumberSlider } from 'components/CommonComponents/FormComponents/NumberSlider';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
+import { useEffect, useRef } from 'react';
 
 interface IDispatchProps {
   saveStoryProgress:(payload:IStoryProgress) => void;
@@ -14,17 +15,32 @@ interface IProps {
 
 export const SettingsFormView = (props: IProps & IDispatchProps) => {
 
+  const saved = useRef(false)
+  const storyHistory = useRef(props.storyProgress)
+
   const toggleCheckbox = (settingKey:string, value:boolean | string) => {
+    saved.current = false
     props.setStoryProgress({...props.storyProgress, [settingKey]: value})
   }
 
   const updateValue = (type: string, value:number) => {
+    saved.current = false
     props.setStoryProgress({...props.storyProgress, [type]: value})
   }
 
   const saveChanges = () => {
     props.saveStoryProgress(props.storyProgress)
+    saved.current = true
+    storyHistory.current = props.storyProgress
   }
+
+  useEffect(() => {
+    return () => {
+      if (!saved.current) {
+        props.setStoryProgress(storyHistory.current)
+      }
+    }
+  }, [])
 
   return(
     <CollapsibleComponent header="App Settings and Game Progress">

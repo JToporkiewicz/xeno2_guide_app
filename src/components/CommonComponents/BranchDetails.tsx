@@ -12,7 +12,7 @@ interface IOwnProps {
   }[],
   availableTier: number,
   updateNode: (tier: number, unlock:boolean) => void,
-  minOneNode?:boolean,
+  firstaAlwaysUnlocked?:boolean,
   onMouseEnter?:(index:number) => void
 }
 
@@ -28,7 +28,7 @@ export const BranchDetails = (props: IOwnProps) => {
             onMouseEnter={() => props.onMouseEnter ? props.onMouseEnter(index) : undefined}
           >
             {
-              props.minOneNode && node.tier === 1 ?
+              props.firstaAlwaysUnlocked && index === 0 ?
                 <div/>
                 : 
                 node.unlocked ?
