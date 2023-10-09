@@ -6,6 +6,7 @@
 5;7;"Finish an enemy - Any";10;0;0;0;0;0;0;0;0;0;0;0;0
 6;8;"Heart-to-heart";1;0;0;22;1;0;0;0;0;0;0;0;0
 7;9;"Finish an enemy - Mechanical";5;0;0;442;0;0;0;8;0;0;0;0;0
+8;10;"Finish an enemy - Unique";1;0;0;0;0;0;0;905;0;0;0;0;0
 9;12;"Finish an enemy - Normal";4;0;0;151;0;0;0;2;0;0;0;0;0
 10;13;"Finish an enemy - Normal";5;0;0;263;0;0;0;3;0;0;0;0;0
 11;14;"Finish an enemy - Normal";4;0;0;406;0;0;0;4;0;0;0;0;0
@@ -1887,3 +1888,44 @@
 1887;2370;"Gather item from Collectibles list (Glory Angler) - Currently held items count towards the required total";4;0;0;0;0;0;0;0;0;0;0;121;0
 1888;2371;"Gather item from Collectibles list (Addam's Tear) - Currently held items count towards the required total";4;0;0;0;0;0;0;0;0;0;0;114;0
 1889;2372;"Gather item from Collectibles list (Robotic Placoderm) - Currently held items count towards the required total";4;0;0;0;0;0;0;0;0;0;0;126;0
+1890;1466;"Merc Mission";1;0;0;0;0;0;57;0;0;0;0;0;0
+1891;1467;"Merc Mission";1;0;0;0;0;0;91;0;0;0;0;0;0
+1892;1468;"Merc Mission";1;0;0;0;0;0;137;0;0;0;0;0;0
+1893;1469;"Merc Mission";1;0;0;0;0;0;198;0;0;0;0;0;0
+1894;1471;"Finish an enemy - Unique";1;0;0;0;0;0;0;871;0;0;0;0;0
+1895;1472;"Finish an enemy - Unique";1;0;0;0;0;0;0;585;0;0;0;0;0
+1896;1473;"Finish an enemy - Unique";1;0;0;0;0;0;0;40;0;0;0;0;0
+1897;1474;"Finish an enemy - Unique";1;0;0;0;0;0;0;944;0;0;0;0;0
+1898;1476;"Finish an enemy - Unique";1;0;0;0;0;0;0;342;0;0;0;0;0
+1899;1477;"Finish an enemy - Unique";1;0;0;0;0;0;0;345;0;0;0;0;0
+1900;1478;"Finish an enemy - Unique";1;0;0;0;0;0;0;133;0;0;0;0;0
+1901;1479;"Finish an enemy - Unique";1;0;0;0;0;0;0;224;0;0;0;0;0
+1902;1481;"Finish an enemy - Unique";1;0;0;0;0;0;0;285;0;0;0;0;0
+1903;1482;"Finish an enemy - Unique";1;0;0;0;0;0;0;640;0;0;0;0;0
+1904;1483;"Finish an enemy - Unique";1;0;0;0;0;0;0;498;0;0;0;0;0
+1905;1484;"Finish an enemy - Unique";1;0;0;0;0;0;0;729;0;0;0;0;0
+1906;1486;"Finish an enemy - Unique";1;0;0;0;0;0;0;992;0;0;0;0;0
+1907;1487;"Finish an enemy - Unique";1;0;0;0;0;0;0;481;0;0;0;0;0
+1908;1488;"Finish an enemy - Unique";1;0;0;0;0;0;0;497;0;0;0;0;0
+1909;1489;"Finish an enemy - Unique";1;0;0;0;0;0;0;578;0;0;0;0;0
+1910;1490;"Use pouch item (Zenobia's fav - Meat)";2;0;0;0;0;0;0;0;0;0;8;0;0
+1911;1491;"Finish an enemy - Unique";1;0;0;0;0;0;0;434;0;0;0;0;0
+1912;1492;"Finish an enemy - Unique";1;0;0;0;0;0;0;562;0;0;0;0;0
+1913;1493;"Finish an enemy - Unique";1;0;0;0;0;0;0;58;0;0;0;0;0
+1914;1494;"Finish an enemy - Unique";1;0;0;0;0;0;0;579;0;0;0;0;0
+1915;1496;"Finish an enemy - Unique";1;0;0;0;0;0;0;815;0;0;0;0;0
+1916;1497;"Finish an enemy - Unique";1;0;0;0;0;0;0;343;0;0;0;0;0
+1917;1498;"Finish an enemy - Unique";1;0;0;0;0;0;0;687;0;0;0;0;0
+1918;1499;"Finish an enemy - Unique";1;0;0;0;0;0;0;561;0;0;0;0;0
+1919;1501;"Finish an enemy - Unique";1;0;0;0;0;0;0;807;0;0;0;0;0
+1920;1502;"Finish an enemy - Unique";1;0;0;0;0;0;0;564;0;0;0;0;0
+1921;1503;"Finish an enemy - Unique";1;0;0;0;0;0;0;454;0;0;0;0;0
+1922;1504;"Finish an enemy - Unique";1;0;0;0;0;0;0;10;0;0;0;0;0
+1923;1506;"Finish an enemy - Unique";1;0;0;0;0;0;0;419;0;0;0;0;0
+1924;1507;"Finish an enemy - Unique";1;0;0;0;0;0;0;493;0;0;0;0;0
+1925;1508;"Finish an enemy - Unique";1;0;0;0;0;0;0;286;0;0;0;0;0
+1926;1509;"Side-quest";1;0;0;0;0;12;0;0;0;0;0;0;0
+1927;1511;"Finish an enemy - Unique";1;0;0;0;0;0;0;260;0;0;0;0;0
+1928;1512;"Finish an enemy - Unique";1;0;0;0;0;0;0;808;0;0;0;0;0
+1929;1513;"Heart-to-heart";1;0;0;0;65;0;0;0;0;0;0;0;0
+1930;1514;"Finish an enemy - Unique";1;0;0;0;0;0;0;453;0;0;0;0;0
