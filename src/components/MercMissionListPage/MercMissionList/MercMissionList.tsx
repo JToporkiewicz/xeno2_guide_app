@@ -1,6 +1,7 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
+import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { sortFunction } from 'helpers';
@@ -8,7 +9,6 @@ import { IMercMission, IStoryProgress } from 'interfaces'
 import { RequirementArea } from 'interfaces/common';
 import path from 'path';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
 
 interface IDispatchProps {
@@ -107,12 +107,14 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
                   {mm.Type}
                 </div>
                 {!props.storyProgress.current.OnlyShowAvailable || mm.Available ?
-                  <Link
+                  <LinkSelected
                     className="text-list-link"
                     to={`/mercMission/${mm.id}`}
+                    area='mercMission'
+                    id={mm.id}
                   >
                     {mm.Name}
-                  </Link>
+                  </LinkSelected>
                   : <div className='text-list-link'>????</div>
                 }
                 {

@@ -22,6 +22,7 @@ const mercMissionRouter = require('./routers/mercMissionRouter');
 const questRouter = require('./routers/questRouter');
 const fieldSkillRouter = require('./routers/fieldSkillRouter');
 const monsterRouter = require('./routers/monsterRouter');
+const itemRouter = require('./routers/itemRouter');
 
 // const table = require('./storedProcedures');
 const { sequelize } = require('./models');
@@ -42,17 +43,11 @@ app.use('/blade', bladesRouter())
 app.use('/driver', driversRouter())
 app.use('/fieldSkill', fieldSkillRouter(db.fieldSkill, sequelize))
 app.use('/heart2Heart', heart2HeartRouter())
-app.use('/item', restRouter(db.item))
-app.use('/itemType', restRouter(db.itemType))
+app.use('/item', itemRouter())
 app.use('/location', restRouter(db.location))
 app.use('/majorArea', restRouter(db.majorArea))
 app.use('/mercMission', mercMissionRouter())
 app.use('/monster', monsterRouter())
-app.use('/prerequisitesACN', restRouter(db.prerequisitesACN))
-app.use('/prerequisitesBlade', restRouter(db.prerequisitesBlade))
-app.use('/prerequisitesH2H', restRouter(db.prerequisitesH2H))
-app.use('/prerequisitesMM', restRouter(db.prerequisitesMM))
-app.use('/prerequisitesQuest', restRouter(db.prerequisitesQuest))
 app.use('/quest', questRouter())
 app.use('/storyProgress', storyProgressRestRouter(db.storyProgress, sequelize))
 

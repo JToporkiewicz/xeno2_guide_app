@@ -10,4 +10,10 @@ export const sortFunction = (valueA:any, valueB:any, isAscending:boolean) => {
 
 export const separateMajorArea = (area: string) => area.split(' -> ')[0].replace('(', '')
 
-export const separateMinorArea = (area: string) => area.split(' -> ')[1].replace(')', '')
+export const separateMinorArea = (area: string) => {
+  const splitArea = area.split(' -> ')
+  if (splitArea.length > 1) {
+    return splitArea[1].replace(')', '')
+  }
+  return ''
+}

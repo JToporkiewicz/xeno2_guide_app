@@ -1,17 +1,23 @@
-import { Link } from 'react-router-dom';
 import path from 'path';
 import 'scss/navigation.scss';
+import { LinkSelected } from '../LinkSelected';
 
 interface IButtonProps {
   link:string,
-  title:string
+  title:string,
+  area: string
 }
 
 const OpenNavigationButton = (props:IButtonProps) => {
 
   return (
     <div>
-      <Link to={props.link} className="navigation-button">
+      <LinkSelected
+        to={props.link}
+        area={props.area}
+        id={0}
+        className="navigation-button"
+      >
         <img
           src={path.resolve(`images/helper/${props.title.replaceAll(' ', '')}.svg`)}
           className="navigation-image"
@@ -19,7 +25,7 @@ const OpenNavigationButton = (props:IButtonProps) => {
         <span className="navigation-button-text">
           {props.title}
         </span>
-      </Link>
+      </LinkSelected>
       <hr className="navigation-button-separator"/>
     </div>
   )
@@ -28,12 +34,17 @@ const OpenNavigationButton = (props:IButtonProps) => {
 const ClosedNavigationButton = (props:IButtonProps) => {
   return (
     <div>
-      <Link to={props.link} className="navigation-button">
+      <LinkSelected
+        to={props.link}
+        area={props.area}
+        id={0}
+        className="navigation-button"
+      >
         <img
           src={path.resolve(`images/helper/${props.title.replaceAll(' ', '')}.svg`)}
           className="navigation-image"
         />
-      </Link>
+      </LinkSelected>
       <hr className="navigation-button-separator"/>
     </div>
   )
@@ -50,13 +61,14 @@ interface IOwnProps {
 
 export const NavigationView = (props:IOwnProps & IDispatchProps) => {
   const navigationButtons = [
-    { link: '/', title: 'Home' },
-    { link: '/driversList', title: 'Drivers' },
-    { link: '/bladeList', title: 'Blades' },
-    { link: '/sideQuestList', title: 'Side Quests' },
-    { link: '/heart2HeartList', title: 'Heart 2 Hearts' },
-    { link: '/mercMissionList', title: 'Merc Missions' },
-    { link: '/monsterList', title: 'Monsters' },
+    { link: '/', title: 'Home', area: '' },
+    { link: '/driversList', title: 'Drivers', area: 'driversList' },
+    { link: '/bladeList', title: 'Blades', area: 'bladeList' },
+    { link: '/sideQuestList', title: 'Side Quests', area: 'sideQuestList' },
+    { link: '/heart2HeartList', title: 'Heart 2 Hearts', area: 'heart2HeartList' },
+    { link: '/mercMissionList', title: 'Merc Missions', area: 'mercMissionList' },
+    { link: '/monsterList', title: 'Monsters', area: 'monsterList' },
+    { link: '/items', title: 'Pouch', area: 'items' }
   ]
   return (
     <div className={props.openNavigation ? 'open-navigation' : 'closed-navigation'}>
@@ -72,10 +84,10 @@ export const NavigationView = (props:IOwnProps & IDispatchProps) => {
           <hr className="navigation-button-separator"/>
         </div>
 
-        {navigationButtons.map((button:{link:string, title:string}) =>
+        {navigationButtons.map((button:IButtonProps) =>
           props.openNavigation ?
-            <OpenNavigationButton link={button.link} title={button.title} key={button.title}/>
-            : <ClosedNavigationButton link={button.link} title={button.title} key={button.title}/>
+            <OpenNavigationButton {...button} key={button.title}/>
+            : <ClosedNavigationButton {...button} key={button.title}/>
         )}
         <div className="navigation-buttom">
           <div

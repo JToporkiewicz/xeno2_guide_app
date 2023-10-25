@@ -21,6 +21,7 @@ import { MercMissionListPage } from 'components/MercMissionListPage';
 import { MercMissionDetailsPage } from 'components/MercMissionDetailsPage';
 import { MonsterListPage } from 'components/MonsterListPage';
 import { MonsterDetailsPage } from 'components/MonsterDetailsPage';
+import { ItemListPage } from 'components/ItemListPage';
 
 interface IDispatchProps {
   setSelected:(payload:ISelectedState) => void;
@@ -41,7 +42,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
 
   useEffect(() => {
     const pathname = location.pathname.split('/');
-    if (pathname.length > 0) {
+    if (pathname.length > 2) {
       props.setSelected({
         area: pathname[1],
         id: Number(pathname[2] || 0)
@@ -74,6 +75,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path="/mercMission/:slug" component={MercMissionDetailsPage} />
             <Route path="/monsterList" component={MonsterListPage} />
             <Route path="/monster/:slug" component={MonsterDetailsPage} />
+            <Route path="/items" component={ItemListPage} />
             <Route component={Default} />
           </Switch>
         </div>

@@ -5,17 +5,11 @@ import { ItemActions } from '../actions/items';
 import { IItemState } from '../interfaces/reduxState';
 
 const itemReducer = createReducer<IItem[]>(
-  [ItemActions.SetItem, (state:IItem[], item:IItem) => {
-    return state.filter((oldItem:IItem) => oldItem.id !== item.id)
-      .concat([item]).sort((itemA, itemB) => itemA.id < itemB.id ? -1 : 1)
-  }]
+  [ItemActions.SetItem, (_:IItem[], items:IItem[]) => items]
 )([])
 
 const itemTypeReducer = createReducer<IItemType[]>(
-  [ItemActions.SetItemType, (state:IItemType[], itemType:IItemType) => {
-    return state.filter((oldItemType:IItemType) => oldItemType.id !== itemType.id)
-      .concat([itemType]).sort((itemTypeA, itemTypeB) => itemTypeA.id < itemTypeB.id ? -1 : 1)
-  }]
+  [ItemActions.SetItemType, (_:IItemType[], itemTypes:IItemType[]) => itemTypes]
 )([])
 
 export const reducer = combineReducers<IItemState>({

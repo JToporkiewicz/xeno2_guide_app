@@ -1,5 +1,5 @@
 import { IItem, IItemType } from 'interfaces';
-import { IFluxPayloadAction } from './fluxActions';
+import { IFluxAction, IFluxPayloadAction } from './fluxActions';
 
 export enum ItemActions {
   FetchItem = 'FETCH_ITEM',
@@ -9,27 +9,25 @@ export enum ItemActions {
 }
 
 export type ActionTypes =
-  | IFluxPayloadAction<ItemActions.FetchItem, number>
-  | IFluxPayloadAction<ItemActions.SetItem, IItem>
-  | IFluxPayloadAction<ItemActions.FetchItemType, number>
-  | IFluxPayloadAction<ItemActions.SetItemType, IItemType>;
+  | IFluxAction<ItemActions.FetchItem>
+  | IFluxPayloadAction<ItemActions.SetItem, IItem[]>
+  | IFluxAction<ItemActions.FetchItemType>
+  | IFluxPayloadAction<ItemActions.SetItemType, IItemType[]>;
 
-export const fetchItem = (payload:number):ActionTypes => ({
-  type: ItemActions.FetchItem,
-  payload
+export const fetchItems = ():ActionTypes => ({
+  type: ItemActions.FetchItem
 });
 
-export const setItem = (payload:IItem):ActionTypes => ({
+export const setItem = (payload:IItem[]):ActionTypes => ({
   type: ItemActions.SetItem,
   payload
 });
 
-export const fetchItemType = (payload:number):ActionTypes => ({
-  type: ItemActions.FetchItemType,
-  payload
+export const fetchItemTypes = ():ActionTypes => ({
+  type: ItemActions.FetchItemType
 });
 
-export const setItemType = (payload:IItemType):ActionTypes => ({
+export const setItemType = (payload:IItemType[]):ActionTypes => ({
   type: ItemActions.SetItemType,
   payload
 });

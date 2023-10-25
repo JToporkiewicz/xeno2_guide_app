@@ -1,12 +1,16 @@
 export interface IItem {
   id:number,
   Name:string,
-  ItemType:number,
+  ItemTypeID:number,
+  ItemType:string,
   Source:string,
-  Location:number,
+  Location:string,
+  Area:string,
   Price:number,
-  FavoriteOf:string,
-  Effects:string
+  FavoriteOf:string | null,
+  Effects?: string[] | undefined,
+  Trust?: number | undefined,
+  Duration?: string | undefined
 }
 
 export interface IItemType {

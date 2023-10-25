@@ -1,9 +1,9 @@
 import { IRequirement, RequirementArea } from 'interfaces/common'
 import path from 'path'
-import { Link } from 'react-router-dom'
 import IncrementDecrementNumber from '../FormComponents/IncrementDecrementNumber'
 import { IStoryProgress } from 'interfaces'
 import { IMajorLocations } from 'reduxState/interfaces/reduxState'
+import { LinkSelected } from '../LinkSelected'
 
 interface IOwnProps {
   requirements: IRequirement[],
@@ -25,9 +25,14 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         <b>
           {req.area}
         </b>
-        : <Link to={`/blade/${req.reqId}`}>
+        :
+        <LinkSelected
+          to={`/blade/${req.reqId}`}
+          area='blade'
+          id={req.reqId || 0}
+        >
           {req.requirement}
-        </Link>
+        </LinkSelected>
       </div>
     case RequirementArea.Quest:
     case RequirementArea.SideQuest:
@@ -36,25 +41,39 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         <b>
           {req.area}
         </b>
-        : <Link to={`/sideQuest/${req.reqId}`}>
+        :
+        <LinkSelected
+          to={`/sideQuest/${req.reqId}`}
+          area='sideQuest'
+          id={req.reqId || 0}
+        >
           {req.requirement}
-        </Link>
+        </LinkSelected>
       </div>
     case RequirementArea.Monster:
       return <div className='col-sm-6'>
         <b>
           {req.area}
         </b>
-        : <Link to={`/monster/${req.reqId}`}>
+        : 
+        <LinkSelected
+          to={`/monster/${req.reqId}`}
+          area='monster'
+          id={req.reqId || 0}
+        >
           {req.requirement}
-        </Link>
+        </LinkSelected>
       </div>
     case RequirementArea['Field Skills']:
       return <div className='col-sm-6'>
         <b>
-          <Link to={'/bladeList'}>
+          <LinkSelected
+            to='/bladeList'
+            area='bladeList'
+            id={0}
+          >
             {req.area}
-          </Link>
+          </LinkSelected>
         </b>
         : {req.requirement}
       </div>
@@ -63,18 +82,28 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         <b>
           {req.area}
         </b>
-        : <Link to={`/heart2Heart/${req.reqId}`}>
+        :
+        <LinkSelected
+          to={`/heart2Heart/${req.reqId}`}
+          area='heart2Heart'
+          id={req.reqId || 0}
+        >
           {req.requirement}
-        </Link>
+        </LinkSelected>
       </div>
     case RequirementArea.MercMission:
       return <div className='col-sm-6'>
         <b>
           {req.area}
         </b>
-        : <Link to={`/mercMission/${req.reqId}`}>
+        :
+        <LinkSelected
+          to={`/mercMission/${req.reqId}`}
+          area='mercMission'
+          id={req.reqId || 0}
+        >
           {req.requirement}
-        </Link>
+        </LinkSelected>
       </div>
     case RequirementArea.Other:
       return <div className='col-sm-6'>

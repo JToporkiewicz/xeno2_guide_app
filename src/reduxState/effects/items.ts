@@ -3,25 +3,25 @@ import { combineEpics, Epic, ofType } from 'redux-observable';
 import { mergeMap, from, of } from 'rxjs';
 import { callWithLoader$ } from '.';
 import { ItemActions, setItem, setItemType } from '../actions/items';
-import client from 'api-client';
+import { getAllItems, getItemTypes } from 'services/items';
 
 const fetchItemEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(ItemActions.FetchItem),
-    mergeMap((action) => callWithLoader$(
-      'Fetching item',
-      from(client.resource('item').get(action.payload))
-        .pipe(mergeMap((item) => of(setItem(item))))
+    mergeMap(() => callWithLoader$(
+      'Fetching items',
+      from(getAllItems())
+        .pipe(mergeMap((items) => of(setItem(items))))
     ))
   )
 
 const fetchItemTypeEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(ItemActions.FetchItemType),
-    mergeMap((action) => callWithLoader$(
-      'Fetching item type details',
-      from(client.resource('itemType').get(action.payload))
-        .pipe(mergeMap((item) => of(setItemType(item))))
+    mergeMap(() => callWithLoader$(
+      'Fetching item types',
+      from(getItemTypes())
+        .pipe(mergeMap((itemTypes) => of(setItemType(itemTypes))))
     ))
   )
 export const effects = combineEpics(

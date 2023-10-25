@@ -5,11 +5,8 @@ import { IHeart2Heart, IItem, IItemType, IStoryProgress } from 'interfaces';
 import { Heart2HeartList } from 'components/Heart2HeartsPage/Heart2HeartList';
 import { DriverSkillsComponent } from '../DriverSkillsComponents';
 import { IDriverState } from 'reduxState/interfaces/reduxState';
-import { useEffect } from 'react';
 
 interface IDispatchProps {
-  fetchItem: (payload:number) => void,
-  fetchItemType: (payload:number) => void,
   fetchDriverDetails: (payload: number) => void
 }
 
@@ -24,22 +21,6 @@ interface IProps {
 }
 
 export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {
-  useEffect(() => {
-    if (props.driverDetails && props.driverDetails.id !== 0) {
-      if(!props.item1) {
-        props.fetchItem(props.driverDetails.favItem1);
-      }
-      if(!props.item2) {
-        props.fetchItem(props.driverDetails.favItem2);
-      }
-      if(!props.itemType1) {
-        props.fetchItemType(props.driverDetails.favItemType1);
-      }
-      if(!props.itemType2) {
-        props.fetchItemType(props.driverDetails.favItemType2);
-      }
-    }
-  }, [props.driverDetails])
 
   if (props.driverDetails && props.driverDetails.id !== 0) {
     return (

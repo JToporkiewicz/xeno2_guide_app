@@ -12,6 +12,7 @@ import { fetchFieldSkills } from '../actions/fieldSkills'
 import { fetchAllMajorAreas } from 'reduxState/actions/locations'
 import { fetchAllMercMissions } from 'reduxState/actions/mercMissions'
 import { fetchAllMonsters } from 'reduxState/actions/monsters'
+import { fetchItemTypes, fetchItems } from 'reduxState/actions/items'
 
 const fetchStoryProgressEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
@@ -46,6 +47,8 @@ const resetStateEffect:Epic<AnyAction, AnyAction> = (action$) =>
     switchMap(() =>
       concat(
         of(fetchStoryProgress()),
+        of(fetchItems()),
+        of(fetchItemTypes()),
         of(fetchAllDrivers()),
         of(fetchAllBlades()),
         of(fetchHeart2Hearts()),

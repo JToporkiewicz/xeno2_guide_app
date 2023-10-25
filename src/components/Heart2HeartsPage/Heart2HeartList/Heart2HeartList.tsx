@@ -1,6 +1,5 @@
 import { separateMajorArea, separateMinorArea, sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
@@ -10,6 +9,7 @@ import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/Opti
 import { IHeart2Heart, IStoryProgress } from 'interfaces';
 import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
+import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 
 interface IDispatchProps {
   updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
@@ -133,12 +133,14 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                   </div>
                   {
                     !props.storyProgress.OnlyShowAvailable || h2h.Available ? 
-                      <Link
+                      <LinkSelected
                         className="text-list-link"
                         to={`/heart2Heart/${h2h.id}`}
+                        area='heart2Heart'
+                        id={h2h.id}
                       >
                         {h2h.Title}
-                      </Link>
+                      </LinkSelected>
                       : <div className='text-list-link'>????</div>
                   }
                   {h2h.PreReqs &&

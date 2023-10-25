@@ -1,10 +1,10 @@
 import { useState, useEffect, ReactChild } from 'react';
-import { Link } from 'react-router-dom';
 import path from 'path';
 import { IStoryProgress } from 'interfaces/StoryProgress';
 import { IBladeState, IUpdateShow } from 'reduxState/interfaces/reduxState';
 import SmallPeekPanel
   from 'components/UnavailableDataComponents/Images/SmallPeekPanel';
+import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 
 interface IDispatchProps {
   updateShowBlade:(payload:IUpdateShow) => void;
@@ -41,8 +41,10 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
           .map((blade:IBladeState) =>
             !props.storyProgress.OnlyShowAvailable || 
                     (blade.available || blade.show) ? 
-              <Link
+              <LinkSelected
                 to={`/blade/${blade.id}`}
+                area='blade'
+                id={blade.id}
                 className="small-image-panel"
                 key={blade.name}
               >
@@ -55,7 +57,7 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
                   className={`small-image${
                     blade.unlocked === false ? ' not-unlocked-character' : ''}`}
                 />
-              </Link>
+              </LinkSelected>
               :
               <SmallPeekPanel
                 id={blade.id}

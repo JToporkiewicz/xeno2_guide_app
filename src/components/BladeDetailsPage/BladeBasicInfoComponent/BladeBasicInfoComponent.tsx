@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { IHeart2Heart, IItem, IItemType, IQuest, IStoryProgress } from 'interfaces'
 import { IBladeState, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
@@ -7,6 +6,7 @@ import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
 import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
+import { LinkSelected } from 'components/CommonComponents/LinkSelected'
 
 interface IOwnProps {
   bladeDetails:IBladeState,
@@ -153,8 +153,22 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
             <b>Favourite Items: </b>{
               props.item1 && props.item2 ? 
                 <>
-                  {' '}<Link to={`/item/${props.item1.id}`}>{props.item1.Name}</Link>, 
-                  {' '}<Link to={`/item/${props.item2.id}`}>{props.item2.Name}</Link>
+                  {' '}
+                  <LinkSelected
+                    to={'/items'}
+                    id={props.item1?.id || 0}
+                    area='item'
+                  >
+                    {props.item1.Name}
+                  </LinkSelected>,
+                  {' '}
+                  <LinkSelected
+                    to={'/items'}
+                    id={props.item2?.id || 0}
+                    area='item'
+                  >
+                    {props.item2.Name}
+                  </LinkSelected>
                 </>
                 : 'undefined'
             }
@@ -165,9 +179,21 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
               props.itemType1 && props.itemType2 ?
                 <>
                   {' '}
-                  <Link to={`/itemType/${props.itemType1.id}`}>{props.itemType1.ItemType}</Link>, 
+                  <LinkSelected
+                    to={'/items'}
+                    id={props.itemType1?.id || 0}
+                    area='itemType'
+                  >
+                    {props.itemType1.ItemType}
+                  </LinkSelected>,
                   {' '}
-                  <Link to={`/itemType/${props.itemType2.id}`}>{props.itemType2.ItemType}</Link>
+                  <LinkSelected
+                    to={'/items'}
+                    id={props.itemType2?.id || 0}
+                    area='itemType'
+                  >
+                    {props.itemType2.ItemType}
+                  </LinkSelected>
                 </>
                 : 'undefined'
             }
@@ -188,9 +214,13 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                   onClick={updateH2HViewed}
                   link={
                     !props.storyProgress.OnlyShowAvailable || props.heart2Heart.Available ?
-                      <Link to={`/heart2Heart/${props.heart2Heart.id}`}>
+                      <LinkSelected
+                        to={`/heart2Heart/${props.heart2Heart?.id}`}
+                        id={props.heart2Heart?.id || 0}
+                        area='heart2Heart'
+                      >
                         {props.heart2Heart.Title}
-                      </Link>
+                      </LinkSelected>
                       : <div>????</div>
                   }
                 />
@@ -219,9 +249,13 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                 onClick={updateQuestCompleted}
                 link={
                   !props.storyProgress.OnlyShowAvailable || props.quest.Available ?
-                    <Link to={`/quest/${props.quest?.id}`}>
+                    <LinkSelected
+                      to={`/quest/${props.quest?.id}`}
+                      id={props.quest?.id || 0}
+                      area='quest'
+                    >
                       {props.quest?.Name}
-                    </Link>
+                    </LinkSelected>
                     : <div>????</div>
                 }
               />

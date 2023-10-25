@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { IHeart2Heart, IItem, IItemType, IQuest, IStoryProgress } from 'interfaces'
 import { IBladeState } from 'reduxState/interfaces/reduxState'
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
@@ -8,8 +7,6 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import { RequirementList } from 'components/CommonComponents/RequirementList'
 
 interface IDispatchProps {
-  fetchItem: (payload:number) => void,
-  fetchItemType: (payload:number) => void,
   fetchBlade: (payload: number) => void
 }
 
@@ -25,22 +22,6 @@ interface IProps {
 }
 
 export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
-  useEffect(() => {
-    if (props.bladeDetails && props.bladeDetails.id !== 0) {
-      if(!props.item1) {
-        props.fetchItem(props.bladeDetails.favItem1);
-      }
-      if(!props.item2) {
-        props.fetchItem(props.bladeDetails.favItem2);
-      }
-      if(!props.itemType1) {
-        props.fetchItemType(props.bladeDetails.favItemType1);
-      }
-      if(!props.itemType2) {
-        props.fetchItemType(props.bladeDetails.favItemType2);
-      }
-    }
-  }, [props.bladeDetails])
 
   if (props.bladeDetails && props.bladeDetails.id !== 0) {
     return(

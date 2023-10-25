@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import path from 'path';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { IItem, IItemType } from 'interfaces';
 import { IDriverState } from 'reduxState/interfaces/reduxState';
+import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 
 interface IOwnProps {
   driverDetails:IDriverState,
@@ -39,8 +39,22 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
             {
               props.item1 && props.item2 ? 
                 <>
-                  {' '}<Link to={`/item/${props.item1.id}`}>{props.item1.Name}</Link>, 
-                  {' '}<Link to={`/item/${props.item2.id}`}>{props.item2.Name}</Link>
+                  {' '}
+                  <LinkSelected
+                    to={'/items'}
+                    area='item'
+                    id={props.item1.id}
+                  >
+                    {props.item1.Name}
+                  </LinkSelected>, 
+                  {' '}
+                  <LinkSelected
+                    to={'/items'}
+                    area='item'
+                    id={props.item2.id}
+                  >
+                    {props.item2.Name}
+                  </LinkSelected>
                 </>
                 : 'undefined'
             }
@@ -52,9 +66,21 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
               props.itemType1 && props.itemType2 ?
                 <>
                   {' '}
-                  <Link to={`/itemType/${props.itemType1.id}`}>{props.itemType1.ItemType}</Link>, 
+                  <LinkSelected
+                    to={'/items'}
+                    area='itemType'
+                    id={props.itemType1.id}
+                  >
+                    {props.itemType1.ItemType}
+                  </LinkSelected>, 
                   {' '}
-                  <Link to={`/itemType/${props.itemType2.id}`}>{props.itemType2.ItemType}</Link>
+                  <LinkSelected
+                    to={'/items'}
+                    area='itemType'
+                    id={props.itemType2.id}
+                  >
+                    {props.itemType2.ItemType}
+                  </LinkSelected>
                 </>
                 : 'undefined'
             }

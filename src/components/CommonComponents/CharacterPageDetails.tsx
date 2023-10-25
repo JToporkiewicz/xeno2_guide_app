@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
 import path from 'path';
 import { RequirementList } from './RequirementList';
 import { IRequirement } from 'interfaces/common';
+import { LinkSelected } from './LinkSelected';
 
 interface IProps {
   area: string,
@@ -87,7 +87,11 @@ export const CharacterPageDetails = (props: IProps) =>
             />
           </div>
         }
-        <Link to={`/${props.area}/${props.id}`}>
+        <LinkSelected
+          to={`/${props.area}/${props.id}`}
+          area={props.area}
+          id={props.id}
+        >
           <div className="proceed-button centered-button">
             <img
               src={path.resolve('images/helper/Right.svg')}
@@ -95,7 +99,7 @@ export const CharacterPageDetails = (props: IProps) =>
               className="extra-small-image"
             />
           </div>
-        </Link>
+        </LinkSelected>
       </div>
     </div>
   </div>

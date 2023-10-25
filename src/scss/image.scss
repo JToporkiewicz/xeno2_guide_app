@@ -121,6 +121,24 @@
   border-radius: 10px;
 }
 
+.item-types-icon {
+  float: left;
+  .item-details-image {
+    height: 80px;
+    max-width: 80px;
+    margin: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+  }
+
+  .item-types {
+    margin: 5px auto 10px;
+    width: fit-content;
+    font-style: italic;
+  }
+}
+
+
 .art-icon {
   border-style: solid;
   border-width: thin;

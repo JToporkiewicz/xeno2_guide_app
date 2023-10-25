@@ -1,13 +1,13 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
+import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { separateMajorArea, sortFunction } from 'helpers';
 import { IQuest, IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 interface IOwnProps {
   questType: string,
@@ -110,12 +110,14 @@ export const SideQuestsList = (props: IOwnProps) => {
                   props.storyProgress.OnlyShowAvailable && !quest.Available ?
                     <div className='text-list-link'>????</div>
                     :
-                    <Link
+                    <LinkSelected
                       className="text-list-link"
                       to={`/sideQuest/${quest.id}`}
+                      area='sideQuest'
+                      id={quest.id}
                     >
                       {quest.Name}
-                    </Link>
+                    </LinkSelected>
                 }
                 {quest.PreReqs &&
                   <HoverContainer>

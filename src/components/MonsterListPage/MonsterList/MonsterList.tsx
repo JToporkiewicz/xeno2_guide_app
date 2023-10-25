@@ -5,8 +5,8 @@ import { separateMajorArea, sortFunction } from 'helpers';
 import { IMonster, IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './MonsterList.scss';
+import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 
 interface IOwnProps {
     monsterCategory: string;
@@ -111,12 +111,14 @@ export const MonsterListView = (props: IOwnProps) => {
                     separateMajorArea(mon.Area) : '????'}
                 </div>
                 {!props.storyProgress.OnlyShowAvailable || mon.Available ?
-                  <Link
+                  <LinkSelected
                     className="text-list-link"
                     to={`/monster/${mon.id}`}
+                    area='monster'
+                    id={mon.id}
                   >
                     {mon.Name}
-                  </Link>
+                  </LinkSelected>
                   : <div className='text-list-link'>????</div>
                 }
               </div>

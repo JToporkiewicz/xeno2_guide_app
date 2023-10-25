@@ -488,8 +488,6 @@ select{
     margin-top: 15px;
 }
 
-
-
 .text-list-entry {
     position: relative;
     .hover-container {
@@ -1033,4 +1031,13 @@ img.increment-decrement-button {
     width: inherit;
     display: block;
     text-align: center;
+}
+
+// ------------- item components -------------
+.item-details {
+  margin-left: 110px;
+}
+
+.item-details-line {
+  border-style: dashed;
 }
