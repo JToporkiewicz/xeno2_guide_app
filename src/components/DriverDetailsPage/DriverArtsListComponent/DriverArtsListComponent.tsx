@@ -34,7 +34,7 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
 
   useEffect(() => {
     return () => {
-      if (toUpdate.current) {
+      if (toUpdate.current.length > 0) {
         props.saveDriverArtLevel(toUpdate.current)
       }
     }

@@ -213,10 +213,87 @@ const updateACNUnlocked = {
     END`
 }
 
+const lockBladesACN = {
+  name: 'lockBladesACN',
+  query: `CREATE PROCEDURE lockBladesACN()
+    BEGIN
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._filteredACNLock;
+
+        CREATE temporary TABLE xenoblade2_guide._filteredACNLock
+        SELECT acn.*
+        FROM xenoblade2_guide.blades as b
+            JOIN xenoblade2_guide.affinityCharts as ac
+                ON b.AffinityChart = ac.id
+                AND b.Unlocked = 0
+            JOIN xenoblade2_guide.affinityChartBranches as acb
+                ON ac.AffinityBranch = acb.id
+                OR ac.BladeSpecialBranch1 = acb.id
+                OR ac.BladeSpecialBranch2 = acb.id
+                OR ac.BladeSpecialBranch3 = acb.id
+                OR ac.BattleSkillBranch1 = acb.id
+                OR ac.BattleSkillBranch2 = acb.id
+                OR ac.BattleSkillBranch3 = acb.id
+                OR ac.FieldSkillBranch1 = acb.id
+                OR ac.FieldSkillBranch2 = acb.id
+                OR ac.FieldSkillBranch3 = acb.id
+            JOIN xenoblade2_guide.affinityChartNodes as acn
+                ON acb.NodeAffinity1 = acn.id
+                OR acb.NodeAffinity2 = acn.id
+                OR acb.NodeAffinity3 = acn.id
+                OR acb.NodeAffinity4 = acn.id
+                OR acb.NodeAffinity5 = acn.id;
+        
+        UPDATE xenoblade2_guide.affinityChartNodes as acnList
+        SET acnList.Available = 0, acnList.Unlocked = 0
+        WHERE acnList.id IN ( SELECT id FROM xenoblade2_guide._filteredACNLock );
+        
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._filteredACNLock;
+
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._filteredACNUnlock;
+        CREATE temporary TABLE xenoblade2_guide._filteredACNUnlock
+        SELECT acn.id
+        FROM xenoblade2_guide.blades as b
+            JOIN xenoblade2_guide.affinityCharts as ac
+            ON b.AffinityChart = ac.id
+            AND b.Unlocked = 1
+            JOIN xenoblade2_guide.affinityChartBranches as acb
+            ON ac.AffinityBranch = acb.id
+            OR ac.BladeSpecialBranch1 = acb.id
+            OR ac.BladeSpecialBranch2 = acb.id
+            OR ac.BladeSpecialBranch3 = acb.id
+            OR ac.BattleSkillBranch1 = acb.id
+            OR ac.BattleSkillBranch2 = acb.id
+            OR ac.BattleSkillBranch3 = acb.id
+            OR ac.FieldSkillBranch1 = acb.id
+            OR ac.FieldSkillBranch2 = acb.id
+            OR ac.FieldSkillBranch3 = acb.id
+            JOIN xenoblade2_guide.affinityChartNodes as acn
+            ON (acb.NodeAffinity1 = acn.id
+            OR acb.NodeAffinity2 = acn.id
+            OR acb.NodeAffinity3 = acn.id
+            OR acb.NodeAffinity4 = acn.id
+            OR acb.NodeAffinity5 = acn.id)
+            AND acn.id NOT IN (
+                SELECT preACN.RequiredBy
+                FROM xenoblade2_guide.prerequisitesACNs as preACN
+            );
+        
+        UPDATE xenoblade2_guide.affinityChartNodes as acnList
+        SET acnList.Available = 1, acnList.Unlocked = 1
+        WHERE acnList.id IN ( SELECT * FROM xenoblade2_guide._filteredACNUnlock);
+        
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._filteredACNUnlock;
+
+        CALL updateAllFieldSkills();
+
+    END`
+}
+
 const update_acn_procedures = [
   updateACN,
   updateBranchACN,
-  updateACNUnlocked
+  updateACNUnlocked,
+  lockBladesACN
 ]
 
 module.exports = update_acn_procedures

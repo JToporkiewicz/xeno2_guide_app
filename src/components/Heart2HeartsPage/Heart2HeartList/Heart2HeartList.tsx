@@ -49,10 +49,12 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
 
   useEffect(() => {
     return () => {
-      props.saveHeart2Hearts({
-        unlocked: toUpdate.current.filter((h) => h.Viewed).map((h) => h.id),
-        locked: toUpdate.current.filter((h) => !h.Viewed).map((h) => h.id)
-      })
+      if (toUpdate.current.length > 0) {
+        props.saveHeart2Hearts({
+          unlocked: toUpdate.current.filter((h) => h.Viewed).map((h) => h.id),
+          locked: toUpdate.current.filter((h) => !h.Viewed).map((h) => h.id)
+        })  
+      }
     } 
   }, [])
 

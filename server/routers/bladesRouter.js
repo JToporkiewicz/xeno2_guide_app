@@ -432,6 +432,7 @@ module.exports = function() {
       }
       await sequelize.query('CALL updateMM ()');
       await sequelize.query('CALL updateQuest ()');
+      await sequelize.query('CALL lockBladesACN ()');
     } catch (err) {
       return res.status(400).json({err: err.message})
     }

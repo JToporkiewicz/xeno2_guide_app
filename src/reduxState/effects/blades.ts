@@ -41,7 +41,7 @@ const fetchBladeEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveBladeSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(BladeActions.SaveBladeSkillNode),
-    filter((action) => action.payload.unlocked.length || action.payload.locked.length),
+    filter((action) => action.payload.unlocked?.length || action.payload.locked?.length),
     mergeMap((action) => callWithLoader$(
       'Saving blade skill node',
       from(updateACNUnlocked(action.payload))

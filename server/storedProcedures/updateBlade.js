@@ -69,6 +69,8 @@ const updateBlade = {
             FROM xenoblade2_guide.prerequisitesBlades as preBlade
         );
 
+        CALL lockBladesACN();
+
     END`
 }
 

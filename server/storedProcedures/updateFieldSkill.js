@@ -36,9 +36,7 @@ const updateFieldSkill = {
         SET skillLevelTotal = (
             skillLevel3Count * 3
             + (skillLevel2Count - skillLevel3Count) * 2
-            + (skillLevel1Count
-                - (skillLevel2Count - skillLevel3Count)
-                - skillLevel3Count)
+            + (skillLevel1Count - skillLevel2Count)
         ) + (
             SELECT fs.CommonBladeContribution
             FROM xenoblade2_guide.fieldSkills as fs
@@ -104,9 +102,75 @@ const updateFieldSkillCommon = {
     END`
 }
 
+const updateAllFieldSkills = {
+  name: 'updateAllFieldSkills',
+  query: `CREATE PROCEDURE updateAllFieldSkills()
+    BEGIN
+    
+        CALL updateFieldSkillCommon(1);
+        CALL updateFieldSkillCommon(2);
+        CALL updateFieldSkillCommon(3);
+        CALL updateFieldSkillCommon(4);
+        CALL updateFieldSkillCommon(5);
+        CALL updateFieldSkillCommon(6);
+        CALL updateFieldSkillCommon(7);
+        CALL updateFieldSkillCommon(8);
+        CALL updateFieldSkillCommon(9);
+        CALL updateFieldSkillCommon(10);
+        CALL updateFieldSkillCommon(11);
+        CALL updateFieldSkillCommon(12);
+        CALL updateFieldSkillCommon(13);
+        CALL updateFieldSkillCommon(14);
+        CALL updateFieldSkillCommon(15);
+        CALL updateFieldSkillCommon(16);
+        CALL updateFieldSkillCommon(17);
+        CALL updateFieldSkillCommon(18);
+        CALL updateFieldSkillCommon(19);
+        CALL updateFieldSkillCommon(20);
+        CALL updateFieldSkillCommon(21);
+        CALL updateFieldSkillCommon(22);
+        CALL updateFieldSkillCommon(23);
+        CALL updateFieldSkillCommon(24);
+        CALL updateFieldSkillCommon(25);
+        CALL updateFieldSkillCommon(26);
+        CALL updateFieldSkillCommon(27);
+        CALL updateFieldSkillCommon(28);
+        CALL updateFieldSkillCommon(29);
+        CALL updateFieldSkillCommon(30);
+        CALL updateFieldSkillCommon(31);
+        CALL updateFieldSkillCommon(32);
+        CALL updateFieldSkillCommon(33);
+        CALL updateFieldSkillCommon(34);
+        CALL updateFieldSkillCommon(35);
+        CALL updateFieldSkillCommon(36);
+        CALL updateFieldSkillCommon(37);
+        CALL updateFieldSkillCommon(38);
+        CALL updateFieldSkillCommon(39);
+        CALL updateFieldSkillCommon(40);
+        CALL updateFieldSkillCommon(41);
+        CALL updateFieldSkillCommon(42);
+        CALL updateFieldSkillCommon(43);
+        CALL updateFieldSkillCommon(44);
+        CALL updateFieldSkillCommon(45);
+        CALL updateFieldSkillCommon(46);
+        CALL updateFieldSkillCommon(47);
+        CALL updateFieldSkillCommon(48);
+        CALL updateFieldSkillCommon(49);
+        CALL updateFieldSkillCommon(50);
+        CALL updateFieldSkillCommon(51);
+        CALL updateFieldSkillCommon(52);
+        CALL updateFieldSkillCommon(53);
+        CALL updateFieldSkillCommon(54);
+        CALL updateFieldSkillCommon(55);
+        CALL updateFieldSkillCommon(56);
+
+    END`
+}
+  
 const update_field_skill_procedures = [
   updateFieldSkill,
-  updateFieldSkillCommon
+  updateFieldSkillCommon,
+  updateAllFieldSkills
 ]
 
 module.exports = update_field_skill_procedures

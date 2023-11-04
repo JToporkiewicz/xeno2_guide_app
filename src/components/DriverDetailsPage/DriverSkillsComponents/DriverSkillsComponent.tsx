@@ -44,32 +44,46 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
       switch(tier) {
       // @ts-ignore
       case 1:
-        nodes = nodes.concat([{node: props.tree.tier1[column], tier: 1}])
+        if (props.tree.tier1[column].unlocked) {
+          nodes = nodes.concat([{node: props.tree.tier1[column], tier: 1}])
+        }
       // @ts-ignore
       case 2:
-        nodes = nodes.concat([{node: props.tree.tier2[column], tier: 2}])
+        if (props.tree.tier2[column].unlocked) {
+          nodes = nodes.concat([{node: props.tree.tier2[column], tier: 2}])
+        }
       // @ts-ignore
       case 3:
-        nodes = nodes.concat([{node: props.tree.tier3[column], tier: 3}])
+        if (props.tree.tier3[column].unlocked) {
+          nodes = nodes.concat([{node: props.tree.tier3[column], tier: 3}])
+        }
       default:
         break;
       }
 
+      const unlockedNodesIds = nodes.map((nodeDetails) => nodeDetails.node.nodeId);
+
       if(newUnlockedTier1 < 2) {
         nodes = nodes
-          .concat(props.tree.tier2.map((node) => ({
-            node,
-            tier: 2
-          })))
-          .concat(props.tree.tier3.map((node) => ({
+          .concat(props.tree.tier2
+            .filter((oldNodes) => !unlockedNodesIds.includes(oldNodes.nodeId) && oldNodes.unlocked)
+            .map((node) => ({
+              node,
+              tier: 2
+            })))
+          .concat(props.tree.tier3
+            .filter((oldNodes) => !unlockedNodesIds.includes(oldNodes.nodeId) && oldNodes.unlocked)
+            .map((node) => ({
+              node,
+              tier: 3
+            })))
+      } else if(newUnlockedTier1 + newUnlockedTier2 < 5) {
+        nodes = nodes.concat(props.tree.tier3
+          .filter((oldNodes) => !unlockedNodesIds.includes(oldNodes.nodeId) && oldNodes.unlocked)
+          .map((node) => ({
             node,
             tier: 3
           })))
-      } else if(newUnlockedTier1 + newUnlockedTier2 < 5) {
-        nodes = nodes.concat(props.tree.tier3.map((node) => ({
-          node,
-          tier: 3
-        })))
       }
     }
     const nodesIds = nodes.map((nodeDetails) => nodeDetails.node.nodeId);
@@ -80,12 +94,11 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
         unlocked: unlock
       }))})
     toUpdate.current = toUpdate.current.filter((node) => !nodesIds.includes(node.nodeId))
-      .concat(nodes.map((nodeDetails) => nodeDetails.node))
+      .concat(nodes.map((nodeDetails) => ({...nodeDetails.node, unlocked: unlock})))
   }
 
   useEffect(() => {
     if(props.tree.treeId !== 0){
-      toUpdate.current = props.tree.tier1.concat(props.tree.tier2).concat(props.tree.tier3);
       let unlocked1 = props.tree.tier1.filter((node:IDriverSkillNode) =>
         node.unlocked).length;
       let unlocked2 = props.tree.tier2.filter((node:IDriverSkillNode) =>
@@ -97,12 +110,14 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
 
   useEffect(() => {
     return () => {
-      if (toUpdate.current.length) {
+      if (toUpdate.current.length > 0) {
         props.saveDriverSkillNode({
           unlocked: toUpdate.current.filter((node) => node.unlocked && node.nodeId)
-            .map((node) => node.nodeId),
+            .map((node) => node.nodeId)
+            .sort((nodeA, nodeB) => nodeA < nodeB ? -1 : 1),
           locked: toUpdate.current.filter((node) => !node.unlocked && node.nodeId)
-            .map((node) => node.nodeId),
+            .map((node) => node.nodeId)
+            .sort((nodeA, nodeB) => nodeA < nodeB ? -1 : 1),
         })
       }
     } 

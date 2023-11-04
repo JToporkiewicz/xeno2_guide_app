@@ -54,7 +54,33 @@ export const bladesReducer = createReducer<IBladeState[]>(
   }],
   [BladeActions.UpdateBladeUnlocked, (bladeState:IBladeState[], updateUnlocked: IBladeState) =>
     bladeState.filter((blade) => blade.id !== updateUnlocked.id)
-      .concat([updateUnlocked]).sort((bladeA, bladeB) =>
+      .concat({
+        ...updateUnlocked,
+        affinityChart: updateUnlocked.affinityChart.map((ac) => ({
+          ...ac,
+          nodes: ac.nodes.map((n, i) => {
+            if (!updateUnlocked.unlocked) {
+              return {
+                ...n,
+                unlocked: false,
+                available: false
+              }
+            } else {
+              if (i === 0 && (n.preReqs === undefined || n.preReqs.length === 0)) {
+                return {
+                  ...n,
+                  unlocked: true,
+                  available: true
+                }
+              }
+              return {
+                ...n,
+                unlocked: false
+              }
+            }
+          })
+        }))
+      }).sort((bladeA, bladeB) =>
         bladeA.id < bladeB.id ? -1 : 1
       )
   ],
