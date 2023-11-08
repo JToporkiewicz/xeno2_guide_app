@@ -94,7 +94,7 @@ export const ItemListView = (props: IOwnProps & IProps) => {
               <div
                 className="column-wide text-list-status"
               >
-                {itemAvailable ? item.Name : `Item ${item.id}`}
+                {itemAvailable ? item.Name : <i>Item {item.id}</i>}
               </div>
               <div
                 className="column-narrow text-list-status"

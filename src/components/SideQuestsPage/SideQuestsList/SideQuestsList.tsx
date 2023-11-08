@@ -108,7 +108,7 @@ export const SideQuestsList = (props: IOwnProps) => {
                 </div>
                 {
                   props.storyProgress.OnlyShowAvailable && !quest.Available ?
-                    <div className='text-list-link'>????</div>
+                    <div className='text-list-link'><i>Quest {quest.id}</i></div>
                     :
                     <LinkSelected
                       className="text-list-link"

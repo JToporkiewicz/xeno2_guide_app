@@ -115,7 +115,7 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
                   >
                     {mm.Name}
                   </LinkSelected>
-                  : <div className='text-list-link'>????</div>
+                  : <div className='text-list-link'><i>Merc Mission {mm.id}</i></div>
                 }
                 {
                   mm.Prerequisites &&

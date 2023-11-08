@@ -143,7 +143,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                       >
                         {h2h.Title}
                       </LinkSelected>
-                      : <div className='text-list-link'>????</div>
+                      : <div className='text-list-link'><i>Heart 2 Heart {h2h?.id}</i></div>
                   }
                   {h2h.PreReqs &&
                     <HoverContainer>

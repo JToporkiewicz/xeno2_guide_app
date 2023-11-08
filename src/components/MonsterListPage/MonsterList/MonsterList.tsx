@@ -119,7 +119,7 @@ export const MonsterListView = (props: IOwnProps) => {
                   >
                     {mon.Name}
                   </LinkSelected>
-                  : <div className='text-list-link'>????</div>
+                  : <div className='text-list-link'><i>Monster {mon.id}</i></div>
                 }
               </div>
             )}

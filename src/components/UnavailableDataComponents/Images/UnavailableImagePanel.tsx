@@ -21,7 +21,7 @@ const UnavailableImagePanel = (props:IProps) => {
         src={path.resolve('images/helper/Unknown.png')}
         alt={'Unknown'}
         className={props.panelType === 'weaponType' ? 'weapon-class-image' : 'character-image'}/>
-      <div className="image-name">Spoiler</div>
+      <div className="image-name"><i>Spoiler {props.id}</i></div>
     </div>
   )
 };
