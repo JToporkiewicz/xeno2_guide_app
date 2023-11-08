@@ -171,7 +171,9 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
       };
     } else if (props.quest.Steps && saveSubSteps.current) {
       const stepWithSubStep = props.quest.Steps
-        .filter((steps) => steps.SubSteps && steps.SubSteps.filter((sub) => sub.CompletionProgress))
+        .filter((steps) => steps.SubSteps
+          && steps.SubSteps
+            .filter((sub) => sub.CompletionProgress && sub.CompletionProgress > 0)?.length > 0)
         .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1)
         .at(-1);
       currentSubStep.current = {
