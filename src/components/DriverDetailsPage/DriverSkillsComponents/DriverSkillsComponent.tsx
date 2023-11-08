@@ -177,6 +177,7 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
                   branchName={b[0].name === 'Tier 1' ? 'Tree tier' : ''}
                   availableTier={unlockedTreeTier}
                   setSelectedBranch={setSelectedBranch.bind(this, index - 1)}
+                  selectedBranch={selectedBranch === index - 1}
                 />
               })}
             </div>

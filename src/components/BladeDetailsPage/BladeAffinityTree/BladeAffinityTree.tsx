@@ -171,6 +171,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
                 setSelectedBranch(i)
                 setSelectedNode(-1)
               }).bind(this, index)}
+              selectedBranch={selectedBranch === index}
             />
           })}
         </div>

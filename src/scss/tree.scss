@@ -116,7 +116,7 @@
   transform: translateX(-50%);
 }
 
-.branch-body:hover .branch-name {
+.branch-body:hover .branch-name, .branch-selected .branch-name {
   display: grid;
 }
 

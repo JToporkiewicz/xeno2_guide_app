@@ -14,7 +14,8 @@ interface IOwnProps {
   nodes: IBranchNodes[],
   availableTier?: number,
   allAvailable?:boolean,
-  setSelectedBranch:() => void
+  setSelectedBranch:() => void,
+  selectedBranch?: boolean
 }
 
 
@@ -70,7 +71,10 @@ export const TreeBranch = (props: IOwnProps) => {
       props.branchName.replace('-', '\u2011')
       : ''}
     </div>
-    <div className="branch-body" onClick={() => props.setSelectedBranch()}>
+    <div
+      className={`branch-body ${props.selectedBranch ? 'branch-selected' : ''}`}
+      onClick={() => props.setSelectedBranch()}
+    >
       <div className="branch-name"/>
       <div className="branch-track" />
       <div className="branch-node-area">
