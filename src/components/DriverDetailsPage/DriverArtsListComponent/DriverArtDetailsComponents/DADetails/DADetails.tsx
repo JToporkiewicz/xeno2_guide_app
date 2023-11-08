@@ -1,22 +1,31 @@
-import { DADetailsHeader } from './DADetailsHeader';
-import { DALevels } from './DALevels';
-import DADescription from './DADescription';
+import { DADetailsHeader } from '../DADetailsHeader';
+import { DALevels } from '../DALevels';
+import DADescription from '../DADescription';
 import InnerCollapsibleComponent
   from 'components/CommonComponents/Containers/InnerCollapsibleComponent';
 import { IDriverArts } from 'interfaces';
+import { IBladeState } from 'reduxState/interfaces/reduxState';
 
-interface IProps {
+interface IOwnProps {
   weapon:string,
   clearArt:() => void,
   weaponArts:IDriverArts[],
   updateArtLevel:(artId:number, level:number) => void
 }
 
-const DADetails = (props:IProps) => {
+interface IProps {
+  blades: IBladeState[]
+}
+
+export const DADetailsView = (props:IProps & IOwnProps) => {
 
   return(
     <div className="art-details-panel">
-      <DADetailsHeader weapon={props.weapon} clearArt={props.clearArt} />
+      <DADetailsHeader
+        weapon={props.weapon}
+        clearArt={props.clearArt}
+        blades={props.blades.filter((blade) => blade.weapon === props.weapon && blade.id !== 53)}
+      />
       <hr/>
       {
         Object.values(props.weaponArts).map((art, key) => 
@@ -31,5 +40,3 @@ const DADetails = (props:IProps) => {
     </div>
   )
 };
-
-export default DADetails;

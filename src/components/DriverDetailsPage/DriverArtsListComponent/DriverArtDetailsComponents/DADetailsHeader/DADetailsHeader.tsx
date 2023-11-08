@@ -15,10 +15,10 @@ interface IDispatchProps {
 interface IOwnProps {
   weapon:string,
   clearArt:() => void
+  blades: IBladeState[] | undefined;
 }
 
 interface IProps {
-  blades: IBladeState[];
   storyProgress: IStoryProgress;
 }
 
@@ -30,41 +30,40 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
 
       props.showLoader('Update art details');
       const updateShow = (id:number) => {
-        const bladeDetails = props.blades.find((b) => b.id === id);
+        const bladeDetails = props.blades?.find((b) => b.id === id);
         if(bladeDetails) {
           props.updateShowBlade({id: bladeDetails.id, 'show': !bladeDetails.show});
         }
       }
 
       setBladeList(    
-        props.blades.filter((blade) => blade.weapon === props.weapon && blade.id !== 53)
-          .map((blade:IBladeState) =>
-            !props.storyProgress.OnlyShowAvailable || 
-                    (blade.available || blade.show) ? 
-              <LinkSelected
-                to={`/blade/${blade.id}`}
-                area='blade'
-                id={blade.id}
-                className="small-image-panel"
-                key={blade.name}
-              >
-                <img
-                  src={path.resolve(`images/blade/${blade.name
-                    .replaceAll(/\s+/g, '')
-                    .replace('α','Alpha')
-                    .replace('π', 'Pi')}.jpeg`)}
-                  alt={blade.name}
-                  className={`small-image${
-                    blade.unlocked === false ? ' not-unlocked-character' : ''}`}
-                />
-              </LinkSelected>
-              :
-              <SmallPeekPanel
-                id={blade.id}
-                updateState={updateShow.bind(this)}
-                key={blade.name}
+        props.blades.map((blade:IBladeState) =>
+          !props.storyProgress.OnlyShowAvailable || 
+                  (blade.available || blade.show) ? 
+            <LinkSelected
+              to={`/blade/${blade.id}`}
+              area='blade'
+              id={blade.id}
+              className="small-image-panel"
+              key={blade.name}
+            >
+              <img
+                src={path.resolve(`images/blade/${blade.name
+                  .replaceAll(/\s+/g, '')
+                  .replace('α','Alpha')
+                  .replace('π', 'Pi')}.jpeg`)}
+                alt={blade.name}
+                className={`small-image${
+                  blade.unlocked === false ? ' not-unlocked-character' : ''}`}
               />
-          )
+            </LinkSelected>
+            :
+            <SmallPeekPanel
+              id={blade.id}
+              updateState={updateShow.bind(this)}
+              key={blade.name}
+            />
+        )
       )
       props.hideLoader('Update art details');
     }

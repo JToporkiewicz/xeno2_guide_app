@@ -6,7 +6,7 @@ import {
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import ClosedUnlinkedImagePanel
   from 'components/CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
-import DADetails from './DriverArtDetailsComponents/DADetails';
+import { DADetails } from './DriverArtDetailsComponents/DADetails';
 import { IDriverArts } from 'interfaces';
 
 interface IDispatchProps {
