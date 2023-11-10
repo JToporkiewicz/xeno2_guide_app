@@ -112,33 +112,36 @@ export const MonsterDetailsPageView = (props:IProps & IDispatchProps) => {
         </div>
       </div>
     </CollapsibleComponent>
-    <CollapsibleComponent header='Drops'>
-      <div className='data-table'>
-        <div className='row monster-drops-table'>
-          <b className='column-wide order-title'>Name</b>
-          <b className='column-medium order-title'>Type</b>
-          <b className='column-medium order-title'>Drop rate</b>
-          <b className='column-wide order-title'>Rarity</b>
+    {monster.Drops && monster.Drops.length > 0 ?
+      <CollapsibleComponent header='Drops'>
+        <div className='data-table'>
+          <div className='row monster-drops-table'>
+            <b className='column-wide order-title'>Name</b>
+            <b className='column-medium order-title'>Type</b>
+            <b className='column-medium order-title'>Drop rate</b>
+            <b className='column-wide order-title'>Rarity</b>
+          </div>
+          <div className='table-outline monster-drops-table'>
+            {monster.Drops.map((drop: IMonsterDrops, id: number) =>
+              <div className="row text-list-entry" key={id}>
+                <div className='column-wide text-list-status'>
+                  {drop.name}
+                </div>
+                <div className='column-medium text-list-status'>
+                  {drop.type}
+                </div>
+                <div className='column-medium text-list-status'>
+                  {drop.dropRate}
+                </div>
+                <div className='column-wide'>
+                  {drop.rarity}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-        <div className='table-outline monster-drops-table'>
-          {monster.Drops.map((drop: IMonsterDrops, id: number) =>
-            <div className="row text-list-entry" key={id}>
-              <div className='column-wide text-list-status'>
-                {drop.name}
-              </div>
-              <div className='column-medium text-list-status'>
-                {drop.type}
-              </div>
-              <div className='column-medium text-list-status'>
-                {drop.dropRate}
-              </div>
-              <div className='column-wide'>
-                {drop.rarity}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
-    </CollapsibleComponent>
+      </CollapsibleComponent>
+      : <div />
+    }
   </>
 }
