@@ -4,6 +4,7 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import { IItem, IItemType } from 'interfaces';
 import { IDriverState } from 'reduxState/interfaces/reduxState';
 import { LinkSelected } from 'components/CommonComponents/LinkSelected';
+import { Routes } from 'helpers/routesConst';
 
 interface IOwnProps {
   driverDetails:IDriverState,
@@ -41,7 +42,7 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
                 <>
                   {' '}
                   <LinkSelected
-                    to={'/items'}
+                    to={Routes.ITEMS}
                     area='item'
                     id={props.item1.id}
                   >
@@ -49,7 +50,7 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
                   </LinkSelected>, 
                   {' '}
                   <LinkSelected
-                    to={'/items'}
+                    to={Routes.ITEMS}
                     area='item'
                     id={props.item2.id}
                   >
@@ -67,7 +68,7 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
                 <>
                   {' '}
                   <LinkSelected
-                    to={'/items'}
+                    to={Routes.ITEMS}
                     area='itemType'
                     id={props.itemType1.id}
                   >
@@ -75,7 +76,7 @@ export const DriverBasicInfoComponentView = (props:IOwnProps) => {
                   </LinkSelected>, 
                   {' '}
                   <LinkSelected
-                    to={'/items'}
+                    to={Routes.ITEMS}
                     area='itemType'
                     id={props.itemType2.id}
                   >

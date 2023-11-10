@@ -22,6 +22,7 @@ import { MercMissionDetailsPage } from 'components/MercMissionDetailsPage';
 import { MonsterListPage } from 'components/MonsterListPage';
 import { MonsterDetailsPage } from 'components/MonsterDetailsPage';
 import { ItemListPage } from 'components/ItemListPage';
+import { Routes } from 'helpers/routesConst';
 
 interface IDispatchProps {
   setSelected:(payload:ISelectedState) => void;
@@ -62,20 +63,20 @@ export const AppView = (props:IProps & IDispatchProps) => {
         />
         <div className={openNavigation ? 'part-page' : 'full-page'}>
           <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/driverslist" component={DriversListPage} />
-            <Route path="/driver/:slug" component={DriverDetailsPage} />
-            <Route path="/bladeList" component={BladeListPage} />
-            <Route path="/blade/:slug" component={BladeDetailsPage} />
-            <Route path="/heart2HeartList" component={Heart2HeartsListPage} />
-            <Route path="/heart2Heart/:slug" component={Heart2HeartDetailsPage} />
-            <Route path="/sideQuestList" component={SideQuestPage} />
-            <Route path="/sideQuest/:slug" component={SideQuestDetailsPage} />
-            <Route path="/mercMissionList" component={MercMissionListPage} />
-            <Route path="/mercMission/:slug" component={MercMissionDetailsPage} />
-            <Route path="/monsterList" component={MonsterListPage} />
-            <Route path="/monster/:slug" component={MonsterDetailsPage} />
-            <Route path="/items" component={ItemListPage} />
+            <Route path={Routes.HOME} exact component={HomePage} />
+            <Route path={Routes.DRIVER_LIST} component={DriversListPage} />
+            <Route path={`${Routes.DRIVER}:slug`} component={DriverDetailsPage} />
+            <Route path={Routes.BLADE_LIST} component={BladeListPage} />
+            <Route path={`${Routes.BLADE}:slug`} component={BladeDetailsPage} />
+            <Route path={Routes.HEART_2_HEART_LIST} component={Heart2HeartsListPage} />
+            <Route path={`${Routes.HEART_2_HEART}:slug`} component={Heart2HeartDetailsPage} />
+            <Route path={Routes.SIDE_QUEST_LIST} component={SideQuestPage} />
+            <Route path={`${Routes.SIDE_QUEST}:slug`} component={SideQuestDetailsPage} />
+            <Route path={Routes.MERC_MISSION_LIST} component={MercMissionListPage} />
+            <Route path={`${Routes.MERC_MISSION}:slug`} component={MercMissionDetailsPage} />
+            <Route path={Routes.MONSTER_LIST} component={MonsterListPage} />
+            <Route path={`${Routes.MONSTER}:slug`} component={MonsterDetailsPage} />
+            <Route path={Routes.ITEMS} component={ItemListPage} />
             <Route component={Default} />
           </Switch>
         </div>

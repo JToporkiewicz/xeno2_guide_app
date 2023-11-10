@@ -5,6 +5,7 @@ import { IBladeState, IUpdateShow } from 'reduxState/interfaces/reduxState';
 import SmallPeekPanel
   from 'components/UnavailableDataComponents/Images/SmallPeekPanel';
 import { LinkSelected } from 'components/CommonComponents/LinkSelected';
+import { Routes } from 'helpers/routesConst';
 
 interface IDispatchProps {
   updateShowBlade:(payload:IUpdateShow) => void;
@@ -41,7 +42,7 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
           !props.storyProgress.OnlyShowAvailable || 
                   (blade.available || blade.show) ? 
             <LinkSelected
-              to={`/blade/${blade.id}`}
+              to={Routes.BLADE + blade.id}
               area='blade'
               id={blade.id}
               className="small-image-panel"

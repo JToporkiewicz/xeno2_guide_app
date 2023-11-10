@@ -1,6 +1,7 @@
 import path from 'path';
 import 'scss/navigation.scss';
 import { LinkSelected } from '../LinkSelected';
+import { Routes } from 'helpers/routesConst';
 
 interface IButtonProps {
   link:string,
@@ -61,14 +62,14 @@ interface IOwnProps {
 
 export const NavigationView = (props:IOwnProps & IDispatchProps) => {
   const navigationButtons = [
-    { link: '/', title: 'Home', area: '' },
-    { link: '/driversList', title: 'Drivers', area: 'driversList' },
-    { link: '/bladeList', title: 'Blades', area: 'bladeList' },
-    { link: '/sideQuestList', title: 'Side Quests', area: 'sideQuestList' },
-    { link: '/heart2HeartList', title: 'Heart 2 Hearts', area: 'heart2HeartList' },
-    { link: '/mercMissionList', title: 'Merc Missions', area: 'mercMissionList' },
-    { link: '/monsterList', title: 'Monsters', area: 'monsterList' },
-    { link: '/items', title: 'Pouch', area: 'items' }
+    { link: Routes.HOME, title: 'Home', area: '' },
+    { link: Routes.DRIVER_LIST, title: 'Drivers', area: 'driversList' },
+    { link: Routes.BLADE_LIST, title: 'Blades', area: 'bladeList' },
+    { link: Routes.SIDE_QUEST_LIST, title: 'Side Quests', area: 'sideQuestList' },
+    { link: Routes.HEART_2_HEART_LIST, title: 'Heart 2 Hearts', area: 'heart2HeartList' },
+    { link: Routes.MERC_MISSION_LIST, title: 'Merc Missions', area: 'mercMissionList' },
+    { link: Routes.MONSTER_LIST, title: 'Monsters', area: 'monsterList' },
+    { link: Routes.ITEMS, title: 'Pouch', area: 'items' }
   ]
   return (
     <div className={props.openNavigation ? 'open-navigation' : 'closed-navigation'}>

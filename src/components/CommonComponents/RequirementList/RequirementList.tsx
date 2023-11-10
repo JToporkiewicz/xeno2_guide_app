@@ -4,6 +4,7 @@ import IncrementDecrementNumber from '../FormComponents/IncrementDecrementNumber
 import { IStoryProgress } from 'interfaces'
 import { IMajorLocations } from 'reduxState/interfaces/reduxState'
 import { LinkSelected } from '../LinkSelected'
+import { Routes } from 'helpers/routesConst'
 
 interface IOwnProps {
   requirements: IRequirement[],
@@ -27,7 +28,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         </b>
         :
         <LinkSelected
-          to={`/blade/${req.reqId}`}
+          to={Routes.BLADE + req.reqId}
           area='blade'
           id={req.reqId || 0}
         >
@@ -43,7 +44,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         </b>
         :
         <LinkSelected
-          to={`/sideQuest/${req.reqId}`}
+          to={Routes.SIDE_QUEST + req.reqId}
           area='sideQuest'
           id={req.reqId || 0}
         >
@@ -57,7 +58,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         </b>
         : 
         <LinkSelected
-          to={`/monster/${req.reqId}`}
+          to={Routes.MONSTER + req.reqId}
           area='monster'
           id={req.reqId || 0}
         >
@@ -68,7 +69,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
       return <div className='col-sm-6'>
         <b>
           <LinkSelected
-            to='/bladeList'
+            to={Routes.BLADE_LIST}
             area='bladeList'
             id={0}
           >
@@ -84,7 +85,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         </b>
         :
         <LinkSelected
-          to={`/heart2Heart/${req.reqId}`}
+          to={Routes.HEART_2_HEART + req.reqId}
           area='heart2Heart'
           id={req.reqId || 0}
         >
@@ -98,7 +99,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         </b>
         :
         <LinkSelected
-          to={`/mercMission/${req.reqId}`}
+          to={Routes.MERC_MISSION + req.reqId}
           area='mercMission'
           id={req.reqId || 0}
         >

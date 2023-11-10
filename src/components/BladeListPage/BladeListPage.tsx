@@ -13,6 +13,7 @@ import UnavailableImagePanel
   from 'components/UnavailableDataComponents/Images/UnavailableImagePanel';
 import { FieldSkills } from './FieldSkills';
 import { getACCompletion } from 'helpers/completionPercentage';
+import { Routes } from 'helpers/routesConst';
 
 interface IDispatchProps {
   showLoader: (payload:string) => void;
@@ -138,6 +139,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
         selectedBlade !== defaultBladeState ?
           <CharacterPageDetails
             area="blade"
+            link={Routes.BLADE + selectedBlade.id}
             id={selectedBlade.id}
             name={selectedBlade.name}
             unlocked={`Unlocked: ${selectedBlade.unlocked ? 'Yes' : 'No'}`}

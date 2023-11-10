@@ -5,6 +5,7 @@ import { LinkSelected } from './LinkSelected';
 
 interface IProps {
   area: string,
+  link: string,
   id: number,
   name: string,
   unlocked?:string,
@@ -88,7 +89,7 @@ export const CharacterPageDetails = (props: IProps) =>
           </div>
         }
         <LinkSelected
-          to={`/${props.area}/${props.id}`}
+          to={props.link}
           area={props.area}
           id={props.id}
         >

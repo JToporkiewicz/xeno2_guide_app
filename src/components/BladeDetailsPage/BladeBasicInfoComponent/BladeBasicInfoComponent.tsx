@@ -7,6 +7,7 @@ import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/Opti
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
 import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
 import { LinkSelected } from 'components/CommonComponents/LinkSelected'
+import { Routes } from 'helpers/routesConst';
 
 interface IOwnProps {
   bladeDetails:IBladeState,
@@ -155,7 +156,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                 <>
                   {' '}
                   <LinkSelected
-                    to={'/items'}
+                    to={Routes.ITEMS}
                     id={props.item1?.id || 0}
                     area='item'
                   >
@@ -163,7 +164,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                   </LinkSelected>,
                   {' '}
                   <LinkSelected
-                    to={'/items'}
+                    to={Routes.ITEMS}
                     id={props.item2?.id || 0}
                     area='item'
                   >
@@ -180,7 +181,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                 <>
                   {' '}
                   <LinkSelected
-                    to={'/items'}
+                    to={Routes.ITEMS}
                     id={props.itemType1?.id || 0}
                     area='itemType'
                   >
@@ -188,7 +189,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                   </LinkSelected>,
                   {' '}
                   <LinkSelected
-                    to={'/items'}
+                    to={Routes.ITEMS}
                     id={props.itemType2?.id || 0}
                     area='itemType'
                   >
@@ -215,7 +216,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                   link={
                     !props.storyProgress.OnlyShowAvailable || props.heart2Heart.Available ?
                       <LinkSelected
-                        to={`/heart2Heart/${props.heart2Heart?.id}`}
+                        to={Routes.HEART_2_HEART + props.heart2Heart?.id}
                         id={props.heart2Heart?.id || 0}
                         area='heart2Heart'
                       >
@@ -250,7 +251,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                 link={
                   !props.storyProgress.OnlyShowAvailable || props.quest.Available ?
                     <LinkSelected
-                      to={`/quest/${props.quest?.id}`}
+                      to={Routes.SIDE_QUEST + props.quest?.id}
                       id={props.quest?.id || 0}
                       area='quest'
                     >

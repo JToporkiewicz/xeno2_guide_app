@@ -7,6 +7,7 @@ import path from 'path';
 import { useState } from 'react';
 import './MonsterList.scss';
 import { LinkSelected } from 'components/CommonComponents/LinkSelected';
+import { Routes } from 'helpers/routesConst';
 
 interface IOwnProps {
     monsterCategory: string;
@@ -113,7 +114,7 @@ export const MonsterListView = (props: IOwnProps) => {
                 {!props.storyProgress.OnlyShowAvailable || mon.Available ?
                   <LinkSelected
                     className="text-list-link"
-                    to={`/monster/${mon.id}`}
+                    to={Routes.MONSTER + mon.id}
                     area='monster'
                     id={mon.id}
                   >

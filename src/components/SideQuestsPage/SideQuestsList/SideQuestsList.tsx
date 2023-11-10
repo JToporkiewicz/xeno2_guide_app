@@ -5,6 +5,7 @@ import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { separateMajorArea, sortFunction } from 'helpers';
+import { Routes } from 'helpers/routesConst';
 import { IQuest, IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
@@ -112,7 +113,7 @@ export const SideQuestsList = (props: IOwnProps) => {
                     :
                     <LinkSelected
                       className="text-list-link"
-                      to={`/sideQuest/${quest.id}`}
+                      to={Routes.SIDE_QUEST + quest.id}
                       area='sideQuest'
                       id={quest.id}
                     >

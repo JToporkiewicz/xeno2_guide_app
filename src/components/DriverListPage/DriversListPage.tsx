@@ -9,6 +9,7 @@ import { CharacterPageDetails } from '../CommonComponents/CharacterPageDetails';
 import { defaultDriverState } from 'reduxState/interfaces/drivers';
 import { sortFunction } from 'helpers';
 import { getDACompletion, getDSCompletion } from 'helpers/completionPercentage';
+import { Routes } from 'helpers/routesConst';
 
 interface IDispatchProps {
   saveStoryProgress: (payload:IStoryProgress) => void;
@@ -109,6 +110,7 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
         selectedDriver !== defaultDriverState ?
           <CharacterPageDetails
             area="driver"
+            link={Routes.DRIVER + selectedDriver.id}
             id={selectedDriver.id}
             name={selectedDriver.name}
             availability={`Available from chapter: ${selectedDriver.chapterUnlocked}`}

@@ -10,6 +10,7 @@ import { IHeart2Heart, IStoryProgress } from 'interfaces';
 import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { LinkSelected } from 'components/CommonComponents/LinkSelected';
+import { Routes } from 'helpers/routesConst';
 
 interface IDispatchProps {
   updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
@@ -137,7 +138,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                     !props.storyProgress.OnlyShowAvailable || h2h.Available ? 
                       <LinkSelected
                         className="text-list-link"
-                        to={`/heart2Heart/${h2h.id}`}
+                        to={Routes.HEART_2_HEART + h2h.id}
                         area='heart2Heart'
                         id={h2h.id}
                       >

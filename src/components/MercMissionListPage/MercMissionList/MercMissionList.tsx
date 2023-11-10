@@ -5,6 +5,7 @@ import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { sortFunction } from 'helpers';
+import { Routes } from 'helpers/routesConst';
 import { IMercMission, IStoryProgress } from 'interfaces'
 import { RequirementArea } from 'interfaces/common';
 import path from 'path';
@@ -109,7 +110,7 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
                 {!props.storyProgress.current.OnlyShowAvailable || mm.Available ?
                   <LinkSelected
                     className="text-list-link"
-                    to={`/mercMission/${mm.id}`}
+                    to={Routes.MERC_MISSION + mm.id}
                     area='mercMission'
                     id={mm.id}
                   >
