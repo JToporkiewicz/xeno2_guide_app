@@ -214,7 +214,7 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
             }
           )}
           {step.StepNumber === (routeA.at(0)?.StepNumber || 0) - 1
-          && step.StepNumber === (routeB.at(0)?.StepNumber || 0) - 1 ?
+          || step.StepNumber === (routeB.at(0)?.StepNumber || 0) - 1 ?
             QuestRoutes(
               routeA,
               routeB,
