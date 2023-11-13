@@ -37,7 +37,7 @@ const fetchDriverDetailsEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveDriverSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(DriverActions.SaveDriverSkillNode),
-    filter((action) => action.payload.unlocked.length || action.payload.locked.length),
+    filter((action) => action.payload.unlocked?.length || action.payload.locked?.length),
     mergeMap((action) => callWithLoader$(
       'Updating driver skill node',
       from(updateSkillNodesUnlocked(action.payload))

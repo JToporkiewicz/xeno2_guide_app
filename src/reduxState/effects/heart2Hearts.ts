@@ -28,7 +28,7 @@ const fetchHeart2HeartEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveHeart2HeartsEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(Heart2HeartActions.SaveHeart2Hearts),
-    filter((action) => action.payload.unlocked.length || action.payload.locked.length),
+    filter((action) => action.payload.unlocked?.length || action.payload.locked?.length),
     mergeMap((action) => 
       callWithLoader$(
         'Updating Heart 2 Hearts',
