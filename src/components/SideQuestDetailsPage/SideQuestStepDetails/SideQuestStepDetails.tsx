@@ -30,6 +30,7 @@ const QuestStep = (
 ) => 
   <div
     className={`questStep${step.Completed ? ' stepCompleted' : ''}`}
+    key={'step'+step.id}
   >
     <div className={'questDetails'}>
       <div className="stepBasics">
@@ -204,7 +205,7 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
     <>
       Completed steps: {completedStepNumber} / {lastStepNumber}
       {allRoutes.map((step) =>
-        <div key={`step${step.StepNumber}`}>
+        <div key={`step${step.id}`}>
           {QuestStep(
             step,
             props.quest.Available,
