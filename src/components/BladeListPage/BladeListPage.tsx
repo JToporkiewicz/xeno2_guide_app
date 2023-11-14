@@ -118,7 +118,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
       )
       props.hideLoader('Update blade list');
     }
-  }, [props.blades, orderType, sortOrderAsc])
+  }, [props.blades, orderType, sortOrderAsc, props.storyProgress])
 
   useEffect(() => {
     return () => {

@@ -101,7 +101,7 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
 
       props.hideLoader('Update driver list')
     }
-  }, [props.drivers, orderType, sortOrderAsc])
+  }, [props.drivers, orderType, sortOrderAsc, props.storyProgress])
 
 
   return(

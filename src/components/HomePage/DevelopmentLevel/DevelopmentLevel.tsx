@@ -16,7 +16,7 @@ interface IProps {
 }
 
 export const DevelopmentLevelView = (props: IProps & IDispatchProps) => {
-  const saved = useRef(false);
+  const saved = useRef(true);
   const locationsHistory = useRef(props.locations)
 
   const updateLevel = (id:number, level:number) => {
