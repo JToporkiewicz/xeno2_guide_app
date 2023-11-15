@@ -22,13 +22,15 @@ interface IDispatchProps {
 
 export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
   const toUpdate = useRef([] as IUpdateMMStatus[]);
+
+  const storyHistory = useRef(props.storyProgress as IStoryProgress);
   
   const updatedProgress = useRef(props.storyProgress as IStoryProgress);
   const updatedLocDevLevel = useRef([] as IUpdateDevelopmentLevel[])
 
   useEffect(() => {
     return () => {
-      if (updatedProgress.current !== props.storyProgress) {
+      if (updatedProgress.current !== storyHistory.current) {
         props.saveStoryProgress(updatedProgress.current)
       }
       if (updatedLocDevLevel.current.length !== 0) {
@@ -50,6 +52,16 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
       }
     }
   }, [])
+
+  useEffect(() => {
+    if(props.storyProgress) {
+      storyHistory.current = {
+        ...props.storyProgress,
+        MercLevel: updatedProgress.current.MercLevel
+      }
+      updatedProgress.current = storyHistory.current
+    }
+  }, [props.storyProgress])
 
   const updateMMStatus = (mmId: number, completed: boolean) => {
     props.updateMercMissionStatus({

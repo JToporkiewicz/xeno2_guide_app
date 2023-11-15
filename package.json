@@ -6,8 +6,8 @@
   "scripts": {
     "start": "run-p start-server start-front",
     "start-server": "nodemon server/server.js PORT=3306",
-    "start-front": "react-scripts start API_URL=4001",
-    "build": "react-scripts build",
+    "start-front": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start API_URL=4001",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
     "lint": "eslint . --ext .tsx",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
