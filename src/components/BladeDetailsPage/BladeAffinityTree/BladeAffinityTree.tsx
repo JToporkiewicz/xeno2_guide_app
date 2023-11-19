@@ -43,16 +43,69 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
         }))
       } : []);
     } else {
-      updatingNodes = updatingNodes.concat(foundNode ? [{...foundNode, unlocked: false}].concat(
-        props.affinityChart[branch].nodes.filter((n) => n.tier > foundNode.tier && n.unlocked)
-          .map((n) => ({ ...n, unlocked: false }))
+      const updatedNode:IAffinityChartNodeState | undefined = foundNode ?
+        foundNode.preReqs ?
+          {
+            ...foundNode,
+            unlocked: false,
+            preReqs: foundNode.preReqs.map((pre) => ({
+              ...pre,
+              progress: pre.progress ?
+                pre.progress === pre.requirementCount ?
+                  pre.progress - 1 : pre.progress
+                : 0,
+              completed: false
+            }))
+          }
+          : {
+            ...foundNode,
+            unlocked: false
+          }
+        : undefined
+      updatingNodes = updatingNodes.concat(updatedNode ? [updatedNode].concat(
+        props.affinityChart[branch].nodes.filter((n) => n.tier > updatedNode.tier && n.unlocked)
+          .map((n) => {
+            if (n.preReqs) {
+              return {
+                ...n,
+                unlocked: false,
+                preReqs: n.preReqs.map((pre) => ({
+                  ...pre,
+                  progress: pre.progress ?
+                    pre.progress === pre.requirementCount ?
+                      pre.progress - 1 : pre.progress
+                    : 0,
+                  completed: false
+                }))
+              }
+            } else {
+              return { ...n, unlocked: false }
+            }
+          })
       ) : []);
       if (branch === 0) {
         updatingNodes = updatingNodes.concat(...props.affinityChart
-          .map((b) => [...b.nodes.filter((n) => n.tier >= tier
+          .map((b, index) => [...b.nodes.filter((n) => index > 0 && n.tier >= tier
             && n.unlocked
             && n.nodeId !== foundNode?.nodeId)]
-            .map((n) => ({...n, unlocked: false}))))
+            .map((n) => {
+              if (n.preReqs) {
+                return {
+                  ...n,
+                  unlocked: false,
+                  preReqs: n.preReqs.map((pre) => ({
+                    ...pre,
+                    progress: pre.progress ?
+                      pre.progress === pre.requirementCount ?
+                        pre.progress - 1 : pre.progress
+                      : 0,
+                    completed: false
+                  }))
+                }
+              } else {
+                return {...n, unlocked: false}
+              }
+            })))
       }
     }
     props.setBladeSkillNode(updatingNodes)
