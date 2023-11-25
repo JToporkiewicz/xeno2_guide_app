@@ -162,34 +162,35 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
   useEffect(() => {
     return () => {
       if (!isEqual(props.affinityChart, currentTree.current)) {
-        const flattenedTree = props.affinityChart.reduce((list, t) =>
-          list.concat(t.nodes), [] as IAffinityChartNodeState[])
-        const update = currentTree.current
-          .reduce((list, t) => list.concat(t.nodes), [] as IAffinityChartNodeState[])
-          .filter((node) => !flattenedTree.some((newN) => isEqual(newN, node)))
-        if (update.length) {
-          props.saveBladeSkillNode({
-            unlocked: update
-              .filter((node) => node.unlocked)
-              .map((node) => node.nodeId),
-            locked: update
-              .filter((node) => !node.unlocked)
-              .map((node) => node.nodeId),
-            partial: update
-              .filter((node) => !node.unlocked && node.preReqs !== undefined)
-              .reduce((list, node) => {
-                const reqs = (node.preReqs || [])?.filter((pre) => pre.progress !== undefined)
-                  .map((pre) => ({
-                    id: pre.id,
-                    progress: pre.progress
-                  }));
+        setTimeout(() => {
+          const flattenedTree = props.affinityChart.reduce((list, t) =>
+            list.concat(t.nodes), [] as IAffinityChartNodeState[])
+          const update = currentTree.current
+            .reduce((list, t) => list.concat(t.nodes), [] as IAffinityChartNodeState[])
+            .filter((node) => !flattenedTree.some((newN) => isEqual(newN, node)))
+          if (update.length) {
+            props.saveBladeSkillNode({
+              unlocked: update
+                .filter((node) => node.unlocked)
+                .map((node) => node.nodeId),
+              locked: update
+                .filter((node) => !node.unlocked)
+                .map((node) => node.nodeId),
+              partial: update
+                .filter((node) => !node.unlocked && node.preReqs !== undefined)
+                .reduce((list, node) => {
+                  const reqs = (node.preReqs || [])?.filter((pre) => pre.progress !== undefined)
+                    .map((pre) => ({
+                      id: pre.id,
+                      progress: pre.progress
+                    }));
 
-                return list.concat(reqs)
-              }, [] as {id: number | undefined, progress: number | undefined }[])
-          })
-          setTimeout(props.fetchFieldSkills, 1000)
-
-        }
+                  return list.concat(reqs)
+                }, [] as {id: number | undefined, progress: number | undefined }[])
+            })
+            setTimeout(props.fetchFieldSkills, 1000)
+          }          
+        }, 1000)
       }
     }
   }, [])
