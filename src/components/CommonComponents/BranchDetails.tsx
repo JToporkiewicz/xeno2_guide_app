@@ -13,7 +13,8 @@ interface IOwnProps {
   availableTier: number,
   updateNode: (tier: number, unlock:boolean) => void,
   firstaAlwaysUnlocked?:boolean,
-  onMouseEnter?:(index:number) => void
+  onMouseEnter?:(index:number) => void,
+  onClick?:(index:number) => void
 }
 
 export const BranchDetails = (props: IOwnProps) => {
@@ -26,6 +27,8 @@ export const BranchDetails = (props: IOwnProps) => {
             key={'details ' + index}
             className="branch-details-node-area"
             onMouseEnter={() => props.onMouseEnter ? props.onMouseEnter(index) : undefined}
+            onMouseLeave={() => props.onMouseEnter ? props.onMouseEnter(-1) : undefined}
+            onClick={() => props.onClick ? props.onClick(index) : undefined}
           >
             {
               props.firstaAlwaysUnlocked && index === 0 ?

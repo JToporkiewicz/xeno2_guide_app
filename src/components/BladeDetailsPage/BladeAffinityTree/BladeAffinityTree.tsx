@@ -27,6 +27,7 @@ interface IDispatchProps {
 export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
   const [selectedBranch, setSelectedBranch] = useState(-1);
   const [selectedNode, setSelectedNode] = useState(-1);
+  const [hoverNode, setHoverNode] = useState(-1);
   const currentTree = useRef(props.affinityChart);
 
   const unlockNode = (branch: number, tier: number, unlocked: boolean) => {
@@ -144,7 +145,8 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
         }))}
         updateNode={unlockNode.bind(this, selectedBranch)}
         firstaAlwaysUnlocked={selectedDetails?.nodes[0].preReqs === undefined}
-        onMouseEnter={setSelectedNode}
+        onMouseEnter={setHoverNode}
+        onClick={setSelectedNode}
       />
     </>
   }
@@ -236,21 +238,37 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
           : <div />
       }
       {
-        selectedNode !== -1 ?
+        hoverNode !== -1 ?
           <div className='requirements-container'>
-            Requirements for level {selectedNode + 1}:
+          Requirements for level {hoverNode + 1}:
             <RequirementList
-              requirements={props.affinityChart[selectedBranch]?.nodes[selectedNode].preReqs || []}
+              requirements={props.affinityChart[selectedBranch]?.nodes[hoverNode].preReqs || []}
               updateReqProgress={(index, progress) => props.updateACNReqStatus({
                 bladeId: props.bladeId,
                 branchId:props.affinityChart[selectedBranch]?.branchId || -1,
-                nodeId: props.affinityChart[selectedBranch]?.nodes[selectedNode].nodeId || -1,
+                nodeId: props.affinityChart[selectedBranch]?.nodes[hoverNode].nodeId || -1,
                 id: index,
                 progress: progress
               })}
             />
-          </div>
-          : <div />
+          </div> :
+          selectedNode !== -1 ?
+            <div className='requirements-container'>
+              Requirements for level {selectedNode + 1}:
+              <RequirementList
+                requirements={
+                  props.affinityChart[selectedBranch]?.nodes[selectedNode].preReqs || []
+                }
+                updateReqProgress={(index, progress) => props.updateACNReqStatus({
+                  bladeId: props.bladeId,
+                  branchId:props.affinityChart[selectedBranch]?.branchId || -1,
+                  nodeId: props.affinityChart[selectedBranch]?.nodes[selectedNode].nodeId || -1,
+                  id: index,
+                  progress: progress
+                })}
+              />
+            </div>
+            : <div />
       }
     </CollapsibleComponent>
   )

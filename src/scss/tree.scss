@@ -163,6 +163,10 @@
 .branch-details-node-area {
   position: relative;
   margin-right: 5%;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .branch-details-area > .branch-details-node-area:last-child {
