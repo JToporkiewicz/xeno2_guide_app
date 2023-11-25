@@ -73,7 +73,8 @@ export const bladesReducer = createReducer<IBladeState[]>(
                   available: true
                 }
               }
-              else if (bIndex === 0 && i === 1) {
+              else if (n.preReqs?.find((p) => p.available === false) === undefined
+                || bIndex === 0 && i === 1) {
                 return {
                   ...n,
                   available: true
