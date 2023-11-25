@@ -133,7 +133,7 @@ module.exports = function() {
         })
       }
 
-      if (pre.BladeUnlocked) {
+      if (pre.BladeName) {
         reqs.push({
           area: 'Blade',
           requirement: pre.BladeName,
