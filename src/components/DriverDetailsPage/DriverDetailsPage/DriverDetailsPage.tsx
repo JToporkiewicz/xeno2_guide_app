@@ -40,10 +40,14 @@ export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {
         <DriverArtsListComponent
           driverId={props.driverDetails.id}
           driverArts={props.driverDetails.arts} />
-        <DriverSkillsComponent tree={props.driverDetails.skillTree} />
+        <DriverSkillsComponent
+          tree={props.driverDetails.skillTree}
+          driverUnlocked={props.driverDetails.chapterUnlocked <= props.storyProgress.Chapter}
+        />
         {(!props.storyProgress.OnlyShowAvailable || props.storyProgress.NewGamePlus)
           && <DriverSkillsComponent
             tree={props.driverDetails.hiddenSkillTree}
+            driverUnlocked={props.driverDetails.chapterUnlocked <= props.storyProgress.Chapter}
             hiddenTree={true} />}
         <Heart2HeartList
           characterName={props.driverDetails.name}

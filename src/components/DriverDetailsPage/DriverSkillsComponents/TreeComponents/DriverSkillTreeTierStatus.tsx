@@ -1,6 +1,7 @@
 import path from 'path';
 
 interface IProps {
+  driverUnlocked:boolean;
   unlockedTier1:number;
   unlockedTier2:number;
 }
@@ -9,14 +10,30 @@ const DriverSkillTreeTierStatus = (props: IProps) => {
   return (
     <div className="branch-details-area">
       <div className="branch-details-node-area" >
-        <img
-          className="small-centered-borderless-image non-click"
-          src={path.resolve('images/helper/openLock.svg')}
-          alt="unlock"
-        />
-        <div className="driver-skill-branch-status">
-          <b>Tier 1 available</b>
-        </div>
+        {props.driverUnlocked ?
+          <>
+            <img
+              className="small-centered-borderless-image non-click"
+              src={path.resolve('images/helper/openLock.svg')}
+              alt="unlock"
+            />
+            <div className="driver-skill-branch-status">
+              <b>Tier 1 available</b>
+            </div>
+          </>
+          : <>
+            <img
+              className="small-centered-borderless-image non-click"
+              src={path.resolve('images/helper/closedLock.svg')}
+              alt="lock"
+            />
+            <div className="driver-skill-branch-status">
+                To unlock tier, progress the story.
+              <br />
+              <b>Driver currently unavailable.</b>
+            </div>
+          </>
+        }
       </div>
       <div className="branch-details-node-area" >
         {props.unlockedTier1 >= 2 ?

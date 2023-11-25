@@ -15,6 +15,7 @@ interface IDispatchProps {
 interface IOwnProps {
   tree: IDriverSkillTree;
   hiddenTree?:boolean;
+  driverUnlocked:boolean;
 }
 
 export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
@@ -175,7 +176,7 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
                     unlocked: node.unlocked
                   }))}
                   branchName={b[0].name === 'Tier 1' ? 'Tree tier' : ''}
-                  availableTier={unlockedTreeTier}
+                  availableTier={props.driverUnlocked ? unlockedTreeTier : 0}
                   setSelectedBranch={setSelectedBranch.bind(this, index - 1)}
                   selectedBranch={selectedBranch === index - 1}
                 />
@@ -190,12 +191,16 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
           <>
             <hr />
             <DriverSkillTreeTierStatus
+              driverUnlocked={props.driverUnlocked}
               unlockedTier1={unlockedTier1}
               unlockedTier2={unlockedTier2}
             />
             {selectedBranch > -1 ?
               <BranchDetails
-                availableTier={unlockedTier1 + unlockedTier2 >= 5 ? 3 : unlockedTier1 >= 2 ? 2 : 1}
+                availableTier={
+                  props.driverUnlocked ?
+                    unlockedTier1 + unlockedTier2 >= 5 ? 3 : unlockedTier1 >= 2 ? 2 : 1
+                    : 0}
                 nodes={[
                   {
                     nodeId: props.tree.tier1[selectedBranch].nodeId,

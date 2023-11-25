@@ -14,7 +14,8 @@ interface IOwnProps {
 }
 
 interface IProps {
-  blades: IBladeState[]
+  blades: IBladeState[];
+  driverUnlocked: boolean;
 }
 
 export const DADetailsView = (props:IProps & IOwnProps) => {
@@ -31,7 +32,11 @@ export const DADetailsView = (props:IProps & IOwnProps) => {
         Object.values(props.weaponArts).map((art, key) => 
           <InnerCollapsibleComponent header={art.name} key={key}>
             <>
-              <DALevels art={art} updateArtLevel={props.updateArtLevel} />
+              <DALevels
+                art={art}
+                updateArtLevel={props.updateArtLevel}
+                driverUnlocked={props.driverUnlocked}
+              />
               <DADescription {...art} />
             </>
           </InnerCollapsibleComponent>

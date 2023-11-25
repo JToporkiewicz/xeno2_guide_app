@@ -24,7 +24,8 @@ const getImage = (artName:string) => {
 
 interface IOwnProps {
   art:IDriverArts,
-  updateArtLevel:(artId:number, level:number) => void
+  updateArtLevel:(artId:number, level:number) => void,
+  driverUnlocked: boolean
 }
 
 export const DALevelsView = (props:IOwnProps) => {
@@ -65,7 +66,7 @@ export const DALevelsView = (props:IOwnProps) => {
                   : ''}`}
                 key={key}>
                 <div className="full-width">
-                  {key !== 0 ? 
+                  {key !== 0 && props.driverUnlocked ? 
                     <LockOverlay
                       id={key}
                       updateGameState={()=>props.updateArtLevel(props.art.id, key)}
@@ -80,10 +81,12 @@ export const DALevelsView = (props:IOwnProps) => {
               </div>
               : <div className="art-detail-node" key={key}>
                 <div className="full-width">
-                  <UnlockOverlay 
-                    id={key+1}
-                    updateGameState={()=>props.updateArtLevel(props.art.id, key+1)}
-                  />
+                  {props.driverUnlocked ?
+                    <UnlockOverlay 
+                      id={key+1}
+                      updateGameState={()=>props.updateArtLevel(props.art.id, key+1)}
+                    />
+                    : <div/>}
                   <img
                     src={path.resolve('images/helper/closedLock.svg')}
                     alt="lock"
