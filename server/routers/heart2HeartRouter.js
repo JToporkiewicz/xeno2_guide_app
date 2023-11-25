@@ -172,16 +172,74 @@ module.exports = function() {
 
     const pres = await getH2HPrerequisites(id)
 
-    const mappedH2h = h2h.map((h) => ({
-      id:h.id,
-      Title:h.Title,
-      Area:`(${h.maLoc} -> ${h.maName})`,
-      Location:h.Location,
-      Who:JSON.parse(h.Who),
-      Outcomes:JSON.parse(h.Outcomes),
-      Available:h.Available ? true : false,
-      Viewed:h.Viewed ? true : false,
-      PreReqs: pres[h.id] || undefined
+    const storyProgress = await sequelize.query(
+      'SELECT * FROM xenoblade2_guide.storyProgresses',
+      { type: Sequelize.QueryTypes.SELECT })
+
+    const mappedH2h = await Promise.all(h2h.map(async (h) => {
+      const whoList = JSON.parse(h.Who)
+      const blades = await sequelize.query(
+        `SELECT
+          b.id,
+          b.Name,
+          b.Available,
+          b.Unlocked
+          FROM xenoblade2_guide.blades as b
+          WHERE b.Name IN ("${whoList.join('", "')}")
+        `,
+        { type: Sequelize.QueryTypes.SELECT })
+
+      const minChapter = await sequelize.query(
+        `SELECT MAX(d.ChapterUnlocked) as maxDriver
+          FROM xenoblade2_guide.drivers as d
+          WHERE d.Name IN ("${whoList.join('", "')}")
+        `,
+        { type: Sequelize.QueryTypes.SELECT })
+
+      let presList = (pres[h.id] || [])
+        .concat(blades.map((b) => ({
+          area: 'Blade',
+          requirement: b.Name,
+          available: b.Available,
+          completed: b.Unlocked,
+          reqId: b.id
+        })))
+
+      if (minChapter.length > 0 && minChapter[0].maxDriver !== null) {
+        const storyPrerequisite = presList.find((p) => p.area === 'Story Progress')
+
+        const storyReq = {
+          area: 'Story Progress',
+          requirement: 'Chapter ' + minChapter[0].maxDriver,
+          completed:storyProgress[0].Chapter >= minChapter[0].maxDriver        
+        }
+
+        if (storyPrerequisite
+          && Number(storyPrerequisite.requirement.split(' ')[1]) < minChapter[0].maxDriver) {
+          presList = presList.map((p) => {
+            if (p.area === 'Story Progress') {
+              return storyReq
+            } else {
+              return p
+            }
+          })
+        } else if (storyPrerequisite === undefined) {
+          presList = presList.concat(storyReq)
+        }
+      }
+
+      return {
+        id:h.id,
+        Title:h.Title,
+        Area:`(${h.maLoc} -> ${h.maName})`,
+        Location:h.Location,
+        Who:whoList,
+        Outcomes:JSON.parse(h.Outcomes),
+        Available:h.Available && presList.find((p) => p.available === 0) === undefined
+          ? true : false,
+        Viewed:h.Viewed ? true : false,
+        PreReqs: presList.length ? presList : undefined
+      }
     }))
 
     return mappedH2h
