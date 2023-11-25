@@ -130,7 +130,7 @@ export const Heart2HeartsListPageView = (props:IProps & IDispatchProps) => {
         />
         : <Heart2HeartList
           parentPage='heart2HeartList'
-          location='Unknown'
+          location='Unknown Location'
           heart2Hearts={[]}
         />
       }

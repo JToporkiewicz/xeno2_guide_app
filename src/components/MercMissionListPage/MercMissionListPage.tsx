@@ -156,7 +156,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
           updatedLocDevLevel={updatedLocDevLevel}
           updateMMStatus={updateMMStatus}
         /> : <MercMissionList
-          location='Unknown'
+          location='Unknown Location'
           mercMissions={[]}
           storyProgress={updatedProgress}
           updatedLocDevLevel={updatedLocDevLevel}

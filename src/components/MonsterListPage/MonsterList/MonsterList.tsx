@@ -53,7 +53,7 @@ export const MonsterListView = (props: IOwnProps) => {
                 Available
               </b>
             }
-            <b className='column-very-narrow order-title-available'>DLC</b>
+            <b className='column-very-narrow order-title-available'>DLC?</b>
             <b className="column-medium order-title-available">Type</b>
             <b className="level-column column-narrow order-title-available">Level</b>
             <b className="column-medium order-title">Location</b>
