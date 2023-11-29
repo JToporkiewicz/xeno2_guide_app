@@ -410,6 +410,14 @@ select{
     &:last-of-type {
         border-bottom: none;
     }
+
+    &:hover {
+        background-color: aliceblue;
+    }
+}
+
+.selected-row {
+    background-color: aliceblue;
 }
 
 .text-list-status {

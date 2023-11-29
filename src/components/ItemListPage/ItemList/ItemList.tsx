@@ -32,6 +32,15 @@ export const ItemListView = (props: IOwnProps & IProps) => {
       : true
   }
 
+  const selectItem = (index: number) => {
+    setFocused(index)
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
+
   useEffect(() => {
     if (props.selected && props.selected.area === 'itemType') {
       setOrderType('type')
@@ -87,9 +96,10 @@ export const ItemListView = (props: IOwnProps & IProps) => {
             const itemAvailable = findItemAvailability(item)
             return <div
             // ------------------------ check availability ------------------------
-              className={`row text-list-entry ${itemAvailable ? 'hoverPointer' : ''}`}
+              className={`row text-list-entry ${itemAvailable ? 'hoverPointer' : ''
+              } ${item.id === focused ? 'selected-row' : ''}`}
               key={item.id}
-              onClick={() => itemAvailable ? setFocused(item.id) : null}
+              onClick={() => itemAvailable ? selectItem(item.id) : null}
             >
               <div
                 className="column-wide text-list-status"
