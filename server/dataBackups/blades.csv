@@ -1,5 +1,5 @@
 "id";"Name";"Gender";"Type";"Weapon";"Element";"Role";"AuxCoreCount";"Source";"Heart2Heart";"BladeQuest";"AffinityChart";"FavItem1";"FavItem2";"FavItemType1";"FavItemType2";"Unlocked";"Available"
-1;"Pyra";"Female";"Humanoid";"Aegis Sword";"Fire";"Attacker";2;"Story";0;0;2;15;16;6;12;0;0
+1;"Pyra";"Female";"Humanoid";"Aegis Sword";"Fire";"Attacker";2;"Story";0;0;2;15;16;6;12;0;1
 2;"Mythra";"Female";"Humanoid";"Aegis Sword";"Light";"Attacker";2;"Story";0;0;3;17;18;1;4;0;0
 3;"Dromarch";"Male";"Animal";"Twin Rings";"Water";"Healer";2;"Story";0;0;4;19;20;2;8;0;0
 4;"Poppi Alpha";"Female";"Humanoid";"Drill Shield";"Any";"Any";0;"Story";0;0;5;21;22;7;10;0;0
@@ -10,33 +10,33 @@
 9;"Pandoria";"Female";"Humanoid";"Big Bang Edge";"Electric";"Attacker";3;"Story";0;0;10;31;32;6;8;0;0
 10;"Nia";"Female";"Humanoid";"Catalyst Scimitar";"Water";"Healer";3;"Story";0;0;11;142;143;7;9;0;0
 11;"Aegaeon";"Male";"Humanoid";"Chroma Katana";"Water";"Tank";2;"Aegaeon's Core Crystal";26;0;12;33;34;1;4;0;0
-12;"Godfrey";"Male";"Humanoid";"Shield Hammer";"Ice";"Tank";2;"Random Core Crystal";55;80;13;35;36;7;8;0;0
+12;"Godfrey";"Male";"Humanoid";"Shield Hammer";"Ice";"Tank";2;"Random Core Crystal";55;80;13;35;36;7;8;0;1
 13;"Wulfric";"Male";"Humanoid";"Megalance";"Earth";"Attacker";2;"Beastly Core Crystal";68;126;14;37;38;6;10;0;0
-14;"Perceval";"Male";"Humanoid";"Chroma Katana";"Dark";"Tank";1;"Random Core Crystal";54;100;15;39;40;1;5;0;0
-15;"Vale";"Female";"Humanoid";"Megalance";"Dark";"Attacker";3;"Random Core Crystal";72;109;16;41;42;4;11;0;0
-16;"Agate";"Female";"Humanoid";"Greataxe";"Earth";"Attacker";2;"Random Core Crystal";42;78;17;43;44;1;5;0;0
-17;"Gorg";"Male";"Humanoid";"Greataxe";"Water";"Attacker";2;"Random Core Crystal";56;81;18;45;46;4;11;0;0
-18;"Boreas";"Male";"Humanoid";"Bitball";"Wind";"Healer";1;"Random Core Crystal";31;10;19;47;48;3;10;0;0
-19;"Dagas";"Male";"Humanoid";"Greataxe";"Fire";"Attacker";1;"Random Core Crystal";29;101;20;49;50;1;9;0;0
+14;"Perceval";"Male";"Humanoid";"Chroma Katana";"Dark";"Tank";1;"Random Core Crystal";54;100;15;39;40;1;5;0;1
+15;"Vale";"Female";"Humanoid";"Megalance";"Dark";"Attacker";3;"Random Core Crystal";72;109;16;41;42;4;11;0;1
+16;"Agate";"Female";"Humanoid";"Greataxe";"Earth";"Attacker";2;"Random Core Crystal";42;78;17;43;44;1;5;0;1
+17;"Gorg";"Male";"Humanoid";"Greataxe";"Water";"Attacker";2;"Random Core Crystal";56;81;18;45;46;4;11;0;1
+18;"Boreas";"Male";"Humanoid";"Bitball";"Wind";"Healer";1;"Random Core Crystal";31;10;19;47;48;3;10;0;1
+19;"Dagas";"Male";"Humanoid";"Greataxe";"Fire";"Attacker";1;"Random Core Crystal";29;101;20;49;50;1;9;0;1
 20;"Kassandra";"Female";"Humanoid";"Shield Hammer";"Dark";"Tank";2;"Lucky Core Crystal";37;48;22;51;52;3;10;0;0
 21;"Praxis";"Female";"Humanoid";"Megalance";"Water";"Attacker";1;"Praxis's Core Crystal";61;83;23;53;54;4;6;0;0
 22;"Theory";"Female";"Humanoid";"Chroma Katana";"Ice";"Tank";2;"Theory's Core Crystal";64;85;24;55;56;2;12;0;0
-23;"Perun";"Female";"Humanoid";"Megalance";"Ice";"Attacker";1;"Random Core Crystal";43;15;25;57;58;9;11;0;0
-24;"Kora";"Female";"Humanoid";"Knuckle Claws";"Electric";"Healer";2;"Random Core Crystal";39;125;26;59;60;3;5;0;0
-25;"Azami";"Female";"Humanoid";"Ether Cannon";"Dark";"Attacker";2;"Random Core Crystal";22;77;27;61;62;5;6;0;0
-26;"Ursula";"Female";"Humanoid";"Knuckle Claws";"Ice";"Healer";1;"Random Core Crystal";50;44;28;63;12;3;4;0;0
-27;"Newt";"Female";"Humanoid";"Chroma Katana";"Fire";"Tank";2;"Random Core Crystal";45;49;29;64;65;7;8;0;0
-28;"Nim";"Female";"Humanoid";"Knuckle Claws";"Earth";"Healer";2;"Random Core Crystal";49;138;30;66;67;7;9;0;0
+23;"Perun";"Female";"Humanoid";"Megalance";"Ice";"Attacker";1;"Random Core Crystal";43;15;25;57;58;9;11;0;1
+24;"Kora";"Female";"Humanoid";"Knuckle Claws";"Electric";"Healer";2;"Random Core Crystal";39;125;26;59;60;3;5;0;1
+25;"Azami";"Female";"Humanoid";"Ether Cannon";"Dark";"Attacker";2;"Random Core Crystal";22;77;27;61;62;5;6;0;1
+26;"Ursula";"Female";"Humanoid";"Knuckle Claws";"Ice";"Healer";1;"Random Core Crystal";50;44;28;63;12;3;4;0;1
+27;"Newt";"Female";"Humanoid";"Chroma Katana";"Fire";"Tank";2;"Random Core Crystal";45;49;29;64;65;7;8;0;1
+28;"Nim";"Female";"Humanoid";"Knuckle Claws";"Earth";"Healer";2;"Random Core Crystal";49;138;30;66;67;7;9;0;1
 29;"Sheba";"Female";"Humanoid";"Ether Cannon";"Water";"Attacker";3;"Inherited Core Crystal";63;140;31;68;69;4;11;0;0
 30;"Vess";"Female";"Humanoid";"Bitball";"Electric";"Healer";2;"Vess's Core Crystal";60;45;32;70;71;3;9;0;0
-31;"Adenine";"Female";"Humanoid";"Knuckle Claws";"Wind";"Healer";2;"Random Core Crystal";1;1;1;1;2;12;6;0;0
-32;"Electra";"Female";"Humanoid";"Shield Hammer";"Electric";"Tank";1;"Random Core Crystal";62;50;33;72;73;7;8;0;0
-33;"Zenobia";"Female";"Humanoid";"Greataxe";"Wind";"Attacker";3;"Random Core Crystal";65;12;34;74;75;6;8;0;0
-34;"Finch";"Female";"Humanoid";"Shield Hammer";"Wind";"Tank";1;"Random Core Crystal";28;9;35;56;76;3;12;0;0
-35;"Floren";"Male";"Humanoid";"Bitball";"Earth";"Healer";2;"Random Core Crystal";35;76;36;77;78;1;12;0;0
-36;"KOS-MOS";"Female";"Humanoid";"Ether Cannon";"Light";"Attacker";3;"Random Core Crystal";34;152;37;79;80;2;10;0;0
+31;"Adenine";"Female";"Humanoid";"Knuckle Claws";"Wind";"Healer";2;"Random Core Crystal";1;1;1;1;2;12;6;0;1
+32;"Electra";"Female";"Humanoid";"Shield Hammer";"Electric";"Tank";1;"Random Core Crystal";62;50;33;72;73;7;8;0;1
+33;"Zenobia";"Female";"Humanoid";"Greataxe";"Wind";"Attacker";3;"Random Core Crystal";65;12;34;74;75;6;8;0;1
+34;"Finch";"Female";"Humanoid";"Shield Hammer";"Wind";"Tank";1;"Random Core Crystal";28;9;35;56;76;3;12;0;1
+35;"Floren";"Male";"Humanoid";"Bitball";"Earth";"Healer";2;"Random Core Crystal";35;76;36;77;78;1;12;0;1
+36;"KOS-MOS";"Female";"Humanoid";"Ether Cannon";"Light";"Attacker";3;"Random Core Crystal";34;152;37;79;80;2;10;0;1
 37;"Herald";"Female";"Humanoid";"Ether Cannon";"Electric";"Attacker";3;"Sealed Core Crystal";27;132;38;81;82;2;5;0;0
-38;"Dahlia";"Female";"Humanoid";"Bitball";"Ice";"Healer";2;"Random Core Crystal";70;127;39;83;84;3;12;0;0
+38;"Dahlia";"Female";"Humanoid";"Bitball";"Ice";"Healer";2;"Random Core Crystal";70;127;39;83;84;3;12;0;1
 39;"Akhos";"Male";"Humanoid";"Calamity Scythe";"Electric";"Healer";3;"Random Core Crystal (New Game +)";69;0;40;85;86;2;10;0;0
 40;"Patroka";"Female";"Humanoid";"Cobra Bardiche";"Earth";"Attacker";3;"Random Core Crystal (New Game +)";24;0;41;87;88;3;12;0;0
 41;"Mikhail";"Male";"Humanoid";"Infinity Fans";"Dark";"Tank";3;"Found at Megaflote Base (after Indol sinks, New Game +)";46;0;42;89;90;5;6;0;0

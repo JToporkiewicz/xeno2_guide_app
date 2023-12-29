@@ -101,7 +101,7 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
   [CoreActions.SetStoryProgress,
     (state:IMajorLocations[], progress:IStoryProgress) => {
       return state.map((area) => {
-        if (area.StoryProgress > progress.Chapter) {
+        if (area.StoryProgress > progress.Chapter && area.DevelopmentLevel != -1) {
           return {
             ...area,
             DevelopmentLevel: 0

@@ -1,14 +1,14 @@
 "id";"Name";"MissionNation";"Giver";"GiverLocation";"Duration";"Type";"Missable";"Completed";"Available"
 1;"Tome of Morytha Vol. 1";2;"None";14;"00:20:00";"Event";0;0;0
-2;"Tome of Morytha Vol. 2";2;"None";14;"00:20:00";"Event";0;0;1
-3;"Tome of Morytha Vol. 3";2;"None";14;"00:20:00";"Event";0;0;1
+2;"Tome of Morytha Vol. 2";2;"None";14;"00:20:00";"Event";0;0;0
+3;"Tome of Morytha Vol. 3";2;"None";14;"00:20:00";"Event";0;0;0
 4;"Tome of Morytha Vol. 4";2;"None";14;"00:20:00";"Event";0;0;1
 5;"Unloading of Goods";2;"Khulkhan";17;"00:30:00";"Repeatable";0;0;0
 6;"Crane Repairs";2;"None";14;"00:30:00";"Repeatable";0;0;0
-7;"Salvaging Security";2;"Tiwitiwi";21;"00:30:00";"Repeatable";0;0;0
+7;"Salvaging Security";2;"Tiwitiwi";21;"00:30:00";"Repeatable";0;0;1
 8;"Nopon Veggie Stir-Fry";2;"None";14;"00:40:00";"Repeatable";0;0;0
 9;"Canteen Job";2;"Etoto";26;"00:40:00";"Repeatable";0;0;0
-10;"Port Pest Problem";2;"Kynon";14;"00:50:00";"Repeatable";0;0;0
+10;"Port Pest Problem";2;"Kynon";14;"00:50:00";"Repeatable";0;0;1
 11;"Grounded Ship Rescue";2;"Kokoi";14;"00:50:00";"Repeatable";0;0;0
 12;"Ship Snooping";2;"Helehele";22;"00:50:00";"Repeatable";0;0;0
 13;"Avoiding Heavy Losses";2;"None";14;"00:50:00";"Repeatable";0;0;0
@@ -17,7 +17,7 @@
 16;"Big Catch Opportunity";2;"None";14;"01:20:00";"Repeatable";0;0;0
 17;"Crane Protection";2;"Lomlom";18;"01:20:00";"Repeatable";0;0;0
 18;"Nopon News";2;"None";14;"01:40:00";"Repeatable";0;0;0
-19;"Nopon News";2;"Hamlish";126;"01:40:00";"Repeatable";0;0;0
+19;"Deck Duty";2;"Hamlish";126;"01:40:00";"Repeatable";0;0;0
 20;"Sunken Ship Survey";2;"Smismi";18;"01:40:00";"Repeatable";0;0;0
 21;"Big Ship Escort";2;"None";14;"02:00:00";"Repeatable";0;0;0
 22;"Cooking Up a Feast";2;"None";14;"02:00:00";"Repeatable";0;0;0
@@ -39,8 +39,8 @@
 38;"Soul Lesson 4";2;"None";14;"00:10:00";"Repeatable";1;0;0
 39;"Soul Lesson 5";2;"None";14;"00:10:00";"Repeatable";1;0;0
 40;"Titan Battleship Fixes";2;"None";14;"00:30:00";"Repeatable";0;0;0
-41;"Long-Awaited Work";2;"None";14;"00:40:00";"Event";0;0;0
-42;"Cooking Display";2;"None";14;"00:50:00";"Event";0;0;0
+41;"Long-Awaited Work";2;"None";14;"00:40:00";"Event";0;0;1
+42;"Cooking Display";2;"None";14;"00:50:00";"Event";0;0;1
 43;"New Sounds";2;"None";14;"01:00:00";"Event";0;0;0
 44;"First Class Freshness!";2;"None";14;"01:40:00";"Event";0;0;0
 45;"Old Routes";2;"None";14;"02:00:00";"Event";0;0;0
@@ -198,8 +198,8 @@
 197;"Sheba's Tea Party 5";6;"None";188;"00:20:00";"Event";0;0;0
 198;"Zenobia's Enemy 4";6;"None";188;"00:20:00";"Event";0;0;0
 199;"Tirkin Kountess 2";6;"None";188;"00:20:00";"Event";0;0;0
-200;"Allies of Justice 5";6;"None";188;"00:20:00";"Event";0;0;0
-201;"Round Up";6;"None";188;"00:20:00";"Event";0;0;0
+200;"Allies of Justice 5";6;"None";188;"00:20:00";"Event";0;0;1
+201;"Round Up";6;"None";188;"00:20:00";"Event";0;0;1
 202;"Materials Stakeout";6;"None";188;"00:30:00";"Event";1;0;0
 203;"Graveside Flowers";7;"Trito";374;"00:30:00";"Repeatable";0;0;0
 204;"Lost Property";7;"None";365;"00:30:00";"Repeatable";0;0;0
@@ -218,18 +218,18 @@
 217;"Cloud Sea Noises";7;"Occadia";366;"02:00:00";"Repeatable";0;0;0
 218;"Direct Line Escort";7;"None";365;"00:40:00";"Repeatable";0;0;0
 219;"Reclamation";7;"None";365;"00:30:00";"Repeatable";0;0;0
-220;"Seeding";7;"None";365;"00:30:00";"Repeatable";0;0;0
-221;"Growing";7;"None";365;"00:30:00";"Repeatable";0;0;0
-222;"Round 2 at Merclibay";7;"None";365;"00:30:00";"Repeatable";0;0;0
+220;"Seeding";7;"None";365;"00:30:00";"Repeatable";0;0;1
+221;"Growing";7;"None";365;"00:30:00";"Repeatable";0;0;1
+222;"Round 2 at Merclibay";7;"None";365;"00:30:00";"Repeatable";0;0;1
 223;"Nopon Cooking";7;"None";365;"00:40:00";"Event";0;0;0
 224;"Merchant Ship";7;"None";365;"00:50:00";"Event";0;0;0
 225;"Ship Lane Lighting";7;"None";365;"01:00:00";"Event";0;0;0
 226;"Wagon Guard";7;"None";365;"01:40:00";"Event";0;0;0
 227;"Sinking Storehouse?";7;"None";365;"02:00:00";"Event";0;0;0
 228;"The Beast of Regideria";7;"None";365;"00:20:00";"Event";0;0;0
-229;"Allies of Justice 4";7;"None";365;"00:20:00";"Event";0;0;0
-230;"Can't Escape";7;"None";365;"00:20:00";"Event";0;0;0
-231;"Obstinate Pursuit";7;"None";365;"00:20:00";"Event";0;0;0
+229;"Allies of Justice 4";7;"None";365;"00:20:00";"Event";0;0;1
+230;"Can't Escape";7;"None";365;"00:20:00";"Event";0;0;1
+231;"Obstinate Pursuit";7;"None";365;"00:20:00";"Event";0;0;1
 232;"Catch a Crook";7;"None";365;"00:20:00";"Event";0;0;0
 233;"Guard the Field";7;"None";365;"00:20:00";"Event";0;0;0
 234;"Extract a Confession";7;"None";365;"00:20:00";"Event";0;0;0
@@ -262,7 +262,7 @@
 261;"World in a Book";9;"None";313;"02:00:00";"Repeatable";0;0;0
 262;"Ice Hunter";9;"Stidias";320;"02:00:00";"Repeatable";0;0;0
 263;"Mysterious Lifeform";9;"None";313;"02:00:00";"Repeatable";0;0;0
-264;"Crossing Bridges";9;"None";313;"00:30:00";"Repeatable";0;0;0
+264;"Crossing Bridges";9;"None";313;"00:30:00";"Repeatable";0;0;1
 265;"Arach-no-More";9;"None";313;"00:30:00";"Repeatable";0;0;0
 266;"Frozen Door";9;"None";313;"00:40:00";"Event";0;0;0
 267;"Weathered Ship";9;"None";313;"00:50:00";"Event";0;0;0
@@ -270,6 +270,6 @@
 269;"Beat the Heat";9;"None";313;"01:40:00";"Event";0;0;0
 270;"Crafty Developments";9;"None";313;"02:00:00";"Event";0;0;0
 271;"Tirkin Kountess 4";9;"None";313;"00:20:00";"Event";0;0;0
-272;"Allies of Justice 6";9;"None";313;"00:20:00";"Event";0;0;0
+272;"Allies of Justice 6";9;"None";313;"00:20:00";"Event";0;0;1
 273;"Fake Vase";9;"None";313;"00:20:00";"Event";0;0;0
 274;"Finch's Big News";9;"None";313;"00:20:00";"Event";0;0;0
