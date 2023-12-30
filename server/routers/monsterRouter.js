@@ -76,7 +76,7 @@ module.exports = function() {
           WHERE id IN (${req.body.locked.join(', ')})`)
       }
       await sequelize.query('CALL updateMonsterRelatedACN ()');
-      await sequelize.query('CALL updateACNUnlocked ()');
+      await sequelize.query('CALL updateACN ()');
     } catch (err) {
       return res.status(400).json({err: err.message})
     }

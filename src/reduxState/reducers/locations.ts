@@ -17,7 +17,7 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
           Name: inner.Name,
           StoryProgress: inner.StoryProgress,
           Locations: [] as ILocationState[]
-        })).sort((areaA, areaB) => areaA.id < areaB.id ? -1 : 1)
+        })).sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1)
       return {
         id: outer.id,
         Name: outer.Name,
@@ -34,7 +34,7 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
       }});
 
     return state.filter((oldOuter) => !outerAreas.map((outer) => outer.id).includes(oldOuter.id))
-      .concat(updatedOuter).sort((areaA, areaB) => areaA.id < areaB.id ? -1 : 1);
+      .concat(updatedOuter).sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1);
   }],
   [LocationActions.SetMinorLocations, (state:IMajorLocations[], minorLocations: ILocations[]) => {
     const groupedLocations = minorLocations.reduce((group, minor) =>({
@@ -77,11 +77,11 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
                 .filter((loc) => !groupedLocations[inner.id]
                   .map((updatedLoc) => updatedLoc.id).includes(loc.id))
                 .concat(groupedLocations[inner.id])
-                .sort((locA, locB) => locA.id < locB.id ? -1 : 1)
+                .sort((locA, locB) => Number(locA.id) < Number(locB.id) ? -1 : 1)
             })))
-          .sort((areaA, areaB) => areaA.id < areaB.id ? -1 : 1)
+          .sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1)
       })))
-      .sort((areaA, areaB) => areaA.id < areaB.id ? -1 : 1);
+      .sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1);
   }],
   [LocationActions.UpdateDevelopmentLevel,
     (state:IMajorLocations[], update:IUpdateDevelopmentLevel) => {
@@ -96,7 +96,7 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
           ...updateArea,
           DevelopmentLevel: update.level
         })
-        .sort((areaA, areaB) => areaA.id < areaB.id ? -1 : 1);
+        .sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1);
     }],
   [CoreActions.SetStoryProgress,
     (state:IMajorLocations[], progress:IStoryProgress) => {
@@ -109,6 +109,6 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
         }
         return area
       })
-        .sort((areaA, areaB) => areaA.id < areaB.id ? -1 : 1);
+        .sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1);
     }]
 )([]);

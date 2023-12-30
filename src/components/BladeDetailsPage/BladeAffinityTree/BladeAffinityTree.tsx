@@ -211,7 +211,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
             return <TreeBranch
               key={'branch ' + index}
               index={index}
-              treeBranchesCount={props.affinityChart.length}
+              treeBranchesCount={10}
               nodesPerBranch={5}
               branchName={b.branchName}
               nodes={b.nodes.map((node) => ({

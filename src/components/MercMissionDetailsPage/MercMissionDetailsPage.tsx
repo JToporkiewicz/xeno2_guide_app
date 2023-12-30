@@ -150,7 +150,7 @@ export const MercMissionDetailsPageView = (props:IProps & IDispatchProps) => {
               updatedLocDevLevel.current = updatedLocDevLevel.current
                 .filter((loc) => loc.id !== id)
                 .concat({ id, level: progress })
-                .sort((idA, idB) => idA.id < idB.id ? -1 : 1)
+                .sort((idA, idB) => Number(idA.id) < Number(idB.id) ? -1 : 1)
             }
           }}
         />

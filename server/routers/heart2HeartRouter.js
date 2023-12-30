@@ -260,7 +260,6 @@ module.exports = function() {
           WHERE id IN (${req.body.locked.join(', ')})`)
       }
       await sequelize.query('CALL updateH2HRelatedACN ()');
-      await sequelize.query('CALL updateACNUnlocked ()');
       await sequelize.query('CALL updateQuest ()');
       await sequelize.query('CALL updateACN ()');
     } catch (err) {

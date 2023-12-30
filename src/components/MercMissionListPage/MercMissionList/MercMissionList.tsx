@@ -136,7 +136,7 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
         )
       )
     }
-  }, [props.storyProgress.current])
+  }, [props.storyProgress.current, props.mercMissions])
 
   return <CollapsibleComponent header={props.location}>
     {props.mercMissions.length === 0 ?

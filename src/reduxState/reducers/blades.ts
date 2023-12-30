@@ -35,7 +35,7 @@ export const bladesReducer = createReducer<IBladeState[]>(
         prerequisites: blade.Prerequisites,
         show: false
       }))).sort((bladeA, bladeB) =>
-        bladeA.id < bladeB.id ? -1 : 1
+        Number(bladeA.id) < Number(bladeB.id) ? -1 : 1
       )
   }],
   [BladeActions.UpdateShowBlade, (bladeState:IBladeState[], updateShow: IUpdateShow) => {
@@ -49,7 +49,7 @@ export const bladesReducer = createReducer<IBladeState[]>(
         ...oldBlade,
         show: updateShow.show
       }]).sort((bladeA, bladeB) =>
-        bladeA.id < bladeB.id ? -1 : 1
+        Number(bladeA.id) < Number(bladeB.id) ? -1 : 1
       )
   }],
   [BladeActions.UpdateBladeUnlocked, (bladeState:IBladeState[], updateUnlocked: IBladeState) =>
@@ -88,7 +88,7 @@ export const bladesReducer = createReducer<IBladeState[]>(
           })
         }))
       }).sort((bladeA, bladeB) =>
-        bladeA.id < bladeB.id ? -1 : 1
+        Number(bladeA.id) < Number(bladeB.id) ? -1 : 1
       )
   ],
   [BladeActions.SetBladeSkillNode, (bladeState:IBladeState[], bladeNodes:IAffinityChartNode[]) => {
@@ -143,10 +143,10 @@ export const bladesReducer = createReducer<IBladeState[]>(
                       }
                     }
                   }).sort((nodeA, nodeB) =>
-                    nodeA.nodeId < nodeB.nodeId ? -1 : 1
+                    Number(nodeA.nodeId) < Number(nodeB.nodeId) ? -1 : 1
                   )
                 }]).sort((branchA, branchB) =>
-                  branchA.branchId < branchB.branchId ? -1 : 1
+                  Number(branchA.branchId) < Number(branchB.branchId) ? -1 : 1
                 )
             }
             )

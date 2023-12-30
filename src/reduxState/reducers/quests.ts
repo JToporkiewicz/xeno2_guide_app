@@ -13,7 +13,7 @@ export const questsReducer = createReducer<IQuest[]>(
       const questIds = quests.map((q) => q.id);
       return questState.filter((old) => !questIds.includes(old.id))
         .concat(quests)
-        .sort((questA, questB) => questA.id < questB.id ? -1 : 1)
+        .sort((questA, questB) => Number(questA.id) < Number(questB.id) ? -1 : 1)
     }
   ],
   [QuestsActions.UpdateQuestStatus,
@@ -34,15 +34,15 @@ export const questsReducer = createReducer<IQuest[]>(
         lastStepInRoute = foundQuest.Steps
           .filter((step) => !step.Description.startsWith('Route B:'))
           .sort((stepA, stepB) =>
-            stepA.StepNumber < stepB.StepNumber ? -1 :
-              stepA.StepNumber > stepB.StepNumber ? 1 : 0)
+            Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 :
+              Number(stepA.StepNumber) > Number(stepB.StepNumber) ? 1 : 0)
           .at(-1)
       } else if (startedRoute?.Description.slice(0, 8) === 'Route B:') {
         lastStepInRoute = foundQuest.Steps
           .filter((step) => !step.Description.startsWith('Route A:'))
           .sort((stepA, stepB) =>
-            stepA.StepNumber < stepB.StepNumber ? -1 :
-              stepA.StepNumber > stepB.StepNumber ? 1 : 0)
+            Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 :
+              Number(stepA.StepNumber) > Number(stepB.StepNumber) ? 1 : 0)
           .at(-1)
       } else {
         lastStepInRoute = foundQuest.Steps.at(-1)
@@ -87,7 +87,7 @@ export const questsReducer = createReducer<IQuest[]>(
           }),
           Status: update.status
         }).sort((questA, questB) =>
-          questA.id < questB.id ? -1 : 1
+          Number(questA.id) < Number(questB.id) ? -1 : 1
         )
     }],
   [QuestsActions.UpdateQuestStepStatus,
@@ -125,8 +125,8 @@ export const questsReducer = createReducer<IQuest[]>(
                   ...sub,
                   CompletionProgress: sub.Count
                 })).sort((substepA, substepB) =>
-                  substepA.SubStepNumber < substepB.SubStepNumber ? -1 :
-                    substepA.SubStepNumber > substepB.SubStepNumber ? 1 : 0)
+                  Number(substepA.SubStepNumber) < Number(substepB.SubStepNumber) ? -1 :
+                    Number(substepA.SubStepNumber) > Number(substepB.SubStepNumber) ? 1 : 0)
               }
             } if (!update.status && update.stepId === step.id
               || step.id > update.stepId || !inRoute) {
@@ -137,19 +137,19 @@ export const questsReducer = createReducer<IQuest[]>(
                   ...sub,
                   CompletionProgress: 0
                 })).sort((substepA, substepB) =>
-                  substepA.SubStepNumber < substepB.SubStepNumber ? -1 :
-                    substepA.SubStepNumber > substepB.SubStepNumber ? 1 : 0)
+                  Number(substepA.SubStepNumber) < Number(substepB.SubStepNumber) ? -1 :
+                    Number(substepA.SubStepNumber) > Number(substepB.SubStepNumber) ? 1 : 0)
               }
             } else {
               return step;
             }
           }).sort((stepA, stepB) =>
-            stepA.StepNumber < stepB.StepNumber ? -1 :
-              stepA.StepNumber > stepB.StepNumber ? 1 : 0),
+            Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 :
+              Number(stepA.StepNumber) > Number(stepB.StepNumber) ? 1 : 0),
           Status: update.status && update.stepId === foundQuest.Steps.at(-1)?.id ?
             'FINISHED' : !update.status && update.stepId === foundQuest.Steps.at(0)?.id ?
               'NOT STARTED' : 'STARTED'
-        }).sort((questA, questB) => questA.id < questB.id ? -1 : 1);
+        }).sort((questA, questB) => Number(questA.id) < Number(questB.id) ? -1 : 1);
     }],
   [QuestsActions.UpdateQuestSubStepStatus,
     (state:IQuest[], update:IUpdateQuestSubStepStatus) => {
@@ -177,15 +177,15 @@ export const questsReducer = createReducer<IQuest[]>(
         lastStepInRoute = foundQuest.Steps
           .filter((step) => !step.Description.startsWith('Route B:'))
           .sort((stepA, stepB) =>
-            stepA.StepNumber < stepB.StepNumber ? -1 :
-              stepA.StepNumber > stepB.StepNumber ? 1 : 0)
+            Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 :
+              Number(stepA.StepNumber) > Number(stepB.StepNumber) ? 1 : 0)
           .at(-1)
       } else if (foundStep.Description.startsWith('Route B:')) {
         lastStepInRoute = foundQuest.Steps
           .filter((step) => !step.Description.startsWith('Route A:'))
           .sort((stepA, stepB) =>
-            stepA.StepNumber < stepB.StepNumber ? -1 :
-              stepA.StepNumber > stepB.StepNumber ? 1 : 0)
+            Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 :
+              Number(stepA.StepNumber) > Number(stepB.StepNumber) ? 1 : 0)
           .at(-1)
       } else {
         lastStepInRoute = foundQuest.Steps.at(-1)
@@ -232,16 +232,16 @@ export const questsReducer = createReducer<IQuest[]>(
                     ...foundSubStep,
                     CompletionProgress: update.progress
                   }).sort((substepA, substepB) =>
-                    substepA.SubStepNumber < substepB.SubStepNumber ? -1 :
-                      substepA.SubStepNumber > substepB.SubStepNumber ? 1 : 0),
+                    Number(substepA.SubStepNumber) < Number(substepB.SubStepNumber) ? -1 :
+                      Number(substepA.SubStepNumber) > Number(substepB.SubStepNumber) ? 1 : 0),
                 Completed: stepCompleted
               }
             } else {
               return step
             }
           }).sort((stepA, stepB) =>
-            stepA.StepNumber < stepB.StepNumber ? -1 :
-              stepA.StepNumber > stepB.StepNumber ? 1 : 0),
+            Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 :
+              Number(stepA.StepNumber) > Number(stepB.StepNumber) ? 1 : 0),
           Status: lastStepInRoute?.id === update.stepId
             && foundSubStep.Count === update.progress
             && (uncompletedSubSteps?.map((sub) => sub.id).includes(update.substepId)
@@ -256,6 +256,6 @@ export const questsReducer = createReducer<IQuest[]>(
                 && uncompletedSubSteps.find(
                   (sub) => sub.CompletionProgress !== 0)?.id === update.substepId
               ) ? 'NOT STARTED' : 'STARTED'
-        }).sort((questA, questB) => questA.id < questB.id ? -1 : 1);
+        }).sort((questA, questB) => Number(questA.id) < Number(questB.id) ? -1 : 1);
     }]
 )([]);

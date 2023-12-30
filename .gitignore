@@ -6,3 +6,4 @@ node_modules
 
 # database
 /server/database/xenoblade-2-guide-db.sqlite
+/server/dataBackups/latest

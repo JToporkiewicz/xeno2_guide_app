@@ -9,7 +9,7 @@ export const monstersReducer = createReducer<IMonster[]>(
 
     return state.filter((oldMon) => !foundMonsters.includes(oldMon.id))
       .concat(payload)
-      .sort((monA, monB) => monA.id < monB.id ? -1 : 1)
+      .sort((monA, monB) => Number(monA.id) < Number(monB.id) ? -1 : 1)
   }],
   [MonstersActions.UpdateMonsterStatus,
     (state: IMonster[], updateMon: IUpdateMonster) => {
@@ -24,6 +24,6 @@ export const monstersReducer = createReducer<IMonster[]>(
           ...foundMon,
           Beaten: updateMon.beaten
         })
-        .sort((monA, monB) => monA.id < monB.id ? -1 : 1)
+        .sort((monA, monB) => Number(monA.id) < Number(monB.id) ? -1 : 1)
     }]
 )([]);

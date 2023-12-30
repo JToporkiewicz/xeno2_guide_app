@@ -47,7 +47,7 @@ const updateQuest = {
         ) OR preQuest.BladeUnlocked IS NULL)
         AND (preQuest.BladeAffinityChartNode IN (
             SELECT acn.id
-            FROM xenoblade2_guide.blades as acn
+            FROM xenoblade2_guide.affinityChartNodes as acn
             WHERE acn.Available = 1
         ) OR preQuest.BladeAffinityChartNode IS NULL)
         AND (preQuest.Quest IN (

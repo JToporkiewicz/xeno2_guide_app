@@ -10,7 +10,7 @@ export const mercMissionsReducer = createReducer<IMercMission[]>(
 
       return state.filter((old) => !mmIds.includes(old.id))
         .concat(mercMissions)
-        .sort((mmA, mmB) => mmA.id < mmB.id ? -1 : 1);
+        .sort((mmA, mmB) => Number(mmA.id) < Number(mmB.id) ? -1 : 1);
     }],
   [MercMissionsActions.UpdateMercMissionStatus,
     (state:IMercMission[], updateMM:IUpdateMMStatus) => {
@@ -23,6 +23,6 @@ export const mercMissionsReducer = createReducer<IMercMission[]>(
           ...foundMM,
           Completed: updateMM.completed
         })
-        .sort((mmA, mmB) => mmA.id < mmB.id ? -1 : 1);
+        .sort((mmA, mmB) => Number(mmA.id) < Number(mmB.id) ? -1 : 1);
     }]
 )([]);

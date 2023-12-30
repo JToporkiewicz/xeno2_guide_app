@@ -22,7 +22,7 @@ export const fieldSkillsReducer = createReducer<IFieldSkills[]>(
           TotalLevel: oldSkill.TotalLevel +
             (newFieldSkill.CommonBladeContribution - oldSkill.CommonBladeContribution)
         }).sort((skillA, skillB) =>
-          skillA.id < skillB.id ? -1 : 1
+          Number(skillA.id) < Number(skillB.id) ? -1 : 1
         )
     }],
   [BladeActions.UpdateBladeUnlocked, (fieldSkills:IFieldSkills[], bladeState: IBladeState) => {
@@ -40,7 +40,7 @@ export const fieldSkillsReducer = createReducer<IFieldSkills[]>(
           const branch = bladeState.affinityChart.find((n) => n.branchName === fs.Name)
           if (branch) {
             const nodeTotal = branch.nodes.filter((n) => n.unlocked)
-              .sort((skillA, skillB) => skillA.nodeId < skillB.nodeId ? -1 : 1)
+              .sort((skillA, skillB) => Number(skillA.nodeId) < Number(skillB.nodeId) ? -1 : 1)
             return {
               ...fs,
               TotalLevel: fs.TotalLevel - (nodeTotal[nodeTotal.length - 1]?.skillLevel || 0)
@@ -49,7 +49,7 @@ export const fieldSkillsReducer = createReducer<IFieldSkills[]>(
           return fs
         }
       })).sort((skillA, skillB) =>
-        skillA.id < skillB.id ? -1 : 1
+        Number(skillA.id) < Number(skillB.id) ? -1 : 1
       )
   }]
 )([]);

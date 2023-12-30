@@ -10,7 +10,7 @@ export const heart2HeartReducer = createReducer<IHeart2Heart[]>(
 
       return state.filter((old) => !h2hIds.includes(old.id))
         .concat(heart2Hearts)
-        .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)
+        .sort((h2hA, h2hB) => Number(h2hA.id) < Number(h2hB.id) ? -1 : 1)
     }],
   [Heart2HeartActions.UpdateHeart2HeartStatus,
     (state:IHeart2Heart[], heart2Heart: IUpdateH2HStatus) => {
@@ -24,6 +24,6 @@ export const heart2HeartReducer = createReducer<IHeart2Heart[]>(
           ...foundH2h,
           Viewed: heart2Heart.Viewed
         })
-        .sort((h2hA, h2hB) => h2hA.id < h2hB.id ? -1 : 1)
+        .sort((h2hA, h2hB) => Number(h2hA.id) < Number(h2hB.id) ? -1 : 1)
     }]
 )([]);

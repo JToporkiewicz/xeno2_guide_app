@@ -481,7 +481,6 @@ module.exports = function() {
       await sequelize.query('CALL updateH2H ()');
       await sequelize.query('CALL updateQuest ()');
       await sequelize.query('CALL updateACN ()');
-      await sequelize.query('CALL updateACNUnlocked ()');
     } catch (err) {
       return res.status(400).json({err: err.message})
     }

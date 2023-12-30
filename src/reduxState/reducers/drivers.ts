@@ -18,7 +18,7 @@ export const driversReducer = createReducer<IDriverState[]>(
           show: false
         }
       })).sort((driverA, driverB) =>
-        driverA.id < driverB.id ? -1 : 1
+        Number(driverA.id) < Number(driverB.id) ? -1 : 1
       )
   }],
   [DriverActions.UpdateShowDriver, (driverState:IDriverState[], updateShow: IUpdateShow) => {
@@ -32,7 +32,7 @@ export const driversReducer = createReducer<IDriverState[]>(
         ...oldDriver,
         show: updateShow.show
       }]).sort((driverA, driverB) =>
-        driverA.id < driverB.id ? -1 : 1
+        Number(driverA.id) < Number(driverB.id) ? -1 : 1
       )
   }],
   [DriverActions.SetDriverSkillNode,
@@ -61,7 +61,7 @@ export const driversReducer = createReducer<IDriverState[]>(
               }
               return node
             }).sort((nodeA, nodeB) =>
-              nodeA.nodeId < nodeB.nodeId ? -1 : 1
+              Number(nodeA.nodeId) < Number(nodeB.nodeId) ? -1 : 1
             ),
             tier2: oldDriver.skillTree.tier2.map((node) => {
               if (nodeList.includes(node.nodeId)) {
@@ -73,7 +73,7 @@ export const driversReducer = createReducer<IDriverState[]>(
               }
               return node
             }).sort((nodeA, nodeB) =>
-              nodeA.nodeId < nodeB.nodeId ? -1 : 1
+              Number(nodeA.nodeId) < Number(nodeB.nodeId) ? -1 : 1
             ),
             tier3: oldDriver.skillTree.tier3.map((node) => {
               if (nodeList.includes(node.nodeId)) {
@@ -85,7 +85,7 @@ export const driversReducer = createReducer<IDriverState[]>(
               }
               return node
             }).sort((nodeA, nodeB) =>
-              nodeA.nodeId < nodeB.nodeId ? -1 : 1
+              Number(nodeA.nodeId) < Number(nodeB.nodeId) ? -1 : 1
             )
           },
           hiddenSkillTree: {
@@ -100,7 +100,7 @@ export const driversReducer = createReducer<IDriverState[]>(
               }
               return node
             }).sort((nodeA, nodeB) =>
-              nodeA.nodeId < nodeB.nodeId ? -1 : 1
+              Number(nodeA.nodeId) < Number(nodeB.nodeId) ? -1 : 1
             ),
             tier2: oldDriver.hiddenSkillTree.tier2.map((node) => {
               if (nodeList.includes(node.nodeId)) {
@@ -112,7 +112,7 @@ export const driversReducer = createReducer<IDriverState[]>(
               }
               return node
             }).sort((nodeA, nodeB) =>
-              nodeA.nodeId < nodeB.nodeId ? -1 : 1
+              Number(nodeA.nodeId) < Number(nodeB.nodeId) ? -1 : 1
             ),
             tier3: oldDriver.hiddenSkillTree.tier3.map((node) => {
               if (nodeList.includes(node.nodeId)) {
@@ -124,7 +124,7 @@ export const driversReducer = createReducer<IDriverState[]>(
               }
               return node
             }).sort((nodeA, nodeB) =>
-              nodeA.nodeId < nodeB.nodeId ? -1 : 1
+              Number(nodeA.nodeId) < Number(nodeB.nodeId) ? -1 : 1
             )
           }
 
@@ -152,10 +152,10 @@ export const driversReducer = createReducer<IDriverState[]>(
             levelUnlocked: artListPayload.levelUnlocked
           })
             .sort((artA, artB) =>
-              artA.id < artB.id ? -1 : 1
+              Number(artA.id) < Number(artB.id) ? -1 : 1
             )
         }]).sort((driverA, driverB) =>
-          driverA.id < driverB.id ? -1 : 1
+          Number(driverA.id) < Number(driverB.id) ? -1 : 1
         )
     }],
 )([]);

@@ -121,22 +121,22 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
   const routeA = props.quest.Steps
     .filter((step) => step.Description.startsWith('Route A:'))
     .map((step) => ({...step, Description: step.Description.replace('Route A: ', '')}))
-    .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1);
+    .sort((stepA, stepB) => Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 : 1);
   const routeB = props.quest.Steps
     .filter((step) => step.Description.startsWith('Route B:'))
     .map((step) => ({...step, Description: step.Description.replace('Route B: ', '')}))
-    .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1);
+    .sort((stepA, stepB) => Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 : 1);
   const allRoutes = props.quest.Steps
     .filter((step) => !routeA.map((A) => A.id).includes(step.id) &&
       !routeB.map((B) => B.id).includes(step.id))
-    .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1);
+    .sort((stepA, stepB) => Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 : 1);
 
   const completedStepNumber = props.quest.Steps
     .filter((steps) => steps.Completed)
-    .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1)
+    .sort((stepA, stepB) => Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 : 1)
     .at(-1)?.StepNumber || 0;
   const lastStepNumber = props.quest.Steps
-    .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1)
+    .sort((stepA, stepB) => Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 : 1)
     .at(-1)?.StepNumber || 0;
 
   useEffect(() => {
@@ -164,7 +164,7 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
     if (props.quest.Steps && saveSteps.current) {
       currentStep.current ={
         stepId: props.quest.Steps.filter((steps) => steps.Completed)
-          .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1)
+          .sort((stepA, stepB) => Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 : 1)
           .at(-1)?.id || 0,
         startedRoute: props.quest.Steps.find((step) =>
           step.Description.startsWith('Route ') && step.Completed
@@ -175,7 +175,7 @@ export const SideQuestStepDetailsView = (props:IProps & IDispatchProps) => {
         .filter((steps) => steps.SubSteps
           && steps.SubSteps
             .filter((sub) => sub.CompletionProgress && sub.CompletionProgress > 0)?.length > 0)
-        .sort((stepA, stepB) => stepA.StepNumber < stepB.StepNumber ? -1 : 1)
+        .sort((stepA, stepB) => Number(stepA.StepNumber) < Number(stepB.StepNumber) ? -1 : 1)
         .at(-1);
       currentSubStep.current = {
         stepId: stepWithSubStep?.id || 0,
