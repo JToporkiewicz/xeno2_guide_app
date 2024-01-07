@@ -2,16 +2,17 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox'
 import { RequirementList } from 'components/CommonComponents/RequirementList'
-import { IMercMission, IStoryProgress } from 'interfaces'
+import { IStoryProgress } from 'interfaces'
 import { RequirementArea } from 'interfaces/common'
 import path from 'path'
 import { useEffect, useRef } from 'react'
+import { IMercMissionAvailability } from 'reduxState/interfaces/availabilityState'
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations'
 import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission'
 import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 
 interface IProps {
-  mercMission: IMercMission;
+  mercMission: IMercMissionAvailability;
   storyProgress: IStoryProgress;
 }
 
@@ -26,7 +27,7 @@ interface IDispatchProps {
 }
 
 export const MercMissionDetailsPageView = (props:IProps & IDispatchProps) => {
-  const mmToUpdate = useRef(undefined as IMercMission | undefined);
+  const mmToUpdate = useRef(undefined as IMercMissionAvailability | undefined);
   const updatedLocDevLevel = useRef([] as IUpdateDevelopmentLevel[])
   const updatedProgress = useRef(props.storyProgress as IStoryProgress);
 

@@ -17,13 +17,13 @@ module.exports = function() {
       m.IsDriver,
       m.LowestLevel,
       m.HighestLevel,
+      m.Location as LocId,
       loc.Location as Location,
       ma.Name as AreaName,
       ma.Located as AreaLocation,
       m.DLCRequired,
       m.SpawnCondition,
       m.Drops,
-      m.Available,
       m.Beaten
       FROM xenoblade2_guide.monsters as m
       LEFT JOIN xenoblade2_guide.monsterTypes as mt
@@ -43,6 +43,7 @@ module.exports = function() {
       IsDriver: mon.IsDriver === 1,
       LowestLevel: mon.LowestLevel,
       HighestLevel: mon.HighestLevel,
+      LocationId: mon.LocId,
       Location: mon.Location,
       Area: mon.AreaLocation === 'Uncharted area' ?
         mon.AreaName : `(${mon.AreaLocation} -> ${mon.AreaName})`,
@@ -54,7 +55,6 @@ module.exports = function() {
         rarity: drop.Rarity,
         dropRate: drop.Rate
       })),
-      Available: mon.Available === 1,
       Beaten: mon.Beaten === 1
     }))
 

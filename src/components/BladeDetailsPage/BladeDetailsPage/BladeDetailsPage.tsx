@@ -1,23 +1,27 @@
-import { IHeart2Heart, IItem, IItemType, IQuest, IStoryProgress } from 'interfaces'
-import { IBladeState } from 'reduxState/interfaces/reduxState'
+import { IItem, IItemType, IStoryProgress } from 'interfaces'
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { BladeAffinityTree } from '../BladeAffinityTree'
 import { BladeBasicInfoComponent } from '../BladeBasicInfoComponent'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import { RequirementList } from 'components/CommonComponents/RequirementList'
+import {
+  IBladeAvailability,
+  IHeart2HeartAvailability,
+  IQuestAvailability
+} from 'reduxState/interfaces/availabilityState'
 
 interface IDispatchProps {
   fetchBlade: (payload: number) => void
 }
 
 interface IProps {
-  bladeDetails: IBladeState,
+  bladeDetails: IBladeAvailability,
   item1?: IItem,
   item2?: IItem,
   itemType1?: IItemType,
   itemType2?: IItemType,
-  heart2Heart?: IHeart2Heart,
-  quest?: IQuest,
+  heart2Heart?: IHeart2HeartAvailability,
+  quest?: IQuestAvailability,
   storyProgress: IStoryProgress
 }
 

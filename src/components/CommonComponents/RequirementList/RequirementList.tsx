@@ -1,13 +1,14 @@
-import { IRequirement, RequirementArea } from 'interfaces/common'
+import { RequirementArea } from 'interfaces/common'
 import path from 'path'
 import IncrementDecrementNumber from '../FormComponents/IncrementDecrementNumber'
 import { IStoryProgress } from 'interfaces'
 import { IMajorLocations } from 'reduxState/interfaces/reduxState'
 import { LinkSelected } from '../LinkSelected'
 import { Routes } from 'helpers/routesConst'
+import { IRequirementAvailability } from 'reduxState/interfaces/availabilityState'
 
 interface IOwnProps {
-  requirements: IRequirement[],
+  requirements: IRequirementAvailability[],
   updateReqProgress?: (index: number, progress: number, area?: string) => void
 }
 
@@ -18,7 +19,7 @@ interface IProps {
 
 export const RequirementListComponent = (props: IProps & IOwnProps) => {
 
-  const mapArea = (req: IRequirement) => {
+  const mapArea = (req: IRequirementAvailability) => {
     switch (req.area) {
     case RequirementArea.Blade:
     case RequirementArea['Affinity Chart Node']:
@@ -127,7 +128,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
     }
   }
 
-  const getDisabledStatus = (req: IRequirement) => {
+  const getDisabledStatus = (req: IRequirementAvailability) => {
     if ([String(RequirementArea['Nation Dev Level'])].includes(req.area)) {
       const reqText = req.requirement.split(':')
       const area = props.locations.find((loc) => loc.Name === reqText[0])
@@ -149,10 +150,10 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
             {req.progress !== undefined ?
               <div className='col-sm-6'>
                 <div className='row'>
-                  <div className='col-sm-3'>
+                  <div className='col-sm-2'>
                   Progress:
                   </div>
-                  <div className='col-sm-9 spaced-increment'>
+                  <div className='col-sm-6 spaced-increment'>
                     <IncrementDecrementNumber
                       disabled={getDisabledStatus(req)}
                       minimum={[String(RequirementArea['Merc Level'])]
@@ -160,14 +161,24 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
                       maximum={req.requirementCount}
                       value={req.progress}
                       updateValue={(progress) => props.updateReqProgress ?
-                        props.updateReqProgress(req.id || 0, progress, req.area) : undefined}
+                        props.updateReqProgress(
+                          req.id || req.reqId || 0,
+                          progress,
+                          req.area) : undefined}
                     />
                   </div>
+                  {req.completed !== undefined &&
+                    <div className='col-sm-4'>Achieved:<img 
+                      src={path.resolve(`images/helper/${req.completed ?
+                        'GreenCheckmark' : 'RedX'}.svg`)}
+                      alt={'Completed'}
+                      className="availability-small-image inline-image"
+                    /></div>}
                 </div>
               </div> : 
               <>
                 {
-                  req.requirementCount ?
+                  req.requirementCount && req.area !== RequirementArea['Story Progress'] ?
                     <div className='col-sm-2'>
                       Number: {req.requirementCount}
                     </div> : <div />

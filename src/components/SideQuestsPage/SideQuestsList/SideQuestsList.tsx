@@ -6,13 +6,14 @@ import OrderBy from 'components/CommonComponents/OrderBy';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { separateMajorArea, sortFunction } from 'helpers';
 import { Routes } from 'helpers/routesConst';
-import { IQuest, IStoryProgress } from 'interfaces';
+import { IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
+import { IQuestAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IOwnProps {
   questType: string,
-  quests: IQuest[],
+  quests: IQuestAvailability[],
   storyProgress: IStoryProgress,
   updateQuestStatus: (questId: number, status: string | boolean) => void
 }
@@ -21,7 +22,7 @@ export const SideQuestsList = (props: IOwnProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
 
-  const orderOptions: {[key:string]: keyof IQuest} = {
+  const orderOptions: {[key:string]: keyof IQuestAvailability} = {
     default: 'id',
     alphabetically: 'Name',
     type: 'Type',
@@ -30,7 +31,7 @@ export const SideQuestsList = (props: IOwnProps) => {
     location: 'Area'
   }
 
-  const getOrderTypeColumn = (order: string): keyof IQuest => {
+  const getOrderTypeColumn = (order: string): keyof IQuestAvailability => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -58,7 +59,7 @@ export const SideQuestsList = (props: IOwnProps) => {
               const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
               const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
               return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
-            }).map((quest:IQuest) =>
+            }).map((quest:IQuestAvailability) =>
               <div className="row text-list-entry" key={quest.id}>
                 <div
                   className="column-narrow text-list-status"

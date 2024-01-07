@@ -11,47 +11,22 @@ module.exports = function() {
   const getPreMM = async function(id = '') {
     const mmPres = await sequelize.query(`
     SELECT
-      pre.id,
-      pre.RequiredBy,
-      pre.Nation,
-      ma.id as NationId,
+      pre.*,
       ma.Name as NationName,
-      ma.StoryProgress as NationSP,
-      ma.DevelopmentLevel,
-      pre.LocationDevLevel as RequiredDevLevel,
-      pre.MercLevel,
-      pre.BladeUnlocked as BladeId,
       b.Name as BladeName,
-      b.Unlocked as BladeUnlocked,
-      b.Available as BladeAvailable,
-      pre.Quest as QuestId,
       q.Name as QuestName,
-      q.Available as QuestAvailable,
-      q.Status as QuestStatusAchieved,
-      pre.QuestStatus as QuestStatusRequired,
-      pre.MercMissionCompleted as MMId,
-      mm.Name as MMName,
-      mm.Completed as MMCompleted,
-      mm.Available as MMAvailable,
-      pre.StoryProgress,
-      pre.DLCUnlocked,
-      pre.OtherPrerequisiteDetails,
-      pre.OtherPrerequisiteTitle
+      mm.Name as MMName
       FROM xenoblade2_guide.prerequisitesMMs as pre
       LEFT JOIN xenoblade2_guide.majorAreas as ma
         ON ma.id = pre.Nation
       LEFT JOIN xenoblade2_guide.blades as b
         ON b.id = pre.BladeUnlocked
       LEFT JOIN xenoblade2_guide.quests as q
-      ON q.id = pre.Quest
+        ON q.id = pre.Quest
       LEFT JOIN xenoblade2_guide.mercMissions as mm
         ON mm.id = pre.MercMissionCompleted
       ${id ? `WHERE pre.RequiredBy = ${id}` : ''}`,
     { type: Sequelize.QueryTypes.SELECT });
-
-    const storyProgress = await sequelize.query(
-      'SELECT * FROM xenoblade2_guide.storyProgresses',
-      { type: Sequelize.QueryTypes.SELECT })
 
     const mappedPre = mmPres.reduce((list, pre) => {
       const reqs = [];
@@ -59,13 +34,9 @@ module.exports = function() {
       if (pre.Nation) {
         reqs.push({
           area: 'Nation Dev Level',
-          requirement: `${pre.NationName}: Development Level ${pre.RequiredDevLevel}`,
-          requirementCount: pre.RequiredDevLevel,
-          progress: pre.DevelopmentLevel,
-          completed: pre.DevelopmentLevel >= pre.RequiredDevLevel,
-          available: storyProgress[0].Chapter >= pre.NationSP,
-          reqId: pre.Nation,
-          id: pre.NationId
+          requirement: `${pre.NationName}: Development Level ${pre.LocationDevLevel}`,
+          requirementCount: pre.LocationDevLevel,
+          reqId: pre.Nation
         })
       }
 
@@ -73,42 +44,31 @@ module.exports = function() {
         reqs.push({
           area: 'Merc Level',
           requirement: `${pre.MercLevel}`,
-          requirementCount: pre.MercLevel,
-          progress: storyProgress[0].MercLevel,
-          completed: storyProgress[0].MercLevel >= pre.MercLevel,
-          available: storyProgress[0].Chapter >= 4
+          requirementCount: pre.MercLevel
         })
       }
 
-      if (pre.BladeId) {
+      if (pre.BladeUnlocked) {
         reqs.push({
           area: 'Blade',
           requirement: pre.BladeName,
-          available: pre.BladeAvailable,
-          completed: pre.BladeUnlocked,
-          reqId: pre.BladeId
+          reqId: pre.BladeUnlocked
         })
       }
 
-      if (pre.QuestId) {
+      if (pre.Quest) {
         reqs.push({
-          area: 'Quest',
-          requirement: `${pre.QuestName}: ${pre.QuestStatusRequired}`,
-          completed: pre.QuestStatusRequired === 'IN PROGRESS'
-            && pre.QuestStatusAchieved !== 'NOT STARTED' ||
-            pre.QuestStatusRequired === pre.QuestStatusAchieved,
-          available: pre.QuestAvailable,
-          reqId: pre.QuestId
+          area: pre.QuestStatus === 'STARTED' ? 'Start side-quest': 'Quest',
+          requirement: `${pre.QuestName}: ${pre.QuestStatus}`,
+          reqId: pre.Quest
         })
       }
 
-      if (pre.MMId) {
+      if (pre.MercMissionCompleted) {
         reqs.push({
           area: 'Merc Mission',
           requirement: pre.MMName,
-          available: pre.MMAvailable,
-          completed: pre.MMCompleted,
-          reqId: pre.MMId
+          reqId: pre.MercMissionCompleted
         })
       }
 
@@ -116,15 +76,14 @@ module.exports = function() {
         reqs.push({
           area: 'Story Progress',
           requirement: 'Chapter ' + pre.StoryProgress,
-          completed:storyProgress[0].Chapter >= pre.StoryProgress
+          requirementCount: pre.StoryProgress
         })
       }
 
       if (pre.DLCUnlocked) {
         reqs.push({
           area: 'DLC Unlocked',
-          requirement: pre.DLCUnlocked === 1,
-          completed: storyProgress[0].DLCUnlocked === 1
+          requirement: pre.DLCUnlocked === 1
         })
       }
 
@@ -156,8 +115,7 @@ module.exports = function() {
         mm.Duration,
         mm.Type,
         mm.Missable,
-        mm.Completed,
-        mm.Available
+        mm.Completed
         FROM xenoblade2_guide.mercMissions as mm
         LEFT JOIN xenoblade2_guide.locations as loc
           ON mm.GiverLocation = loc.id
@@ -172,7 +130,6 @@ module.exports = function() {
       ...m,
       Missable: m.Missable === 1,
       Completed: m.Completed === 1,
-      Available: m.Available === 1,
       Prerequisites: pres[m.id] || undefined
     }))
 
@@ -183,8 +140,6 @@ module.exports = function() {
     const requirements = await sequelize.query(`
       SELECT req.*,
         b.Name as BladeName,
-        b.Available as BladeAvailable,
-        b.Unlocked as BladeUnlocked,
         fs.Name as FieldSkillName,
         fs.TotalLevel as FieldSkillTotal
         FROM xenoblade2_guide.requirementsMMs as req
@@ -202,9 +157,7 @@ module.exports = function() {
           MissionId: r.MissionId,
           area: 'Blade',
           requirement: r.BladeName || 'Unknown',
-          reqId: r.Blade,
-          available: r.BladeAvailable === 1,
-          completed: r.BladeUnlocked === 1
+          reqId: r.Blade
         })
       }
       if (r.FieldSkill) {
@@ -212,8 +165,7 @@ module.exports = function() {
           MissionId: r.MissionId,
           area: 'Field Skills',
           requirement: r.FieldSkillName || 'Unknown',
-          requirementCount: r.FieldSkillLevel,
-          completed: r.FieldSkillTotal === r.FieldSkillLevel
+          requirementCount: r.FieldSkillLevel
         })
       }
       if (r.Element) {

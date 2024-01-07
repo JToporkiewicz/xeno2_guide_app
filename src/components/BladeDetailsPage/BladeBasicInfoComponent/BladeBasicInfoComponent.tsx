@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { IHeart2Heart, IItem, IItemType, IQuest, IStoryProgress } from 'interfaces'
+import { IItem, IItemType, IStoryProgress } from 'interfaces'
 import { IBladeState, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import path from 'path';
@@ -8,20 +8,25 @@ import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts'
 import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
 import { LinkSelected } from 'components/CommonComponents/LinkSelected'
 import { Routes } from 'helpers/routesConst';
+import {
+  IBladeAvailability,
+  IHeart2HeartAvailability,
+  IQuestAvailability
+} from 'reduxState/interfaces/availabilityState';
 
 interface IOwnProps {
-  bladeDetails:IBladeState,
+  bladeDetails:IBladeAvailability,
   item1?: IItem | undefined,
   item2?: IItem | undefined,
   itemType1?: IItemType | undefined,
   itemType2?: IItemType | undefined
-  heart2Heart?: IHeart2Heart | undefined,
-  quest?: IQuest | undefined,
+  heart2Heart?: IHeart2HeartAvailability | undefined,
+  quest?: IQuestAvailability | undefined,
   storyProgress: IStoryProgress
 }
 
 interface IDispatchProps {
-  updateBladeUnlocked: (payload:IBladeState) => void;
+  updateBladeUnlocked: (payload:IBladeState | IBladeAvailability) => void;
   saveBladeStatus: (payload:IUpdateUnlocked) => void;
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
   saveQuestStatus: (payload:IUpdateQuestStatus[]) => void;
@@ -30,9 +35,9 @@ interface IDispatchProps {
 }
 
 export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) => {
-  const bladeToUpdate = useRef(undefined as IBladeState | undefined);
-  const questToUpdate = useRef(undefined as IQuest | undefined);
-  const h2hToUpdate = useRef(undefined as IHeart2Heart | undefined);
+  const bladeToUpdate = useRef(undefined as IBladeAvailability | undefined);
+  const questToUpdate = useRef(undefined as IQuestAvailability | undefined);
+  const h2hToUpdate = useRef(undefined as IHeart2HeartAvailability | undefined);
 
   const updateBladeUnlocked = () => {
     bladeToUpdate.current = {

@@ -55,10 +55,10 @@
 54;"Wind Smash";1;"Sword Tonfa";"[""Increased damage dealt to enemies targeting user""]";"One";"Ether";1;319;320;321;322;323;324
 55;"Stormstarter";1;"Sword Tonfa";"[""Increases aggro drawn""]";"Ahead";"Physical";1;325;326;327;328;329;330
 56;"Hurricane Punch";1;"Sword Tonfa";"[""Knockback""]";"One";"Physical";1;331;332;333;334;335;336
-57;"Thunderclap";1;"Brilliant Twinblades ";"[""Increases damage dealt from the side""]";"One";"Physical";1;337;338;339;340;341;342
-58;"Haphazard Throw";1;"Brilliant Twinblades ";"[""Adds 50 - 100% to damage ratio after canceling an auto-attack""]";"One";"Ether";1;343;344;345;346;347;348
-59;"Cutting Edge";1;"Brilliant Twinblades ";"[""Recharges Arts used by 50 - 100% upon landing a critical hit""]";"One";"Physical";1;349;350;351;352;353;354
-60;"Rebel's Dagger";1;"Brilliant Twinblades ";"[]";"Circle";"Physical";1;355;356;357;358;359;360
+57;"Thunderclap";1;"Brilliant Twinblades";"[""Increases damage dealt from the side""]";"One";"Physical";1;337;338;339;340;341;342
+58;"Haphazard Throw";1;"Brilliant Twinblades";"[""Adds 50 - 100% to damage ratio after canceling an auto-attack""]";"One";"Ether";1;343;344;345;346;347;348
+59;"Cutting Edge";1;"Brilliant Twinblades";"[""Recharges Arts used by 50 - 100% upon landing a critical hit""]";"One";"Physical";1;349;350;351;352;353;354
+60;"Rebel's Dagger";1;"Brilliant Twinblades";"[]";"Circle";"Physical";1;355;356;357;358;359;360
 61;"Flamecaster";1;"Decimation Cannon";"[""Increases damage dealt from the front by 50 - 100%""]";"Ahead";"Ether";1;361;362;363;364;365;366
 62;"Mighty Missile";1;"Decimation Cannon";"[""Pierce"", ""Increases damage dealt to launched enemies""]";"Unknown";"Ether";1;367;368;369;370;371;372
 63;"Grenade Burst";1;"Decimation Cannon";"[""Blowdown""]";"Circle";"Ether";1;373;374;375;376;377;378
@@ -67,10 +67,10 @@
 66;"Wild Slugger";1;"Rockrending Gauntlets";"[""Blowdown"", ""Increases damage dealt from the front""]";"One";"Physical";1;391;392;393;394;395;396
 67;"Rock Bullet";1;"Rockrending Gauntlets";"[""Increases aggro drawn""]";"Circle";"Unknown";1;397;398;399;400;401;402
 68;"Terror Smash";1;"Rockrending Gauntlets";"[""Increased damage dealt to enemies targeting user""]";"Unknown";"Unknown";1;403;404;405;406;407;408
-69;"Revolt Smash";1;"Calamity Scythe ";"[""When landing a hit, restores part of the damage dealt to the whole party""]";"Unknown";"Physical";1;409;410;411;412;413;414
-70;"Screw Reaper";1;"Calamity Scythe ";"[""Decreases aggro drawn""]";"Circle";"Physical";1;415;416;417;418;419;420
-71;"Rising Crescent";1;"Calamity Scythe ";"[""Launch""]";"Unknown";"Physical";1;421;422;423;424;425;426
-72;"Withering Assault";1;"Calamity Scythe ";"[""Spawns a small HP Potion on hit, with a 10 - 50% chance to spawn 2""]";"Unknown";"Physical";1;427;428;429;430;431;432
+69;"Revolt Smash";1;"Calamity Scythe";"[""When landing a hit, restores part of the damage dealt to the whole party""]";"Unknown";"Physical";1;409;410;411;412;413;414
+70;"Screw Reaper";1;"Calamity Scythe";"[""Decreases aggro drawn""]";"Circle";"Physical";1;415;416;417;418;419;420
+71;"Rising Crescent";1;"Calamity Scythe";"[""Launch""]";"Unknown";"Physical";1;421;422;423;424;425;426
+72;"Withering Assault";1;"Calamity Scythe";"[""Spawns a small HP Potion on hit, with a 10 - 50% chance to spawn 2""]";"Unknown";"Physical";1;427;428;429;430;431;432
 73;"Earth Splitter";1;"Cobra Bardiche";"[""Increases damage dealt by 100 - 150% when HP is 30% or less""]";"One";"Physical";1;433;434;435;436;437;438
 74;"Powerquake";1;"Cobra Bardiche";"[""Break"", ""Increases damage dealt from the side""]";"One";"Physical";1;439;440;441;442;443;444
 75;"Final Stone";1;"Cobra Bardiche";"[""Drains 10% of current HP when using the Art."", ""Evasion during Art""]";"One";"Physical";1;445;446;447;448;449;450

@@ -10,7 +10,6 @@ export interface IMercMission {
   Type:string,
   Missable:boolean,
   Completed:boolean,
-  Available:boolean
   Requirements: IRequirement[],
   Prerequisites?: IRequirement[]
 }

@@ -1,6 +1,6 @@
-import { IQuest } from 'interfaces'
+import { IQuestAvailability } from './availabilityState'
 
-export const defaultSideQuest: IQuest = {
+export const defaultSideQuest: IQuestAvailability = {
   id:0,
   Name:'',
   Type:'',
@@ -8,9 +8,9 @@ export const defaultSideQuest: IQuest = {
   Area:'',
   Location:'',
   Rewards:[],
-  Available:false,
   Status:'',
-  Steps: []
+  Steps: [],
+  Available: false
 }
 
 export interface IUpdateQuestStatus {

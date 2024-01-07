@@ -6,10 +6,11 @@ import OrderBy from 'components/CommonComponents/OrderBy';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { sortFunction } from 'helpers';
 import { Routes } from 'helpers/routesConst';
-import { IMercMission, IStoryProgress } from 'interfaces'
+import { IStoryProgress } from 'interfaces'
 import { RequirementArea } from 'interfaces/common';
 import path from 'path';
 import { ReactChild, useEffect, useState } from 'react';
+import { IMercMissionAvailability } from 'reduxState/interfaces/availabilityState';
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
 
 interface IDispatchProps {
@@ -19,7 +20,7 @@ interface IDispatchProps {
 
 interface IOwnProps {
   location: string;
-  mercMissions: IMercMission[];
+  mercMissions: IMercMissionAvailability[];
   storyProgress: React.MutableRefObject<IStoryProgress>;
   updatedLocDevLevel: React.MutableRefObject<IUpdateDevelopmentLevel[]>;
   updateMMStatus: (mmId: number, completed: boolean) => void;
@@ -31,7 +32,7 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
 
   const [mercMissionEntries, setMMEntries] = useState([] as ReactChild[])
 
-  const orderOptions: {[key:string]: keyof IMercMission} = {
+  const orderOptions: {[key:string]: keyof IMercMissionAvailability} = {
     default: 'id',
     alphabetically: 'Name',
     location: 'MissionNation',
@@ -41,7 +42,7 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
     missable: 'Missable'
   }
 
-  const getOrderTypeColumn = (order: string): keyof IMercMission => {
+  const getOrderTypeColumn = (order: string): keyof IMercMissionAvailability => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -52,7 +53,7 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
           const mmAValue = mmA[getOrderTypeColumn(orderType)]
           const mmBValue = mmB[getOrderTypeColumn(orderType)]
           return sortFunction(mmAValue, mmBValue, sortOrderAsc)
-        }).map((mm:IMercMission) =>
+        }).map((mm:IMercMissionAvailability) =>
           <div className="row text-list-entry" key={mm.id}>
             <div className='column-narrow text-list-status'>
               <OptionsCheckbox

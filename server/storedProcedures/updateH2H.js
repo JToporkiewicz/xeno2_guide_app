@@ -41,7 +41,7 @@ const updateH2H = {
             OR preH2H.Quest IN (
                 SELECT quest.id
                 FROM xenoblade2_guide.quests as quest
-                WHERE quest.Available = 1
+                WHERE quest.Status = 'FINISHED'
             ));
 
         UPDATE xenoblade2_guide.heart2Hearts

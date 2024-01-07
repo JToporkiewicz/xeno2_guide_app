@@ -29,7 +29,6 @@ export interface IRequirement {
   id?:number,
   reqId?: number,
   requirementCount?: number,
-  available?:boolean,
   progress?:number,
   completed?:boolean
 }

@@ -1,7 +1,8 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox'
-import { IQuest, IQuestStep, IQuestSubStep } from 'interfaces'
+import { IQuestStep, IQuestSubStep } from 'interfaces'
 import { useEffect, useRef } from 'react'
+import { IQuestAvailability } from 'reduxState/interfaces/availabilityState'
 import {
   ISaveQuestStepStatus,
   ISaveQuestSubStepStatus,
@@ -10,7 +11,7 @@ import {
 } from 'reduxState/interfaces/quest'
 
 interface IProps {
-  quest: IQuest
+  quest: IQuestAvailability
 }
 
 interface IInnerDispatchProps {

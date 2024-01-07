@@ -1,14 +1,15 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
-import { IMonster, IMonsterDrops } from 'interfaces';
+import { IMonsterDrops } from 'interfaces';
 import path from 'path';
 import { useEffect, useRef } from 'react';
+import { IMonsterAvailability } from 'reduxState/interfaces/availabilityState';
 import { IUpdateMonster } from 'reduxState/interfaces/monsters';
 import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 
 interface IProps {
-  monster: IMonster
+  monster: IMonsterAvailability
 }
 
 interface IDispatchProps {
@@ -19,7 +20,7 @@ interface IDispatchProps {
 
 export const MonsterDetailsPageView = (props:IProps & IDispatchProps) => {
   const {monster} = props;
-  const monToUpdate = useRef(undefined as IMonster | undefined);
+  const monToUpdate = useRef(undefined as IMonsterAvailability | undefined);
 
   const updateMonCompleted = () => {
     if (monster) {

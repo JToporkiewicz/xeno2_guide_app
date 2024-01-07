@@ -4,7 +4,7 @@ import DADescription from '../DADescription';
 import InnerCollapsibleComponent
   from 'components/CommonComponents/Containers/InnerCollapsibleComponent';
 import { IDriverArts } from 'interfaces';
-import { IBladeState } from 'reduxState/interfaces/reduxState';
+import { IBladeAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IOwnProps {
   weapon:string,
@@ -14,7 +14,7 @@ interface IOwnProps {
 }
 
 interface IProps {
-  blades: IBladeState[];
+  blades: IBladeAvailability[];
   driverUnlocked: boolean;
 }
 

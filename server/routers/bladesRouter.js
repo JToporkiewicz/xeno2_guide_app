@@ -13,28 +13,17 @@ module.exports = function() {
       SELECT
         pre.*,
         loc.Location as LocName,
-        loc.StoryProgress as LocStory,
         ma.Name as maName,
         ma.Located as maLocated,
         h2h.Title as H2HTitle,
-        h2h.Available as H2HAvailable,
-        h2h.Viewed as H2HViewed,
         q.Name as QuestName,
-        q.Available as QuestAvailable,
-        q.Status as QuestStatus,
         mm.Name as MMName,
-        mm.Available as MMAvailable,
-        mm.Completed as MMCompleted,
         mon.Name as MonName,
-        mon.Available as MonAvailable,
-        monTypes.Available as MonTypeAvailable,
         mt.MonsterType as MonType,
         acn.Name as ACNName,
-        acn.Available as ACNAvailable,
-        acn.Unlocked as ACNUnlocked,
         item.Name as ItemName,
-        item.Location as ItemLoc,
-        it.ItemType as ITypeName
+        it.ItemType as ITypeName,
+        item.Location as ItemLocation
         FROM xenoblade2_guide.prerequisitesACNs as pre
         LEFT JOIN xenoblade2_guide.items as item
             ON pre.PouchItem = item.id
@@ -52,13 +41,6 @@ module.exports = function() {
             ON pre.SideQuest = q.id
         LEFT JOIN xenoblade2_guide.mercMissions as mm
             ON pre.MercMissionTitle = mm.id
-        LEFT JOIN (
-            SELECT mon2.Type, mon2.Available
-            FROM xenoblade2_guide.monsters as mon2
-            WHERE mon2.Available = 1
-            GROUP BY mon2.Type
-          ) monTypes
-            ON pre.MonsterType = monTypes.Type
         LEFT JOIN xenoblade2_guide.monsterTypes as mt
             ON pre.MonsterType = mt.id
         LEFT JOIN xenoblade2_guide.affinityChartNodes as acn
@@ -67,10 +49,6 @@ module.exports = function() {
             ON pre.PouchItemType = it.id`,
     { type: Sequelize.QueryTypes.SELECT })
 
-    const storyProgress = await sequelize.query(
-      'SELECT * FROM xenoblade2_guide.storyProgresses',
-      { type: Sequelize.QueryTypes.SELECT })
-
     const mappedPres = acnPre.reduce((list, pre) => {
       const preList = [];
 
@@ -78,25 +56,19 @@ module.exports = function() {
         preList.push({
           area: pre.OtherPrerequisiteName,
           requirement: pre.H2HTitle,
-          reqId: pre.Heart2HeartTitle,
-          available: pre.H2HAvailable === 1,
-          completed: pre.H2HViewed === 1
+          reqId: pre.Heart2HeartTitle
         })
       } else if (pre.SideQuest) {
         preList.push({
           area: pre.OtherPrerequisiteName,
           requirement: pre.QuestName,
-          reqId: pre.SideQuest,
-          available: pre.QuestAvailable === 1,
-          completed: pre.QuestStatus === 'FINISHED'
+          reqId: pre.SideQuest
         })
       } else if (pre.MercMissionTitle) {
         preList.push({
           area: pre.OtherPrerequisiteName,
           requirement: pre.MMName,
-          reqId: pre.MercMissionTitle,
-          available: pre.MMAvailable === 1,
-          completed: pre.MMCompleted === 1
+          reqId: pre.MercMissionTitle
         })
       } else if (pre.MonsterTitle) {
         preList.push({
@@ -104,7 +76,6 @@ module.exports = function() {
           requirement: pre.OtherPrerequisiteName + ': ' + pre.MonName,
           requirementCount: pre.OtherPrerequisiteDetail,
           reqId: pre.MonsterTitle,
-          available: pre.MonAvailable === 1,
           progress: pre.Progress,
           completed: pre.Progress === pre.OtherPrerequisiteDetail
         })
@@ -113,7 +84,7 @@ module.exports = function() {
           area: 'Monster Type',
           requirement: pre.OtherPrerequisiteName + ': ' + pre.MonType,
           requirementCount: pre.OtherPrerequisiteDetail,
-          available: pre.MonTypeAvailable === 1,
+          reqId: pre.MonsterType,
           progress: pre.Progress,
           completed: pre.Progress === pre.OtherPrerequisiteDetail
         })
@@ -122,7 +93,7 @@ module.exports = function() {
           area: pre.OtherPrerequisiteName,
           requirement: pre.ACNName,
           requirementCount: pre.OtherPrerequisiteDetail,
-          available: pre.ACNAvailable === 1,
+          reqId: pre.AffinityChartNode,
           progress: pre.Progress,
           completed: pre.Progress === pre.OtherPrerequisiteDetail
         })
@@ -139,7 +110,7 @@ module.exports = function() {
           area: pre.OtherPrerequisiteName,
           requirement: pre.ItemName,
           requirementCount: pre.OtherPrerequisiteDetail,
-          available:pre.LocStory ? storyProgress[0].Chapter >= pre.LocStory : undefined,
+          reqId: pre.ItemLocation,
           progress: pre.Progress,
           completed: pre.Progress === pre.OtherPrerequisiteDetail
         })
@@ -157,15 +128,14 @@ module.exports = function() {
         preList.push({
           area: 'Story Progress',
           requirement: 'Chapter ' + pre.StoryProgress,
-          completed:storyProgress[0].Chapter >= pre.StoryProgress
+          requirementCount: pre.StoryProgress
         })
       }
 
       if (pre.DLCRequired) {
         preList.push({
           area: 'DLC Unlocked',
-          requirement: pre.DLCUnlocked === 1,
-          completed: storyProgress[0].DLCUnlocked === 1
+          requirement: pre.DLCUnlocked === 1
         })
       }
 
@@ -174,7 +144,7 @@ module.exports = function() {
           area: 'Location',
           requirement: pre.Location ?
             `${pre.maLocated} -> ${pre.maName} -> ${pre.LocName}` : '',
-          available:pre.LocStory ? storyProgress[0].Chapter >= pre.LocStory : undefined,
+          reqId: pre.Location
         })
       }
 
@@ -199,7 +169,6 @@ module.exports = function() {
         acn.id as nodeId,
         acn.SkillLevel,
         acn.Effect,
-        acn.Available,
         acn.Unlocked,
         CASE
           WHEN acn.id = acb.NodeAffinity1 THEN 1
@@ -238,7 +207,6 @@ module.exports = function() {
         nodeId: curr.nodeId,
         skillLevel: curr.SkillLevel,
         effect: JSON.parse(curr.Effect),
-        available: curr.Available === 1,
         unlocked: curr.Unlocked === 1,
         tier: curr.Tier,
         preReqs: nodePre[curr.nodeId] || undefined
@@ -276,12 +244,8 @@ module.exports = function() {
       SELECT
         pre.*,
         q.Name as QuestName,
-        q.Available as QuestAvailable,
-        q.Status as QuestStatus,
         mon.Name as MonName,
-        mon.Available as MonAvailable,
         loc.Location as LocName,
-        loc.StoryProgress as LocStory,
         ma.Name as maName,
         ma.Located as maLocated
         FROM xenoblade2_guide.prerequisitesBlades as pre
@@ -296,10 +260,6 @@ module.exports = function() {
       ${id ? `WHERE RequiredBy = ${id}` : ''}
     `, { type: Sequelize.QueryTypes.SELECT })
 
-    const storyProgress = await sequelize.query(
-      'SELECT * FROM xenoblade2_guide.storyProgresses',
-      { type: Sequelize.QueryTypes.SELECT })
-
     const mappedPreReq = preRequisites.reduce((list, pre) => {
       const reqs = [];
 
@@ -307,23 +267,21 @@ module.exports = function() {
         reqs.push({
           area: 'Story Progress',
           requirement: 'Chapter ' + pre.StoryProgress,
-          completed:storyProgress[0].Chapter >= pre.StoryProgress       
+          requirementCount: pre.StoryProgress
         })
       }
 
       if (pre.NewGamePlus) {
         reqs.push({
           area: 'New Game Plus',
-          requirement: pre.NewGamePlus === 1,
-          completed: storyProgress[0].NewGamePlus === 1
+          requirement: pre.NewGamePlus === 1
         })
       }
 
       if (pre.DLCUnlocked) {
         reqs.push({
           area: 'DLC Unlocked',
-          requirement: pre.DLCUnlocked === 1,
-          completed: storyProgress[0].DLCUnlocked === 1
+          requirement: pre.DLCUnlocked === 1
         })
       }
 
@@ -331,9 +289,7 @@ module.exports = function() {
         reqs.push({
           area: 'Quest',
           requirement: pre.QuestName,
-          reqId: pre.SideQuest,
-          available: pre.QuestAvailable === 1,
-          completed: pre.QuestStatus === 'FINISHED'
+          reqId: pre.SideQuest
         })
       }
 
@@ -341,8 +297,7 @@ module.exports = function() {
         reqs.push({
           area: 'Monster',
           requirement: pre.MonName,
-          reqId: pre.Monster,
-          available: pre.MonAvailable === 1
+          reqId: pre.Monster
         })
       }
 
@@ -351,7 +306,7 @@ module.exports = function() {
           area: 'Other',
           requirement: `${pre.Location ?
             `${pre.maLocated} -> ${pre.maName} -> ${pre.LocName}: ` : ''}${pre.OtherDetails}`,
-          available:pre.LocStory ? storyProgress[0].Chapter >= pre.LocStory : undefined,
+          reqId: pre.Location
         })
       }
 
@@ -374,7 +329,6 @@ module.exports = function() {
     const mappedBlades = blades.map((b) => ({
       ...b,
       Unlocked: b.Unlocked === 1,
-      Available: b.Available === 1,
       AffinityChart: Object.entries(charts[b.AffinityChart]).map(([key, branch]) => ({
         branchId: key,
         branchName: branch.branchName,
@@ -404,7 +358,6 @@ module.exports = function() {
     const mappedBlade = {
       ...blade[0],
       Unlocked: blade[0].Unlocked === 1,
-      Available: blade[0].Available === 1,
       AffinityChart: Object.entries(chart[blade[0].AffinityChart]).map(([key, branch]) => ({
         branchId: key,
         branchName: branch.branchName,

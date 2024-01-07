@@ -19,6 +19,5 @@ export interface IBlade {
   FavItemType1:number,
   FavItemType2:number,
   Unlocked:boolean,
-  Available:boolean,
   Prerequisites?: IRequirement[]
 }

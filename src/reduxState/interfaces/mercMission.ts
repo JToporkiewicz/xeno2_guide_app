@@ -1,6 +1,6 @@
-import { IMercMission } from 'interfaces';
+import { IMercMissionAvailability } from './availabilityState';
 
-export const defaultMercMission:IMercMission = {
+export const defaultMercMission:IMercMissionAvailability = {
   id: -1,
   Name: '',
   MissionNation: '',
@@ -10,8 +10,8 @@ export const defaultMercMission:IMercMission = {
   Type: '',
   Missable: false,
   Completed: false,
-  Available: false,
-  Requirements: []
+  Requirements: [],
+  Available: false
 }
 
 export interface IUpdateMMStatus {

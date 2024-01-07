@@ -22,12 +22,14 @@ const updateMM = {
         AND (preMM.BladeUnlocked IN (
             SELECT blade.id
             FROM xenoblade2_guide.blades as blade
-            WHERE blade.Available = 1
+            WHERE blade.Unlocked = 1
         ) OR preMM.BladeUnlocked IS NULL)
         AND (preMM.Quest IN (
             SELECT quest.id
             FROM xenoblade2_guide.quests as quest
             WHERE quest.Available = 1
+            AND (quest.Status = preMM.QuestStatus
+            OR quest.Status = 'FINISHED')
         ) OR preMM.Quest IS NULL)
         AND (preMM.MercMissionCompleted IN (
             SELECT mm.id
@@ -47,7 +49,7 @@ const updateMM = {
             WHERE reqMM.Blade IN (
                 SELECT blade.id
                 FROM xenoblade2_guide.blades as blade
-                WHERE blade.Available = 1
+                WHERE blade.Unlocked = 1
             ) OR reqMM.Blade IS NULL
         ) OR preMM.id NOT IN (
             SELECT reqMM.id

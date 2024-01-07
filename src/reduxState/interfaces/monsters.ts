@@ -1,11 +1,11 @@
-import { IMonster } from 'interfaces';
+import { IMonsterAvailability } from './availabilityState';
 
 export interface IUpdateMonster {
   id: number;
   beaten: boolean;
 }
 
-export const defaultMonster: IMonster = {
+export const defaultMonster: IMonsterAvailability = {
   id:-1,
   Name:'',
   Category:'',
@@ -13,11 +13,12 @@ export const defaultMonster: IMonster = {
   IsDriver:false,
   LowestLevel:-1,
   HighestLevel:-1,
+  LocationId: -1,
   Location:'',
   Area:'',
   DLCRequired:false,
   SpawnCondition:'',
   Drops: [],
-  Available:false,
-  Beaten:false  
+  Beaten:false,
+  Available: false
 }

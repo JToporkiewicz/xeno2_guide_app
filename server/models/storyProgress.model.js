@@ -3,7 +3,6 @@ module.exports = (sequelize, Sequelize) => {
     OnlyShowAvailable: { type: Sequelize.BOOLEAN },
     Chapter: { type: Sequelize.INTEGER },
     NewGamePlus: { type: Sequelize.BOOLEAN },
-    TimeOfDay: { type: Sequelize.TIME },
     AreaWeather: { type: Sequelize.TEXT },
     DLCUnlocked: { type: Sequelize.BOOLEAN },
     MercLevel: { type: Sequelize.INTEGER }

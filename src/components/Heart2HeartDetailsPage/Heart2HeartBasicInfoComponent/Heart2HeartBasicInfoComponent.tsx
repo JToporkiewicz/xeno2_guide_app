@@ -1,7 +1,7 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
-import { IHeart2Heart } from 'interfaces';
 import { useRef, useEffect } from 'react';
+import { IHeart2HeartAvailability } from 'reduxState/interfaces/availabilityState';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
 import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 
@@ -11,11 +11,11 @@ interface IDispatchProps {
 }
 
 interface IProps {
-  heart2Heart: IHeart2Heart
+  heart2Heart: IHeart2HeartAvailability
 }
 
 export const Heart2HeartBasicInfoView = (props:IProps & IDispatchProps) => {
-  const h2hToUpdate = useRef(undefined as IHeart2Heart | undefined);
+  const h2hToUpdate = useRef(undefined as IHeart2HeartAvailability | undefined);
 
   const updateH2HViewed = () => {
     if(props.heart2Heart) {

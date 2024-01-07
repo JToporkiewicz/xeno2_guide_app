@@ -1,6 +1,6 @@
 import { sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
-import { IFieldSkills } from 'interfaces';
+import { IFieldSkillsTotal } from 'interfaces';
 import { IUpdateFieldSkillLevel } from 'reduxState/interfaces/fieldSkills';
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import IncrementDecrementNumber
@@ -14,7 +14,7 @@ interface IDispatchProps {
 }
 
 interface IProps {
-  fieldSkills: IFieldSkills[];
+  fieldSkills: IFieldSkillsTotal[];
 }
 
 export const FieldSkillsView = (props:IProps&IDispatchProps) => {
@@ -22,7 +22,7 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
   const [isOrderAsc, setIsOrderAsc] = useState(true);
   const toUpdateFieldSkills = useRef([] as IUpdateFieldSkillLevel[]);
 
-  const orderOptions: {[key:string]: keyof IFieldSkills} = {
+  const orderOptions: {[key:string]: keyof IFieldSkillsTotal} = {
     default: 'id',
     name: 'Name',
     type: 'Type',
@@ -43,7 +43,7 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
       });
   }
 
-  const getOrderTypeColumn = (order: string): keyof IFieldSkills => {
+  const getOrderTypeColumn = (order: string): keyof IFieldSkillsTotal => {
     return orderOptions[order] || orderOptions.default
   }
 

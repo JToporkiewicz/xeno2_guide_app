@@ -1,15 +1,16 @@
-import { IHeart2Heart, IStoryProgress } from 'interfaces';
+import { IStoryProgress } from 'interfaces';
 import { IMajorLocations } from 'reduxState/interfaces/reduxState';
 import HeaderContainer from '../CommonComponents/Containers/HeaderContainer';
 import { Heart2HeartList } from './Heart2HeartList';
 import { separateMajorArea } from 'helpers';
+import { IHeart2HeartAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IDispatchProps {
   fetchHeart2Hearts: () => void;
 }
 
 interface IProps {
-  heart2Hearts: IHeart2Heart[];
+  heart2Hearts: IHeart2HeartAvailability[];
   storyProgress: IStoryProgress;
   locations: IMajorLocations[];
 }

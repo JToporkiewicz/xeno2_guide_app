@@ -13,7 +13,6 @@ export interface IHeart2Heart {
   Location:string,
   Who:string[],
   Outcomes:IH2hOutcomes,
-  Available:boolean,
   Viewed:boolean,
   PreReqs?:IRequirement[]
 }

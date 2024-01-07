@@ -8,6 +8,7 @@ import {
   IUpdateShow
 } from '../interfaces/reduxState';
 import { IUpdateACNReqProgress } from 'reduxState/interfaces/blades';
+import { IBladeAvailability } from 'reduxState/interfaces/availabilityState';
 
 export const bladesReducer = createReducer<IBladeState[]>(
   [BladeActions.SetBlade, (bladeState:IBladeState[], blades:IBlade[]) => {
@@ -31,7 +32,6 @@ export const bladesReducer = createReducer<IBladeState[]>(
         favItemType1: blade.FavItemType1,
         favItemType2: blade.FavItemType2,
         unlocked: blade.Unlocked,
-        available: blade.Available,
         prerequisites: blade.Prerequisites,
         show: false
       }))).sort((bladeA, bladeB) =>
@@ -52,45 +52,46 @@ export const bladesReducer = createReducer<IBladeState[]>(
         Number(bladeA.id) < Number(bladeB.id) ? -1 : 1
       )
   }],
-  [BladeActions.UpdateBladeUnlocked, (bladeState:IBladeState[], updateUnlocked: IBladeState) =>
-    bladeState.filter((blade) => blade.id !== updateUnlocked.id)
-      .concat({
-        ...updateUnlocked,
-        affinityChart: updateUnlocked.affinityChart.map((ab, bIndex) => ({
-          ...ab,
-          nodes: ab.nodes.map((n, i) => {
-            if (!updateUnlocked.unlocked) {
-              return {
-                ...n,
-                unlocked: false,
-                available: bIndex === 0 && i === 0
-              }
-            } else {
-              if (i === 0 && (n.preReqs === undefined || n.preReqs.length === 0)) {
+  [BladeActions.UpdateBladeUnlocked,
+    (bladeState:IBladeState[], updateAvailable: IBladeState | IBladeAvailability) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { available, ...updateUnlocked } = updateAvailable as IBladeAvailability;
+      
+      return bladeState.filter((blade) => blade.id !== updateUnlocked.id)
+        .concat({
+          ...updateUnlocked,
+          affinityChart: updateUnlocked.affinityChart.map((ab, bIndex) => ({
+            ...ab,
+            nodes: ab.nodes.map((n, i) => {
+              if (!updateUnlocked.unlocked) {
                 return {
                   ...n,
-                  unlocked: true,
-                  available: true
+                  unlocked: false
                 }
-              }
-              else if (n.preReqs?.find((p) => p.available === false) === undefined
-                || bIndex === 0 && i === 1) {
+              } else {
+                if (i === 0 && (n.preReqs === undefined || n.preReqs.length === 0)) {
+                  return {
+                    ...n,
+                    unlocked: true
+                  }
+                }
+                else if (bIndex === 0 && i === 1) {
+                  return {
+                    ...n,
+                    available: true
+                  }
+                }
                 return {
                   ...n,
-                  available: true
+                  unlocked: false
                 }
               }
-              return {
-                ...n,
-                unlocked: false
-              }
-            }
-          })
-        }))
-      }).sort((bladeA, bladeB) =>
-        Number(bladeA.id) < Number(bladeB.id) ? -1 : 1
-      )
-  ],
+            })
+          }))
+        }).sort((bladeA, bladeB) =>
+          Number(bladeA.id) < Number(bladeB.id) ? -1 : 1
+        )
+    }],
   [BladeActions.SetBladeSkillNode, (bladeState:IBladeState[], bladeNodes:IAffinityChartNode[]) => {
     let updatedBlades: IBladeState[] = [];
 

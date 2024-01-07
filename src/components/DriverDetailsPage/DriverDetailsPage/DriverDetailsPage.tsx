@@ -5,6 +5,7 @@ import { IHeart2Heart, IItem, IItemType, IStoryProgress } from 'interfaces';
 import { Heart2HeartList } from 'components/Heart2HeartsPage/Heart2HeartList';
 import { DriverSkillsComponent } from '../DriverSkillsComponents';
 import { IDriverState } from 'reduxState/interfaces/reduxState';
+import { IHeart2HeartAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IDispatchProps {
   fetchDriverDetails: (payload: number) => void
@@ -17,7 +18,7 @@ interface IProps {
   item2?: IItem | undefined;
   itemType1?: IItemType | undefined;
   itemType2?: IItemType | undefined;
-  heart2Hearts: IHeart2Heart[]
+  heart2Hearts: IHeart2HeartAvailability[]
 }
 
 export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {

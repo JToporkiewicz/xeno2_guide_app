@@ -15,25 +15,14 @@ module.exports = function() {
       loc.Location as LocName,
       ma.Name as MAName,
       ma.Located as MALocated,
-      loc.StoryProgress as LocStory,
       mm.Name as MMName,
-      mm.Available as MMAvailable,
-      mm.Completed as MMCompleted,
       h2h.Title as H2hTitle,
-      h2h.Available as H2hAvailable,
-      h2h.Viewed as H2hViewed,
       b.Name as BladeName,
-      b.Available as BladeAvailable,
-      b.Unlocked as BladeUnlocked,
       acn.Name as ACNName,
       acn.SkillLevel as ACNLevel,
-      acn.Available as ACNAvailable,
-      acn.Unlocked as ACNUnlocked,
       b2.Name as ACNBlade,
       b2.id as ACNBladeId,
-      q.Name as QuestName,
-      q.Available as QuestAvailable,
-      q.Status as QuestStatus
+      q.Name as QuestName
       FROM xenoblade2_guide.prerequisitesQuests as pre
       LEFT JOIN xenoblade2_guide.locations as loc
         ON loc.id = pre.Location
@@ -74,10 +63,6 @@ module.exports = function() {
       ${id ? `WHERE pre.RequiredBy = ${id}` : ''}`,
     { type: Sequelize.QueryTypes.SELECT })
 
-    const storyProgress = await sequelize.query(
-      'SELECT * FROM xenoblade2_guide.storyProgresses',
-      { type: Sequelize.QueryTypes.SELECT })
-
     const mappedPre = questPres.reduce((list, pre) => {
       const reqs = [];
 
@@ -85,23 +70,21 @@ module.exports = function() {
         reqs.push({
           area: 'Story Progress',
           requirement: 'Chapter ' + pre.StoryProgress,
-          completed:storyProgress[0].Chapter >= pre.StoryProgress
+          requirementCount: pre.StoryProgress
         })
       }
 
       if (pre.NewGamePlus) {
         reqs.push({
           area: 'New Game Plus',
-          requirement: pre.NewGamePlus === 1,
-          completed: storyProgress[0].NewGamePlus === 1
+          requirement: pre.NewGamePlus === 1
         })
       }
 
       if (pre.DLCUnlocked) {
         reqs.push({
           area: 'DLC Unlocked',
-          requirement: pre.DLCUnlocked === 1,
-          completed: storyProgress[0].DLCUnlocked === 1
+          requirement: pre.DLCUnlocked === 1
         })
       }
 
@@ -109,7 +92,7 @@ module.exports = function() {
         reqs.push({
           area: 'Location',
           requirement: `${pre.MALocated} -> ${pre.MAName} -> ${pre.LocName}`,
-          available:pre.LocStory ? storyProgress[0].Chapter >= pre.LocStory : undefined,
+          reqId: pre.Location
         })
       }
 
@@ -117,8 +100,6 @@ module.exports = function() {
         reqs.push({
           area: 'Merc Mission',
           requirement: pre.MMName,
-          available: pre.MMAvailable,
-          completed: pre.MMCompleted,
           reqId: pre.MercMission
         })
       }
@@ -127,8 +108,6 @@ module.exports = function() {
         reqs.push({
           area: 'Heart-to-heart',
           requirement: pre.H2hTitle,
-          available: pre.H2hAvailable,
-          completed: pre.H2hViewed,
           reqId: pre.Heart2Heart
         })
       }
@@ -137,8 +116,6 @@ module.exports = function() {
         reqs.push({
           area: 'Blade',
           requirement: pre.BladeName,
-          available: pre.BladeAvailable,
-          completed: pre.BladeUnlocked,
           reqId: pre.BladeUnlocked
         })
       }
@@ -147,8 +124,6 @@ module.exports = function() {
         reqs.push({
           area: 'Affinity Chart Node',
           requirement: `${pre.ACNBlade}: ${pre.ACNName} Level ${pre.ACNLevel}`,
-          available: pre.ACNAvailable,
-          completed: pre.ACNUnlocked,
           reqId: pre.ACNBladeId
         })
       }
@@ -157,7 +132,6 @@ module.exports = function() {
         reqs.push({
           area: 'Quest',
           requirement: pre.QuestName,
-          available: pre.QuestAvailable,
           reqId: pre.Quest
         })
       }
@@ -189,7 +163,6 @@ module.exports = function() {
       ma.Name as maName,
       ma.Located as maLoc,
       q.Rewards,
-      q.Available,
       q.Status
       FROM xenoblade2_guide.quests as q
       LEFT JOIN xenoblade2_guide.locations as loc
@@ -209,7 +182,6 @@ module.exports = function() {
       Area:`(${q.maLoc} -> ${q.maName})`,
       Location:q.Location,
       Rewards:JSON.parse(q.Rewards),
-      Available:q.Available ? true : false,
       Status:q.Status,
       PreReqs: pres[q.id] || undefined
     }))

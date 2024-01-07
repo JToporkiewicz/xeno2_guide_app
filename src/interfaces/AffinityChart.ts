@@ -4,7 +4,6 @@ export interface IAffinityChartNode {
   nodeId: number,
   skillLevel: number,
   effect: string[],
-  available: boolean,
   unlocked: boolean,
   tier: number,
   preReqs?: IRequirement[]

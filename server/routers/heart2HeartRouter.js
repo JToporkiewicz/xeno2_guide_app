@@ -14,20 +14,13 @@ module.exports = function() {
         pre.*,
         acn.Name as ACNName,
         acn.SkillLevel as ACNLevel,
-        acn.Available as ACNAvailable,
-        acn.Unlocked as ACNUnlocked,
         b.Name as BladeName,
         b.id as BladeId,
         fs.Name as FSName,
-        fs.TotalLevel as FSCurrentTotal,
         fs2.Name as FS2Name,
-        fs2.TotalLevel as FS2CurrentTotal,
         q.Name as QuestName,
-        q.Available as QuestAvailable,
-        q.Status as QuestStatus,
         ma.Name as MAName,
-        ma.Located as MALocated,
-        ma.StoryProgress as MAStory
+        ma.Located as MALocated
         FROM xenoblade2_guide.prerequisitesH2Hs as pre
         LEFT JOIN xenoblade2_guide.affinityChartNodes as acn
           ON acn.id = pre.BladeAffinityChartNode
@@ -64,10 +57,6 @@ module.exports = function() {
         ${id ? `WHERE pre.RequiredBy = ${id}` : ''}`,
     { type: Sequelize.QueryTypes.SELECT })
 
-    const storyProgress = await sequelize.query(
-      'SELECT * FROM xenoblade2_guide.storyProgresses',
-      { type: Sequelize.QueryTypes.SELECT })
-
     const mappedPre = h2hPres.reduce((list, pre) => {
       const reqs = [];
 
@@ -75,23 +64,21 @@ module.exports = function() {
         reqs.push({
           area: 'Story Progress',
           requirement: 'Chapter ' + pre.StoryProgress,
-          completed:storyProgress[0].Chapter >= pre.StoryProgress
+          requirementCount: pre.StoryProgress
         })
       }
 
       if (pre.NewGamePlus) {
         reqs.push({
           area: 'New Game Plus',
-          requirement: pre.NewGamePlus === 1,
-          completed: storyProgress[0].NewGamePlus === 1
+          requirement: pre.NewGamePlus === 1
         })
       }
 
       if (pre.DLCUnlocked) {
         reqs.push({
           area: 'DLC Unlocked',
-          requirement: pre.DLCUnlocked === 1,
-          completed: storyProgress[0].DLCUnlocked === 1
+          requirement: pre.DLCUnlocked === 1
         })
       }
 
@@ -99,9 +86,7 @@ module.exports = function() {
         reqs.push({
           area: 'Quest',
           requirement: pre.QuestName,
-          reqId: pre.Quest,
-          available: pre.QuestAvailable === 1,
-          completed: pre.QuestStatus === 'FINISHED'
+          reqId: pre.Quest
         })
       }
 
@@ -110,7 +95,7 @@ module.exports = function() {
           area: 'Field Skills',
           requirement: pre.FSName,
           requirementCount: pre.FieldSkill1Level,
-          completed: pre.FSCurrentTotal >= pre.FieldSkill1Level
+          reqId: pre.FieldSkill1
         })
       }
 
@@ -119,7 +104,7 @@ module.exports = function() {
           area: 'Field Skills',
           requirement: pre.FS2Name,
           requirementCount: pre.FieldSkill2Level,
-          completed: pre.FS2CurrentTotal >= pre.FieldSkill2Level
+          reqId: pre.FieldSkill2
         })
       }
 
@@ -127,8 +112,6 @@ module.exports = function() {
         reqs.push({
           area: 'Affinity Chart Node',
           requirement: `${pre.BladeName}: ${pre.ACNName} Level ${pre.ACNLevel}`,
-          available: pre.ACNAvailable,
-          completed: pre.ACNUnlocked,
           reqId: pre.BladeId
         })
       }
@@ -137,7 +120,7 @@ module.exports = function() {
         reqs.push({
           area: 'Stay at an inn',
           requirement: `${pre.StayAtAnInn} in ${pre.MALocated} -> ${pre.MAName}`,
-          available: storyProgress[0].Chapter >= pre.MAStory
+          reqId: pre.InnLocation
         })
       }
 
@@ -160,7 +143,6 @@ module.exports = function() {
       ma.Located as maLoc,
       h2h.Who,
       h2h.Outcomes,
-      h2h.Available,
       h2h.Viewed
       FROM xenoblade2_guide.heart2Hearts as h2h
       LEFT JOIN xenoblade2_guide.locations as loc
@@ -172,18 +154,12 @@ module.exports = function() {
 
     const pres = await getH2HPrerequisites(id)
 
-    const storyProgress = await sequelize.query(
-      'SELECT * FROM xenoblade2_guide.storyProgresses',
-      { type: Sequelize.QueryTypes.SELECT })
-
     const mappedH2h = await Promise.all(h2h.map(async (h) => {
       const whoList = JSON.parse(h.Who)
       const blades = await sequelize.query(
         `SELECT
           b.id,
-          b.Name,
-          b.Available,
-          b.Unlocked
+          b.Name
           FROM xenoblade2_guide.blades as b
           WHERE b.Name IN ("${whoList.join('", "')}")
         `,
@@ -200,8 +176,6 @@ module.exports = function() {
         .concat(blades.map((b) => ({
           area: 'Blade',
           requirement: b.Name,
-          available: b.Available,
-          completed: b.Unlocked,
           reqId: b.id
         })))
 
@@ -211,7 +185,7 @@ module.exports = function() {
         const storyReq = {
           area: 'Story Progress',
           requirement: 'Chapter ' + minChapter[0].maxDriver,
-          completed:storyProgress[0].Chapter >= minChapter[0].maxDriver        
+          requirementCount: minChapter[0].maxDriver        
         }
 
         if (storyPrerequisite
@@ -235,8 +209,6 @@ module.exports = function() {
         Location:h.Location,
         Who:whoList,
         Outcomes:JSON.parse(h.Outcomes),
-        Available:h.Available && presList.find((p) => p.available === 0) === undefined
-          ? true : false,
         Viewed:h.Viewed ? true : false,
         PreReqs: presList.length ? presList : undefined
       }

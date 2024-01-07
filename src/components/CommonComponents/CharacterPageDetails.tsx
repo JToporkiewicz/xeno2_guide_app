@@ -1,7 +1,7 @@
 import path from 'path';
 import { RequirementList } from './RequirementList';
-import { IRequirement } from 'interfaces/common';
 import { LinkSelected } from './LinkSelected';
+import { IRequirementAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IProps {
   area: string,
@@ -18,7 +18,7 @@ interface IProps {
   onClose:(input:any) => any,
   unlockButton?:boolean,
   onUnlock?:() => any,
-  preReqs?:IRequirement[]
+  preReqs?:IRequirementAvailability[]
 }
 
 export const CharacterPageDetails = (props: IProps) => 

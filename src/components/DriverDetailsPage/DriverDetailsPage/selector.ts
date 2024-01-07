@@ -6,8 +6,16 @@ import {
   getItems,
   getItemTypes,
   getSelected,
-  getStoryProgress
+  getStoryProgress,
+  getLocations,
+  getBlades,
+  getMercMissions,
+  getMonsters,
+  getQuests,
+  getFieldSkills
+
 } from 'reduxState/selectors';
+import { checkAllAvailability } from 'helpers/checkAvailability';
 
 export default createSelector(
   getDrivers,
@@ -16,7 +24,26 @@ export default createSelector(
   getItems,
   getItemTypes,
   getHeart2Heart,
-  (drivers, storyProgress, selected, items, itemTypes, heart2Hearts) => {
+  getLocations,
+  getBlades,
+  getMonsters,
+  getFieldSkills,
+  getMercMissions,
+  getQuests,
+  (
+    drivers,
+    storyProgress,
+    selected,
+    items,
+    itemTypes,
+    heart2Hearts,
+    locations,
+    blades,
+    monsters,
+    fieldSkills,
+    mercMissions,
+    quests
+  ) => {
     const foundDriver = drivers.find((driver) =>
       driver.id === selected.id && selected.area === 'driver')
     if (foundDriver) {
@@ -27,7 +54,16 @@ export default createSelector(
         itemType1: itemTypes.find((itemType) => itemType.id === foundDriver.favItemType1),
         itemType2: itemTypes.find((itemType) => itemType.id === foundDriver.favItemType2),
         storyProgress,
-        heart2Hearts
+        heart2Hearts: checkAllAvailability(
+          storyProgress,
+          locations,
+          monsters,
+          blades,
+          fieldSkills,
+          heart2Hearts,
+          quests,
+          mercMissions    
+        ).heart2Hearts
       }
     }
     return {

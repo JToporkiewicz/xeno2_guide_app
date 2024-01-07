@@ -33,27 +33,28 @@ const updateQuest = {
         AND (preQuest.MercMission IN (
             SELECT mm.id
             FROM xenoblade2_guide.mercMissions as mm
-            WHERE mm.Available = 1
+            WHERE mm.Completed = 1
         ) OR preQuest.MercMission IS NULL)
         AND (preQuest.Heart2Heart IN (
             SELECT h2h.id
             FROM xenoblade2_guide.heart2Hearts as h2h
-            WHERE h2h.Available = 1
+            WHERE h2h.Viewed = 1
         ) OR preQuest.Heart2Heart IS NULL)
         AND (preQuest.BladeUnlocked IN (
             SELECT blade.id
             FROM xenoblade2_guide.blades as blade
-            WHERE blade.Available = 1
+            WHERE blade.Unlocked = 1
         ) OR preQuest.BladeUnlocked IS NULL)
         AND (preQuest.BladeAffinityChartNode IN (
             SELECT acn.id
             FROM xenoblade2_guide.affinityChartNodes as acn
-            WHERE acn.Available = 1
+            WHERE acn.Unlocked = 1
         ) OR preQuest.BladeAffinityChartNode IS NULL)
         AND (preQuest.Quest IN (
             SELECT quest.id
             FROM xenoblade2_guide.quests as quest
             WHERE quest.Available = 1
+            AND quest.Status = 'FINISHED'
         ) OR preQuest.Quest IS NULL);
 
         UPDATE xenoblade2_guide.quests

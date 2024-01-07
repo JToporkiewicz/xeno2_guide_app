@@ -44,7 +44,7 @@ const updateACN = {
         AND (preACN.AffinityChartNode IN (
             SELECT id
             FROM xenoblade2_guide.affinityChartNodes as acn
-            WHERE acn.Available = 1
+            WHERE acn.Unlocked = 1
         ) OR preACN.AffinityChartNode IS NULL)
         AND (preACN.PouchItemType IN (
             SELECT id

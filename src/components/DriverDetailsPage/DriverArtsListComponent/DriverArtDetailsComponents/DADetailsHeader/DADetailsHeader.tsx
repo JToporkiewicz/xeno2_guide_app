@@ -1,11 +1,12 @@
 import { useState, useEffect, ReactChild } from 'react';
 import path from 'path';
 import { IStoryProgress } from 'interfaces/StoryProgress';
-import { IBladeState, IUpdateShow } from 'reduxState/interfaces/reduxState';
+import { IUpdateShow } from 'reduxState/interfaces/reduxState';
 import SmallPeekPanel
   from 'components/UnavailableDataComponents/Images/SmallPeekPanel';
 import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 import { Routes } from 'helpers/routesConst';
+import { IBladeAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IDispatchProps {
   updateShowBlade:(payload:IUpdateShow) => void;
@@ -16,7 +17,7 @@ interface IDispatchProps {
 interface IOwnProps {
   weapon:string,
   clearArt:() => void
-  blades: IBladeState[] | undefined;
+  blades: IBladeAvailability[] | undefined;
 }
 
 interface IProps {
@@ -38,7 +39,7 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
       }
 
       setBladeList(    
-        props.blades.map((blade:IBladeState) =>
+        props.blades.map((blade:IBladeAvailability) =>
           !props.storyProgress.OnlyShowAvailable || 
                   (blade.available || blade.show) ? 
             <LinkSelected

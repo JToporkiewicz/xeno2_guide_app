@@ -18,10 +18,13 @@ const Heart2HeartOptionDetails = (option:any, index: number) => {
           <li key={'option' + index + 'rewards' + rewards.length}>
             {rewards[0]}:
             <ul>
-              {Object.entries(rewards[1]).map((details:any) =>
-                <li key={'option' + index + 'rewardDetails' + details[1].length}>
-                  {details[0]}: {details[1]}
-                </li>)
+              {typeof rewards[1] === 'string' ?
+                <li>{rewards[1]}</li>
+                : Object.entries(rewards[1]).map((details:any) =>
+                  <li key={'option' + index + 'rewardDetails' + details[1].length}>
+                    {details[0]}: {details[1]}
+                  </li>
+                )
               }
             </ul>
           </li>
@@ -48,9 +51,11 @@ export const Heart2HeartOptions = (props:IProps) => {
               <li key={'rewardDetails' + details[1].length}>
                 {details[0]}:
                 <ul>
-                  {Object.entries(details[1]).map((det) =>
-                    <li key={'rewardDetailsLength' + det[1]}>{det[0]}: {det[1]}</li>
-                  )}
+                  {typeof details[1] === 'string' ?
+                    <li>{details[1]}</li>
+                    : Object.entries(details[1]).map((det) =>
+                      <li key={'rewardDetailsLength' + det[1]}>{det[0]}: {det[1]}</li>
+                    )}
                 </ul>
               </li>)
           )}

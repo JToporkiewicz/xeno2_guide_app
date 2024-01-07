@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { isEqual } from 'lodash';
 import { IAffinityChartNode } from 'interfaces/AffinityChart';
-import {
-  IAffinityChartBranchState,
-  IAffinityChartNodeState,
-  IUpdateUnlocked
-} from 'reduxState/interfaces/reduxState'
+import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import { BranchDetails } from 'components/CommonComponents/BranchDetails';
 import { TreeBranch } from 'components/CommonComponents/TreeBranch';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { IUpdateACNReqProgress } from 'reduxState/interfaces/blades';
+import {
+  IAffinityChartBranchAvailability,
+  IAffinityChartNodeAvailability
+} from 'reduxState/interfaces/availabilityState';
 
 interface IOwnProps {
-  affinityChart: IAffinityChartBranchState[],
+  affinityChart: IAffinityChartBranchAvailability[],
   bladeId: number
 }
 
@@ -31,7 +31,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
   const currentTree = useRef(props.affinityChart);
 
   const unlockNode = (branch: number, tier: number, unlocked: boolean) => {
-    let updatingNodes = [] as IAffinityChartNodeState[];
+    let updatingNodes = [] as IAffinityChartNodeAvailability[];
     const foundNode = props.affinityChart[branch].nodes.find((n) => n.tier === tier);
     if (unlocked) {
       updatingNodes = updatingNodes.concat(foundNode ? {
@@ -44,7 +44,7 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
         }))
       } : []);
     } else {
-      const updatedNode:IAffinityChartNodeState | undefined = foundNode ?
+      const updatedNode:IAffinityChartNodeAvailability | undefined = foundNode ?
         foundNode.preReqs ?
           {
             ...foundNode,
@@ -109,7 +109,11 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
             })))
       }
     }
-    props.setBladeSkillNode(updatingNodes)
+    props.setBladeSkillNode(updatingNodes.map((node) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const {available, ...nodeDetails} = node;
+      return nodeDetails
+    }))
   }
 
   const getBranchDetails = () => {
@@ -166,9 +170,9 @@ export const BladeAffinityTreeView = (props: IOwnProps & IDispatchProps) => {
       if (!isEqual(props.affinityChart, currentTree.current)) {
         setTimeout(() => {
           const flattenedTree = props.affinityChart.reduce((list, t) =>
-            list.concat(t.nodes), [] as IAffinityChartNodeState[])
+            list.concat(t.nodes), [] as IAffinityChartNodeAvailability[])
           const update = currentTree.current
-            .reduce((list, t) => list.concat(t.nodes), [] as IAffinityChartNodeState[])
+            .reduce((list, t) => list.concat(t.nodes), [] as IAffinityChartNodeAvailability[])
             .filter((node) => !flattenedTree.some((newN) => isEqual(newN, node)))
           if (update.length) {
             props.saveBladeSkillNode({

@@ -71,7 +71,6 @@ export interface IAffinityChartNodeState {
   nodeId:number,
   skillLevel:number,
   effect:string[],
-  available:boolean,
   unlocked:boolean
   tier: number,
   preReqs?: IRequirement[]
@@ -101,7 +100,6 @@ export interface IBladeState {
   favItemType1:number,
   favItemType2:number,
   unlocked: boolean,
-  available: boolean,
   prerequisites?: IRequirement[],
   show?:boolean
 }

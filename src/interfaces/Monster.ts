@@ -13,11 +13,11 @@ export interface IMonster {
   IsDriver:boolean,
   LowestLevel:number,
   HighestLevel:number,
+  LocationId: number,
   Location:string,
   Area:string,
   DLCRequired:boolean,
   SpawnCondition:string,
   Drops: IMonsterDrops[],
-  Available:boolean,
   Beaten:boolean
 }

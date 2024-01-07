@@ -1,17 +1,17 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
 import { RequirementList } from 'components/CommonComponents/RequirementList';
-import { IQuest } from 'interfaces';
 import { SideQuestBasicInfo } from '../SideQuestBasicInfoComponent';
 import { SideQuestRewardsComponent } from '../SideQuestRewardsComponents';
 import { SideQuestStepDetails } from '../SideQuestStepDetails';
+import { IQuestAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IDispatchProps {
   fetchQuest:(paylod:number) => void;
 }
 
 interface IProps {
-  quest: IQuest
+  quest: IQuestAvailability
 }
 
 export const SideQuestDetailsPageView = (props:IProps & IDispatchProps) => {

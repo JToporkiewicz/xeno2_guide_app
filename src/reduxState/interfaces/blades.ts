@@ -2,7 +2,6 @@ export const defaultBladeAffinityNode = {
   nodeId:0,
   skillLevel:0,
   effect:'',
-  available:false,
   unlocked:false,
   tier: 0
 }
@@ -13,7 +12,7 @@ export const defaultBladeAffinityBranch = {
   nodes: []
 }
 
-export const defaultBladeState = {
+export const defaultBladeAvailability = {
   id: 0,
   name: '',
   gender: '',
@@ -31,8 +30,8 @@ export const defaultBladeState = {
   favItemType1:0,
   favItemType2:0,
   unlocked: false,
-  available: false,
-  show:false
+  show:false,
+  available: false
 }
 
 export interface IUpdateACNReqProgress {

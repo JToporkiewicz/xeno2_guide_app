@@ -2,16 +2,17 @@ import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/Opti
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { separateMajorArea, sortFunction } from 'helpers';
-import { IMonster, IStoryProgress } from 'interfaces';
+import { IStoryProgress } from 'interfaces';
 import path from 'path';
 import { useState } from 'react';
 import './MonsterList.scss';
 import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 import { Routes } from 'helpers/routesConst';
+import { IMonsterAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IOwnProps {
     monsterCategory: string;
-    monsters: IMonster[];
+    monsters: IMonsterAvailability[];
     storyProgress: IStoryProgress;
     updateMonStatus: (monId: number, beaten: boolean) => void;
 }
@@ -20,7 +21,7 @@ export const MonsterListView = (props: IOwnProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
   
-  const orderOptions: {[key:string]: keyof IMonster} = {
+  const orderOptions: {[key:string]: keyof IMonsterAvailability} = {
     default: 'id',
     alphabetically: 'Name',
     type: 'Type',
@@ -30,7 +31,7 @@ export const MonsterListView = (props: IOwnProps) => {
     beaten: 'Beaten'
   }
 
-  const getOrderTypeColumn = (order: string): keyof IMonster => {
+  const getOrderTypeColumn = (order: string): keyof IMonsterAvailability => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -64,7 +65,7 @@ export const MonsterListView = (props: IOwnProps) => {
               const monAValue = monA[getOrderTypeColumn(orderType)]
               const monBValue = monB[getOrderTypeColumn(orderType)]
               return sortFunction(monAValue, monBValue, sortOrderAsc)
-            }).map((mon:IMonster) =>
+            }).map((mon:IMonsterAvailability) =>
               <div className="row text-list-entry" key={mon.id}>
                 {props.monsterCategory === 'Unique' ?
                   <div className='column-narrow text-list-status'>

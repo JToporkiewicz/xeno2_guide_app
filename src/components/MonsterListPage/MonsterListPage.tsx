@@ -1,12 +1,13 @@
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer';
-import { IMonster, IStoryProgress } from 'interfaces';
+import { IStoryProgress } from 'interfaces';
 import { useEffect, useRef } from 'react';
 import { IUpdateMonster } from 'reduxState/interfaces/monsters';
 import { IMajorLocations, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import { MonsterListView } from './MonsterList/MonsterList';
+import { IMonsterAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IProps {
-  monsters: IMonster[];
+  monsters: IMonsterAvailability[];
   storyProgress: IStoryProgress;
   locations: IMajorLocations[];
 }

@@ -1,14 +1,14 @@
-import { IHeart2Heart } from 'interfaces'
+import { IHeart2HeartAvailability } from './availabilityState'
 
-export const defaultHeart2HeartState: IHeart2Heart = {
+export const defaultHeart2HeartState: IHeart2HeartAvailability = {
   id: -1,
   Title: '',
   Area: '',
   Location: '',
   Who: [],
   Outcomes: {},
-  Available: false,
-  Viewed: false
+  Viewed: false,
+  Available: false
 }
 
 export interface IUpdateH2HStatus {

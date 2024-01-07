@@ -1,13 +1,14 @@
 import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
-import { IMercMission, IStoryProgress } from 'interfaces'
+import { IStoryProgress } from 'interfaces'
 import { useEffect, useRef } from 'react'
 import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission'
 import { IMajorLocations, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import { MercMissionList } from './MercMissionList'
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations'
+import { IMercMissionAvailability } from 'reduxState/interfaces/availabilityState'
 
 interface IProps {
-  mercMissions: IMercMission[],
+  mercMissions: IMercMissionAvailability[],
   storyProgress: IStoryProgress,
   locations: IMajorLocations[];
 }

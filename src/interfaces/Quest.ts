@@ -44,7 +44,6 @@ export interface IQuest {
   Area:string,
   Location:string,
   Rewards:string[],
-  Available:boolean,
   Status:string
   Steps: IQuestStep[],
   PreReqs?: IRequirement[]

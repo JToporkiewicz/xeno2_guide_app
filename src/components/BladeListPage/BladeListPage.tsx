@@ -1,7 +1,7 @@
 import { sortFunction } from 'helpers';
 import { ReactChild, useEffect, useRef, useState } from 'react'
 import { IStoryProgress } from 'interfaces';
-import { defaultBladeState } from 'reduxState/interfaces/blades';
+import { defaultBladeAvailability } from 'reduxState/interfaces/blades';
 import { IBladeState, IUpdateShow, IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 import { CharacterPageDetails } from 'components/CommonComponents/CharacterPageDetails';
 import CharacterPanelContainer
@@ -14,19 +14,20 @@ import UnavailableImagePanel
 import { FieldSkills } from './FieldSkills';
 import { getACCompletion } from 'helpers/completionPercentage';
 import { Routes } from 'helpers/routesConst';
+import { IBladeAvailability } from 'reduxState/interfaces/availabilityState';
 
 interface IDispatchProps {
   showLoader: (payload:string) => void;
   hideLoader: (payload:string) => void;
   updateShowBlade: (payload:IUpdateShow) => void;
-  updateBladeUnlocked: (payload:IBladeState) => void;
+  updateBladeUnlocked: (payload:IBladeState | IBladeAvailability) => void;
   saveBladeStatus: (payload:IUpdateUnlocked) => void;
   fetchAllBlades: () => void;
   fetchFieldSkills: () => void;
 }
 
 interface IProps {
-  blades: IBladeState[];
+  blades: IBladeAvailability[];
   storyProgress: IStoryProgress;
 }
 
@@ -34,10 +35,10 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
   const [bladeList, setBladeList] = useState({} as {[group:string]: ReactChild[]});
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
-  const [selectedBlade, setSelectedBlade] = useState(defaultBladeState as IBladeState)
-  const toUpdateBlades = useRef([] as IBladeState[]);
+  const [selectedBlade, setSelectedBlade] = useState(defaultBladeAvailability as IBladeAvailability)
+  const toUpdateBlades = useRef([] as IBladeAvailability[]);
 
-  const orderOptions: {[key:string]: keyof IBladeState} = {
+  const orderOptions: {[key:string]: keyof IBladeAvailability} = {
     default: 'id',
     alphabetically: 'name',
     gender: 'gender',
@@ -48,7 +49,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
     availability: 'available'
   }
 
-  const updateBladeAvailability = (blade: IBladeState) => {
+  const updateBladeAvailability = (blade: IBladeAvailability) => {
     toUpdateBlades.current = toUpdateBlades.current
       .filter((updateBlade) => blade.id !== updateBlade.id)
       .concat({
@@ -62,7 +63,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
     })
   }
 
-  const getOrderTypeColumn = (order: string): keyof IBladeState => {
+  const getOrderTypeColumn = (order: string): keyof IBladeAvailability => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -136,7 +137,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
   return(
     <>
       {
-        selectedBlade !== defaultBladeState ?
+        selectedBlade !== defaultBladeAvailability ?
           <CharacterPageDetails
             area="blade"
             link={Routes.BLADE + selectedBlade.id}
@@ -148,7 +149,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
               label: 'Skills: ',
               ...getACCompletion(selectedBlade.affinityChart)
             }]}
-            onClose={setSelectedBlade.bind(this, defaultBladeState)}
+            onClose={setSelectedBlade.bind(this, defaultBladeAvailability)}
             unlockButton
             onUnlock={updateBladeAvailability.bind(this, selectedBlade)}
             preReqs={selectedBlade.prerequisites}

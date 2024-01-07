@@ -3,6 +3,7 @@ import { IQuest, IStoryProgress } from 'interfaces'
 import { useRef, useEffect } from 'react'
 import { IUpdateQuestStatus } from 'reduxState/interfaces/quest'
 import { SideQuestsList } from './SideQuestsList/SideQuestsList'
+import { IQuestAvailability } from 'reduxState/interfaces/availabilityState'
 
 interface IDispatchProps {
   updateQuestStatus: (payload:IUpdateQuestStatus) => void;
@@ -11,7 +12,7 @@ interface IDispatchProps {
 }
 
 interface IProps {
-  quests: IQuest[],
+  quests: IQuestAvailability[],
   storyProgress: IStoryProgress
 }
 
