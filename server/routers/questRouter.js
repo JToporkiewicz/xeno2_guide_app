@@ -130,7 +130,7 @@ module.exports = function() {
 
       if (pre.Quest) {
         reqs.push({
-          area: 'Quest',
+          area: pre.OtherPrerequisiteDetail?.includes('accepted') ? 'Start side-quest' : 'Quest',
           requirement: pre.QuestName,
           reqId: pre.Quest
         })

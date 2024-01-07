@@ -110,7 +110,6 @@ module.exports = function() {
           area: pre.OtherPrerequisiteName,
           requirement: pre.ItemName,
           requirementCount: pre.OtherPrerequisiteDetail,
-          reqId: pre.ItemLocation,
           progress: pre.Progress,
           completed: pre.Progress === pre.OtherPrerequisiteDetail
         })

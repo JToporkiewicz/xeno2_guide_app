@@ -224,6 +224,22 @@ const checkACNProgressAchieved = (
         available: blade?.unlocked && (node?.available || node?.unlocked || false) || false,
         completed: blade?.unlocked && (node?.unlocked || false) || false
       }
+    case RequirementArea['Use a move']:
+      const moveBlade = blades.find((b) => b.affinityChart
+        .find((branch) => branch.branchName === pre.requirement
+          && branch.nodes.find((n) => n.nodeId === pre.reqId)))
+      const moveNode = moveBlade?.affinityChart.find((branch) =>
+        branch.nodes.find((node) => node.nodeId === pre.reqId))?.nodes
+        .find((node) => node.nodeId === pre.reqId) as IAffinityChartNodeAvailability
+      return {
+        ...pre,
+        available: moveBlade?.unlocked
+          && (moveNode?.available || moveNode?.unlocked || false)
+          || false,
+        completed: moveBlade?.unlocked
+          && (moveNode?.unlocked || false)
+          && pre.progress === pre.requirementCount || false
+      }
     default:
       const preOther = pre as IRequirementAvailability
       return {
@@ -312,6 +328,7 @@ const checkOtherAchieved = (
     switch (pre.area) {
     case RequirementArea.Blade:
     case RequirementArea['Affinity Chart Node']:
+    case RequirementArea['Use a move']:
     case RequirementArea['Field Skills']:
     case RequirementArea['Story Progress']:
     case RequirementArea['New Game Plus']:
@@ -614,11 +631,12 @@ export const checkAllAvailability = (
             }
   
             const questPres = checkQuestProgressAchieved(node.preReqs, questAvailable);
+            const h2hPres = checkH2HAchieved(questPres, heart2HeartAvailable);
   
             return {
               ...node,
-              preReqs: questPres,
-              available: questPres.find((p) => p.completed === false) === undefined
+              preReqs: h2hPres,
+              available: h2hPres.find((p) => p.available === false) === undefined
             }
           })
         }))
@@ -629,6 +647,23 @@ export const checkAllAvailability = (
   
     return {
       ...b,
+      affinityChart: b.affinityChart.map((branch) => ({
+        ...branch,
+        nodes: branch.nodes.map((node) => {
+          if (node.preReqs === undefined || node.preReqs.length === 0) {
+            return node
+          }
+
+          const questPres = checkQuestProgressAchieved(node.preReqs, questAvailable);
+          const h2hPres = checkH2HAchieved(questPres, heart2HeartAvailable);
+
+          return {
+            ...node,
+            preReqs: h2hPres,
+            available: h2hPres.find((p) => p.available === false) === undefined
+          }
+        })
+      })),
       prerequisites: bladeQuestPres,
       available: bladeQuestPres.find((p) => p.completed === false) === undefined
     }

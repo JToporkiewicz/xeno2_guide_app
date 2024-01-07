@@ -36,12 +36,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
   const toUpdate = useRef([] as IHeart2HeartAvailability[]);
 
   const orderOptions: {[key:string]: keyof IHeart2HeartAvailability} = 
-    props.location ? {
-      default: 'id',
-      alphabetically: 'Title',
-      available: 'Available',
-      viewed: 'Viewed'
-    } : {
+    {
       default: 'id',
       alphabetically: 'Title',
       location: 'Area',

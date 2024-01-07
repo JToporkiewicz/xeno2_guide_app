@@ -1,6 +1,7 @@
 export enum RequirementArea {
   Blade = 'Blade',
   'Affinity Chart Node' = 'Affinity Chart Node',
+  'Use a move' = 'Use a move',
   'Field Skills' = 'Field Skills',
   'Element Type' = 'Element Type',
   'Weapon Type' = 'Weapon Type',
