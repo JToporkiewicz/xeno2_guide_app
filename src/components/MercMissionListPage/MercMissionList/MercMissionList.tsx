@@ -1,17 +1,17 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
 import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
-import { LinkSelected } from 'components/CommonComponents/LinkSelected';
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { sortFunction } from 'helpers';
-import { Routes } from 'helpers/routesConst';
 import { IStoryProgress } from 'interfaces'
 import { RequirementArea } from 'interfaces/common';
 import path from 'path';
 import { ReactChild, useEffect, useState } from 'react';
 import { IMercMissionAvailability } from 'reduxState/interfaces/availabilityState';
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
+import { MercMissionDetails } from './MercMissionDetails';
+import { ISelectedState } from 'reduxState/interfaces/reduxState';
 
 interface IDispatchProps {
   setStoryProgress:(payload:IStoryProgress) => void;
@@ -23,12 +23,14 @@ interface IOwnProps {
   mercMissions: IMercMissionAvailability[];
   storyProgress: React.MutableRefObject<IStoryProgress>;
   updatedLocDevLevel: React.MutableRefObject<IUpdateDevelopmentLevel[]>;
+  selected?: ISelectedState;
   updateMMStatus: (mmId: number, completed: boolean) => void;
 }
 
 export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
+  const [focused, setFocused] = useState(0)
 
   const [mercMissionEntries, setMMEntries] = useState([] as ReactChild[])
 
@@ -44,6 +46,51 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
 
   const getOrderTypeColumn = (order: string): keyof IMercMissionAvailability => {
     return orderOptions[order] || orderOptions.default
+  }
+
+  const selectMercMission = (index: number) => {
+    setFocused(index)
+    const header = document.getElementById(props.location)?.getBoundingClientRect();
+    const body = document.body.getBoundingClientRect();
+    window.scroll({
+      top: header && body ? header?.top - body?.top : 0,
+      behavior: 'smooth'
+    })
+  }
+  
+  const updateRequirementProgress = (id:number, progress:number, area?:string | undefined) => {
+    if (area === RequirementArea['Merc Level']) {
+      props.setStoryProgress({
+        ...props.storyProgress.current,
+        MercLevel: progress
+      });
+      props.storyProgress.current = {
+        ...props.storyProgress.current,
+        MercLevel: progress
+      };
+    }
+
+    else if (area === RequirementArea['Story Progress']) {
+      props.setStoryProgress({
+        ...props.storyProgress.current,
+        Chapter: progress
+      });
+      props.storyProgress.current = {
+        ...props.storyProgress.current,
+        Chapter: progress
+      };
+    }
+
+    else if (area === RequirementArea['Nation Dev Level']) {
+      props.updateDevelopmentLevel({
+        id,
+        level: progress
+      })
+      props.updatedLocDevLevel.current = props.updatedLocDevLevel.current
+        .filter((loc) => loc.id !== id)
+        .concat({ id, level: progress })
+        .sort((idA, idB) => idA.id < idB.id ? -1 : 1)
+    }
   }
 
   useEffect(() => {
@@ -92,14 +139,12 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
               {mm.Type}
             </div>
             {!props.storyProgress.current.OnlyShowAvailable || mm.Available ?
-              <LinkSelected
+              <div
                 className="text-list-link"
-                to={Routes.MERC_MISSION + mm.id}
-                area='mercMission'
-                id={mm.id}
+                onClick={() => selectMercMission(mm.id)}
               >
                 {mm.Name}
-              </LinkSelected>
+              </div>
               : <div className='text-list-link'><i>Merc Mission {mm.id}</i></div>
             }
             {
@@ -107,29 +152,7 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
                 <HoverContainer>
                   <RequirementList
                     requirements={mm.Prerequisites}
-                    updateReqProgress={(id, progress, area) => {
-                      if (area === RequirementArea['Merc Level']) {
-                        props.setStoryProgress({
-                          ...props.storyProgress.current,
-                          MercLevel: progress
-                        });
-                        props.storyProgress.current = {
-                          ...props.storyProgress.current,
-                          MercLevel: progress
-                        };
-                      }
-
-                      else if (area === RequirementArea['Nation Dev Level']) {
-                        props.updateDevelopmentLevel({
-                          id,
-                          level: progress
-                        })
-                        props.updatedLocDevLevel.current = props.updatedLocDevLevel.current
-                          .filter((loc) => loc.id !== id)
-                          .concat({ id, level: progress })
-                          .sort((idA, idB) => idA.id < idB.id ? -1 : 1)
-                      }
-                    }}
+                    updateReqProgress={updateRequirementProgress}
                   />
                 </HoverContainer>
             }
@@ -139,7 +162,26 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
     }
   }, [props.storyProgress.current, props.mercMissions, orderType, sortOrderAsc])
 
+  useEffect(() => {
+    if (props.selected && props.selected.area === 'mercMission') {
+      const foundMM = props.mercMissions.find((mm) => mm.id === props.selected?.id)
+      if (foundMM && (foundMM.Available || !props.storyProgress.current.OnlyShowAvailable)) {
+        selectMercMission(foundMM.id);
+      }
+    }
+  }, [props.selected])
+
   return <CollapsibleComponent header={props.location}>
+    {
+      focused !== 0 ?
+        <MercMissionDetails
+          mercMission={props.mercMissions.find((mm) => mm.id === focused)}
+          setFocus={selectMercMission}
+          updateMMStatus={props.updateMMStatus}
+          updateRequirementProgress={updateRequirementProgress}          
+        />
+        : <div />
+    }
     {props.mercMissions.length === 0 ?
       <>No merc missions found.</>
       : <>

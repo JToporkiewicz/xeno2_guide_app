@@ -11,7 +11,7 @@ const CollapsibleComponent = (props:IProps) => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <div className="collapsible-container">
-      <h2 className="container-header" onClick={toggle}>
+      <h2 className="container-header" id={props.header} onClick={toggle}>
         {props.header}
       </h2>
       {isOpen ?

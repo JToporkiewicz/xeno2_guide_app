@@ -100,7 +100,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         </b>
         :
         <LinkSelected
-          to={Routes.MERC_MISSION + req.reqId}
+          to={Routes.MERC_MISSION_LIST}
           area='mercMission'
           id={req.reqId || 0}
         >
@@ -150,6 +150,13 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
             {req.progress !== undefined ?
               <div className='col-sm-6'>
                 <div className='row'>
+                  {req.completed !== undefined &&
+                    <div className='col-sm-4'>Achieved:<img 
+                      src={path.resolve(`images/helper/${req.completed ?
+                        'GreenCheckmark' : 'RedX'}.svg`)}
+                      alt={'Completed'}
+                      className="availability-small-image inline-image"
+                    /></div>}
                   <div className='col-sm-2'>
                   Progress:
                   </div>
@@ -158,7 +165,9 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
                       disabled={getDisabledStatus(req)}
                       minimum={[String(RequirementArea['Merc Level'])]
                         .includes(req.area) ? 1 : 0}
-                      maximum={req.requirementCount}
+                      maximum={req.area === RequirementArea['Story Progress'] ? 10 :
+                        req.area === RequirementArea['Nation Dev Level'] ? 5 : req.requirementCount}
+                      required={req.requirementCount}
                       value={req.progress}
                       updateValue={(progress) => props.updateReqProgress ?
                         props.updateReqProgress(
@@ -167,22 +176,16 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
                           req.area) : undefined}
                     />
                   </div>
-                  {req.completed !== undefined &&
-                    <div className='col-sm-4'>Achieved:<img 
-                      src={path.resolve(`images/helper/${req.completed ?
-                        'GreenCheckmark' : 'RedX'}.svg`)}
-                      alt={'Completed'}
-                      className="availability-small-image inline-image"
-                    /></div>}
                 </div>
               </div> : 
               <>
-                {
-                  req.requirementCount && req.area !== RequirementArea['Story Progress'] ?
-                    <div className='col-sm-2'>
-                      Number: {req.requirementCount}
-                    </div> : <div />
-                }
+                {req.completed !== undefined &&
+                <div className='col-sm-2'>Achieved:<img 
+                  src={path.resolve(`images/helper/${req.completed ?
+                    'GreenCheckmark' : 'RedX'}.svg`)}
+                  alt={'Completed'}
+                  className="availability-small-image inline-image"
+                /></div>}
                 {req.available !== undefined &&
                 <div className='col-sm-2'>Available:
                   <img 
@@ -192,13 +195,12 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
                     className="availability-small-image inline-image"
                   />
                 </div>}
-                {req.completed !== undefined &&
-                <div className='col-sm-3'>Achieved:<img 
-                  src={path.resolve(`images/helper/${req.completed ?
-                    'GreenCheckmark' : 'RedX'}.svg`)}
-                  alt={'Completed'}
-                  className="availability-small-image inline-image"
-                /></div>}
+                {
+                  req.requirementCount && req.area !== RequirementArea['Story Progress'] ?
+                    <div className='col-sm-2'>
+                      Number: {req.requirementCount}
+                    </div> : <div />
+                }
               </>
             }
           </div>

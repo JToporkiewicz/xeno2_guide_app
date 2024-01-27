@@ -4,6 +4,7 @@ interface IProps {
     value:number,
     minimum:number,
     maximum?:number,
+    required?:number,
     disabled?:boolean,
     updateValue:(value:number) => void,
 }
@@ -31,7 +32,8 @@ const IncrementDecrementNumber = (props:IProps) => {
               || Number(e.target.value) <= props.maximum ? Number(e.target.value) : props.maximum)
           }}
         />
-        {props.maximum && <>/{props.maximum}</>}
+        {props.required ? <>/{props.required}</>
+          : props.maximum && <>/{props.maximum}</>}
       </span>
 
       {!props.maximum || props.value < props.maximum ? 

@@ -18,7 +18,6 @@ import {
   SideQuestDetailsPage
 } from 'components/SideQuestDetailsPage';
 import { MercMissionListPage } from 'components/MercMissionListPage';
-import { MercMissionDetailsPage } from 'components/MercMissionDetailsPage';
 import { MonsterListPage } from 'components/MonsterListPage';
 import { MonsterDetailsPage } from 'components/MonsterDetailsPage';
 import { ItemListPage } from 'components/ItemListPage';
@@ -73,7 +72,6 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path={Routes.SIDE_QUEST_LIST} component={SideQuestPage} />
             <Route path={`${Routes.SIDE_QUEST}:slug`} component={SideQuestDetailsPage} />
             <Route path={Routes.MERC_MISSION_LIST} component={MercMissionListPage} />
-            <Route path={`${Routes.MERC_MISSION}:slug`} component={MercMissionDetailsPage} />
             <Route path={Routes.MONSTER_LIST} component={MonsterListPage} />
             <Route path={`${Routes.MONSTER}:slug`} component={MonsterDetailsPage} />
             <Route path={Routes.ITEMS} component={ItemListPage} />

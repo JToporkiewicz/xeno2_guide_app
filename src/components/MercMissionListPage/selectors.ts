@@ -7,7 +7,8 @@ import {
   getMonsters,
   getQuests,
   getFieldSkills,
-  getHeart2Heart
+  getHeart2Heart,
+  getSelected
 } from 'reduxState/selectors';
 import { createSelector } from 'reselect';
 
@@ -20,6 +21,7 @@ export default createSelector(
   getFieldSkills,
   getHeart2Heart,
   getQuests,
+  getSelected,
   (
     mercMissions,
     storyProgress,
@@ -28,7 +30,8 @@ export default createSelector(
     monsters,
     fieldSkills,
     heart2Hearts,
-    quests
+    quests,
+    selected
   ) => ({
     mercMissions: checkAllAvailability(
       storyProgress,
@@ -41,6 +44,7 @@ export default createSelector(
       mercMissions
     ).mercMissions,
     storyProgress,
-    locations
+    locations,
+    selected
   })
 )

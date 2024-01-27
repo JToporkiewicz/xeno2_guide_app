@@ -2,7 +2,7 @@ import HeaderContainer from 'components/CommonComponents/Containers/HeaderContai
 import { IStoryProgress } from 'interfaces'
 import { useEffect, useRef } from 'react'
 import { IUpdateMMStatus } from 'reduxState/interfaces/mercMission'
-import { IMajorLocations, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
+import { IMajorLocations, ISelectedState, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import { MercMissionList } from './MercMissionList'
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations'
 import { IMercMissionAvailability } from 'reduxState/interfaces/availabilityState'
@@ -11,6 +11,7 @@ interface IProps {
   mercMissions: IMercMissionAvailability[],
   storyProgress: IStoryProgress,
   locations: IMajorLocations[];
+  selected?: ISelectedState;
 }
 
 interface IDispatchProps {
@@ -39,12 +40,6 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
           props.saveDevelopmentLevel(loc)
         )
       }
-    }
-  }, [])
-
-
-  useEffect(() => {
-    return () => {
       if(toUpdate.current.length) {
         props.saveMercMissionStatus({
           'unlocked': toUpdate.current.filter((mm) => mm.completed).map((mm) => mm.id),
@@ -53,16 +48,6 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
       }
     }
   }, [])
-
-  useEffect(() => {
-    if(props.storyProgress) {
-      storyHistory.current = {
-        ...props.storyProgress,
-        MercLevel: updatedProgress.current.MercLevel
-      }
-      updatedProgress.current = storyHistory.current
-    }
-  }, [props.storyProgress])
 
   const updateMMStatus = (mmId: number, completed: boolean) => {
     props.updateMercMissionStatus({
@@ -87,6 +72,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
         storyProgress={updatedProgress}
         updatedLocDevLevel={updatedLocDevLevel}
         updateMMStatus={updateMMStatus}
+        selected={props.selected}
       />
       {((props.locations.find((loc) => loc.Name === 'Gormott Province')?.StoryProgress || 10) <=
             props.storyProgress.Chapter || !props.storyProgress.OnlyShowAvailable) &&
@@ -97,6 +83,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
               storyProgress={updatedProgress}
               updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
+              selected={props.selected}
             />
       }
       {((props.locations.find((loc) => loc.Name === 'Kingdom of Uraya')?.StoryProgress || 10) <=
@@ -108,6 +95,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
               storyProgress={updatedProgress}
               updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
+              selected={props.selected}
             />
       }
       {((props.locations.find((loc) =>
@@ -120,6 +108,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
               storyProgress={updatedProgress}
               updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
+              selected={props.selected}
             />
       }
       {((props.locations.find((loc) =>
@@ -132,6 +121,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
               storyProgress={updatedProgress}
               updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
+              selected={props.selected}
             />
       }
       {((props.locations.find((loc) =>
@@ -144,6 +134,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
               storyProgress={updatedProgress}
               updatedLocDevLevel={updatedLocDevLevel}
               updateMMStatus={updateMMStatus}
+              selected={props.selected}
             />
       }
       {(props.locations.find((loc) =>
@@ -156,6 +147,7 @@ export const MercMissionListPageView = (props: IProps & IDispatchProps) => {
           storyProgress={updatedProgress}
           updatedLocDevLevel={updatedLocDevLevel}
           updateMMStatus={updateMMStatus}
+          selected={props.selected}
         /> : <MercMissionList
           location='Unknown Location'
           mercMissions={[]}
