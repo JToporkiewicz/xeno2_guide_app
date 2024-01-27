@@ -14,6 +14,7 @@ import { IProgressList } from './ProgressStatus';
 import { getACCompletion, getDACompletion, getDSCompletion } from 'helpers/completionPercentage';
 import { separateMajorArea } from 'helpers';
 import { checkAllAvailability } from 'helpers/checkAvailability';
+import { bladeFilter } from 'helpers/bladeFilter';
 
 export default createSelector(
   getStoryProgress,
@@ -48,6 +49,7 @@ export default createSelector(
     );
     return {
       driverArts: drivers.reduce((arts: IProgressList, driver) => {
+        if (driver.name === 'Vandham' && progress.Chapter > 4) return arts;
         const showDriver = driver.chapterUnlocked <= progress.Chapter
         || !progress.OnlyShowAvailable;
         const artCompletion = getDACompletion(driver.arts)
@@ -61,6 +63,7 @@ export default createSelector(
           }
         }}, {}),
       driverSkills: drivers.reduce((skills: IProgressList, driver) => {
+        if (driver.name === 'Vandham' && progress.Chapter > 4) return skills;
         const showDriver: boolean = driver.chapterUnlocked <= progress.Chapter
         || !progress.OnlyShowAvailable;
         const skillTreeCompletion = getDSCompletion(driver.skillTree)
@@ -77,6 +80,7 @@ export default createSelector(
         }}, {}),
       driverHiddenSkills: progress.NewGamePlus || !progress.OnlyShowAvailable ?
         drivers.reduce((skills: IProgressList, driver) => {
+          if (driver.name === 'Vandham' && progress.Chapter > 4) return skills;
           const showDriver = driver.chapterUnlocked <= progress.Chapter
           || !progress.OnlyShowAvailable;
           const hiddenTreeCompletion = getDSCompletion(driver.hiddenSkillTree)
@@ -94,24 +98,26 @@ export default createSelector(
         : undefined,
       bladesUnlocked: {
         UniqueBlades: {
-          total: blades.length,
-          unlocked: blades.filter((blade) => blade.unlocked).length
+          total: bladeFilter(availability.blades, quests).length,
+          unlocked: bladeFilter(availability.blades, quests)
+            .filter((blade) => blade.unlocked).length
         }
       },
-      bladeAffinitySkills: availability.blades.reduce((arts: IProgressList, blade) => {
-        const showBlade = blade.available || !progress.OnlyShowAvailable;
-        const acCompletion = getACCompletion(blade.affinityChart)
-        return {
-          ...arts,
-          [showBlade ? blade.name : 'Unavailable Blades']: {
-            total: acCompletion.total
+      bladeAffinitySkills: bladeFilter(availability.blades, quests)
+        .reduce((arts: IProgressList, blade) => {
+          const showBlade = blade.available || !progress.OnlyShowAvailable;
+          const acCompletion = getACCompletion(blade.affinityChart)
+          return {
+            ...arts,
+            [showBlade ? blade.name : 'Unavailable Blades']: {
+              total: acCompletion.total
               + (!showBlade && arts['Unavailable Blades'] ?
                 arts['Unavailable Blades']?.total : 0),
-            unlocked: acCompletion.unlocked
+              unlocked: acCompletion.unlocked
               + (!showBlade && arts['Unavailable Blades'] ?
                 arts['Unavailable Blades']?.unlocked : 0)
-          }
-        }}, {}),
+            }
+          }}, {}),
       questsFinished: quests.reduce((types: IProgressList, quest) => ({
         ...types,
         [quest.Type]: {

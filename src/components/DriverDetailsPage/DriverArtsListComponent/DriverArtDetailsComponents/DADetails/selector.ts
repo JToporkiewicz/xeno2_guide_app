@@ -1,3 +1,4 @@
+import { bladeFilter } from 'helpers/bladeFilter';
 import { checkAllAvailability } from 'helpers/checkAvailability';
 import {
   getBlades,
@@ -41,7 +42,7 @@ export default createSelector(
       driver.id === selected.id && selected.area === 'driver')
     if (foundDriver) {
       return {
-        blades: checkAllAvailability(
+        blades: bladeFilter(checkAllAvailability(
           storyProgress,
           locations,
           monsters,
@@ -50,7 +51,7 @@ export default createSelector(
           heart2Hearts,
           quests,
           mercMissions
-        ).blades,
+        ).blades, quests),
         driverUnlocked: foundDriver.chapterUnlocked <= storyProgress.Chapter
       }
     }

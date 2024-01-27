@@ -78,7 +78,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
         }
       }
       setBladeList(
-        props.blades.filter((blade) => !blade.name.includes('Awakened'))
+        props.blades
           .sort((bladeA, bladeB) => {
             const bladeAValue = bladeA[getOrderTypeColumn(orderType)]
             const bladeBValue = bladeB[getOrderTypeColumn(orderType)]

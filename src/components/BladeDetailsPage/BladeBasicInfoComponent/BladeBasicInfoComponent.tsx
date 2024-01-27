@@ -49,7 +49,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
       unlocked: !props.bladeDetails.unlocked
     })
 
-    if(props.quest) {
+    if(!props.bladeDetails.unlocked && props.quest) {
       questToUpdate.current = {
         ...props.quest,
         Status: 'NOT STARTED'
@@ -60,7 +60,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
         status: 'NOT STARTED'
       })
     }
-    if(props.heart2Heart) {
+    if(!props.bladeDetails.unlocked && props.heart2Heart) {
       h2hToUpdate.current = {
         ...props.heart2Heart,
         Viewed: false
@@ -127,7 +127,8 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
       <div className="row">
         <div className="basic-info-image-area">
           <img
-            src={path.resolve(`images/blade/${props.bladeDetails.name.replace(/\s+/g, '')}.jpeg`)}
+            src={path.resolve(`images/blade/${props.bladeDetails.name.replace(/\s+/g, '')
+              .replace('(Awakened)', '')}.jpeg`)}
             alt={props.bladeDetails.name}
             className="basic-info-image"
           />

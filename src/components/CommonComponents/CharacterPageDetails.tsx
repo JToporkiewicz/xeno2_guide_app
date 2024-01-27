@@ -32,7 +32,8 @@ export const CharacterPageDetails = (props: IProps) =>
         onClick={() => props.onClose(0)}
       />
       <img
-        src={path.resolve(`images/${props.area}/${props.name.replace(/\s+/g, '')}.jpeg`)}
+        src={path.resolve(`images/${props.area}/${props.name.replace(/\s+/g, '')
+          .replace('(Awakened)', '')}.jpeg`)}
         alt={props.name}    
         className="basic-info-image"
       />

@@ -54,7 +54,6 @@ const updateQuest = {
             SELECT quest.id
             FROM xenoblade2_guide.quests as quest
             WHERE quest.Available = 1
-            AND quest.Status = 'FINISHED'
         ) OR preQuest.Quest IS NULL);
 
         UPDATE xenoblade2_guide.quests
