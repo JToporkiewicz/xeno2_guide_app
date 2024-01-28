@@ -34,9 +34,10 @@ export const ItemListView = (props: IOwnProps & IProps) => {
 
   const selectItem = (index: number) => {
     setFocused(index)
+    const header = document.getElementById(props.title)?.getBoundingClientRect();
+    const body = document.body.getBoundingClientRect();
     window.scroll({
-      top: 0,
-      left: 0,
+      top: header && body ? header.top - body.top : 0,
       behavior: 'smooth'
     })
   }
@@ -48,7 +49,7 @@ export const ItemListView = (props: IOwnProps & IProps) => {
     if (props.selected && props.selected.area === 'item') {
       const foundItem = props.items.find((i) => i.id === props.selected?.id)
       if (foundItem && findItemAvailability(foundItem)) {
-        setFocused(props.selected.id)       
+        selectItem(props.selected.id)
       }
     }
   }, [props.selected])

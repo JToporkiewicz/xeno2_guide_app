@@ -3,15 +3,14 @@ import { useEffect, useRef, useState } from 'react'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import OrderBy from 'components/CommonComponents/OrderBy';
 import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
-import { IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
+import { ISelectedState, IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { IStoryProgress } from 'interfaces';
 import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { RequirementList } from 'components/CommonComponents/RequirementList';
-import { LinkSelected } from 'components/CommonComponents/LinkSelected';
-import { Routes } from 'helpers/routesConst';
 import { IHeart2HeartAvailability } from 'reduxState/interfaces/availabilityState';
+import { Heart2HeartDetails } from '../Heart2HeartDetails/Heart2HeartDetails';
 
 interface IDispatchProps {
   updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
@@ -27,11 +26,13 @@ interface IOwnProps {
 
 interface IProps {
   storyProgress: IStoryProgress;
+  selected?: ISelectedState;
 }
 
 export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
+  const [focused, setFocused] = useState(0);
 
   const toUpdate = useRef([] as IHeart2HeartAvailability[]);
 
@@ -43,6 +44,27 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
       available: 'Available',
       viewed: 'Viewed'
     }
+
+  const selectH2H = (index: number) => {
+    setFocused(index)
+    const header = document
+      .getElementById(props.location || 'Heart 2 Hearts')?.getBoundingClientRect();
+    const body = document.body.getBoundingClientRect();
+    window.scroll({
+      top: header && body ? header.top - body.top : 0,
+      behavior: 'smooth'
+    })
+  }
+
+  useEffect(() => {
+    if (props.selected && props.selected.area === 'heart2Heart') {
+      const foundH2H = props.heart2Hearts.find((i) => i.id === props.selected?.id)
+      if (foundH2H && foundH2H.Available) {
+        selectH2H(props.selected.id)
+      }
+    }
+  }, [props.selected])
+
 
   useEffect(() => {
     return () => {
@@ -62,6 +84,14 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
 
   return (
     <CollapsibleComponent header={props.location || 'Heart 2 Hearts'}>
+      {focused !== 0 ?
+        <Heart2HeartDetails
+          heart2Heart={props.heart2Hearts.find((h) => h.id === focused)}
+          setFocus={selectH2H}
+          updateHeart2HeartStatus={props.updateHeart2HeartStatus}
+        />
+        : <div />
+      }
       {props.heart2Hearts.length === 0 ?
         <>No available heart 2 hearts found.</>
         : <>
@@ -86,7 +116,12 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                 const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
                 return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
               }).map((h2h:IHeart2HeartAvailability) => 
-                <div className="row text-list-entry" key={h2h.id}>
+                <div
+                  className={`row text-list-entry ${
+                    h2h.Available ? 'hoverPointer' : ''} ${
+                    h2h.id === focused ? 'selected-row' : ''}`}
+                  key={h2h.id}
+                >
                   <div
                     className="column-narrow text-list-status"
                   >
@@ -132,14 +167,12 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                   </div>
                   {
                     !props.storyProgress.OnlyShowAvailable || h2h.Available ? 
-                      <LinkSelected
+                      <div
                         className="text-list-link"
-                        to={Routes.HEART_2_HEART + h2h.id}
-                        area='heart2Heart'
-                        id={h2h.id}
+                        onClick={() => selectH2H(h2h.id)}
                       >
                         {h2h.Title}
-                      </LinkSelected>
+                      </div>
                       : <div className='text-list-link'><i>Heart 2 Heart {h2h?.id}</i></div>
                   }
                   {h2h.PreReqs &&

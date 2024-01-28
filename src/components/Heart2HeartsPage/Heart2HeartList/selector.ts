@@ -1,7 +1,8 @@
-import { getStoryProgress } from 'reduxState/selectors';
+import { getSelected, getStoryProgress } from 'reduxState/selectors';
 import { createSelector } from 'reselect';
 
 export default createSelector(
   getStoryProgress,
-  (storyProgress) => ({storyProgress})
+  getSelected,
+  (storyProgress, selected) => ({storyProgress, selected})
 );

@@ -222,7 +222,7 @@ export const BladeBasicInfoComponentView = (props: IOwnProps & IDispatchProps) =
                   link={
                     !props.storyProgress.OnlyShowAvailable || props.heart2Heart.Available ?
                       <LinkSelected
-                        to={Routes.HEART_2_HEART + props.heart2Heart?.id}
+                        to={Routes.HEART_2_HEART_LIST}
                         id={props.heart2Heart?.id || 0}
                         area='heart2Heart'
                       >

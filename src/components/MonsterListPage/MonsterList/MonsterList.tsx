@@ -52,7 +52,7 @@ export const MonsterListView = (props: IOwnProps) => {
     if (props.selected && props.selected.area === 'monster') {
       const foundMon = props.monsters.find((i) => i.id === props.selected?.id)
       if (foundMon && (foundMon.Available || !props.storyProgress.OnlyShowAvailable)) {
-        setFocused(props.selected.id)       
+        selectMonster(props.selected.id)       
       }
     }
   }, [props.selected])

@@ -9,9 +9,6 @@ import { Loader } from '../CommonComponents/Loader';
 import { Heart2HeartsListPage } from '../Heart2HeartsPage';
 import { BladeListPage } from '../BladeListPage';
 import { BladeDetailsPage } from '../BladeDetailsPage';
-import {
-  Heart2HeartDetailsPage
-} from '../Heart2HeartDetailsPage';
 import { ISelectedState } from 'reduxState/interfaces/reduxState';
 import { SideQuestPage } from 'components/SideQuestsPage';
 import {
@@ -67,7 +64,6 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path={Routes.BLADE_LIST} component={BladeListPage} />
             <Route path={`${Routes.BLADE}:slug`} component={BladeDetailsPage} />
             <Route path={Routes.HEART_2_HEART_LIST} component={Heart2HeartsListPage} />
-            <Route path={`${Routes.HEART_2_HEART}:slug`} component={Heart2HeartDetailsPage} />
             <Route path={Routes.SIDE_QUEST_LIST} component={SideQuestPage} />
             <Route path={`${Routes.SIDE_QUEST}:slug`} component={SideQuestDetailsPage} />
             <Route path={Routes.MERC_MISSION_LIST} component={MercMissionListPage} />

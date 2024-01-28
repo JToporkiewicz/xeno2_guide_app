@@ -51,7 +51,7 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
     const header = document.getElementById(props.location)?.getBoundingClientRect();
     const body = document.body.getBoundingClientRect();
     window.scroll({
-      top: header && body ? header?.top - body?.top : 0,
+      top: header && body ? header.top - body.top : 0,
       behavior: 'smooth'
     })
   }

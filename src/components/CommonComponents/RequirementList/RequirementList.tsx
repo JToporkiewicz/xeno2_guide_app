@@ -86,7 +86,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         </b>
         :
         <LinkSelected
-          to={Routes.HEART_2_HEART + req.reqId}
+          to={Routes.HEART_2_HEART_LIST}
           area='heart2Heart'
           id={req.reqId || 0}
         >
