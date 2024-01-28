@@ -2,7 +2,7 @@ import HeaderContainer from 'components/CommonComponents/Containers/HeaderContai
 import { IStoryProgress } from 'interfaces';
 import { useEffect, useRef } from 'react';
 import { IUpdateMonster } from 'reduxState/interfaces/monsters';
-import { IMajorLocations, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
+import { IMajorLocations, ISelectedState, IUpdateUnlocked } from 'reduxState/interfaces/reduxState'
 import { MonsterListView } from './MonsterList/MonsterList';
 import { IMonsterAvailability } from 'reduxState/interfaces/availabilityState';
 
@@ -10,6 +10,7 @@ interface IProps {
   monsters: IMonsterAvailability[];
   storyProgress: IStoryProgress;
   locations: IMajorLocations[];
+  selected?: ISelectedState;
 }
 
 interface IDispatchProps {
@@ -52,36 +53,42 @@ export const MonsterListPageView = (props: IProps & IDispatchProps) => {
         monsters={props.monsters.filter((mon) => mon.Category === 'Unique')}
         storyProgress={props.storyProgress}
         updateMonStatus={updateMonStatus}
+        selected={props.selected}
       />
       <MonsterListView
         monsterCategory='Normal'
         monsters={props.monsters.filter((mon) => mon.Category === 'Normal')}
         storyProgress={props.storyProgress}
         updateMonStatus={updateMonStatus}
+        selected={props.selected}
       />
       <MonsterListView
         monsterCategory='Minor'
         monsters={props.monsters.filter((mon) => mon.Category === 'Minor')}
         storyProgress={props.storyProgress}
         updateMonStatus={updateMonStatus}
+        selected={props.selected}
       />
       <MonsterListView
         monsterCategory='Quest'
         monsters={props.monsters.filter((mon) => mon.Category === 'Quest')}
         storyProgress={props.storyProgress}
         updateMonStatus={updateMonStatus}
+        selected={props.selected}
       />
       <MonsterListView
         monsterCategory='Salvage'
         monsters={props.monsters.filter((mon) => mon.Category === 'Salvage')}
         storyProgress={props.storyProgress}
         updateMonStatus={updateMonStatus}
+        selected={props.selected}
       />
       <MonsterListView
         monsterCategory='Story'
         monsters={props.monsters.filter((mon) => mon.Category === 'Story')}
         storyProgress={props.storyProgress}
         updateMonStatus={updateMonStatus}
+        selected={props.selected}
       />
       <MonsterListView
         monsterCategory='Boss'
@@ -89,12 +96,14 @@ export const MonsterListPageView = (props: IProps & IDispatchProps) => {
           mon.Category === 'Boss' || mon.Category === 'Superboss')}
         storyProgress={props.storyProgress}
         updateMonStatus={updateMonStatus}
+        selected={props.selected}
       />
       <MonsterListView
         monsterCategory='Challenge'
         monsters={props.monsters.filter((mon) => mon.Category === 'Challenge')}
         storyProgress={props.storyProgress}
         updateMonStatus={updateMonStatus}
+        selected={props.selected}
       />
     </>
   </>

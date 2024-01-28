@@ -7,7 +7,7 @@ import { sortFunction } from 'helpers';
 import { IStoryProgress } from 'interfaces'
 import { RequirementArea } from 'interfaces/common';
 import path from 'path';
-import { ReactChild, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IMercMissionAvailability } from 'reduxState/interfaces/availabilityState';
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
 import { MercMissionDetails } from './MercMissionDetails';
@@ -31,8 +31,6 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
   const [focused, setFocused] = useState(0)
-
-  const [mercMissionEntries, setMMEntries] = useState([] as ReactChild[])
 
   const orderOptions: {[key:string]: keyof IMercMissionAvailability} = {
     default: 'id',
@@ -94,75 +92,6 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
   }
 
   useEffect(() => {
-    if(props.storyProgress.current) {
-      setMMEntries(
-        props.mercMissions.sort((mmA, mmB) => {
-          const mmAValue = mmA[getOrderTypeColumn(orderType)]
-          const mmBValue = mmB[getOrderTypeColumn(orderType)]
-          return sortFunction(mmAValue, mmBValue, sortOrderAsc)
-        }).map((mm:IMercMissionAvailability) =>
-          <div className="row text-list-entry" key={mm.id}>
-            <div className='column-narrow text-list-status'>
-              <OptionsCheckbox
-                hideAvailable={true}
-                available={mm.Available}
-                unlocked={mm.Completed}
-                onClick={(completed) => {
-                  if (typeof completed === 'boolean') {
-                    props.updateMMStatus(mm.id, completed)
-                  }
-                }}
-                size='small'
-              />
-            </div>
-            <div className='column-narrow text-list-status'>
-              <img
-                src={path.resolve(`images/helper/${mm.Available ?
-                  'GreenCheckmark' : 'RedX'}.svg`)}
-                alt={mm.Name}
-                className="availability-small-image"
-              />
-            </div>
-            <div
-              className="column-narrow text-list-status"
-            >
-              <img
-                src={path.resolve(`images/helper/${mm.Missable ?
-                  'GreenCheckmark' : 'RedX'}.svg`)}
-                alt={mm.Name+'Missability'}
-                className="availability-small-image"
-              />
-            </div>
-            <div
-              className="column-medium text-list-status"
-            >
-              {mm.Type}
-            </div>
-            {!props.storyProgress.current.OnlyShowAvailable || mm.Available ?
-              <div
-                className="text-list-link"
-                onClick={() => selectMercMission(mm.id)}
-              >
-                {mm.Name}
-              </div>
-              : <div className='text-list-link'><i>Merc Mission {mm.id}</i></div>
-            }
-            {
-              mm.Prerequisites &&
-                <HoverContainer>
-                  <RequirementList
-                    requirements={mm.Prerequisites}
-                    updateReqProgress={updateRequirementProgress}
-                  />
-                </HoverContainer>
-            }
-          </div>
-        )
-      )
-    }
-  }, [props.storyProgress.current, props.mercMissions, orderType, sortOrderAsc])
-
-  useEffect(() => {
     if (props.selected && props.selected.area === 'mercMission') {
       const foundMM = props.mercMissions.find((mm) => mm.id === props.selected?.id)
       if (foundMM && (foundMM.Available || !props.storyProgress.current.OnlyShowAvailable)) {
@@ -201,7 +130,70 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
             <b className="column-unrestricted order-title">Name</b>
           </div>
           <div className='table-outline'>
-            {mercMissionEntries}
+            {props.mercMissions.sort((mmA, mmB) => {
+              const mmAValue = mmA[getOrderTypeColumn(orderType)]
+              const mmBValue = mmB[getOrderTypeColumn(orderType)]
+              return sortFunction(mmAValue, mmBValue, sortOrderAsc)
+            }).map((mm:IMercMissionAvailability) =>
+              <div
+                className={`row text-list-entry ${
+                  mm.Available ? 'hoverPointer' : ''} ${
+                  mm.id === focused ? 'selected-row' : ''}`}
+                key={mm.id}
+              >
+                <div className='column-narrow text-list-status'>
+                  <OptionsCheckbox
+                    hideAvailable={true}
+                    available={mm.Available}
+                    unlocked={mm.Completed}
+                    onClick={(completed) => {
+                      if (typeof completed === 'boolean') {
+                        props.updateMMStatus(mm.id, completed)
+                      }
+                    }}
+                    size='small'
+                  />
+                </div>
+                <div className='column-narrow text-list-status'>
+                  <img
+                    src={path.resolve(`images/helper/${mm.Available ?
+                      'GreenCheckmark' : 'RedX'}.svg`)}
+                    alt={mm.Name}
+                    className="availability-small-image"
+                  />
+                </div>
+                <div
+                  className="column-narrow text-list-status"
+                >
+                  <img
+                    src={path.resolve(`images/helper/${mm.Missable ?
+                      'GreenCheckmark' : 'RedX'}.svg`)}
+                    alt={mm.Name+'Missability'}
+                    className="availability-small-image"
+                  />
+                </div>
+                <div
+                  className="column-medium text-list-status"
+                >
+                  {mm.Type}
+                </div>
+                {!props.storyProgress.current.OnlyShowAvailable || mm.Available ?
+                  <div className="text-list-link" onClick={() => selectMercMission(mm.id)}>
+                    {mm.Name}
+                  </div>
+                  : <div className='text-list-link'><i>Merc Mission {mm.id}</i></div>
+                }
+                {
+                  mm.Prerequisites &&
+                    <HoverContainer>
+                      <RequirementList
+                        requirements={mm.Prerequisites}
+                        updateReqProgress={updateRequirementProgress}
+                      />
+                    </HoverContainer>
+                }
+              </div>
+            )}
           </div>
         </div>
       </>

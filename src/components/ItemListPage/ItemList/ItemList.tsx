@@ -95,9 +95,9 @@ export const ItemListView = (props: IOwnProps & IProps) => {
           }).map((item:IItem) => {
             const itemAvailable = findItemAvailability(item)
             return <div
-            // ------------------------ check availability ------------------------
-              className={`row text-list-entry ${itemAvailable ? 'hoverPointer' : ''
-              } ${item.id === focused ? 'selected-row' : ''}`}
+              className={`row text-list-entry ${
+                itemAvailable ? 'hoverPointer' : ''} ${
+                item.id === focused ? 'selected-row' : ''}`}
               key={item.id}
               onClick={() => itemAvailable ? selectItem(item.id) : null}
             >

@@ -4,22 +4,35 @@ import OrderBy from 'components/CommonComponents/OrderBy';
 import { separateMajorArea, sortFunction } from 'helpers';
 import { IStoryProgress } from 'interfaces';
 import path from 'path';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './MonsterList.scss';
-import { LinkSelected } from 'components/CommonComponents/LinkSelected';
-import { Routes } from 'helpers/routesConst';
 import { IMonsterAvailability } from 'reduxState/interfaces/availabilityState';
+import { MonsterDetails } from './MonsterDetails';
+import { ISelectedState } from 'reduxState/interfaces/reduxState';
 
 interface IOwnProps {
     monsterCategory: string;
     monsters: IMonsterAvailability[];
     storyProgress: IStoryProgress;
+    selected?: ISelectedState;
     updateMonStatus: (monId: number, beaten: boolean) => void;
 }
 
 export const MonsterListView = (props: IOwnProps) => {
   const [orderType, setOrderType] = useState('default');
   const [sortOrderAsc, setSortOrderAsc] = useState(true);
+  const [focus, setFocused] = useState(0);
+
+  const selectMonster = (index: number) => {
+    setFocused(index)
+    const header = document
+      .getElementById(props.monsterCategory + ' Monsters')?.getBoundingClientRect();
+    const body = document.body.getBoundingClientRect();
+    window.scroll({
+      top: header && body ? header.top - body.top : 0,
+      behavior: 'smooth'
+    })
+  }
   
   const orderOptions: {[key:string]: keyof IMonsterAvailability} = {
     default: 'id',
@@ -35,7 +48,25 @@ export const MonsterListView = (props: IOwnProps) => {
     return orderOptions[order] || orderOptions.default
   }
 
+  useEffect(() => {
+    if (props.selected && props.selected.area === 'monster') {
+      const foundMon = props.monsters.find((i) => i.id === props.selected?.id)
+      if (foundMon && (foundMon.Available || !props.storyProgress.OnlyShowAvailable)) {
+        setFocused(props.selected.id)       
+      }
+    }
+  }, [props.selected])
+
+
   return <CollapsibleComponent header={`${props.monsterCategory} Monsters`}>
+    {focus !== 0 ?
+      <MonsterDetails
+        monster={props.monsters.find((mon) => mon.id === focus)}
+        updateMonStatus={props.updateMonStatus}
+        selectMonster={selectMonster}
+      />
+      : <div />
+    }
     {props.monsters.length === 0 ?
       <>No monsters found.</>
       : <>
@@ -66,7 +97,12 @@ export const MonsterListView = (props: IOwnProps) => {
               const monBValue = monB[getOrderTypeColumn(orderType)]
               return sortFunction(monAValue, monBValue, sortOrderAsc)
             }).map((mon:IMonsterAvailability) =>
-              <div className="row text-list-entry" key={mon.id}>
+              <div
+                className={`row text-list-entry ${
+                  mon.Available ? ' hoverPointer' : ''} ${
+                  mon.id === focus ? ' selected-row' : ''}`}
+                key={mon.id}
+              >
                 {props.monsterCategory === 'Unique' ?
                   <div className='column-narrow text-list-status'>
                     <OptionsCheckbox
@@ -113,14 +149,9 @@ export const MonsterListView = (props: IOwnProps) => {
                     separateMajorArea(mon.Area) : '????'}
                 </div>
                 {!props.storyProgress.OnlyShowAvailable || mon.Available ?
-                  <LinkSelected
-                    className="text-list-link"
-                    to={Routes.MONSTER + mon.id}
-                    area='monster'
-                    id={mon.id}
-                  >
+                  <div className="text-list-link" onClick={() => selectMonster(mon.id)}>
                     {mon.Name}
-                  </LinkSelected>
+                  </div>
                   : <div className='text-list-link'><i>Monster {mon.id}</i></div>
                 }
               </div>

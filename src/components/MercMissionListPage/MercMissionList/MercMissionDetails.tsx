@@ -81,10 +81,10 @@ export const MercMissionDetails = (props: IOwnProps) => {
           </div>
         </div>
       </div>
-      <hr className='item-details-line' />
       {
         mm.Prerequisites ?
           <>
+            <hr className='item-details-line' />
             <b>Prerequisites:</b>
             <RequirementList
               requirements={mm.Prerequisites}

@@ -59,7 +59,7 @@ export const RequirementListComponent = (props: IProps & IOwnProps) => {
         </b>
         : 
         <LinkSelected
-          to={Routes.MONSTER + req.reqId}
+          to={Routes.MONSTER_LIST}
           area='monster'
           id={req.reqId || 0}
         >
