@@ -9,7 +9,7 @@ interface IProps {
 
 const ClosedUnlinkedImagePanel = (props:IProps) => {
   return (
-    <div className="col-sm-3 stretched-sibling-panels">
+    <div className="character-image-panel">
       <ContentsOfImagePanel {...props} />
     </div>
   )

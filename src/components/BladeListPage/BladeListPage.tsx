@@ -96,15 +96,13 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
               [groupName]: (bladeList[groupName] || []).concat(
                 props.storyProgress.OnlyShowAvailable &&
                 (!blade.available && !blade.show) ?
-                  <div className="col-sm-3" key={blade.name}>
-                    <UnavailableImagePanel
-                      name={blade.name}
-                      panelType="blade"
-                      id={blade.id}
-                      toggleShow={updateShow.bind(this)}
-                      updateState={() => {}}
-                    />
-                  </div>
+                  <UnavailableImagePanel
+                    name={blade.name}
+                    panelType="blade"
+                    id={blade.id}
+                    toggleShow={updateShow.bind(this)}
+                    updateState={() => {}}
+                  />
                   :
                   <ClosedLinkedImagePanel
                     panelType="blade"

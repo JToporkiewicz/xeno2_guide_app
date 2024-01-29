@@ -14,12 +14,10 @@ interface IOwnProps {
 export const ClosedLinkedImagePanel = (props:IOwnProps) => {
   return (
     <div
-      className="col-sm-3 stretched-sibling-panels"
+      className="character-image-panel"
       onClick={() => props.selectCharacter()}
     >
-      <div className="titled-image-name">
-        <ContentsOfImagePanel {...props} />
-      </div>
+      <ContentsOfImagePanel {...props} />
     </div>
   )
 };

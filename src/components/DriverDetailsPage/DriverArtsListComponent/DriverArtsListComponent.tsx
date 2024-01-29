@@ -81,7 +81,7 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
         />
         : <div/>}
       {uniqueWeapons.length > 0 ?
-        <div className="row">
+        <div className="row centeredFlex">
           {weaponsPanels}
         </div>
         :

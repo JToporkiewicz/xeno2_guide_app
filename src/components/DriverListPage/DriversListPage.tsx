@@ -78,15 +78,13 @@ export const DriversListPageView = (props:IProps & IDispatchProps) => {
               + hiddenTreeCompletion.total) * 10000) / 100
             return props.storyProgress.OnlyShowAvailable &&
               (driver.chapterUnlocked > props.storyProgress.Chapter && !driver.show) ? 
-              <div className="col-sm-3" key={driver.name}>
-                <UnavailableImagePanel
-                  name={driver.name}
-                  panelType="driver"
-                  id={driver.id}
-                  toggleShow={updateShow.bind(this)}
-                  updateState={updateGameState.bind(this)}
-                />
-              </div>
+              <UnavailableImagePanel
+                name={driver.name}
+                panelType="driver"
+                id={driver.id}
+                toggleShow={updateShow.bind(this)}
+                updateState={updateGameState.bind(this)}
+              />
               :
               <ClosedLinkedImagePanel
                 panelType="driver"

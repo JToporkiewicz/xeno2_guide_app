@@ -28,14 +28,15 @@ const CharacterPanelContainer = (props:IProps) =>
     }
     <div>
       {Array.isArray(props.children) && props.children.length > 0 ?
-        <div className="row">
+        <div className="row centeredFlex">
           {props.children}
         </div>
         : !Array.isArray(props.children) ?
           Object.entries(props.children).map((group) =>
             <div key={group[0]}>
+              <hr className='item-details-line'/>
               <h3>{group[0]}</h3>
-              <div className="row">
+              <div className="row centeredFlex">
                 {group[1]}
               </div>
             </div>) :

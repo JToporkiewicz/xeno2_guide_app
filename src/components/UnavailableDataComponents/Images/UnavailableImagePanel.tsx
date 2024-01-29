@@ -11,17 +11,19 @@ interface IProps {
 
 const UnavailableImagePanel = (props:IProps) => {
   return (
-    <div className="image-panel">
-      <PeekOrUnlockOverlay
-        toggleShow={props.toggleShow}
-        updateState={props.updateState}
-        name={props.name}
-        id={props.id} />
-      <img
-        src={path.resolve('images/helper/Unknown.png')}
-        alt={'Unknown'}
-        className={props.panelType === 'weaponType' ? 'weapon-class-image' : 'character-image'}/>
-      <div className="image-name"><i>Spoiler {props.id}</i></div>
+    <div className="character-image-panel" key={props.name}>
+      <div className="image-panel">
+        <PeekOrUnlockOverlay
+          toggleShow={props.toggleShow}
+          updateState={props.updateState}
+          name={props.name}
+          id={props.id} />
+        <img
+          src={path.resolve('images/helper/Unknown.png')}
+          alt={'Unknown'}
+          className={props.panelType === 'weaponType' ? 'weapon-class-image' : 'character-image'}/>
+        <div className="image-name"><i>Spoiler {props.id}</i></div>
+      </div>
     </div>
   )
 };
