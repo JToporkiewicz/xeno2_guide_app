@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux'
 import { combineEpics, Epic, ofType } from 'redux-observable'
 import { mergeMap, from, of, EMPTY, filter } from 'rxjs'
-import { callWithLoader$ } from '.'
+import { callWithLoader$, callWithSmallLoader$ } from '.'
 import { Heart2HeartActions, setHeart2Hearts } from '../actions/heart2Hearts'
 import { getAllHeart2Hearts, getHeart2HeartById, updateH2HViewed } from 'services/heart2Hearts'
 
@@ -30,7 +30,7 @@ const saveHeart2HeartsEffect:Epic<AnyAction, AnyAction> = (action$) =>
     ofType(Heart2HeartActions.SaveHeart2Hearts),
     filter((action) => action.payload.unlocked?.length || action.payload.locked?.length),
     mergeMap((action) => 
-      callWithLoader$(
+      callWithSmallLoader$(
         'Updating Heart 2 Hearts',
         from(updateH2HViewed(action.payload)).pipe(mergeMap(() => EMPTY))
       ))

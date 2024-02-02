@@ -5,7 +5,7 @@ import {
   setMercMissions
 } from 'reduxState/actions/mercMissions';
 import { concat, EMPTY, from, mergeMap, of } from 'rxjs';
-import { callWithLoader$ } from '.';
+import { callWithLoader$, callWithSmallLoader$ } from '.';
 import { IMercMission } from 'interfaces';
 import {
   getAllMercMissions,
@@ -40,7 +40,7 @@ const fetchMercMissionEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveMercMissionStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(MercMissionsActions.SaveMercMissionStatus),
-    mergeMap((action) => callWithLoader$(
+    mergeMap((action) => callWithSmallLoader$(
       'Saving merc mission status',
       from(updateMercMissionsStatus(action.payload))
         .pipe(mergeMap(() => EMPTY))

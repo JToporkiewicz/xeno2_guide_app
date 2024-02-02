@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux'
 import { combineEpics, Epic, ofType } from 'redux-observable'
 import { mergeMap, from, of, EMPTY } from 'rxjs'
-import { callWithLoader$ } from '.'
+import { callWithLoader$, callWithSmallLoader$ } from '.'
 import {
   MonstersActions,
   setMonsters
@@ -23,7 +23,7 @@ const saveMonstersEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(MonstersActions.SaveMonsterStatus),
     mergeMap((action) =>
-      callWithLoader$(
+      callWithSmallLoader$(
         'Updating Monster',
         from(updateMonsterStatus(action.payload))
           .pipe(mergeMap(() => EMPTY))

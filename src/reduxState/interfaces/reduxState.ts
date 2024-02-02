@@ -38,6 +38,7 @@ export interface IUpdateUnlocked {
 export interface ICoreState {
   storyProgress: IStoryProgress,
   loaderState: string[],
+  saving: string[],
   selected: ISelectedState,
 }
 

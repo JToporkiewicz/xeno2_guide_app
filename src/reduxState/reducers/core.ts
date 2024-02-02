@@ -26,9 +26,17 @@ const selected = createReducer<ISelectedState>(
   [CoreActions.SetSelected, (_:ISelectedState, selected: ISelectedState) => selected],
   [CoreActions.ClearSelected, () => defaultSelected]
 )(defaultSelected);
+const saving = createReducer<string[]>(
+  [CoreActions.ShowSaving, (state, payload) => state.concat([payload])],
+  [CoreActions.HideSaving,
+    (state, payload) =>
+      state.filter((loader: string) => loader !== payload)],
+  [CoreActions.ResetSaving, () => []]
+)([]);
 
 export const coreReducer = combineReducers<ICoreState>({
   storyProgress,
   loaderState,
-  selected
+  selected,
+  saving
 })

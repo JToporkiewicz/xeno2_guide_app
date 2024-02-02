@@ -9,7 +9,13 @@ const sequelizeDB = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD,
     min: dbConfig.pool.min,
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle
-  }
+  },
+  retry: {
+    match: [/Deadlock/i],
+    max: 3, // Maximum rety 3 times
+    backoffBase: 1000, // Initial backoff duration in ms. Default: 100,
+    backoffExponent: 1.5, // Exponent to increase backoff each try. Default: 1.1
+  },
 });
 
 const db = {};

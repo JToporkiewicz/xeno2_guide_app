@@ -2,6 +2,7 @@ import { IXenobladeState } from './interfaces/reduxState';
 
 export const getBlades = (state:IXenobladeState) => state.blades;
 export const getLoaderState = (state:IXenobladeState) => state.core.loaderState;
+export const getSavingStatus = (state: IXenobladeState) => state.core.saving;
 export const getStoryProgress = (state:IXenobladeState) => state.core.storyProgress;
 export const getSelected = (state:IXenobladeState) => state.core.selected;
 export const getDrivers = (state:IXenobladeState) => state.drivers;

@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux'
 import { Epic, ofType, combineEpics } from 'redux-observable'
 import { mergeMap, from, of, concat, EMPTY, filter } from 'rxjs'
-import { callWithLoader$ } from '.'
+import { callWithLoader$, callWithSmallLoader$ } from '.'
 import { DriverActions, setDriverDetails } from '../actions/drivers'
 import { IDriver } from 'interfaces'
 import {
@@ -38,7 +38,7 @@ const saveDriverSkillNodeEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(DriverActions.SaveDriverSkillNode),
     filter((action) => action.payload.unlocked?.length || action.payload.locked?.length),
-    mergeMap((action) => callWithLoader$(
+    mergeMap((action) => callWithSmallLoader$(
       'Updating driver skill node',
       from(updateSkillNodesUnlocked(action.payload))
         .pipe(mergeMap(() => EMPTY))
@@ -49,7 +49,7 @@ const saveDriverArtLevelEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(DriverActions.SaveDriverArtLevel),
     filter((action) => action.payload.length),
-    mergeMap((action) => callWithLoader$(
+    mergeMap((action) => callWithSmallLoader$(
       'Updating art level',
       from(updateArtLevel(action.payload)).pipe(mergeMap(() => EMPTY))
     ))

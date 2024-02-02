@@ -49,3 +49,19 @@
   margin: 0px auto 10px;
   animation: rotation 6s infinite linear;
 }
+
+.small-loader {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+
+  .loading-icon-image {
+    width: 15vw;
+  }
+
+  .loading-text {
+    font-size: large;
+    padding: 5px 10px;
+  }
+}

@@ -9,6 +9,10 @@ export enum CoreActions {
   HideLoader = 'HIDE_LOADER',
   ResetLoader = 'RESET_LOADER',
 
+  ShowSaving = 'SHOW_SAVING',
+  HideSaving = 'HIDE_SAVING',
+  ResetSaving = 'RESET_SAVING',
+
   FetchStoryProgress = 'FETCH_STORY_PROGRESS',
   SetStoryProgress = 'SET_STORY_PROGRESS',
   SaveStoryProgress = 'SAVE_STORY_PROGRESS',
@@ -21,6 +25,10 @@ export type ActionTypes =
   | IFluxAction<CoreActions.ResetState>
   | IFluxPayloadAction<CoreActions.ShowLoader, string>
   | IFluxPayloadAction<CoreActions.HideLoader, string>
+  | IFluxAction<CoreActions.ResetLoader>
+  | IFluxPayloadAction<CoreActions.ShowSaving, string>
+  | IFluxPayloadAction<CoreActions.HideSaving, string>
+  | IFluxAction<CoreActions.ResetSaving>
   | IFluxAction<CoreActions.FetchStoryProgress>
   | IFluxPayloadAction<CoreActions.SetStoryProgress, IStoryProgress>
   | IFluxPayloadAction<CoreActions.SaveStoryProgress, IStoryProgress>
@@ -44,7 +52,21 @@ export const hideLoader = (payload:string):ActionTypes => ({
 export const resetLoader = () => ({
   type: CoreActions.ResetLoader
 });
+
+export const showSaving = (payload: string) => ({
+  type: CoreActions.ShowSaving,
+  payload
+});
   
+export const hideSaving = (payload: string) => ({
+  type: CoreActions.HideSaving,
+  payload
+});
+
+export const resetSaving = () => ({
+  type: CoreActions.ResetSaving
+});
+
 export const fetchStoryProgress = ():ActionTypes => ({
   type: CoreActions.FetchStoryProgress
 });

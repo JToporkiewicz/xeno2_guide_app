@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux'
 import { combineEpics, Epic, ofType } from 'redux-observable'
 import { mergeMap, from, of, EMPTY, concat } from 'rxjs'
-import { callWithLoader$ } from '.'
+import { callWithLoader$, callWithSmallLoader$ } from '.'
 import {
   QuestsActions,
   setQuests,
@@ -41,7 +41,7 @@ const fetchQuestEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveQuestStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(QuestsActions.SaveQuestStatus),
-    mergeMap((action) => callWithLoader$(
+    mergeMap((action) => callWithSmallLoader$(
       'Save Quest Status',
       from(saveQuestsStatus(action.payload))
         .pipe(mergeMap(() => EMPTY))
@@ -51,7 +51,7 @@ const saveQuestStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveQuestStepStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(QuestsActions.SaveQuestStepStatus),
-    mergeMap((action) => callWithLoader$(
+    mergeMap((action) => callWithSmallLoader$(
       'Save Quest Step Status',
       from(saveQuestStepStatus(action.payload))
         .pipe(mergeMap(() => EMPTY))
@@ -61,7 +61,7 @@ const saveQuestStepStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
 const saveQuestSubStepStatusEffect:Epic<AnyAction, AnyAction> = (action$) =>
   action$.pipe(
     ofType(QuestsActions.SaveQuestSubStepStatus),
-    mergeMap((action) => callWithLoader$(
+    mergeMap((action) => callWithSmallLoader$(
       'Save Quest Sub Step Status',
       from(saveQuestSubStepStatus(action.payload))
         .pipe(mergeMap(() => EMPTY))

@@ -1,7 +1,8 @@
 import { createSelector } from 'reselect';
-import { getLoaderState } from 'reduxState/selectors';
+import { getLoaderState, getSavingStatus } from 'reduxState/selectors';
 
 export default createSelector(
   getLoaderState,
-  (loaderState) => ({loaderState})
+  getSavingStatus,
+  (loaderState, saving) => ({loaderState, saving})
 )
