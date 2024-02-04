@@ -5,7 +5,8 @@ interface IProps {
   listTitle: string,
   list: {[name:string]: {
     unlocked: number,
-    total: number
+    total: number,
+    id?: number
   }
 }}
 
@@ -42,7 +43,13 @@ export const ProgressStatusDetails = (props:IProps) => {
       <>
         <hr/>
         <div className="detailedProgress">
-          {Object.entries(props.list)
+          {Object.entries(props.list).sort((entryA, entryB) => {
+            if (entryA[1].id && entryB[1].id) {
+              return entryA[1].id > entryB[1].id ? 1 : -1
+            }
+            return entryA[1].unlocked / entryA[1].total > entryB[1].unlocked / entryB[1].total ?
+              -1 : 1
+          })
             .map((entry) => 
               <div className="statusHeader subStatus" key={`${entry[0]}`}>
                 <div>

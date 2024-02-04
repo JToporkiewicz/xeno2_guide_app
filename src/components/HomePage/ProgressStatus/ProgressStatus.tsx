@@ -4,7 +4,8 @@ import { ProgressStatusDetails } from '../ProgressStatusDetails';
 export interface IProgressList {
   [name:string]: {
     total: number,
-    unlocked: number
+    unlocked: number,
+    id?: number
   }
 }
 

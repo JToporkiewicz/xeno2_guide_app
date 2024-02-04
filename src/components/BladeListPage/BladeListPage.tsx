@@ -38,7 +38,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
   const [selectedBlade, setSelectedBlade] = useState(defaultBladeAvailability as IBladeAvailability)
   const toUpdateBlades = useRef([] as IBladeAvailability[]);
 
-  const orderOptions: {[key:string]: keyof IBladeAvailability} = {
+  const orderOptions: {[key:string]: keyof IBladeAvailability | 'completion'} = {
     default: 'id',
     alphabetically: 'name',
     gender: 'gender',
@@ -46,7 +46,8 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
     element: 'element',
     role: 'role',
     source: 'source',
-    availability: 'available'
+    availability: 'available',
+    completion: 'completion'
   }
 
   const updateBladeAvailability = (blade: IBladeAvailability) => {
@@ -63,7 +64,7 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
     })
   }
 
-  const getOrderTypeColumn = (order: string): keyof IBladeAvailability => {
+  const getOrderTypeColumn = (order: string): keyof IBladeAvailability | 'completion' => {
     return orderOptions[order] || orderOptions.default
   }
 
@@ -80,15 +81,28 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
       setBladeList(
         props.blades
           .sort((bladeA, bladeB) => {
-            const bladeAValue = bladeA[getOrderTypeColumn(orderType)]
-            const bladeBValue = bladeB[getOrderTypeColumn(orderType)]
-            return sortFunction(bladeAValue, bladeBValue, sortOrderAsc)
+            const sort = getOrderTypeColumn(orderType);
+            let bladeAValue;
+            let bladeBValue;
+            if (sort === 'completion') {
+              const bladeACompletion = getACCompletion(bladeA.affinityChart);
+              bladeAValue =
+                bladeACompletion.unlocked / bladeACompletion.total * 100;
+              const bladeBCompletion = getACCompletion(bladeB.affinityChart);
+              bladeBValue =
+                bladeBCompletion.unlocked / bladeBCompletion.total * 100;
+            } else {
+              bladeAValue = bladeA[sort]
+              bladeBValue = bladeB[sort]
+            }
+            return sortFunction(bladeAValue, bladeBValue, sortOrderAsc)  
           })
           .reduce((bladeList, blade) => {
             const acCompletion = getACCompletion(blade.affinityChart)
             const progress = Math.round(acCompletion.unlocked
                     / acCompletion.total * 10000) / 100
-            const group = blade[getOrderTypeColumn(orderType)];
+            const sort = getOrderTypeColumn(orderType);
+            const group = sort !== 'completion' ? blade[sort] : undefined;
             const groupName = orderType === 'availability' && typeof group === 'boolean' ?
               group ? 'Available' : 'Unavailable' : String(group);
             return {
@@ -168,9 +182,10 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
         sortOrderAsc={sortOrderAsc}
         changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
       >
-        {orderType === 'default' ? Object.entries(bladeList).sort((bladeA, bladeB) => {
-          return sortFunction(bladeA[0], bladeB[1], sortOrderAsc)
-        }).flatMap((group) => group[1])
+        {orderType === 'default' || orderType === 'completion'
+          ? Object.entries(bladeList).sort((bladeA, bladeB) => {
+            return sortFunction(bladeA[0], bladeB[1], sortOrderAsc)
+          }).flatMap((group) => group[1])
           : orderType === 'alphabetically' ?
             Object.entries(bladeList).flatMap((group) => group[1])
             : bladeList}

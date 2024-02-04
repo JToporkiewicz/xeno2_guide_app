@@ -59,7 +59,8 @@ export default createSelector(
             total: artCompletion.total + (!showDriver && arts['Unavailable Drivers'] ?
               arts['Unavailable Drivers']?.total : 0),
             unlocked: artCompletion.unlocked + (!showDriver && arts['Unavailable Drivers'] ?
-              arts['Unavailable Drivers']?.unlocked : 0)
+              arts['Unavailable Drivers']?.unlocked : 0),
+            id: showDriver ? driver.id : 999
           }
         }}, {}),
       driverSkills: drivers.reduce((skills: IProgressList, driver) => {
@@ -75,7 +76,8 @@ export default createSelector(
               skills['Unavailable Drivers']?.total : 0),
             unlocked: skillTreeCompletion.unlocked
             + (!showDriver && skills['Unavailable Drivers'] ?
-              skills['Unavailable Drivers']?.unlocked : 0)
+              skills['Unavailable Drivers']?.unlocked : 0),
+            id: showDriver ? driver.id : 999
           }
         }}, {}),
       driverHiddenSkills: progress.NewGamePlus || !progress.OnlyShowAvailable ?
@@ -92,7 +94,8 @@ export default createSelector(
                 skills['Unavailable Drivers']?.total : 0),
               unlocked: hiddenTreeCompletion.unlocked
               + (!showDriver && skills['Unavailable Drivers'] ?
-                skills['Unavailable Drivers']?.unlocked : 0)
+                skills['Unavailable Drivers']?.unlocked : 0),
+              id: showDriver ? driver.id : 999
             }
           }}, {})
         : undefined,
@@ -127,28 +130,32 @@ export default createSelector(
       }), {}),
       h2hUnlocked: availability.heart2Hearts.reduce((types: IProgressList, h2h) => {
         const h2hArea = separateMajorArea(h2h.Area);
+        const loc = locations.find((loc) => loc.Name === h2hArea);
         const showH2h = !progress.OnlyShowAvailable || h2h.Available &&
-        (locations.find((loc) => loc.Name === h2hArea)?.StoryProgress || 10) <=
+        (loc?.StoryProgress || 10) <=
         progress.Chapter
         const title = showH2h ? h2hArea : 'Unavailable Heart2Hearts'
         return {
           ...types,
           [title]: {
             total: 1 + (types[title]?.total || 0),
-            unlocked: (h2h.Viewed ? 1 : 0) + (types[title]?.unlocked || 0)
+            unlocked: (h2h.Viewed ? 1 : 0) + (types[title]?.unlocked || 0),
+            id: showH2h && loc ? loc.id : 999
           }
         }
       }, {}),
       mercMissionCompleted: availability.mercMissions.reduce((types: IProgressList, mm) => {
-        const showH2h = !progress.OnlyShowAvailable || mm.Available &&
-      (locations.find((loc) => loc.Name === mm.MissionNation)?.StoryProgress || 10) <=
+        const loc = locations.find((loc) => loc.Name === mm.MissionNation);
+        const showMM = !progress.OnlyShowAvailable || mm.Available &&
+          (loc?.StoryProgress || 10) <=
       progress.Chapter
-        const title = showH2h ? mm.MissionNation : 'Unavailable Merc Missions'
+        const title = showMM ? mm.MissionNation : 'Unavailable Merc Missions'
         return {
           ...types,
           [title]: {
             total: 1 + (types[title]?.total || 0),
-            unlocked: (mm.Completed ? 1 : 0) + (types[title]?.unlocked || 0)
+            unlocked: (mm.Completed ? 1 : 0) + (types[title]?.unlocked || 0),
+            id: showMM && loc ? loc.id : 999
           }
         }}, {}),
       monstersBeaten: availability.monsters.reduce((types: IProgressList, mon) => {
@@ -157,16 +164,18 @@ export default createSelector(
         }
 
         const monArea = separateMajorArea(mon.Area);
-        const showH2h = !progress.OnlyShowAvailable || mon.Available &&
-        (locations.find((loc) => loc.Name === monArea)?.StoryProgress || 10) <=
+        const loc = locations.find((loc) => loc.Name === monArea);
+        const showMon = !progress.OnlyShowAvailable || mon.Available &&
+          (loc?.StoryProgress || 10) <=
         progress.Chapter
-        const title = showH2h ? monArea : 'Unavailable Monsters'
+        const title = showMon ? monArea : 'Unavailable Monsters'
 
         return {
           ...types,
           [title]: {
             total: 1 + (types[title]?.total || 0),
-            unlocked: (mon.Beaten ? 1 : 0) + (types[title]?.unlocked || 0)
+            unlocked: (mon.Beaten ? 1 : 0) + (types[title]?.unlocked || 0),
+            id: showMon && loc ? loc.id : 999
           }
         }}, {})
     }}
