@@ -2,7 +2,7 @@ import { separateMajorArea, separateMinorArea, sortFunction } from 'helpers';
 import { useEffect, useRef, useState } from 'react'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
 import OrderBy from 'components/CommonComponents/OrderBy';
-import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
+import { IUpdateH2HStatus, defaultHeart2HeartState } from 'reduxState/interfaces/heart2Hearts';
 import { ISelectedState, IUpdateUnlocked } from 'reduxState/interfaces/reduxState';
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
@@ -82,13 +82,31 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
     return orderOptions[order] || orderOptions.default
   }
 
+  const updateH2H = (h2h: IHeart2HeartAvailability, viewed: string | boolean) => {
+    if (typeof viewed === 'boolean') {
+      props.updateHeart2HeartStatus({
+        ...h2h,
+        Viewed: viewed
+      }
+      ),
+      toUpdate.current = toUpdate.current
+        .filter((updateH2H) => updateH2H.id !== h2h.id)
+        .concat([{
+          ...h2h,
+          Viewed: viewed
+        }])
+    }}
+
   return (
     <CollapsibleComponent header={props.location || 'Heart 2 Hearts'}>
       {focused !== 0 ?
         <Heart2HeartDetails
           heart2Heart={props.heart2Hearts.find((h) => h.id === focused)}
           setFocus={selectH2H}
-          updateHeart2HeartStatus={props.updateHeart2HeartStatus}
+          updateH2h={updateH2H.bind(
+            this,
+            props.heart2Hearts.find((h) => h.id === focused) || defaultHeart2HeartState
+          )}
         />
         : <div />
       }
@@ -129,20 +147,7 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
                       hideAvailable={true}
                       available={h2h.Available}
                       unlocked={h2h.Viewed}
-                      onClick={(viewed) => {
-                        if (typeof viewed === 'boolean') {
-                          props.updateHeart2HeartStatus({
-                            ...h2h,
-                            Viewed: viewed
-                          }
-                          ),
-                          toUpdate.current = toUpdate.current
-                            .filter((updateH2H) => updateH2H.id !== h2h.id)
-                            .concat([{
-                              ...h2h,
-                              Viewed: viewed
-                            }])
-                        }}}
+                      onClick={(viewed) => updateH2H(h2h, viewed)}
                       size='small'
                     />
                   </div>

@@ -138,6 +138,7 @@ module.exports = function() {
       `SELECT
       h2h.id,
       h2h.Title,
+      h2h.Location as locId,
       loc.Location,
       ma.Name as maName,
       ma.Located as maLoc,
@@ -178,6 +179,10 @@ module.exports = function() {
           requirement: b.Name,
           reqId: b.id
         })))
+        .concat({
+          area: 'Location',
+          reqId: h.locId
+        })
 
       if (minChapter.length > 0 && minChapter[0].maxDriver !== null) {
         const storyPrerequisite = presList.find((p) => p.area === 'Story Progress')

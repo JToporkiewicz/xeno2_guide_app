@@ -13,7 +13,8 @@ interface IProps {
   list: {
     label: string,
     unlocked: number,
-    total: number
+    total: number,
+    available?: number
   }[],
   onClose:(input:any) => any,
   unlockButton?:boolean,
@@ -53,7 +54,8 @@ export const CharacterPageDetails = (props: IProps) =>
         <br />
         {props.list.map((list) =>
           <div key={list.label}>
-            <b>{list.label}</b>{list.unlocked} out of {list.total}
+            <b>{list.label}</b>{list.unlocked} out of {list.total}{
+              list.available !== undefined ? ` (${list.available} available)` : ''}
             <div className="greyBar">
               <div
                 className="obtained"

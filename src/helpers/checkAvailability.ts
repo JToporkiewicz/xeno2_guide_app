@@ -1,3 +1,4 @@
+import { separateMajorArea, separateMinorArea } from 'helpers';
 import {
   IFieldSkills,
   IFieldSkillsTotal,
@@ -295,12 +296,26 @@ const checkMMAchieved = (
   
 const checkMonAchieved = (
   preReqs: IRequirement[] | IRequirementAvailability[],
-  monsters: IMonsterAvailability[]
+  monsters: IMonsterAvailability[],
+  locations?: IMajorLocations[],
+  storyProgress?: IStoryProgress,
 ): IRequirementAvailability[] =>
   preReqs.map((pre) => {
     switch (pre.area) {
     case RequirementArea.Monster:
       const mon = monsters.find((m) => m.id === pre.reqId)
+      if (storyProgress && locations
+        && mon && (mon.Category === 'Minor' || mon.Category === 'Normal')) {
+        const area = separateMajorArea(mon.Area);
+        const innerArea = separateMinorArea(mon.Area);
+        return {
+          ...pre,
+          available: (locations.find((loc) =>
+            loc.Name === area)?.InnerMajorAreas
+            .find((inner) => inner.Name === innerArea)?.StoryProgress || 10
+          ) <= storyProgress.Chapter
+        }
+      }
       return {
         ...pre,
         available: mon?.Available || false
@@ -519,7 +534,7 @@ export const checkAllAvailability = (
   
         const locPres = checkLocationProgressAchieved(node.preReqs, storyProgress, locations);
         const storyPres = checkStoryProgressAchieved(locPres, storyProgress);
-        const monPres = checkMonAchieved(storyPres, monAvailability);
+        const monPres = checkMonAchieved(storyPres, monAvailability, locations, storyProgress);
         const mmPres = checkMMAchieved(monPres, mercMissionAvailable);
         const otherPres = checkOtherAchieved(mmPres);
   

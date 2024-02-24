@@ -2,13 +2,12 @@ import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/Opti
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { IHeart2HeartAvailability } from 'reduxState/interfaces/availabilityState'
 import { Heart2HeartOptions } from './Heart2HeartOptionsComponent';
-import { IUpdateH2HStatus } from 'reduxState/interfaces/heart2Hearts';
 import path from 'path';
 
 interface IOwnProps {
   heart2Heart: IHeart2HeartAvailability | undefined;
   setFocus: (id: number) => void;
-  updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
+  updateH2h:(viewed: string | boolean) => void;
 }
 
 export const Heart2HeartDetails = (props: IOwnProps) => {
@@ -33,10 +32,7 @@ export const Heart2HeartDetails = (props: IOwnProps) => {
             title='Viewed: '
             available={props.heart2Heart.Available}
             unlocked={props.heart2Heart.Viewed}
-            onClick={() => props.updateHeart2HeartStatus({
-              id: h2h.id,
-              Viewed: !h2h.Viewed
-            })}
+            onClick={(viewed) => props.updateH2h(viewed)}
           />
         </div>
         <div className='col-sm-4'>

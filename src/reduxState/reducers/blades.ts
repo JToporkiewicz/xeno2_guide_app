@@ -97,7 +97,6 @@ export const bladesReducer = createReducer<IBladeState[]>(
 
     bladeNodes.forEach((node) => {
       let nodeFound = false;
-      let highestNode = node.unlocked ? node.nodeId : node.nodeId - 1;
       bladeState.some((blade) => {
         if (nodeFound) {
           return true;
@@ -130,18 +129,10 @@ export const bladesReducer = createReducer<IBladeState[]>(
                 .concat([{
                   ...foundBranch,
                   nodes: foundBranch.nodes.map((n) => {
-                    if (n.nodeId < (foundNode?.nodeId || -1)) {
-                      return n;
-                    } else if (n.nodeId === foundNode?.nodeId) {
+                    if (n.nodeId === foundNode?.nodeId) {
                       return foundNode
                     } else {
-                      highestNode = highestNode + 1 === n.nodeId &&
-                        (n.preReqs?.filter((oldP) => !oldP.completed)?.length || 0) === 0
-                        ? n.nodeId : highestNode
-                      return {
-                        ...n,
-                        unlocked: highestNode === n.nodeId
-                      }
+                      return n;
                     }
                   }).sort((nodeA, nodeB) =>
                     Number(nodeA.nodeId) < Number(nodeB.nodeId) ? -1 : 1

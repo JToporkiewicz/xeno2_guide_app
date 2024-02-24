@@ -12,7 +12,7 @@ import { ClosedLinkedImagePanel }
 import UnavailableImagePanel
   from 'components/UnavailableDataComponents/Images/UnavailableImagePanel';
 import { FieldSkills } from './FieldSkills';
-import { getACCompletion } from 'helpers/completionPercentage';
+import { getACCompletion, getTrustNodesCompletion } from 'helpers/completionPercentage';
 import { Routes } from 'helpers/routesConst';
 import { IBladeAvailability } from 'reduxState/interfaces/availabilityState';
 
@@ -160,6 +160,13 @@ export const BladeListPageView = (props:IProps&IDispatchProps) => {
             list={[{
               label: 'Skills: ',
               ...getACCompletion(selectedBlade.affinityChart)
+            }, {
+              label: 'Affinity: ',
+              total: 5,
+              unlocked: selectedBlade.affinityChart[0].nodes.filter((n) => n.unlocked).length
+            }, {
+              label: 'Trust nodes: ',
+              ...getTrustNodesCompletion(selectedBlade.affinityChart)
             }]}
             onClose={setSelectedBlade.bind(this, defaultBladeAvailability)}
             unlockButton
