@@ -1,0 +1,122 @@
+.data-table {
+    width: auto;
+    margin: 0px 10px;
+}
+
+.table-header {
+    min-width: max-content;
+    color: var(--main-color);
+    margin: 0 !important;
+}
+
+.monster-table {
+    min-width: 670px;
+}
+
+.monster-drops-table {
+    max-width: 850px;
+    min-width: 775px;
+}
+
+.table-outline {
+    border: solid medium var(--secondary-color);
+    border-radius: 5px;
+    margin-top: 5px;
+    min-width: max-content;
+}
+
+.text-list-entry {
+    border-color: var(--secondary-color);
+    margin: 0px !important;
+    border-bottom: solid thin var(--secondary-color);
+    background-color: white;
+
+    &:last-of-type {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: aliceblue;
+    }
+}
+
+.selected-row {
+    background-color: aliceblue;
+}
+
+.text-list-status {
+    border-right-style: solid;
+    border-right-width: thin;
+    border-right-color: var(--secondary-color);
+}
+
+.text-list-link {
+    padding: 0px 15px;
+}
+
+.column-unrestricted {
+    padding: 2px;
+}
+
+.column-very-narrow {
+    width: 40px;
+    padding: 2px 0px;
+}
+
+.column-narrow {
+    width: 70px;
+    padding: 2px 10px;
+}
+
+.column-medium {
+    width: 15%;
+    min-width: 140px;
+    padding: 2px 10px;
+}
+
+.column-wide {
+    width: 25%;
+    min-width: 200px;
+    padding: 2px 10px;
+}
+
+.column-very-wide {
+    width: 30%;
+    min-width: 250px;
+}
+
+.order-title {
+    margin: 0px 10px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.order-title-available {
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.no-marker {
+    ul {
+        list-style-type: none;
+        li {
+            border-bottom-style: solid;
+            border-bottom-color:var(--secondary-color);
+            border-bottom-width: thin;
+            margin-left: -35px;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .col-sm-6 {
+                height: fit-content;
+                margin: auto 0;
+                  margin-top: auto;
+                  margin-right: 0px;
+                  margin-bottom: auto;
+                  margin-left: 0px;
+              }
+            }
+        }
+    }

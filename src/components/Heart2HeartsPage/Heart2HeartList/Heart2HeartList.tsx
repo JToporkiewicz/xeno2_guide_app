@@ -7,10 +7,9 @@ import { ISelectedState, IUpdateUnlocked } from 'reduxState/interfaces/reduxStat
 import path from 'path';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import { IStoryProgress } from 'interfaces';
-import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
-import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { IHeart2HeartAvailability } from 'reduxState/interfaces/availabilityState';
 import { Heart2HeartDetails } from '../Heart2HeartDetails/Heart2HeartDetails';
+import Table from 'components/CommonComponents/Table';
 
 interface IDispatchProps {
   updateHeart2HeartStatus:(payload:IUpdateH2HStatus) => void;
@@ -121,76 +120,66 @@ export const Heart2HeartListView = (props:IProps & IOwnProps & IDispatchProps) =
             changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}  
           />
           {props.characterName && `Heart 2 hearts in which ${props.characterName} participates:`}
-          <div className='data-table'>
-            <div className="row table-header">
-              <b className="column-narrow order-title">Viewed</b>
-              <b className="column-unrestricted order-title-available">Available</b>
-              <b className="column-wide order-title">Location</b>
-              <b className="column-wide order-title">Title</b>
-            </div>
-            <div className='table-outline'>
-              {props.heart2Hearts.sort((h2hA, h2hB) => {
-                const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
-                const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
-                return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
-              }).map((h2h:IHeart2HeartAvailability) => 
+          <Table
+            columns={['Viewed', 'Available', 'Location', 'Title']}
+            headerStyles={{
+              'Viewed': 'column-narrow',
+              'Available': 'column-unrestricted order-title-available',
+              'Location': 'column-wide',
+              'Title': 'column-wide'
+            }}
+            rows={props.heart2Hearts.sort((h2hA, h2hB) => {
+              const h2hAValue = h2hA[getOrderTypeColumn(orderType)]
+              const h2hBValue = h2hB[getOrderTypeColumn(orderType)]
+              return sortFunction(h2hAValue, h2hBValue, sortOrderAsc)
+            }).map((h2h: IHeart2HeartAvailability) => ({
+              'id': h2h.id,
+              'Viewed':
                 <div
-                  className={`row text-list-entry ${
-                    h2h.Available ? 'hoverPointer' : ''} ${
-                    h2h.id === focused ? 'selected-row' : ''}`}
-                  key={h2h.id}
+                  className="column-narrow text-list-status"
                 >
+                  <OptionsCheckbox
+                    hideAvailable={true}
+                    available={h2h.Available}
+                    unlocked={h2h.Viewed}
+                    onClick={(viewed) => updateH2H(h2h, viewed)}
+                    size='small'
+                  />
+                </div>,
+              'Available':
+                <div
+                  className="column-narrow text-list-status"
+                >
+                  <img 
+                    src={path.resolve(`images/helper/${h2h.Available ?
+                      'GreenCheckmark' : 'RedX'}.svg`)}
+                    alt={h2h.Title}
+                    className="availability-small-image"
+                  />
+                </div>,
+              'Location':
+                <div
+                  className="column-wide text-list-status"
+                >
+                  {!props.storyProgress.OnlyShowAvailable || h2h.Available ?
+                    props.location === undefined ?
+                      separateMajorArea(h2h.Area) : 
+                      separateMinorArea(h2h.Area) 
+                    : '????'}
+                </div>,
+              'Title':
+                !props.storyProgress.OnlyShowAvailable || h2h.Available ? 
                   <div
-                    className="column-narrow text-list-status"
+                    className="text-list-link hoverPointer"
+                    onClick={() => selectH2H(h2h.id)}
                   >
-                    <OptionsCheckbox
-                      hideAvailable={true}
-                      available={h2h.Available}
-                      unlocked={h2h.Viewed}
-                      onClick={(viewed) => updateH2H(h2h, viewed)}
-                      size='small'
-                    />
+                    {h2h.Title}
                   </div>
-                  <div
-                    className="column-narrow text-list-status"
-                  >
-                    <img 
-                      src={path.resolve(`images/helper/${h2h.Available ?
-                        'GreenCheckmark' : 'RedX'}.svg`)}
-                      alt={h2h.Title}
-                      className="availability-small-image"
-                    />
-                  </div>
-                  <div
-                    className="column-wide text-list-status"
-                  >
-                    {!props.storyProgress.OnlyShowAvailable || h2h.Available ?
-                      props.location === undefined ?
-                        separateMajorArea(h2h.Area) : 
-                        separateMinorArea(h2h.Area) 
-                      : '????'}
-                  </div>
-                  {
-                    !props.storyProgress.OnlyShowAvailable || h2h.Available ? 
-                      <div
-                        className="text-list-link"
-                        onClick={() => selectH2H(h2h.id)}
-                      >
-                        {h2h.Title}
-                      </div>
-                      : <div className='text-list-link'><i>Heart 2 Heart {h2h?.id}</i></div>
-                  }
-                  {h2h.PreReqs &&
-                    <HoverContainer>
-                      <RequirementList
-                        requirements={h2h.PreReqs}
-                      />
-                    </HoverContainer>
-                  }
-                </div>
-              )}
-            </div>
-          </div>
+                  : <div className='text-list-link'><i>Heart 2 Heart {h2h?.id}</i></div>,
+              'preReqs': h2h.PreReqs,
+              focused: focused === h2h.id
+            }))}
+          />
         </>
       }
     </CollapsibleComponent>

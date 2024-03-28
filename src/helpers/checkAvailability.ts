@@ -1,4 +1,4 @@
-import { separateMajorArea, separateMinorArea } from 'helpers';
+import { separateMajorArea } from 'helpers';
 import {
   IFieldSkills,
   IFieldSkillsTotal,
@@ -35,7 +35,7 @@ const checkStoryProgressAchieved = (
     case RequirementArea['Story Progress']:
       return {
         ...pre,
-        available: true,
+        available: pre.requirementCount ? pre.requirementCount <= storyProgress.Chapter : false,
         completed: pre.requirementCount ? pre.requirementCount <= storyProgress.Chapter : false,
         progress: storyProgress.Chapter
       }
@@ -307,12 +307,10 @@ const checkMonAchieved = (
       if (storyProgress && locations
         && mon && (mon.Category === 'Minor' || mon.Category === 'Normal')) {
         const area = separateMajorArea(mon.Area);
-        const innerArea = separateMinorArea(mon.Area);
         return {
           ...pre,
           available: (locations.find((loc) =>
-            loc.Name === area)?.InnerMajorAreas
-            .find((inner) => inner.Name === innerArea)?.StoryProgress || 10
+            loc.Name === area)?.StoryProgress || 10
           ) <= storyProgress.Chapter
         }
       }
@@ -412,8 +410,7 @@ const totalFieldSkill = (
         const unlockedNodes = branch.nodes.filter((n) => n.unlocked)
           .sort((skillA, skillB) => Number(skillA.nodeId) < Number(skillB.nodeId) ? -1 : 1)
         const currentTotal = rareBladeSkills[branch.branchName]
-        rareBladeSkills[branch.branchName] = fieldSkill.CommonBladeContribution
-            + (currentTotal || 0)
+        rareBladeSkills[branch.branchName] = (currentTotal || 0)
             + (unlockedNodes.length > 0 ? unlockedNodes[unlockedNodes.length - 1].skillLevel : 0)
       }
     })
@@ -421,7 +418,7 @@ const totalFieldSkill = (
   
   return fieldSkills.map((f) => ({
     ...f,
-    TotalLevel: rareBladeSkills[f.Name] || f.CommonBladeContribution
+    TotalLevel: (rareBladeSkills[f.Name] || 0) + f.CommonBladeContribution
   }))
 }
   

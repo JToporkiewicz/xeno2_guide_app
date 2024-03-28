@@ -6,6 +6,7 @@ import OrderBy from 'components/CommonComponents/OrderBy'
 import { separateMajorArea, separateMinorArea, sortFunction } from 'helpers'
 import path from 'path'
 import { IMajorLocations, ISelectedState } from 'reduxState/interfaces/reduxState'
+import Table from 'components/CommonComponents/Table'
 
 interface IOwnProps {
   items: IItem[],
@@ -80,57 +81,47 @@ export const ItemListView = (props: IOwnProps & IProps) => {
           sortOrderAsc={sortOrderAsc}
           changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
         />
-        <div className='data-table'>
-          <div className='row table-header'>
-            <b className='column-wide order-title'>Name</b>
-            <b className="column-unrestricted order-title-available">Type</b>
-            <b className='column-wide order-title'>Location</b>
-            <b className='column-wide order-title'>Area</b>
-          </div>
-        </div>
-        <div className='table-outline'>
-          {props.items.sort((itemA, itemB) => {
+        <Table
+          columns={['Name', 'Type', 'Location', 'Area']}
+          rows={props.items.sort((itemA, itemB) => {
             const itemAValue = itemA[getOrderTypeColumn(orderType)]
             const itemBValue = itemB[getOrderTypeColumn(orderType)]
             return sortFunction(itemAValue, itemBValue, sortOrderAsc)
           }).map((item:IItem) => {
             const itemAvailable = findItemAvailability(item)
-            return <div
-              className={`row text-list-entry ${
-                itemAvailable ? 'hoverPointer' : ''} ${
-                item.id === focused ? 'selected-row' : ''}`}
-              key={item.id}
-              onClick={() => itemAvailable ? selectItem(item.id) : null}
-            >
-              <div
-                className="column-wide text-list-status"
-              >
-                {itemAvailable ? item.Name : <i>Item {item.id}</i>}
-              </div>
-              <div
-                className="column-narrow text-list-status"
-              >
-                <img
-                  src={path.resolve(`images/itemTypes/${item.ItemType.replaceAll(' ', '')}.webp`)}
-                  alt={item.Name}
-                  className="availability-small-image"
-                />
-              </div>
-              <div
-                className="column-wide text-list-status"
-              >
-                {itemAvailable ? item.Location : '????'}
-              </div>
-              <div
-                className="column-wide"
-              >
-                {itemAvailable ? separateMajorArea(item.Area) : '????'}
-              </div>
-            </div>
-          }
-            
-          )}
-        </div>
+            return {
+              id: item.id,
+              'Name':
+                <div className="column-wide text-list-status">
+                  {itemAvailable ? item.Name : <i>Item {item.id}</i>}
+                </div>,
+              'Type':
+                <div className="column-narrow text-list-status">
+                  <img
+                    src={path.resolve(`images/itemTypes/${item.ItemType.replaceAll(' ', '')}.webp`)}
+                    alt={item.Name}
+                    className="availability-small-image"
+                  />
+                </div>,
+              'Location':
+                <div className="column-wide text-list-status">
+                  {itemAvailable ? item.Location : '????'}
+                </div>,
+              'Area':
+                <div className="column-wide">
+                  {itemAvailable ? separateMajorArea(item.Area) : '????'}
+                </div>,
+              available: itemAvailable
+            }})}
+          headerStyles={{
+            'Name': 'column-wide order-title',
+            'Type': 'column-unrestricted order-title-available',
+            'Location': 'column-wide order-title',
+            'Area': 'column-wide order-title'
+          }}
+          rowClickable
+          onClick={selectItem}
+        />
       </>
     }
   </CollapsibleComponent>

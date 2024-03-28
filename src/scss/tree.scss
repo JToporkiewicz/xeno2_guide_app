@@ -3,7 +3,8 @@
 .tree-wrapper {
   position: relative;
   height: 28em;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 .tree-area {

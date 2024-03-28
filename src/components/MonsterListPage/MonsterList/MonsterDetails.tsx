@@ -1,4 +1,5 @@
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
+import Table from 'components/CommonComponents/Table';
 import { IMonsterDrops } from 'interfaces';
 import path from 'path';
 import { IMonsterAvailability } from 'reduxState/interfaces/availabilityState'
@@ -87,32 +88,23 @@ export const MonsterDetails = (props: IOwnProps) => {
         <>
           <hr className='item-details-line'/>
           <b>Drops:</b>
-          <div className='data-table'>
-            <div className='row monster-drops-table'>
-              <b className='column-wide order-title'>Name</b>
-              <b className='column-medium order-title'>Type</b>
-              <b className='column-medium order-title'>Drop rate</b>
-              <b className='column-wide order-title'>Rarity</b>
-            </div>
-            <div className='table-outline monster-drops-table'>
-              {monster.Drops.map((drop: IMonsterDrops, id: number) =>
-                <div className="row text-list-entry" key={id}>
-                  <div className='column-wide text-list-status'>
-                    {drop.name}
-                  </div>
-                  <div className='column-medium text-list-status'>
-                    {drop.type}
-                  </div>
-                  <div className='column-medium text-list-status'>
-                    {drop.dropRate}
-                  </div>
-                  <div className='column-wide'>
-                    {drop.rarity}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
+          <Table
+            columns={['Name', 'Type', 'Drop rate', 'Rarity']}
+            headerStyles={{
+              'Name': 'column-wide',
+              'Type': 'column-medium order-title',
+              'Drop rate': 'column-medium order-title',
+              'Rarity': 'column-wide order-title'
+            }}
+            tableStyle='monster-drops-table'
+            rows={monster.Drops.map((drop: IMonsterDrops, id: number) => ({
+              id: 'drop ' + id,
+              'Name': <div className='column-wide text-list-status'>{drop.name}</div>,
+              'Type': <div className='column-medium text-list-status'>{drop.type}</div>,
+              'Drop rate': <div className='column-medium text-list-status'>{drop.dropRate}</div>,
+              'Rarity': <div className='column-wide'>{drop.rarity}</div>
+            }))}
+          />
         </>
         : <div />
       }

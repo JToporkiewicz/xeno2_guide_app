@@ -6,41 +6,16 @@ const updateFieldSkill = {
     BEGIN
 
         DECLARE skillName TEXT;
-        DECLARE skillLevel3Count INT;
-        DECLARE skillLevel2Count INT;
-        DECLARE skillLevel1Count INT;
         DECLARE skillLevelTotal INT;
 
         SELECT acn.Name INTO skillName
         FROM xenoblade2_guide.affinityChartNodes as acn
         WHERE acn.id = skillId;
 
-        SELECT COALESCE(COUNT(*), 0) INTO skillLevel3Count
+        SELECT COALESCE(COUNT(*), 0) INTO skillLevelTotal
         FROM xenoblade2_guide.affinityChartNodes as acn
         WHERE acn.Name = skillName
-        AND acn.SkillLevel = 3
         AND acn.Unlocked = 1;
-
-        SELECT COALESCE(COUNT(*), 0) INTO skillLevel2Count
-        FROM xenoblade2_guide.affinityChartNodes as acn
-        WHERE acn.Name = skillName
-        AND acn.SkillLevel = 2
-        AND acn.Unlocked = 1;
-
-        SELECT COALESCE(COUNT(*), 0) INTO skillLevel1Count
-        FROM xenoblade2_guide.affinityChartNodes as acn
-        WHERE acn.Name = skillName
-        AND acn.SkillLevel = 1
-        AND acn.Unlocked = 1;
-
-        SET skillLevelTotal = (
-            skillLevel3Count * 3
-            + (skillLevel2Count - skillLevel3Count) * 2
-            + (skillLevel1Count - skillLevel2Count)
-        ) + (
-            SELECT fs.CommonBladeContribution
-            FROM xenoblade2_guide.fieldSkills as fs
-            WHERE fs.Name = skillName);
 
         UPDATE xenoblade2_guide.fieldSkills as fs
         SET fs.TotalLevel = skillLevelTotal

@@ -1,8 +1,6 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
-import { HoverContainer } from 'components/CommonComponents/Containers/HoverContainer';
 import { OptionsCheckbox } from 'components/CommonComponents/FormComponents/OptionsCheckbox';
 import OrderBy from 'components/CommonComponents/OrderBy';
-import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { sortFunction } from 'helpers';
 import { IStoryProgress } from 'interfaces'
 import { RequirementArea } from 'interfaces/common';
@@ -12,6 +10,7 @@ import { IMercMissionAvailability } from 'reduxState/interfaces/availabilityStat
 import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
 import { MercMissionDetails } from './MercMissionDetails';
 import { ISelectedState } from 'reduxState/interfaces/reduxState';
+import Table from 'components/CommonComponents/Table';
 
 interface IDispatchProps {
   setStoryProgress:(payload:IStoryProgress) => void;
@@ -121,81 +120,72 @@ export const MercMissionListView = (props: IOwnProps & IDispatchProps) => {
           sortOrderAsc={sortOrderAsc}
           changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
         />
-        <div className='data-table'>
-          <div className='row'>
-            <b className='column-narrow order-title'>Done</b>
-            <b className='column-unrestricted order-title-available'>Available</b>
-            <b className="column-unrestricted order-title-available">Missable</b>
-            <b className="column-medium order-title">Type</b>
-            <b className="column-unrestricted order-title">Name</b>
-          </div>
-          <div className='table-outline'>
-            {props.mercMissions.sort((mmA, mmB) => {
-              const mmAValue = mmA[getOrderTypeColumn(orderType)]
-              const mmBValue = mmB[getOrderTypeColumn(orderType)]
-              return sortFunction(mmAValue, mmBValue, sortOrderAsc)
-            }).map((mm:IMercMissionAvailability) =>
-              <div
-                className={`row text-list-entry ${
-                  mm.Available ? 'hoverPointer' : ''} ${
-                  mm.id === focused ? 'selected-row' : ''}`}
-                key={mm.id}
-              >
-                <div className='column-narrow text-list-status'>
-                  <OptionsCheckbox
-                    hideAvailable={true}
-                    available={mm.Available}
-                    unlocked={mm.Completed}
-                    onClick={(completed) => {
-                      if (typeof completed === 'boolean') {
-                        props.updateMMStatus(mm.id, completed)
-                      }
-                    }}
-                    size='small'
-                  />
-                </div>
-                <div className='column-narrow text-list-status'>
-                  <img
-                    src={path.resolve(`images/helper/${mm.Available ?
-                      'GreenCheckmark' : 'RedX'}.svg`)}
-                    alt={mm.Name}
-                    className="availability-small-image"
-                  />
-                </div>
+        <Table
+          columns={['Done', 'Available', 'Missable', 'Type', 'Name']}
+          headerStyles={{
+            'Done': 'column-very-narrow order-title',
+            'Available': 'column-unrestricted order-title-available',
+            'Missable': 'column-unrestricted order-title-available',
+            'Type': 'column-medium order-title',
+            'Name': 'column-unrestricted order-title'
+          }}
+          rows={props.mercMissions.sort((mmA, mmB) => {
+            const mmAValue = mmA[getOrderTypeColumn(orderType)]
+            const mmBValue = mmB[getOrderTypeColumn(orderType)]
+            return sortFunction(mmAValue, mmBValue, sortOrderAsc)
+          }).map((mm:IMercMissionAvailability) => ({
+            id: mm.id,
+            'Done':
+              <div className='column-narrow text-list-status'>
+                <OptionsCheckbox
+                  hideAvailable={true}
+                  available={mm.Available}
+                  unlocked={mm.Completed}
+                  onClick={(completed) => {
+                    if (typeof completed === 'boolean') {
+                      props.updateMMStatus(mm.id, completed)
+                    }
+                  }}
+                  size='small'
+                />
+              </div>,
+            'Available':
+              <div className='column-narrow text-list-status'>
+                <img
+                  src={path.resolve(`images/helper/${mm.Available ?
+                    'GreenCheckmark' : 'RedX'}.svg`)}
+                  alt={mm.Name}
+                  className="availability-small-image"
+                />
+              </div>,
+            'Missable':
+              <div className="column-narrow text-list-status">
+                <img
+                  src={path.resolve(`images/helper/${mm.Missable ?
+                    'GreenCheckmark' : 'RedX'}.svg`)}
+                  alt={mm.Name+'Missability'}
+                  className="availability-small-image"
+                />
+              </div>,
+            'Type':
+              <div className="column-medium text-list-status">
+                {mm.Type}
+              </div>,
+            'Name':
+              !props.storyProgress.current.OnlyShowAvailable || mm.Available ?
                 <div
-                  className="column-narrow text-list-status"
+                  className="text-list-link hoverPointer"
+                  onClick={() => selectMercMission(mm.id)}
                 >
-                  <img
-                    src={path.resolve(`images/helper/${mm.Missable ?
-                      'GreenCheckmark' : 'RedX'}.svg`)}
-                    alt={mm.Name+'Missability'}
-                    className="availability-small-image"
-                  />
+                  {mm.Name}
                 </div>
-                <div
-                  className="column-medium text-list-status"
-                >
-                  {mm.Type}
-                </div>
-                {!props.storyProgress.current.OnlyShowAvailable || mm.Available ?
-                  <div className="text-list-link" onClick={() => selectMercMission(mm.id)}>
-                    {mm.Name}
-                  </div>
-                  : <div className='text-list-link'><i>Merc Mission {mm.id}</i></div>
-                }
-                {
-                  mm.Prerequisites &&
-                    <HoverContainer>
-                      <RequirementList
-                        requirements={mm.Prerequisites}
-                        updateReqProgress={updateRequirementProgress}
-                      />
-                    </HoverContainer>
-                }
-              </div>
-            )}
-          </div>
-        </div>
+                : <div className='text-list-link'><i>Merc Mission {mm.id}</i></div>,
+            preReqs: mm.Prerequisites,
+            updatePreReq: updateRequirementProgress,
+            available: mm.Available,
+            focused: mm.id === focused
+          }))}
+        />
       </>
     }
   </CollapsibleComponent>

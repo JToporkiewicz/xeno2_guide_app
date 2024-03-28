@@ -6,6 +6,7 @@ import CollapsibleComponent from 'components/CommonComponents/Containers/Collaps
 import IncrementDecrementNumber
   from 'components/CommonComponents/FormComponents/IncrementDecrementNumber';
 import OrderBy from 'components/CommonComponents/OrderBy';
+import Table from 'components/CommonComponents/Table';
 
 interface IDispatchProps {
   fetchFieldSkills: () => void;
@@ -62,53 +63,41 @@ export const FieldSkillsView = (props:IProps&IDispatchProps) => {
     <CollapsibleComponent header='Field Skill Levels'>
       <>
         <OrderBy
-          id='field'
           orderOptions={Object.keys(orderOptions)}
           chosenOrder={orderType}
           changeOrder={setOrderType}
           sortOrderAsc={isOrderAsc}
           changeSortOrderAsc={setIsOrderAsc.bind(this, !isOrderAsc)}  
         />
-        <div className='data-table'>
-          <div className='row field-title'>
-            <div className='column-wide'>
-              <b>Name</b>
-            </div>
-            <div className='column-medium'>
-              <b>Type</b>
-            </div>
-            <div className='column-very-wide'>
-              <b>Common Blade Contribution</b>
-            </div>
-            <div className='column-wide'>
-              <b>Total Level</b>
-            </div>
-          </div>
-          <div className='field-skills table-outline'>
-            {props.fieldSkills
-              .sort((skillA, skillB) => {
-                const skillAValue = skillA[getOrderTypeColumn(orderType)]
-                const skillBValue = skillB[getOrderTypeColumn(orderType)]
-                return sortFunction(skillAValue, skillBValue, isOrderAsc)
-              })
-              .map((skills) =>
-                <div className='row text-list-entry' key={skills.Name}>
-                  <div className='column-wide text-list-status'>{skills.Name}</div>
-                  <div className='column-medium text-list-status'>{skills.Type}</div>
-                  <div className='column-very-wide text-list-status'>
-                    <div className='centered'>
-                      <IncrementDecrementNumber
-                        value={skills.CommonBladeContribution}
-                        minimum={0}
-                        updateValue={updateSkillLevelUnlocked.bind(this, skills.id)}
-                      />
-                    </div>
-                  </div>
-                  <div className='column-wide'>{skills.TotalLevel}</div>
+        <Table
+          columns={['Name', 'Type', 'Common Blade Contribution', 'Total Level']}
+          rows={props.fieldSkills.sort((skillA, skillB) => {
+            const skillAValue = skillA[getOrderTypeColumn(orderType)]
+            const skillBValue = skillB[getOrderTypeColumn(orderType)]
+            return sortFunction(skillAValue, skillBValue, isOrderAsc)
+          }).map((skills) => ({
+            'id': skills.id,
+            'Name': <div className='column-wide text-list-status'>{skills.Name}</div>,
+            'Type': <div className='column-medium text-list-status'>{skills.Type}</div>,
+            'Common Blade Contribution':
+              <div className='column-very-wide text-list-status'>
+                <div className='centered'>
+                  <IncrementDecrementNumber
+                    value={skills.CommonBladeContribution}
+                    minimum={0}
+                    updateValue={updateSkillLevelUnlocked.bind(this, skills.id)}
+                  />
                 </div>
-              )}
-          </div>
-        </div>
+              </div>,
+            'Total Level': <div className='column-wide'>{skills.TotalLevel}</div>
+          }))}
+          headerStyles={{
+            'Name': 'column-wide',
+            'Type': 'column-medium',
+            'Common Blade Contribution': 'column-very-wide',
+            'Total Level': 'column-wide'
+          }}
+        />
       </>
     </CollapsibleComponent>
   )

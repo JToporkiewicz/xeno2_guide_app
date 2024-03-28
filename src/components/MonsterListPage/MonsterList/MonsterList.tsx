@@ -9,6 +9,7 @@ import './MonsterList.scss';
 import { IMonsterAvailability } from 'reduxState/interfaces/availabilityState';
 import { MonsterDetails } from './MonsterDetails';
 import { ISelectedState } from 'reduxState/interfaces/reduxState';
+import Table from 'components/CommonComponents/Table';
 
 interface IOwnProps {
     monsterCategory: string;
@@ -77,87 +78,77 @@ export const MonsterListView = (props: IOwnProps) => {
           sortOrderAsc={sortOrderAsc}
           changeSortOrderAsc={setSortOrderAsc.bind(this, !sortOrderAsc)}
         />
-        <div className='data-table'>
-          <div className='row table-header'>
-            {props.monsterCategory === 'Unique' ?
-              <b className='column-narrow order-title'>Beaten</b>
-              : <b className='available-column column-unrestricted order-title-available'>
-                Available
-              </b>
-            }
-            <b className='column-very-narrow order-title-available'>DLC?</b>
-            <b className="column-medium order-title-available">Type</b>
-            <b className="level-column column-narrow order-title-available">Level</b>
-            <b className="column-medium order-title">Location</b>
-            <b className="column-unrestricted order-title">Name</b>
-          </div>
-          <div className='table-outline monster-table'>
-            {props.monsters.sort((monA, monB) => {
-              const monAValue = monA[getOrderTypeColumn(orderType)]
-              const monBValue = monB[getOrderTypeColumn(orderType)]
-              return sortFunction(monAValue, monBValue, sortOrderAsc)
-            }).map((mon:IMonsterAvailability) =>
-              <div
-                className={`row text-list-entry ${
-                  mon.Available ? ' hoverPointer' : ''} ${
-                  mon.id === focus ? ' selected-row' : ''}`}
-                key={mon.id}
-              >
-                {props.monsterCategory === 'Unique' ?
-                  <div className='column-narrow text-list-status'>
-                    <OptionsCheckbox
-                      hideAvailable={true}
-                      available={mon.Available}
-                      unlocked={mon.Beaten}
-                      onClick={(completed) => {
-                        if (typeof completed === 'boolean') {
-                          props.updateMonStatus(mon.id, completed)
-                        }
-                      }}
-                      size='small'
-                    />
-                  </div>
-                  : <div className='column-narrow available-column text-list-status'>
-                    <img
-                      src={path.resolve(`images/helper/${mon.Available ?
-                        'GreenCheckmark' : 'RedX'}.svg`)}
-                      alt={mon.Name}
-                      className="availability-small-image"
-                    />
-                  </div>
-                }
-                <div className='column-very-narrow text-list-status'>
-                  <img
-                    src={path.resolve(`images/helper/${mon.DLCRequired ?
-                      'GreenCheckmark' : 'RedX'}.svg`)}
-                    alt={mon.Name}
-                    className="availability-small-image"
-                  />
-                </div>
-                <div
-                  className="column-medium text-list-status"
-                >
-                  {mon.Type}
-                </div>
-                <div className='level-column column-narrow text-list-status'>
-                  {mon.LowestLevel}{mon.HighestLevel ? ` - ${mon.HighestLevel}` : ''}
-                </div>
-                <div
-                  className="column-medium text-list-status"
-                >
-                  {!props.storyProgress.OnlyShowAvailable || mon.Available ?
-                    separateMajorArea(mon.Area) : '????'}
-                </div>
+        <Table
+          columns={[
+            props.monsterCategory === 'Unique' ? 'Beaten' : 'Available',
+            'DLC?', 'Type', 'Level', 'Location', 'Name'
+          ]}
+          headerStyles={{
+            'Beaten': 'column-narrow',
+            'Available': 'column-unrestricted order-title-available',
+            'DLC?': 'column-very-narrow order-title-available',
+            'Type': 'column-medium order-title-available',
+            'Level': 'level-column column-narrow order-title-available',
+            'Location': 'column-medium order-title',
+            'Name': 'column-unrestricted order-title'
+          }}
+          rows={props.monsters.sort((monA, monB) => {
+            const monAValue = monA[getOrderTypeColumn(orderType)]
+            const monBValue = monB[getOrderTypeColumn(orderType)]
+            return sortFunction(monAValue, monBValue, sortOrderAsc)
+          }).map((mon:IMonsterAvailability) => ({
+            id: mon.id,
+            'Beaten':
+              <div className='column-narrow text-list-status'>
+                <OptionsCheckbox
+                  hideAvailable={true}
+                  available={mon.Available}
+                  unlocked={mon.Beaten}
+                  onClick={(completed) => {
+                    if (typeof completed === 'boolean') {
+                      props.updateMonStatus(mon.id, completed)
+                    }
+                  }}
+                  size='small'
+                />
+              </div>,
+            'Available':
+              <div className='column-narrow available-column text-list-status'>
+                <img
+                  src={path.resolve(`images/helper/${mon.Available ?
+                    'GreenCheckmark' : 'RedX'}.svg`)}
+                  alt={mon.Name}
+                  className="availability-small-image"
+                />
+              </div>,
+            'DLC?':
+              <div className='column-very-narrow text-list-status'>
+                <img
+                  src={path.resolve(`images/helper/${mon.DLCRequired ?
+                    'GreenCheckmark' : 'RedX'}.svg`)}
+                  alt={mon.Name}
+                  className="availability-small-image"
+                />
+              </div>,
+            'Type': <div className="column-medium text-list-status">{mon.Type}</div>,
+            'Level':
+              <div className='level-column column-narrow text-list-status'>
+                {mon.LowestLevel}{mon.HighestLevel ? ` - ${mon.HighestLevel}` : ''}
+              </div>,
+            'Location':
+              <div className="column-medium text-list-status">
                 {!props.storyProgress.OnlyShowAvailable || mon.Available ?
-                  <div className="text-list-link" onClick={() => selectMonster(mon.id)}>
-                    {mon.Name}
-                  </div>
-                  : <div className='text-list-link'><i>Monster {mon.id}</i></div>
-                }
+                  separateMajorArea(mon.Area) : '????'}
+              </div>,
+            'Name': !props.storyProgress.OnlyShowAvailable || mon.Available ?
+              <div className="text-list-link hoverPointer" onClick={() => selectMonster(mon.id)}>
+                {mon.Name}
               </div>
-            )}
-          </div>
-        </div>
+              : <div className='text-list-link'><i>Monster {mon.id}</i></div>,
+            available: mon.Available,
+            focused: focus === mon.id
+          }))}
+        />
       </>}
   </CollapsibleComponent>
 }
