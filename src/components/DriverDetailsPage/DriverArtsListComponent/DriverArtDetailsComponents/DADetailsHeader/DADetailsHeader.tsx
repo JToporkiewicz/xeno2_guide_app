@@ -16,6 +16,7 @@ interface IDispatchProps {
 
 interface IOwnProps {
   weapon:string,
+  remainingTotal:number,
   clearArt:() => void
   blades: IBladeAvailability[] | undefined;
 }
@@ -84,6 +85,10 @@ export const DADetailsHeaderView = (props:IProps & IOwnProps & IDispatchProps) =
         onClick={() => props.clearArt()}
       />
       <h3><b>{props.weapon}</b></h3>
+      <div>
+        <b>Remaining needed SP: </b>
+        {props.remainingTotal}
+      </div>
       <div>
         <h4>Blades</h4>
         {bladesList}

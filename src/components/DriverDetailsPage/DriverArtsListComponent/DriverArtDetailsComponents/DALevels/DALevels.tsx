@@ -74,7 +74,8 @@ export const DALevelsView = (props:IOwnProps) => {
                     : <div/>}
                   <b>Level {key < 5 ? key+1 : '5 Max Affinity'}</b><br/>
                   {`Dmg: ${level.damage}`}<br/>
-                  {level.effectPotency !== '' ? <>{`Effect: ${level.effectPotency}`}<br/></> : ''}
+                  {level.effectPotency !== '' && level.effectPotency !== null
+                    ? <>{`Effect: ${level.effectPotency}`}<br/></> : ''}
                   {`Recharge: ${level.recharge}`}
                 </div>
                 
