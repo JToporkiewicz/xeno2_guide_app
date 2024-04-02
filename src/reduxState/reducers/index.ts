@@ -10,6 +10,7 @@ import { mercMissionsReducer } from './mercMissions';
 import { monstersReducer } from './monsters';
 import { questsReducer } from './quests';
 import { reducer as itemReducer } from './items';
+import { challengeBattlesReducer } from './challengeBattles';
 
 export const reducers:Reducer<IXenobladeState> = combineReducers<IXenobladeState>({
   core: coreReducer,
@@ -21,5 +22,6 @@ export const reducers:Reducer<IXenobladeState> = combineReducers<IXenobladeState
   quests: questsReducer,
   mercMissions: mercMissionsReducer,
   monsters: monstersReducer,
-  items: itemReducer
+  items: itemReducer,
+  challengeBattles: challengeBattlesReducer
 });

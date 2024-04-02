@@ -1,39 +1,39 @@
-import { createSelector } from 'reselect';
+import { checkAllAvailability } from 'helpers/checkAvailability';
 import {
-  getBlades,
+  getQuests,
   getStoryProgress,
+  getBlades,
   getLocations,
   getMercMissions,
   getMonsters,
-  getQuests,
   getFieldSkills,
   getHeart2Heart,
   getChallenges
 } from 'reduxState/selectors';
-import { checkAllAvailability } from 'helpers/checkAvailability';
+import { createSelector } from 'reselect';
 
 export default createSelector(
-  getBlades,
+  getQuests,
   getStoryProgress,
+  getBlades,
   getLocations,
   getMonsters,
   getFieldSkills,
   getMercMissions,
   getHeart2Heart,
-  getQuests,
   getChallenges,
   (
-    blades,
+    quests,
     storyProgress,
+    blades,
     locations,
     monsters,
     fieldSkills,
     mercMissions,
     heart2Hearts,
-    quests,
     challenges
   ) => ({
-    fieldSkills: checkAllAvailability(
+    challengeBattles: checkAllAvailability(
       storyProgress,
       locations,
       monsters,
@@ -43,6 +43,7 @@ export default createSelector(
       quests,
       mercMissions,
       challenges
-    ).fieldSkills,
+    ).challengeBattles,
+    storyProgress
   })
 )

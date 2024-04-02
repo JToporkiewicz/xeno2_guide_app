@@ -69,7 +69,8 @@ export const NavigationView = (props:IOwnProps & IDispatchProps) => {
     { link: Routes.HEART_2_HEART_LIST, title: 'Heart 2 Hearts', area: 'heart2HeartList' },
     { link: Routes.MERC_MISSION_LIST, title: 'Merc Missions', area: 'mercMissionList' },
     { link: Routes.MONSTER_LIST, title: 'Monsters', area: 'monsterList' },
-    { link: Routes.ITEMS, title: 'Pouch', area: 'items' }
+    { link: Routes.ITEMS, title: 'Pouch', area: 'items' },
+    { link: Routes.CHALLENGE_BATTLES, title: 'Challenge Battles', area: 'challengeBattles' }
   ]
   return (
     <div className={props.openNavigation ? 'open-navigation' : 'closed-navigation'}>

@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import { defaultBladeAvailability } from 'reduxState/interfaces/blades';
 import {
   getBlades,
+  getChallenges,
   getFieldSkills,
   getHeart2Heart,
   getItems,
@@ -28,6 +29,7 @@ export default createSelector(
   getMonsters,
   getFieldSkills,
   getMercMissions,
+  getChallenges,
   (
     blades,
     items,
@@ -39,7 +41,8 @@ export default createSelector(
     locations,
     monsters,
     fieldSkills,
-    mercMissions
+    mercMissions,
+    challenges
   ) => {
     const foundBlade = blades.find((blade) =>
       blade.id === selected.id && selected.area === 'blade')
@@ -52,7 +55,8 @@ export default createSelector(
         fieldSkills,
         heart2Hearts,
         quests,
-        mercMissions
+        mercMissions,
+        challenges
       )
       return {
         bladeDetails: availability.blades.find((blade) =>

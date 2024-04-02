@@ -14,3 +14,4 @@ export const getFieldSkills = (state:IXenobladeState) => state.fieldSkills;
 export const getLocations = (state:IXenobladeState) => state.locations;
 export const getMercMissions = (state:IXenobladeState) => state.mercMissions;
 export const getMonsters = (state:IXenobladeState) => state.monsters;
+export const getChallenges = (state:IXenobladeState) => state.challengeBattles;

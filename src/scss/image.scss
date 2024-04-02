@@ -71,6 +71,15 @@
   filter: brightness(0) invert(1);
 }
 
+.difficulty-small-image {
+  height:25px;
+  width:25px;
+}
+
+.difficulty-icons {
+  margin-left: -10px !important;
+}
+
 .small-centered-borderless-image {
   height: 60px;
   width: auto;

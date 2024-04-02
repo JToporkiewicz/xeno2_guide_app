@@ -8,7 +8,8 @@ import {
   getMonsters,
   getQuests,
   getStoryProgress,
-  getFieldSkills
+  getFieldSkills,
+  getChallenges
 } from 'reduxState/selectors';
 import { IProgressList } from './ProgressStatus';
 import { getACCompletion, getDACompletion, getDSCompletion } from 'helpers/completionPercentage';
@@ -26,6 +27,7 @@ export default createSelector(
   getMercMissions,
   getMonsters,
   getFieldSkills,
+  getChallenges,
   (
     progress,
     drivers,
@@ -35,7 +37,8 @@ export default createSelector(
     locations,
     mercMissions,
     monsters,
-    fieldSkills
+    fieldSkills,
+    challenges
   ) => {
     const availability = checkAllAvailability(
       progress,
@@ -45,7 +48,8 @@ export default createSelector(
       fieldSkills,
       heart2Hearts,
       quests,
-      mercMissions
+      mercMissions,
+      challenges
     );
     return {
       driverArts: drivers.reduce((arts: IProgressList, driver) => {
@@ -177,6 +181,12 @@ export default createSelector(
             unlocked: (mon.Beaten ? 1 : 0) + (types[title]?.unlocked || 0),
             id: showMon && loc ? loc.id : 999
           }
-        }}, {})
+        }}, {}),
+      challengesBeaten: availability.challengeBattles.reduce((types: IProgressList, cb) => ({
+        'Battles': {
+          total: 1 + (types.Battles?.total || 0),
+          unlocked: (cb.beaten ? 1 : 0) + (types.Battles?.unlocked || 0) 
+        }
+      }), {})
     }}
 )

@@ -21,6 +21,7 @@ export enum RequirementArea {
   Location = 'Location',
   'Nation Dev Level' = 'Nation Dev Level',
   'Merc Level' = 'Merc Level',
+  Challenge = 'Challenge',
   Other = 'Other'
 }
 

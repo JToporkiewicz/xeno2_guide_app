@@ -110,6 +110,19 @@ export interface IItemState {
   itemTypes: IItemType[]
 }
 
+export interface IChallengeBattleState {
+  id: number,
+  name:string,
+  difficulty:string,
+  timeLimit:string,
+  waves:number,
+  maxLv:number,
+  bladePowers:boolean,
+  driverRestrictions:string,
+  beaten:boolean,
+  prerequisites?:IRequirement[],
+}
+
 export interface IXenobladeState {
   core: ICoreState,
   locations: IMajorLocations[],
@@ -120,5 +133,6 @@ export interface IXenobladeState {
   quests: IQuest[],
   mercMissions: IMercMission[],
   monsters: IMonster[],
-  items: IItemState
+  items: IItemState,
+  challengeBattles: IChallengeBattleState[]
 }

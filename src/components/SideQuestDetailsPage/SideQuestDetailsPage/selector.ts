@@ -7,7 +7,8 @@ import {
   getMercMissions,
   getMonsters,
   getFieldSkills,
-  getHeart2Heart
+  getHeart2Heart,
+  getChallenges
 } from 'reduxState/selectors';
 import { createSelector } from 'reselect';
 import { defaultSideQuest } from 'reduxState/interfaces/quest';
@@ -24,6 +25,7 @@ export default createSelector(
   getFieldSkills,
   getMercMissions,
   getHeart2Heart,
+  getChallenges,
   (
     quests,
     selected,
@@ -34,6 +36,7 @@ export default createSelector(
     fieldSkills,
     mercMissions,
     heart2Hearts,
+    challenges
   ) => {
     const foundQuest: IQuestAvailability = checkAllAvailability(
       storyProgress,
@@ -43,7 +46,8 @@ export default createSelector(
       fieldSkills,
       heart2Hearts,
       quests,
-      mercMissions
+      mercMissions,
+      challenges
     ).sideQuests.find((q) =>
       q.id === selected.id && selected.area === 'sideQuest')
       || defaultSideQuest

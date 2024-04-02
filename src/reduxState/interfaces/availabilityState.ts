@@ -1,5 +1,10 @@
 import { IHeart2Heart, IMercMission, IMonster, IQuest } from 'interfaces';
-import { IAffinityChartBranchState, IAffinityChartNodeState, IBladeState } from './reduxState';
+import {
+  IAffinityChartBranchState,
+  IAffinityChartNodeState,
+  IBladeState,
+  IChallengeBattleState
+} from './reduxState';
 import { IRequirement } from 'interfaces/common';
 
 export interface IRequirementAvailability extends IRequirement {
@@ -39,4 +44,9 @@ export interface IQuestAvailability extends IQuest {
 
 export interface IMonsterAvailability extends IMonster {
   Available: boolean
+}
+
+export interface IChallengeBattleAvailability extends IChallengeBattleState {
+  available: boolean,
+  preReqs?: IRequirementAvailability[]
 }

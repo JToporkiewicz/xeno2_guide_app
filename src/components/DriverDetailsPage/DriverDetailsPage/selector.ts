@@ -12,7 +12,8 @@ import {
   getMercMissions,
   getMonsters,
   getQuests,
-  getFieldSkills
+  getFieldSkills,
+  getChallenges
 
 } from 'reduxState/selectors';
 import { checkAllAvailability } from 'helpers/checkAvailability';
@@ -30,6 +31,7 @@ export default createSelector(
   getFieldSkills,
   getMercMissions,
   getQuests,
+  getChallenges,
   (
     drivers,
     storyProgress,
@@ -42,7 +44,8 @@ export default createSelector(
     monsters,
     fieldSkills,
     mercMissions,
-    quests
+    quests,
+    challenges
   ) => {
     const foundDriver = drivers.find((driver) =>
       driver.id === selected.id && selected.area === 'driver')
@@ -62,7 +65,8 @@ export default createSelector(
           fieldSkills,
           heart2Hearts,
           quests,
-          mercMissions    
+          mercMissions,
+          challenges
         ).heart2Hearts
       }
     }

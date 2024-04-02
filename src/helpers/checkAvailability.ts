@@ -13,6 +13,7 @@ import {
   IAffinityChartBranchAvailability,
   IAffinityChartNodeAvailability,
   IBladeAvailability,
+  IChallengeBattleAvailability,
   IHeart2HeartAvailability,
   IMercMissionAvailability,
   IMonsterAvailability,
@@ -23,6 +24,7 @@ import {
   IAffinityChartBranchState,
   IAffinityChartNodeState,
   IBladeState,
+  IChallengeBattleState,
   IMajorLocations
 } from 'reduxState/interfaces/reduxState';
   
@@ -333,6 +335,28 @@ const checkMonAchieved = (
       }  
     }
   })
+
+const checkChallengeAchieved = (
+  preReqs: IRequirement[] | IRequirementAvailability[],
+  challengeBattles: IChallengeBattleAvailability[]
+):IRequirementAvailability[] =>
+  preReqs.map((pre) => {
+    switch (pre.area) {
+    case RequirementArea.Challenge:
+      const challenge = challengeBattles.find((c) => c.id === pre.reqId);
+      return {
+        ...pre,
+        available: challenge?.available || false,
+        completed: challenge?.beaten || false
+      }
+    default:
+      const preOther = pre as IRequirementAvailability;
+      return {
+        ...preOther,
+        available: preOther?.available || false
+      }
+    }
+  })
   
 const checkOtherAchieved = (
   preReqs: IRequirement[] | IRequirementAvailability[]
@@ -443,14 +467,16 @@ export const checkAllAvailability = (
   fieldSkills: IFieldSkills[],
   heart2Hearts: IHeart2Heart[],
   sideQuests: IQuest[],
-  mercMissions: IMercMission[]
+  mercMissions: IMercMission[],
+  challengeBattles: IChallengeBattleState[]
 ): {
     monsters: IMonsterAvailability[],
     blades: IBladeAvailability[],
     heart2Hearts: IHeart2HeartAvailability[],
     sideQuests: IQuestAvailability[],
     mercMissions: IMercMissionAvailability[],
-    fieldSkills: IFieldSkillsTotal[]
+    fieldSkills: IFieldSkillsTotal[],
+    challengeBattles: IChallengeBattleAvailability[]
   } => {
   const monAvailability = monsters.map((mon) => ({
     ...mon,
@@ -708,6 +734,40 @@ export const checkAllAvailability = (
       Available: questPres.find((p) => p.completed === false) === undefined
     }
   })
+
+  let challengeBattlesAvailable = challengeBattles.map((cb) => {
+    if (cb.prerequisites === undefined || cb.prerequisites.length === 0) {
+      return {
+        ...cb,
+        prerequisites: undefined,
+        available: true
+      };
+    }
+
+    const storyPres = checkStoryProgressAchieved(cb.prerequisites, storyProgress);
+    const monPres = checkMonAchieved(storyPres, monAvailability);
+    const otherPres = checkOtherAchieved(monPres);
+
+    return {
+      ...cb,
+      prerequisites: otherPres,
+      available: otherPres.find((p) => p.available === false) === undefined
+    }
+  })
+
+  challengeBattlesAvailable = challengeBattlesAvailable.map((cb) => {
+    if (cb.prerequisites === undefined || cb.prerequisites.length === 0) {
+      return cb;
+    }
+
+    const challPres = checkChallengeAchieved(cb.prerequisites, challengeBattlesAvailable);
+
+    return {
+      ...cb,
+      prerequisites: challPres,
+      available: challPres.find((p) => p.available === false || p.completed === false) === undefined
+    }
+  })
   
   return {
     monsters: monAvailability,
@@ -715,7 +775,8 @@ export const checkAllAvailability = (
     blades: bladeAvailable,
     heart2Hearts: heart2HeartAvailable,
     mercMissions: mercMissionAvailable,
-    sideQuests: questAvailable
+    sideQuests: questAvailable,
+    challengeBattles: challengeBattlesAvailable
   }
 }
   

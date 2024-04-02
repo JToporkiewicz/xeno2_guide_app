@@ -21,6 +21,7 @@ import { effects as fieldSkillEffects } from './fieldSkills';
 import { effects as locationEffects } from './locations';
 import { effects as mercMissionEffects } from './mercMissions';
 import { effects as monstersEffects } from './monsters';
+import { effects as challengeBattlesEffects } from './challengeBattles';
 import { getDrivers } from '../selectors';
 
 export const callWithLoader$ = <T extends Action>(loaderState:string, action$:Observable<T>) =>
@@ -62,5 +63,6 @@ export const effects = combineEpics(
   questEffects,
   locationEffects,
   mercMissionEffects,
-  monstersEffects
+  monstersEffects,
+  challengeBattlesEffects
 )

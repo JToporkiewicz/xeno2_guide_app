@@ -51,5 +51,7 @@ db.questStep = require('./questStep.model')(sequelizeDB, Sequelize);
 db.questSubStep = require('./questSubStep.model')(sequelizeDB, Sequelize);
 db.prerequisitesQuest = require('./prerequisitesQuest.model')(sequelizeDB, Sequelize);
 db.storyProgress = require('./storyProgress.model')(sequelizeDB, Sequelize);
+db.challengeBattle = require('./challengeBattle.model.js')(sequelizeDB, Sequelize);
+db.prerequisitesChallenge = require('./prerequisitesChallenge.module.js')(sequelizeDB, Sequelize);
 
 module.exports = db;

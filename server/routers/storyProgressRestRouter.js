@@ -16,6 +16,7 @@ module.exports = function(Model, sequelize) {
       await sequelize.query('CALL updateMM ()');
       await sequelize.query('CALL updateQuest ()');
       await sequelize.query('CALL updateACN ()');
+      await sequelize.query('CALL updateChallenge()');
     } catch (err) {
       return res.status(400).json({err: err.message})
     }

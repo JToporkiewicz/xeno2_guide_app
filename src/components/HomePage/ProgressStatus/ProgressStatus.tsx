@@ -18,7 +18,8 @@ interface IProps {
   questsFinished: IProgressList,
   h2hUnlocked: IProgressList,
   mercMissionCompleted: IProgressList,
-  monstersBeaten: IProgressList
+  monstersBeaten: IProgressList,
+  challengesBeaten: IProgressList
 }
 
 export const ProgressStatusView = (props: IProps) => 
@@ -67,6 +68,11 @@ export const ProgressStatusView = (props: IProps) =>
       <ProgressStatusDetails
         list={props.monstersBeaten}
         listTitle="Unique Monsters Beaten:"
+      />
+      <b>Challenge Battles:</b>
+      <ProgressStatusDetails
+        list={props.challengesBeaten}
+        listTitle='DLC Challenge Battles Beaten:'
       />
     </>
   </CollapsibleComponent>

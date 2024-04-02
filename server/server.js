@@ -23,6 +23,7 @@ const questRouter = require('./routers/questRouter');
 const fieldSkillRouter = require('./routers/fieldSkillRouter');
 const monsterRouter = require('./routers/monsterRouter');
 const itemRouter = require('./routers/itemRouter');
+const challengeRouter = require('./routers/challengeRouter');
 
 // const table = require('./storedProcedures');
 const { sequelize } = require('./models');
@@ -50,6 +51,7 @@ app.use('/mercMission', mercMissionRouter())
 app.use('/monster', monsterRouter())
 app.use('/quest', questRouter())
 app.use('/storyProgress', storyProgressRestRouter(db.storyProgress, sequelize))
+app.use('/challengeBattle', challengeRouter())
 
 app.use(function (err, req, res, next) {
   console.error(err.stack)

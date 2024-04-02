@@ -18,6 +18,7 @@ import { MercMissionListPage } from 'components/MercMissionListPage';
 import { MonsterListPage } from 'components/MonsterListPage';
 import { ItemListPage } from 'components/ItemListPage';
 import { Routes } from 'helpers/routesConst';
+import { ChallengeBattleListPage } from 'components/ChallengeBattleListPage';
 
 interface IDispatchProps {
   setSelected:(payload:ISelectedState) => void;
@@ -69,6 +70,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path={Routes.MERC_MISSION_LIST} component={MercMissionListPage} />
             <Route path={Routes.MONSTER_LIST} component={MonsterListPage} />
             <Route path={Routes.ITEMS} component={ItemListPage} />
+            <Route path={Routes.CHALLENGE_BATTLES} component={ChallengeBattleListPage} />
             <Route component={Default} />
           </Switch>
         </div>

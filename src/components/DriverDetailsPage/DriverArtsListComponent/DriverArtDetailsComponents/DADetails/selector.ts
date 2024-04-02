@@ -10,7 +10,8 @@ import {
   getMonsters,
   getQuests,
   getFieldSkills,
-  getHeart2Heart
+  getHeart2Heart,
+  getChallenges
 } from 'reduxState/selectors';
 import { createSelector } from 'reselect';
 
@@ -25,6 +26,7 @@ export default createSelector(
   getMercMissions,
   getHeart2Heart,
   getQuests,
+  getChallenges,
   (
     blades,
     drivers,
@@ -35,7 +37,8 @@ export default createSelector(
     fieldSkills,
     mercMissions,
     heart2Hearts,
-    quests
+    quests,
+    challenges
   ) =>
   {
     const foundDriver = drivers.find((driver) =>
@@ -50,7 +53,8 @@ export default createSelector(
           fieldSkills,
           heart2Hearts,
           quests,
-          mercMissions
+          mercMissions,
+          challenges
         ).blades, quests),
         driverUnlocked: foundDriver.chapterUnlocked <= storyProgress.Chapter
       }

@@ -7,7 +7,8 @@ import {
   getMonsters,
   getQuests,
   getFieldSkills,
-  getHeart2Heart
+  getHeart2Heart,
+  getChallenges
 } from 'reduxState/selectors';
 import { checkAllAvailability } from 'helpers/checkAvailability';
 import { bladeFilter } from 'helpers/bladeFilter';
@@ -21,6 +22,7 @@ export default createSelector(
   getMercMissions,
   getHeart2Heart,
   getQuests,
+  getChallenges,
   (
     blades,
     storyProgress,
@@ -29,7 +31,8 @@ export default createSelector(
     fieldSkills,
     mercMissions,
     heart2Hearts,
-    quests
+    quests,
+    challenges
   ) => ({
     blades: bladeFilter(checkAllAvailability(
       storyProgress,
@@ -39,7 +42,8 @@ export default createSelector(
       fieldSkills,
       heart2Hearts,
       quests,
-      mercMissions
+      mercMissions,
+      challenges
     ).blades, quests),
     storyProgress,
   })
