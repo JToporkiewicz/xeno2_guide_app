@@ -22,6 +22,7 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
   const [unlockedTier1, setUnlockedLevel1] = useState(-1);
   const [unlockedTier2, setUnlockedLevel2] = useState(-1);
   const [selectedBranch, setSelectedBranch] = useState(-2);
+  const [totalRequiredRemaining, setTotalRequiredRemaining] = useState(0);
 
   const toUpdate = useRef([] as IDriverSkillNode[]);
 
@@ -106,6 +107,13 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
         node.unlocked).length;
       setUnlockedLevel1(unlocked1);
       setUnlockedLevel2(unlocked2);
+      setTotalRequiredRemaining(props.tree.tier1
+        .reduce((total, node) => !node.unlocked ? node.sp + total : total,0)
+      + props.tree.tier2
+        .reduce((total, node) => !node.unlocked ? node.sp + total : total,0)
+      + props.tree.tier3
+        .reduce((total, node) => !node.unlocked ? node.sp + total : total,0))
+  
     }
   }, [props.tree])
 
@@ -157,6 +165,7 @@ export const DriverSkillsComponentView = (props:IOwnProps & IDispatchProps) => {
       : 'Driver Affinity Tree'}>
       {unlockedTier1 !== -1 && unlockedTier2 !== -1 ? 
         <>
+          <div><b>Total required remaining SP: </b>{totalRequiredRemaining}</div>
           <div className="tree-wrapper">
             <div className="tree-area">
               {[getTreeTierNodes()].concat(props.tree.tier1.map((tier, index) => [

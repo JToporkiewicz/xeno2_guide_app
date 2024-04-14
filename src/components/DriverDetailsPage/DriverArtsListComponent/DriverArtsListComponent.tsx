@@ -23,12 +23,49 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
   const [uniqueWeapons, setUniqueWeapons] = useState([] as string[]);
   const [focused, setFocused] = useState('');
   const toUpdate = useRef([] as IUpdateArtLevel[]);
+  const [remainingSP, setRemainingSP] = useState(0);
+
+  useEffect(() => {
+    const artSP = props.driverArts.reduce((total: number, art: IDriverArts) => {
+      if(art.nodes[0] !== undefined){
+        let SP = 0;
+        let remainingSP = 0;
+        for(let i = 0; i < art.nodes.length; i++){
+          SP = SP + art.nodes[i].sp
+          if(i >= art.levelUnlocked){
+            remainingSP = remainingSP + art.nodes[i].sp
+          }
+        }
+        return total + remainingSP;
+      }
+      return total;
+    }, 0)
+
+    setRemainingSP(artSP)
+  }, [props.driverArts])
 
   useEffect(() => {
     if(props.driverArts.length > 0){
       let completeWeaponTypeList = props.driverArts.map((details) => details.weaponType);
       setUniqueWeapons([...completeWeaponTypeList.filter(
         (weapon:string, index:number) => completeWeaponTypeList.indexOf(weapon) === index)]);
+      
+      const artSP = props.driverArts.reduce((total: number, art: IDriverArts) => {
+        if(art.nodes[0] !== undefined){
+          let SP = 0;
+          let remainingSP = 0;
+          for(let i = 0; i < art.nodes.length; i++){
+            SP = SP + art.nodes[i].sp
+            if(i >= art.levelUnlocked){
+              remainingSP = remainingSP + art.nodes[i].sp
+            }
+          }
+          return total + remainingSP;
+        }
+        return total;
+      }, 0)
+  
+      setRemainingSP(artSP)
     }
   }, [props.driverArts])
 
@@ -81,9 +118,15 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
         />
         : <div/>}
       {uniqueWeapons.length > 0 ?
-        <div className="row centeredFlex">
-          {weaponsPanels}
-        </div>
+        <>
+          <div>
+            <b>Total remaining needed SP: </b>
+            {remainingSP}
+          </div>    
+          <div className="row centeredFlex">
+            {weaponsPanels}
+          </div>
+        </>
         :
         <>Unknown</>
       }
