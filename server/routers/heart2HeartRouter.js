@@ -236,9 +236,7 @@ module.exports = function() {
           SET Viewed = 0
           WHERE id IN (${req.body.locked.join(', ')})`)
       }
-      await sequelize.query('CALL updateH2HRelatedACN ()');
-      await sequelize.query('CALL updateQuest ()');
-      await sequelize.query('CALL updateACN ()');
+      await sequelize.query('CALL updateAll ()');
     } catch (err) {
       return res.status(400).json({err: err.message})
     }

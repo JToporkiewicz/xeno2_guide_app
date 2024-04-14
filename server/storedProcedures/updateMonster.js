@@ -9,68 +9,67 @@ const updateMonster = {
         FROM xenoblade2_guide.storyProgresses as sp
         WHERE sp.id = 1;
         
-        DROP temporary TABLE IF EXISTS xenoblade2_guide._availableMonster;
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unavailableMonster;
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unbeatenMonster;
 
-        CREATE temporary TABLE xenoblade2_guide._availableMonster
+        CREATE temporary TABLE xenoblade2_guide._unavailableMonster
         SELECT id
         FROM xenoblade2_guide.monsters AS monster
-        WHERE (monster.DLCRequired IS NULL
-            OR monster.DLCRequired <= (
+        WHERE (monster.DLCRequired IS NOT NULL
+            AND (
                 SELECT sp.DLCUnlocked
                 FROM xenoblade2_guide.storyProgresses as sp
                 WHERE sp.id = 1
-            ))
-        AND monster.Location IN (
+            ) = 0)
+        OR monster.Location IN (
             SELECT id
             FROM xenoblade2_guide.locations as loc
-            WHERE loc.StoryProgress <= current_chapter
+            WHERE loc.StoryProgress > current_chapter
         );
 
         UPDATE xenoblade2_guide.monsters AS monster
         SET Available = 1
-        WHERE monster.id IN (
+        WHERE monster.id NOT IN (
             SELECT id
-            FROM xenoblade2_guide._availableMonster
+            FROM xenoblade2_guide._unavailableMonster
         );
 
         UPDATE xenoblade2_guide.monsters AS monster
-        SET monster.Available = 0, monster.Beaten = 0
-        WHERE monster.id NOT IN (
+        SET monster.Available = 0
+        WHERE monster.id IN (
             SELECT id
-            FROM xenoblade2_guide._availableMonster
+            FROM xenoblade2_guide._unavailableMonster
+        ) AND monster.Beaten = 0;
+
+        CREATE temporary TABLE xenoblade2_guide._unbeatenMonster
+        SELECT id
+        FROM xenoblade2_guide.monsters AS monster
+        WHERE (monster.DLCRequired IS NOT NULL
+            AND (
+                SELECT sp.DLCUnlocked
+                FROM xenoblade2_guide.storyProgresses as sp
+                WHERE sp.id = 1
+            ) = 0)
+        OR (monster.Location IN (
+            SELECT id
+            FROM xenoblade2_guide.locations as loc
+            WHERE loc.StoryProgress > current_chapter
+        ) AND (
+            SELECT sp.NewGamePlus
+			FROM xenoblade2_guide.storyProgresses as sp
+			WHERE sp.id = 1
+        ) = 0);
+
+        UPDATE xenoblade2_guide.monsters AS monster
+        SET monster.Available = 0, monster.Beaten = 0
+        WHERE monster.id IN (
+            SELECT id
+            FROM xenoblade2_guide._unbeatenMonster
         );
 
     END`
 }
 
-const updateMonsterRelatedACN = {
-  name: 'updateMonsterRelatedACN',
-  query: `CREATE PROCEDURE updateMonsterRelatedACN()
-    BEGIN
-        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
-        SET preACN.Progress = 1
-        WHERE preACN.MonsterTitle IN (
-            SELECT mon.id
-            FROM xenoblade2_guide.monsters as mon
-            WHERE mon.Beaten > 0
-                AND mon.Category = 'Unique'
-        ) AND preACN.MonsterTitle IS NOT NULL;
-
-        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
-        SET preACN.Progress = 0
-        WHERE preACN.MonsterTitle NOT IN (
-            SELECT mon.id
-            FROM xenoblade2_guide.monsters as mon
-            WHERE mon.Beaten > 0
-                AND mon.Category = 'Unique'
-        ) AND preACN.MonsterTitle IS NOT NULL;
-
-    END`
-}
-
-const update_monster_procedures = [
-  updateMonster,
-  updateMonsterRelatedACN
-]
+const update_monster_procedures = [updateMonster]
 
 module.exports = update_monster_procedures

@@ -7,6 +7,7 @@ const updateQuest = require('./updateQuest');
 const updateFieldSkill = require('./updateFieldSkill');
 const updateQuestStep = require('./updateQuestStep');
 const updateChallenge = require('./updateChallenge');
+const updateAll = require('./updateAll');
 
 const updateQueries = [
   updateH2H,
@@ -17,7 +18,8 @@ const updateQueries = [
   updateQuest,
   updateFieldSkill,
   updateQuestStep,
-  updateChallenge
+  updateChallenge,
+  updateAll
 ]
 
 module.exports = updateQueries;

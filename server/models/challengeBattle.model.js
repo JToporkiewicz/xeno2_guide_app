@@ -7,6 +7,7 @@ module.exports = (sequelize, Sequelize) => {
     MaxLv: { type: Sequelize.INTEGER },
     BladePowers: { type: Sequelize.BOOLEAN },
     DriverRestrictions: { type: Sequelize.TEXT },
+    Available: { type: Sequelize.BOOLEAN },
     Beaten: { type: Sequelize.BOOLEAN },
   },
   {timestamps: false, createdAt: false, updatedAt: false})

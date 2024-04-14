@@ -75,9 +75,7 @@ module.exports = function() {
           SET Beaten = 0
           WHERE id IN (${req.body.locked.join(', ')})`)
       }
-      await sequelize.query('CALL updateMonsterRelatedACN ()');
-      await sequelize.query('CALL updateACN ()');
-      await sequelize.query('CALL updateChallenge()');
+      await sequelize.query('CALL updateAll ()');
     } catch (err) {
       return res.status(400).json({err: err.message})
     }

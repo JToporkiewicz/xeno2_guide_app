@@ -1,6 +1,6 @@
-const updateH2H = {
-  name: 'updateH2H',
-  query: `CREATE PROCEDURE updateH2H()
+const updateH2HPart1 = {
+  name: 'updateH2HPart1',
+  query: `CREATE PROCEDURE updateH2HPart1()
     BEGIN
         DECLARE current_chapter INT;
 
@@ -8,47 +8,41 @@ const updateH2H = {
         FROM xenoblade2_guide.storyProgresses as sp
         WHERE sp.id = 1;
 
-        DROP temporary TABLE IF EXISTS xenoblade2_guide._availableH2H;
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unavailableH2HPart1;
 
-        CREATE temporary TABLE xenoblade2_guide._availableH2H
+        CREATE temporary TABLE xenoblade2_guide._unavailableH2HPart1
         SELECT RequiredBy as id
         FROM xenoblade2_guide.prerequisitesH2Hs as preH2H
-        WHERE (preH2H.StoryProgress <= current_chapter
-            OR preH2H.StoryProgress IS NULL)
-        AND (preH2H.NewGamePlus <= (
+        WHERE (preH2H.StoryProgress > current_chapter
+            AND preH2H.StoryProgress IS NOT NULL)
+        OR (preH2H.NewGamePlus > (
             SELECT sp.NewGamePlus
             FROM xenoblade2_guide.storyProgresses as sp
             WHERE sp.id = 1
-            ) OR preH2H.NewGamePlus IS NULL)
-        AND (preH2H.DLCUnlocked <= (
+            ) AND preH2H.NewGamePlus IS NOT NULL)
+        OR (preH2H.DLCUnlocked > (
             SELECT sp.DLCUnlocked
             FROM xenoblade2_guide.storyProgresses as sp
             WHERE sp.id = 1
-            ) OR preH2H.DLCUnlocked IS NULL)
-        AND (preH2H.InnLocation IS NULL
-            OR preH2H.InnLocation IN (
+            ) AND preH2H.DLCUnlocked IS NOT NULL)
+        OR (preH2H.InnLocation IS NOT NULL
+            AND preH2H.InnLocation NOT IN (
                 SELECT id
                 FROM xenoblade2_guide.majorAreas as ma
                 WHERE ma.StoryProgress <= current_chapter
             ))
-        AND (preH2H.BladeAffinityChartNode IS NULL
-            OR preH2H.BladeAffinityChartNode IN (
+        OR (preH2H.BladeAffinityChartNode IS NOT NULL
+            AND preH2H.BladeAffinityChartNode IN (
                 SELECT ACN.id
                 FROM xenoblade2_guide.affinityChartNodes as ACN
-                WHERE ACN.Available = 1
-            ))
-        AND (preH2H.Quest IS NULL
-            OR preH2H.Quest IN (
-                SELECT quest.id
-                FROM xenoblade2_guide.quests as quest
-                WHERE quest.Status = 'FINISHED'
+                WHERE ACN.Unlocked = 0
             ));
 
         UPDATE xenoblade2_guide.heart2Hearts
         SET Available = 1
-        WHERE id IN (
+        WHERE id NOT IN (
             SELECT id
-            FROM xenoblade2_guide._availableH2H
+            FROM xenoblade2_guide._unavailableH2HPart1
         )
         OR id NOT IN (
             SELECT preH2H.RequiredBy as id
@@ -57,45 +51,61 @@ const updateH2H = {
 
         UPDATE xenoblade2_guide.heart2Hearts
         SET Available = 0, Viewed = 0
-        WHERE id NOT IN (
+        WHERE id IN (
             SELECT id
-            FROM xenoblade2_guide._availableH2H
-        )
-        AND id IN (
-            SELECT preH2H.RequiredBy as id
-            FROM xenoblade2_guide.prerequisitesH2Hs as preH2H
+            FROM xenoblade2_guide._unavailableH2HPart1
+        ) OR (
+            Location NOT IN (
+                SELECT id
+                FROM xenoblade2_guide.locations as loc
+                WHERE loc.StoryProgress <= current_chapter
+            )
         );
 
     END`
 }
 
-const updateH2HRelatedACN = {
-  name: 'updateH2HRelatedACN',
-  query: `CREATE PROCEDURE updateH2HRelatedACN()
+const updateH2HPart2 = {
+  name: 'updateH2HPart2',
+  query: `CREATE PROCEDURE updateH2HPart2()
     BEGIN
-        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
-        SET preACN.Progress = 1
-        WHERE preACN.Heart2HeartTitle IN (
-            SELECT h2h.id
-            FROM xenoblade2_guide.heart2Hearts as h2h
-            WHERE h2h.Viewed > 0
-        ) AND preACN.Heart2HeartTitle IS NOT NULL;
+        DECLARE current_chapter INT;
 
-        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
-        SET preACN.Progress = 0
-        WHERE preACN.Heart2HeartTitle NOT IN (
-            SELECT h2h.id
-            FROM xenoblade2_guide.heart2Hearts as h2h
-            WHERE h2h.Viewed > 0
-        ) AND preACN.Heart2HeartTitle IS NOT NULL;
+        SELECT sp.Chapter INTO current_chapter
+        FROM xenoblade2_guide.storyProgresses as sp
+        WHERE sp.id = 1;
+
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unavailableH2HPart2;
+
+        CREATE temporary TABLE xenoblade2_guide._unavailableH2HPart2
+        SELECT RequiredBy as id
+        FROM xenoblade2_guide.prerequisitesH2Hs as preH2H
+        WHERE preH2H.Quest IS NOT NULL
+            AND preH2H.Quest NOT IN (
+                SELECT quest.id
+                FROM xenoblade2_guide.quests as quest
+                WHERE quest.Status = 'FINISHED'
+            );
+
+        UPDATE xenoblade2_guide.heart2Hearts
+        SET Available = 0, Viewed = 0
+        WHERE id IN (
+            SELECT id
+            FROM xenoblade2_guide._unavailableH2HPart2
+        ) OR (
+            Location NOT IN (
+                SELECT id
+                FROM xenoblade2_guide.locations as loc
+                WHERE loc.StoryProgress <= current_chapter
+            )
+        );
 
     END`
 }
 
-
 const update_h2h_procedures = [
-  updateH2H,
-  updateH2HRelatedACN
+  updateH2HPart1,
+  updateH2HPart2
 ]
 
 module.exports = update_h2h_procedures

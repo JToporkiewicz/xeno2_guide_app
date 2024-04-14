@@ -1,6 +1,6 @@
-const updateACN = {
-  name: 'updateACN',
-  query: `CREATE PROCEDURE updateACN()
+const updateACNPart1 = {
+  name: 'updateACNPart1',
+  query: `CREATE PROCEDURE updateACNPart1()
     BEGIN
 
         DECLARE current_chapter INT;
@@ -9,57 +9,60 @@ const updateACN = {
         FROM xenoblade2_guide.storyProgresses as sp
         WHERE sp.id = 1;
 
-        DROP temporary TABLE IF EXISTS xenoblade2_guide._availableACN;
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unavailableACNPart1;
 
-        CREATE temporary TABLE xenoblade2_guide._availableACN
+        CREATE temporary TABLE xenoblade2_guide._unavailableACNPart1
         SELECT preACN.RequiredBy as id
         FROM xenoblade2_guide.prerequisitesACNs as preACN
-        WHERE (preACN.StoryProgress <= current_chapter
-            OR preACN.StoryProgress IS NULL)
-        AND (preACN.Location IN (
+        WHERE (preACN.StoryProgress > current_chapter
+            AND preACN.StoryProgress IS NOT NULL)
+        OR (preACN.DLCRequired > (
+            SELECT sp.DLCUnlocked
+            FROM xenoblade2_guide.storyProgresses as sp
+            WHERE sp.id = 1
+        ) AND preACN.DLCRequired IS NOT NULL)
+        OR (preACN.Location NOT IN (
             SELECT id
             FROM xenoblade2_guide.locations as loc
             WHERE loc.StoryProgress <= current_chapter
-            ) OR preACN.Location IS NULL)
-        AND (preACN.Heart2HeartTitle IN (
-            SELECT id
-            FROM xenoblade2_guide.heart2Hearts as h2h
-            WHERE h2h.Available = 1
-        ) OR preACN.Heart2HeartTitle IS NULL)
-        AND (preACN.SideQuest IN (
-            SELECT id
-            FROM xenoblade2_guide.quests as quest
-            WHERE quest.Available = 1
-        ) OR preACN.SideQuest IS NULL)
-        AND (preACN.MercMissionTitle IN (
-            SELECT id
-            FROM xenoblade2_guide.mercMissions as mm
-            WHERE mm.Available = 1
-        ) OR preACN.MercMissionTitle IS NULL)
-        AND (preACN.MonsterTitle IN (
-            SELECT id
-            FROM xenoblade2_guide.monsters as monster
-            WHERE monster.Available = 1
-        ) OR preACN.MonsterTitle IS NULL)
-        AND (preACN.AffinityChartNode IN (
-            SELECT id
-            FROM xenoblade2_guide.affinityChartNodes as acn
-            WHERE acn.Unlocked = 1
-        ) OR preACN.AffinityChartNode IS NULL)
-        AND (preACN.PouchItemType IN (
+            ) AND preACN.Location IS NOT NULL)
+        OR (preACN.PouchItem NOT IN (
+            SELECT item.id
+            FROM xenoblade2_guide.items as item
+            WHERE item.Location IN (
+                SELECT id
+                FROM xenoblade2_guide.locations as loc
+                WHERE loc.StoryProgress <= current_chapter)
+        ) AND preACN.PouchItem IS NOT NULL)
+        OR (preACN.PouchItemType NOT IN (
             SELECT id
             FROM xenoblade2_guide.items as item
             WHERE item.Location IN (
                 SELECT id
                 FROM xenoblade2_guide.locations as loc
                 WHERE loc.StoryProgress <= current_chapter)
-        ) OR preACN.PouchItemType IS NULL);
+        ) AND preACN.PouchItemType IS NOT NULL)
+        OR (preACN.MonsterTitle IN (
+            SELECT id
+            FROM xenoblade2_guide.monsters as monster
+            WHERE monster.Available = 0
+        ) AND preACN.MonsterTitle IS NOT NULL)
+        OR (preACN.MonsterType IN (
+            SELECT Type
+            FROM xenoblade2_guide.monsters as monster
+            WHERE monster.Available = 0
+        ) AND preACN.MonsterType IS NOT NULL)
+        OR (preACN.MercMissionTitle IN (
+            SELECT id
+            FROM xenoblade2_guide.mercMissions as mm
+            WHERE mm.Available = 0
+        ) AND preACN.MercMissionTitle IS NOT NULL);
 
         UPDATE xenoblade2_guide.affinityChartNodes
         SET Available = 1
-        WHERE id IN (
+        WHERE id NOT IN (
             SELECT id
-            FROM xenoblade2_guide._availableACN
+            FROM xenoblade2_guide._unavailableACNPart1
         )
         OR id NOT IN (
             SELECT preACN.RequiredBy as id
@@ -67,15 +70,110 @@ const updateACN = {
         );
 
         UPDATE xenoblade2_guide.affinityChartNodes
-        SET Available = 0, Unlocked = 0
-        WHERE id NOT IN (
+        SET Available = 0
+        WHERE id IN (
             SELECT id
-            FROM xenoblade2_guide._availableACN
-        )
-        AND id IN (
+            FROM xenoblade2_guide._unavailableACNPart1
+        );
+
+        UPDATE xenoblade2_guide.affinityChartNodes
+        SET Unlocked = 0
+        WHERE (id IN (
+            SELECT id
+            FROM xenoblade2_guide._unavailableACNPart1
+        ) AND 0 = (
+            SELECT sp.NewGamePlus
+            FROM xenoblade2_guide.storyProgresses as sp
+            WHERE sp.id = 1
+        )) OR id IN (
             SELECT preACN.RequiredBy as id
             FROM xenoblade2_guide.prerequisitesACNs as preACN
+            WHERE preACN.DLCRequired > (
+                SELECT sp.DLCUnlocked
+                FROM xenoblade2_guide.storyProgresses as sp
+                WHERE sp.id = 1
+            ) AND preACN.DLCRequired IS NOT NULL
         );
+
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unavailableACNPart2;
+
+        CREATE temporary TABLE xenoblade2_guide._unavailableACNPart2
+        SELECT preACN.RequiredBy as id
+        FROM xenoblade2_guide.prerequisitesACNs as preACN
+        WHERE preACN.AffinityChartNode IN (
+            SELECT id
+            FROM xenoblade2_guide.affinityChartNodes as acn
+            WHERE acn.Unlocked = 0
+        ) AND preACN.AffinityChartNode IS NOT NULL;
+
+        UPDATE xenoblade2_guide.affinityChartNodes
+        SET Available = 0
+        WHERE id IN (
+            SELECT id
+            FROM xenoblade2_guide._unavailableACNPart2
+        );
+
+        UPDATE xenoblade2_guide.affinityChartNodes
+        SET Unlocked = 0
+        WHERE id IN (
+            SELECT id
+            FROM xenoblade2_guide._unavailableACNPart2
+        ) AND 0 = (
+            SELECT sp.NewGamePlus
+            FROM xenoblade2_guide.storyProgresses as sp
+            WHERE sp.id = 1
+        );
+
+        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
+        SET Progress = (preACN.Progress - 1)
+        WHERE preACN.Progress = preACN.OtherPrerequisiteDetail
+        AND preACN.RequiredBy IN (
+            SELECT id
+            FROM xenoblade2_guide.affinityChartNodes as acn
+            WHERE acn.Unlocked = 0
+        );
+
+    END`
+}
+
+const updateACNPart2 = {
+  name: 'updateACNPart2',
+  query: `CREATE PROCEDURE updateACNPart2()
+    BEGIN
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unavailableACNPart3;
+
+        CREATE temporary TABLE xenoblade2_guide._unavailableACNPart3
+        SELECT preACN.RequiredBy as id
+        FROM xenoblade2_guide.prerequisitesACNs as preACN
+        WHERE (preACN.Heart2HeartTitle IN (
+            SELECT id
+            FROM xenoblade2_guide.heart2Hearts as h2h
+            WHERE h2h.Available = 0
+        ) AND preACN.Heart2HeartTitle IS NOT NULL)
+        OR (preACN.SideQuest IN (
+            SELECT id
+            FROM xenoblade2_guide.quests as quest
+            WHERE quest.Available = 0
+        ) AND preACN.SideQuest IS NOT NULL);
+
+        UPDATE xenoblade2_guide.affinityChartNodes
+        SET Available = 0
+        WHERE id IN (
+            SELECT id
+            FROM xenoblade2_guide._unavailableACNPart3
+        );
+
+        UPDATE xenoblade2_guide.affinityChartNodes
+        SET Unlocked = 0
+        WHERE id IN (
+            SELECT id
+            FROM xenoblade2_guide._unavailableACNPart3
+        ) AND 0 = (
+            SELECT sp.NewGamePlus
+            FROM xenoblade2_guide.storyProgresses as sp
+            WHERE sp.id = 1
+        );
+
     END`
 }
 
@@ -197,7 +295,8 @@ const lockBladesACN = {
 }
 
 const update_acn_procedures = [
-  updateACN,
+  updateACNPart1,
+  updateACNPart2,
   updateBranchACN,
   lockBladesACN
 ]

@@ -8,59 +8,54 @@ const updateQuest = {
         FROM xenoblade2_guide.storyProgresses as sp
         WHERE sp.id = 1;
 
-        DROP temporary TABLE IF EXISTS xenoblade2_guide._availableQuest;
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unavailableQuestPart1;
 
-        CREATE temporary TABLE xenoblade2_guide._availableQuest
+        CREATE temporary TABLE xenoblade2_guide._unavailableQuestPart1
         SELECT preQuest.RequiredBy as id
         FROM xenoblade2_guide.prerequisitesQuests as preQuest
-        WHERE (preQuest.Location IN (
-            SELECT loc.id
-            FROM xenoblade2_guide.locations as loc
-            WHERE loc.StoryProgress <= current_chapter
-        ) OR preQuest.Location IS NULL)
-        AND (preQuest.StoryProgress <= current_chapter
-            OR preQuest.StoryProgress IS NULL)
-        AND (preQuest.NewGamePlus <= (
+        WHERE (preQuest.StoryProgress > current_chapter
+          AND preQuest.StoryProgress IS NOT NULL)
+        OR (preQuest.NewGamePlus > (
             SELECT sp.NewGamePlus
             FROM xenoblade2_guide.storyProgresses as sp
             WHERE sp.id = 1
-        ) OR preQuest.NewGamePlus IS NULL)
-        AND (preQuest.DLCUnlocked <= (
+        ) AND preQuest.NewGamePlus IS NOT NULL)
+        OR (preQuest.DLCUnlocked > (
             SELECT sp.DLCUnlocked
             FROM xenoblade2_guide.storyProgresses as sp
             WHERE sp.id = 1
-        ) OR preQuest.DLCUnlocked IS NULL)
-        AND (preQuest.MercMission IN (
+        ) AND preQuest.DLCUnlocked IS NOT NULL)
+        OR (preQuest.Location NOT IN (
+            SELECT loc.id
+            FROM xenoblade2_guide.locations as loc
+            WHERE loc.StoryProgress <= current_chapter
+        ) AND preQuest.Location IS NOT NULL)
+        OR (preQuest.MercMission IN (
             SELECT mm.id
             FROM xenoblade2_guide.mercMissions as mm
-            WHERE mm.Completed = 1
-        ) OR preQuest.MercMission IS NULL)
-        AND (preQuest.Heart2Heart IN (
+            WHERE mm.Available = 0
+        ) AND preQuest.MercMission IS NOT NULL)
+        OR (preQuest.Heart2Heart IN (
             SELECT h2h.id
             FROM xenoblade2_guide.heart2Hearts as h2h
-            WHERE h2h.Viewed = 1
-        ) OR preQuest.Heart2Heart IS NULL)
-        AND (preQuest.BladeUnlocked IN (
+            WHERE h2h.Available = 0
+        ) AND preQuest.Heart2Heart IS NOT NULL)
+        OR (preQuest.BladeUnlocked IN (
             SELECT blade.id
             FROM xenoblade2_guide.blades as blade
-            WHERE blade.Unlocked = 1
-        ) OR preQuest.BladeUnlocked IS NULL)
-        AND (preQuest.BladeAffinityChartNode IN (
+            WHERE blade.Available = 0
+        ) AND preQuest.BladeUnlocked IS NOT NULL)
+        OR (preQuest.BladeAffinityChartNode IN (
             SELECT acn.id
             FROM xenoblade2_guide.affinityChartNodes as acn
-            WHERE acn.Unlocked = 1
-        ) OR preQuest.BladeAffinityChartNode IS NULL)
-        AND (preQuest.Quest IN (
-            SELECT quest.id
-            FROM xenoblade2_guide.quests as quest
-            WHERE quest.Available = 1
-        ) OR preQuest.Quest IS NULL);
+            WHERE acn.Available = 0
+        ) AND preQuest.BladeAffinityChartNode IS NOT NULL);
 
         UPDATE xenoblade2_guide.quests
         SET Available = 1
-        WHERE id IN (
+        WHERE id NOT IN (
             SELECT id
-            FROM xenoblade2_guide._availableQuest
+            FROM xenoblade2_guide._unavailableQuestPart1
         )
         OR id NOT IN (
             SELECT preQuest.RequiredBy as id
@@ -69,38 +64,63 @@ const updateQuest = {
 
         UPDATE xenoblade2_guide.quests
         SET Available = 0, Status = 'NOT STARTED'
-        WHERE id NOT IN (
+        WHERE id IN (
             SELECT id
-            FROM xenoblade2_guide._availableQuest
-        )
-        AND id IN (
-            SELECT preQuest.RequiredBy as id
-            FROM xenoblade2_guide.prerequisitesQuests as preQuest
+            FROM xenoblade2_guide._unavailableQuestPart1
         );
 
+        DROP temporary TABLE IF EXISTS xenoblade2_guide._unavailableQuestPart2;
+
+        CREATE temporary TABLE xenoblade2_guide._unavailableQuestPart2
+        SELECT preQuest.RequiredBy as id
+        FROM xenoblade2_guide.prerequisitesQuests as preQuest
+        WHERE preQuest.Quest IN (
+          SELECT quest.id
+          FROM xenoblade2_guide.quests as quest
+          WHERE quest.Available = 0
+          OR (
+            preQuest.OtherPrerequisiteDetail LIKE '%accepted%'
+            AND quest.Status = 'NOT STARTED'
+          ) OR (
+            preQuest.OtherPrerequisiteDetail LIKE '%During%'
+            AND quest.Status = 'NOT STARTED'
+          ) OR quest.Status != 'FINISHED'
+        ) AND preQuest.Quest IS NOT NULL;
+
+        UPDATE xenoblade2_guide.quests
+        SET Available = 0, Status = 'NOT STARTED'
+        WHERE id IN (
+            SELECT id
+            FROM xenoblade2_guide._unavailableQuestPart2
+        );
+
+        CALL updateNotStartedQuestSteps ();
     END`
 }
 
-const updateQuestRelatedACN = {
-  name: 'updateQuestRelatedACN',
-  query: `CREATE PROCEDURE updateQuestRelatedACN()
+const updateNotStartedQuestSteps = {
+  name: 'updateNotStartedQuestSteps',
+  query: `CREATE PROCEDURE updateNotStartedQuestSteps()
     BEGIN
-        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
-        SET preACN.Progress = 1
-        WHERE preACN.SideQuest IN (
-            SELECT quest.id
-            FROM xenoblade2_guide.quests as quest
-            WHERE quest.Status = 'FINISHED'
-        ) AND preACN.SideQuest IS NOT NULL;
+        UPDATE xenoblade2_guide.questSteps as qs
+        SET qs.Completed = 0
+        WHERE qs.Quest IN (
+          SELECT quest.id
+          FROM xenoblade2_guide.quests as quest
+          WHERE quest.Status = 'NOT STARTED'
+        );
 
-        UPDATE xenoblade2_guide.prerequisitesACNs as preACN
-        SET preACN.Progress = 0
-        WHERE preACN.SideQuest NOT IN (
-            SELECT quest.id
-            FROM xenoblade2_guide.quests as quest
-            WHERE quest.Status = 'FINISHED'
-        ) AND preACN.SideQuest IS NOT NULL;
-
+        UPDATE xenoblade2_guide.questSubSteps as qss
+        SET qss.CompletionProgress = 0
+        WHERE qss.QuestStep IN (
+            SELECT qs.id
+            FROM xenoblade2_guide.questSteps as qs
+            WHERE qs.Quest IN (
+              SELECT quest.id
+              FROM xenoblade2_guide.quests as quest
+              WHERE quest.Status = 'NOT STARTED'
+            )
+        );
     END`
 }
 
@@ -250,7 +270,7 @@ const updateStepCompletion = {
 
 const update_quest_procedures = [
   updateQuest,
-  updateQuestRelatedACN,
+  updateNotStartedQuestSteps,
   updateUndoQuestCompletion,
   updateClearQuestCompletion,
   updateCompleteQuestManually,

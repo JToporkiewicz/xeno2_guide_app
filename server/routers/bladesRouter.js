@@ -382,9 +382,7 @@ module.exports = function() {
           SET Unlocked = 0
           WHERE id IN (${req.body.locked.join(', ')})`)
       }
-      await sequelize.query('CALL updateMM ()');
-      await sequelize.query('CALL updateQuest ()');
-      await sequelize.query('CALL lockBladesACN ()');
+      await sequelize.query('CALL updateAll ()');
     } catch (err) {
       return res.status(400).json({err: err.message})
     }
@@ -430,9 +428,8 @@ module.exports = function() {
           replacements: {skillId: i}
         })
       }
-      await sequelize.query('CALL updateH2H ()');
-      await sequelize.query('CALL updateQuest ()');
-      await sequelize.query('CALL updateACN ()');
+      await sequelize.query('CALL updateAll ()');
+
     } catch (err) {
       return res.status(400).json({err: err.message})
     }
