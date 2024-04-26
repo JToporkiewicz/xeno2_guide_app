@@ -8,6 +8,7 @@ import ClosedUnlinkedImagePanel
   from 'components/CommonComponents/ImagePanels/ClosedUnlinkedImagePanel';
 import { DADetails } from './DriverArtDetailsComponents/DADetails';
 import { IDriverArts } from 'interfaces';
+import { getDACompletion } from 'helpers/completionPercentage';
 
 interface IDispatchProps {
   saveDriverArtLevel: (payload: IUpdateArtLevel[]) => void,
@@ -24,6 +25,8 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
   const [focused, setFocused] = useState('');
   const toUpdate = useRef([] as IUpdateArtLevel[]);
   const [remainingSP, setRemainingSP] = useState(0);
+  const [unlockedNodes, setUnlockedNodes] = useState(0);
+  const [totalNodes, setTotalNodes] = useState(0);
 
   useEffect(() => {
     const artSP = props.driverArts.reduce((total: number, art: IDriverArts) => {
@@ -41,7 +44,11 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
       return total;
     }, 0)
 
-    setRemainingSP(artSP)
+    setRemainingSP(artSP);
+
+    const nodesStats = getDACompletion(props.driverArts);
+    setUnlockedNodes(nodesStats.unlocked);
+    setTotalNodes(nodesStats.total);
   }, [props.driverArts])
 
   useEffect(() => {
@@ -97,15 +104,19 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
   }
 
   const weaponsPanels:ReactChild[] = [];
-  uniqueWeapons.forEach((weapon) => weaponsPanels.push(
-    <ClosedUnlinkedImagePanel
-      panelType="weaponType"
-      name={weapon}
-      focused={focused === weapon}
-      focus={focusArt.bind(this)}
-      key={weapon}
-    />
-  ))
+  uniqueWeapons.forEach((weapon) => {
+    const weaponArtProgress = getDACompletion(
+      props.driverArts.filter((art) => art.weaponType === weapon));
+    weaponsPanels.push(
+      <ClosedUnlinkedImagePanel
+        panelType="weaponType"
+        name={weapon}
+        focused={focused === weapon}
+        focus={focusArt.bind(this)}
+        key={weapon}
+        progress={Math.round(weaponArtProgress.unlocked / weaponArtProgress.total * 10000) / 100}
+      />
+    )})
 
   return (
     <CollapsibleComponent header={'Driver Arts'}>
@@ -120,9 +131,21 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
       {uniqueWeapons.length > 0 ?
         <>
           <div>
+            <div className='greyBar'>
+              <div
+                className='obtained'
+                style={{
+                  width: (unlockedNodes / totalNodes * 100).toPrecision(2) + '%'
+                }}
+              />
+              <p>{Math.round(unlockedNodes / totalNodes * 10000)/100}%</p>
+            </div>
+            <span><b>Unlocked nodes: </b>{unlockedNodes} out of {totalNodes}</span>
+          </div>
+          <div>
             <b>Total remaining needed SP: </b>
             {remainingSP}
-          </div>    
+          </div>
           <div className="row centeredFlex">
             {weaponsPanels}
           </div>

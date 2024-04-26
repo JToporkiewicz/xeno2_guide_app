@@ -4,7 +4,8 @@ interface IProps {
   focused:boolean,
   focus:(value:string) => any,
   name:string,
-  panelType:string
+  panelType:string,
+  progress?:number
 }
 
 const ClosedUnlinkedImagePanel = (props:IProps) => {

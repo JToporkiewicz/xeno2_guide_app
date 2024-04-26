@@ -52,7 +52,7 @@ export const DADetailsView = (props:IProps & IOwnProps) => {
       <hr/>
       {
         Object.values(props.weaponArts).map((art, key) => 
-          <InnerCollapsibleComponent header={art.name} key={key}>
+          <InnerCollapsibleComponent header={`${art.name}: ${art.levelUnlocked} / 6`} key={key}>
             <>
               <DALevels
                 art={art}

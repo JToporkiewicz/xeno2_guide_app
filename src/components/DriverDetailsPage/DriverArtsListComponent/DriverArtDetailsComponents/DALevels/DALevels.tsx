@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import UnlockOverlay from 'components/UnavailableDataComponents/Overlays/UnlockOverlay';
 import LockOverlay from 'components/UnavailableDataComponents/Overlays/LockOverlay';
 import path from 'path';
-import { IDriverArtDetails, IDriverArts } from 'interfaces';
+import { IDriverArts } from 'interfaces';
 
 const getImage = (artName:string) => {
   try {
@@ -29,36 +29,31 @@ interface IOwnProps {
 }
 
 export const DALevelsView = (props:IOwnProps) => {
-  const [driverArtDetails, setDADetails] = useState([] as IDriverArtDetails[]);
   const [totalSP, setSP] = useState(0);
   const [remainingSP, setRemainingSP] = useState(0);
 
 
   useEffect(() => {
-    setDADetails(props.art ? props.art.nodes : [])
-  }, [props.art]);
-
-  useEffect(() => {
-    if(driverArtDetails[0] !== undefined){
+    if (props.art?.nodes) {
       let SP = 0;
       let remainingSP = 0;
-      for(let i = 0; i < driverArtDetails.length; i++){
-        SP = SP + driverArtDetails[i].sp
+      for(let i = 0; i < props.art.nodes.length; i++){
+        SP = SP + props.art.nodes[i].sp
         if(i >= props.art.levelUnlocked){
-          remainingSP = remainingSP + driverArtDetails[i].sp
+          remainingSP = remainingSP + props.art.nodes[i].sp
         }
       }
       setSP(SP);
       setRemainingSP(remainingSP);
     }
-  }, [driverArtDetails])
+  }, [props.art, props.art?.nodes]);
 
   return (
     <div>
       <div className="row">
         {getImage(props.art.name)}
-        {driverArtDetails !== undefined ?
-          Object.values(driverArtDetails).map((level, key) => 
+        {props.art?.nodes !== undefined ?
+          Object.values(props.art.nodes).map((level, key) => 
             key < props.art.levelUnlocked ? 
               <div
                 className={`art-detail-node ${key + 1 === props.art.levelUnlocked ?
