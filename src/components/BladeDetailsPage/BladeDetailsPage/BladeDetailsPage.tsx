@@ -1,5 +1,6 @@
 import { IItem, IItemType, IStoryProgress } from 'interfaces'
-import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
+import HeaderContainer, { IHeaderNavigation }
+  from 'components/CommonComponents/Containers/HeaderContainer'
 import { BladeAffinityTree } from '../BladeAffinityTree'
 import { BladeBasicInfoComponent } from '../BladeBasicInfoComponent'
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent'
@@ -22,7 +23,8 @@ interface IProps {
   itemType2?: IItemType,
   heart2Heart?: IHeart2HeartAvailability,
   quest?: IQuestAvailability,
-  storyProgress: IStoryProgress
+  storyProgress: IStoryProgress,
+  headerNavigation?: IHeaderNavigation
 }
 
 export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
@@ -34,6 +36,7 @@ export const BladeDetailsPageView = (props:IProps & IDispatchProps) => {
           title={props.bladeDetails.name}
           refreshData={props.fetchBlade}
           refreshDataId={props.bladeDetails.id}
+          navigation={props.headerNavigation}
         />
         <BladeBasicInfoComponent {...props} />
         {props.bladeDetails.prerequisites ?

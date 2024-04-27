@@ -1,4 +1,5 @@
-import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer';
+import HeaderContainer, { IHeaderNavigation }
+  from 'components/CommonComponents/Containers/HeaderContainer';
 import { DriverBasicInfoComponent } from '../DriverBasicInfoComponent';
 import { DriverArtsListComponent } from '../DriverArtsListComponent';
 import { IHeart2Heart, IItem, IItemType, IStoryProgress } from 'interfaces';
@@ -18,7 +19,8 @@ interface IProps {
   item2?: IItem | undefined;
   itemType1?: IItemType | undefined;
   itemType2?: IItemType | undefined;
-  heart2Hearts: IHeart2HeartAvailability[]
+  heart2Hearts: IHeart2HeartAvailability[];
+  headerNavigation?: IHeaderNavigation
 }
 
 export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {
@@ -30,6 +32,7 @@ export const DriverDetailsPageView = (props:IProps & IDispatchProps) => {
           title={props.driverDetails.name}
           refreshData={props.fetchDriverDetails}
           refreshDataId={props.driverDetails.id}
+          navigation={props.headerNavigation}
         />
         <DriverBasicInfoComponent
           driverDetails={props.driverDetails}

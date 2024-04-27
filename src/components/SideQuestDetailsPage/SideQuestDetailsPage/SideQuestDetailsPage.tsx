@@ -1,5 +1,6 @@
 import CollapsibleComponent from 'components/CommonComponents/Containers/CollapsibleComponent';
-import HeaderContainer from 'components/CommonComponents/Containers/HeaderContainer'
+import HeaderContainer, { IHeaderNavigation }
+  from 'components/CommonComponents/Containers/HeaderContainer'
 import { RequirementList } from 'components/CommonComponents/RequirementList';
 import { SideQuestBasicInfo } from '../SideQuestBasicInfoComponent';
 import { SideQuestRewardsComponent } from '../SideQuestRewardsComponents';
@@ -11,7 +12,8 @@ interface IDispatchProps {
 }
 
 interface IProps {
-  quest: IQuestAvailability
+  quest: IQuestAvailability,
+  headerNavigation?: IHeaderNavigation
 }
 
 export const SideQuestDetailsPageView = (props:IProps & IDispatchProps) => {
@@ -22,6 +24,7 @@ export const SideQuestDetailsPageView = (props:IProps & IDispatchProps) => {
         title={props.quest.Name}
         refreshData={props.fetchQuest}
         refreshDataId={props.quest.id}
+        navigation={props.headerNavigation}
       />
       <SideQuestBasicInfo
         quest={props.quest}

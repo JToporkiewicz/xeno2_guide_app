@@ -53,3 +53,23 @@
   position:fixed;
   width: inherit;
 }
+
+.header-navigation {
+  align-content: center;
+  width: 215px;
+
+  &-text {
+    font-size: x-large;
+    color:white;
+    margin: auto 5px;
+    vertical-align: middle;
+  }
+}
+
+.header-navigation.previous {
+  text-align: start;
+}
+
+.header-navigation.next {
+  text-align: end;
+}

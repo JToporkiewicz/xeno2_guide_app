@@ -14,6 +14,7 @@ import { createSelector } from 'reselect';
 import { defaultSideQuest } from 'reduxState/interfaces/quest';
 import { checkAllAvailability } from 'helpers/checkAvailability';
 import { IQuestAvailability } from 'reduxState/interfaces/availabilityState';
+import { Routes } from 'helpers/routesConst';
 
 export default createSelector(
   getQuests,
@@ -38,7 +39,7 @@ export default createSelector(
     heart2Hearts,
     challenges
   ) => {
-    const foundQuest: IQuestAvailability = checkAllAvailability(
+    const availability = checkAllAvailability(
       storyProgress,
       locations,
       monsters,
@@ -48,11 +49,49 @@ export default createSelector(
       quests,
       mercMissions,
       challenges
-    ).sideQuests.find((q) =>
+    );
+    const foundQuest: IQuestAvailability | undefined = availability.sideQuests.find((q) =>
       q.id === selected.id && selected.area === 'sideQuest')
-      || defaultSideQuest
+    if (foundQuest) {
+
+      const nextQuest = availability.sideQuests.find((d) =>
+        d.id === (foundQuest.id === quests.length ? 1 : foundQuest.id + 1))
+      let nextNavigation = {}
+      if (nextQuest?.Available
+      || storyProgress.NewGamePlus
+      || !storyProgress.OnlyShowAvailable) {
+        nextNavigation = {
+          nextLink: nextQuest ? Routes.SIDE_QUEST + nextQuest.id : undefined,        
+          nextId: nextQuest?.id,
+          nextTitle: nextQuest?.Name,
+        }
+      }
+      
+      const previousQuest = availability.sideQuests.find((d) =>
+        d.id === (foundQuest.id === 1 ? quests.length : foundQuest.id - 1))
+      let previousNavigation = {}
+      if (previousQuest?.Available
+      || storyProgress.NewGamePlus
+      || !storyProgress.OnlyShowAvailable) {
+        previousNavigation = {
+          previousLink: previousQuest ? Routes.SIDE_QUEST + previousQuest.id : undefined,        
+          previousId: previousQuest?.id,
+          previousTitle: previousQuest?.Name
+        }
+      }
+
+      return {
+        quest: foundQuest,
+        headerNavigation: {
+          area: 'sideQuest',
+          ...nextNavigation,
+          ...previousNavigation
+        },
+      }
+    }
+
     return {
-      quest: foundQuest
+      quest: defaultSideQuest
     }
   }
 )

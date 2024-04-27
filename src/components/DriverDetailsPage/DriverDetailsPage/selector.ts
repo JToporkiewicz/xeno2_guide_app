@@ -17,6 +17,7 @@ import {
 
 } from 'reduxState/selectors';
 import { checkAllAvailability } from 'helpers/checkAvailability';
+import { Routes } from 'helpers/routesConst';
 
 export default createSelector(
   getDrivers,
@@ -50,8 +51,38 @@ export default createSelector(
     const foundDriver = drivers.find((driver) =>
       driver.id === selected.id && selected.area === 'driver')
     if (foundDriver) {
+      const nextDriver = drivers.find((d) =>
+        d.id === (foundDriver.id === drivers.length ? 1 : foundDriver.id + 1))
+      let nextNavigation = {}
+      if ((nextDriver?.chapterUnlocked || 10) <= storyProgress.Chapter
+      || storyProgress.NewGamePlus
+      || !storyProgress.OnlyShowAvailable) {
+        nextNavigation = {
+          nextLink: nextDriver ? Routes.DRIVER + nextDriver.id : undefined,        
+          nextId: nextDriver?.id,
+          nextTitle: nextDriver?.name,
+        }
+      }
+      
+      const previousDriver = drivers.find((d) =>
+        d.id === (foundDriver.id === 1 ? drivers.length : foundDriver.id - 1))
+      let previousNavigation = {}
+      if ((previousDriver?.chapterUnlocked || 10) <= storyProgress.Chapter
+      || storyProgress.NewGamePlus
+      || !storyProgress.OnlyShowAvailable) {
+        previousNavigation = {
+          previousLink: previousDriver ? Routes.DRIVER + previousDriver.id : undefined,        
+          previousId: previousDriver?.id,
+          previousTitle: previousDriver?.name
+        }
+      }
       return {
         driverDetails: foundDriver,
+        headerNavigation: {
+          area: 'driver',
+          ...nextNavigation,
+          ...previousNavigation
+        },
         item1: items.find((item) => item.id === foundDriver.favItem1),
         item2: items.find((item) => item.id === foundDriver.favItem2),
         itemType1: itemTypes.find((itemType) => itemType.id === foundDriver.favItemType1),
