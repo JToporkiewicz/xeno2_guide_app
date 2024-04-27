@@ -19,6 +19,7 @@ import { MonsterListPage } from 'components/MonsterListPage';
 import { ItemListPage } from 'components/ItemListPage';
 import { Routes } from 'helpers/routesConst';
 import { ChallengeBattleListPage } from 'components/ChallengeBattleListPage';
+import { TopScroll } from 'components/CommonComponents/TopScroll';
 
 interface IDispatchProps {
   setSelected:(payload:ISelectedState) => void;
@@ -45,6 +46,11 @@ export const AppView = (props:IProps & IDispatchProps) => {
         id: Number(pathname[2] || 0)
       })      
     }
+
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    })
 
   }, [location])
 
@@ -73,6 +79,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path={Routes.CHALLENGE_BATTLES} component={ChallengeBattleListPage} />
             <Route component={Default} />
           </Switch>
+          <TopScroll />
         </div>
       </div>
     </div>

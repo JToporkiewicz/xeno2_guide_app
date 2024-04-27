@@ -52,6 +52,10 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
   }, [props.driverArts])
 
   useEffect(() => {
+    setFocused('')
+  }, [props.driverId])
+
+  useEffect(() => {
     if(props.driverArts.length > 0){
       let completeWeaponTypeList = props.driverArts.map((details) => details.weaponType);
       setUniqueWeapons([...completeWeaponTypeList.filter(
@@ -112,7 +116,20 @@ export const DriverArtsListComponentView = (props:IProps & IDispatchProps) => {
         panelType="weaponType"
         name={weapon}
         focused={focused === weapon}
-        focus={focusArt.bind(this)}
+        focus={() => {
+          const header = document
+            .getElementById('Driver Arts')?.getBoundingClientRect();
+          const body = document.body.getBoundingClientRect();
+          const newTop = header && body ? header.top - body.top - 60 : 0;
+          if (document.documentElement.scrollTop > newTop) {
+            window.scroll({
+              top: header && body ? header.top - body.top - 60 : 0,
+              behavior: 'smooth'
+            })            
+          }
+
+          focusArt(weapon)
+        }}
         key={weapon}
         progress={Math.round(weaponArtProgress.unlocked / weaponArtProgress.total * 10000) / 100}
       />
