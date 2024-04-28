@@ -19,12 +19,26 @@ interface IProps {
   h2hUnlocked: IProgressList,
   mercMissionCompleted: IProgressList,
   monstersBeaten: IProgressList,
-  challengesBeaten: IProgressList
+  challengesBeaten: IProgressList,
+  locationsMapped: IProgressList
 }
 
 export const ProgressStatusView = (props: IProps) => 
   <CollapsibleComponent header="Progress Status">
     <>
+      <b>Locations:</b>
+      <ProgressStatusDetails
+        list={props.locationsMapped}
+        listTitle="Locations Mapped:"
+      />
+      <ProgressStatusDetails
+        list={props.monstersBeaten}
+        listTitle="Unique Monsters Beaten:"
+      />
+      <ProgressStatusDetails
+        list={props.mercMissionCompleted}
+        listTitle="Merc Missions Completed:"
+      />
       <b>Drivers:</b>
       <ProgressStatusDetails
         list={props.driverArts}
@@ -58,16 +72,6 @@ export const ProgressStatusView = (props: IProps) =>
       <ProgressStatusDetails
         list={props.h2hUnlocked}
         listTitle="Heart2hearts Viewed:"
-      />
-      <b>Merc Missions:</b>
-      <ProgressStatusDetails
-        list={props.mercMissionCompleted}
-        listTitle="Merc Missions Completed:"
-      />
-      <b>Monsters:</b>
-      <ProgressStatusDetails
-        list={props.monstersBeaten}
-        listTitle="Unique Monsters Beaten:"
       />
       <b>Challenge Battles:</b>
       <ProgressStatusDetails

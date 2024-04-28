@@ -6,7 +6,8 @@ module.exports = (sequelize, Sequelize) => {
       key: 'id'
     } },
     Type: { type: Sequelize.TEXT },
-    StoryProgress: { type: Sequelize.INTEGER }
+    StoryProgress: { type: Sequelize.INTEGER },
+    Mapped: { type: Sequelize.BOOLEAN }
   },
   {timestamps: false, createdAt: false, updatedAt: false}
   );

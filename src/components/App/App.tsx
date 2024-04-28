@@ -20,6 +20,7 @@ import { ItemListPage } from 'components/ItemListPage';
 import { Routes } from 'helpers/routesConst';
 import { ChallengeBattleListPage } from 'components/ChallengeBattleListPage';
 import { TopScroll } from 'components/CommonComponents/TopScroll';
+import { LocationsPage } from 'components/LocationsPage';
 
 interface IDispatchProps {
   setSelected:(payload:ISelectedState) => void;
@@ -77,6 +78,7 @@ export const AppView = (props:IProps & IDispatchProps) => {
             <Route path={Routes.MONSTER_LIST} component={MonsterListPage} />
             <Route path={Routes.ITEMS} component={ItemListPage} />
             <Route path={Routes.CHALLENGE_BATTLES} component={ChallengeBattleListPage} />
+            <Route path={Routes.LOCATIONS} component={LocationsPage} />
             <Route component={Default} />
           </Switch>
           <TopScroll />

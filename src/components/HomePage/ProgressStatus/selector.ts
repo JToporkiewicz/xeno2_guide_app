@@ -16,6 +16,7 @@ import { getACCompletion, getDACompletion, getDSCompletion } from 'helpers/compl
 import { separateMajorArea } from 'helpers';
 import { checkAllAvailability } from 'helpers/checkAvailability';
 import { bladeFilter } from 'helpers/bladeFilter';
+import { ILocationState } from 'reduxState/interfaces/reduxState';
 
 export default createSelector(
   getStoryProgress,
@@ -136,8 +137,7 @@ export default createSelector(
         const h2hArea = separateMajorArea(h2h.Area);
         const loc = locations.find((loc) => loc.Name === h2hArea);
         const showH2h = !progress.OnlyShowAvailable || h2h.Available &&
-        (loc?.StoryProgress || 10) <=
-        progress.Chapter
+          (loc?.StoryProgress || 10) <= progress.Chapter
         const title = showH2h ? h2hArea : 'Unavailable Heart2Hearts'
         return {
           ...types,
@@ -151,8 +151,7 @@ export default createSelector(
       mercMissionCompleted: availability.mercMissions.reduce((types: IProgressList, mm) => {
         const loc = locations.find((loc) => loc.Name === mm.MissionNation);
         const showMM = !progress.OnlyShowAvailable || mm.Available &&
-          (loc?.StoryProgress || 10) <=
-      progress.Chapter
+          (loc?.StoryProgress || 10) <= progress.Chapter
         const title = showMM ? mm.MissionNation : 'Unavailable Merc Missions'
         return {
           ...types,
@@ -170,8 +169,7 @@ export default createSelector(
         const monArea = separateMajorArea(mon.Area);
         const loc = locations.find((loc) => loc.Name === monArea);
         const showMon = !progress.OnlyShowAvailable || mon.Available &&
-          (loc?.StoryProgress || 10) <=
-        progress.Chapter
+          (loc?.StoryProgress || 10) <= progress.Chapter
         const title = showMon ? monArea : 'Unavailable Monsters'
 
         return {
@@ -187,6 +185,31 @@ export default createSelector(
           total: 1 + (types.Battles?.total || 0),
           unlocked: (cb.beaten ? 1 : 0) + (types.Battles?.unlocked || 0) 
         }
-      }), {})
+      }), {}),
+      locationsMapped: locations.reduce((types: IProgressList, loc) => {
+        if (loc.Name === 'Ancient Ship') {
+          return types;
+        }
+        
+        if (loc.Name === 'Indoline Praetorium' && progress.Chapter > 8) {
+          return types;
+        }
+
+        const innerLocations = loc.InnerMajorAreas.reduce((list, inner) =>
+          list.concat(inner.Locations), [] as ILocationState[])
+
+        const showName = !progress.OnlyShowAvailable
+          || loc.StoryProgress <= progress.Chapter
+
+        const title = showName ? loc.Name : 'Unavailable Location'
+        return {
+          ...types,
+          [title]: {
+            total: (types[title]?.total || 0) + innerLocations.length,
+            unlocked: (types[title]?.unlocked || 0) + innerLocations.filter((i) => i.Mapped).length,
+            id: showName ? loc.id : 999
+          }
+        }
+      }, {})
     }}
 )

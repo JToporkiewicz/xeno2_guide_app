@@ -1,7 +1,7 @@
 import { ILocations, IMajorAreas, IStoryProgress } from 'interfaces';
 import createReducer from 'redux-action-reducer';
 import { LocationActions } from 'reduxState/actions/locations';
-import { IUpdateDevelopmentLevel } from 'reduxState/interfaces/locations';
+import { IUpdateDevelopmentLevel, IUpdateLocationMapped } from 'reduxState/interfaces/locations';
 import { IInnerMajorArea, ILocationState, IMajorLocations } from '../interfaces/reduxState';
 import { CoreActions } from 'reduxState/actions/core';
 
@@ -43,7 +43,8 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
         id: minor.id,
         Location: minor.Location,
         Type: minor.Type,
-        StoryProgress: minor.StoryProgress
+        StoryProgress: minor.StoryProgress,
+        Mapped: minor.Mapped === 1
       })
     }), {} as {[id:number]: ILocationState[]})
 
@@ -98,6 +99,47 @@ export const locationsReducer = createReducer<IMajorLocations[]>(
         })
         .sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1);
     }],
+  [LocationActions.UpdateMappedLocation,
+    (state:IMajorLocations[], update:IUpdateLocationMapped) => {
+      const updateArea = state.find((area) => area.id === update.majorArea);
+
+      if (!updateArea) {
+        return state;
+      }
+
+      const updateInnerArea = updateArea.InnerMajorAreas
+        .find((inner) => inner.id === update.innerArea);
+
+      if (!updateInnerArea) {
+        return state;
+      }
+
+      const updateLocation = updateInnerArea.Locations.find((loc) => loc.id === update.locId);
+
+      if (!updateLocation) {
+        return state;
+      }
+
+      return state.filter((area) => area.id !== updateArea.id)
+        .concat({
+          ...updateArea,
+          InnerMajorAreas: updateArea.InnerMajorAreas
+            .filter((inner) => inner.id !== updateInnerArea.id)
+            .concat({
+              ...updateInnerArea,
+              Locations: updateInnerArea.Locations
+                .filter((loc) => loc.id !== updateLocation.id)
+                .concat({
+                  ...updateLocation,
+                  Mapped: update.mapped
+                })
+                .sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1)
+            })
+            .sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1)
+        })
+        .sort((areaA, areaB) => Number(areaA.id) < Number(areaB.id) ? -1 : 1);
+    }
+  ],
   [CoreActions.SetStoryProgress,
     (state:IMajorLocations[], progress:IStoryProgress) => {
       return state.map((area) => {

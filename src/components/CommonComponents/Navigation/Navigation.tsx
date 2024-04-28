@@ -63,6 +63,7 @@ interface IOwnProps {
 export const NavigationView = (props:IOwnProps & IDispatchProps) => {
   const navigationButtons = [
     { link: Routes.HOME, title: 'Home', area: '' },
+    { link: Routes.LOCATIONS, title: 'Locations', area: 'locations'},
     { link: Routes.DRIVER_LIST, title: 'Drivers', area: 'driversList' },
     { link: Routes.BLADE_LIST, title: 'Blades', area: 'bladeList' },
     { link: Routes.SIDE_QUEST_LIST, title: 'Side Quests', area: 'sideQuestList' },

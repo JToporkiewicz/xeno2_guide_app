@@ -3,5 +3,6 @@ export interface ILocations {
   Location:string,
   MajorArea:number,
   Type:string,
-  StoryProgress:number
+  StoryProgress:number,
+  Mapped: number
 }

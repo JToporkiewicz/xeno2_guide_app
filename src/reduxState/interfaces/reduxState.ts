@@ -46,7 +46,8 @@ export interface ILocationState {
   id: number,
   Location: string,
   Type: string,
-  StoryProgress: number
+  StoryProgress: number,
+  Mapped: boolean
 }
 
 export interface IInnerMajorArea {

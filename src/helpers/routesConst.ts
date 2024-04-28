@@ -10,5 +10,6 @@ export const Routes = {
   MERC_MISSION_LIST: '/mercMissionList',
   MONSTER_LIST: '/monsterList',
   ITEMS: '/items',
-  CHALLENGE_BATTLES: '/challengeBattles'
+  CHALLENGE_BATTLES: '/challengeBattles',
+  LOCATIONS: '/locations'
 };

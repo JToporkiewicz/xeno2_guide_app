@@ -24,10 +24,11 @@ const fieldSkillRouter = require('./routers/fieldSkillRouter');
 const monsterRouter = require('./routers/monsterRouter');
 const itemRouter = require('./routers/itemRouter');
 const challengeRouter = require('./routers/challengeRouter');
+const locationRouter = require('./routers/locationRouter');
 
 // const table = require('./storedProcedures');
 const { sequelize } = require('./models');
-db.sequelize.sync();
+// db.sequelize.sync({ alter: true });
 // for(var i = 0; i < table.length; i++) {
 //   for(var j = 0; j < table[i].length; j++){
 //     db.sequelize.query('DROP PROCEDURE IF EXISTS ' + table[i][j].name)
@@ -45,7 +46,7 @@ app.use('/driver', driversRouter())
 app.use('/fieldSkill', fieldSkillRouter(db.fieldSkill, sequelize))
 app.use('/heart2Heart', heart2HeartRouter())
 app.use('/item', itemRouter())
-app.use('/location', restRouter(db.location))
+app.use('/location', locationRouter())
 app.use('/majorArea', restRouter(db.majorArea))
 app.use('/mercMission', mercMissionRouter())
 app.use('/monster', monsterRouter())
